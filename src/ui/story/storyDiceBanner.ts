@@ -1,7 +1,8 @@
 import type { GameState } from '../../engine/schema/index.ts';
 import type { LoadedScene, StoryDiceRollBreakdown } from '../../engine/core/index.ts';
-import { CIRCULO_SKILL_REROLL_REP_COST } from '../../engine/progression/reputation.ts';
+import { CIRCULO_SKILL_REROLL_REP_COST } from '../../engine/progression/index.ts';
 import { formatDiceAscii } from '../diceAscii.ts';
+import { t } from '../../i18n/index.ts';
 
 export type StoryDiceRollPendingPayload = {
   nextState: GameState;
@@ -65,7 +66,7 @@ function populateStoryDiceDifficulty(el: HTMLElement, breakdown: StoryDiceRollBr
   row.className = 'story-dice-difficulty-row';
   const lab = document.createElement('span');
   lab.className = 'story-dice-difficulty-label';
-  lab.textContent = 'Dificuldade';
+  lab.textContent = t('story.difficulty');
   const val = document.createElement('span');
   val.className = 'story-dice-difficulty-value';
   val.textContent = String(tn);
@@ -74,7 +75,7 @@ function populateStoryDiceDifficulty(el: HTMLElement, breakdown: StoryDiceRollBr
   if (breakdown.kind === 'dualSkill') {
     const sub = document.createElement('div');
     sub.className = 'story-dice-difficulty-sub';
-    sub.textContent = 'Cada selo precisa alcançar este total.';
+    sub.textContent = t('story.dualSkillDifficultyHint');
     el.appendChild(sub);
   }
 }
@@ -111,7 +112,7 @@ function populateStoryDiceModSlot(slot: HTMLElement, breakdown: StoryDiceRollBre
       row.className = 'story-dice-mod-card-row';
       const l = document.createElement('span');
       l.className = 'story-dice-mod-card-label';
-      l.textContent = 'SOR';
+      l.textContent = t('engine.attrLuck');
       const v = document.createElement('span');
       v.className = 'story-dice-mod-card-value';
       v.textContent = formatModSigned(breakdown.mod);
@@ -123,7 +124,7 @@ function populateStoryDiceModSlot(slot: HTMLElement, breakdown: StoryDiceRollBre
       row.className = 'story-dice-mod-card-row';
       const l = document.createElement('span');
       l.className = 'story-dice-mod-card-label';
-      l.textContent = 'Maldição';
+      l.textContent = t('story.diceCurse');
       const v = document.createElement('span');
       v.className = 'story-dice-mod-card-value story-dice-mod-card-value--curse';
       v.textContent = `−${breakdown.luckPenalty}`;
@@ -196,7 +197,7 @@ function appendOutcomeLine(parent: HTMLElement, success: boolean): void {
   line.className = success
     ? 'story-dice-result-outcome story-dice-result-outcome--ok'
     : 'story-dice-result-outcome story-dice-result-outcome--fail';
-  line.textContent = success ? 'Passou.' : 'Falhou.';
+  line.textContent = success ? t('story.dicePass') : t('story.diceFail');
   parent.appendChild(line);
 }
 
@@ -230,7 +231,7 @@ function populateStoryDiceRollResult(region: HTMLElement, breakdown: StoryDiceRo
     seal.className = 'story-dice-result-seal';
     const st = document.createElement('div');
     st.className = 'story-dice-result-seal-title';
-    st.textContent = `Selo ${i + 1} de ${totalR}`;
+    st.textContent = t('story.diceSealTitle', { current: String(i + 1), total: String(totalR) });
     seal.appendChild(st);
     appendOutcomeLine(seal, r.success);
     const lhs = `${r.d1} + ${r.d2} + ${r.mod1} (${a1.toUpperCase()}) + ${r.mod2} (${a2.toUpperCase()})`;
@@ -255,20 +256,23 @@ export function appendStoryDiceRollBanner(
   panel.setAttribute(
     'aria-label',
     breakdown.kind === 'skill'
-      ? 'Resultado do teste de perícia'
+      ? t('story.diceSkillResultAria')
       : breakdown.kind === 'dualSkill'
-        ? 'Resultado da prova tríplice'
-        : 'Resultado do teste de sorte'
+        ? t('story.diceDualSkillResultAria')
+        : t('story.diceLuckResultAria')
   );
 
   const kicker = document.createElement('div');
   kicker.className = 'story-dice-banner-kicker';
   kicker.textContent =
     breakdown.kind === 'skill'
-      ? `Teste de perícia (${breakdown.attr.toUpperCase()})`
+      ? t('story.diceSkillKicker', { attr: breakdown.attr.toUpperCase() })
       : breakdown.kind === 'dualSkill'
-        ? `Prova tríplice (${breakdown.attrs[0].toUpperCase()} + ${breakdown.attrs[1].toUpperCase()})`
-        : 'Teste de sorte';
+        ? t('story.diceDualSkillKicker', {
+            a1: breakdown.attrs[0].toUpperCase(),
+            a2: breakdown.attrs[1].toUpperCase(),
+          })
+        : t('story.diceLuckKicker');
   panel.appendChild(kicker);
 
   const rollCard = document.createElement('div');
@@ -316,8 +320,8 @@ export function appendStoryDiceRollBanner(
   btn.type = 'button';
   btn.className = 'story-dice-banner-dismiss';
   btn.dataset.quickNavContinue = '';
-  btn.title = 'Barra de espaço';
-  btn.textContent = '[Espaço] — Continuar';
+  btn.title = t('story.spacebarTitle');
+  btn.textContent = t('story.continueSpace');
   btn.disabled = true;
   btnRow.appendChild(btn);
 
@@ -330,8 +334,8 @@ export function appendStoryDiceRollBanner(
       CIRCULO_SKILL_REROLL_REP_COST < 0
         ? `−${Math.abs(CIRCULO_SKILL_REROLL_REP_COST)}`
         : String(CIRCULO_SKILL_REROLL_REP_COST);
-    rerollBtn.textContent = `Segunda leitura do Círculo (${costLabel} reputação)`;
-    rerollBtn.title = 'Gasta a carga do descanso e paga reputação ao Círculo por nova rolagem de teste.';
+    rerollBtn.textContent = t('story.diceCirculoReroll', { cost: costLabel });
+    rerollBtn.title = t('story.diceCirculoRerollHint');
     rerollBtn.disabled = true;
     rerollBtn.addEventListener('click', () => {
       host.onCirculoDiceReroll?.();

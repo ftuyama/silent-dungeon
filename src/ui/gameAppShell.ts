@@ -2,6 +2,13 @@ import type { GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
 import { buildGameSidebar, KOFI_SUPPORT_URL } from './gameAppSidebar.ts';
 import { buildMenuSaveSlot, saveSlotLimit } from './gameAppSaveSlots.ts';
+import {
+  getLocale,
+  setLocale,
+  SUPPORTED_LOCALES,
+  t,
+  type Locale,
+} from '../i18n/index.ts';
 
 /** Layout persistente: cabeçalho, menu lateral, sidebar do jogador e área principal (`main.story-shell`). */
 export type MountAppChromeOptions = {
@@ -55,14 +62,13 @@ export type AppChromeRefs = {
   collapseTopBtn: HTMLButtonElement;
   fullscreenTopBtn: HTMLButtonElement;
   edgeRail: HTMLElement;
-  edgeRailRestoreBtn: HTMLButtonElement;
-  edgeRailMenuBtn: HTMLButtonElement;
   titleEl: HTMLElement;
   sidebarEl: HTMLElement;
   mainEl: HTMLElement;
   hamburgerBtn: HTMLButtonElement;
   volumeRange: HTMLInputElement;
   volumeValue: HTMLElement;
+  languageSelect: HTMLSelectElement;
   devCb: HTMLInputElement;
   timedChoiceCb: HTMLInputElement;
   sceneArtHighlightCb: HTMLInputElement;
@@ -77,6 +83,28 @@ export type AppChromeRefs = {
   /** Menu lateral (`role="dialog"`). */
   menuDrawer: HTMLElement;
 };
+
+function localeShortLabel(locale: Locale): string {
+  return locale === 'pt-BR' ? 'PT' : 'EN';
+}
+
+function createLanguageSelect(id: string, className: string): HTMLSelectElement {
+  const languageSelect = document.createElement('select');
+  languageSelect.id = id;
+  languageSelect.className = className;
+  languageSelect.setAttribute('aria-label', t('menu.language'));
+  for (const loc of SUPPORTED_LOCALES) {
+    const opt = document.createElement('option');
+    opt.value = loc;
+    opt.textContent = localeShortLabel(loc);
+    languageSelect.appendChild(opt);
+  }
+  languageSelect.value = getLocale();
+  languageSelect.addEventListener('change', () => {
+    setLocale(languageSelect.value as Locale);
+  });
+  return languageSelect;
+}
 
 function fillMenuSaveSlots(
   wrap: HTMLElement,
@@ -104,7 +132,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   const skipLink = document.createElement('a');
   skipLink.className = 'skip-link';
   skipLink.href = '#story-main';
-  skipLink.textContent = 'Ir para a história';
+  skipLink.textContent = t('menu.skipToStory');
   frame.appendChild(skipLink);
 
   const toastRegion = document.createElement('div');
@@ -121,13 +149,13 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   const edgeRailRestoreBtn = document.createElement('button');
   edgeRailRestoreBtn.type = 'button';
   edgeRailRestoreBtn.className = 'app-edge-rail-btn';
-  edgeRailRestoreBtn.setAttribute('aria-label', 'Mostrar barra superior');
+  edgeRailRestoreBtn.setAttribute('aria-label', t('menu.showTopBar'));
   edgeRailRestoreBtn.setAttribute('data-app-edge-restore', '');
   edgeRailRestoreBtn.innerHTML = '\u25BC';
   const edgeRailMenuBtn = document.createElement('button');
   edgeRailMenuBtn.type = 'button';
   edgeRailMenuBtn.className = 'app-edge-rail-btn';
-  edgeRailMenuBtn.setAttribute('aria-label', 'Menu');
+  edgeRailMenuBtn.setAttribute('aria-label', t('menu.menu'));
   edgeRailMenuBtn.setAttribute('data-app-edge-menu', '');
   edgeRailMenuBtn.innerHTML = '\u2630';
   edgeRail.appendChild(edgeRailRestoreBtn);
@@ -143,7 +171,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   const collapseTopBtn = document.createElement('button');
   collapseTopBtn.type = 'button';
   collapseTopBtn.className = 'app-top-collapse';
-  collapseTopBtn.setAttribute('aria-label', 'Ocultar barra superior');
+  collapseTopBtn.setAttribute('aria-label', t('menu.hideTopBar'));
   collapseTopBtn.innerHTML = '\u25B2';
   const fullscreenSupported = opts.fullscreenSupported;
   const fullscreenTopBtn = document.createElement('button');
@@ -152,21 +180,23 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   fullscreenTopBtn.innerHTML = '\u2922';
   fullscreenTopBtn.disabled = !fullscreenSupported;
   if (!fullscreenSupported) {
-    fullscreenTopBtn.title = 'Ecrã inteiro não está disponível neste navegador.';
-    fullscreenTopBtn.setAttribute('aria-label', 'Ecrã inteiro (indisponível)');
+    fullscreenTopBtn.title = t('menu.fullscreenUnavailable');
+    fullscreenTopBtn.setAttribute('aria-label', t('menu.fullscreenUnavailable'));
   } else {
-    fullscreenTopBtn.setAttribute('aria-label', 'Ecrã inteiro');
-    fullscreenTopBtn.title = 'Ecrã inteiro';
+    fullscreenTopBtn.setAttribute('aria-label', t('menu.fullscreen'));
+    fullscreenTopBtn.title = t('menu.fullscreen');
   }
   const hBtn = document.createElement('button');
   hBtn.type = 'button';
   hBtn.className = 'hamburger';
-  hBtn.setAttribute('aria-label', 'Menu');
+  hBtn.setAttribute('aria-label', t('menu.menu'));
   hBtn.setAttribute('aria-expanded', 'false');
   hBtn.innerHTML = '\u2630';
   hBtn.addEventListener('click', () => opts.onMenuHamburgerClick(hBtn));
+  const languageSelect = createLanguageSelect('app-top-language-select', 'app-top-language-select');
   topActions.appendChild(collapseTopBtn);
   topActions.appendChild(fullscreenTopBtn);
+  topActions.appendChild(languageSelect);
   topActions.appendChild(hBtn);
   header.appendChild(title);
   header.appendChild(topActions);
@@ -206,7 +236,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   volumeLabelRow.className = 'menu-volume-label';
   const volumeLabel = document.createElement('label');
   volumeLabel.htmlFor = 'menu-volume-range';
-  volumeLabel.textContent = 'Volume';
+  volumeLabel.textContent = t('menu.volume');
   const volumeValue = document.createElement('span');
   volumeValue.className = 'menu-volume-value';
   const volumeRange = document.createElement('input');
@@ -241,7 +271,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     opts.onDevModeChange(devCb.checked);
   });
   devRow.appendChild(devCb);
-  devRow.appendChild(document.createTextNode(' Modo desenvolvedor'));
+  devRow.appendChild(document.createTextNode(` ${t('menu.devMode')}`));
 
   const timedChoiceRow = document.createElement('label');
   timedChoiceRow.className = 'menu-item menu-sound menu-dev';
@@ -253,20 +283,20 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   });
   timedChoiceRow.appendChild(timedChoiceCb);
   timedChoiceRow.appendChild(
-    document.createTextNode(' Limite de tempo nas escolhas (barra e decisão automática)')
+    document.createTextNode(` ${t('menu.timedChoice')}`)
   );
 
   const fontBtn = document.createElement('button');
   fontBtn.type = 'button';
   fontBtn.className = 'menu-item';
-  fontBtn.textContent = `Tamanho do texto (${100 + opts.fontStep * 10}%)`;
+  fontBtn.textContent = t('menu.fontSize', { percent: String(100 + opts.fontStep * 10) });
   fontBtn.addEventListener('click', () => opts.onCycleFont());
 
   const fullscreenRow = document.createElement('label');
   fullscreenRow.className = 'menu-item menu-sound';
   if (!fullscreenSupported) {
     fullscreenRow.classList.add('menu-sound--disabled');
-    fullscreenRow.title = 'Ecrã inteiro não está disponível neste navegador.';
+    fullscreenRow.title = t('menu.fullscreenUnavailable');
   }
   const fullscreenCb = document.createElement('input');
   fullscreenCb.type = 'checkbox';
@@ -285,7 +315,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     })();
   });
   fullscreenRow.appendChild(fullscreenCb);
-  fullscreenRow.appendChild(document.createTextNode(' Ecrã inteiro'));
+  fullscreenRow.appendChild(document.createTextNode(` ${t('menu.fullscreen')}`));
 
   const sceneArtHighlightRow = document.createElement('label');
   sceneArtHighlightRow.className = 'menu-item menu-sound';
@@ -297,51 +327,51 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   });
   sceneArtHighlightRow.appendChild(sceneArtHighlightCb);
   sceneArtHighlightRow.appendChild(
-    document.createTextNode(' Destaque da arte da cena na primeira visita')
+    document.createTextNode(` ${t('menu.sceneArtHighlight')}`)
   );
 
   const exportBtn = document.createElement('button');
   exportBtn.type = 'button';
   exportBtn.className = 'menu-item';
-  exportBtn.textContent = 'Exportar gravação (JSON)';
+  exportBtn.textContent = t('menu.exportSave');
   exportBtn.addEventListener('click', () => opts.onExportSave());
 
   const importBtn = document.createElement('button');
   importBtn.type = 'button';
   importBtn.className = 'menu-item';
-  importBtn.textContent = 'Importar gravação (clipboard)';
+  importBtn.textContent = t('menu.importSave');
   importBtn.addEventListener('click', () => opts.onImportSave());
 
   const chronicleBtn = document.createElement('button');
   chronicleBtn.type = 'button';
   chronicleBtn.className = 'menu-item';
-  chronicleBtn.textContent = 'Crónica';
-  chronicleBtn.title = 'Títulos e finais vistos no legado; dicas de replay.';
+  chronicleBtn.textContent = t('menu.chronicle');
+  chronicleBtn.title = t('menu.chronicleTitle');
   chronicleBtn.addEventListener('click', () => opts.onChronicle());
 
   const creditsBtn = document.createElement('button');
   creditsBtn.type = 'button';
   creditsBtn.className = 'menu-item';
-  creditsBtn.textContent = 'Créditos';
+  creditsBtn.textContent = t('menu.credits');
   creditsBtn.addEventListener('click', () => opts.onCredits());
 
   const devToolsBtn = document.createElement('button');
   devToolsBtn.type = 'button';
   devToolsBtn.className = 'menu-item';
-  devToolsBtn.textContent = 'Ferramentas de desenvolvimento';
-  devToolsBtn.title = 'Itens, cenas, música, inimigos, diálogo (?view=dev). Disponível com modo desenvolvedor.';
+  devToolsBtn.textContent = t('menu.devTools');
+  devToolsBtn.title = t('menu.devToolsTitle');
   devToolsBtn.addEventListener('click', () => opts.onDevTools());
 
   const graphBtn = document.createElement('button');
   graphBtn.type = 'button';
   graphBtn.className = 'menu-item';
-  graphBtn.textContent = 'Grafo de cenas';
-  graphBtn.title = 'Grafo por act (?view=scenes-graph). Disponível com modo desenvolvedor.';
+  graphBtn.textContent = t('menu.scenesGraph');
+  graphBtn.title = t('menu.scenesGraphTitle');
   graphBtn.addEventListener('click', () => opts.onScenesGraph());
 
   const versionLabel = document.createElement('div');
   versionLabel.className = 'menu-version';
-  versionLabel.textContent = `Silent Dungeon v${opts.gameVersion}`;
+  versionLabel.textContent = t('menu.version', { version: opts.gameVersion });
 
   const devSaveExtrasEl = document.createElement('div');
   devSaveExtrasEl.className = 'menu-dev-save-extras';
@@ -352,7 +382,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   devSettingsExtrasEl.appendChild(devToolsBtn);
   devSettingsExtrasEl.appendChild(graphBtn);
 
-  const saveSection = createMenuSection('Partida', 'menu-drawer-heading');
+  const saveSection = createMenuSection(t('menu.sectionGame'), 'menu-drawer-heading');
   const saveSlotsWrap = document.createElement('div');
   saveSlotsWrap.className = 'menu-save-slots';
   fillMenuSaveSlots(saveSlotsWrap, opts.campaignId, opts.devMode, opts.onSaveSlot, opts.onLoadSlot);
@@ -360,7 +390,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   saveSection.appendChild(devSaveExtrasEl);
   saveSection.appendChild(exportBtn);
 
-  const settingsSection = createMenuSection('Configurações');
+  const settingsSection = createMenuSection(t('menu.sectionSettings'));
   settingsSection.appendChild(volumeRow);
   settingsSection.appendChild(fontBtn);
   settingsSection.appendChild(fullscreenRow);
@@ -368,14 +398,14 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   settingsSection.appendChild(timedChoiceRow);
 
   if (opts.showDevModeToggle || opts.showGraphInSettings) {
-    const devSection = createMenuSection('Desenvolvimento');
+    const devSection = createMenuSection(t('menu.sectionDev'));
     if (opts.showDevModeToggle) {
       devSection.appendChild(devRow);
     }
     devSection.appendChild(devSettingsExtrasEl);
   }
 
-  const aboutSection = createMenuSection('Sobre');
+  const aboutSection = createMenuSection(t('menu.sectionAbout'));
   aboutSection.appendChild(chronicleBtn);
   aboutSection.appendChild(creditsBtn);
 
@@ -384,8 +414,8 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   kofiLink.target = '_blank';
   kofiLink.rel = 'noopener noreferrer';
   kofiLink.className = 'menu-item menu-item--kofi';
-  kofiLink.textContent = 'Apoiar no Ko-fi';
-  kofiLink.title = 'Abre a página de apoio no Ko-fi (novo separador)';
+  kofiLink.textContent = t('menu.kofi');
+  kofiLink.title = t('menu.kofiTitle');
   aboutSection.appendChild(kofiLink);
 
   const footer = document.createElement('div');
@@ -426,14 +456,13 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     collapseTopBtn,
     fullscreenTopBtn,
     edgeRail,
-    edgeRailRestoreBtn,
-    edgeRailMenuBtn,
     titleEl: title,
     sidebarEl,
     mainEl,
     hamburgerBtn: hBtn,
     volumeRange,
     volumeValue,
+    languageSelect,
     devCb,
     timedChoiceCb,
     sceneArtHighlightCb,
@@ -471,12 +500,17 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
   refs.devCb.checked = opts.devMode;
   refs.timedChoiceCb.checked = opts.timedChoiceEnabled;
   refs.sceneArtHighlightCb.checked = opts.sceneArtHighlightEnabled;
-  refs.fontBtn.textContent = `Tamanho do texto (${100 + opts.fontStep * 10}%)`;
+  refs.fontBtn.textContent = t('menu.fontSize', { percent: String(100 + opts.fontStep * 10) });
+  refs.languageSelect.setAttribute('aria-label', t('menu.language'));
+  refs.languageSelect.value = getLocale();
+  for (const optEl of refs.languageSelect.options) {
+    optEl.textContent = localeShortLabel(optEl.value as Locale);
+  }
   refs.fullscreenCb.checked = opts.getFullscreenActive();
   refs.fullscreenTopBtn.disabled = !opts.fullscreenSupported;
   if (!opts.fullscreenSupported) {
-    refs.fullscreenTopBtn.title = 'Ecrã inteiro não está disponível neste navegador.';
-    refs.fullscreenTopBtn.setAttribute('aria-label', 'Ecrã inteiro (indisponível)');
+    refs.fullscreenTopBtn.title = t('menu.fullscreenUnavailable');
+    refs.fullscreenTopBtn.setAttribute('aria-label', `${t('menu.fullscreen')} (${t('menu.fullscreenUnavailable')})`);
   }
 
   while (refs.sidebarEl.firstChild) {

@@ -17,8 +17,8 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.join(__dirname, '..');
 
-const campaignId = parseCampaignArgv(process.argv.slice(2));
-const { scenesDir, indexPath } = campaignPaths(repoRoot, campaignId);
+const { campaignId } = parseCampaignArgv(process.argv.slice(2));
+const { scenesDir, indexPath } = campaignPaths(repoRoot, campaignId, 'pt-BR');
 
 function pushEffectEdges(effects: unknown, from: string, out: Array<{ from: string; to: string }>) {
   if (!Array.isArray(effects)) return;

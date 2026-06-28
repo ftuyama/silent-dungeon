@@ -1,0 +1,10 @@
+{
+  "act1/start": {
+    "body": "**Demo campaign** — multi-campaign loading OK. Use `?campaign=demo` in the URL.",
+    "choices": [
+      {
+        "text": "Demo scene (repeat)"
+      }
+    ]
+  }
+}

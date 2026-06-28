@@ -37,21 +37,3 @@ export function unlockSpellsForNewLevel(
   }
   return { state: { ...state, knownSpells: [...known] }, learned };
 }
-
-/**
- * Saves antigos sem `knownSpells`: assume o comportamento legado
- * (todas as magias elegíveis até ao nível actual).
- */
-export function migrateLegacyKnownSpells(state: GameState, data: GameData): GameState {
-  if (state.knownSpells.length > 0) return state;
-  const lead = state.party[0];
-  if (!lead) return { ...state, knownSpells: [] };
-  const ids: string[] = [];
-  for (const [id, sp] of Object.entries(data.spells)) {
-    if (sp.learnOnly) continue;
-    if (sp.minLevel > state.level) continue;
-    if (!spellMatchesHeroClass(sp, lead)) continue;
-    ids.push(id);
-  }
-  return { ...state, knownSpells: ids };
-}

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url));
-const sharedScenesDir = join(repoRoot, 'src/campaigns/calvario/scenes/shared');
+const sharedScenesDir = join(repoRoot, 'src/campaigns/calvario/scenes/pt-BR/shared');
 
 const explorationNavFiles = [
   'explore_nav_act2.md',
@@ -59,7 +59,7 @@ describe('exploration nav consistency (calvario)', () => {
   it('encontros aleatórios da patrulha do act2 retornam para a navegação de exploração', () => {
     for (const file of act2WildEncounterFiles) {
       const content = readFileSync(
-        join(repoRoot, 'src/campaigns/calvario/scenes/act2/encounters', file),
+        join(repoRoot, 'src/campaigns/calvario/scenes/pt-BR/act2/encounters', file),
         'utf8'
       );
       expect(content).toContain('onVictory: shared/explore_nav_act2');
@@ -70,7 +70,7 @@ describe('exploration nav consistency (calvario)', () => {
   it('encontros aleatórios da patrulha do act5 retornam para a navegação de exploração', () => {
     for (const file of act5WildEncounterFiles) {
       const content = readFileSync(
-        join(repoRoot, 'src/campaigns/calvario/scenes/act5/encounters', file),
+        join(repoRoot, 'src/campaigns/calvario/scenes/pt-BR/act5/encounters', file),
         'utf8'
       );
       expect(content).toContain('onVictory: shared/explore_nav_act5');
@@ -81,7 +81,7 @@ describe('exploration nav consistency (calvario)', () => {
   it('encontros aleatórios da patrulha do act6 retornam para a navegação de exploração', () => {
     for (const file of act6WildEncounterFiles) {
       const content = readFileSync(
-        join(repoRoot, 'src/campaigns/calvario/scenes/act6/encounters', file),
+        join(repoRoot, 'src/campaigns/calvario/scenes/pt-BR/act6/encounters', file),
         'utf8'
       );
       expect(content).toContain('onVictory: shared/explore_nav_act6');

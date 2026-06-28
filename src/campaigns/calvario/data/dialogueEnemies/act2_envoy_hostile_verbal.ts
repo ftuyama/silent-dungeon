@@ -11,11 +11,11 @@ export const act2_vigilia_envoy_verbal: DialogueEnemyDef = {
     rootNodeId: 'root',
     nodes: {
       root: {
-        linePt:
+        line:
           'A lanterna sobe um dedo. “Quem o subsolo nomeia, a Vigília repete”, diz a voz — não sermão, acusação em fila. “Tua língua cheira a pacto com sombra.”',
         choices: [
           {
-            textPt:
+            text:
               'Responder com regimento: ordem, corredor, dever — sem insulto, sem pedido de perdão.',
             resolution: {
               kind: 'skill',
@@ -28,13 +28,13 @@ export const act2_vigilia_envoy_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt:
+            text:
               'Baixar a palma — mostrar que não trazes lâmina à conversa, só peito.',
             resolution: { kind: 'fixed', nextNodeId: 'steady' },
             effects: { enemyHpDelta: -4 },
           },
           {
-            textPt:
+            text:
               'Escalar o insulto: perguntar se a Vigília só sabe contar medo alheio.',
             resolution: { kind: 'fixed', nextNodeId: 'heat' },
             effects: { enemyHpDelta: 4 },
@@ -42,22 +42,22 @@ export const act2_vigilia_envoy_verbal: DialogueEnemyDef = {
         ],
       },
       steady: {
-        linePt:
+        line:
           'O capeador fecha a mandíbula. “…Disciplina”, concede, amargo. “Não é absolvição.”',
         choices: [
           {
-            textPt: 'Aceitar o veredito frio e pedir passagem sem desfile.',
+            text: 'Aceitar o veredito frio e pedir passagem sem desfile.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -4 },
           },
         ],
       },
       heat: {
-        linePt:
+        line:
           '“Então ouve o metal a falar por mim”, rosna. O ar fica estreito.',
         choices: [
           {
-            textPt:
+            text:
               'Tentar segurar a linha com corpo inteiro — sem recuar o pé.',
             resolution: {
               kind: 'skill',
@@ -70,18 +70,18 @@ export const act2_vigilia_envoy_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt: 'Deixar a provocação ganhar — perder o compasso.',
+            text: 'Deixar a provocação ganhar — perder o compasso.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
       },
       v_success: {
-        linePt:
+        line:
           '“Segue”, diz por fim, lanterna já virada para o lado. “Mas o teu rasto fica na lista.”',
         terminal: 'victory',
       },
       d_fail: {
-        linePt:
+        line:
           '“Sem tribunal”, diz. “Só conta.” A lâmina sai antes da frase acabar.',
         terminal: 'defeat',
       },
@@ -99,11 +99,11 @@ export const act2_circulo_envoy_verbal: DialogueEnemyDef = {
     rootNodeId: 'root',
     nodes: {
       root: {
-        linePt:
+        line:
           'O cinza sobe como respiração. “Emprestamos forma”, sussurra a voz. “Rasgar é declarar guerra ao que já morreu uma vez.”',
         choices: [
           {
-            textPt:
+            text:
               'Falar como quem respeita o empréstimo — pedir prazo, não vitória.',
             resolution: {
               kind: 'skill',
@@ -116,13 +116,13 @@ export const act2_circulo_envoy_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt:
+            text:
               'Tocar o símbolo com dois dedos só — reverência mínima, sem teatro.',
             resolution: { kind: 'fixed', nextNodeId: 'respect' },
             effects: { enemyHpDelta: -4 },
           },
           {
-            textPt:
+            text:
               'Insultar o ritual: dizer que o Círculo é cinza de covardia.',
             resolution: { kind: 'fixed', nextNodeId: 'fray' },
             effects: { enemyHpDelta: 4 },
@@ -130,22 +130,22 @@ export const act2_circulo_envoy_verbal: DialogueEnemyDef = {
         ],
       },
       respect: {
-        linePt:
+        line:
           'O cinza acalma na palma. “Bom”, diz a voz. “Quem sabe pedir, sabe devolver.”',
         choices: [
           {
-            textPt: 'Prometer devolução sem jacto — e calar.',
+            text: 'Prometer devolução sem jacto — e calar.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -4 },
           },
         ],
       },
       fray: {
-        linePt:
+        line:
           '“Sangue barato”, ri o osso no ar. O desenho fecha como mordida.',
         choices: [
           {
-            textPt:
+            text:
               'Tentar refazer o gesto — mão aberta, palavra curta.',
             resolution: {
               kind: 'luck',
@@ -158,18 +158,18 @@ export const act2_circulo_envoy_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt: 'Rasgar de vez o ar entre vós.',
+            text: 'Rasgar de vez o ar entre vós.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
       },
       v_success: {
-        linePt:
+        line:
           '“Leva o empréstimo”, suspira a voz. “E não forces o Círculo a cobrar à mão.”',
         terminal: 'victory',
       },
       d_fail: {
-        linePt: '“Então paga”, diz — e o osso acorda.',
+        line: '“Então paga”, diz — e o osso acorda.',
         terminal: 'defeat',
       },
     },
@@ -186,11 +186,11 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
     rootNodeId: 'root',
     nodes: {
       root: {
-        linePt:
+        line:
           'O sino vibra sem badalo. “Devoto paga silêncio com silêncio”, diz a sombra. “Tu pagaste com escândalo.”',
         choices: [
           {
-            textPt:
+            text:
               'Oferecer contrato mínimo: ouvir, responder curto, sem profanar o nome.',
             resolution: {
               kind: 'skill',
@@ -203,13 +203,13 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt:
+            text:
               'Ajoelhar a palavra — não o joelho: admitir dívida sem teatro.',
             resolution: { kind: 'fixed', nextNodeId: 'tight' },
             effects: { enemyHpDelta: -4 },
           },
           {
-            textPt:
+            text:
               'Cortar a oração com desdém — provar que não temes o rumor.',
             resolution: { kind: 'fixed', nextNodeId: 'ring' },
             effects: { enemyHpDelta: 4 },
@@ -217,22 +217,22 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
         ],
       },
       tight: {
-        linePt:
+        line:
           '“…Dívida reconhecida”, murmura a sombra. “O Sino gosta de quem não finge pagamento.”',
         choices: [
           {
-            textPt: 'Fechar com um “sim” seco e esperar o recuo.',
+            text: 'Fechar com um “sim” seco e esperar o recuo.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -4 },
           },
         ],
       },
       ring: {
-        linePt:
+        line:
           '“Então ouve o badalo que não vem”, diz a voz — e o túnel encosta-te.',
         choices: [
           {
-            textPt:
+            text:
               'Tentar segurar postura sem recuar o corpo.',
             resolution: {
               kind: 'skill',
@@ -245,18 +245,18 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt: 'Perder o fio — deixar o insulto abrir caminho.',
+            text: 'Perder o fio — deixar o insulto abrir caminho.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
       },
       v_success: {
-        linePt:
+        line:
           '“Vai”, diz por fim. “O Sino anota. Não perdoes a ti mesmo — perdoa-nos o silêncio.”',
         terminal: 'victory',
       },
       d_fail: {
-        linePt: '“Sem preâmbulo”, sibila. “O cano cobra.”',
+        line: '“Sem preâmbulo”, sibila. “O cano cobra.”',
         terminal: 'defeat',
       },
     },

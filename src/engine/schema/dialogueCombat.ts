@@ -59,8 +59,19 @@ export const DialogueChoiceResolutionSchema = z.discriminatedUnion('kind', [
 
 export type DialogueChoiceResolution = z.infer<typeof DialogueChoiceResolutionSchema>;
 
+/** Player-facing copy keyed by locale; plain string is treated as pt-BR. */
+export const LocalizedStringSchema = z.union([
+  z.object({
+    'pt-BR': z.string(),
+    'en-US': z.string().optional(),
+  }),
+  z.string(),
+]);
+
+export type LocalizedStringValue = z.infer<typeof LocalizedStringSchema>;
+
 export const DialogueChoiceSchema = z.object({
-  textPt: z.string(),
+  text: LocalizedStringSchema,
   resolution: DialogueChoiceResolutionSchema,
   effects: DialogueChoiceEffectsSchema.optional(),
   /** Só usado com `resolution` skill/luck; aplicado após `effects` se ambos existirem. */
@@ -72,7 +83,7 @@ export type DialogueChoice = z.infer<typeof DialogueChoiceSchema>;
 
 export const DialogueNodeSchema = z
   .object({
-    linePt: z.string(),
+    line: LocalizedStringSchema,
     /** Ao entrar neste nó, vitória imediata (combate de diálogo). */
     terminal: z.enum(['victory', 'defeat']).optional(),
     choices: z.array(DialogueChoiceSchema).optional(),

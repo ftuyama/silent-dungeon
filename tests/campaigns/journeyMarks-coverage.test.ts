@@ -7,7 +7,7 @@ import { markBadgeIconSvg } from '../../src/ui/gameAppUtils.ts';
 import { icons } from '../../src/ui/icons/index.ts';
 
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url));
-const scenesDir = join(repoRoot, 'src/campaigns/calvario/scenes');
+const scenesDir = join(repoRoot, 'src/campaigns/calvario/scenes/pt-BR');
 
 function listMdFiles(dir: string): string[] {
   const out: string[] = [];

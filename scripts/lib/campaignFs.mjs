@@ -5,14 +5,17 @@ import fs from 'fs';
 import path from 'path';
 import { parse as parseYaml } from 'yaml';
 
+export const SUPPORTED_LOCALES = ['pt-BR'];
+
 /**
  * @param {string} repoRoot - project root (parent of scripts/)
  */
-export function campaignPaths(repoRoot, campaignId) {
+export function campaignPaths(repoRoot, campaignId, locale = 'pt-BR') {
   const campaignRoot = path.join(repoRoot, 'src', 'campaigns', campaignId);
   return {
     campaignRoot,
-    scenesDir: path.join(campaignRoot, 'scenes'),
+    scenesDir: path.join(campaignRoot, 'scenes', locale),
+    scenesRoot: path.join(campaignRoot, 'scenes'),
     indexPath: path.join(campaignRoot, 'index.json'),
   };
 }
@@ -68,7 +71,8 @@ export function pathToSceneIdFromScenesDir(scenesDir, absolutePath) {
 }
 
 /**
- * Parse `--campaign <id>` from argv; default `calvario`.
+ * Parse argv: `--campaign <id>`.
+ * Scene markdown is always validated under `scenes/pt-BR/`.
  * @param {string[]} argv
  */
 export function parseCampaignArgv(argv) {
@@ -79,5 +83,5 @@ export function parseCampaignArgv(argv) {
       i++;
     }
   }
-  return campaignId;
+  return { campaignId };
 }

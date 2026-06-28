@@ -21,7 +21,7 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.join(__dirname, '..');
 
-const campaignId = parseCampaignArgv(process.argv.slice(2));
+const { campaignId } = parseCampaignArgv(process.argv.slice(2));
 const { campaignRoot, scenesDir } = campaignPaths(repoRoot, campaignId);
 const asciiScenesDir = path.join(campaignRoot, 'ascii', 'scenes');
 

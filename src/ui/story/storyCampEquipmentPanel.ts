@@ -1,7 +1,9 @@
 import type { Effect, GameState } from '../../engine/schema/index.ts';
 import type { ContentRegistry } from '../../content/registry.ts';
 import { formatItemEquipmentStatParts } from '../formatItemEquipment.ts';
+import { escHtml } from '../gameAppUtils.ts';
 import { iconWrap, icons } from '../icons/index.ts';
+import { t } from '../../i18n/index.ts';
 
 const CAMP_EQUIPMENT_SCENES = new Set([
   'act2/camp/manage_equip',
@@ -52,13 +54,12 @@ export function appendCampEquipmentPanel(
   panel.className = 'camp-equip-panel';
   const hdr = document.createElement('div');
   hdr.className = 'camp-equip-hdr camp-equip-hdr--with-icon';
-  hdr.innerHTML = `${iconWrap(icons.equipment)}<span>Equipamento no acampamento</span>`;
+  hdr.innerHTML = `${iconWrap(icons.equipment)}<span>${escHtml(t('story.campEquipmentTitle'))}</span>`;
   panel.appendChild(hdr);
 
   const intro = document.createElement('p');
   intro.className = 'camp-equip-intro';
-  intro.textContent =
-    'Retirar devolve a peça ao inventário; equipar usa uma peça que já tens no inventário.';
+  intro.textContent = t('story.campEquipHint');
   panel.appendChild(intro);
 
   const slotSvg: Record<'weapon' | 'armor' | 'relic', string> = {
@@ -106,9 +107,9 @@ export function appendCampEquipmentPanel(
     slotGridHost.appendChild(slotGrid);
 
     const slotDefs: { key: 'weapon' | 'armor' | 'relic'; label: string; cur: string | null }[] = [
-      { key: 'weapon', label: 'Arma', cur: member.weaponId },
-      { key: 'armor', label: 'Armadura', cur: member.armorId },
-      { key: 'relic', label: 'Relíquia', cur: member.relicId },
+      { key: 'weapon', label: t('sidebar.itemSlot.weapon'), cur: member.weaponId },
+      { key: 'armor', label: t('sidebar.itemSlot.armor'), cur: member.armorId },
+      { key: 'relic', label: t('sidebar.itemSlot.relic'), cur: member.relicId },
     ];
 
     for (const { key, label, cur } of slotDefs) {
@@ -132,8 +133,8 @@ export function appendCampEquipmentPanel(
         const unequipBtn = document.createElement('button');
         unequipBtn.type = 'button';
         unequipBtn.className = 'camp-equip-btn camp-equip-candidate camp-equip-btn--unequip';
-        unequipBtn.title = 'Retirar ao inventário';
-        unequipBtn.setAttribute('aria-label', 'Retirar ao inventário');
+        unequipBtn.title = t('story.campUnequipToInventory');
+        unequipBtn.setAttribute('aria-label', t('story.campUnequipToInventory'));
         const main = document.createElement('span');
         main.className = 'camp-equip-candidate-main';
         const nm = document.createElement('span');
@@ -152,7 +153,7 @@ export function appendCampEquipmentPanel(
         unequipBtn.appendChild(main);
         const act = document.createElement('span');
         act.className = 'camp-equip-candidate-action camp-equip-candidate-action--unequip';
-        act.textContent = 'Retirar';
+        act.textContent = t('story.campUnequip');
         unequipBtn.appendChild(act);
         const pi = partyIndex;
         const sk = key;
@@ -166,7 +167,7 @@ export function appendCampEquipmentPanel(
       } else {
         const emptyP = document.createElement('p');
         emptyP.className = 'character-sheet-slot-empty';
-        emptyP.textContent = 'Nada equipado';
+        emptyP.textContent = t('story.campNothingEquipped');
         article.appendChild(emptyP);
       }
 
@@ -181,7 +182,7 @@ export function appendCampEquipmentPanel(
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'camp-equip-btn camp-equip-candidate';
-          btn.setAttribute('aria-label', `Equipar ${def.name}`);
+          btn.setAttribute('aria-label', t('story.campEquipAria', { name: def.name }));
           const main = document.createElement('span');
           main.className = 'camp-equip-candidate-main';
           const nm = document.createElement('span');
@@ -198,7 +199,7 @@ export function appendCampEquipmentPanel(
           btn.appendChild(main);
           const act = document.createElement('span');
           act.className = 'camp-equip-candidate-action';
-          act.textContent = 'Equipar';
+          act.textContent = t('story.campEquip');
           btn.appendChild(act);
           const pi = partyIndex;
           btn.addEventListener('click', () => {
@@ -213,7 +214,7 @@ export function appendCampEquipmentPanel(
       } else if (!cur) {
         const hint = document.createElement('div');
         hint.className = 'camp-equip-hint';
-        hint.textContent = 'Sem peças deste tipo no inventário.';
+        hint.textContent = t('story.campNoPiecesInInventory');
         article.appendChild(hint);
       }
 

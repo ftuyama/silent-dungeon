@@ -1,0 +1,983 @@
+{
+  "act2/after_rats": {
+    "title": "After the Rats",
+    "body": "Dark viscera on your heel. A **small victory** — but enough to breathe.",
+    "choices": [
+      {
+        "text": "Continue"
+      }
+    ]
+  },
+  "act2/camp/camp_companion_chat": {
+    "title": "Words by the fire",
+    "body": "{{companionLine}}\n\n*Someone murmurs the count — **day {{day}}** — like confessing an age.*\n\nThe fire asks for no **permission** — only witnesses. If you are alone, the embers spit into the void and still it feels like conversation.",
+    "choices": [
+      {
+        "text": "Listen to Mira without the stone judging",
+        "uiSection": "By the fire"
+      },
+      {
+        "text": "Sit beside Tomás's shield",
+        "uiSection": "By the fire"
+      },
+      {
+        "text": "Mira meets your eyes — someone who recognizes a wall on your shoulder",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Mira measures your arcanist silence — she does not judge, she notes",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Mira: «The Vigil speaks loud; you listen too softly for it to be mere dogma»",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás: «Heavy honor pushes people into holes — are you whole?»",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás hesitates: «Tower and dungeon — which eats you first?»",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás lowers his voice: «A watchman's faith is serious; do not use it as a wall»",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Return to camp",
+        "uiSection": "Return"
+      }
+    ]
+  },
+  "act2/camp/camp_mira_fireside": {
+    "title": "Embers — words with Mira",
+    "body": "**Mira** does not sit like a soldier: she slides to the ground, knees to chest, eyes on the flame — and on your **jaw**, the city still **weighs**.\n\n> *\"Speak quickly. The fire **hears** better than stone — and I hear better than both.\"*\n\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Ask what she no longer steals from the dark"
+      },
+      {
+        "text": "Speak of the Vigil as one speaks softly"
+      },
+      {
+        "text": "Share silence — only the crackle of wood"
+      },
+      {
+        "text": "Return to the fire circle"
+      }
+    ]
+  },
+  "act2/camp/camp_mira_topic_shadows": {
+    "title": "What stays in the dark",
+    "body": "> *\"I steal what gives me my name back,\" she says, without looking at you. \"Fear, sometimes. Hope, when it weighs little. The rest I leave **on the ground** — someone will find it and call it treasure.\"*\n\nA spark bites the air. She finally smiles sideways:\n\n> *\"You leave **promises** in the dark. I **know** the weight when you pretend it is light.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Let the matter die in the embers"
+      }
+    ]
+  },
+  "act2/camp/camp_mira_topic_silence": {
+    "title": "Shared silence",
+    "body": "You say nothing. Neither does she. The camp noise recedes; only the crackle of wood and the false warmth on your skin remain.\n\nWhen Mira speaks, it is almost a gentle insult:\n\n> *\"See? **This** is how you make a truce.\"*\n\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Breathe and return to what matters",
+        "diaryTexts": [
+          "Beside the Vigil's fire, Mira and I measured the world in silence — and for once the silence asked no name."
+        ]
+      }
+    ]
+  },
+  "act2/camp/camp_mira_topic_vigilia": {
+    "title": "The Vigil by the fire",
+    "body": "> *\"The Vigil loves **order**,\" murmurs Mira. \"Order is history written by whoever survived the first blackout. I am not on that page — but your fire **needs** someone who knows how to read shadows.\"*\n\nShe lifts her chin toward the soldiers in the back.\n\n> *\"Do not trust them. Use them. It is different.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Agree to change the subject"
+      }
+    ]
+  },
+  "act2/camp/camp_tomas_fireside": {
+    "title": "Embers — words with Tomás",
+    "body": "**Tomás** sets the shield on the earth as one who marks a boundary; your **posture** has already told him *why* — only **words** remain that do not shame those who stay above.\n\n> *\"If you came for pity, save your breath. If you came for **words**, speak — the fire will not interrupt out of courtesy.\"*\n\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Ask if the shield still weighs"
+      },
+      {
+        "text": "Speak of the order that ceased to exist"
+      },
+      {
+        "text": "Return to the fire circle"
+      }
+    ]
+  },
+  "act2/camp/camp_tomas_topic_oath": {
+    "title": "Oath without master",
+    "body": "> *\"The order did not die in a day,\" says Tomás. \"It **forgot** names — first the dead, then the living. I still say the prayers. I do not know if anyone hears.\"*\n\nHe wipes soot from the metal with his thumb.\n\n> *\"As long as you rise **before** I fall, the oath holds. After that… it is only iron.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Leave the past in the embers"
+      }
+    ]
+  },
+  "act2/camp/camp_tomas_topic_shield": {
+    "title": "The weight of the shield",
+    "body": "He looks at the marks on the leather as one reading a crooked genealogy.\n\n> *\"It weighs what I **failed** to stop. The rest is wood and nails — any smith can mend that.\"*\n\nA second later, lower:\n\n> *\"You carry too much as well. Do not grow used to calling it honor.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Accept his silence as answer"
+      }
+    ]
+  },
+  "act2/camp/manage_equip": {
+    "title": "Iron and oaths",
+    "body": "Straps creak, buckles bite leather, and metal answers with a tired gleam.\n\nHere, far from the first blow, you have a moment to adjust **weapon**, **armor**, and **relics** before moving on.",
+    "choices": [
+      {
+        "text": "Return to the Vigil camp"
+      }
+    ]
+  },
+  "act2/camp/vigilia_camp": {
+    "title": "Vigil Camp",
+    "body": "Soldiers of the **Vigil** share dry bread. Honor tastes of ash.\n\n*With no sun for reference, the stone still records: **day {{day}}**.*",
+    "choices": [
+      {
+        "text": "Rest at camp (−1 supply)",
+        "lockedHint": "You need at least 1 supply to pay for rest.",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Drink red potion (HP)",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Give red potion to companion",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Drink blue tonic (mana)",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Drink serene infusion (stress)",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Exchange a few words with the group",
+        "lockedHint": "Without a companion, there is no group to talk to.",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Ask the group how many days you've been below",
+        "preview": "Count aloud; the echo does not lie.",
+        "lockedHint": "You need a companion and at least four days underground for that conversation.",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Scratch the day into damp earth",
+        "preview": "An entry in the diary.",
+        "uiSection": "Camp",
+        "diaryTexts": [
+          "You scratched day {{day}} into the earth. The clock above no longer commands."
+        ]
+      },
+      {
+        "text": "Handle equipment at camp",
+        "uiSection": "Camp"
+      },
+      {
+        "text": "Report a Cult mark to the officer (−1 cult)",
+        "preview": "Reputation trade · Vigil slow, Cult immediate (once)",
+        "uiSection": "Camp",
+        "diaryTexts": [
+          "I spoke too loudly about the Third Bell — the officer noted it as a small victory."
+        ]
+      },
+      {
+        "text": "Continue",
+        "uiSection": "Depart"
+      }
+    ]
+  },
+  "act2/catacomb_entry": {
+    "title": "Cross of bones",
+    "body": "A **cross** of fine bones points to three paths. Melted candles left **rivers of black wax** on the floor — someone was here not long ago.\n\nThe echo **lies** about distance: one step sounds like three.",
+    "choices": [
+      {
+        "text": "Explore the side corridor (squeaking)"
+      },
+      {
+        "text": "Follow the chalk mark on the floor"
+      },
+      {
+        "text": "Stop at the crossroads and open the hub"
+      },
+      {
+        "text": "Study the ceiling: drips, roots, runes?"
+      }
+    ]
+  },
+  "act2/catacomb_observe": {
+    "title": "Ceiling",
+    "body": "**Drips** draw threads in the air. Between the stones, thin **roots** reach for what sunlight no longer gives.\n\nOn the ceiling, a **rune** was scraped away and replaced with an **X** — someone wanted to erase the right direction.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ]
+  },
+  "act2/circle_ritual/circle_ritual": {
+    "title": "Circle Ritual",
+    "body": "A mage of the **Circle** draws ash on the floor. \"A light price,\" he says.",
+    "choices": [
+      {
+        "text": "Participate",
+        "preview": "Accept the ash — or hesitate and withdraw."
+      },
+      {
+        "text": "Sing the refrain as a Circle devotee",
+        "preview": "More ash, more echo — the day advances."
+      },
+      {
+        "text": "Refuse",
+        "preview": "Mind — keep clarity when refusing (TN 8)"
+      }
+    ]
+  },
+  "act2/circle_ritual/circle_ritual_refuse_fail": {
+    "title": "Trapped gaze",
+    "body": "You step back, but for an instant you **see** the design **complete** on your retina — a **ghost** of commitment you never asked for.\n\nNo **mark** remained… but an **echo** did.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ]
+  },
+  "act2/circle_ritual/circle_ritual_refuse_mind": {
+    "title": "Quiet refusal",
+    "body": "You refuse the **circle** — but the pattern on the floor **pulls** your gaze, as if the lines wanted to **continue** inside you.\n\nTo leave **whole**, you need **clarity**: a straight line in your head that is not his.",
+    "skillCheckLabel": "Keep your mind steady when refusing the ritual"
+  },
+  "act2/circle_ritual/circle_ritual_refuse_success": {
+    "title": "No signature",
+    "body": "The ash **stops** at your feet — nothing is written on you. The silence, this time, is **yours**.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ]
+  },
+  "act2/cruzeiro_echo_once": {
+    "title": "Wax and copper",
+    "body": "Between **two** spent candles, the **wax** held a **coin** with its face scraped away: neither a full coin, nor a whole lie — only proof that someone **paid** to stay a little warmer.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I pried an old coin from the wax — change from someone who prayed and fled."
+    ]
+  },
+  "act2/encounters/rats_combat_intro": {
+    "title": "Before the leap",
+    "body": "The floor **vibrates** — not from your fear, but from **claws** digging soft stone.\n\nThe rats **do not flee**. They advance in an arc, as if someone taught them **formation**.\n\nClench your teeth. The **dice** will count what flesh refuses to admit.",
+    "choices": [
+      {
+        "text": "Fight!"
+      }
+    ]
+  },
+  "act2/encounters/skeleton_combat_intro": {
+    "title": "Skull and Rust",
+    "body": "The skeleton **creaks** as it moves.",
+    "choices": [
+      {
+        "text": "Fight!"
+      }
+    ]
+  },
+  "act2/encounters/trial_fallen_angel_gate": {
+    "title": "Veil trial",
+    "body": "From the **ash** rises a **silhouette** that was once too much light for one body — it asks no forgiveness, only **proof**.\n\n*Whoever would claim a name of fall, shadow, or penance must defeat what fell and still cuts* — no **shortcut**: steel, arcane, or prayer, or **return** without title.",
+    "choices": [
+      {
+        "text": "Face the angel with steel (knight)",
+        "preview": "Combat · enemy advantage"
+      },
+      {
+        "text": "Face the angel with the arcane (mage)",
+        "preview": "Combat · enemy advantage"
+      },
+      {
+        "text": "Face the angel with faith (cleric)",
+        "preview": "Combat · enemy advantage"
+      }
+    ]
+  },
+  "act2/encounters/wild_encounter_bones_rare": {
+    "title": "Bones without choir",
+    "body": "A lone **skeleton** rises at the junction, without chant and without haste. When it sees you, it points its blade as one fulfilling an old oath.",
+    "choices": [
+      {
+        "text": "Face the bone sentinel"
+      }
+    ]
+  },
+  "act2/encounters/wild_encounter_cultist": {
+    "title": "Lone patrol",
+    "body": "A **cultist** too confident separates from the choir. His voice **trembles** — not from fear, from cheap **ecstasy**.",
+    "choices": [
+      {
+        "text": "Whisper the name of the Third Bell — buy mutual silence",
+        "preview": "No combat · gold and XP (once)",
+        "diaryTexts": [
+          "The cultist closed his eyes as one hearing distance; when he opened them, he was no longer there — only the rumor of coin."
+        ]
+      },
+      {
+        "text": "Strike the isolated cultist"
+      }
+    ]
+  },
+  "act2/encounters/wild_encounter_lone_swarm_rare": {
+    "title": "Broken nest",
+    "body": "Beneath loose planks, a **swarm** without a den runs in circles, wounded and furious. Its hunger still bites like a whole choir.",
+    "choices": [
+      {
+        "text": "Trample the isolated swarm"
+      }
+    ]
+  },
+  "act2/encounters/wild_encounter_mixed": {
+    "title": "Mixed cell",
+    "body": "**Rat** and **skeleton** share the same floor — as if death and life had agreed on a **price**.",
+    "choices": [
+      {
+        "text": "Fight rats and bone"
+      }
+    ]
+  },
+  "act2/encounters/wild_encounter_rats": {
+    "title": "Double swarm",
+    "body": "Two **vortices** of teeth close the corridor on you. This is no ambush of men — it is organized **hunger**.",
+    "choices": [
+      {
+        "text": "Face two swarms"
+      }
+    ]
+  },
+  "act2/faction/circulo_envoy": {
+    "title": "Living ash — Circle",
+    "body": "**Ash** rises from the floor like the **breath** of one who died once and liked the silence.\n\n*\"The Circle **lends** form,\" a voice says. \"Whoever **tears** pays in cheap blood.\"*",
+    "choices": [
+      {
+        "text": "Let the Circle close a favorable symbol",
+        "preview": "Temporary bonus · MIND",
+        "diaryTexts": [
+          "The ash prickled on my palm and then stilled — a loan from the Circle, with interest in silence."
+        ]
+      },
+      {
+        "text": "Tear the design before it closes",
+        "preview": "Verbal confrontation (draft); failure leads to combat."
+      },
+      {
+        "text": "Return to the crossroads"
+      }
+    ]
+  },
+  "act2/faction/circulo_envoy_blades": {
+    "title": "Living ash — iron",
+    "body": "[DRAFT] The **ash** **bites**. The **Circle** collects **by hand** what it **could not** collect by **voice**.",
+    "choices": [
+      {
+        "text": "Tear the design before it closes",
+        "preview": "Combat · bone adept"
+      }
+    ]
+  },
+  "act2/faction/circulo_envoy_verbal_win": {
+    "title": "Living ash — word",
+    "body": "[DRAFT] The design **closes** without **bite**. You hear the **loan** **sleep** in the air, like **held** **breath**.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "[DRAFT] The Circle accepted the tone — ash that retreats without forgiving for free."
+    ]
+  },
+  "act2/faction/culto_envoy": {
+    "title": "Bell flesh — Cult",
+    "body": "A **bell** without clapper vibrates in the tunnel's **throat**. The shadow **bends** the knee before you do.\n\n*\"A devotee is one who **pays** silence with another silence.\"*",
+    "choices": [
+      {
+        "text": "Confess as high debtor — the bell collects and pays",
+        "preview": "Gold, XP and corruption · cult favor (once)",
+        "diaryTexts": [
+          "The envoy counted to ten in silence and returned my interest in coin and shadow."
+        ]
+      },
+      {
+        "text": "Accept the price of the Third Bell",
+        "preview": "+1 faith, +1 corruption",
+        "diaryTexts": [
+          "The bell did not ring — and still the ear bled gratitude."
+        ]
+      },
+      {
+        "text": "Cut the prayer in half",
+        "preview": "Verbal confrontation (draft); failure leads to combat."
+      },
+      {
+        "text": "Withdraw from the rumor"
+      }
+    ]
+  },
+  "act2/faction/culto_envoy_blades": {
+    "title": "Bell flesh — iron",
+    "body": "[DRAFT] The **clapper** that **never** came **arrives** in the **throat**. The **Bell** **collects** in **flesh**.",
+    "choices": [
+      {
+        "text": "Cut the prayer in half",
+        "preview": "Combat · cultist"
+      }
+    ]
+  },
+  "act2/faction/culto_envoy_verbal_win": {
+    "title": "Bell flesh — word",
+    "body": "[DRAFT] The **shadow** **inclines** its head. This is not **forgiveness** — it is **debt** **acknowledged** with **another** **silence**.",
+    "choices": [
+      {
+        "text": "Withdraw from the rumor"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "[DRAFT] The rumor retreated — the Bell noted without bleeding the corridor."
+    ]
+  },
+  "act2/faction/vigilia_envoy": {
+    "title": "Distant beacon — Vigil",
+    "body": "A **cloak-bearer** tilts the lantern. The metal does not shine — it **accuses**.\n\n*\"What the depths name, the Vigil **repeats** in a lower voice.\"*",
+    "choices": [
+      {
+        "text": "Accept military pay and the wrist grip",
+        "preview": "Temporary bonus · AGI",
+        "diaryTexts": [
+          "A cloak-bearer closed my wrist as one closing a door — and spoke order without sermon."
+        ]
+      },
+      {
+        "text": "Answer insult with blade",
+        "preview": "Verbal confrontation (draft); failure leads to combat."
+      },
+      {
+        "text": "Withdraw to the crossroads"
+      }
+    ]
+  },
+  "act2/faction/vigilia_envoy_blades": {
+    "title": "Distant beacon — iron",
+    "body": "[DRAFT] The conversation **closed**. What remains is **counting** — and the **hunter** already **measures** your **step**.",
+    "choices": [
+      {
+        "text": "Answer insult with blade",
+        "preview": "Combat · hunter"
+      }
+    ]
+  },
+  "act2/faction/vigilia_envoy_verbal_win": {
+    "title": "Distant beacon — word",
+    "body": "[DRAFT] The lantern **lowers** a finger. No wrist grip — only a **barracks truce**, cold as **metal** in the **damp**.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "[DRAFT] The cloak-bearer yielded the path — discipline without blood this time."
+    ]
+  },
+  "act2/flee_rats": {
+    "title": "Flight — teeth in the boot",
+    "body": "You slip on **slime** that forgives no step. **Bites** tear leather where armor does not reach — this is not honor; it is **survival**.\n\nThe swarm **laughs** in shrill tones — or perhaps your ear **breaks** first.",
+    "choices": [
+      {
+        "text": "Frighten fear itself and return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I fled the rats. The floor remembered my taste — and I left a trail."
+    ]
+  },
+  "act2/flee_skeleton": {
+    "title": "Flight — bones in pursuit",
+    "body": "The skeleton **does not tire** — you do. Every **crack** behind you sounds like **questions** you do not want to answer.\n\nAt the bend, a **loose bone** rolls under your feet — the floor **collaborates** with the enemy.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I ran from a dead thing that walked too fast."
+    ]
+  },
+  "act2/hub_catacomb": {
+    "title": "Crossroads — hub",
+    "body": "Candles and **wax** hold your step at the crossroads; *today is **day {{day}}** below.*\n\nAn **echo** of a bell rises from the depths and dies before reaching the city — as if the **silence** down there **ate** the sound and only let through enough to remind you there are still ears.",
+    "choices": [
+      {
+        "text": "Return to the rat corridor",
+        "preview": "Still squeaking and smelling of nest.",
+        "uiSection": "Corridor and trade"
+      },
+      {
+        "text": "Go to the ghost merchant",
+        "preview": "Strange trade; price in gold or secret — rarely appears on the first day.",
+        "uiSection": "Corridor and trade"
+      },
+      {
+        "text": "Beacon — Vigil voice at the crossroads",
+        "preview": "Strong reputation with the order — or open enmity. Once only.",
+        "uiSection": "Factions"
+      },
+      {
+        "text": "Fresh symbols — Circle echo",
+        "preview": "Circle of trust or hostile ash. Once only.",
+        "uiSection": "Factions"
+      },
+      {
+        "text": "Bell flesh — Cult rumor",
+        "preview": "Devotion or rupture with the Third Bell. Once only.",
+        "uiSection": "Factions"
+      },
+      {
+        "text": "Hear Mira's proposal",
+        "preview": "A voice in the shadow offers company.",
+        "uiSection": "Invitations and rites"
+      },
+      {
+        "text": "Circle Ritual (event)",
+        "preview": "The Circle charges presence; corruption takes note.",
+        "uiSection": "Invitations and rites"
+      },
+      {
+        "text": "Vigil Camp",
+        "preview": "Fire, prayer, and a breath of supply.",
+        "uiSection": "Fire and patrol"
+      },
+      {
+        "text": "Perimeter patrol (explore map)",
+        "preview": "Move through the tunnels — stress rises; encounters possible.",
+        "uiSection": "Fire and patrol"
+      },
+      {
+        "text": "Marked passage — echo of oaths",
+        "preview": "Old memory; skill and luck weigh — but the echo fades if you linger too long.",
+        "uiSection": "Crossroads echoes"
+      },
+      {
+        "text": "Study the crossroads: marks on the floor",
+        "preview": "Read the floor as a map of those who passed before.",
+        "uiSection": "Crossroads echoes"
+      },
+      {
+        "text": "Pry at candle wax — trapped coin (once)",
+        "preview": "+1 gold; no combat.",
+        "uiSection": "Crossroads echoes"
+      },
+      {
+        "text": "Listen to an echo whispering the day",
+        "preview": "Dry voice at the crossroads; diary entry.",
+        "lockedHint": "You need level 6 and must hear this before day 6 — after that the echo falls silent.",
+        "uiSection": "Crossroads echoes",
+        "diaryTexts": [
+          "A voice trapped in the ceiling: \"You are already on day {{day}}.\""
+        ]
+      },
+      {
+        "text": "Descend deeper",
+        "preview": "Chapter 3 — the dungeon tightens the silence.",
+        "lockedHint": "You need level 5 and must find the threshold on the perimeter map (exploration from the crossroads).",
+        "uiSection": "Advance"
+      }
+    ]
+  },
+  "act2/hub_mira_banter": {
+    "title": "Crossroads — words with Mira",
+    "body": "**Mira** rests the sword on her shoulder as one holding a cheap secret: \"This place **charges** every step. I already left a name here — I will not leave yours **for free**.\"\n\nThe echo agrees, but does not say to whom it belongs.",
+    "choices": [
+      {
+        "text": "Return to the crossroads",
+        "preview": "You resume the post of decision."
+      }
+    ]
+  },
+  "act2/hub_observe": {
+    "title": "Marks",
+    "body": "On the floor: **three parallel furrows**, like scratches from large claws. Beside them, **human footprints** turn back — someone gave up halfway.\n\nA tiny **bell** was driven into the stone, rusted.",
+    "choices": [
+      {
+        "text": "Talk to Mira about the crossroads",
+        "preview": "She already knows the price of this floor."
+      },
+      {
+        "text": "Return to the hub"
+      }
+    ]
+  },
+  "act2/lore/lore_crossroads": {
+    "title": "Echo of oaths",
+    "body": "A **voice** without owner asks what you were and what you accept becoming. The air **weighs** like a wet mantle; the stones **remember** oaths others broke before you.\n\nThere is no map for this — only **decisions** the game records in flesh.",
+    "choices": [
+      {
+        "text": "Accept the name of Fallen Knight (knight)",
+        "preview": "Trial · fallen angel; title only if you win",
+        "uiSection": "Oath"
+      },
+      {
+        "text": "Accept the title of Dark Mage (arcanist)",
+        "preview": "Trial · fallen angel; title only if you win",
+        "uiSection": "Oath"
+      },
+      {
+        "text": "Turn to the Penitent Cleric",
+        "preview": "Trial · fallen angel; title only if you win",
+        "uiSection": "Oath"
+      },
+      {
+        "text": "Plunge your arm into the whispering mire",
+        "preview": "Luck — 2d6 + LCK · without deciding, you withdraw to the crossroads.",
+        "uiSection": "Luck"
+      },
+      {
+        "text": "Recall the fallen knight (path echo)",
+        "uiSection": "Memory",
+        "diaryTexts": [
+          "The crossroads reminded me of the name I accepted: fallen, but still standing."
+        ]
+      },
+      {
+        "text": "Recall the dark arcanist (path echo)",
+        "uiSection": "Memory",
+        "diaryTexts": [
+          "Shadows ask no permission — I gave anyway."
+        ]
+      },
+      {
+        "text": "Recall the penitent (path echo)",
+        "preview": "Mind — sustain the memory (TN 8)",
+        "uiSection": "Memory"
+      },
+      {
+        "text": "Return to the crossroads",
+        "uiSection": "Depart"
+      }
+    ]
+  },
+  "act2/lore/lore_penitent_recall_fail": {
+    "title": "Truncated echo",
+    "body": "The voice **unravels** before forming a sentence. You are left with the **weight** without the **name** — like one who prays and forgets the last word.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I tried to recall the penitent; only the cold of stone came to me."
+    ]
+  },
+  "act2/lore/lore_penitent_recall_mind": {
+    "title": "Memory that weighs",
+    "body": "The echo asks for a **name** — not your baptismal one, but the one you chose when guilt **sat** beside you.\n\nIf the memory comes **ordered**, perhaps it will leave you something beyond ash.",
+    "skillCheckLabel": "Sustain the penitent's memory without breaking"
+  },
+  "act2/lore/lore_penitent_recall_success": {
+    "title": "Confession that stays",
+    "body": "The memory **settles** — not as victory, but as **truth** you can bear without lying to yourself.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Every stone here confesses better than I do."
+    ]
+  },
+  "act2/luck_mire": {
+    "title": "The whispering mire",
+    "body": "The **mire** is not water: it is cheap **memory** that promises strength and collects on your **luck**. Reach out — the dice **decide** whether you return whole.",
+    "luckCheckLabel": "Touch the mire without being devoured"
+  },
+  "act2/luck_mire_safe": {
+    "title": "Thread of luck",
+    "body": "The mire **releases** your arm as one who **loses** interest. You are left with a false **warmth** in your muscles — **brief**, but enough for one more punch.",
+    "choices": [
+      {
+        "text": "Withdraw and return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "The mire gave me a thread of strength — I do not know how long it lasts."
+    ]
+  },
+  "act2/luck_mire_wound": {
+    "title": "Well's bite",
+    "body": "Something **scrapes** tendon and **confidence** at once. It is not only pain — it is **warning** carved into the **agile** posture you once had.",
+    "choices": [
+      {
+        "text": "Drag yourself back to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "The mire bit my leg. The warmth does not return the same."
+    ]
+  },
+  "act2/merchant/merchant_ask": {
+    "title": "Origin",
+    "body": "\"From an **archive** that no longer exists,\" he murmurs. \"The archive burned. The **map** remembered how to survive.\"\n\nFor a second, the hood **swells** — there is no wind.",
+    "choices": [
+      {
+        "text": "Accept the map (−1 gold)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy iron dagger (−3 gold)",
+        "preview": "Weapon · for inventory",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Refuse and return to the hub",
+        "uiSection": "Talk"
+      }
+    ]
+  },
+  "act2/merchant/merchant_circle_bet": {
+    "title": "Symbols that bite",
+    "body": "The hood **inclines** for a **wager**; you whisper **symbols** and the air **learns** the pattern — someone invisible **holds** the dice.\n\n*The Circle lends luck; whoever mistimes pays in another coin.* **Roll luck** (−1 to total: **debt** already counted).",
+    "luckCheckLabel": "Either the Circle pays, or it collects in secret"
+  },
+  "act2/merchant/merchant_circle_lose": {
+    "title": "Price outside the purse",
+    "body": "The pattern **slips** one **symbol** too late. Something **pulls** from your purse — **not** a human hand.\n\nWhen you **see** clearly again, **two coins** are missing and **wet** laughter **echoes** beneath the hood.",
+    "choices": [
+      {
+        "text": "Accept the loss and return to the crossroads",
+        "diaryTexts": [
+          "The symbols demanded more than I whispered — two coins gone, and a cold left behind that is not gold."
+        ]
+      }
+    ]
+  },
+  "act2/merchant/merchant_circle_win": {
+    "title": "The hood pays",
+    "body": "The symbols **close** before the curse **tightens**. A **warm** coin falls into your palm — paid by the Circle, not you.\n\nThe merchant does **not laugh**. He only **nods**.",
+    "choices": [
+      {
+        "text": "Collect the gold and return to the crossroads",
+        "diaryTexts": [
+          "The hood inclined: the Circle paid in coin — this time the symbols closed in my favor."
+        ]
+      }
+    ]
+  },
+  "act2/merchant/merchant_moon": {
+    "title": "Faceless merchant",
+    "body": "A hood **without face** extends a **map** with gnawed margins. The fingers beneath the cloth are **too long** to be merely human.\n\nIt smells your **haste** — the haste of one who does not wish to return to the city empty-handed.\n\n\"Rumors change **weights**,\" says the voice — as if the air came from the stone itself.\n\nIf someone **recognizes** you among the factions, the price ceases to be only gold — it becomes **gaze**.",
+    "choices": [
+      {
+        "text": "Accept the torn map (−1 gold)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy iron dagger (−3 gold)",
+        "preview": "Weapon · for inventory",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Mead (−2 gold)",
+        "preview": "Consumable · reduces stress",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (−5 gold)",
+        "preview": "Rest is also part of battle",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (−5 gold)",
+        "preview": "Resource · single stock",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply Remnant (−10 gold)",
+        "preview": "A true find",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Vigil field kit (−7 gold)",
+        "preview": "Supply · Vigil seal (once at this stall)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Politely refuse",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Ask where the map came from",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Mention Vigil patrols (allies)",
+        "preview": "Diary · rumor of respect",
+        "lockedHint": "The Vigil only gives you that hook when reputation with them is strong (≥2).",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "The merchant hesitated when I spoke of the Vigil — interest buys silence."
+        ]
+      },
+      {
+        "text": "Whisper Circle symbols",
+        "preview": "Luck test · cursed wager",
+        "lockedHint": "The Circle only hears whispers from those who already owe them attention (reputation ≥1).",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Let the Third Bell name the price",
+        "preview": "+1 corruption, diary (once)",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "A dry laugh beneath the cloth — the cult favors those who already hear the same echo."
+        ]
+      }
+    ]
+  },
+  "act2/path_cleric_penitent": {
+    "title": "Penitent Cleric",
+    "body": "Incense **burns** finer when guilt **breathes** with you. You are no lesser servant — you are **more** truthful than the psalm allows.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "The Vigil asks for proof; I offer scars I have already prayed over in a low voice."
+    ]
+  },
+  "act2/path_knight_fallen": {
+    "title": "Fallen Knight",
+    "body": "The **angel** unravels into **ash** that does not burn. Iron does **not** forgive; neither do you. From here on, whoever sees you reads **fall** where they once read wall.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I defeated the veil angel with steel; I accepted the name Fallen Knight — not as excuse, but as broken promise."
+    ]
+  },
+  "act2/path_mage_dark": {
+    "title": "Dark Mage",
+    "body": "The angel's **broken light** **feeds** what you carry: the Tower **measures** light, the dungeon **teaches** what it will not pay for. Your notebook gains **margins** no scriptorium would approve.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I tore the fallen angel's veil; the safe symbols grew small. I carry the others in blood and silence."
+    ]
+  },
+  "act2/rats_choice": {
+    "title": "Squeak in the dark",
+    "body": "**Squeaking** too loud to be only wind. **Red** eyes in the dark move as a group — there is not one rodent, there is **a decision** with teeth.\n\nThe floor is **damp**; old human footprints mix with small paws.",
+    "choices": [
+      {
+        "text": "Face the swarm",
+        "preview": "Combat: starving rodents."
+      },
+      {
+        "text": "Listen to the sound before advancing"
+      },
+      {
+        "text": "Smell the air: blood or mold?"
+      }
+    ]
+  },
+  "act2/rats_listen": {
+    "title": "Listen",
+    "body": "The squeaking **breaks** into pattern — almost language. For an instant they seem to **whisper** how many steps you have left.\n\nSomething **larger** creaks deeper in, but does not move.",
+    "choices": [
+      {
+        "text": "Prepare and face them"
+      },
+      {
+        "text": "Return to the crossroads"
+      }
+    ]
+  },
+  "act2/rats_smell": {
+    "title": "Smell",
+    "body": "**Mold** first, then **iron** — and finally a false sweetness, like heated **copper**.\n\nIt is not fresh blood. It is **old blood** that never fully dried.",
+    "choices": [
+      {
+        "text": "Face the swarm"
+      },
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Smell of old flesh and fear."
+    ]
+  },
+  "act2/recruit_mira": {
+    "title": "Mira Joins the Group",
+    "body": "Mira adjusts her dagger. \"Less talk. **More foot**.\"",
+    "choices": [
+      {
+        "text": "Continue"
+      }
+    ]
+  },
+  "act2/recruit_offer": {
+    "title": "Mira's Offer",
+    "body": "**Mira** watches from the shadows: \"I need someone who does not fear silence.\"",
+    "choices": [
+      {
+        "text": "Recruit Mira",
+        "preview": "Commitment in shadow — or silence decides.",
+        "lockedHint": "With the Circle too deep inside you (rep ≥2), this invitation closes — use the other line."
+      },
+      {
+        "text": "Recruit Mira with the Circle as witness",
+        "preview": "The web charges visibility — the Vigil grows suspicious.",
+        "lockedHint": "Only when the Circle trusts you enough (rep ≥2) can you sign with witnesses.",
+        "diaryTexts": [
+          "Mira laughed softly: the Circle likes when someone signs in ash."
+        ]
+      },
+      {
+        "text": "Go on alone"
+      }
+    ]
+  },
+  "act2/skeleton_room": {
+    "title": "Room of Armed Bones",
+    "body": "Armed remains rise by **habit**, not by will.",
+    "choices": [
+      {
+        "text": "Trail of iron in the gloom — a silhouette watches, unmoving",
+        "preview": "Verbal confrontation with Kael (draft); failure leads to steel."
+      },
+      {
+        "text": "Force the door"
+      }
+    ]
+  }
+}

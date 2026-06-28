@@ -11,11 +11,11 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
     rootNodeId: 'root',
     nodes: {
       root: {
-        linePt:
+        line:
           'O cultista inclina a moeda. “Contrato simples”, repete, voz seca. “Tu falas baixo; nós escrevemos baixo. Se a tua boca tremer, o cano lembra.” A tensão sobe do chão como humidade.',
         choices: [
           {
-            textPt:
+            text:
               'Enumerar cláusulas sem teatro — preço, silêncio, prazo, como quem fecha conta num balcão.',
             resolution: {
               kind: 'skill',
@@ -28,13 +28,13 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 3 },
           },
           {
-            textPt:
+            text:
               'Calar e deixar o olhar dizer “não vim armado de discurso” — só de medida.',
             resolution: { kind: 'fixed', nextNodeId: 'quiet_line' },
             effects: { enemyHpDelta: -3 },
           },
           {
-            textPt:
+            text:
               'Cortar com arrogância: exigir que o Sino prove que não és descartável.',
             resolution: { kind: 'fixed', nextNodeId: 'sharp' },
             effects: { enemyHpDelta: 4 },
@@ -42,17 +42,17 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
         ],
       },
       measured: {
-        linePt:
+        line:
           '“Assim”, murmura ele. “Sem poesia. O cano gosta de gente que sabe contar até ao fim sem desviar o olhar.”',
         choices: [
           {
-            textPt:
+            text:
               'Fechar o tom: aceitar o contrato verbal aqui, sem aditivos — e deixar o gesto fechar a frase.',
             resolution: { kind: 'fixed', nextNodeId: 'contract_sealed' },
             effects: { enemyHpDelta: -3 },
           },
           {
-            textPt:
+            text:
               'Pedir uma linha de retirada honrosa — uma última frase que não suje.',
             resolution: {
               kind: 'luck',
@@ -67,33 +67,33 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
         ],
       },
       contract_sealed: {
-        linePt:
+        line:
           'Ele inclina a cabeça um milímetro — não bênção, fecho de livro. “Assinado no ar”, diz. “O túnel lembra.”',
         choices: [
           {
-            textPt: 'Recuar meio passo e deixar o silêncio ser o carimbo.',
+            text: 'Recuar meio passo e deixar o silêncio ser o carimbo.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -4 },
           },
         ],
       },
       quiet_line: {
-        linePt:
+        line:
           'O silêncio pesa dos dois lados. “Bom”, diz por fim. “Silêncio também assina.”',
         choices: [
           {
-            textPt: 'Assentir com o queixo — sem palavra que possa virar faca.',
+            text: 'Assentir com o queixo — sem palavra que possa virar faca.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -4 },
           },
         ],
       },
       sharp: {
-        linePt:
+        line:
           '“Prova?” ri seco. “O cano não é tribunal. É dente.” Os dois atrás aproximam um passo.',
         choices: [
           {
-            textPt:
+            text:
               'Refazer o tom: descer o volume e pedir pragmática, não coroa.',
             resolution: {
               kind: 'skill',
@@ -106,17 +106,17 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt: 'Manter o desafio aberto — ver quem pisca primeiro.',
+            text: 'Manter o desafio aberto — ver quem pisca primeiro.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
       },
       slip: {
-        linePt:
+        line:
           'As palavras escorregam. “Ouvi medo a fingir prudência”, diz o encarregado. “O Sino mastiga isso.”',
         choices: [
           {
-            textPt:
+            text:
               'Agarrar à sobrevivência crua — ferro, sangue, sem metáfora.',
             resolution: {
               kind: 'skill',
@@ -129,18 +129,18 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt: 'Recuar em titubeio — perder a linha.',
+            text: 'Recuar em titubeio — perder a linha.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
       },
       v_success: {
-        linePt:
+        line:
           '“Fechado”, diz ele, e recua meio passo. “Desce. E lembra: fora do túnel, o teu nome não ecoa.”',
         terminal: 'victory',
       },
       d_fail: {
-        linePt:
+        line:
           '“Chega de preâmbulo”, sibila. “Se não aguentas sílaba, aguenta ferro.”',
         terminal: 'defeat',
       },

@@ -21,10 +21,10 @@ const kaelGraph = (
     rootNodeId: 'root',
     nodes: {
       root: {
-        linePt: rootLine,
+        line: rootLine,
         choices: [
           {
-            textPt:
+            text:
               'Medir palavras como quem mede distância de lâmina — sem insulto, sem súplica.',
             resolution: {
               kind: 'skill',
@@ -37,13 +37,13 @@ const kaelGraph = (
             effectsOnFailure: { enemyHpDelta: 3 },
           },
           {
-            textPt:
+            text:
               'Baixar o aço da voz: reconhecer o rasto, não a acusação.',
             resolution: { kind: 'fixed', nextNodeId: 'respect' },
             effects: { enemyHpDelta: -3 },
           },
           {
-            textPt:
+            text:
               'Escalar: perguntar se o cinzento só sabe contar almas em fila.',
             resolution: { kind: 'fixed', nextNodeId: 'edge' },
             effects: { enemyHpDelta: 5 },
@@ -51,22 +51,22 @@ const kaelGraph = (
         ],
       },
       respect: {
-        linePt:
+        line:
           'Kael inclina o elmo um milímetro — quase respeito. “…Disciplina”, murmura. “Não é amizade.”',
         choices: [
           {
-            textPt: 'Aceitar o recuo mútuo e fechar a frase sem desfile.',
+            text: 'Aceitar o recuo mútuo e fechar a frase sem desfile.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -4 },
           },
         ],
       },
       edge: {
-        linePt:
+        line:
           '“Então conta com ferro”, diz Kael, voz plana. O metal acorda no ar.',
         choices: [
           {
-            textPt:
+            text:
               'Tentar segurar a linha com o corpo — sem recuar o pé.',
             resolution: {
               kind: 'skill',
@@ -79,18 +79,18 @@ const kaelGraph = (
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            textPt: 'Perder o compasso — deixar a provocação fechar o círculo.',
+            text: 'Perder o compasso — deixar a provocação fechar o círculo.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
       },
       v_success: {
-        linePt:
+        line:
           '“…Contagem”, diz por fim Kael, recuando meio passo. “Não foi vitória. Foi medida. Quando o número fechar, o ferro fala.”',
         terminal: 'victory',
       },
       d_fail: {
-        linePt:
+        line:
           '“Sem tribunal”, diz Kael. “Só conta.” A lâmina termina a conversa.',
         terminal: 'defeat',
       },

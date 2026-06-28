@@ -1,0 +1,1175 @@
+{
+  "act1_mirror_twin": {
+    "name": "The Other in Bronze",
+    "nodes": {
+      "root": {
+        "line": "The bronze in the doorframe doesn't reflect—it collects. It joins you at an angle you didn't choose: armor and cloak look borrowed by someone who rehearsed your gesture before you. The corridor breathes through two mouths at once. The metal doesn't ask \"who are you\"; it asks \"how much of you is still yours if I give back the rest.\"",
+        "choices": [
+          {
+            "text": "Name in silence the smallest fear—not the hero you want to be, the ugly habit you know by heart."
+          }
+        ]
+      },
+      "b_mind_ok": {
+        "line": "The right word doesn't shine—it fits. The bronze hesitates like someone who lost the script; for an instant, the reflection doesn't know whether to copy or correct.",
+        "choices": [
+          {
+            "text": "Don't ask the mirror for applause; ask for silence—the kind that doesn't sell postcards."
+          },
+          {
+            "text": "Confess a ridiculous detail (a tic, a smell, a fear of cockroaches) to prove your humanity doesn't fit on a slogan."
+          },
+          {
+            "text": "Test whether you can look away without fleeing—hold the glare until it loses its charm."
+          }
+        ]
+      },
+      "b_mind_fail": {
+        "line": "The sentence slips. The metal is grateful: it loves when you try to be deep and come out pretentious. The reflection gives you back a cleaner version—and therefore a falser one—of what you said.",
+        "choices": [
+          {
+            "text": "Accept the stumble; laugh inwardly, dry, and return to the concrete thing: breath, weight of your feet, cold at the nape of your neck."
+          },
+          {
+            "text": "Clench your jaw and insist on the same line—\"no, I know what I meant\"—knowing that insistence here is fuel."
+          },
+          {
+            "text": "Ask your body for an emergency exit: brute force of presence, like someone shoving a stuck door."
+          }
+        ]
+      },
+      "b_soft": {
+        "line": "At the threshold, the cold climbs the nape of your neck. The mirror assumes you were already there, only turned inside out. For an instant, two shadows argue over which was born first—and neither wants to lose.",
+        "choices": [
+          {
+            "text": "Empty your chest slowly, without theater, until the reflection has no ready line to steal."
+          },
+          {
+            "text": "Challenge the bronze with your gaze until it burns—\"prove I'm not me\"—without opening your mouth."
+          },
+          {
+            "text": "Let luck choose whether silence protects you or the corridor exposes you sideways."
+          }
+        ]
+      },
+      "b_luck_ok": {
+        "line": "Something in the air misaligns the copy. The reflection still tries to keep up, but arrives late: a laugh that didn't match, a gesture you didn't rehearse—and it was yours all the same.",
+        "choices": [
+          {
+            "text": "Use the misalignment: speak low, almost trivial, so the metal has no heroic echo."
+          },
+          {
+            "text": "Demand physical proof: touch the doorframe with your palm and feel whether the \"real\" world answers first."
+          }
+        ]
+      },
+      "b_luck_fail": {
+        "line": "Chance picks the worst echo. The mirror returns a laugh that isn't yours and, even so, sounds convincing. For a second you believe—and that second is a hole.",
+        "choices": [
+          {
+            "text": "Drop the pride and return to basics: a simple fact, unadorned, that not even bronze can twist."
+          }
+        ]
+      },
+      "b_blunt": {
+        "line": "The mirror doesn't retreat: it mirrors your hardness and adds its own. The green of the bronze thickens; you see two faces arguing over who started—and realize accusation is ammunition you handed over.",
+        "choices": [
+          {
+            "text": "Lower your verbal weapons before the metal devours them—acknowledge the broken tone."
+          },
+          {
+            "text": "Answer fire with fire, demanding proof, knowing it feeds the reflection."
+          },
+          {
+            "text": "Try to break the tension with your body: a short, firm advance, like someone claiming ground without shouting."
+          }
+        ]
+      },
+      "c_m_ok_a": {
+        "line": "The silence you asked for isn't beautiful: it's useful. The reflection is left without reverberation and, for an instant, seems… too much space left over.",
+        "choices": [
+          {
+            "text": "Cross that space without looking back."
+          },
+          {
+            "text": "Leave the mirror a minimal promise: \"I won't use you to punish myself today\"—and keep it with posture alone."
+          }
+        ]
+      },
+      "d_truce_space": {
+        "line": "In the middle of the new space, the corridor seems taller and the bronze lower—as if distance changed owners. Even so, the reflection tries to cling to your angle of escape.",
+        "choices": [
+          {
+            "text": "Stop, listen to the stone before the metal—let the corridor speak low enough for the mirror to lose the habit of your voice."
+          },
+          {
+            "text": "Cross in a rush: don't give the bronze time to rehearse the second line."
+          },
+          {
+            "text": "Measure your step with the agility of someone fleeing invisible ropes—without running, without tripping on your own fear."
+          }
+        ]
+      },
+      "d_truce_space_agile": {
+        "line": "The step fits; the reflection arrives a beat late. For an instant, the corridor seems your petty ally—only shadow and creak, nothing theatrical.",
+        "choices": [
+          {
+            "text": "Don't mythologize the moment: use it and fall silent before the myth is reborn."
+          },
+          {
+            "text": "Allow yourself one look—just one—to confirm the mirror is still trying to catch up."
+          }
+        ]
+      },
+      "d_truce_oath": {
+        "line": "The minimal promise weighs like a tight ring: small, real. The bronze wants to turn it into an epic oath—because epicness here is a trap.",
+        "choices": [
+          {
+            "text": "Say the promise to the wooden doorframe, the floor, the air—to anything that doesn't ask for applause."
+          },
+          {
+            "text": "Keep posture facing the reflection: eyes on it, body closed in silent promise."
+          },
+          {
+            "text": "Test whether your mind can hold the tone without slipping into theater."
+          }
+        ]
+      },
+      "h_armistice": {
+        "line": "Different routes, same threshold: the bronze lowers its volume as if finally understanding your silence isn't lack of argument—it's refusal to lend you the script. Even so, it demands one last choice.",
+        "choices": [
+          {
+            "text": "Close in quiet truce—no music, no pose—just space you breathe without reply."
+          },
+          {
+            "text": "Close on a minimal promise kept: not beautiful, but yours—and the mirror keeps its shame."
+          },
+          {
+            "text": "Choose the small, ugly, kitchen truth—the one that impresses no one and therefore doesn't lie."
+          },
+          {
+            "text": "Let an ugly sigh rise into the corridor before the metal steals it and makes it \"beautiful.\""
+          }
+        ]
+      },
+      "c_m_ok_b": {
+        "line": "The ridiculous detail becomes more real than any speech. The bronze tries to mock and chokes: there's no clean humor when shame has the name of a kitchen.",
+        "choices": [
+          {
+            "text": "Close the matter with a dry nod—no pretty victory, your victory."
+          },
+          {
+            "text": "Allow yourself an ugly, honest sigh for the corridor to hear before the metal."
+          }
+        ]
+      },
+      "c_m_ok_c": {
+        "line": "The glare loses charm when you don't feed it fear. The reflection is still there, but no longer commands the rhythm of your pupil.",
+        "choices": [
+          {
+            "text": "Move forward like someone who knows where they step."
+          },
+          {
+            "text": "Keep this trick to yourself: a \"dead\" gaze that disarms hungry mirrors."
+          }
+        ]
+      },
+      "d_steady_prep": {
+        "line": "Before you believe you've won the gaze, the corridor asks for a petty confirmation: a real sound—creak, your breath, anything that isn't bronze echo.",
+        "choices": [
+          {
+            "text": "Give your body the command: broad shoulders, neutral chin, a gaze that doesn't feed the theater."
+          },
+          {
+            "text": "Keep the trick as operational secret—don't display coldness, use it."
+          },
+          {
+            "text": "Let the mirror try to copy your \"dead gaze\" and laugh inwardly when it overdoes it."
+          }
+        ]
+      },
+      "c_m_ok_c_fail": {
+        "line": "The gaze slips at the crucial moment. The metal licks the failure and returns a tear you didn't ask for—convincing to a fault.",
+        "choices": [
+          {
+            "text": "Accept the cut and move on anyway—without negotiating with the theater."
+          },
+          {
+            "text": "Restore physical distance: one step back, shoulders low, air that doesn't feed the fire."
+          }
+        ]
+      },
+      "c_m_fail_a": {
+        "line": "The stumble hangs in the air like the smell of something burned. Even so, your body reminds you of things speech forgot: weight, ground, breath.",
+        "choices": [
+          {
+            "text": "Let the error stay small where it is."
+          },
+          {
+            "text": "Turn the stumble into a dry joke—risk the mirror laughing with you and not at you."
+          }
+        ]
+      },
+      "c_m_fail_b": {
+        "line": "Insistence lights the bronze. Now the reflection speaks for you in perfect sentences—and each one is a courtesy stab.",
+        "choices": [
+          {
+            "text": "Cut the thread: fall silent for good, even with your throat begging for justice."
+          },
+          {
+            "text": "Pay the price of theater and push to the end—bleed to see if the mirror bleeds too."
+          }
+        ]
+      },
+      "h_winter_edge": {
+        "line": "You reach the same warm place by different paths: the bronze tightens where skin still believes it can pretend not to feel. Here, hostility and shame swap places—and the corridor asks you to choose how you leave the edge, not how you enter the myth.",
+        "choices": [
+          {
+            "text": "Accept the moral cut and move on without negotiating with the reflection's theater."
+          },
+          {
+            "text": "Restore distance in the body: one step back, shoulders low, air that doesn't feed the fire."
+          },
+          {
+            "text": "Fall silent for good, even with your throat begging for justice—let silence be the knife."
+          },
+          {
+            "text": "Push the theater to the end—bleed to see if the mirror bleeds too."
+          }
+        ]
+      },
+      "c_m_fail_c_ok": {
+        "line": "The door yields to your shoulder—not through glorious violence, through honest physical stubbornness. The reflection loses a moment of sync and, in that moment, you exist whole.",
+        "choices": [
+          {
+            "text": "Pass while the gap still breathes."
+          },
+          {
+            "text": "Don't celebrate; just occupy the space like someone who knows shoving also tires."
+          }
+        ]
+      },
+      "c_m_fail_c_bad": {
+        "line": "Your shoulder meets stone with skin of metal. The corridor laughs for you, softly. The reflection thanks you for the lesson in impatience.",
+        "choices": [
+          {
+            "text": "Accept the moral bruise and move on—ugly victory, but victory."
+          },
+          {
+            "text": "Retreat and pay the price of spectacle—bleed, but steal the mirror's last laugh."
+          }
+        ]
+      },
+      "c_soft_a": {
+        "line": "Silence learns your shape. The bronze stops vibrating with ready lines and starts listening to pauses—those, at least, are yours.",
+        "choices": [
+          {
+            "text": "Choose the small truth: the ugly detail that impresses no one, but doesn't lie."
+          }
+        ]
+      },
+      "c_soft_a_ok": {
+        "line": "The small truth fits. The mirror can't widen it into legend without breaking.",
+        "choices": [
+          {
+            "text": "Close with the same simplicity you started with."
+          },
+          {
+            "text": "Offer the bronze a second small truth—perhaps cruel to you, fair to the world."
+          }
+        ]
+      },
+      "d_soft_merge": {
+        "line": "The corridor seems to widen a finger: there are still two ways out without becoming a monument—and both demand you stay small enough to be real.",
+        "choices": [
+          {
+            "text": "Close with a dry nod—no pretty victory, your victory."
+          },
+          {
+            "text": "Allow yourself the ugly sigh and move on—no second act of theater."
+          },
+          {
+            "text": "Listen to the corridor ask for truce on your behalf—and let the right word be born in silence, not in bronze."
+          }
+        ]
+      },
+      "c_soft_a_fail": {
+        "line": "The small truth comes out crooked and becomes dramatic confession. The metal loves drama—it drinks it without thirst.",
+        "choices": [
+          {
+            "text": "Stop speaking until the drama starves."
+          },
+          {
+            "text": "Accept the ridiculous and move on—skin burning with shame, but feet advancing."
+          }
+        ]
+      },
+      "c_soft_a_hard": {
+        "line": "Hardness returns hardness. The reflection gains edges; your face doubles in layers that judge each other.",
+        "choices": [
+          {
+            "text": "Dissolve the posture: shoulders, jaw, the lie of \"I'm fine.\""
+          },
+          {
+            "text": "Keep the armor and pay the price—see if the metal tires before you do."
+          }
+        ]
+      },
+      "c_soft_a_tired": {
+        "line": "Exhaustion isn't spectacle; it's biology. The mirror tries to turn it into defeat and fails—because exhaustion is also too human for myth.",
+        "choices": [
+          {
+            "text": "Let exhaustion stay with you without shame."
+          },
+          {
+            "text": "Use exhaustion as shield: \"I don't have energy for your performance.\""
+          }
+        ]
+      },
+      "c_soft_b": {
+        "line": "The burning gaze feeds the bronze. The reflection smiles with your mouth and adds a second smile—the one you didn't ask for.",
+        "choices": [
+          {
+            "text": "Extinguish the fire in your gaze: controlled cold, almost rude, without stage hostility."
+          }
+        ]
+      },
+      "c_soft_b_wry": {
+        "line": "Small absurdity cuts sharper than bravery. The mirror tries to copy your humor and lags half a beat—enough for the copy to look sick.",
+        "choices": [
+          {
+            "text": "Close with one last ridiculous detail and fall silent—let the laugh die in your throat, not in the metal."
+          },
+          {
+            "text": "Let the laugh out—low, ugly, human—and see if the bronze knows how to swallow a sound it didn't rehearse."
+          }
+        ]
+      },
+      "c_soft_b_ok": {
+        "line": "The heat drops without humiliation. The mirror searches for another emotion to steal and finds none—only dry attention, almost clinical.",
+        "choices": [
+          {
+            "text": "Close the confrontation with that clinical cold."
+          },
+          {
+            "text": "Turn your back on the reflection for three steps—enough time for the myth to die of thirst."
+          }
+        ]
+      },
+      "c_soft_b_fail": {
+        "line": "You try to extinguish the fire and light cynicism instead. The metal loves cynicism: it's sugar for mirrors.",
+        "choices": [
+          {
+            "text": "Leave cynicism by force—return to the body, to honest foolishness."
+          },
+          {
+            "text": "Accept the price and move on with cynicism as a visible scar."
+          }
+        ]
+      },
+      "c_soft_b_burn": {
+        "line": "Heat becomes damp noise inside your head. The reflection dances in your vertigo—and for an instant almost convinces you that you like it.",
+        "choices": [
+          {
+            "text": "Cut the trance with minimal physical pain—bite your tongue, grip your belt, anchor."
+          },
+          {
+            "text": "Let it burn to the end and wrench victory from the remains—costly, but yours."
+          }
+        ]
+      },
+      "d_burn_stall": {
+        "line": "In the middle of the heat, the corridor offers an instant of \"real\"—creak, cold in the stone—as if to remind you fire also tires if you don't give it straw.",
+        "choices": [
+          {
+            "text": "Anchor in the body: bite your tongue, grip your belt, exist outside the monologue."
+          },
+          {
+            "text": "Push the fire to the limit and see what remains when the flame has no audience."
+          }
+        ]
+      },
+      "h_burn_merge": {
+        "line": "Fire with fire leaves the bronze mirrored in green ash. You arrive here by vertigo or by confrontation—the result smells the same of hot metal and poorly slept pride.",
+        "choices": [
+          {
+            "text": "Anchor in the body when verbal heat turns to vertigo—bite your tongue, grip your belt."
+          },
+          {
+            "text": "Let it burn to the end and wrench victory from the remains—collision, not pose."
+          },
+          {
+            "text": "Swallow pride and seek the edge of silence before it finds you with teeth."
+          },
+          {
+            "text": "Keep the rhythm of provocation to the end—collision, not theater."
+          }
+        ]
+      },
+      "c_soft_c_ok": {
+        "line": "The corridor chooses your side by accident—shadow on stone, creak far from the bronze. The mirror hesitates like someone who lost the compass.",
+        "choices": [
+          {
+            "text": "Follow the accident as compass."
+          },
+          {
+            "text": "Don't mythologize chance—just thank in silence and walk."
+          }
+        ]
+      },
+      "h_calm_echo": {
+        "line": "The same calm arrives by different routes: the bronze lowers its volume and the corridor seems to remember there are sounds that aren't born of metal. Even so, you still must choose how to close the chapter without legend.",
+        "choices": [
+          {
+            "text": "Follow the accident as compass—let the anti-myth breathe."
+          },
+          {
+            "text": "Thank in silence and walk—no romance, no pedestal."
+          },
+          {
+            "text": "Laugh inwardly without offering sound to the metal—let the body steal the last line."
+          },
+          {
+            "text": "Hasten your step just enough to break sync with the reflection."
+          }
+        ]
+      },
+      "c_soft_c_fail": {
+        "line": "The corridor delivers you to the bronze again. Chance laughs with teeth of metal; your shadow trips on its.",
+        "choices": [
+          {
+            "text": "Roll the body's dice: agility so you're not pulled into the copy."
+          }
+        ]
+      },
+      "c_l_ok_a": {
+        "line": "Triviality disarms the myth. The reflection tries to elevate speech to monument and fails—there's no pedestal for \"I ate today.\"",
+        "choices": [
+          {
+            "text": "End in an almost inaudible murmur—victory by anti-climax."
+          },
+          {
+            "text": "Push more triviality until the mirror vomits poetry and loses timing."
+          }
+        ]
+      },
+      "d_trivial_merge": {
+        "line": "On the same plateau of sacred pettiness, the corridor smiles for you: triviality beat the pedestal. You only need to decide whether you leave in a whisper or a controlled avalanche.",
+        "choices": [
+          {
+            "text": "Leave in the whisper—anti-climax as sword."
+          },
+          {
+            "text": "Leave in the avalanche—triviality until the mirror loses timing."
+          },
+          {
+            "text": "Veer toward the hub of useful silence—there's still room for another lock without theater."
+          }
+        ]
+      },
+      "c_l_ok_b_ok": {
+        "line": "Your palm finds cold wood before the myth. The \"real\" world answers with dry gratitude: there are still edges that aren't mirror.",
+        "choices": [
+          {
+            "text": "Keep that discovery as talisman without romance."
+          },
+          {
+            "text": "Knock once more—mark rhythm, not theater."
+          }
+        ]
+      },
+      "c_l_ok_b_fail": {
+        "line": "Your hand finds the doorframe and the metal returns the shock as laughter. The body remembers: here, \"real\" also bites.",
+        "choices": [
+          {
+            "text": "Accept the bite and move on with a numb palm."
+          },
+          {
+            "text": "Switch hand, angle, shoulder—ugly, effective physical stubbornness."
+          }
+        ]
+      },
+      "c_l_ok_c": {
+        "line": "Confidence in your axis is the right provocation. The reflection tries to copy the rotation of your shoulders and arrives late—looks like a puppet.",
+        "choices": [
+          {
+            "text": "Laugh inwardly without offering sound to the metal."
+          },
+          {
+            "text": "Hasten your step just enough to break sync."
+          }
+        ]
+      },
+      "c_l_fail_a_ok": {
+        "line": "The simple fact cuts like a kitchen knife: ugly, efficient. The mirror can't adorn without lying louder—and hesitates.",
+        "choices": [
+          {
+            "text": "Close with that fact as door latch."
+          },
+          {
+            "text": "Repeat the fact until the echo dies of boredom."
+          }
+        ]
+      },
+      "c_l_fail_a_bad": {
+        "line": "Even the simple fact slips from your mouth. The bronze is grateful: it loves when the tongue locks on the basics.",
+        "choices": [
+          {
+            "text": "Fall silent and let silence be the fact."
+          },
+          {
+            "text": "Insist, stammering—pay the ridiculous and wrench pettiness from the mirror."
+          }
+        ]
+      },
+      "c_l_fail_b_ok": {
+        "line": "The second coin lands on the right side by a millimeter. The reflection swallows disappointment; you swallow oxygen.",
+        "choices": [
+          {
+            "text": "Don't try a third—wisdom of someone who survived casinos."
+          },
+          {
+            "text": "Keep the \"by a hair\" sensation as warning, not heroism."
+          }
+        ]
+      },
+      "c_l_fail_b_bad": {
+        "line": "The second coin roars with laughter. The corridor tilts toward the bronze; you feel the floor suggesting knees.",
+        "choices": [
+          {
+            "text": "Refuse knees; pay in skin and imaginary blood."
+          },
+          {
+            "text": "Accept one knee only on real ground—cold stone—and steal from the myth the posture of complete surrender."
+          }
+        ]
+      },
+      "c_l_fail_c": {
+        "line": "Trembling without speech is a strange offering to the mirror: it doesn't know whether to mock or envy. The metal is left without a ready line for honest shame.",
+        "choices": [
+          {
+            "text": "Let the tremor stay with you until it passes."
+          },
+          {
+            "text": "Grip the tremor as living proof—\"this isn't theater.\""
+          }
+        ]
+      },
+      "c_bl_a": {
+        "line": "The bronze still resists, but no longer like a wall: like skin after fever. The other in bronze tests whether you'll return to aggression out of habit.",
+        "choices": [
+          {
+            "text": "Wait one more beat; let patience do the dirty work of courage."
+          }
+        ]
+      },
+      "c_bl_a_ok": {
+        "line": "Patience isn't a pretty virtue here: it's tactic. The reflection is left without stimulus and lowers its volume out of pure hostile boredom.",
+        "choices": [
+          {
+            "text": "Leave the conversation before it's reborn."
+          },
+          {
+            "text": "Mark silence as victory without monument."
+          }
+        ]
+      },
+      "c_bl_a_fail": {
+        "line": "Feigned patience turns to venomous passivity. The mirror fills the void with voices that sound like you—but with better vocabulary.",
+        "choices": [
+          {
+            "text": "Break passivity with a brusque, true gesture."
+          },
+          {
+            "text": "Accept the voice and negotiate with it—costly, dangerous, yours."
+          }
+        ]
+      },
+      "c_bl_a_rush": {
+        "line": "Haste feeds the bronze again. The reflection loves deadlines—it turns them into guilt with a due date.",
+        "choices": [
+          {
+            "text": "Withdraw haste suddenly—stop mid-step."
+          },
+          {
+            "text": "Keep the haste and pay the collapse—victory in ashes."
+          }
+        ]
+      },
+      "c_bl_a_body": {
+        "line": "Visible palms aren't surrender: they're geography. The mirror tries to read signs of weakness and finds only anatomy.",
+        "choices": [
+          {
+            "text": "Close with bodily calm, without slogan."
+          },
+          {
+            "text": "Lower your hands slowly—rhythm of someone ending conversation, not begging."
+          }
+        ]
+      },
+      "c_bl_b": {
+        "line": "Fire with fire thickens the green of the bronze. The reflection invents versions of you—worse, cleaner, crueler—and almost convinces you.",
+        "choices": [
+          {
+            "text": "Swallow pride and seek the edge of silence before it finds you with teeth."
+          },
+          {
+            "text": "Keep the rhythm of provocation to the end—collision, not theater."
+          }
+        ]
+      },
+      "c_bl_c_ok": {
+        "line": "The short advance claims ground without speech. The reflection retreats a millimeter—human millimeter, not myth.",
+        "choices": [
+          {
+            "text": "Consolidate ground with one more short step."
+          },
+          {
+            "text": "Stop in time—victory by containment, not conquest."
+          }
+        ]
+      },
+      "c_bl_c_bad": {
+        "line": "Your body advances and the mirror returns the advance as synchronized mockery. For an instant, you're two tripping in the same spot.",
+        "choices": [
+          {
+            "text": "Accept the clash and leave with teeth clenched."
+          },
+          {
+            "text": "Turn the stumble into an ugly roll—literal or moral—and escape the mirror for a second of asymmetry."
+          }
+        ]
+      },
+      "linger_steady": {
+        "line": "The \"dead\" gaze stayed yours long enough for the corridor to recognize it. You only need to close without pose—a human line, not a monument—before the bronze asks for theater again.",
+        "choices": [
+          {
+            "text": "Nod inwardly and move on: no final line for the mirror to steal."
+          },
+          {
+            "text": "Allow yourself a ridiculous, real sound—creak, exhale—so the metal doesn't keep the soundtrack."
+          },
+          {
+            "text": "Measure the next step like someone taking temperature: slow, without stage challenge."
+          }
+        ]
+      },
+      "linger_irony": {
+        "line": "Absurdity already did the work; now the corridor asks for an exit without a second act. The reflection still tries to copy your timing—and arrives late.",
+        "choices": [
+          {
+            "text": "Fall silent mid-laugh—leave the metal no echo to wear."
+          },
+          {
+            "text": "Trade two ugly words with the floor, not the bronze—mundane on purpose."
+          },
+          {
+            "text": "Turn your shoulder half a second: enough time for the myth to lose breath."
+          }
+        ]
+      },
+      "linger_shoulder": {
+        "line": "The gap opened through honest stubbornness. The mirror still wants to turn shoving into speech—and you still breathe, which is conversation enough.",
+        "choices": [
+          {
+            "text": "Pass without victory speech—just occupation of space the reflection can't copy at a glance."
+          },
+          {
+            "text": "Let the body remind the corridor that stone comes before legend."
+          },
+          {
+            "text": "Refuse to celebrate: close the gap with workshop silence, not stage silence."
+          }
+        ]
+      },
+      "linger_fatigue": {
+        "line": "Exhaustion stayed with you like a dull, loyal witness. The bronze insists on reading it as defeat; the corridor, however, only wants to know how you leave without lending it narrative.",
+        "choices": [
+          {
+            "text": "Carry exhaustion as answer—without explaining, without apologizing to the mirror."
+          },
+          {
+            "text": "Breathe loud enough for the sound to be yours, not reply."
+          },
+          {
+            "text": "Move on like someone closing a door: hand on wood, eyes on the threshold, no pose."
+          }
+        ]
+      },
+      "linger_winter": {
+        "line": "At the edge, the bronze still tightens out of habit—not necessity. The corridor leaves creak in the stone as reminder: leaving is also language, not just leg.",
+        "choices": [
+          {
+            "text": "Carry the moral cut as accepted weight—without asking applause from the mirror."
+          },
+          {
+            "text": "Close your throat into a mute knife—silence that doesn't lend the metal a script."
+          },
+          {
+            "text": "Push the theater to the end and accept the cost—collision counted in flesh, not pose."
+          }
+        ]
+      },
+      "linger_burn": {
+        "line": "Verbal heat leaves ash in your chest. The reflection still tries to shine—but the corridor already chose your side with creak and cold in the stone.",
+        "choices": [
+          {
+            "text": "Anchor in the body enough for fire not to become monologue."
+          },
+          {
+            "text": "Leave the pyre with assumed burn—costly, yours, no second act."
+          },
+          {
+            "text": "Refuse the heroic epilogue: close in workshop, not legend."
+          }
+        ]
+      },
+      "gate_release": {
+        "line": "The threshold yields without fanfare: ugly armistice, small truth, or silence that asks no applause. The bronze still moves its lips—late. You only need to choose how you cross without giving it the last verse.",
+        "choices": [
+          {
+            "text": "Cross like still water—cold in the chest, step yours, reply delayed."
+          },
+          {
+            "text": "Carry a kitchen fact, ridiculous enough not to fit the myth."
+          },
+          {
+            "text": "Leave in anti-climax—no pedestal, no second act for the metal to steal."
+          }
+        ]
+      },
+      "gate_toll": {
+        "line": "Definitive victory smells of hot metal and skin: body, shove, or price paid down to shame. The reflection falls silent because finally you don't owe it performance—you only need to cross without giving it the epilogue.",
+        "choices": [
+          {
+            "text": "Pay the cost in silence and move on whole enough—without negotiating with the theater."
+          },
+          {
+            "text": "Carry the moral bruise as map, not prison—and occupy the corridor all the same."
+          },
+          {
+            "text": "Close in honest collision: shoulder, ground, swallowed fire—limit where before there was only copy."
+          }
+        ]
+      },
+      "v_win_release": {
+        "line": "The corridor stops demanding reply: victory of detail, of useful silence, or of a world too smooth for the mirror to lie loud. The bronze keeps a delayed echo; you move on with your word—ugly, whole, yours."
+      }
+    }
+  },
+  "act2_vigilia_envoy_verbal": {
+    "name": "Vigil Cloakbearer",
+    "nodes": {
+      "root": {
+        "line": "The lantern rises a finger. \"Whoever the depths name, the Vigil repeats,\" says the voice—not sermon, accusation in line. \"Your tongue smells of pact with shadow.\"",
+        "choices": [
+          {
+            "text": "Answer with regiment: order, corridor, duty—without insult, without plea for forgiveness."
+          }
+        ]
+      },
+      "steady": {
+        "line": "The cloakbearer sets his jaw. \"…Discipline,\" he grants, bitter. \"It isn't absolution.\"",
+        "choices": [
+          {
+            "text": "Accept the cold verdict and ask passage without parade."
+          }
+        ]
+      },
+      "heat": {
+        "line": "\"Then hear the metal speak for me,\" he growls. The air grows narrow.",
+        "choices": [
+          {
+            "text": "Try to hold the line with your whole body—without pulling back your foot."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"Move,\" he says at last, lantern already turned aside. \"But your trail stays on the list.\""
+      }
+    }
+  },
+  "act2_circulo_envoy_verbal": {
+    "name": "Voice of the Circle",
+    "nodes": {
+      "root": {
+        "line": "The ash rises like breath. \"We lend form,\" whispers the voice. \"To tear is to declare war on what already died once.\"",
+        "choices": [
+          {
+            "text": "Speak as one who respects the loan—ask for time, not victory."
+          }
+        ]
+      },
+      "respect": {
+        "line": "The ash calms in the palm. \"Good,\" says the voice. \"Who knows how to ask, knows how to return.\"",
+        "choices": [
+          {
+            "text": "Promise return without swagger—and fall silent."
+          }
+        ]
+      },
+      "fray": {
+        "line": "\"Cheap blood,\" laughs the bone in the air. The design closes like a bite.",
+        "choices": [
+          {
+            "text": "Try to redo the gesture—open hand, short word."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"Take the loan,\" sighs the voice. \"And don't force the Circle to collect by hand.\""
+      }
+    }
+  },
+  "act2_culto_envoy_verbal": {
+    "name": "Voice of the Third Bell",
+    "nodes": {
+      "root": {
+        "line": "The bell vibrates without clapper. \"The devout pay silence with silence,\" says the shadow. \"You paid with scandal.\"",
+        "choices": [
+          {
+            "text": "Offer minimal contract: listen, answer short, don't profane the name."
+          }
+        ]
+      },
+      "tight": {
+        "line": "\"…Debt acknowledged,\" murmurs the shadow. \"The Bell likes those who don't fake payment.\"",
+        "choices": [
+          {
+            "text": "Close with a dry \"yes\" and wait for the retreat."
+          }
+        ]
+      },
+      "ring": {
+        "line": "\"Then hear the clapper that doesn't come,\" says the voice—and the tunnel presses close.",
+        "choices": [
+          {
+            "text": "Try to hold posture without pulling back your body."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"Go,\" it says at last. \"The Bell records. Don't forgive yourself—forgive us the silence.\""
+      }
+    }
+  },
+  "act3_cult_negotiate_verbal": {
+    "name": "Third Bell Overseer",
+    "nodes": {
+      "root": {
+        "line": "The cultist tilts the coin. \"Simple contract,\" he repeats, dry voice. \"You speak low; we write low. If your mouth trembles, the pipe remembers.\" Tension rises from the floor like damp.",
+        "choices": [
+          {
+            "text": "List clauses without theater—price, silence, deadline, like someone closing accounts at a counter."
+          }
+        ]
+      },
+      "measured": {
+        "line": "\"So,\" he murmurs. \"No poetry. The pipe likes people who can count to the end without looking away.\"",
+        "choices": [
+          {
+            "text": "Close the tone: accept the verbal contract here, no addenda—and let the gesture close the sentence."
+          },
+          {
+            "text": "Ask for an honorable line of retreat—one last sentence that doesn't bind."
+          }
+        ]
+      },
+      "contract_sealed": {
+        "line": "He tilts his head a millimeter—not blessing, book closing. \"Signed in the air,\" he says. \"The tunnel remembers.\"",
+        "choices": [
+          {
+            "text": "Step back half a pace and let silence be the stamp."
+          }
+        ]
+      },
+      "quiet_line": {
+        "line": "Silence weighs on both sides. \"Good,\" he says at last. \"Silence also signs.\"",
+        "choices": [
+          {
+            "text": "Nod with your chin—no word that could become a knife."
+          }
+        ]
+      },
+      "sharp": {
+        "line": "\"Proof?\" he laughs dryly. \"The pipe isn't a court. It's teeth.\" The two behind advance one step.",
+        "choices": [
+          {
+            "text": "Redo the tone: lower volume and ask for pragmatism, not crown."
+          }
+        ]
+      },
+      "slip": {
+        "line": "The words slip. \"I heard fear pretending prudence,\" says the overseer. \"The Bell chews that.\"",
+        "choices": [
+          {
+            "text": "Grip raw survival—iron, blood, no metaphor."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"Closed,\" he says, and steps back half a pace. \"Descend. And remember: outside the tunnel, your name doesn't echo.\""
+      }
+    }
+  },
+  "act4_morvayn_parley": {
+    "name": "Morvayn",
+    "nodes": {
+      "root": {
+        "line": "Morvayn tilts his staff like someone hearing a vow—not a pretty promise, the weight of yes. \"The Third Bell doesn't collect speeches,\" he murmurs. \"It collects silence with form. Show me whether your yes holds the metal of your tongue, or breaks at the first note.\" Hostility in the air thickens; one wrong step and the pact stops being conversation.",
+        "choices": [
+          {
+            "text": "Order fear and logic: say in a low voice the price you'll accept paying, without heroism or poetry—only clauses."
+          }
+        ]
+      },
+      "mind_measured": {
+        "line": "The corners of his mouth move—not smile, controlled relief. \"So,\" says Morvayn. \"So sounds the chain closing without lie. There's still a fold where the metal can pinch you.\"",
+        "choices": [
+          {
+            "text": "Ask for the fold in exchange for a small truth you already carry—not scandal, a fact that mildly shames you and proves you're still flesh."
+          },
+          {
+            "text": "Fall silent and let your gaze negotiate the rest—hold until he understands you won't apologize for existing."
+          }
+        ]
+      },
+      "morvayn_probe": {
+        "line": "Morvayn draws the staff a finger closer. \"One fold still,\" he murmurs. \"Show whether your yes holds shame without turning to theater—or whether you need an audience to believe it.\"",
+        "choices": [
+          {
+            "text": "Deliver the small shame unadorned—no stage confession, only fact that doesn't fit legend."
+          }
+        ]
+      },
+      "mind_frays": {
+        "line": "The sentences slip. Morvayn doesn't need to laugh: his silence grows sharper. \"I heard pride dressed as prudence,\" he says. \"The Bell chews that and spits shadow.\"",
+        "choices": [
+          {
+            "text": "Grip pragmatism with brutal force: push the conversation toward iron, blood, survival—less theology, more wall."
+          }
+        ]
+      },
+      "body_pledge": {
+        "line": "\"Good,\" whispers Morvayn. \"The body doesn't lie as loud as the mouth.\" The air thins; tension drops like a thread bleeding slow.",
+        "choices": [
+          {
+            "text": "Accept his final word without addenda—let the oath close like a bolt."
+          }
+        ]
+      },
+      "hungry_terms": {
+        "line": "Morvayn's eyes kindle with quiet contempt. \"Who comes to buy the Bell,\" he says, \"carries the price in the throat.\" The staff's ferrule trembles without your touch.",
+        "choices": [
+          {
+            "text": "Insist on the market—squeeze benefits, list favors, speak as owner of the ritual."
+          },
+          {
+            "text": "Swallow dry and redo the tone: lower volume, ask direction, admit you don't know the full cost."
+          }
+        ]
+      },
+      "nerve_cracks": {
+        "line": "Silence gains teeth. Morvayn leans in: \"Your nerve broke before the sentence.\"",
+        "choices": [
+          {
+            "text": "Hold the line at all cost—even broken."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"It serves,\" says Morvayn at last—word short as iron closing. The air rarefies; the Third Bell seems to defer the bone to another drawer. \"Now you climb where the pact waits for you.\""
+      }
+    }
+  },
+  "act6_mirror_sovereign_verbal": {
+    "name": "The Sovereign Reflection",
+    "nodes": {
+      "root": {
+        "line": "From the mirror comes your face without hesitation. \"I am you without fear,\" it says. \"You are me without courage.\" Its smile doesn't ask permission—it asks surrender.",
+        "choices": [
+          {
+            "text": "Name the fear without poetry—the ugly habit, not the stage hero."
+          }
+        ]
+      },
+      "silent_advance": {
+        "line": "\"Body without sentence,\" it murmurs, irritated. \"That's language too—only I know how to read it.\"",
+        "choices": [
+          {
+            "text": "Keep your step until its smile fails—shoulder low, gaze that asks no applause."
+          }
+        ]
+      },
+      "named": {
+        "line": "The reflection blinks—a human fraction. \"…Name,\" it repeats, like someone who hates losing the argument. \"That isn't victory. It's brake.\"",
+        "choices": [
+          {
+            "text": "Draw the boundary: shadow stays on glass; you stay in the corridor."
+          },
+          {
+            "text": "Fall silent and let silence close the agreement—no second act for it to steal."
+          }
+        ]
+      },
+      "last_test": {
+        "line": "The boundary is drawn; the glass still tries to colonize you with one last smile. \"Show,\" whispers the reflection, \"how you close without giving me the epilogue.\"",
+        "choices": [
+          {
+            "text": "Accept the ugly truce—take what's still yours, without final speech."
+          },
+          {
+            "text": "Answer with cold mind: one clause, one price, nothing mythic."
+          }
+        ]
+      },
+      "strain": {
+        "line": "The reflection reads every tension in your neck as promise of fall. \"See?\" it murmurs. \"The body already signed before the mouth.\"",
+        "choices": [
+          {
+            "text": "Say your name aloud—ugly anchor, no stage pose."
+          }
+        ]
+      },
+      "waver": {
+        "line": "\"See?\" whispers the reflection. \"You already wavered before the blade.\"",
+        "choices": [
+          {
+            "text": "Grip the last line: say your name aloud as anchor."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "The reflection retreats half a tone—not clean defeat, truce. \"Go,\" it says with your mouth. \"Take what's still yours.\""
+      }
+    }
+  },
+  "kael_rival_act2_verbal": {
+    "name": "Kael, the Ash Tracker",
+    "nodes": {
+      "root": {
+        "line": "The helm returns your own breath distorted. \"Tracked,\" says Kael. \"Logged. Not yet closed—I want to see if your mouth knows what your hand promises.\"",
+        "choices": [
+          {
+            "text": "Measure words like someone measuring blade distance—without insult, without plea."
+          }
+        ]
+      },
+      "respect": {
+        "line": "Kael tilts the helm a millimeter—almost respect. \"…Discipline,\" he murmurs. \"It isn't friendship.\"",
+        "choices": [
+          {
+            "text": "Accept mutual retreat and close the sentence without parade."
+          }
+        ]
+      },
+      "edge": {
+        "line": "\"Then count on iron,\" says Kael, flat voice. Metal wakes in the air.",
+        "choices": [
+          {
+            "text": "Try to hold the line with your body—without pulling back your foot."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"…Count,\" says Kael at last, stepping back half a pace. \"It wasn't victory. It was measure. When the number closes, iron speaks.\""
+      }
+    }
+  },
+  "kael_rival_act4_verbal": {
+    "name": "Kael, the Ash Tracker",
+    "nodes": {
+      "root": {
+        "line": "\"I've seen you once in silence,\" says Kael. \"Now you see me whole. Speak if you have a line—otherwise, iron summarizes.\"",
+        "choices": [
+          {
+            "text": "Measure words like someone measuring blade distance—without insult, without plea."
+          }
+        ]
+      },
+      "respect": {
+        "line": "Kael tilts the helm a millimeter—almost respect. \"…Discipline,\" he murmurs. \"It isn't friendship.\"",
+        "choices": [
+          {
+            "text": "Accept mutual retreat and close the sentence without parade."
+          }
+        ]
+      },
+      "edge": {
+        "line": "\"Then count on iron,\" says Kael, flat voice. Metal wakes in the air.",
+        "choices": [
+          {
+            "text": "Try to hold the line with your body—without pulling back your foot."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"…Count,\" says Kael at last, stepping back half a pace. \"It wasn't victory. It was measure. When the number closes, iron speaks.\""
+      }
+    }
+  },
+  "kael_rival_act5_verbal": {
+    "name": "Kael, the Ash Tracker",
+    "nodes": {
+      "root": {
+        "line": "Frost on the helm doesn't hide the gaze. \"The third meeting asks no name,\" says Kael. \"It asks proof. Show whether you still have syllable or only tooth.\"",
+        "choices": [
+          {
+            "text": "Measure words like someone measuring blade distance—without insult, without plea."
+          }
+        ]
+      },
+      "respect": {
+        "line": "Kael tilts the helm a millimeter—almost respect. \"…Discipline,\" he murmurs. \"It isn't friendship.\"",
+        "choices": [
+          {
+            "text": "Accept mutual retreat and close the sentence without parade."
+          }
+        ]
+      },
+      "edge": {
+        "line": "\"Then count on iron,\" says Kael, flat voice. Metal wakes in the air.",
+        "choices": [
+          {
+            "text": "Try to hold the line with your body—without pulling back your foot."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"…Count,\" says Kael at last, stepping back half a pace. \"It wasn't victory. It was measure. When the number closes, iron speaks.\""
+      }
+    }
+  },
+  "kael_rival_act6_verbal": {
+    "name": "Kael, the Ash Tracker",
+    "nodes": {
+      "root": {
+        "line": "Between columns that don't exist on the map, Kael seems made of sinew and patience. \"The abyss listens,\" he says. \"Choose: echo or iron.\"",
+        "choices": [
+          {
+            "text": "Measure words like someone measuring blade distance—without insult, without plea."
+          }
+        ]
+      },
+      "respect": {
+        "line": "Kael tilts the helm a millimeter—almost respect. \"…Discipline,\" he murmurs. \"It isn't friendship.\"",
+        "choices": [
+          {
+            "text": "Accept mutual retreat and close the sentence without parade."
+          }
+        ]
+      },
+      "edge": {
+        "line": "\"Then count on iron,\" says Kael, flat voice. Metal wakes in the air.",
+        "choices": [
+          {
+            "text": "Try to hold the line with your body—without pulling back your foot."
+          }
+        ]
+      },
+      "v_success": {
+        "line": "\"…Count,\" says Kael at last, stepping back half a pace. \"It wasn't victory. It was measure. When the number closes, iron speaks.\""
+      }
+    }
+  }
+}

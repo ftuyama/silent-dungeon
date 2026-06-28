@@ -25,6 +25,12 @@ export type DevToolsLinkOptions = {
   asciiSort?: DevToolsAsciiSort | null;
 };
 
+/** Reads `?lang=` once at boot; normalized to pt-BR or en-US when supported. */
+export function resolveLangFromLocation(): string | null {
+  const q = new URLSearchParams(window.location.search).get('lang');
+  return q && q.trim() ? q.trim() : null;
+}
+
 /** Reads `?campaign=<id>`; falls back to calvario if missing or unknown. */
 export function resolveCampaignIdFromLocation(): string {
   const q = new URLSearchParams(window.location.search).get('campaign');

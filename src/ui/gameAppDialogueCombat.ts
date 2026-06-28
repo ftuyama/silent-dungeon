@@ -2,21 +2,21 @@ import { getCurrentDialogueContext, resolveDialogueChoice } from '../engine/comb
 import type { DialogueChoice, DialogueCombatLogEntry, GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
 import type { EventBus } from '../engine/core/index.ts';
-import type { GameData } from '../engine/data/gameData.ts';
-import { getEffectiveLuck } from '../engine/progression/luck.ts';
+import type { GameData } from '../engine/data/index.ts';
+import { getEffectiveLuck } from '../engine/progression/index.ts';
 import { formatDiceAscii } from './diceAscii.ts';
 import { escHtml } from './gameAppUtils.ts';
 import {
   appendCombatLogMessageWithBoldNames,
   appendCombatSectionHeader,
   appendEnemyFloatingDamage,
-  combatQuickKeyAt,
-  combatShortcutTitle,
+  createCombatQuickNavDecorator,
   floatingEnemyDamageDurationMs,
   rollFloatingDmgAnchor,
 } from './gameAppCombat.ts';
 import { dialogueVerbalHitFxClass, getMeleeFxStyleForCharacter } from './combatFx.ts';
 import type { GameAudio } from './sound/index.ts';
+import { getLocale, pickLocalized, t } from '../i18n/index.ts';
 
 type PendingDialogueEnemyFloat = {
   encId: string;
@@ -39,8 +39,8 @@ function playDialogueCombatLogSound(entry: DialogueCombatLogEntry, audio: GameAu
   }
 }
 
-function dialogueAttrAbbrevPt(attr: 'str' | 'agi' | 'mind'): string {
-  return attr === 'str' ? 'FOR' : attr === 'agi' ? 'AGI' : 'MEN';
+function dialogueAttrAbbrev(attr: 'str' | 'agi' | 'mind'): string {
+  return attr === 'str' ? t('engine.attrStr') : attr === 'agi' ? t('engine.attrAgi') : t('engine.attrMind');
 }
 
 function dialogueAttrMod(
@@ -56,21 +56,20 @@ function formatDialogueChoicePreview(
   state: GameState,
   data: GameData,
   choice: DialogueChoice
-): { primary: string | null; secondary: string | null } {
+): { primary: string | null } {
   const res = choice.resolution;
 
   if (res.kind === 'fixed') {
-    return { primary: null, secondary: null };
+    return { primary: null };
   }
 
   const lead = state.party[0];
   if (res.kind === 'skill') {
     const mod = dialogueAttrMod(lead, res.attr);
-    const ab = dialogueAttrAbbrevPt(res.attr);
+    const ab = dialogueAttrAbbrev(res.attr);
     const modStr = mod >= 0 ? `+${mod}` : `${mod}`;
     return {
-      primary: `Teste: 2d6 + mod(${ab}) (${modStr}) ≥ ${res.tn}`,
-      secondary: null,
+      primary: t('dialogueCombat.skillPreview', { attr: ab, mod: modStr, tn: String(res.tn) }),
     };
   }
 
@@ -78,10 +77,13 @@ function formatDialogueChoicePreview(
   const mod = Math.floor((effLuck - 6) / 2);
   const modStr = mod >= 0 ? `+${mod}` : `${mod}`;
   const pen = res.luckPenalty ?? 0;
-  const penBit = pen > 0 ? ` − ${pen} (maldição)` : '';
+  const penBit = pen > 0 ? t('story.cursePenalty', { penalty: String(pen) }) : '';
   return {
-    primary: `Sorte: 2d6 + mod(Sorte) (${modStr})${penBit} ≥ ${res.tn}`,
-    secondary: null,
+    primary: t('dialogueCombat.luckPreview', {
+      mod: modStr,
+      curse: penBit,
+      tn: String(res.tn),
+    }),
   };
 }
 
@@ -193,9 +195,9 @@ function appendPlayerDialogueCluster(
     if (sub.kind === 'roll') {
       const rollBubble = document.createElement('div');
       rollBubble.className = 'combat-dialogue-bubble combat-dialogue-bubble--roll';
-      if (sub.message.includes('→ sucesso')) {
+      if (sub.message.includes(`→ ${t('combatLog.success')}`)) {
         rollBubble.classList.add('combat-dialogue-bubble--roll-ok');
-      } else if (sub.message.includes('→ falha')) {
+      } else if (sub.message.includes(`→ ${t('combatLog.failure')}`)) {
         rollBubble.classList.add('combat-dialogue-bubble--roll-fail');
       }
       if (isNew) {
@@ -203,7 +205,7 @@ function appendPlayerDialogueCluster(
       }
       const rWho = document.createElement('div');
       rWho.className = 'combat-dialogue-bubble__who combat-dialogue-bubble__who--muted';
-      rWho.textContent = 'Rolagem';
+      rWho.textContent = t('dialogueCombat.roll');
       const rText = document.createElement('div');
       rText.className = 'combat-dialogue-bubble__text combat-log-msg';
       appendCombatLogMessageWithBoldNames(rText, sub.message, combatantNames);
@@ -230,8 +232,8 @@ function appendPlayerDialogueCluster(
       const up = sub.hostilityDelta > 0;
       chip.className = `combat-dialogue-chip combat-dialogue-chip--hostility${up ? ' combat-dialogue-chip--host-up' : ' combat-dialogue-chip--host-down'}`;
       chip.textContent = up
-        ? `Hostilidade +${sub.hostilityDelta}`
-        : `Hostilidade ${sub.hostilityDelta}`;
+        ? t('dialogueCombat.hostilityUp', { delta: sub.hostilityDelta })
+        : t('dialogueCombat.hostilityDown', { delta: sub.hostilityDelta });
       chip.title = sub.message;
       chips.appendChild(chip);
       continue;
@@ -240,7 +242,7 @@ function appendPlayerDialogueCluster(
     if (sub.kind === 'leader_damage') {
       const chip = document.createElement('span');
       chip.className = 'combat-dialogue-chip combat-dialogue-chip--wound';
-      chip.textContent = 'Ferida';
+      chip.textContent = t('dialogueCombat.wounded');
       chip.title = sub.message;
       chips.appendChild(chip);
     }
@@ -340,7 +342,7 @@ export function renderDialogueCombatInto(
 
   const inner = document.createElement('div');
   inner.className = 'shell combat-shell';
-  inner.innerHTML = `<h1>Confronto</h1>`;
+  inner.innerHTML = `<h1>${escHtml(t('dialogueCombat.title'))}</h1>`;
 
   const combatantNames = [...ctx.state.party.map((m) => m.name), dlgDef.name];
 
@@ -390,10 +392,13 @@ export function renderDialogueCombatInto(
   hostilityBlock.className = 'enemy-verbal-hostility';
   const hpLabel = document.createElement('span');
   hpLabel.className = 'enemy-hp-text enemy-hp-text--verbal-hostility';
-  hpLabel.textContent = `Hostilidade ${d.tensionHp}/${d.tensionMax}`;
+  hpLabel.textContent = t('dialogueCombat.hostility', {
+    current: d.tensionHp,
+    max: d.tensionMax,
+  });
   const hpTrack = document.createElement('div');
   hpTrack.className = 'enemy-hp-track enemy-hp-track--verbal-below-sprite';
-  hpTrack.title = `Hostilidade ${d.tensionHp}/${d.tensionMax}`;
+  hpTrack.title = t('dialogueCombat.hostility', { current: d.tensionHp, max: d.tensionMax });
   hpTrack.innerHTML = `<div class="enemy-hp-fill" style="width:${hpPct}%"></div>`;
   hostilityBlock.appendChild(hpLabel);
   hostilityBlock.appendChild(hpTrack);
@@ -402,26 +407,7 @@ export function renderDialogueCombatInto(
 
   const lead = ctx.state.party[0];
 
-  let combatQuickNavIndex = 0;
-  const decorateCombatQuickNav = (
-    btn: HTMLButtonElement,
-    setLabel: (key: string | null) => void
-  ): void => {
-    const key = combatQuickKeyAt(combatQuickNavIndex);
-    combatQuickNavIndex += 1;
-    if (key != null) {
-      btn.dataset.quickNavCombat = key;
-    } else {
-      delete btn.dataset.quickNavCombat;
-    }
-    setLabel(key);
-    const shortcut = combatShortcutTitle(btn);
-    if (shortcut) {
-      btn.title = shortcut;
-    } else {
-      btn.removeAttribute('title');
-    }
-  };
+  const decorateCombatQuickNav = createCombatQuickNavDecorator();
 
   const logOuter = document.createElement('div');
   logOuter.className = 'combat-log-outer combat-log-outer--verbal';
@@ -429,9 +415,8 @@ export function renderDialogueCombatInto(
   logPanel.className = 'dice-panel combat-dialogue-log-panel combat-dialogue-log-panel--verbal';
   const logHdr = document.createElement('div');
   logHdr.className = 'dice-panel-header';
-  logHdr.textContent = 'Conversa';
-  logHdr.title =
-    'Nome do interlocutor e retrato em cima; hostilidade e barra por baixo do retrato. Histórico e réplicas na coluna da conversa. Teclas 1–9 (e letras seguintes) escolhem réplica. Rolagens ficam no registo.';
+  logHdr.textContent = t('dialogueCombat.conversation');
+  logHdr.title = t('dialogueCombat.logHeaderHint');
   logPanel.appendChild(logHdr);
 
   const logScroll = document.createElement('div');
@@ -444,7 +429,7 @@ export function renderDialogueCombatInto(
   logStack.className = 'combat-log-stack combat-dialogue-log-stack';
   appendDialogueChatLog(logStack, d.log, combatantNames, {
     npcLabel: dlgDef.name,
-    heroLabel: lead?.name ?? 'Tu',
+    heroLabel: lead?.name ?? t('dialogueCombat.you'),
     firstNewIndex: firstNewLogIndex,
   });
   logScroll.appendChild(logStack);
@@ -455,13 +440,13 @@ export function renderDialogueCombatInto(
     if (choices.length > 0) {
       const dialogueBar = document.createElement('div');
       dialogueBar.className = 'combat-dialogue-composer';
-      dialogueBar.setAttribute('aria-label', 'Réplicas do confronto verbal');
+      dialogueBar.setAttribute('aria-label', t('dialogueCombat.replicasAria'));
       appendCombatSectionHeader(
         dialogueBar,
         'combat-dialogue-hdr',
-        'Réplicas',
-        'Escolhe uma réplica (ou usa as teclas indicadas em cada botão). Rolagens e efeitos aparecem no histórico, ligados à tua mensagem.',
-        'Ajuda: réplicas do confronto verbal'
+        t('dialogueCombat.replicasLabel'),
+        t('dialogueCombat.replicasHelp'),
+        t('dialogueCombat.replicasHelpTitle')
       );
       const btnRow = document.createElement('div');
       btnRow.className = 'combat-dialogue-choices combat-dialogue-choices--composer';
@@ -474,7 +459,7 @@ export function renderDialogueCombatInto(
         labelMain.className = 'combat-dialogue-choice-label';
         btn.appendChild(labelMain);
         const previewBits = formatDialogueChoicePreview(ctx.state, ctx.registry.data, ch);
-        if (previewBits.primary || previewBits.secondary) {
+        if (previewBits.primary) {
           btn.classList.add('combat-dialogue-choice--with-preview');
         }
         if (previewBits.primary) {
@@ -483,15 +468,11 @@ export function renderDialogueCombatInto(
           line.textContent = previewBits.primary;
           btn.appendChild(line);
         }
-        if (previewBits.secondary) {
-          const line2 = document.createElement('span');
-          line2.className =
-            'combat-dialogue-choice-preview-line combat-dialogue-choice-preview-line--sub';
-          line2.textContent = previewBits.secondary;
-          btn.appendChild(line2);
-        }
         decorateCombatQuickNav(btn, (key) => {
-          labelMain.textContent = key != null ? `${key} — ${ch.textPt}` : ch.textPt;
+          labelMain.textContent =
+            key != null
+              ? `${key} — ${pickLocalized(ch.text, getLocale())}`
+              : pickLocalized(ch.text, getLocale());
         });
         btn.addEventListener('click', () => {
           ctx.lifecycle.unlockAudio();

@@ -41,6 +41,7 @@ import {
   reducePartyStressAfterCombat,
 } from './resolution.ts';
 import { applyBossTwistsAfterEnemyPhase, finishCombatIfAllEnemiesDead } from './bossTwists.ts';
+import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 function getLead(state: GameState): Character {
   return state.party[0]!;
@@ -68,7 +69,7 @@ function applyStartOfPlayerTurnPassive(
           ...log,
           {
             kind: 'heal',
-            message: `${lead.name} regenera ${healed} HP (passivo).`,
+            message: combatLog.logRegenHp(lead.name, healed),
             final: healed,
             actor: lead.name,
             target: lead.name,
@@ -87,7 +88,7 @@ function applyStartOfPlayerTurnPassive(
       const nextParty = party.map((p, i) => (i === 0 ? nextLead : p));
       return {
         party: nextParty,
-        log: [...log, { kind: 'info', message: `${lead.name} regenera ${restored} mana (passivo).` }],
+        log: [...log, { kind: 'info', message: combatLog.logRegenMana(lead.name, restored) }],
       };
     }
   }
@@ -112,7 +113,7 @@ export function applyPlayerStance(
     ...c.log,
     {
       kind: 'stance' as const,
-      message: `${lead.name} assume postura ${stance}.`,
+      message: combatLog.logStance(lead.name, stance),
       actor: lead.name,
     },
   ];
@@ -128,13 +129,13 @@ export function applyPlayerStance(
         pendingSacrificeCost = hpLoss;
         log.push({
           kind: 'info',
-          message: `Selo do Vazio: ${currentLead.name} sacrifica ${hpLoss} HP para ganhar +${sacrifice.damageBonus} dano neste turno.`,
+          message: combatLog.logVoidSealActive(currentLead.name, hpLoss, sacrifice.damageBonus),
           actor: currentLead.name,
         });
       } else {
         log.push({
           kind: 'info',
-          message: 'Selo do Vazio inativo: HP insuficiente para sacrificar sem cair.',
+          message: combatLog.logVoidSealInactive(),
           actor: currentLead.name,
         });
       }
@@ -242,7 +243,7 @@ function physicalAttackForCharacter(
     stress = Math.min(4, stress + 1);
     logOut.push({
       kind: 'stress',
-      message: 'Golpe especial! +2 no ataque, +1 Stress.',
+      message: combatLog.logSpecialStrike(),
       actor: attacker.name,
     });
   }
@@ -259,13 +260,13 @@ function physicalAttackForCharacter(
   const rollOutcome = toRollOutcome(special);
   let attackMsg: string;
   if (special === 'fumble') {
-    attackMsg = `${attacker.name} falha criticamente.`;
+    attackMsg = combatLog.logAttackFumble(attacker.name);
   } else if (special === 'crit') {
-    attackMsg = `${attacker.name} acerta ${def.name} em cheio (crítico)!`;
+    attackMsg = combatLog.logAttackCrit(attacker.name, def.name);
   } else if (hit) {
-    attackMsg = `${attacker.name} acerta ${def.name}!`;
+    attackMsg = combatLog.logAttackHit(attacker.name, def.name);
   } else {
-    attackMsg = `${attacker.name} erra o golpe.`;
+    attackMsg = combatLog.logAttackMiss(attacker.name);
   }
 
   logOut.push({
@@ -296,7 +297,7 @@ function physicalAttackForCharacter(
       isPlayerCrit = true;
       logOut.push({
         kind: 'info',
-        message: `${attacker.name} encontra uma abertura perfeita (crítico passivo)!`,
+        message: combatLog.logPassiveCritOpening(attacker.name),
         actor: attacker.name,
         target: def.name,
       });
@@ -309,7 +310,7 @@ function physicalAttackForCharacter(
       };
       logOut.push({
         kind: 'armor_break',
-        message: 'Camada de armadura quebrada!',
+        message: combatLog.logArmorBroken(),
         target: def.name,
         enemyIndex,
       });
@@ -329,7 +330,7 @@ function physicalAttackForCharacter(
           corruptionDelta = -drain;
           logOut.push({
             kind: 'info',
-            message: `O amuleto arde: −${drain} corrupção, +${extra} dano.`,
+            message: combatLog.logAmuletBurn(drain, extra),
             actor: attacker.name,
             target: def.name,
           });
@@ -339,9 +340,7 @@ function physicalAttackForCharacter(
       newEnemies[enemyIndex] = { ...chipTarget, hp: nh };
       logOut.push({
         kind: 'damage',
-        message: isPlayerCrit
-          ? `${def.name} sofre ${dmg} de dano (crítico)!${sacrificeBonus > 0 ? ` [sacrificio +${sacrificeBonus}]` : ''}`
-          : `${def.name} sofre ${dmg} de dano.${sacrificeBonus > 0 ? ` [sacrificio +${sacrificeBonus}]` : ''}`,
+        message: combatLog.logDamageMessage(def.name, dmg, isPlayerCrit, sacrificeBonus),
         dice: [dDmg],
         final: dmg,
         target: def.name,
@@ -356,7 +355,7 @@ function physicalAttackForCharacter(
   if (attackerIndex === 0 && newAttacker.stress >= 4) {
     logOut.push({
       kind: 'stress',
-      message: 'Pânico! Defesa penalizada no próximo turno inimigo.',
+      message: combatLog.logPanic(),
     });
   }
 
@@ -417,7 +416,7 @@ export function playerAttack(
   let rngSeed = (state.rngSeed + 31) >>> 0;
 
   if (enemies.every((e) => e.hp <= 0)) {
-    log.push({ kind: 'info', message: 'Vitória!' });
+    log.push({ kind: 'info', message: combatLog.logVictory() });
     return finishCombat(
       { ...state, party, rngSeed, resources },
       { ...c, enemies, log, phase: 'ended' },
@@ -453,7 +452,7 @@ export function playerAttack(
     rngSeed = (rngSeed + 31) >>> 0;
 
     if (enemies.every((e) => e.hp <= 0)) {
-      log.push({ kind: 'info', message: 'Vitória!' });
+      log.push({ kind: 'info', message: combatLog.logVictory() });
       return finishCombat(
         { ...state, party, rngSeed, resources },
         { ...c, enemies, log, phase: 'ended' },
@@ -497,7 +496,7 @@ export function advanceToEnemyTurn(
     ...c.log,
     {
       kind: 'turn_banner' as const,
-      message: `Rodada ${c.round} — inimigos`,
+      message: combatLog.logRoundEnemies(c.round),
     },
   ];
   let enemies = [...c.enemies];
@@ -566,13 +565,13 @@ export function advanceToEnemyTurn(
     const rollOutcome = toRollOutcome(special);
     let enemyAtkMsg: string;
     if (special === 'fumble') {
-      enemyAtkMsg = `${def.name} falha criticamente.`;
+      enemyAtkMsg = combatLog.logAttackFumble(def.name);
     } else if (enemyHit && enemyCritDmg) {
-      enemyAtkMsg = `${def.name} acerta ${target.name} em cheio (crítico)!`;
+      enemyAtkMsg = combatLog.logAttackCrit(def.name, target.name);
     } else if (enemyHit) {
-      enemyAtkMsg = `${def.name} acerta ${target.name}!`;
+      enemyAtkMsg = combatLog.logAttackHit(def.name, target.name);
     } else {
-      enemyAtkMsg = `${def.name} erra.`;
+      enemyAtkMsg = combatLog.logEnemyMiss(def.name);
     }
 
     log.push({
@@ -592,7 +591,7 @@ export function advanceToEnemyTurn(
     if (special === 'crit' && !enemyCritDmg && enemyHit) {
       log.push({
         kind: 'info',
-        message: 'Quase crítico…',
+        message: combatLog.logAlmostCrit(),
       });
     }
 
@@ -608,9 +607,7 @@ export function advanceToEnemyTurn(
       party[targetIndex] = { ...target, hp: nh };
       log.push({
         kind: 'damage',
-        message: enemyCritDmg
-          ? `${target.name} sofre ${dmg} (crítico)!`
-          : `${target.name} sofre ${dmg}.`,
+        message: combatLog.logPlayerDamage(target.name, dmg, enemyCritDmg),
         dice: [dDmg],
         final: dmg,
         target: target.name,
@@ -646,7 +643,7 @@ export function advanceToEnemyTurn(
     if (sWithParty.resources.faith >= 5) {
       return finishCombatFaithRescue(sWithParty, { ...c, enemies, log, phase: 'ended' }, data, bus);
     }
-    log.push({ kind: 'info', message: 'Fim de linha.' });
+    log.push({ kind: 'info', message: combatLog.logGameOver() });
     return finishCombat(sWithParty, { ...c, enemies, log, phase: 'ended' }, false, data, bus);
   }
 
@@ -657,7 +654,7 @@ export function advanceToEnemyTurn(
     ...roundPrep.log,
     {
       kind: 'turn_banner' as const,
-      message: `Rodada ${nextRound} — sua vez (postura e ataque)`,
+      message: combatLog.logRoundPlayer(nextRound),
     },
   ];
 
@@ -739,8 +736,8 @@ export function fleeCombat(state: GameState, data: GameData, bus?: EventBus): Ga
     {
       kind: 'info',
       message: success
-        ? `${lead.name} escapa! (${total} vs TN ${tn}, Agilidade ${fmtSignedMod(mod)})`
-        : `${lead.name} não consegue fugir. (${total} vs TN ${tn}, Agilidade ${fmtSignedMod(mod)})`,
+        ? combatLog.logFleeSuccess(lead.name, total, tn, fmtSignedMod(mod))
+        : combatLog.logFleeFailure(lead.name, total, tn, fmtSignedMod(mod)),
       dice: [d1, d2],
       modifier: mod,
       final: total,

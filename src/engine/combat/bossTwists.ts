@@ -9,6 +9,7 @@ import { isBattleEncounter } from '../schema/index.ts';
 import type { GameData } from '../data/gameData.ts';
 import { finishCombat } from './resolution.ts';
 import type { EventBus } from '../core/eventBus.ts';
+import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 function bossTwistWhenMatches(
   when: { minRound?: number; firstEnemyHpLte?: number; totalHpFractionLte?: number },
@@ -131,7 +132,7 @@ export function finishCombatIfAllEnemiesDead(
   bus?: EventBus
 ): GameState | null {
   if (!enemies.every((e) => e.hp <= 0)) return null;
-  const outLog = [...log, { kind: 'info' as const, message: 'Vitória!' }];
+  const outLog = [...log, { kind: 'info' as const, message: combatLog.logVictory() }];
   return finishCombat(
     { ...carryState, party },
     { ...c, ...combatPatch, enemies, log: outLog, phase: 'ended' },

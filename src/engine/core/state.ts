@@ -188,7 +188,10 @@ export function deserializeState(json: string): GameState {
     gold: typeof rawRes?.gold === 'number' ? rawRes.gold : 0,
   };
   const legacyId = (o as Partial<GameState>).campaignId;
-  const campaignId = typeof legacyId === 'string' && legacyId.length > 0 ? legacyId : 'calvario';
+  if (typeof legacyId !== 'string' || legacyId.length === 0) {
+    throw new Error('Save inválido: campaignId em falta');
+  }
+  const campaignId = legacyId;
   const fgp = (o as GameState).factionGainPending;
   const factionGainPending: GameState['factionGainPending'] = {
     vigilia: fgp?.vigilia === 1 ? 1 : 0,
@@ -196,16 +199,10 @@ export function deserializeState(json: string): GameState {
     culto: fgp?.culto === 1 ? 1 : 0,
   };
 
-  let marks = Array.isArray((o as GameState).marks) ? [...(o as GameState).marks] : [];
-  let leadStoryPassives = Array.isArray((o as GameState).leadStoryPassives)
+  const marks = Array.isArray((o as GameState).marks) ? [...(o as GameState).marks] : [];
+  const leadStoryPassives = Array.isArray((o as GameState).leadStoryPassives)
     ? [...(o as GameState).leadStoryPassives]
     : [];
-  if (marks.includes('monk_inner_peace') && !leadStoryPassives.includes('monk_inner_peace')) {
-    leadStoryPassives.push('monk_inner_peace');
-  }
-  if (leadStoryPassives.includes('monk_inner_peace') && !marks.includes('monk_inner_peace')) {
-    marks.push('monk_inner_peace');
-  }
 
   const rawFlags = (o as GameState).flags;
   const flags: GameState['flags'] =
@@ -230,13 +227,6 @@ export function deserializeState(json: string): GameState {
         ? Math.max(0, Math.floor(rawLegacy.lastRunEchoGain))
         : 0,
   };
-  if (
-    (marks.includes('monk_inner_peace') || leadStoryPassives.includes('monk_inner_peace')) &&
-    !flags.frost_monk_blessing_done
-  ) {
-    flags.frost_monk_blessing_done = true;
-  }
-
   const rawHighlight = (o as Partial<GameState>).sceneArtHighlightShown;
   const sceneArtHighlightShown: GameState['sceneArtHighlightShown'] =
     rawHighlight && typeof rawHighlight === 'object' && !Array.isArray(rawHighlight)
@@ -303,13 +293,8 @@ export function deserializeState(json: string): GameState {
     knownSpells: Array.isArray((o as GameState).knownSpells) ? (o as GameState).knownSpells : [],
     dialogueCombat: ((o as Partial<GameState>).dialogueCombat ?? null) as GameState['dialogueCombat'],
     party: rawParty.map((p) => {
-      let mana = typeof p.mana === 'number' ? p.mana : 0;
-      let maxMana = typeof p.maxMana === 'number' ? p.maxMana : 0;
-      if (p.class === 'knight' && maxMana === 0) {
-        maxMana = 10;
-        mana = Math.min(mana, maxMana);
-        if (mana === 0) mana = 8;
-      }
+      const mana = typeof p.mana === 'number' ? p.mana : 0;
+      const maxMana = typeof p.maxMana === 'number' ? p.maxMana : 0;
       return {
         ...p,
         luck: typeof p.luck === 'number' ? p.luck : 8,
@@ -320,17 +305,5 @@ export function deserializeState(json: string): GameState {
       };
     }),
   };
-  let out = syncLeadPassiveStats(merged);
-  const combatLegacy = out.combat as { phase?: string } | null | undefined;
-  if (combatLegacy && combatLegacy.phase === 'dialogue') {
-    console.warn(
-      'Save legado: combate de diálogo armazenado em CombatState foi descartado; volta à narrativa.'
-    );
-    out = {
-      ...out,
-      combat: null,
-      mode: out.mode === 'combat' ? 'story' : out.mode,
-    };
-  }
-  return out;
+  return syncLeadPassiveStats(merged);
 }

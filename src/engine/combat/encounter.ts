@@ -9,6 +9,8 @@ import type {
 } from '../schema/index.ts';
 import { isDialogueEncounter } from '../schema/index.ts';
 import type { GameData } from '../data/gameData.ts';
+import { pickLocalized, getLocale } from '../../i18n/index.ts';
+import * as combatLog from '../../i18n/combatLogMessages.ts';
 import { effectiveLeadAttr } from '../progression/leadStats.ts';
 
 /** Ajusta seed global após consumo de RNG em combate */
@@ -63,8 +65,8 @@ function beginDialogueEncounter(
     tensionHp: dlgDef.tensionMax,
     tensionMax: dlgDef.tensionMax,
     log: [
-      { kind: 'info' as const, message: `${dlgDef.name} prende-te no reflexo.` },
-      { kind: 'interlocutor_line' as const, message: rootNode.linePt },
+      { kind: 'info' as const, message: combatLog.logDialogueTrap(dlgDef.name) },
+      { kind: 'interlocutor_line' as const, message: pickLocalized(rootNode.line, getLocale()) },
     ],
     returnScene: opts.returnScene,
     onVictory: opts.onVictory,
@@ -94,7 +96,6 @@ function beginBattleEncounter(
     onDefeat?: string;
   }
 ): GameState {
-  const rng = mulberry32(state.rngSeed);
   const enemies: EnemyInstance[] = [];
   const log: CombatLogEntry[] = [];
   for (const eid of enc.enemies) {
@@ -109,10 +110,9 @@ function beginBattleEncounter(
     });
     log.push({
       kind: 'info',
-      message: `${def.name} aparece.`,
+      message: combatLog.logEnemyAppears(def.name),
     });
   }
-  void rng;
 
   const combat: CombatState = {
     encounterId: enc.id,
@@ -147,7 +147,7 @@ function beginBattleEncounter(
   });
   log.push({
     kind: 'turn_banner',
-    message: `Rodada ${combat.round} — sua vez (postura e ataque)`,
+    message: combatLog.logRoundPlayer(combat.round),
   });
 
   const party = state.party.map((p) => ({ ...p, specialUsedThisCombat: false }));
@@ -201,14 +201,14 @@ function formatTurnOrderForLog(
     if (token.startsWith('e:')) {
       const idx = Number(token.slice(2));
       const inst = combat.enemies[idx];
-      if (!inst) return `Inimigo ${idx + 1}`;
+      if (!inst) return combatLog.logEnemyFallback(idx + 1);
       const def = data.enemies[inst.defId];
-      const base = def?.name ?? `Inimigo ${idx + 1}`;
+      const base = def?.name ?? combatLog.logEnemyFallback(idx + 1);
       const seen = enemyNameSeen.get(base) ?? 0;
       enemyNameSeen.set(base, seen + 1);
       return seen === 0 ? base : `${base} (${seen + 1})`;
     }
     return token;
   });
-  return `Ordem de iniciativa: ${labels.join(' → ')}`;
+  return combatLog.logInitiativeOrder(labels.join(' → '));
 }

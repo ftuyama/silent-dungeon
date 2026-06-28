@@ -33,17 +33,17 @@ const tinyDialogueEnemy: DialogueEnemyDef = {
     rootNodeId: 'r',
     nodes: {
       r: {
-        linePt: 'Olá.',
+        line: 'Olá.',
         choices: [
           {
-            textPt: 'Arrefecer a hostilidade.',
+            text: 'Arrefecer a hostilidade.',
             resolution: { kind: 'fixed', nextNodeId: 'end' },
             effects: { enemyHpDelta: -10 },
           },
         ],
       },
       end: {
-        linePt: 'Paz.',
+        line: 'Paz.',
         terminal: 'victory',
       },
     },
@@ -61,10 +61,10 @@ const skillBranchEffectsEnemy: DialogueEnemyDef = {
     rootNodeId: 'r',
     nodes: {
       r: {
-        linePt: 'Rola.',
+        line: 'Rola.',
         choices: [
           {
-            textPt: 'Teste fácil',
+            text: 'Teste fácil',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -78,21 +78,21 @@ const skillBranchEffectsEnemy: DialogueEnemyDef = {
         ],
       },
       ok: {
-        linePt: 'Passou.',
+        line: 'Passou.',
         choices: [
           {
-            textPt: 'Fechar',
+            text: 'Fechar',
             resolution: { kind: 'fixed', nextNodeId: 'end' },
             effects: { enemyHpDelta: -2 },
           },
         ],
       },
       bad: {
-        linePt: 'Falhou.',
+        line: 'Falhou.',
         terminal: 'victory',
       },
       end: {
-        linePt: 'Fim.',
+        line: 'Fim.',
         terminal: 'victory',
       },
     },
@@ -109,10 +109,10 @@ const skillFailBranchEnemy: DialogueEnemyDef = {
     rootNodeId: 'r',
     nodes: {
       r: {
-        linePt: 'Rola.',
+        line: 'Rola.',
         choices: [
           {
-            textPt: 'Teste impossível',
+            text: 'Teste impossível',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -125,18 +125,18 @@ const skillFailBranchEnemy: DialogueEnemyDef = {
           },
         ],
       },
-      ok: { linePt: 'Não devia.', terminal: 'victory' },
+      ok: { line: 'Não devia.', terminal: 'victory' },
       bad: {
-        linePt: 'Falhou.',
+        line: 'Falhou.',
         choices: [
           {
-            textPt: 'Sair',
+            text: 'Sair',
             resolution: { kind: 'fixed', nextNodeId: 'end' },
             effects: { enemyHpDelta: -20 },
           },
         ],
       },
-      end: { linePt: 'Fim.', terminal: 'victory' },
+      end: { line: 'Fim.', terminal: 'victory' },
     },
   },
 };
@@ -150,16 +150,16 @@ const terminalDefeatDialogue: DialogueEnemyDef = {
     rootNodeId: 'r',
     nodes: {
       r: {
-        linePt: 'Escolhe.',
+        line: 'Escolhe.',
         choices: [
           {
-            textPt: 'Ir para derrota',
+            text: 'Ir para derrota',
             resolution: { kind: 'fixed', nextNodeId: 'lose' },
           },
         ],
       },
       lose: {
-        linePt: 'Perdeste o duelo de palavras.',
+        line: 'Perdeste o duelo de palavras.',
         terminal: 'defeat',
       },
     },

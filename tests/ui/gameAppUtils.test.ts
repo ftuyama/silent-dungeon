@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Effect } from '../../src/engine/schema/index.ts';
-import type { CombatLogEntry } from '../../src/engine/schema/index.ts';
+import type { CombatLogEntry, Effect } from '../../src/engine/schema/index.ts';
 import {
   parseCombatLogRounds,
   parseTurnBannerMessage,
@@ -14,6 +13,14 @@ describe('parseTurnBannerMessage', () => {
       phase: 'player',
     });
     expect(parseTurnBannerMessage('Rodada 1 - inimigos')).toEqual({ round: 1, phase: 'enemy' });
+  });
+
+  it('reconhece banners em inglês', () => {
+    expect(parseTurnBannerMessage('Round 2 — your turn (stance and attack)')).toEqual({
+      round: 2,
+      phase: 'player',
+    });
+    expect(parseTurnBannerMessage('Round 1 - enemies')).toEqual({ round: 1, phase: 'enemy' });
   });
 });
 

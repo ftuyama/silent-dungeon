@@ -1,0 +1,77 @@
+{
+  "heroLore": {
+    "knight": "Galen grew up where the wind cuts the walls and men learn early that a broken promise kills more than a blind blade. He swore to protect the border; he failed one night, and one night was enough to bury names that still wake him.\n\nHe descended into the Dungeon of Silence not for glory, but to collect from himself a debt no one demanded aloud. Each plate on his armor weighs like a witness: he advances because to retreat would be to admit the dead were left behind in vain.",
+    "mage": "Ysara was shaped by the Tower to recite clean truths, in dry halls, among masters who only accepted risk when it fit the scroll. She believed that until she heard, beneath the city stone, a question the books did not answer.\n\nIn the dungeon, study and guilt walk together: every sigil she traces brings her closer to answers and to a version of herself the Tower might call heresy. Still she goes on — because for her, ignorance was always a sin more useful to monsters.",
+    "cleric": "Oris put on the Watch when he still believed faith was a wall: the right prayer, the right gesture, night conquered. Then he saw good people sink in silence with no miracle at all, and learned that doctrine does not warm a cold hand.\n\nHe descended to measure evil, yes — but also not to abandon those who can no longer call for help. He carries incense, psalms, and old shame; when God is silent, he answers as he can, by staying."
+  },
+  "heroPathLabels": {
+    "knight:fallen": "Fallen knight",
+    "mage:dark": "Dark mage",
+    "cleric:penitent": "Penitent cleric"
+  },
+  "heroPathPromotion": {
+    "knight:fallen": "The iron did not leave you; innocence did. The armor now wears a new name: the one who survived when he should have fallen, and learned to fight without expecting absolution.",
+    "mage:dark": "Safe symbols no longer suffice to open the doors you chose to cross. From here on, the veil answers your pulse and your hunger for truth, and each stroke costs a piece of who draws it.",
+    "cleric:penitent": "Faith did not leave you; peace deserted first. The body became a liturgy of scars, and each prayer now sounds less like comfort and more like a vow to keep standing despite the silence."
+  },
+  "heroPathLore": {
+    "knight:fallen": "The oath did not break in a shout; it broke in small omissions, on a night when Galen chose wrong and heard the price of that choice echo in the corridors. Since then he fights like one giving testimony to his own past.\n\nThey call him fallen because they do not understand: falling was easy; hard is to keep carrying the living without pretending the dead stopped weighing.",
+    "mage:dark": "The Tower taught limits; the dungeon taught necessity. Ysara crossed that border knowing that knowledge without cost was surface comfort, and that the depths demanded hands stained with shadow.\n\nIn the notebook, there are pages she hides not from shame of power, but from fear of recognizing, in clean script, how much she already changed to obtain it.",
+    "cleric:penitent": "Oris turned guilt into rite so it would not rot in silence. The Watch still calls him brother; he answers, but already knows some replies come from wounded flesh, not the altar.\n\nEach prayer is renegotiation: between mercy and discipline, between the man he was and what he must be to cross the darkness without denying his own heart."
+  },
+  "heroPathBackstory": {
+    "knight:fallen": "Since the galleries, he sleeps with the feeling of having arrived late to the blow that mattered. He does not call it fear; he calls it bitter discipline — never again allowing someone to die because of a second of hesitation.",
+    "mage:dark": "Some nights she begins a symbol and stops at the last stroke, like one facing a familiar precipice. The Tower would call it corruption; she calls it necessity — and hates realizing both words can be true at once.",
+    "cleric:penitent": "The ritual marks do not bleed, but burn on days when guilt meets silence. Penitence is no longer ceremony: it became an intimate language, reminding him that faith is also remaining human when the sky seems closed."
+  },
+  "heroPassiveLore": {
+    "knight": "The instinct awakening in Galen is not battle luck; it is muscle memory of losses he refused to repeat. When the moment closes, the body decides before doubt — and collects afterward, in silence.",
+    "mage": "The thread in mana ceased to be technique and became an intimate pact. Ysara learned to touch the abyss without surrendering wholly: she draws enough to advance, pulls back enough to still recognize herself.",
+    "cleric": "Oris's pulse does not erase fear; it teaches coexistence. His faith, down here, is not a sudden flare: it is stubborn repetition of care, even when the soul weakens and no voice from above answers."
+  },
+  "heroChapterLore": {
+    "knight": {
+      "mid": "In the depths, honor is no longer a banner motto: it is a repeated decision when no one is watching. Galen learns that protecting someone almost always means sacrificing the version of himself that still wanted to be innocent.",
+      "late": "Approaching the end, border and dungeon blur into the same inner tribunal. The steel weighs the same, but now he knows: the most persistent enemy is the voice asking whether this time he arrived in time."
+    },
+    "mage": {
+      "mid": "Each level disproves a certainty taught by the Tower. Ysara's notebook weighs more not for the paper, but for the number of promises she must make to herself to keep seeking truth without losing herself entirely.",
+      "late": "At the threshold, dark symbols already sound natural in her hands. The question ceases to be \"does it work?\" and becomes \"how much of me still chooses, and how much merely responds to what was awakened?\""
+    },
+    "cleric": {
+      "mid": "Oris learns to measure evil in short breaths, fevers, eyes that avoid the light. Incense no longer masks anything; it merely grants a few seconds of courage before naming the wound as it is.",
+      "late": "Near the end, he understands the Watch sent him to measure abysses, but he ended up being measured. Between prayer and silence, he finds a third office: carrying broken people without waiting for heaven's authorization."
+    }
+  },
+  "heroLeadPassiveLore": {
+    "monk_inner_peace": "The monk's blessing did not erase fear; it gave it a small place where silence does not scream. The leader carries it like a hot stone: uncomfortable, but honest."
+  },
+  "companionLore": {
+    "rogue_mira:base": "She calls it \"stealing from the dark\" — not looting, but taking from the night the right to lie about fear.",
+    "squire_tomas:base": "He still carries the shield of a knight who fell before him. Duty became habit, then choice.",
+    "mira_camp_shadows": "What she calls \"stealing from the dark\" is not plunder: it is taking from the night the right to lie about fear. Whoever heard that by your fire carries her name a little heavier — and with the certainty that she already knew your secret before you spoke it.",
+    "mira_cruzeiro_confidencia": "At the stone crossroads, she traded truths with you like knives wrapped in cloth: no one sees the edge until it is late. Since then, the map she draws in her head includes a corner of you that appears in no corridor — only in waking silence.",
+    "mira_frost_pact": "On the ice, the word between you froze before it left: not a temple oath, but a survival pact. She keeps it like a hook — not to pull you, but to know there is still somewhere to hold when the dungeon pretends there is no ground.",
+    "mira_void_endtalk": "At the edge of the void, she spoke like one who had already bid the body farewell from the story. The sentence she left you does not fit in inventory: it vibrates when you close your eyes, a reminder that she chose to witness your name until the last whisper.",
+    "tomas_camp_oath": "The oath by the fire was not order theater: it was iron and broken bread, and the shame of carrying a shield with no owner to sharpen it a little less. Since that night, his \"duty\" includes your spine — not as chain, as alignment.",
+    "tomas_void_duty": "In the void, duty ceased to be only inheritance from a dead order: it became a question asked in a low voice — whom do you serve when there is no wall nor rank. The answer he chose stayed on his shoulder as new weight, recognizable to whoever walks beside him."
+  },
+  "campCombatHints": [
+    "Stances: Aggressive favors physical attacks; Defensive raises AC against enemies; Focus aligns spells with Mind.",
+    "Attacks use 2d6 + modifiers; with advantage, roll 3d6 and drop the lowest die.",
+    "Two 6s on an attack threaten a crit; two 1s can result in a critical fumble.",
+    "Special strike hits harder but increases Stress — at 4, you panic.",
+    "Initiative: each combatant rolls 2d6 + AGI; highest order acts first.",
+    "In Defensive stance, against enemies you gain +2 AC (added to equipment and buffs).",
+    "Each damage you take increases Stress by 1 (up to 4).",
+    "Some encounters grant advantage to you or enemies: 3d6, drop the lowest.",
+    "Spells cost mana; at the start of your turn, some heroes recover a little HP or mana (passive).",
+    "Fleeing ends combat without victory (no XP or loot from that fight).",
+    "Against undead, clerics add +1 holy damage on physical attacks.",
+    "When combat ends, each hero's Stress drops slightly (−1).",
+    "At max faith (5), if the leader dies in combat you may be saved at the cost of faith — it does not count as victory.",
+    "Physical damage includes 1d6, weapon, and stance bonus; equipped armor reduces what you take.",
+    "Some enemies have armor plates: they absorb hits before HP drops."
+  ],
+  "campCombatHintParty": "Companions: each acts on their turn with the same stance, targeting the first living enemy."
+}

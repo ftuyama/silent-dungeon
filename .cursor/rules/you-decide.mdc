@@ -25,7 +25,7 @@ alwaysApply: true
 | UI | `src/ui/` — `GameApp.ts`, `gameAppStory.ts`, `gameAppCombat.ts`, `gameAppShell.ts`, … |
 | Campaign | `src/campaigns/calvario/` — `scenes/act*/` (`.md`), `data/`, `bundle.ts`, `maps.ts`, `classHero.ts` |
 | Registry | `src/campaigns/registry.ts`, `src/content/registry.ts` |
-| Scripts | `scripts/seed-scenes.mjs`, `scripts/validate-scenes.mjs`, `scripts/check-pending-ascii-art.mjs` |
+| Scripts | `scripts/validate-scenes.mjs`, `scripts/check-pending-ascii-art.mjs`, `scripts/i18n/` |
 
 `src/campaigns/calvario/index.json`: `id`, `entryScene`, `startingCompanionPool`; `scenes` via the content pipeline.
 

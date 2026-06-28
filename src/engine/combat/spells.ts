@@ -5,6 +5,7 @@ import { getTotalMind, statMod } from '../combat/combatStats.ts';
 import type { EventBus } from '../core/eventBus.ts';
 import { finishCombat } from './resolution.ts';
 import { advanceToEnemyTurn } from './turn.ts';
+import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 export function canCastSpell(state: GameState, spellId: string, data: GameData): boolean {
   const c = state.combat;
@@ -41,7 +42,7 @@ export function castSpell(
   const log = [...c.log];
   log.push({
     kind: 'info',
-    message: `${lead.name} lança ${sp.name} (−${sp.manaCost} mana).`,
+    message: combatLog.logCastsSpell(lead.name, sp.name, sp.manaCost),
     actor: lead.name,
     spellId,
   });
@@ -70,7 +71,7 @@ export function castSpell(
       chipTarget.armorChipsRemaining -= 1;
       log.push({
         kind: 'armor_break',
-        message: 'Camada de armadura quebrada (magia)!',
+        message: combatLog.logArmorBrokenSpell(),
         target: def.name,
         enemyIndex,
       });
@@ -80,7 +81,7 @@ export function castSpell(
       newEnemies[enemyIndex] = { ...chipTarget, hp: nh };
       log.push({
         kind: 'damage',
-        message: `${def.name} sofre ${dmg} de dano mágico.`,
+        message: combatLog.logMagicDamage(def.name, dmg),
         dice: diceRolls,
         final: dmg,
         target: def.name,
@@ -104,7 +105,7 @@ export function castSpell(
     newLead = { ...newLead, hp: nh };
     log.push({
       kind: 'heal',
-      message: `${lead.name} recupera ${healed} HP.`,
+      message: combatLog.logHealsHp(lead.name, healed),
       dice: diceRolls,
       final: healed,
       actor: lead.name,
@@ -115,7 +116,7 @@ export function castSpell(
     combatBuffs = { ...combatBuffs, buffAttackRoll: 1 };
     log.push({
       kind: 'info',
-      message: `${lead.name} canaliza força — +1 no ataque até ao fim do combate.`,
+      message: combatLog.logBuffAttack(lead.name),
       actor: lead.name,
       spellId,
     });
@@ -123,7 +124,7 @@ export function castSpell(
     combatBuffs = { ...combatBuffs, buffArmorClass: 1 };
     log.push({
       kind: 'info',
-      message: `${lead.name} endurece a guarda — +1 CA até ao fim do combate.`,
+      message: combatLog.logBuffArmor(lead.name),
       actor: lead.name,
       spellId,
     });
@@ -133,7 +134,7 @@ export function castSpell(
 
   const allDead = newEnemies.every((e) => e.hp <= 0);
   if (allDead) {
-    log.push({ kind: 'info', message: 'Vitória!' });
+    log.push({ kind: 'info', message: combatLog.logVictory() });
     return finishCombat(
       { ...state, party, rngSeed: (state.rngSeed + 31) >>> 0 },
       {

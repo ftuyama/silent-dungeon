@@ -1,0 +1,222 @@
+{
+  "endings/epilogue_depths": {
+    "title": "Depths of the axis",
+    "body": "The stone **drops**: you didn't close the dungeon — you **changed** **strata**. Here silence **weighs** like a lower ceiling; the air is **old** before it reaches your lungs.\n\n*(You can **save** from the menu or **start over** whenever you like.)*"
+  },
+  "shared/explore_nav_act2": {
+    "title": "Perimeter of the tunnels",
+    "body": "**Silence** is not absence of sound — it is the stone's **decision**. Each step **asks** whether you return to the Vigil's fire or **stay** with the echo.\n\nWith the **torn map**, you see where the corridor **lies** least; without it, you have only **skin** and **haste**.",
+    "choices": [
+      {
+        "text": "Patrol at random (random encounter)",
+        "preview": "Without moving on the map — the tunnels choose for you.",
+        "uiSection": "On the perimeter"
+      },
+      {
+        "text": "Return to the crossroads hub",
+        "preview": "Retreat, raise shelter, and keep current stress.",
+        "uiSection": "On the perimeter"
+      }
+    ]
+  },
+  "shared/explore_nav_act3": {
+    "title": "Perimeter of the depths",
+    "body": "In the **depths**, the echo chews names before returning them. The map promises no exit — only direction.\n\n**Morvayn** needs no witnesses to govern fear: the **Vigil** tightening the oath, the **Circle** bargaining over ash, and the **Third Bell** collecting what remains are enough. With the **torn map** in your head, you see where the stone **lies** least — without it, only **ear** and **haste** remain, and both fail at once.",
+    "choices": [
+      {
+        "text": "Patrol at random (random encounter)",
+        "preview": "Without moving on the map — the depths decide in violence.",
+        "uiSection": "On the perimeter"
+      },
+      {
+        "text": "Retreat to the depths core",
+        "preview": "Return to the hub and keep current stress.",
+        "uiSection": "On the perimeter"
+      }
+    ]
+  },
+  "shared/explore_nav_act5": {
+    "title": "Ridge trails",
+    "body": "Snow erases new and old footprints with the same indifference. What changes is who can still read the trace.",
+    "choices": [
+      {
+        "text": "Patrol at random (random encounter)",
+        "preview": "Without moving on the map — the range decides in violence.",
+        "uiSection": "On the perimeter"
+      },
+      {
+        "text": "Return to the camp on the ice",
+        "preview": "Retreat to the fire and keep current stress.",
+        "uiSection": "On the perimeter"
+      }
+    ]
+  },
+  "shared/explore_nav_act6": {
+    "title": "Columns of the fractured nave",
+    "body": "Each column repeats a broken oath. To walk here is to choose which crack will answer first.",
+    "choices": [
+      {
+        "text": "Wander among the columns (random encounter)",
+        "preview": "Without moving on the map — the void chooses the next step.",
+        "uiSection": "On the perimeter"
+      },
+      {
+        "text": "Follow the sound of the hammer without forge",
+        "preview": "A side route; the echo strikes bone.",
+        "uiSection": "On the perimeter"
+      },
+      {
+        "text": "Retreat to the fractured nave",
+        "preview": "Leave the perimeter and keep current stress.",
+        "uiSection": "On the perimeter"
+      }
+    ]
+  },
+  "shared/game_over": {
+    "title": "Journey's End",
+    "body": "# Silence of stone\n\nSomething in you **yields** without thunder — a void that leaves no echo.\n\nThe **Silent Dungeon** **opens** and **closes** like a wound; your name becomes a whisper in the damp. If thread remains, descend again: the abyss does not fill — silence, yes, takes note.",
+    "choices": [
+      {
+        "text": "Start over"
+      }
+    ]
+  },
+  "shared/kael_act2_blades": {
+    "title": "Iron in the bone room",
+    "body": "[DRAFT] The **word** **broke**. What remains is **counting** — and the **grey one** **already** **advances**.",
+    "choices": [
+      {
+        "text": "Measure iron with Kael"
+      }
+    ]
+  },
+  "shared/kael_act4_blades": {
+    "title": "Iron in the passage",
+    "body": "[DRAFT] The **wind** **waits**. Kael **does not** — the **metal** **already** **decided** the **tone**.",
+    "choices": [
+      {
+        "text": "Measure iron with Kael"
+      }
+    ]
+  },
+  "shared/kael_act5_blades": {
+    "title": "Iron in the white breath",
+    "body": "[DRAFT] The **frost** **bites** the **phrase**. What remains is **iron** — and **trail** that **does not** **deny** **duel**.",
+    "choices": [
+      {
+        "text": "Measure iron with Kael"
+      }
+    ]
+  },
+  "shared/kael_act6_blades": {
+    "title": "Iron in the rib",
+    "body": "[DRAFT] The **void** **swallows** the **last** **syllable**. The **echo** **falls silent** — the **grey one** **does not**.",
+    "choices": [
+      {
+        "text": "Measure iron with Kael"
+      }
+    ]
+  },
+  "shared/kaelsworn_oath": {
+    "title": "Oath of ash",
+    "body": "**Kael** **removes** his **helm**: tired **face**, **clean** **gaze**.\n\n> *\"**Three** **times** **I** **fell**. **Three** **times** **you** **did not** **lie** **in** **the** **blow**. That **is** **enough** **for** **an** **oath** **of** **mine**: **I** **do not** **serve** **you** **as** **dog** — **I** **serve** **as** **iron** **that** **learned** **to** **bend** **only** **to** **your** **hand**.\"*",
+    "choices": [
+      {
+        "text": "Accept — sword to one who beat you three times",
+        "diaryTexts": [
+          "Kael bent the blade: not vassal, shadow with weight. Three falls of his became a name at my side."
+        ]
+      },
+      {
+        "text": "Accept — sword to one who beat you three times",
+        "diaryTexts": [
+          "Kael bent the blade: not vassal, shadow with weight. Three falls of his became a name at my side."
+        ]
+      },
+      {
+        "text": "Accept — sword to one who beat you three times",
+        "diaryTexts": [
+          "Kael bent the blade: not vassal, shadow with weight. Three falls of his became a name at my side."
+        ]
+      },
+      {
+        "text": "Accept — sword to one who beat you three times",
+        "diaryTexts": [
+          "Kael bent the blade: not vassal, shadow with weight. Three falls of his became a name at my side."
+        ]
+      },
+      {
+        "text": "Refuse — let the iron fall silent"
+      },
+      {
+        "text": "Refuse — let the iron fall silent"
+      },
+      {
+        "text": "Refuse — let the iron fall silent"
+      },
+      {
+        "text": "Refuse — let the iron fall silent"
+      }
+    ]
+  },
+  "shared/kaelsworn_post_act2": {
+    "title": "Iron that yields",
+    "body": "**Kael** inclines his helm; the metal **breathes** as one who **keeps** a phrase for **later**.\n\n> *\"It was not victory — it was **counting**. When the **number** **closes**, the **iron** **speaks**.\"*",
+    "choices": [
+      {
+        "text": "Hear what the iron promises — oath"
+      },
+      {
+        "text": "Withdraw — there is a door and there is haste"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Kael retreated in the bone room — not from fear, from measure. The grey trail stayed on the floor like a deferred promise."
+    ]
+  },
+  "shared/kaelsworn_post_act4": {
+    "title": "Iron at the threshold",
+    "body": "**Kael** **anchors** his **sword** in the **shadow** of the **step** — **not** as **threat**, as **marker**.\n\n> *\"The **axis** **bends**; I **do not**. **Count** **again**.\"*",
+    "choices": [
+      {
+        "text": "Hear what the iron promises — oath"
+      },
+      {
+        "text": "Withdraw toward the ice"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "At the threshold of the grey wind, Kael bent for the length of a heartbeat. The throne stayed behind; the trail, ahead."
+    ]
+  },
+  "shared/kaelsworn_post_act5": {
+    "title": "Iron in the frost",
+    "body": "**Vapor** **gnaws** the **steel**; **Kael** **laughs** **low**, **sound** of **wet** **stone**.\n\n> *\"The **cold** **tests** **joint**. You **passed**. **Still** **to** **know** **if** **you** **accept** **what** **joint** **demands**.\"*",
+    "choices": [
+      {
+        "text": "Hear what the iron promises — oath"
+      },
+      {
+        "text": "Retreat to camp — the lair waits"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "At the door of the white breath, Kael scraped ice from his shoulder as one scraping a name. Three counted blows — the iron wanted to speak."
+    ]
+  },
+  "shared/kaelsworn_post_act6": {
+    "title": "Iron in the rib",
+    "body": "**Kael** **seems** **smaller** **against** the **impossible** **angle** — **the** **armor** **does not**: **it** **stays** **straight**.\n\n> *\"Here **even** **echo** **does not** **lie**. If **you** **swear**, **swear** **once** **only** — **or** **fall** **silent** **forever**.\"*",
+    "choices": [
+      {
+        "text": "Hear what the iron promises — oath"
+      },
+      {
+        "text": "Retreat to the fractured nave"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "On the rib the map denies, Kael touched his breastplate as one closing a book. The void heard the iron without contest."
+    ]
+  }
+}

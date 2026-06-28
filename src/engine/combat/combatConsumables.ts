@@ -7,6 +7,7 @@ import {
   removeOneInventoryItem,
 } from '../progression/consumables.ts';
 import { advanceToEnemyTurn } from './turn.ts';
+import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 function getLead(state: GameState) {
   return state.party[0]!;
@@ -48,7 +49,7 @@ export function useCombatConsumable(
   const log = [...c.log];
   log.push({
     kind: 'info',
-    message: `${lead.name} usa ${def.name}.`,
+    message: combatLog.logUsesItem(lead.name, def.name),
     actor: lead.name,
     itemId,
   });
@@ -57,22 +58,22 @@ export function useCombatConsumable(
     if (delta > 0) {
       log.push({
         kind: 'heal',
-        message: `${lead.name} recupera ${delta} HP.`,
+        message: combatLog.logHealsHp(lead.name, delta),
         final: delta,
         actor: lead.name,
         target: lead.name,
         itemId,
       });
     } else {
-      log.push({ kind: 'info', message: 'Nada a curar — HP já cheio.' });
+      log.push({ kind: 'info', message: combatLog.logHpFull() });
     }
   }
   if (def.restoreMana && def.restoreMana > 0 && lead.maxMana > 0) {
     const delta = newLead.mana - lead.mana;
     if (delta > 0) {
-      log.push({ kind: 'info', message: `${lead.name} recupera ${delta} mana.` });
+      log.push({ kind: 'info', message: combatLog.logHealsMana(lead.name, delta) });
     } else {
-      log.push({ kind: 'info', message: 'Mana já no máximo.' });
+      log.push({ kind: 'info', message: combatLog.logManaFull() });
     }
   }
   if (def.stressRelief && def.stressRelief > 0) {
@@ -80,11 +81,11 @@ export function useCombatConsumable(
     if (delta > 0) {
       log.push({
         kind: 'stress',
-        message: `${lead.name} alivia o stress (−${delta}).`,
+        message: combatLog.logRelievesStress(lead.name, delta),
         actor: lead.name,
       });
     } else {
-      log.push({ kind: 'info', message: 'Stress já no mínimo.' });
+      log.push({ kind: 'info', message: combatLog.logStressMin() });
     }
   }
 

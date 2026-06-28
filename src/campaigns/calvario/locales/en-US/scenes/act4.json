@@ -1,0 +1,545 @@
+{
+  "act4/encounters/fight_morvayn": {
+    "title": "Confrontation with Morvayn",
+    "body": "**Morvayn** raises his staff. The dice decide.",
+    "choices": [
+      {
+        "text": "First phase — confrontation!"
+      },
+      {
+        "text": "First phase — confrontation!"
+      }
+    ]
+  },
+  "act4/encounters/fight_morvayn_2": {
+    "title": "Throne Awakening",
+    "body": "The throne **awakens**. Its form fills out with borrowed bones.",
+    "choices": [
+      {
+        "text": "Second phase — throne!"
+      },
+      {
+        "text": "Second phase — throne!"
+      }
+    ]
+  },
+  "act4/encounters/pact_vigil_skirmish": {
+    "title": "Vigil Skirmish",
+    "body": "From the **shadow** of a fountain, a **Vigil** archer cuts your path. He comes without sermon — he comes with **certainty**.\n\n\"**Servant** is not citizen\", he says. \"It is an open **wound** in the city.\"",
+    "choices": [
+      {
+        "text": "Answer the Vigil's steel"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "A Vigil hunter recognized my step — not my face. The pact smells of betrayal to those who swear by the light."
+    ]
+  },
+  "act4/late_merchant": {
+    "title": "Throne Merchant",
+    "body": "Between **chains** that bind nothing, someone **unfolds** a cloth — vials that **tremble** as if they still had **patience**.\n\nThe merchant **measures** you: he smells like someone who **fears** climbing without having cut the shadow at the root.\n\nThe voice does not come from the **throat**; it comes from the **echo** that already knows your name.\n\n> Stock **limited**. The throne **eats** memory, but **gold** pays for silence.",
+    "choices": [
+      {
+        "text": "Buy Red Potion (14 gold) (x2)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Red Potion (14 gold) (x1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Blue Tonic (18 gold) (x1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Mead (12 gold) (x1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Vigil field kit (−7 gold)",
+        "preview": "Supply · Vigil seal (once at this stall)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Step away from the merchant",
+        "uiSection": "Talk"
+      }
+    ]
+  },
+  "act4/morvayn_interlude": {
+    "title": "False Truce",
+    "body": "Morvayn **wavers** — not from weakness, from **theater**. The throne **breathes** through him, and you feel the air turn **contagious** like cathedral sickness.\n\nYou have an **instant** to decide *how* you carry the next assault: in the **head**, in the **bone**, or in **blind haste**.",
+    "choices": [
+      {
+        "text": "Make one last sweep of the hall"
+      },
+      {
+        "text": "Bury the fear in your mind (+Mind, 3 scenes)",
+        "diaryTexts": [
+          "Before the second phase, I sealed the echo like invisible armor and read the hall with calm."
+        ]
+      },
+      {
+        "text": "Harden the body (+STR, 3 scenes)",
+        "diaryTexts": [
+          "The throne trembles — so do I, but by choice. Each step measures the next blow."
+        ]
+      },
+      {
+        "text": "Accept the seal's cost and breathe deep (−Mind, +cruel focus)",
+        "diaryTexts": [
+          "Instead of running, I accepted the tremor. Clarity came with pain."
+        ]
+      },
+      {
+        "text": "Force the second phase now (shortcut without exploring)"
+      }
+    ]
+  },
+  "act4/morvayn_parley": {
+    "title": "Parley with Morvayn",
+    "body": "\"Peace is **silence**\", Morvayn says. \"Choose the silence you prefer to hear.\"",
+    "choices": [
+      {
+        "text": "Refuse the pact and fight"
+      },
+      {
+        "text": "Accept service to the Third Bell",
+        "preview": "Verbal confrontation with Morvayn; victory leads to pact, failure to combat.",
+        "lockedHint": "The Third Bell only extends its hand to those the Cult has not yet marked as declared enemies."
+      },
+      {
+        "text": "Try to seal the dungeon (sacrifice)",
+        "lockedHint": "You need at least 2 measures of faith to risk the seal — conviction drawn tight."
+      }
+    ]
+  },
+  "act4/pact/pact_after_mind": {
+    "title": "Domesticated Echo",
+    "body": "The echo **settles**. It does not vanish — it learns your name and goes quiet out of courtesy.\n\nFor an instant, you feel the world like a well-oiled **machine**: every wheel turning because you **allow** it.",
+    "choices": [
+      {
+        "text": "Cross the square without faltering"
+      }
+    ]
+  },
+  "act4/pact/pact_after_mind_fail": {
+    "title": "Echo's Bite",
+    "body": "The echo **bites**. A spark crosses your thoughts like **steel** on tongue.\n\nYou still serve — but you feel the price as sweet **nausea**, like poison honey stuck to the roof of your mouth.",
+    "choices": [
+      {
+        "text": "Cross anyway — by force"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "The echo ran down my throat. A tooth broke in my attention — and the Third Bell laughed softly."
+    ]
+  },
+  "act4/pact/pact_ascent": {
+    "title": "Pact Ascent",
+    "body": "The **dungeon** falls behind you like a damp cocoon — **silence** stuck to skin. The air above smells of old rain and cheap incense — but beneath the skin, something **pulls** downward, always, as if the world had learned a new rhythm to obey.\n\nA **bell** does not ring. Even so, your pulse tries to follow what does not exist.",
+    "onEnterDiaryTexts": [
+      "I accepted the Third Bell. Each step upward sounds like a peal only I hear."
+    ],
+    "skillCheckLabel": "Contain the Third Bell before the surface"
+  },
+  "act4/pact/pact_ascent_fail": {
+    "title": "Fractured Echo",
+    "body": "The **Third Bell** strikes inside like a hammer on glass.\n\nFor an instant, you climb with another body's knees, breath short and mind in\nsparks. The street opens before you — and Morvayn is already waiting, as if your failure\nhad been the invitation.",
+    "choices": [
+      {
+        "text": "Fail in silence and face Morvayn"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I lost the Third Bell's measure. I climbed broken, and Morvayn heard the crack."
+    ]
+  },
+  "act4/pact/pact_coda": {
+    "title": "Pact Coda",
+    "body": "The hunter falls or flees; the city **learns** to pretend asleep.\n\nYou serve the **Third Bell** as **conduit** — beat without tower, because the tower **learned** through you. The **ring** on your finger: **mute** to others, deafening to you.\n\nCold rises into the city's skin; day arrives **obedient** — and you hear the promised fourth stroke, never fused.",
+    "choices": [
+      {
+        "text": "Accept what was written in you"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I served the Third Bell. The ring on my finger does not ring — but the world learned to go quiet when I breathe."
+    ]
+  },
+  "act4/pact/pact_trial_mind": {
+    "title": "Trial of Mind",
+    "body": "Market noise **folds** over itself. You see symbols where there is nothing — or there always was, and only now can you **read**.\n\nTo keep from **splitting** in two, you need one thing only: hold your head as the **chamber** of sound, not as the bell.",
+    "skillCheckLabel": "Sustain the Third Bell's echo in your mind"
+  },
+  "act4/pact/pact_whispers": {
+    "title": "Pact Whispers",
+    "body": "Between **watchmen** who pretend not to see and merchants who look away, a voice — not yours — describes what you will do before you think it.\n\n**\"Serve.\"** Not a request. A **measure**.\n\nThe Third Bell needs no metal: it needs **someone** to carry the echo without breaking.",
+    "choices": [
+      {
+        "text": "Let the whisper finish"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "In the city, windows close early. Silence is not peace — it is a queue."
+    ]
+  },
+  "act4/passage_graywind_heights": {
+    "title": "Passage",
+    "body": "## Passage\n\n{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\n**You find** what the throne **hid**: not an **end** — a **deeper reach**, a **fold** in the axis where stone **learns** a **new cold**. The throne did **not** close the **axis**: in the **Heights**, the wound **opens** a pocket of ice so vast it **seems** a mountain — a **chamber** with snow for **ceiling**. **Debt** with **interest** in **wind**.",
+    "choices": [
+      {
+        "text": "Stop at the threshold — gray armor that did not come from the throne",
+        "preview": "Verbal confrontation with Kael (draft); failure leads to steel."
+      },
+      {
+        "text": "Set out for Graywind Heights — follow the ice rumor",
+        "preview": "Chapter 5. Far from the throne, the cold still asks who rules silence."
+      }
+    ]
+  },
+  "act4/seal_ending": {
+    "title": "Seal Ending",
+    "body": "You seal the **Silent Dungeon** at a price. Scars on the soul; fragile peace in the stones.\n\nThe seal asks more than blood: two **beats** in succession — first the **mind** holding the bell bursting inside, then the **body** not yielding when weight\nfalls on the bones like stone.",
+    "dualAttrSkillCheckLabel": "Two beats of the seal — mind and iron"
+  },
+  "act4/seal_ending_fail": {
+    "title": "Peace Ruptured",
+    "body": "Peace **fails** for an instant that is enough.\n\nThe stones tremble, the seal opens a crack, and you take in the chest the scar of what you could\nnot contain.\n\nMorvayn smiles like someone who already knew: now the fight begins with the world against you.",
+    "choices": [
+      {
+        "text": "The seal breaks. Fight Morvayn"
+      }
+    ]
+  },
+  "act4/throne/throne_arcane": {
+    "title": "Runes Beneath the Green Pulse",
+    "body": "The runes do **not glow** — they **throb**. If you look away, they rearrange like **fingers** on a throat.",
+    "skillCheckLabel": "Read the pattern without letting the throne in"
+  },
+  "act4/throne/throne_arcane_fail": {
+    "title": "Letter That Bites",
+    "body": "The line **splits** you in two: not lack of intelligence — too much **invitation**. The throne laughs **without sound**, and you feel the echo like sacred **heartburn**.",
+    "choices": [
+      {
+        "text": "Drop your gaze and return to the antechamber",
+        "diaryTexts": [
+          "The rune bit my thought — a hole remained where order should be."
+        ]
+      }
+    ]
+  },
+  "act4/throne/throne_arcane_ok": {
+    "title": "Pattern Contained",
+    "body": "For an instant, the symbol **fits**: not power — **grammar**. The throne stops being only fear and becomes a **sentence** you can refuse aloud.",
+    "choices": [
+      {
+        "text": "Keep the mental map and return to the antechamber",
+        "diaryTexts": [
+          "I saw the throne's measure — not enough to tame it, enough not to lose myself at once."
+        ]
+      }
+    ]
+  },
+  "act4/throne/throne_chains": {
+    "title": "Living Chains",
+    "body": "The chains **want** fingers. They do not bind only the throne — they **rehearse** your name like someone testing a new chain.\n\nBetween them, trapped in black resin: a **finger** with a broken bell ring and marks of human teeth — not beast — as if someone had **bitten** the hand that swore before the Vigil scraped the oath from stone.",
+    "choices": [
+      {
+        "text": "Take a fragment caught in the metal (−1 supply, +2 gold)",
+        "lockedHint": "You need at least 1 supply to force the fragment free without breaking yourself.",
+        "diaryTexts": [
+          "I tore a shard from the throne's bone — the metal did not forgive, but the pocket thanked me."
+        ]
+      },
+      {
+        "text": "Let the drip touch your skin (+1 corruption, −1 faith)",
+        "lockedHint": "Without faith to spend, the drip finds no coin in you — accumulate at least 1.",
+        "diaryTexts": [
+          "I tasted the drip: sweet as promise, and promise always charges interest."
+        ]
+      },
+      {
+        "text": "Pull your hands back and return"
+      }
+    ]
+  },
+  "act4/throne/throne_class_blessing": {
+    "title": "Craft in the Hall",
+    "body": "The hall **recognizes** crafts as it recognizes **tools**: it does not judge — it **measures** what you can ruin with them.",
+    "choices": [
+      {
+        "text": "Trace a brief sign in the air — contained blessing",
+        "diaryTexts": [
+          "The throne does not accept light — but accepts that I name it without offering it for free."
+        ]
+      },
+      {
+        "text": "Measure the space with your body — wall posture",
+        "diaryTexts": [
+          "The floor asked for weight; I gave discipline, not theater."
+        ]
+      },
+      {
+        "text": "Count the echo as incomplete formula",
+        "diaryTexts": [
+          "Every silence has a coefficient — I only wrote down what does not eat me first."
+        ]
+      },
+      {
+        "text": "Return without invoking craft"
+      }
+    ]
+  },
+  "act4/throne/throne_gate": {
+    "title": "Throne Antechamber",
+    "body": "The **Bone Throne** rises in interlaced ribs; **chains** groan without wind.\n\n**Morvayn** precedes the chair — **shadow**, then a smile with **no certain lips**. The green pulse **beats** with your heart; the hall returns **foreign whispers** that know your name.\n\nEach **rehearsal** in the hall **spends** itself on bone: you can still **bargain** with the merchant or let steel **wait**.",
+    "choices": [
+      {
+        "text": "Hear the necromancer before crossing steel",
+        "preview": "Words before steel; pact or provocation.",
+        "uiSection": "Confrontation"
+      },
+      {
+        "text": "Attack at once (without words)",
+        "preview": "Steel now — or hesitation that becomes talk.",
+        "uiSection": "Confrontation"
+      },
+      {
+        "text": "Observe the throne: bones, runes, chains",
+        "preview": "Information and risk of being seen too much.",
+        "uiSection": "Watchful eyes"
+      },
+      {
+        "text": "Bargain with the merchant in the chains' shadow",
+        "preview": "Gold, items, and silence in vials.",
+        "uiSection": "Trade"
+      },
+      {
+        "text": "Arcane inspection — read runes without yielding to the throne",
+        "preview": "Mind against rune; failure may cost.",
+        "uiSection": "Trials in the hall"
+      },
+      {
+        "text": "Nerve trial — the floor that lies",
+        "preview": "Luck and steady leg; the floor deceives.",
+        "uiSection": "Trials in the hall"
+      },
+      {
+        "text": "Probe chains and drip",
+        "preview": "Chains and suspect liquid; gold or curse.",
+        "uiSection": "Trials in the hall"
+      },
+      {
+        "text": "Craft in the hall: blessing, posture, or formula",
+        "preview": "Your class opens one ritual path.",
+        "uiSection": "Trials in the hall"
+      }
+    ]
+  },
+  "act4/throne/throne_nerves": {
+    "title": "Nerve Trial",
+    "body": "The floor **invents** steps. If you hesitate, the bone underfoot **records** your weight as debt.",
+    "luckCheckLabel": "Keep your hands steady when the floor lies"
+  },
+  "act4/throne/throne_nerves_fail": {
+    "title": "Stumble",
+    "body": "Your sole **slips** on thick memory. You do not fall — but you **pay** the fright with breath and sweat.",
+    "choices": [
+      {
+        "text": "Accept the fright and return to the antechamber",
+        "diaryTexts": [
+          "I stumbled where there was nothing — the throne likes to pretend holes."
+        ]
+      }
+    ]
+  },
+  "act4/throne/throne_nerves_ok": {
+    "title": "Steadfastness",
+    "body": "Your body **believes** in you for once. Not heroism — minimum **contract** with the floor.",
+    "choices": [
+      {
+        "text": "Return to the antechamber",
+        "diaryTexts": [
+          "Fear came — and passed without stealing my name."
+        ]
+      }
+    ]
+  },
+  "act4/throne/throne_observe": {
+    "title": "The Throne",
+    "body": "Each bone of the throne has **one name** scraped away — you cannot read them all. One of them is your **first fear** in small letters.\n\nThe chains **drip** something thick. It is not blood. It is **memory** too dense to run. If you look too long, the throne **learns** the shape of your fear — and that does not erase with prayer.",
+    "choices": [
+      {
+        "text": "Try to read one full name (Mind test)"
+      },
+      {
+        "text": "Intercept the chains' drip (luck)"
+      },
+      {
+        "text": "Return to the moment of decision"
+      }
+    ]
+  },
+  "act4/throne/throne_observe_luck": {
+    "title": "Chain Drip",
+    "body": "The drop **lingers** in the air like a decision. If you miss the timing, you do not wet your hand — you **wet** fate.",
+    "luckCheckLabel": "Catch a drop without being marked"
+  },
+  "act4/throne/throne_observe_luck_fail": {
+    "title": "Betrayed Drop",
+    "body": "The drop **falls** where it should not — **stains** your sleeve, steals warmth, laughs **without teeth**.",
+    "choices": [
+      {
+        "text": "Shake your hand and keep observing"
+      },
+      {
+        "text": "Return to the moment of decision"
+      }
+    ]
+  },
+  "act4/throne/throne_observe_luck_ok": {
+    "title": "Captured Drop",
+    "body": "At the right instant, **memory** mistakes you for its owner. Use it: the throne has not noticed yet.",
+    "choices": [
+      {
+        "text": "Keep observing the throne",
+        "diaryTexts": [
+          "The drop solidified between my fingers — small coin of ice and luck."
+        ]
+      },
+      {
+        "text": "Return to the moment of decision"
+      }
+    ]
+  },
+  "act4/throne/throne_observe_mind": {
+    "title": "Scraped Names",
+    "body": "The names **murmur** when you should not be listening. If you read aloud, the bone **answers** with yours.",
+    "skillCheckLabel": "Decipher a name without the throne hearing"
+  },
+  "act4/throne/throne_observe_mind_fail": {
+    "title": "Trapped Letter",
+    "body": "The letter **escapes** and leaves a **buzz** where sense should be. The throne likes **holes** — you just paid for one.",
+    "choices": [
+      {
+        "text": "Give up the reading and keep observing"
+      },
+      {
+        "text": "Return to the moment of decision"
+      }
+    ]
+  },
+  "act4/throne/throne_observe_mind_ok": {
+    "title": "Silence Read",
+    "body": "You find a **line** that does not belong to you — and still **aligns** your fear like a ruler.",
+    "choices": [
+      {
+        "text": "Keep observing the throne",
+        "diaryTexts": [
+          "One name yielded — not mine, but one that serves as crooked mirror."
+        ]
+      },
+      {
+        "text": "Return to the moment of decision"
+      }
+    ]
+  },
+  "act4/throne/throne_sweep": {
+    "title": "Last Sweep",
+    "body": "Before the throne **closes** the account, you can treat the hall like a **table** — measurements, wagers, **honest** mistakes.",
+    "choices": [
+      {
+        "text": "Follow a fissure behind the throne (explore in silence)"
+      },
+      {
+        "text": "Catalog bones and shadows (Mind test)"
+      },
+      {
+        "text": "Release a forbidden syllable into the void (luck)"
+      },
+      {
+        "text": "Give the bone no more time — to the second phase"
+      }
+    ]
+  },
+  "act4/throne/throne_sweep_cat_fail": {
+    "title": "Count That Flees",
+    "body": "The bone **multiplies** when you are not looking — not trick, **cruel pedagogy**.",
+    "choices": [
+      {
+        "text": "To the second phase — throne!"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I lost the count and the throne added a line to my fear."
+    ]
+  },
+  "act4/throne/throne_sweep_cat_ok": {
+    "title": "Bone Map",
+    "body": "The number **closes** a circle: you are no longer visitor — you are **measure** inside the room.",
+    "choices": [
+      {
+        "text": "To the second phase — throne!",
+        "diaryTexts": [
+          "I counted until the hall grew small — space is a lie when you know where you step."
+        ]
+      }
+    ]
+  },
+  "act4/throne/throne_sweep_catalog": {
+    "title": "Merciless Inventory",
+    "body": "Each rib is an **argument**. If you convince yourself too much, the throne **adds** another line beside you.",
+    "skillCheckLabel": "Count bones without losing yourself in the number"
+  },
+  "act4/throne/throne_sweep_hidden_treasure": {
+    "title": "Treasure Buried in Bone",
+    "body": "Between petrified ribs, you find a **black nodule** caught in old iron. When you touch it, the hall shifts weight; something in you learns a new rhythm.\n\nIt is not gold. It is a **fragment of will** torn from the throne.",
+    "choices": [
+      {
+        "text": "Keep the fragment and return to the hall"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "In a hidden cut of the throne, I found a living fragment: it throbs like sharpened memory."
+    ]
+  },
+  "act4/throne/throne_sweep_word": {
+    "title": "Syllable in the Void",
+    "body": "There are words the air **refuses**. If you time it right, silence pays; if you fail, the hall **charges** interest.",
+    "luckCheckLabel": "Release the word without being overheard"
+  },
+  "act4/throne/throne_sweep_word_fail": {
+    "title": "Word That Bites",
+    "body": "The void **does not forgive** badly calibrated audacity. You pay with **body** and purse.",
+    "choices": [
+      {
+        "text": "To the second phase — throne!"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "The word returned like a whip — it stole breath and provisions."
+    ]
+  },
+  "act4/throne/throne_sweep_word_ok": {
+    "title": "Subtracted Echo",
+    "body": "For an instant, the hall **forgets** you. That is all you need: not to be the throne's **matter**.",
+    "choices": [
+      {
+        "text": "To the second phase — throne!",
+        "diaryTexts": [
+          "The syllable fell like coin — the void accepted payment."
+        ]
+      }
+    ]
+  },
+  "act4/victory_peace": {
+    "title": "Victory in Silence",
+    "body": "The **snap** beneath the crown sounds like **closure**, not coronation: a door yielding when there is no longer **anyone** pushing from the other side.\n\nThe green pulse **melts** into silence; the throne, for an instant **furniture**, then **stone** again. **Victory**, **lean**: you remained standing.",
+    "choices": [
+      {
+        "text": "Gather what remains — listen to the throne"
+      }
+    ]
+  }
+}

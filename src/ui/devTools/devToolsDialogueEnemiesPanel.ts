@@ -5,6 +5,7 @@ import {
   type DialogueNode,
 } from '../../engine/schema/dialogueCombat.ts';
 import { dialogueGraphToMermaid, findOrphanNodeIds } from '../../dev/dialogueEnemiesGraphMermaid.ts';
+import { getLocale, pickLocalized } from '../../i18n/index.ts';
 
 function formatDialogueEffectsSummary(effects: DialogueChoice['effects']): string | null {
   if (!effects) return null;
@@ -231,7 +232,7 @@ export function mountDialogueEnemiesPanel(
 
     const line = document.createElement('p');
     line.className = 'dev-tools-dialogue-enemies-sim-line';
-    line.textContent = node.linePt;
+    line.textContent = pickLocalized(node.line, getLocale());
     simBody.appendChild(line);
 
     if (node.terminal === 'victory') {
@@ -268,7 +269,7 @@ export function mountDialogueEnemiesPanel(
 
       const text = document.createElement('p');
       text.className = 'dev-tools-dialogue-enemies-sim-choice-text';
-      text.textContent = ch.textPt;
+      text.textContent = pickLocalized(ch.text, getLocale());
       li.appendChild(text);
 
       const fx = formatDialogueChoiceMechanicsSummary(ch);

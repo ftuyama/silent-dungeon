@@ -1,0 +1,720 @@
+{
+  "act6/camp/manage_equip": {
+    "title": "Arm Against the Void",
+    "body": "The light **trembles**; every buckle seems to **negotiate** with shadow. You reorganize what you still call **yours**: **weapon**, **armor**, **relics** — small promises that the next step will not be the last.",
+    "choices": [
+      {
+        "text": "Return to the fire"
+      }
+    ]
+  },
+  "act6/camp/void_camp": {
+    "title": "Fire of Mirrored Ash",
+    "body": "There is no **wood** — only **remains** of those who already burned themselves. The fire **imitates** warmth; your body accepts the lie because it **needs** a place to pretend there is still **tomorrow**.\n\n*Even here, the number follows: **day {{day}}** — mirrored in ash.*\n\nSmoke rises in **spirals** that recall corridors — do not ask where they go.",
+    "choices": [
+      {
+        "text": "Feed the flame with memory (−1 supply)",
+        "lockedHint": "You need at least 1 supply to feed the flame.",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Drink Red Potion (self)",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Give Red Potion to companion",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Drink Blue Tonic (mana)",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Drink Mead (stress)",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Exchange a few words with the group",
+        "lockedHint": "Without a companion, there is no group to talk to.",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Watch the gray swallow another day",
+        "preview": "The narrative day advances; you recover no strength.",
+        "uiSection": "Camp"
+      },
+      {
+        "text": "Manage equipment by the unstable light",
+        "uiSection": "Camp"
+      },
+      {
+        "text": "Return to the fractured nave",
+        "uiSection": "Leave"
+      }
+    ]
+  },
+  "act6/camp/void_companion_chat": {
+    "title": "Word by the False Flame",
+    "body": "{{companionLine}}\n\nIf you are alone, silence doubles the voice you already carry inside. Here, even the echo seems tired of repeating lies.",
+    "choices": [
+      {
+        "text": "Listen to Mira — voice against the echo",
+        "uiSection": "By the fire"
+      },
+      {
+        "text": "Listen to Tomás — shield against the void",
+        "uiSection": "By the fire"
+      },
+      {
+        "text": "Stand between the two — three breaths, one flame",
+        "uiSection": "By the fire"
+      },
+      {
+        "text": "Mira: \"Fallen knight or not — here the ground does not distinguish oath\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Mira: \"Honest darkness, you said once. The void charges interest\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Mira: \"Penitence is weight; do not drop it now or you grow too light\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás: \"The shield reminds me of your steel — both lie that they hold everything\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás: \"If the void reads your journal, what remains unwritten?\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás: \"Faith in a place without echo — courage or habit?\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Return to the fire",
+        "uiSection": "Back"
+      }
+    ]
+  },
+  "act6/camp/void_duo_fireside": {
+    "title": "Three Voices in the Fractured Nave",
+    "body": "**Mira** and **Tomás** measure each other at the fire; the truth is only one: no one wants to die **alone** here.\n\nTomás murmurs **exit**; Mira murmurs **silence**. You, {{leadName}}, stand between — witness, not judge.\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Choose neither — only continue"
+      }
+    ]
+  },
+  "act6/camp/void_mira_fireside": {
+    "title": "Ash — Confidences with Mira",
+    "body": "**Mira** watches the flame that consumes no wood — and still recoils, survivor's habit.\n\n> *\"Here the echo **lies** less than people. That is not comfort: it is **warning**.\"*\n\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Ask if she still recognizes her own shadow"
+      },
+      {
+        "text": "Speak of the end as a door, not a pit"
+      },
+      {
+        "text": "Return to the false flame circle"
+      }
+    ]
+  },
+  "act6/camp/void_mira_topic_end": {
+    "title": "Door or Pit",
+    "body": "> *\"A door closes; a pit **swallows**,\"* **Mira** murmurs. *\"I prefer a door. I know alleys.\"*\n\nShort laugh; from here on the **Void** does not forgive — it follows your **decision** with your real weight.\n\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Return to the unstable light",
+        "diaryTexts": [
+          "Mira spoke of the end as a crack — not victory. I keep this as one keeps a match: little, but enough to see the next step."
+        ]
+      }
+    ]
+  },
+  "act6/camp/void_mira_topic_mirror": {
+    "title": "Shadow and Mirror",
+    "body": "> *\"Shadows here have **teeth\"*, Mira says. *\"Mine includes everything I stole from fear — and fear likes to charge interest.\"*\n\nShe closes her eyes for an instant.\n\n> *\"If you see me hesitate, do not call it pity. Call it **time**.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Leave this reflection — return to the group"
+      }
+    ]
+  },
+  "act6/camp/void_tomas_fireside": {
+    "title": "Ash — Word with Tomás",
+    "body": "**Tomás** leans the shield on ash that spreads no warmth.\n\n> *\"This is not a field,\"* he says low. *\"It is **trial**. And trial asks no applause — it asks steps.\"*\n\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Ask if his faith sounds different here"
+      },
+      {
+        "text": "Speak of duty when the ground promises no firmness"
+      },
+      {
+        "text": "Return to the false flame circle"
+      }
+    ]
+  },
+  "act6/camp/void_tomas_topic_duty": {
+    "title": "Duty Without Ground",
+    "body": "> *\"Duty needs no soil,\"* he murmurs. *\"It needs **someone** not to lie to. I chose that someone when I followed you.\"*\n\nThe metal trembles lightly — or the air pretends to tremble.\n\n> *\"If we fall, we fall **together**. Short promise. Too long turns into rope at the neck.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Return to the group"
+      }
+    ]
+  },
+  "act6/camp/void_tomas_topic_faith": {
+    "title": "Faith in the Void",
+    "body": "> *\"Faith does not change sound,\"* Tomás says. *\"It changes **echo**. Here the echo repeats what you want to hear — so I distrust it.\"*\n\nHe breathes slow.\n\n> *\"If God falls silent, I still raise the shield. Not theater. **Habit** of one who still believes in ground.\"*\n---\n\n{{companionLine}}",
+    "choices": [
+      {
+        "text": "Leave the prayer unfinished — and return"
+      }
+    ]
+  },
+  "act6/dimensional_smith/entry": {
+    "title": "Corridor of the Blind Anvil",
+    "body": "A fissure cuts the nave wall.\n\nInside: **iron, pause, iron**. No ember. No bellows.",
+    "choices": [
+      {
+        "text": "Enter through the wall's cut and follow the sound"
+      },
+      {
+        "text": "Return to the columns before being noticed"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I heard hammer where there was no forge; the void decided to fuse something in me."
+    ]
+  },
+  "act6/dimensional_smith/forge": {
+    "title": "Dimensional Workshop",
+    "body": "The workshop ceiling breathes crooked. No visible fire.\n\nThe smith does not smile. He only measures your breath between strikes.\n\n\"**Iron lives. Gold silences.**\"\n\n\"Want a miracle? Bring surplus from an encounter. I join the parts.\"",
+    "choices": [
+      {
+        "text": "Temper Iron Dagger (10 gold)",
+        "lockedHint": "Requires Iron Dagger, 10 gold, and not owning the tempered version.",
+        "uiSection": "Iron upgrade"
+      },
+      {
+        "text": "Reforge Rusty Sword (12 gold)",
+        "lockedHint": "Requires Rusty Sword, 12 gold, and not owning the reforged version.",
+        "uiSection": "Iron upgrade"
+      },
+      {
+        "text": "Forge Dimensional Ward Plate (Fracture Iron + Void Slag)",
+        "lockedHint": "Requires 1 Fracture Iron, 1 Void Slag, and not owning the armor.",
+        "uiSection": "Void forge",
+        "diaryTexts": [
+          "The dimensional ward plate left the forge as if it remembered my name."
+        ]
+      },
+      {
+        "text": "Leave the workshop",
+        "uiSection": "Talk"
+      }
+    ]
+  },
+  "act6/dimensional_smith/unlock": {
+    "title": "The Forge Between Hinges",
+    "body": "The smith seems more noise than man.\n\nHe strikes invisible metal and stops without looking at you.\n\n\"**Paid. Trade. Gone.**\"\n\n\"If you return, bring metal that has seen the void.\"",
+    "choices": [
+      {
+        "text": "Speak. Accept the workshop's mark.",
+        "diaryTexts": [
+          "The smith opened the workshop with three words and a crooked look."
+        ]
+      },
+      {
+        "text": "Retreat to the fractured nave"
+      }
+    ]
+  },
+  "act6/encounters/memory_trial_bleed": {
+    "title": "Hemorrhage of Echoes",
+    "body": "You fall without axis into the pit. Old faces grab your wrists as if you owed all of them.\n\nWhen you breathe again, the Chorus is already before you.",
+    "choices": [
+      {
+        "text": "Fight while memories tear you"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Memories came in a pack and none asked permission."
+    ]
+  },
+  "act6/encounters/memory_trial_safe": {
+    "title": "Ballast of Name",
+    "body": "You choose a name to anchor yourself to the present. It works for a moment, and a moment is enough to face the abyss with a straight spine.",
+    "choices": [
+      {
+        "text": "Dive with the echo under control"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I repeat my name as one drives a stake into a shoreless sea."
+    ]
+  },
+  "act6/encounters/mirror_boss_blades": {
+    "title": "The Other Name — Steel",
+    "body": "[DRAFT] The **mirror** **closes** **negotiation**. What remains is **shadow** with **teeth** — and **you** with **blade**.",
+    "choices": [
+      {
+        "text": "Fight my sovereign reflection"
+      }
+    ]
+  },
+  "act6/encounters/mirror_boss_intro": {
+    "title": "The Other Name",
+    "body": "From the mirror steps someone with your face and your posture, but without hesitation. He smiles as one who already won every argument with his own conscience.\n\n> *\"I am you without fear. You are me without courage.\"*\n\nIf he wins, you will keep living. You just will not keep **being**.",
+    "choices": [
+      {
+        "text": "Take words from the reflection before steel (draft)",
+        "preview": "Verbal confrontation; failure leads to physical combat."
+      },
+      {
+        "text": "Fight my sovereign reflection"
+      }
+    ]
+  },
+  "act6/encounters/mirror_boss_resolve": {
+    "title": "Stitching of Shadow",
+    "body": "The reflection unravels into black threads that do not attack you. They seek shelter in your body's outline, like a cloak made of everything you denied.\n\nThere is no clean triumph. Only a lucid pact: walk with darkness on a short leash.",
+    "choices": [
+      {
+        "text": "Accept the fissure and move on"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I did not destroy my shadow. I gave it a name and a limit."
+    ]
+  },
+  "act6/encounters/reality_trial_focus": {
+    "title": "Coherent Fissure",
+    "body": "You hold a single version of the room for a few seconds. Enough to distinguish stone from reflection and fear from warning.\n\nThe Herald smiles without a mouth.",
+    "choices": [
+      {
+        "text": "Face the Herald with a fixed mind"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I held the world by a thread of thought. I discovered thought also cuts."
+    ]
+  },
+  "act6/encounters/reality_trial_shatter": {
+    "title": "Fissure Without Axis",
+    "body": "Walls swap places and your own body seems to arrive late to every gesture. Stepping on the floor becomes an act of faith.\n\nThe Herald does not advance. He waits for your fall to call it proof.",
+    "choices": [
+      {
+        "text": "Fight even with faith failing"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "When the real split, shadow entered first."
+    ]
+  },
+  "act6/encounters/void_encounter_corruption_horde": {
+    "title": "Rust That Dances",
+    "body": "The **corruption** you carry is no secret to the stone — it **vibrates**, calls **shards** and a **preacher** who already had your name written on his tongue.\n\nThis is not divine punishment. It is **ecology** of the void: where there is stain, there is **predator**.",
+    "choices": [
+      {
+        "text": "Contain the surge — stain preacher and shard drawn to the wound"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_echo": {
+    "title": "Whispers Without Audience",
+    "body": "The air **thickens** with voices that have no owner — they remind you of **wrong** names and **right** dates, and laugh when you correct them.\n\nThis is not music. It is **memory** on strike.",
+    "choices": [
+      {
+        "text": "Endure the host until one mouth at a time falls silent"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_echo_fragment": {
+    "title": "Memory with Teeth",
+    "body": "The **host** repeats what you did not say; the **shard** completes what you **fled** saying. Between the two, a **new** story is born — worse than yours, because it is **coherent**.",
+    "choices": [
+      {
+        "text": "Cut the host and tear out the shard that feeds it"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_fragment_solo": {
+    "title": "Decision That Remained",
+    "body": "From the floor **rises** a silhouette with no stable face — it did not come from outside; it **escaped** you years ago and learned to **walk** alone.\n\nIt asks no forgiveness. It asks **continuity**.",
+    "choices": [
+      {
+        "text": "Face the wandering shard between the columns"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_pair_fragments": {
+    "title": "Siblings of Renunciation",
+    "body": "Two shadows **argue** in whisper — not with you, **between themselves** — about which lie serves you best. When they see you, the debate **ends**: first you are eaten, then the rest.",
+    "choices": [
+      {
+        "text": "Separate the two shards before they fuse"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_penitent": {
+    "title": "Penitence Without Confessor",
+    "body": "Metal **groans** where there should be no smith — only **will** tempered in cold. The armor does not protect the body; it **silences** hesitation.\n\nEvery step of his is a **sentence** read in a low voice.",
+    "choices": [
+      {
+        "text": "Measure blades with the penitent of links"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_shadow_rare": {
+    "title": "Regent Without Throne",
+    "body": "For a **thread** of a second, the air **stays** with you — it does not mirror; it **reigns** over shards. What moves asks no name: it **imposes** silence where you still **negotiated** with doubt.\n\nThis is not narrative ambush. It is **consequence** asking for place.",
+    "choices": [
+      {
+        "text": "Face the regent of broken glass head-on"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_triple_fragments": {
+    "title": "Swarm of Falls",
+    "body": "Three shadows **rose** from the same fault — they are not copies; they are **versions** that gained body on different days. Together, they form an **argument** that does not fit in one head.\n\nThe nave **tilts** as if agreeing.",
+    "choices": [
+      {
+        "text": "Hold against the shard swarm"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_veil": {
+    "title": "Scribe Between Dead Mirrors",
+    "body": "A **tall** figure crosses the gloom as one **writes** in the air — there is no blood, there is **certainty** dripping from the veil's corners; **ink** where there should be skin.\n\nThe voice does not ask if you are ready. It treats **readiness** as a child's defect.",
+    "choices": [
+      {
+        "text": "Answer the scribe before he stitches sky to your throat"
+      }
+    ]
+  },
+  "act6/encounters/void_encounter_veil_fragment": {
+    "title": "Veil and Shard",
+    "body": "The **Scribe** traces; the **shard** obeys — not as servant, as living **footnote** to your fear.\n\nTogether, they close a circle that asks no permission to **exist**.",
+    "choices": [
+      {
+        "text": "Break the pair before the fragment becomes dogma"
+      }
+    ]
+  },
+  "act6/encounters/will_trial": {
+    "title": "Trial of Will",
+    "body": "At the altar's height, a crown of obsidian thorns turns slowly, waiting for a king tired enough to call it destiny.\n\nA faceless penitent holds a blade without metal. His voice comes from inside your armor:\n\n> *\"Do you want power to protect, or to never tremble again?\"*\n\nTo choose is to lose a version of yourself forever.",
+    "choices": [
+      {
+        "text": "Submit impulse to the altar's chance"
+      },
+      {
+        "text": "Force direct confrontation against the penitent",
+        "preview": "Immediate steel — or hesitate and let the altar decide."
+      }
+    ]
+  },
+  "act6/encounters/will_trial_duel": {
+    "title": "Duel of the Empty Crown",
+    "body": "The altar chooses silence. Only the Penitent advances, as if each step were a word that cannot be unsaid.",
+    "choices": [
+      {
+        "text": "Sustain the duel and pay the price"
+      }
+    ]
+  },
+  "act6/encounters/will_trial_horde": {
+    "title": "Crown of Hunger",
+    "body": "The crown splits into several fragments and each fragment wears your face. It is no longer duel: it is tribunal of shadows.",
+    "choices": [
+      {
+        "text": "Break the circle of hungry echoes"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Will without bridle called versions of me that only know conquest."
+    ]
+  },
+  "act6/epilogue": {
+    "title": "Epilogue of the Broken Mirror",
+    "body": "You carry the fractured nave in your eyes — **shard** of mirror that lied on the first step, now **cut** in the palm. To those who look quickly, the world above is the same.\n\nFor you, streets become hypotheses; the **green pulse** did not change tone — you changed how you **count** it. One step, not from purity: from **choice**.",
+    "choices": [
+      {
+        "text": "Lift your eyes — the sky no longer apologizes"
+      },
+      {
+        "text": "Close the journal for now"
+      }
+    ]
+  },
+  "act6/fractured_merchant": {
+    "title": "Stall of the Last Price",
+    "body": "On cloth that **reflects** nothing, flasks line up like **teeth** in a closed mouth. Who sells shows no **hands** — only **prices** that rise when you hesitate, because here the **last** buyer already paid with what they did not have.\n\n> **Limited** stock. The void **charges** interest in gold — and in **memories** you would rather have left behind.",
+    "choices": [
+      {
+        "text": "Buy nave map (−4 gold)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Red Potion (8 gold) (×2)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Red Potion (5 gold) (×1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Blue Tonic (7 gold) (×1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Mead (6 gold) (×1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (5 gold) (×2)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (5 gold) (×1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (10 gold) (×1)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Vigil field kit (−7 gold)",
+        "preview": "Supply · Vigil seal (once at this stall)",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Step away from the stall",
+        "uiSection": "Talk"
+      }
+    ]
+  },
+  "act6/hub_fractured_nave": {
+    "title": "Fractured Nave",
+    "body": "Three corridors lie about what living is; the **Void** opens **one at a time** — **sentence**, not map, only **versions** in queue.\n\nOn the ceiling, cracks **constellate** impossible faces of yours. To leave **whole** may mean calling **incomplete** by a pretty label.\n\nBetween columns, a fire that should not exist and a **stall** with no owner pretend business with one who is already the void's client.",
+    "choices": [
+      {
+        "text": "Patrol the fractured nave (explore map)",
+        "preview": "Move between columns and ruins; stress rises and the void may answer.",
+        "uiSection": "Explore"
+      },
+      {
+        "text": "Follow the corridor of broken mirrors (Trial of Reality)",
+        "preview": "First cord: reality; permanent mark according to outcome.",
+        "lockedHint": "You need level 25 for the first cord; once the trial is complete, the corridor no longer opens here.",
+        "uiSection": "Trials"
+      },
+      {
+        "text": "Descend to the bottomless memory pit (Trial of Memory)",
+        "preview": "Only after the real: memory; echo leaves a mark.",
+        "uiSection": "Trials"
+      },
+      {
+        "text": "Climb to the altar of bare will (Trial of Will)",
+        "preview": "Last trial before the mirror; will measured or split.",
+        "uiSection": "Trials"
+      },
+      {
+        "text": "Cross the Inner Mirror Gate",
+        "preview": "Three trials done; the final mirror opens.",
+        "uiSection": "Trials"
+      },
+      {
+        "text": "Light the fire of mirrored ash (camp)",
+        "preview": "A breath of supply and broken silence.",
+        "uiSection": "Refuge and trade"
+      },
+      {
+        "text": "Trade with the forgotten stall merchant",
+        "preview": "Remedies and prices in gold or promise.",
+        "uiSection": "Refuge and trade"
+      },
+      {
+        "text": "Seek the Dimensional Smith",
+        "preview": "Few words, much metal, and exact charge.",
+        "uiSection": "Refuge and trade"
+      },
+      {
+        "text": "Listen to the whisper beneath the columns (corruption route)",
+        "preview": "Pact in the void; requires high corruption and level.",
+        "uiSection": "Void"
+      }
+    ]
+  },
+  "act6/litany_after_memory": {
+    "title": "Litany of Fleeing Names",
+    "body": "The chorus **tunes** to a silence that is not peace — it is **waiting**. Memory is not archive here; it is rope. You feel it stretch toward the third trial, where there are no witnesses, only **order** or **hunger**.\n\n---",
+    "choices": [
+      {
+        "text": "Climb without looking back — the pit has eaten enough"
+      }
+    ]
+  },
+  "act6/litany_after_reality": {
+    "title": "Litany of Cut Reality",
+    "body": "The columns **repeat** your step one tone below your ear — not echo: **debt**. The real already bit you; what comes next does not ask if you still like your name, only if you hold it on your tongue.\n\n---",
+    "choices": [
+      {
+        "text": "Accept that the next throat only speaks when this one falls silent"
+      }
+    ]
+  },
+  "act6/litany_after_will": {
+    "title": "Litany of the Empty Crown",
+    "body": "The circle of dust around your feet **closes** like contract. Three trials, three **bites** in the same body: the Void does not distribute victory — it distributes **consistency**. If you still breathe whole, the nave reminds you that whole is only another form of **incomplete** with pride.\n\n---",
+    "choices": [
+      {
+        "text": "Return to the esplanade — the final mirror demands the three marks"
+      }
+    ]
+  },
+  "act6/memory_after": {
+    "title": "Ballast of Memory",
+    "body": "The chorus dissolves into drops of dark ink that rise instead of fall. Each drop brings a face you loved and did not save.\n\nThe pit falls silent when you speak your own name with no title.",
+    "choices": [
+      {
+        "text": "Climb back to the fractured nave"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "My memories are not archive. They are battlefield."
+    ]
+  },
+  "act6/memory_trial": {
+    "title": "Trial of Memory",
+    "body": "In the pit, you see scenes of your life in layers, like dreams within dreams. When you try to touch a memory, another wakes beneath it and asks who wrote the first.\n\nChildish, old, and wounded voices sing your name in different tones, without deciding which is true.\n\nThe chorus rises from below:\n\n> *\"To remember is to choose what to kill.\"*",
+    "choices": [
+      {
+        "text": "Hold a name on your tongue before diving",
+        "preview": "Without anchor in time, the pit drinks without asking."
+      },
+      {
+        "text": "Fall into the pit without ties"
+      }
+    ]
+  },
+  "act6/mirror_gate": {
+    "title": "Inner Mirror Gate",
+    "body": "The nave's three marks shine at once and the floor opens in a perfect arch. On the other side, a room without doors.\n\nAt the center, a vertical mirror of water. It does not reflect your body: it reflects your **intent**.",
+    "choices": [
+      {
+        "text": "Enter and face who inhabits me"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I passed the three questions and none absolved me."
+    ]
+  },
+  "act6/nave_summons": {
+    "title": "Chorus Before the Queue",
+    "body": "The columns **order themselves** without moving: you understand you will not choose *everything at once* — you will **cross** one at a time, and each leaves **scar** before letting the next pass.\n\nA faceless chorus rehearses your name in three tones. The first already **asks** entry.",
+    "choices": [
+      {
+        "text": "Climb to the esplanade where only one trial breathes at a time"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "The Void does not open a menu — it opens a queue. Three throats, one at a time, as if time here were rope and not clock."
+    ]
+  },
+  "act6/opening_void_threshold": {
+    "title": "Void Threshold",
+    "body": "The ice **opens** beneath the Heights: **nave** without altar, hung between stone and night — cathedral for a question.\n\nEvery echo returns **late**, another person with your name; the air smells of **truth before it has a name**. On the broken columns: *if the world is dream, who wakes when you fall?*",
+    "choices": [
+      {
+        "text": "Enter the fractured nave and hear what remains of the world"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "At the bottom of the ice was a door without hinge. I entered and the world answered with my voice, but without my mercy."
+    ]
+  },
+  "act6/reality_after": {
+    "title": "Scar of the Real",
+    "body": "The herald's mask cracks in perfect lines, like glass that already knew where to fall. Behind it there is no flesh, only a void with your breath.\n\nYou gather a fragment of black mirror. It does not reflect light; it reflects **decision** — not new promise: the **remainder** of the first descent, when you already knew the reflection was not heroism.",
+    "choices": [
+      {
+        "text": "Let the chorus answer and return to the esplanade"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Truth did not free me. It only took my right to lie to myself."
+    ]
+  },
+  "act6/reality_trial": {
+    "title": "Trial of Reality",
+    "body": "The mirrors show **you** with easier choices — you never entered the Silent Dungeon, or you were loved by all and forgotten by all.\n\nThe metallic-veiled herald inclines: *real is what **insists***; the floor liquefies for an instant — you only stay standing if you choose which pain you call truth.",
+    "choices": [
+      {
+        "text": "Try to fix a single world with the mind",
+        "preview": "Without fixing in time, the veil splits."
+      },
+      {
+        "text": "Close your eyes and accept collapse"
+      }
+    ]
+  },
+  "act6/void_secret_claim": {
+    "title": "Mark of the Hollow Blade",
+    "body": "The mirror touches your chest from within. A dark line remains on the sternum, hot like freshly forged metal.\n\nWhen you close your hand, the mark answers.",
+    "choices": [
+      {
+        "text": "Return to the fractured nave with the mark active"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I learned a new creed: bleed to wound better."
+    ]
+  },
+  "act6/void_secret_entry": {
+    "title": "Vein of the Abyss",
+    "body": "The columns part without moving. Between them rises a corridor of wet stone, made of angles the eye refuses.",
+    "choices": [
+      {
+        "text": "Follow the corridor that does not exist on the map"
+      },
+      {
+        "text": "Listen for metal in the vein — the trail that does not fade",
+        "preview": "Verbal confrontation with Kael (draft); failure leads to steel."
+      },
+      {
+        "text": "Retreat before the void recognizes you"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Corruption opened a door lucidity did not see."
+    ]
+  },
+  "act6/void_secret_pact": {
+    "title": "Liturgy of the Fissure",
+    "body": "An opaque mirror rises from the floor and writes your name with your own shadow. The offer is simple: convert pain into strength, turn after turn.\n\nThere is no witness, only cost.",
+    "choices": [
+      {
+        "text": "Accept the pact and carve the seal into the body"
+      }
+    ]
+  },
+  "act6/will_after": {
+    "title": "Oath Without Witnesses",
+    "body": "The penitent falls to his knees, but does not bleed. Instead, he scatters black dust that writes a circle around your feet.\n\nInside it, you feel a new certainty: you are not pure, but you are still yours.",
+    "choices": [
+      {
+        "text": "Descend to the fractured nave"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Will is not strength to defeat everyone. It is discipline not to obey the worst in me."
+    ]
+  }
+}

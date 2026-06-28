@@ -4,7 +4,13 @@ import {
   type DialogueChoiceEffects,
   type DialogueGraph,
   type DialogueNode,
+  type LocalizedStringValue,
 } from '../engine/schema/dialogueCombat.ts';
+import { getLocale, pickLocalized } from '../i18n/index.ts';
+
+function localizedPlain(value: LocalizedStringValue): string {
+  return pickLocalized(value, getLocale());
+}
 
 /** Escapa texto para etiquetas de aresta com `htmlLabels` (Mermaid). */
 function escapeHtmlForEdgeLabel(s: string, maxLen: number): string {
@@ -42,7 +48,7 @@ function buildChoiceEdgeLabelHtml(
   const hasFx = fxPlain.length > 0;
   const hasRes = resolutionSuffix.length > 0;
   const textMax = hasFx || hasRes ? 56 : 64;
-  let inner = escapeHtmlForEdgeLabel(choice.textPt, textMax);
+  let inner = escapeHtmlForEdgeLabel(localizedPlain(choice.text), textMax);
   if (hasFx) {
     inner += `<br/><span class='dev-dialogue-edge-fx'>${escapeHtmlForEdgeLabel(fxPlain, 160)}</span>`;
   }
@@ -55,7 +61,7 @@ function buildChoiceEdgeLabelHtml(
 
 function buildNodeLabelHtml(nid: string, node: DialogueNode): string {
   const idHtml = escapeHtmlForEdgeLabel(nid, 200);
-  const lineHtml = escapeHtmlForEdgeLabel(node.linePt, 160);
+  const lineHtml = escapeHtmlForEdgeLabel(localizedPlain(node.line), 160);
   let inner = `<span class='dev-dialogue-node-id'>[${idHtml}]</span>`;
   if (node.terminal === 'victory') {
     inner += `<br/><span class='dev-dialogue-node-badge'>vitória</span>`;

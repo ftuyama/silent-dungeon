@@ -8,7 +8,9 @@ import {
 import type { Choice, GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
 import { formatLevelUpDeltaLine, randomCampCombatHint } from './gameAppUtils.ts';
+import { pickExplorationEdgeText } from '../campaigns/calvario/overlayPick.ts';
 import { appendStoryMapPanel } from './storyMapPanel.ts';
+import { t } from '../i18n/index.ts';
 import {
   appendCampEquipmentPanel,
   type CampEquipmentCallbacks,
@@ -52,28 +54,29 @@ function buildExplorationMovementRows(
   const atMaxStress = lead !== undefined && lead.stress >= 4;
   const rows: StoryChoiceRow[] = [];
   for (const edge of node.edges) {
-    const preview = 'Stress +1 · possível encontro';
+    const preview = t('story.stressEncounterHint');
+    const edgeText = pickExplorationEdgeText(graph.id, edge.id, edge.text);
     if (atMaxStress) {
       rows.push({
         kind: 'locked',
         choice: {
           id: `explore_move_${edge.id}`,
-          text: edge.text,
+          text: edgeText,
           preview,
           effects: [],
-          uiSection: 'Navegação',
+          uiSection: t('story.navigation'),
         },
-        hint: 'Stress no máximo — não consegues avançar pelos túneis.',
+        hint: t('story.stressBlockedHint'),
       });
     } else {
       rows.push({
         kind: 'enabled',
         choice: {
           id: `explore_move_${edge.id}`,
-          text: edge.text,
+          text: edgeText,
           preview,
           effects: [],
-          uiSection: 'Navegação',
+          uiSection: t('story.navigation'),
         },
       });
     }
@@ -99,11 +102,9 @@ export type StoryOverlayState = {
   statusHighlightQueue: StoryStatusHighlightRow[];
   /** Espaçamento em ms entre inícios da cascata (sync com `GameApp`). */
   statusHighlightExitStaggerMs: number;
-  setStatusHighlightQueue: (q: StoryStatusHighlightRow[]) => void;
   requestStatusHighlightStackDismiss: () => void;
   itemAcquireQueue: string[];
   diaryEntryQueue: string[];
-  setDiaryEntryQueue: (q: string[]) => void;
   requestDiaryBannerDismiss: () => void;
   requestItemAcquireBannerDismiss: () => void;
   diaryBannerExiting: boolean;
@@ -206,7 +207,7 @@ export function mountSceneArtHighlightPreview(opts: {
   const closeBtn = document.createElement('button');
   closeBtn.type = 'button';
   closeBtn.className = 'dev-tools-btn dev-tools-btn--secondary';
-  closeBtn.textContent = 'Fechar';
+  closeBtn.textContent = t('story.close');
   actions.appendChild(closeBtn);
   layer.appendChild(actions);
 
@@ -328,7 +329,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       if (h.variant === 'debuff') {
         const kicker = document.createElement('div');
         kicker.className = 'status-highlight-debuff-kicker';
-        kicker.textContent = 'Penalidade';
+        kicker.textContent = t('story.penalty');
         block.appendChild(kicker);
       }
       const titleEl = document.createElement('div');
@@ -351,8 +352,8 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       statusDismiss.type = 'button';
       statusDismiss.className = 'status-highlight-dismiss';
       statusDismiss.dataset.quickNavContinue = '';
-      statusDismiss.title = 'Barra de espaço';
-      statusDismiss.textContent = '[Espaço] — Continuar';
+      statusDismiss.title = t('story.spacebarTitle');
+      statusDismiss.textContent = t('story.continueSpace');
       statusDismiss.addEventListener('click', () => {
         ctx.overlay.requestStatusHighlightStackDismiss();
         ctx.audio.playUiClick();
@@ -370,14 +371,14 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     }
     const kicker = document.createElement('div');
     kicker.className = 'diary-entry-kicker';
-    kicker.textContent = 'Cronista';
+    kicker.textContent = t('story.chronicler');
     wrap.appendChild(kicker);
     const subKicker = document.createElement('div');
     subKicker.className = 'diary-entry-subkicker';
     subKicker.textContent =
       ctx.overlay.diaryEntryQueue.length > 1
-        ? 'Novas linhas gravadas no diário'
-        : 'Nova linha gravada no diário';
+        ? t('story.diaryEntriesNew')
+        : t('story.diaryEntryNew');
     wrap.appendChild(subKicker);
     for (const passage of ctx.overlay.diaryEntryQueue) {
       const p = document.createElement('p');
@@ -389,8 +390,8 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     diaryDismiss.type = 'button';
     diaryDismiss.className = 'diary-entry-dismiss';
     diaryDismiss.dataset.quickNavContinue = '';
-    diaryDismiss.title = 'Barra de espaço';
-    diaryDismiss.textContent = '[Espaço] — Continuar';
+    diaryDismiss.title = t('story.spacebarTitle');
+    diaryDismiss.textContent = t('story.continueSpace');
     diaryDismiss.addEventListener('click', () => {
       ctx.overlay.requestDiaryBannerDismiss();
       ctx.audio.playUiClick();
@@ -408,7 +409,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     }
     const kicker = document.createElement('div');
     kicker.className = 'item-acquire-kicker';
-    kicker.textContent = unique.length > 1 ? 'Novos itens adquiridos' : 'Item adquirido';
+    kicker.textContent = unique.length > 1 ? t('story.itemsAcquired') : t('story.itemAcquired');
     wrap.appendChild(kicker);
     for (const itemId of unique) {
       const def = ctx.registry.data.items[itemId];
@@ -432,8 +433,8 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     itemDismiss.type = 'button';
     itemDismiss.className = 'item-acquire-dismiss';
     itemDismiss.dataset.quickNavContinue = '';
-    itemDismiss.title = 'Barra de espaço';
-    itemDismiss.textContent = '[Espaço] — Continuar';
+    itemDismiss.title = t('story.spacebarTitle');
+    itemDismiss.textContent = t('story.continueSpace');
     itemDismiss.addEventListener('click', () => {
       ctx.overlay.requestItemAcquireBannerDismiss();
       ctx.audio.playUiClick();
@@ -447,14 +448,14 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     primer.className = 'session-primer';
     const title = document.createElement('div');
     title.className = 'session-primer-title';
-    title.textContent = 'Primeiros passos';
+    title.textContent = t('story.firstSteps');
     primer.appendChild(title);
     const list = document.createElement('ul');
     list.className = 'session-primer-list';
     const tips = [
-      '[1-9] ativa escolhas sem clicar.',
-      '[Espaço] continua rolagens de dados e diálogos com botão “Continuar”.',
-      'Menu (☰) para salvar/carregar, ajustar texto e áudio.',
+      t('story.onboardingTipChoices'),
+      t('story.onboardingTipSpace'),
+      t('story.onboardingTipMenu'),
     ];
     for (const tip of tips) {
       const li = document.createElement('li');
@@ -465,7 +466,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const dismiss = document.createElement('button');
     dismiss.type = 'button';
     dismiss.className = 'session-primer-dismiss';
-    dismiss.textContent = 'Entendi';
+    dismiss.textContent = t('story.gotIt');
     dismiss.addEventListener('click', () => {
       ctx.onboardingPrimer?.onDismiss();
       ctx.audio.playUiClick();
@@ -491,7 +492,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     promo.setAttribute('role', 'status');
     const kicker = document.createElement('div');
     kicker.className = 'path-promotion-kicker';
-    kicker.textContent = 'Novo arquétipo';
+    kicker.textContent = t('story.newArchetype');
     promo.appendChild(kicker);
     const titleEl = document.createElement('div');
     titleEl.className = 'path-promotion-title';
@@ -499,9 +500,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     promo.appendChild(titleEl);
     const sub = document.createElement('div');
     sub.className = 'path-promotion-subtitle';
-    sub.textContent =
-      pathPromo.narrativePt?.trim() ||
-      'A ficha passa a mostrar este nome no lugar da classe base; os bónus do arquétipo já estão ativos.';
+    sub.textContent = pathPromo.narrativePt?.trim() || t('story.pathPromotionSubtitle');
     promo.appendChild(sub);
     inner.appendChild(promo);
   }
@@ -526,7 +525,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       if (xpGain != null && xpGain > 0) {
         const xpEl = document.createElement('div');
         xpEl.className = 'victory-xp-line';
-        xpEl.textContent = `+${xpGain} XP ganhos nesta batalha.`;
+        xpEl.textContent = t('story.xpGained', { xp: String(xpGain) });
         rewardsWrap.appendChild(xpEl);
       }
       if (hasLootLines) {
@@ -546,14 +545,18 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       const kicker = document.createElement('div');
       kicker.className = 'level-up-kicker';
       kicker.textContent =
-        levelUps.length === 1 ? 'Subiste de nível!' : `${levelUps.length} níveis de uma vez!`;
+        levelUps.length === 1
+          ? t('story.levelUp')
+          : t('story.levelUpsMultiple', { count: String(levelUps.length) });
       wrap.appendChild(kicker);
       for (const step of levelUps) {
         const block = document.createElement('div');
         block.className = 'level-up-block';
         const title = document.createElement('div');
         title.className = 'level-up-title';
-        title.textContent = hero ? `Nível ${step.level} — ${hero.name}` : `Nível ${step.level}`;
+        title.textContent = hero
+          ? t('story.levelTitle', { level: String(step.level), name: hero.name })
+          : t('story.levelTitleNoName', { level: String(step.level) });
         block.appendChild(title);
         const attrs = document.createElement('div');
         attrs.className = 'level-up-attrs';
@@ -566,8 +569,8 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
           spellsEl.className = 'level-up-spells';
           spellsEl.textContent =
             names.length === 1
-              ? `Magia aprendida: ${names[0]}.`
-              : `Magias aprendidas: ${names.join(', ')}.`;
+              ? t('story.spellLearned', { name: names[0]! })
+              : t('story.spellsLearned', { names: names.join(', ') });
           block.appendChild(spellsEl);
         }
         wrap.appendChild(block);
@@ -640,8 +643,8 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const trimmedLabel = sc.label?.trim();
     const title =
       trimmedLabel !== undefined && trimmedLabel.length > 0
-        ? `Rolar teste: ${trimmedLabel}`
-        : `Rolar teste: ${ab}`;
+        ? t('story.rollSkill', { label: trimmedLabel })
+        : t('story.rollSkill', { label: ab });
     const preview = `2d6 + mod(${ab}) vs TN ${sc.tn}`;
     setStoryRollChoiceContent(b, storyNavIndex, title, preview);
     if (storyNavIndex < 10) b.title = storyQuickKeyHint(storyNavIndex);
@@ -662,7 +665,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       trimmedDl !== undefined && trimmedDl.length > 0
         ? trimmedDl
         : `${dc.attrs[0].toUpperCase()} + ${dc.attrs[1].toUpperCase()} · ${dc.rounds} lançamentos`;
-    const title = `Rolar prova tríplice: ${lbl}`;
+    const title = t('story.rollTriple', { label: lbl });
     const preview = `2d6 + dois mods vs TN ${dc.tn}`;
     setStoryRollChoiceContent(b, storyNavIndex, title, preview);
     if (storyNavIndex < 10) b.title = storyQuickKeyHint(storyNavIndex);
@@ -681,8 +684,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const curse =
       lc.luckPenalty && lc.luckPenalty > 0 ? ` · maldição −${lc.luckPenalty}` : '';
     const trimmedLl = lc.label?.trim();
-    const title =
-      trimmedLl !== undefined && trimmedLl.length > 0 ? `Rolar sorte: ${trimmedLl}` : 'Rolar sorte:';
+    const title = t('story.rollLuck', { label: trimmedLl ?? '' });
     const preview = `2d6 + mod(SOR) vs TN ${lc.tn}${curse}`;
     setStoryRollChoiceContent(b, storyNavIndex, title, preview);
     if (storyNavIndex < 10) b.title = storyQuickKeyHint(storyNavIndex);

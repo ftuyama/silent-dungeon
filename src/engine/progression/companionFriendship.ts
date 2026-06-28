@@ -1,6 +1,7 @@
 import type { GameData } from '../data/gameData.ts';
 import type { EventBus } from '../core/eventBus.ts';
 import type { GameState } from '../schema/index.ts';
+import { t } from '../../i18n/index.ts';
 
 export const FRIENDSHIP_SCORE_MIN = 0;
 export const FRIENDSHIP_SCORE_MAX = 100;
@@ -10,14 +11,10 @@ export const FRIENDSHIP_INITIAL_RECRUIT = 25;
 export const KNOCKOUT_FRIENDSHIP_DELTA = -5;
 
 /** Rótulos de patamar para UI (índice = tier 0..5). */
-export const FRIENDSHIP_TIER_LABELS_PT = [
-  'Distante',
-  'Neutra',
-  'Próxima',
-  'Firme',
-  'Leal',
-  'Aliança',
-] as const;
+export function friendshipTierLabel(tier: number): string {
+  const tIdx = Math.max(0, Math.min(5, tier));
+  return t(`engine.friendshipTier${tIdx}`);
+}
 
 export function clampFriendshipScore(n: number): number {
   return Math.max(FRIENDSHIP_SCORE_MIN, Math.min(FRIENDSHIP_SCORE_MAX, n));
@@ -48,11 +45,6 @@ export function friendshipBonusesAtTier(tier: number): {
     { str: 5, agi: 3, mind: 3, maxHp: 18 },
   ];
   return table[t]!;
-}
-
-export function friendshipTierLabelPt(tier: number): string {
-  const t = Math.max(0, Math.min(5, tier));
-  return FRIENDSHIP_TIER_LABELS_PT[t] ?? FRIENDSHIP_TIER_LABELS_PT[0]!;
 }
 
 export function getCompanionFriendshipScore(state: GameState, companionId: string): number {
@@ -87,7 +79,7 @@ export function notifyCompanionFriendshipChange(
   bus.emit({
     type: 'statusHighlight',
     variant: delta > 0 ? 'good' : 'bad',
-    title: delta > 0 ? `+${delta} vínculo` : `−${Math.abs(delta)} vínculo`,
+    title: delta > 0 ? t('engineNotify.bondGain', { delta }) : t('engineNotify.bondLoss', { delta: Math.abs(delta) }),
     subtitle: name,
   });
 }

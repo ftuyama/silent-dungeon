@@ -1,0 +1,87 @@
+#!/usr/bin/env node
+/** Apply English exploration edge labels. */
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const outPath = path.join(__dirname, '../../src/campaigns/calvario/locales/en-US/exploration.json');
+
+/** @type {Record<string, Record<string, { text: string }>>} */
+const EN = {
+  act2_catacomb: {
+    w_to_north_gallery: { text: 'Climb to the west north gallery' },
+    w_to_mid_corridor: { text: 'Descend to the west central corridor' },
+    w_to_inner_corner: { text: 'Skirt to the west inner corner' },
+    wng_back_shrine: { text: 'Return to the west shrine' },
+    wng_to_mid_corridor: { text: 'Descend the gallery to the west corridor' },
+    wmc_to_shrine: { text: 'Climb to the broken shrine' },
+    wmc_to_north_gallery: { text: 'Return to the north gallery' },
+    wmc_to_south_shrine: { text: 'Descend to the west south shrine' },
+    wmc_to_inner_corner: { text: 'Take the inner bend toward the center' },
+    wss_to_mid_corridor: { text: 'Climb to the west corridor' },
+    wss_to_inner_corner: { text: 'Follow the inner wall to the breach' },
+    wic_to_mid_corridor: { text: 'Return to the west corridor' },
+    wic_to_south_shrine: { text: 'Withdraw to the west south shrine' },
+    wic_to_center_breach: { text: 'Cross the opening to the central chamber' },
+    cb_to_west_corner: { text: 'Cross back to the west sector' },
+    cb_to_east_corner: { text: 'Follow to the east wing through the central breach' },
+    eic_to_center: { text: 'Return to the central chamber' },
+    eic_to_mid_corridor: { text: 'Turn toward the east inner corridor' },
+    eic_to_south_gallery: { text: 'Descend to the east south gallery' },
+    emc_to_inner_corner: { text: 'Return to the inner bend' },
+    emc_to_north_shrine: { text: 'Climb to the east north shrine' },
+    emc_to_south_gallery: { text: 'Descend to the south gallery' },
+    ens_to_mid_corridor: { text: 'Descend to the east corridor' },
+    esg_to_inner_corner: { text: 'Climb through the inner bend' },
+    esg_to_mid_corridor: { text: 'Return to the east corridor' },
+    esg_to_gate: { text: 'Advance to the sealed stairs threshold' },
+    g_back: { text: 'Withdraw from the stairs to the south gallery' },
+  },
+  act3_depths: {
+    d3_anteroom_to_well: { text: 'Follow to the cracked well' },
+    d3_anteroom_to_passage: { text: 'Descend to the bone passage' },
+    d3_well_to_anteroom: { text: 'Return to the anteroom' },
+    d3_well_to_gallery: { text: 'Cross to the drowned gallery' },
+    d3_passage_to_anteroom: { text: 'Withdraw to the anteroom' },
+    d3_passage_to_gallery: { text: 'Turn toward the drowned gallery' },
+    d3_gallery_to_well: { text: 'Climb to the cracked well' },
+    d3_gallery_to_passage: { text: 'Return through the bone passage' },
+    d3_gallery_to_stone_gate: { text: 'Push the stone gate' },
+    d3_gate_to_gallery: { text: 'Return to the drowned gallery' },
+  },
+  act5_frost: {
+    d5_camp_to_ridge: { text: 'Climb to the snow ridge' },
+    d5_camp_to_ice_chasm: { text: 'Follow to the ice chasm' },
+    d5_ridge_to_camp: { text: 'Descend to camp' },
+    d5_ridge_to_watch: { text: 'Advance to the broken watch' },
+    d5_chasm_to_camp: { text: 'Return to the line of tents' },
+    d5_chasm_to_watch: { text: 'Skirt to the broken watch' },
+    d5_watch_to_ridge: { text: 'Withdraw to the ridge' },
+    d5_watch_to_chasm: { text: 'Descend to the chasm' },
+    d5_watch_to_ascent: { text: 'Force the ascent trail' },
+    d5_ascent_to_watch: { text: 'Withdraw to the watch' },
+  },
+  act6_fractured_nave: {
+    d6_fire_to_mirror_hall: { text: 'Climb to the mirror hall' },
+    d6_fire_to_memory_well: { text: 'Descend to the memory well' },
+    d6_mirror_to_fire: { text: 'Return to the ash fire' },
+    d6_mirror_to_will_altar: { text: 'Cross to the will altar' },
+    d6_memory_to_fire: { text: 'Return to the central nave' },
+    d6_memory_to_will_altar: { text: 'Climb to the will altar' },
+    d6_altar_to_mirror: { text: 'Withdraw through the mirror hall' },
+    d6_altar_to_memory: { text: 'Descend to the memory well' },
+    d6_altar_to_inner_gate: { text: 'Open the inner mirror gate' },
+    d6_gate_to_altar: { text: 'Return to the will altar' },
+  },
+};
+
+const data = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+for (const [graphId, edges] of Object.entries(EN)) {
+  data[graphId] ??= {};
+  for (const [edgeId, patch] of Object.entries(edges)) {
+    data[graphId][edgeId] = { ...data[graphId][edgeId], ...patch };
+  }
+}
+fs.writeFileSync(outPath, JSON.stringify(data, null, 2) + '\n');
+console.log('Patched exploration.json');

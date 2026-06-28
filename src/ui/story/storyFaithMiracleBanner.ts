@@ -1,3 +1,5 @@
+import { t } from '../../i18n/index.ts';
+
 export type FaithMiracleBannerCallbacks = {
   setFaithMiraclePending: (pending: boolean) => void;
   playUiClick: () => void;
@@ -13,23 +15,22 @@ export function appendFaithMiracleBanner(
   miracle.className = 'faith-miracle-banner';
   const kicker = document.createElement('div');
   kicker.className = 'faith-miracle-kicker';
-  kicker.textContent = 'Intercessão';
+  kicker.textContent = t('faithMiracle.kicker');
   miracle.appendChild(kicker);
   const titleEl = document.createElement('div');
   titleEl.className = 'faith-miracle-title';
-  titleEl.textContent = 'A fé recusa-te à morte.';
+  titleEl.textContent = t('faithMiracle.title');
   miracle.appendChild(titleEl);
   const sub = document.createElement('div');
   sub.className = 'faith-miracle-subtitle';
-  sub.textContent =
-    'Algo em ti não cede — acordas ferido, mas de pé. Cinco medidas de convicção consumiram-se para te manter no mundo.';
+  sub.textContent = t('faithMiracle.subtitle');
   miracle.appendChild(sub);
   const btnM = document.createElement('button');
   btnM.type = 'button';
   btnM.className = 'faith-miracle-dismiss';
   btnM.dataset.quickNavContinue = '';
-  btnM.title = 'Barra de espaço';
-  btnM.textContent = '[Espaço] — Continuar';
+  btnM.title = t('faithMiracle.spaceBarHint');
+  btnM.textContent = t('faithMiracle.continue');
   btnM.addEventListener('click', () => {
     callbacks.setFaithMiraclePending(false);
     callbacks.playUiClick();

@@ -2,6 +2,7 @@ import '../css/styles.css';
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { getRegisteredCampaignIds, loadCampaignContent } from '../../campaigns/registry.ts';
+import { scenePathToId } from '../../campaigns/sceneLocale.ts';
 import { parseSceneMarkdown, type LoadedScene } from '../../engine/core/index.ts';
 import type { Choice } from '../../engine/schema/index.ts';
 import { sceneActId, sortedSceneActsFromNodes, type SceneGraphNode } from '../../engine/world/index.ts';
@@ -29,10 +30,6 @@ import { mountBrailleAsciiPanel } from './devToolsBrailleAscii.ts';
 import { mountBrailleWebSearchPanel } from './devToolsBrailleWebSearch.ts';
 import { mountAsciiBrowserPanel } from './devToolsAsciiBrowser.ts';
 import { attachDevToolsEnemySpriteThumbnail } from './devToolsEnemySpriteModal.ts';
-
-function pathToSceneId(path: string): string {
-  return path.replace(/^.*\/scenes\//, '').replace(/\.md$/, '');
-}
 
 function itemStatsLines(def: ItemDef): string[] {
   const lines: string[] = [];
@@ -810,7 +807,7 @@ export function mountDevToolsView(root: HTMLElement, campaignId: string): void {
   const bundle = loadCampaignContent(campaignId);
   const scenes = new Map<string, LoadedScene>();
   for (const [path, raw] of Object.entries(bundle.sceneFiles)) {
-    const id = pathToSceneId(path);
+    const id = scenePathToId(path);
     try {
       const sc = parseSceneMarkdown(raw, id);
       scenes.set(sc.id, sc);

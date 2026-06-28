@@ -1,5 +1,7 @@
 /** Toast não bloqueante com `aria-live` para substituir `alert()` no jogo. */
 
+import { t } from '../i18n/index.ts';
+
 const TOAST_MS_INFO = 6000;
 const TOAST_MS_ERROR = 10000;
 
@@ -30,8 +32,8 @@ export function showAppToast(
   const dismiss = document.createElement('button');
   dismiss.type = 'button';
   dismiss.className = 'app-toast-dismiss';
-  dismiss.textContent = 'Fechar';
-  dismiss.setAttribute('aria-label', 'Fechar notificação');
+  dismiss.textContent = t('sidebar.close');
+  dismiss.setAttribute('aria-label', t('toast.closeNotification'));
 
   const scheduleHide = (ms: number): void => {
     toastHideTimer = window.setTimeout((): void => {

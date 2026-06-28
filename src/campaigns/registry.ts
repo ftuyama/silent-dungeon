@@ -8,8 +8,13 @@
 import type { CampaignUIAdapter } from './campaignUi.ts';
 import { parseSceneMarkdown, type LoadedScene } from '../engine/core/index.ts';
 import type { GameData } from '../engine/data/index.ts';
+import type { Locale } from '../i18n/locale.ts';
 import { loadCalvarioContent } from './calvario/bundle.ts';
 import { loadDemoContent } from './demo/bundle.ts';
+import { scenePathToId } from './sceneLocale.ts';
+import { getLocale } from '../i18n/index.ts';
+import { applySceneLocaleOverlay as applyCalvarioSceneOverlay } from './calvario/localeLoad.ts';
+import { applyDemoSceneLocaleOverlay } from './demo/localeLoad.ts';
 
 export type CampaignContentBundle = {
   data: GameData;
@@ -18,7 +23,7 @@ export type CampaignContentBundle = {
   ui: CampaignUIAdapter;
 };
 
-export type CampaignLoader = () => CampaignContentBundle;
+export type CampaignLoader = (locale: Locale) => CampaignContentBundle;
 
 export type ParsedCampaignContentBundle = {
   data: GameData;
@@ -31,31 +36,17 @@ const LOADERS: Record<string, CampaignLoader> = {
   demo: loadDemoContent,
 };
 
-export function getRegisteredCampaignIds(): string[] {
-  return Object.keys(LOADERS);
-}
+/** Parsed pt-BR scenes per campaign (locale overlays applied on read). */
+const canonicalSceneCache = new Map<string, Map<string, LoadedScene>>();
 
-export function isCampaignRegistered(id: string): boolean {
-  return id in LOADERS;
-}
+function parseCanonicalScenes(campaignId: string): Map<string, LoadedScene> {
+  const cached = canonicalSceneCache.get(campaignId);
+  if (cached) return cached;
 
-export function loadCampaignContent(campaignId: string): CampaignContentBundle {
-  const load = LOADERS[campaignId];
-  if (!load) {
-    throw new Error(`Unknown campaign: "${campaignId}". Registered: ${getRegisteredCampaignIds().join(', ')}`);
-  }
-  return load();
-}
-
-/**
- * Pipeline único de conteúdo:
- * 1) load bundle bruto -> 2) parse markdown -> 3) validar ids -> 4) disponibilizar mapa de cenas.
- */
-export function loadParsedCampaignContent(campaignId: string): ParsedCampaignContentBundle {
-  const { data, sceneFiles, ui } = loadCampaignContent(campaignId);
+  const { sceneFiles } = loadCampaignContent(campaignId, 'pt-BR');
   const scenes = new Map<string, LoadedScene>();
   for (const [path, raw] of Object.entries(sceneFiles)) {
-    const id = pathToSceneId(path);
+    const id = scenePathToId(path);
     try {
       const scene = parseSceneMarkdown(raw, id);
       if (scene.id !== id) {
@@ -67,9 +58,44 @@ export function loadParsedCampaignContent(campaignId: string): ParsedCampaignCon
       throw e;
     }
   }
-  return { data, ui, scenes };
+  canonicalSceneCache.set(campaignId, scenes);
+  return scenes;
 }
 
-function pathToSceneId(path: string): string {
-  return path.replace(/^.*\/scenes\//, '').replace(/\.md$/, '');
+export function getRegisteredCampaignIds(): string[] {
+  return Object.keys(LOADERS);
+}
+
+export function isCampaignRegistered(id: string): boolean {
+  return id in LOADERS;
+}
+
+export function loadCampaignContent(campaignId: string, locale: Locale = getLocale()): CampaignContentBundle {
+  const load = LOADERS[campaignId];
+  if (!load) {
+    throw new Error(`Unknown campaign: "${campaignId}". Registered: ${getRegisteredCampaignIds().join(', ')}`);
+  }
+  return load(locale);
+}
+
+/**
+ * Pipeline único de conteúdo:
+ * 1) load bundle bruto -> 2) parse markdown -> 3) validar ids -> 4) disponibilizar mapa de cenas.
+ */
+export function loadParsedCampaignContent(
+  campaignId: string,
+  locale: Locale = getLocale()
+): ParsedCampaignContentBundle {
+  const { data, ui } = loadCampaignContent(campaignId, locale);
+  const canonical = parseCanonicalScenes(campaignId);
+  const scenes = new Map<string, LoadedScene>();
+  for (const [id, scene] of canonical) {
+    let localized = scene;
+    if (locale !== 'pt-BR') {
+      if (campaignId === 'calvario') localized = applyCalvarioSceneOverlay(scene, locale);
+      else if (campaignId === 'demo') localized = applyDemoSceneLocaleOverlay(scene, locale);
+    }
+    scenes.set(id, localized);
+  }
+  return { data, ui, scenes };
 }

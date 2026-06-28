@@ -3,21 +3,19 @@
  * e compara inimigos (CA, HP, acertos, P(levar dano), dano médio por ataque / condicional ao acerto).
  *
  * Uso:
- *   npx tsx scripts/balance-estimate.ts
- *   npx tsx scripts/balance-estimate.ts --ref-level 12 --class knight
- *   npx tsx scripts/balance-estimate.ts --levels 1,5,10,15 --json
+ *   npm run estimate:balance
+ *   npm run estimate:balance -- --ref-level 12 --class knight
+ *   npm run estimate:balance -- --levels 1,5,10,15 --json
  *
- * TODO: `enemies.ts` e `items.ts` carregam sprites via `import.meta.glob` (Vite-only),
- * o que impede o script de rodar sob Node/tsx puro. Os imports abaixo já apontam para
- * os caminhos corretos pós-reorganização do motor (src/engine/{core,combat,data,...}),
- * mas a execução continua bloqueada até refatorar enemies/items para separar dados de
- * sprites. Ver `scripts/progression-report.ts` para o padrão de parsing por texto que
- * evita essa dependência (`parseEnemies()`).
+ * `enemies.ts` / `items.ts` importam sprites via `import.meta.glob` (Vite-only).
+ * Este script lê os ficheiros como texto e extrai só os campos numéricos necessários.
  */
 
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import campaignIndex from '../src/campaigns/calvario/index.json';
-import { enemies } from '../src/campaigns/calvario/data/enemies.ts';
-import { items } from '../src/campaigns/calvario/data/items.ts';
 import { calvarioHeroNarrative } from '../src/campaigns/calvario/heroNarrative.ts';
 import { DEFAULT_ENEMY_CRIT_CONFIRM } from '../src/engine/combat/constants.ts';
 import {
@@ -34,13 +32,76 @@ import {
   type Character,
   type ClassId,
   type EnemyDef,
+  type ItemDef,
 } from '../src/engine/schema/index.ts';
 import { createPlayerCharacter } from '../src/engine/core/state.ts';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.join(__dirname, '..');
+const enemiesTsPath = path.join(repoRoot, 'src/campaigns/calvario/data/enemies.ts');
+const itemsTsPath = path.join(repoRoot, 'src/campaigns/calvario/data/items.ts');
+
+type ParsedEnemy = Pick<EnemyDef, 'id' | 'name' | 'maxHp' | 'str' | 'agi' | 'armor'> & {
+  critConfirm?: number;
+};
+
+type ParsedItem = Pick<
+  ItemDef,
+  'id' | 'bonusStr' | 'bonusAgi' | 'bonusMind' | 'bonusLuck' | 'armor' | 'damage'
+>;
+
+function numField(block: string, key: string, fallback = 0): number {
+  return Number(block.match(new RegExp(`\\b${key}:\\s*(-?\\d+(?:\\.\\d+)?)`))?.[1] ?? fallback);
+}
+
+function parseEnemies(): Record<string, ParsedEnemy> {
+  const text = fs.readFileSync(enemiesTsPath, 'utf8');
+  const blockRe = /(\w+):\s*\{\s*id:\s*'([^']+)'[\s\S]*?\n\s\s\}/g;
+  const out: Record<string, ParsedEnemy> = {};
+  let m: RegExpExecArray | null;
+  while ((m = blockRe.exec(text)) !== null) {
+    const block = m[0]!;
+    const id = m[2]!;
+    out[id] = {
+      id,
+      name: block.match(/name:\s*'([^']+)'/)?.[1] ?? id,
+      maxHp: numField(block, 'maxHp'),
+      str: numField(block, 'str'),
+      agi: numField(block, 'agi'),
+      armor: numField(block, 'armor'),
+      critConfirm: block.includes('critConfirm:')
+        ? numField(block, 'critConfirm', DEFAULT_ENEMY_CRIT_CONFIRM)
+        : undefined,
+    };
+  }
+  return out;
+}
+
+function parseItems(): Record<string, ParsedItem> {
+  const text = fs.readFileSync(itemsTsPath, 'utf8');
+  const blockRe = /(\w+):\s*z\(\{([\s\S]*?)\n\s*\}\)/g;
+  const out: Record<string, ParsedItem> = {};
+  let m: RegExpExecArray | null;
+  while ((m = blockRe.exec(text)) !== null) {
+    const inner = m[2]!;
+    const id = inner.match(/id:\s*'([^']+)'/)?.[1] ?? m[1]!;
+    out[id] = {
+      id,
+      bonusStr: numField(inner, 'bonusStr'),
+      bonusAgi: numField(inner, 'bonusAgi'),
+      bonusMind: numField(inner, 'bonusMind'),
+      bonusLuck: numField(inner, 'bonusLuck'),
+      armor: numField(inner, 'armor'),
+      damage: numField(inner, 'damage'),
+    };
+  }
+  return out;
+}
+
 const idx = CampaignIndexSchema.parse(campaignIndex);
 const data: GameData = emptyGameData(idx, calvarioHeroNarrative);
-data.items = items;
-data.enemies = enemies;
+data.items = parseItems() as Record<string, ItemDef>;
+data.enemies = parseEnemies() as Record<string, EnemyDef>;
 
 function strWithItemBonuses(c: Character): number {
   let str = c.str;
@@ -180,7 +241,7 @@ function parseArgs(argv: string[]): {
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--help' || a === '-h') {
-      console.log(`Uso: npx tsx scripts/balance-estimate.ts [opções]
+      console.log(`Uso: npm run estimate:balance -- [opções]
 
 Opções:
   --ref-level N     Nível do líder de referência para a tabela de inimigos (default: 10)
@@ -217,7 +278,7 @@ function main(): void {
   const wd = getWeaponDamage(data, refLead);
   const armorReduc = getArmorValue(data, refLead);
 
-  const rows = Object.values(enemies)
+  const rows = Object.values(data.enemies)
     .filter((e) => !filter || e.id.includes(filter))
     .map((def) => {
       const edef = enemyDefenseCa(def);

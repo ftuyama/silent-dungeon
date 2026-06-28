@@ -1,7 +1,7 @@
 import type { ClassId } from '../../engine/schema/index.ts';
 import type { HeroNarrative } from '../../engine/data/index.ts';
 import {
-  DEFAULT_HERO_NAME,
+  getDefaultHeroName,
   getHeroClassLabel,
   getPathPromotionNarrativePt,
   getPathUnlockBonus,
@@ -9,7 +9,7 @@ import {
 
 export const calvarioHeroNarrative: HeroNarrative = {
   defaultHeroName(cls: ClassId): string {
-    return DEFAULT_HERO_NAME[cls];
+    return getDefaultHeroName(cls);
   },
   getHeroClassLabel,
   getPathUnlockBonus,

@@ -1,5 +1,6 @@
 import type { GameState } from '../../engine/schema/index.ts';
 import companions from './data/companions.json';
+import { pickNarrativeString } from './overlayPick.ts';
 
 type CompanionLoreBeat = {
   when: (state: GameState) => boolean;
@@ -21,14 +22,18 @@ const TOMAS_VOID_DUTY_LORE_PT = `No vazio, o dever deixou de ser só herança de
 function beatBase(companionId: keyof typeof companions): CompanionLoreBeat {
   return {
     when: () => companionId in companions,
-    text: () => companions[companionId]?.lorePt?.trim() ?? null,
+    text: () => {
+      const lore = companions[companionId]?.lorePt?.trim();
+      if (!lore) return null;
+      return pickNarrativeString('companionLore', `${companionId}:base`, lore);
+    },
   };
 }
 
 function beatMark(markId: string, paragraph: string): CompanionLoreBeat {
   return {
     when: (state) => state.marks.includes(markId),
-    text: () => paragraph,
+    text: () => pickNarrativeString('companionLore', markId, paragraph),
   };
 }
 

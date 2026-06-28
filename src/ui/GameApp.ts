@@ -21,22 +21,18 @@ import {
   wildEncounterVictoryOverride,
 } from '../engine/world/index.ts';
 import {
-  migrateLegacyKnownSpells,
+  CIRCULO_SKILL_REROLL_REP_COST,
+  hasFactionPerkUnlocked,
   syncCompanionPartyWithFriendship,
   tickActiveBuffs,
 } from '../engine/progression/index.ts';
-import {
-  CIRCULO_SKILL_REROLL_REP_COST,
-  hasFactionPerkUnlocked,
-} from '../engine/progression/reputation.ts';
 import type { Choice, Effect, GameState } from '../engine/schema/index.ts';
 import { isDialogueEncounter } from '../engine/schema/index.ts';
 import { GameAudio, type AmbientTheme } from './sound/index.ts';
 import { buildDevToolsHref, buildScenesGraphHref } from './campaignUrl.ts';
-import { preserveExplorationNodeForChoiceEffects } from './gameAppUtils.ts';
+import { escHtml, preserveExplorationNodeForChoiceEffects } from './gameAppUtils.ts';
 import {
   saveSlotLimit,
-  migrateLegacySaveIfNeeded as migrateLegacySaveSlot,
   saveStateToSlot,
   readRawSlot as readSaveSlotRaw,
   slotReturnRewardDateKey,
@@ -76,6 +72,7 @@ import {
   type GameAppStorageKeys,
 } from './gameAppPreferences.ts';
 import './css/styles.css';
+import { getLocale, onLocaleChange, t } from '../i18n/index.ts';
 import gameVersionRaw from '../../VERSION?raw';
 
 const GAME_VERSION = gameVersionRaw.trim() || '?';
@@ -87,8 +84,6 @@ const STORY_BANNER_FADE_MS = 1000;
 
 export class GameApp {
   private readonly campaignId: string;
-  /** Gravação única antiga (`{campaignId}_save_v1`) — migrada para o slot 1 na primeira execução. */
-  private readonly legacySaveKey: string;
   private readonly storageKeys: GameAppStorageKeys;
   private registry: ContentRegistry;
   private bus = new EventBus();
@@ -168,7 +163,6 @@ export class GameApp {
   constructor(root: HTMLElement, campaignId: string) {
     this.root = root;
     this.campaignId = campaignId;
-    this.legacySaveKey = `${campaignId}_save_v1`;
     this.storageKeys = buildGameAppStorageKeys(campaignId);
     this.registry = new ContentRegistry(campaignId);
     this.audio = new GameAudio(campaignId);
@@ -260,7 +254,7 @@ export class GameApp {
             type: 'statusHighlight',
             variant: 'good',
             title: `+${amount} XP`,
-            subtitle: 'Experiência recebida',
+            subtitle: t('toast.xpReceived'),
           });
           this.unlockAudio();
         },
@@ -293,7 +287,7 @@ export class GameApp {
             type: 'statusHighlight',
             variant: 'good',
             title: `Nível ${level}`,
-            subtitle: 'Subiste de nível.',
+            subtitle: t('toast.levelUpSubtitle'),
           });
         },
       })
@@ -302,7 +296,6 @@ export class GameApp {
     this.state = this.stabilize(this.state);
     this.applyLegacyBriefingIfNeeded();
     this.sidebarSections = loadSidebarSections(this.storageKeys.sidebarKey);
-    this.migrateLegacySaveIfNeeded();
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.menuOpen) {
         this.closeMenu();
@@ -321,6 +314,10 @@ export class GameApp {
     document.addEventListener('pointerdown', unlockOnce, true);
     document.addEventListener('keydown', unlockOnce, true);
     this.root.addEventListener('click', this.onAppChromeDelegatedClick);
+    onLocaleChange(() => {
+      this.registry = new ContentRegistry(this.campaignId, getLocale());
+      this.render();
+    });
     this.render();
   }
 
@@ -385,7 +382,7 @@ export class GameApp {
         type: 'statusHighlight',
         variant: 'good',
         title: 'Retorno às catacumbas',
-        subtitle: '+1 suprimento e +4 ouro por voltares hoje.',
+        subtitle: t('toast.catacombsReturnSubtitle'),
       });
     } catch {
       /* noop */
@@ -399,30 +396,30 @@ export class GameApp {
     const corruption = this.state.resources.corruption ?? 0;
     const gold = this.state.resources.gold ?? 0;
     if (chapter === 1 && day <= 2) {
-      return 'Meta da sessão: usar atalhos [1-9] e concluir as 2 primeiras escolhas sem pressa.';
+      return t('session.objectiveEarly');
     }
     if (supply <= 2) {
-      return 'Meta da sessão: recuperar suprimento antes da próxima decisão de risco.';
+      return t('session.objectiveSupply');
     }
     if (faith >= 5) {
-      return 'Meta da sessão: preservar a fé para um momento crítico.';
+      return t('session.objectiveFaithHigh');
     }
     if (chapter <= 2) {
-      return 'Meta da sessão: avançar 3 cenas sem cair para 0 de suprimento.';
+      return t('session.objectiveChapter2');
     }
     if (corruption >= 6) {
-      return 'Meta da sessão: concluir 1 decisão de risco sem aumentar corrupção.';
+      return t('session.objectiveCorruption');
     }
     if (faith <= 1) {
-      return 'Meta da sessão: recuperar fé ou evitar combate desnecessário.';
+      return t('session.objectiveFaithLow');
     }
     if (chapter >= 4 && chapter <= 5 && gold >= 20) {
-      return 'Meta da sessão: gastar ouro para reforçar o grupo antes do próximo confronto maior.';
+      return t('session.objectiveGold');
     }
     if (sceneId.startsWith('act2/camp/') || sceneId.startsWith('act5/camp/')) {
-      return 'Meta da sessão: revisar equipamento e sair do acampamento com vantagem clara.';
+      return t('session.objectiveCamp');
     }
-    return 'Meta da sessão: concluir 1 ramificação nova e registrar 1 novo marco de jornada.';
+    return t('session.objectiveDefault');
   }
 
   private applyLegacyBriefingIfNeeded(): void {
@@ -436,18 +433,18 @@ export class GameApp {
         this.enqueueStatusHighlight({
           type: 'statusHighlight',
           variant: 'neutral',
-          title: `Legado ativo — ${topTitle}`,
+          title: t('legacy.activeTitle', { title: topTitle }),
           subtitle:
             legacy.lastRunEchoGain > 0
-              ? `+${legacy.lastRunEchoGain} ecos preservados entre runs.`
-              : 'Ecos preservados entre runs.',
+              ? t('legacy.echoGain', { count: legacy.lastRunEchoGain })
+              : t('legacy.echoPreserved'),
         });
       }
       if (legacy.lastRunSummary.trim().length > 0) {
         this.state = this.stabilize(
           applyEffects(
             this.state,
-            [{ op: 'addDiary', text: `Legado: ${legacy.lastRunSummary}` }],
+            [{ op: 'addDiary', text: t('legacy.diaryPrefix', { summary: legacy.lastRunSummary }) }],
             this.ctx()
           )
         );
@@ -488,7 +485,7 @@ export class GameApp {
     const json = serializeState(this.state);
     void navigator.clipboard.writeText(json).then(
       () => {
-        this.showToast('Gravação copiada para a área de transferência (JSON).');
+        this.showToast(t('toast.exportSuccessJson'));
         this.closeMenu();
       },
       () => {
@@ -504,7 +501,10 @@ export class GameApp {
       const parsed = deserializeState(raw);
       if (parsed.campaignId !== this.campaignId) {
         this.showToast(
-          `Esta gravação é da campanha "${parsed.campaignId}". Campanha ativa: "${this.campaignId}".`,
+          t('toast.wrongCampaign', {
+            saveCampaign: parsed.campaignId,
+            activeCampaign: this.campaignId,
+          }),
           'error'
         );
         return;
@@ -516,17 +516,17 @@ export class GameApp {
     void navigator.clipboard.readText().then(
       (raw) => {
         if (!raw?.trim()) {
-          this.showToast('Área de transferência vazia.', 'error');
+          this.showToast(t('toast.clipboardEmpty'), 'error');
           return;
         }
         try {
           applyRawSave(raw);
         } catch {
-          this.showToast('JSON inválido na área de transferência.', 'error');
+          this.showToast(t('toast.importInvalidClipboard'), 'error');
         }
       },
       () => {
-        const pasted = prompt('Cole aqui o JSON da gravação:');
+        const pasted = prompt(t('menu.importPrompt'));
         if (!pasted?.trim()) {
           this.closeMenu();
           return;
@@ -534,7 +534,7 @@ export class GameApp {
         try {
           applyRawSave(pasted);
         } catch {
-          this.showToast('JSON inválido.', 'error');
+          this.showToast(t('toast.importInvalidShort'), 'error');
         }
       }
     );
@@ -631,7 +631,7 @@ export class GameApp {
     const backdrop = document.createElement('button');
     backdrop.type = 'button';
     backdrop.className = 'combat-boss-twist-backdrop';
-    backdrop.setAttribute('aria-label', 'Fechar');
+    backdrop.setAttribute('aria-label', t('sidebar.close'));
 
     const panel = document.createElement('div');
     panel.className = 'combat-boss-twist-panel';
@@ -639,7 +639,7 @@ export class GameApp {
     const title = document.createElement('h2');
     title.id = 'combat-boss-twist-title';
     title.className = 'combat-boss-twist-title';
-    title.textContent = 'Viragem no combate';
+    title.textContent = t('combat.combatTwist');
 
     const bodyWrap = document.createElement('div');
     bodyWrap.className = 'combat-boss-twist-body';
@@ -653,7 +653,7 @@ export class GameApp {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'combat-boss-twist-continue';
-    btn.textContent = '[Espaço] - Continuar';
+    btn.textContent = t('combat.continueDash');
     btn.addEventListener('click', () => this.dismissBossTwistOverlay());
     backdrop.addEventListener('click', () => this.dismissBossTwistOverlay());
 
@@ -848,8 +848,6 @@ export class GameApp {
 
   /** Não reentrar em cenas narrativas enquanto o combate está ativo (evita sobrescrever mode). */
   private stabilize(state: GameState): GameState {
-    state = this.migrateSceneArtHighlightLegacyKeys(state);
-    state = migrateLegacyKnownSpells(state, this.registry.data);
     state = syncCompanionPartyWithFriendship(state, this.registry.data);
     if (state.mode === 'combat' || state.mode === 'dialogue_combat') return state;
     let s = state;
@@ -897,22 +895,16 @@ export class GameApp {
     s = { ...s, rngSeed: roll.nextSeed };
     if (reachedGoalNow) {
       const exploreGoalSubtitle: Record<string, string> = {
-        act2_catacomb:
-          'Descida encontrada. A travessia pelas catacumbas valeu a pena.',
-        act3_depths:
-          'O portão de pedra nas profundezas assinala-se no mapa — Morvayn deixa de ser só rumor.',
-        act5_frost:
-          'A trilha no gelo fecha-se num ponto que o desfiladeiro não esconde por completo.',
-        act6_fractured_nave:
-          'Um limiar na nave fraturada deixa de negar o nome que escutas.',
+        act2_catacomb: t('toast.exploreGoalAct2'),
+        act3_depths: t('toast.exploreGoalAct3'),
+        act5_frost: t('toast.exploreGoalAct5'),
+        act6_fractured_nave: t('toast.exploreGoalAct6'),
       };
       this.enqueueStatusHighlight({
         type: 'statusHighlight',
         variant: 'good',
-        title: 'Objetivo concluído',
-        subtitle:
-          exploreGoalSubtitle[ex.graphId] ??
-          'O objetivo desta exploração ficou marcado.',
+        title: t('toast.exploreGoalTitle'),
+        subtitle: exploreGoalSubtitle[ex.graphId] ?? t('toast.exploreGoalDefault'),
       });
       this.unlockAudio();
       this.audio.playCheckSuccess();
@@ -1135,11 +1127,6 @@ export class GameApp {
     }
   }
 
-  /** Copia a gravação legada para o slot 1 se o slot 1 ainda estiver vazio. */
-  private migrateLegacySaveIfNeeded(): void {
-    migrateLegacySaveSlot(this.campaignId, this.legacySaveKey);
-  }
-
   private saveToSlot(slot: number): void {
     this.unlockAudio();
     saveStateToSlot(this.campaignId, slot, this.state, this.devMode);
@@ -1153,13 +1140,16 @@ export class GameApp {
     try {
       const raw = readSaveSlotRaw(this.campaignId, slot);
       if (!raw?.trim()) {
-        this.showToast('Este slot está vazio.', 'error');
+        this.showToast(t('toast.slotEmpty'), 'error');
         return;
       }
       const parsed = deserializeState(raw);
       if (parsed.campaignId !== this.campaignId) {
         this.showToast(
-          `Esta gravação é da campanha "${parsed.campaignId}". Campanha ativa: "${this.campaignId}".`,
+          t('toast.wrongCampaign', {
+            saveCampaign: parsed.campaignId,
+            activeCampaign: this.campaignId,
+          }),
           'error'
         );
         this.closeMenu();
@@ -1170,7 +1160,7 @@ export class GameApp {
       this.applyReturnRewardIfNeededForLoadedSlot(slot);
       this.render();
     } catch {
-      this.showToast('Não foi possível carregar esta gravação.', 'error');
+      this.showToast(t('toast.loadFailed'), 'error');
     }
     this.closeMenu();
   }
@@ -1262,8 +1252,8 @@ export class GameApp {
     }
     const active = this.getFullscreenElement() != null;
     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-    btn.setAttribute('aria-label', active ? 'Sair do ecrã inteiro' : 'Ecrã inteiro');
-    btn.title = active ? 'Sair do ecrã inteiro (Esc)' : 'Ecrã inteiro';
+    btn.setAttribute('aria-label', active ? t('menu.fullscreenExit') : t('menu.fullscreenActive'));
+    btn.title = active ? t('menu.fullscreenExitEsc') : t('menu.fullscreenActive');
   }
 
   private syncFullscreenUi(): void {
@@ -1333,25 +1323,6 @@ export class GameApp {
       playCheckFail: () => this.audio.playCheckFail(),
       onCirculoDiceReroll: () => this.onCirculoSkillDiceReroll(),
     };
-  }
-
-  private migrateSceneArtHighlightLegacyKeys(state: GameState): GameState {
-    const sh = state.sceneArtHighlightShown;
-    let changed = false;
-    const next = { ...sh };
-    for (const [k, v] of Object.entries(sh)) {
-      if (!v) continue;
-      if (k.startsWith('art:')) continue;
-      const sc = this.registry.getScene(k);
-      const ak = sc?.frontmatter.artKey?.trim();
-      if (!ak) continue;
-      const prefixed = `art:${ak}`;
-      if (!next[prefixed]) {
-        next[prefixed] = true;
-        changed = true;
-      }
-    }
-    return changed ? { ...state, sceneArtHighlightShown: next } : state;
   }
 
   private flushSceneArtHighlightIfInterrupted(): void {
@@ -1458,10 +1429,6 @@ export class GameApp {
         },
         statusHighlightQueue: this.statusHighlightQueue,
         statusHighlightExitStaggerMs: STORY_BANNER_BETWEEN_DISMISS_MS,
-        setStatusHighlightQueue: (q) => {
-          this.cancelStatusHighlightDismissalPipeline();
-          this.statusHighlightQueue = q;
-        },
         requestStatusHighlightStackDismiss: () => {
           this.beginStatusHighlightStackDismiss();
         },
@@ -1469,10 +1436,6 @@ export class GameApp {
         diaryEntryQueue: this.diaryEntryQueue,
         diaryBannerExiting: this.diaryBannerExiting,
         itemAcquireBannerExiting: this.itemAcquireBannerExiting,
-        setDiaryEntryQueue: (q) => {
-          this.cancelDiaryBannerPipeline();
-          this.diaryEntryQueue = q;
-        },
         requestDiaryBannerDismiss: () => {
           this.beginDiaryBannerDismiss();
         },
@@ -1700,7 +1663,7 @@ export class GameApp {
         } else {
           const scene = this.registry.getScene(this.state.sceneId);
           if (!scene) {
-            main.innerHTML = `<div class="shell error">Cena não encontrada: <code>${this.state.sceneId}</code></div>`;
+            main.innerHTML = `<div class="shell error">${escHtml(t('game.sceneNotFound', { id: this.state.sceneId }))}</div>`;
           } else {
             renderStoryInto(main, this.buildStoryRenderContext(scene));
           }

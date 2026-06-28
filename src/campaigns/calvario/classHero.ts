@@ -1,21 +1,29 @@
 import type { Character, ClassId, GameState } from '../../engine/schema/index.ts';
 import type { PathUnlockBonus } from '../../engine/data/index.ts';
 import { isLeadPassiveUnlocked } from '../../engine/core/index.ts';
+import { t } from '../../i18n/index.ts';
 import { leadStoryPassives as leadStoryPassivesCatalog } from './data/passives.ts';
+import {
+  pickNarrativeChapterLore,
+  pickNarrativeString,
+} from './overlayPick.ts';
 
-/** Rótulo curto da classe (PT-BR). */
-export const CLASS_LABEL_PT: Record<ClassId, string> = {
-  knight: 'Cavaleiro de fronteira',
-  mage: 'Arcanista da Torre',
-  cleric: 'Clérigo da Vigília',
+const CLASS_LABEL_KEY: Record<ClassId, string> = {
+  knight: 'class.knight',
+  mage: 'class.mage',
+  cleric: 'class.cleric',
+};
+
+const DEFAULT_HERO_NAME_KEY: Record<ClassId, string> = {
+  knight: 'class.defaultNameKnight',
+  mage: 'class.defaultNameMage',
+  cleric: 'class.defaultNameCleric',
 };
 
 /** Nome de herói por defeito quando se escolhe a classe. */
-export const DEFAULT_HERO_NAME: Record<ClassId, string> = {
-  knight: 'Ser Galen',
-  mage: 'Ysara Vel',
-  cleric: 'Frei Oris',
-};
+export function getDefaultHeroName(classId: ClassId): string {
+  return t(DEFAULT_HERO_NAME_KEY[classId]);
+}
 
 /** Pequena lore por classe (expandível na UI). */
 export const CLASS_LORE_PT: Record<ClassId, string> = {
@@ -122,7 +130,7 @@ type LoreBeat = {
 function beatBase(classId: ClassId): LoreBeat {
   return {
     when: () => true,
-    text: () => CLASS_LORE_PT[classId],
+    text: () => pickNarrativeString('heroLore', classId, CLASS_LORE_PT[classId]),
   };
 }
 
@@ -136,7 +144,10 @@ function beatPathLore(classId: ClassId): LoreBeat {
     text: (_s, lead, path) => {
       const p = normPath(path ?? lead.path);
       if (!p) return null;
-      return PATH_LORE_PT[`${classId}:${p}`] ?? null;
+      const key = `${classId}:${p}`;
+      const fallback = PATH_LORE_PT[key];
+      if (!fallback) return null;
+      return pickNarrativeString('heroPathLore', key, fallback);
     },
   };
 }
@@ -151,7 +162,10 @@ function beatPathBackstory(classId: ClassId): LoreBeat {
     text: (_s, lead, path) => {
       const p = normPath(path ?? lead.path);
       if (!p) return null;
-      return PATH_UNLOCK_BONUS[`${classId}:${p}`]?.backstoryPt ?? null;
+      const key = `${classId}:${p}`;
+      const fallback = PATH_UNLOCK_BONUS[key]?.backstoryPt;
+      if (!fallback) return null;
+      return pickNarrativeString('heroPathBackstory', key, fallback);
     },
   };
 }
@@ -159,21 +173,30 @@ function beatPathBackstory(classId: ClassId): LoreBeat {
 function beatClassPassiveLore(classId: ClassId): LoreBeat {
   return {
     when: (state, lead) => lead.class === classId && isLeadPassiveUnlocked(state),
-    text: (_s, lead) => (lead.class === classId ? CLASS_PASSIVE_LORE_PT[classId] : null),
+    text: (_s, lead) =>
+      lead.class === classId
+        ? pickNarrativeString('heroPassiveLore', classId, CLASS_PASSIVE_LORE_PT[classId])
+        : null,
   };
 }
 
 function beatChapterMid(classId: ClassId): LoreBeat {
   return {
     when: (state, lead) => lead.class === classId && state.chapter >= 3,
-    text: (_s, lead) => (lead.class === classId ? CHAPTER_LORE_PT[classId].mid : null),
+    text: (_s, lead) =>
+      lead.class === classId
+        ? pickNarrativeChapterLore(classId, 'mid', CHAPTER_LORE_PT[classId].mid)
+        : null,
   };
 }
 
 function beatChapterLate(classId: ClassId): LoreBeat {
   return {
     when: (state, lead) => lead.class === classId && state.chapter >= 5,
-    text: (_s, lead) => (lead.class === classId ? CHAPTER_LORE_PT[classId].late : null),
+    text: (_s, lead) =>
+      lead.class === classId
+        ? pickNarrativeChapterLore(classId, 'late', CHAPTER_LORE_PT[classId].late)
+        : null,
   };
 }
 
@@ -215,16 +238,19 @@ function leadStoryPassiveLoreSlotsTotal(): number {
 function appendLeadStoryLoreParagraphs(state: GameState, out: string[]): void {
   for (const id of state.leadStoryPassives) {
     const pt = leadStoryPassivesCatalog[id]?.heroLorePt;
-    if (pt) out.push(pt);
+    if (pt) {
+      out.push(pickNarrativeString('heroLeadPassiveLore', id, pt));
+    }
   }
 }
 
 export function getHeroClassLabel(classId: ClassId, path: string | null | undefined): string {
   if (path) {
-    const label = PATH_LABEL_PT[`${classId}:${path}`];
+    const key = `${classId}:${path}`;
+    const label = pickNarrativeString('heroPathLabels', key, PATH_LABEL_PT[key] ?? '');
     if (label) return label;
   }
-  return CLASS_LABEL_PT[classId];
+  return t(CLASS_LABEL_KEY[classId]);
 }
 
 export function getHeroLore(
@@ -234,7 +260,7 @@ export function getHeroLore(
 ): string {
   const lead = state.party[0];
   if (!lead || lead.class !== classId) {
-    return CLASS_LORE_PT[classId];
+    return pickNarrativeString('heroLore', classId, CLASS_LORE_PT[classId]);
   }
   const pathEff = path ?? lead.path;
   const parts: string[] = [];
@@ -289,6 +315,11 @@ export function getPathPromotionNarrativePt(
 ): string | null {
   const k = pathKey(classId, path);
   if (!k) return null;
-  const t = PATH_PROMOTION_NARRATIVE_PT[k];
-  return t != null && t.trim().length > 0 ? t.trim() : null;
+  const fallback = PATH_PROMOTION_NARRATIVE_PT[k];
+  const text = pickNarrativeString(
+    'heroPathPromotion',
+    k,
+    fallback != null && fallback.trim().length > 0 ? fallback.trim() : ''
+  );
+  return text.trim().length > 0 ? text.trim() : null;
 }

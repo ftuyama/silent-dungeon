@@ -5,6 +5,12 @@ import type {
   SpellDef,
 } from '../engine/schema/index.ts';
 import { icons, type IconId } from './icons/index.ts';
+import { t, tArray } from '../i18n/index.ts';
+import { matchesAnyLocale } from '../i18n/combatLogMessages.ts';
+import {
+  pickCampCombatHintParty,
+  pickCampCombatHints,
+} from '../campaigns/calvario/overlayPick.ts';
 
 export type CombatLogDisplayItem =
   | { mode: 'single'; entry: CombatLogEntry }
@@ -33,30 +39,19 @@ export function escHtml(s: string): string {
 }
 
 /** Dicas aleatórias de combate (mostradas no acampamento). */
-const CAMP_COMBAT_HINTS = [
-  'Posturas: Agressivo favorece ataques físicos; Defensivo aumenta a CA contra inimigos; Foco alinha magias com Mente.',
-  'Ataques usam 2d6 + modificadores; com vantagem, rola 3d6 e descarta o menor dado.',
-  'Dois 6s no ataque ameaçam crítico; dois 1s podem resultar em falha crítica.',
-  'Golpe especial acerta mais forte mas aumenta Stress — em 4, entras em pânico.',
-  'Iniciativa: cada combatente rola 2d6 + AGI; ordem decrescente decide quem age primeiro.',
-  'Em postura Defensiva, contra inimigos ganhas +2 de CA (somado ao equipamento e buffs).',
-  'Cada dano que sofreres aumenta o Stress em 1 (até 4).',
-  'Em alguns encontros há vantagem para ti ou para os inimigos: 3d6, descarta o menor.',
-  'Magias custam mana; no início do teu turno, alguns heróis recuperam um pouco de vida ou mana (passivo).',
-  'Fugir termina o combate sem vitória (sem XP nem loot desse embate).',
-  'Contra mortos-vivos, clérigos somam +1 de dano sagrado nos ataques físicos.',
-  'Ao terminar um combate, o Stress de cada herói baixa um pouco (−1).',
-  'Com fé ao máximo (5), se o líder morrer no combate podes ser salvo à custa da fé — não conta como vitória.',
-  'Dano físico inclui 1d6, arma e bónus de postura; a armadura equipada reduz o que recebes.',
-  'Alguns inimigos têm placas de armadura: absorvem golpes antes de o HP baixar.',
-] as const;
+function campCombatHintFallbacks(): readonly string[] {
+  const hints = tArray('combatHints.general');
+  return hints.length > 0 ? hints : [];
+}
 
-const CAMP_COMBAT_HINT_PARTY =
-  'Companheiros: cada um age na sua vez com a mesma postura, visando o primeiro inimigo vivo.';
+function campCombatHintPartyFallback(): string {
+  return t('combatHints.party');
+}
 
 export function randomCampCombatHint(partySize: number): string {
-  const pool: string[] = [...CAMP_COMBAT_HINTS];
-  if (partySize > 1) pool.push(CAMP_COMBAT_HINT_PARTY);
+  const pool: string[] = pickCampCombatHints(campCombatHintFallbacks());
+  if (partySize > 1) pool.push(pickCampCombatHintParty(campCombatHintPartyFallback()));
+  if (pool.length === 0) return '';
   return pool[Math.floor(Math.random() * pool.length)]!;
 }
 
@@ -146,18 +141,22 @@ export function markBadgeIconSvg(markId: string): string {
   return icons[id];
 }
 
-/** Uma linha de descrição mecânica para a sidebar (PT). */
-export function spellSidebarMechanicsLinePt(sp: SpellDef): string {
+/** One mechanical description line for the sidebar. */
+export function spellSidebarMechanicsLine(sp: SpellDef): string {
   if (sp.spellKind === 'damage') {
-    return `dano (${sp.base > 0 ? `${sp.base} + ` : ''}${sp.dice}d6 + Mente)`;
+    return sp.base > 0
+      ? t('sidebar.spellMechanicsDamageBase', { base: String(sp.base), dice: String(sp.dice) })
+      : t('sidebar.spellMechanicsDamage', { dice: String(sp.dice) });
   }
   if (sp.spellKind === 'heal_self') {
-    return `cura (${sp.base > 0 ? `${sp.base} + ` : ''}${sp.dice}d6 + Mente)`;
+    return sp.base > 0
+      ? t('sidebar.spellMechanicsHealBase', { base: String(sp.base), dice: String(sp.dice) })
+      : t('sidebar.spellMechanicsHeal', { dice: String(sp.dice) });
   }
   if (sp.spellKind === 'buff_attack_roll') {
-    return '+1 ao ataque (golpes físicos do líder) até ao fim do combate';
+    return t('sidebar.spellMechanicsBuffAttack');
   }
-  return '+1 CA (líder) até ao fim do combate';
+  return t('sidebar.spellMechanicsBuffArmor');
 }
 
 export function fmtSignedMod(n: number): string {
@@ -184,12 +183,16 @@ export type CombatLogRoundBundle = {
 export function parseTurnBannerMessage(
   message: string
 ): { round: number; phase: 'player' | 'enemy' } | null {
-  const m = message.match(/^Rodada (\d+)\s*[—–-]\s*(.+)$/);
+  const m = message.match(/^(?:Rodada|Round)\s+(\d+)\s*[—–-]\s*(.+)$/);
   if (!m) return null;
   const round = Number(m[1]);
   const tail = (m[2] ?? '').trim();
-  if (tail.startsWith('sua vez')) return { round, phase: 'player' };
-  if (tail.startsWith('inimigos')) return { round, phase: 'enemy' };
+  if (tail.startsWith('sua vez') || tail.startsWith('your turn')) {
+    return { round, phase: 'player' };
+  }
+  if (tail.startsWith('inimigos') || tail.startsWith('enemies')) {
+    return { round, phase: 'enemy' };
+  }
   return null;
 }
 
@@ -264,7 +267,7 @@ export function buildCombatLogDisplayItems(log: CombatLogEntry[]): CombatLogDisp
       let j = i + 1;
       let quase: CombatLogEntry | undefined;
       const next = log[j];
-      if (next?.kind === 'info' && next.message.startsWith('Quase crítico')) {
+      if (next?.kind === 'info' && matchesAnyLocale('combatLog.almostCrit', next.message)) {
         quase = next;
         j++;
       }
@@ -283,14 +286,18 @@ export function buildCombatLogDisplayItems(log: CombatLogEntry[]): CombatLogDisp
 
 export function formatLevelUpDeltaLine(d: LevelUpStatDeltas): string {
   const parts: string[] = [];
-  if (d.str) parts.push(`Força +${d.str}`);
-  if (d.agi) parts.push(`Agilidade +${d.agi}`);
-  if (d.mind) parts.push(`Mente +${d.mind}`);
-  if (d.maxHp) parts.push(`HP máx +${d.maxHp}`);
-  if (d.hp) parts.push(`HP +${d.hp}`);
-  if (d.maxMana) parts.push(`Mana máx +${d.maxMana}`);
-  if (d.mana) parts.push(`Mana +${d.mana}`);
+  if (d.str) parts.push(t('story.levelUpDeltaStr', { n: String(d.str) }));
+  if (d.agi) parts.push(t('story.levelUpDeltaAgi', { n: String(d.agi) }));
+  if (d.mind) parts.push(t('story.levelUpDeltaMind', { n: String(d.mind) }));
+  if (d.maxHp) parts.push(t('story.levelUpDeltaMaxHp', { n: String(d.maxHp) }));
+  if (d.hp) parts.push(t('story.levelUpDeltaHp', { n: String(d.hp) }));
+  if (d.maxMana) parts.push(t('story.levelUpDeltaMaxMana', { n: String(d.maxMana) }));
+  if (d.mana) parts.push(t('story.levelUpDeltaMana', { n: String(d.mana) }));
   return parts.join(' · ');
+}
+
+function resourceBarAria(label: string, current: number, max: number): string {
+  return t('sidebar.resourceBar', { label, current: String(current), max: String(max) });
 }
 
 export function hpBarMarkup(
@@ -304,7 +311,7 @@ export function hpBarMarkup(
   if (max <= 0) return `<div class="${trackCls} empty"></div>`;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
   const label = fill === 'hp' ? 'HP' : 'XP';
-  return `<div class="${trackCls}" role="img" aria-label="${label} ${cur} de ${max}">
+  return `<div class="${trackCls}" role="img" aria-label="${escHtml(resourceBarAria(label, cur, max))}">
       <div class="${fillCls}" style="width:${pct}%"></div>
     </div>`;
 }
@@ -312,7 +319,7 @@ export function hpBarMarkup(
 export function manaBarMarkup(cur: number, max: number): string {
   if (max <= 0) return '';
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  return `<div class="mana-bar-track" role="img" aria-label="Mana ${cur} de ${max}">
+  return `<div class="mana-bar-track" role="img" aria-label="${escHtml(resourceBarAria('Mana', cur, max))}">
       <div class="mana-bar-fill" style="width:${pct}%"></div>
     </div>`;
 }
@@ -320,7 +327,7 @@ export function manaBarMarkup(cur: number, max: number): string {
 export function stressBarMarkup(cur: number): string {
   const max = 4;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  return `<div class="stress-bar-track" role="img" aria-label="Stress ${cur} de ${max}">
+  return `<div class="stress-bar-track" role="img" aria-label="${escHtml(resourceBarAria('Stress', cur, max))}">
       <div class="stress-bar-fill" style="width:${pct}%"></div>
     </div>`;
 }
@@ -330,7 +337,7 @@ export function friendshipBarMarkup(cur: number, max: number = 100): string {
   const trackCls = 'bond-bar-track bond-bar-resource';
   if (max <= 0) return `<div class="${trackCls} empty"></div>`;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  return `<div class="${trackCls}" role="img" aria-label="Vínculo ${cur} de ${max}">
+  return `<div class="${trackCls}" role="img" aria-label="${escHtml(resourceBarAria(t('sidebar.bond'), cur, max))}">
       <div class="bond-bar-fill" style="width:${pct}%"></div>
     </div>`;
 }

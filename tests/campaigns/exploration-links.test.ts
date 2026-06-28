@@ -6,7 +6,7 @@ import { EXPLORATION_GRAPHS } from '../../src/campaigns/calvario/exploration/gra
 import { MAPS } from '../../src/campaigns/calvario/maps.ts';
 
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url));
-const scenesDir = join(repoRoot, 'src/campaigns/calvario/scenes');
+const scenesDir = join(repoRoot, 'src/campaigns/calvario/scenes/pt-BR');
 
 function listMdFiles(dir: string): string[] {
   const out: string[] = [];

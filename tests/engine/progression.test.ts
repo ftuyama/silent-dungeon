@@ -73,7 +73,7 @@ describe('computeCombatXp', () => {
           name: 'X',
           sprite: 's',
           tensionMax: 10,
-          graph: { rootNodeId: 'r', nodes: { r: { linePt: 'a', terminal: 'victory' as const } } },
+          graph: { rootNodeId: 'r', nodes: { r: { line: 'a', terminal: 'victory' as const } } },
         },
       },
     };

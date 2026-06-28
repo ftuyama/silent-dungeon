@@ -11,6 +11,14 @@
     "verify:refactor": "npm run check:engine-boundaries && npm run test",
     "validate:scenes": "node scripts/validate-scenes.mjs",
     "validate:unreachable": "node scripts/find-unreachable-scenes.mjs",
+    "validate:i18n": "node scripts/i18n/validate-locale-parity.mjs",
+    "validate:i18n:translations": "node scripts/i18n/validate-i18n-translations.mjs",
+    "i18n:extract-entities": "node scripts/i18n/extract-campaign-locale.mjs",
+    "i18n:patch-entities": "node scripts/i18n/patch-entities-en.mjs",
+    "i18n:extract-exploration": "node scripts/i18n/extract-exploration-overlays.mjs",
+    "i18n:patch-exploration": "node scripts/i18n/patch-exploration-en.mjs",
+    "i18n:extract-scenes": "node scripts/i18n/extract-scene-overlays.mjs",
+    "i18n:extract-dialogue": "node scripts/i18n/extract-dialogue-overlays.mjs",
     "check:ascii-art": "node scripts/check-pending-ascii-art.mjs",
     "lint:highlight-frames": "node scripts/highlight-frames-lint.mjs",
     "highlight:hotspots": "node scripts/highlight-hotspots-from-image.mjs",
@@ -26,7 +34,6 @@
     "release:itch:push": "bash scripts/release-itch.sh --push lelouchiee silent-dungeon"
   },
   "devDependencies": {
-    "@types/dompurify": "^3.0.5",
     "@types/node": "^25.5.2",
     "mermaid": "^11.15.0",
     "sharp": "^0.34.5",

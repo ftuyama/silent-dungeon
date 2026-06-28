@@ -1,5 +1,6 @@
 import { deserializeState, serializeState } from '../engine/core/index.ts';
 import type { GameState } from '../engine/schema/index.ts';
+import { t } from '../i18n/index.ts';
 
 /** Slots visíveis e graváveis fora do modo desenvolvedor. */
 export const SAVE_SLOT_COUNT_PLAYER = 3;
@@ -19,20 +20,6 @@ export function slotReturnRewardDateKey(campaignId: string, slot: number): strin
   return `${campaignId}_return_reward_date_v2_s${slot}`;
 }
 
-/** Copia a gravação legada para o slot 1 se o slot 1 ainda estiver vazio. */
-export function migrateLegacySaveIfNeeded(campaignId: string, legacySaveKey: string): void {
-  try {
-    const legacy = localStorage.getItem(legacySaveKey);
-    if (!legacy?.trim()) return;
-    const s1 = localStorage.getItem(slotStorageKey(campaignId, 1));
-    if (s1?.trim()) return;
-    localStorage.setItem(slotStorageKey(campaignId, 1), legacy);
-    localStorage.removeItem(legacySaveKey);
-  } catch {
-    /* noop */
-  }
-}
-
 export function readRawSlot(campaignId: string, slot: number): string | null {
   if (slot < 1 || slot > SAVE_SLOT_COUNT_DEV) return null;
   try {
@@ -40,22 +27,6 @@ export function readRawSlot(campaignId: string, slot: number): string | null {
   } catch {
     return null;
   }
-}
-
-/** True se já existir gravação legada ou em qualquer slot (primeira visita = false). */
-export function hasAnyStoredSaveForCampaign(
-  campaignId: string,
-  legacySaveKey: string
-): boolean {
-  try {
-    if (localStorage.getItem(legacySaveKey)?.trim()) return true;
-    for (let s = 1; s <= SAVE_SLOT_COUNT_DEV; s++) {
-      if (localStorage.getItem(slotStorageKey(campaignId, s))?.trim()) return true;
-    }
-  } catch {
-    /* noop */
-  }
-  return false;
 }
 
 export type SlotPreview =
@@ -79,13 +50,13 @@ export function getSlotPreview(campaignId: string, slot: number): SlotPreview {
 function previewTitle(slot: number, p: SlotPreview): string {
   switch (p.kind) {
     case 'empty':
-      return `Slot ${slot} — sem gravação`;
+      return `${t('save.slotTitle', { slot: String(slot) })} — ${t('save.empty')}`;
     case 'invalid':
-      return `Slot ${slot} — gravação inválida`;
+      return `${t('save.slotTitle', { slot: String(slot) })} — ${t('save.invalid')}`;
     case 'wrongCampaign':
-      return `Slot ${slot} — outra campanha`;
+      return `${t('save.slotTitle', { slot: String(slot) })} — ${t('save.wrongCampaign')}`;
     case 'ok':
-      return `Slot ${slot} — ${p.playerName} · Cap. ${p.chapter} · Nv. ${p.level}`;
+      return `${t('save.slotTitle', { slot: String(slot) })} — ${p.playerName} · ${t('save.chapter', { chapter: String(p.chapter) })} · ${t('save.level', { level: String(p.level) })}`;
   }
 }
 
@@ -123,12 +94,12 @@ export function buildMenuSaveSlot(
     const stats = document.createElement('div');
     stats.className = 'menu-save-slot-stats';
     const cap = document.createElement('span');
-    cap.textContent = `Cap. ${preview.chapter}`;
+    cap.textContent = t('save.chapter', { chapter: String(preview.chapter) });
     const sep = document.createElement('span');
     sep.className = 'menu-save-slot-stats-sep';
     sep.textContent = '·';
     const lv = document.createElement('span');
-    lv.textContent = `Nv. ${preview.level}`;
+    lv.textContent = t('save.level', { level: String(preview.level) });
     stats.append(cap, sep, lv);
     details.append(nameEl, stats);
   } else {
@@ -137,12 +108,12 @@ export function buildMenuSaveSlot(
     if (preview.kind === 'empty') {
       wrap.classList.add('menu-save-slot--empty');
       wrap.classList.remove('menu-save-slot--warn');
-      msg.textContent = 'Sem gravação';
+      msg.textContent = t('save.empty');
     } else {
       wrap.classList.remove('menu-save-slot--empty');
       wrap.classList.add('menu-save-slot--warn');
       msg.textContent =
-        preview.kind === 'invalid' ? 'Gravação inválida' : 'Outra campanha';
+        preview.kind === 'invalid' ? t('save.invalid') : t('save.wrongCampaign');
     }
     details.appendChild(msg);
   }
@@ -156,8 +127,8 @@ export function buildMenuSaveSlot(
   const saveBtn = document.createElement('button');
   saveBtn.type = 'button';
   saveBtn.className = 'menu-item menu-save-slot-btn menu-save-slot-btn--secondary';
-  saveBtn.textContent = 'Salvar';
-  saveBtn.setAttribute('aria-label', `Salvar partida atual no slot ${slot}`);
+  saveBtn.textContent = t('save.save');
+  saveBtn.setAttribute('aria-label', `${t('save.save')} ${slot}`);
   saveBtn.addEventListener('click', () => cbs.onSave(slot));
 
   const loadBtn = document.createElement('button');
@@ -168,10 +139,12 @@ export function buildMenuSaveSlot(
     ? 'menu-item menu-save-slot-btn menu-save-slot-btn--primary'
     : 'menu-item menu-save-slot-btn menu-save-slot-btn--ghost';
   loadBtn.disabled = !hasSave;
-  loadBtn.textContent = 'Carregar';
+  loadBtn.textContent = t('save.load');
   loadBtn.setAttribute(
     'aria-label',
-    hasSave ? `Carregar gravação do slot ${slot}` : `Slot ${slot} vazio — carregar indisponível`
+    hasSave
+      ? t('save.loadAria', { slot: String(slot) })
+      : t('save.loadUnavailableAria', { slot: String(slot) })
   );
   loadBtn.addEventListener('click', () => {
     if (!hasSave) return;

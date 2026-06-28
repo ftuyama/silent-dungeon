@@ -5,10 +5,10 @@ import {
   executeSpellTurn,
   fleeCombat,
   fleeDifficultyTn,
+  getSacrificeValues,
   SACRIFICE_MIN_CORRUPTION,
   useCombatConsumable,
 } from '../engine/combat/index.ts';
-import { getSacrificeValues } from '../engine/combat/index.ts';
 import type {
   Character,
   CombatLogEntry,
@@ -26,10 +26,12 @@ import {
   escHtml,
   fmtSignedMod,
   parseCombatLogRounds,
+  parseTurnBannerMessage,
   spellEmoji,
   type CombatLogDisplayItem,
 } from './gameAppUtils.ts';
 import type { GameAudio } from './sound/index.ts';
+import { t, matchesAnyLocale } from '../i18n/index.ts';
 import {
   extractLethalGhosts,
   getMeleeFxStyleForCharacter,
@@ -42,7 +44,8 @@ import {
 /** Atalhos no combate: 1–9, depois letras (ordem QWERTY). */
 const COMBAT_QUICK_KEYS_AFTER_9 = 'qwertyuiopasdfghjklzxcvbnm';
 
-const ENEMY_TURN_BANNER = /inimigos\s*$/i;
+const ENEMY_TURN_BANNER = (message: string): boolean =>
+  parseTurnBannerMessage(message)?.phase === 'enemy';
 
 /** Alinhado à duração de `combatFloatDmgRise` em combat.css — o `main` é recriado a cada render, sem isto o número some no próximo frame. */
 type PendingEnemyFloatingDamage = {
@@ -74,7 +77,7 @@ function splitNewLogForEnemyTurnStagger(
   entries: CombatLogEntry[]
 ): { pre: CombatLogEntry[]; enemy: CombatLogEntry[] } {
   const idx = entries.findIndex(
-    (e) => e.kind === 'turn_banner' && e.message != null && ENEMY_TURN_BANNER.test(e.message)
+    (e) => e.kind === 'turn_banner' && e.message != null && ENEMY_TURN_BANNER(e.message)
   );
   if (idx < 0) {
     return { pre: entries, enemy: [] };
@@ -121,7 +124,30 @@ export function combatShortcutTitle(btn: HTMLButtonElement): string {
   if (raw == null) return '';
   const keyDisplay =
     raw.length === 1 && raw >= 'a' && raw <= 'z' ? raw.toUpperCase() : raw;
-  return `Pressione ${keyDisplay} no teclado para ativar sem clicar.`;
+  return t('combat.shortcutHint', { key: keyDisplay });
+}
+
+export function createCombatQuickNavDecorator(): (
+  btn: HTMLButtonElement,
+  setLabel: (key: string | null) => void
+) => void {
+  let index = 0;
+  return (btn, setLabel) => {
+    const key = combatQuickKeyAt(index);
+    index += 1;
+    if (key != null) {
+      btn.dataset.quickNavCombat = key;
+    } else {
+      delete btn.dataset.quickNavCombat;
+    }
+    setLabel(key);
+    const shortcut = combatShortcutTitle(btn);
+    if (shortcut) {
+      btn.title = shortcut;
+    } else {
+      btn.removeAttribute('title');
+    }
+  };
 }
 
 function joinCombatActionHint(description: string, btn: HTMLButtonElement): string {
@@ -129,17 +155,10 @@ function joinCombatActionHint(description: string, btn: HTMLButtonElement): stri
   return shortcut ? `${description} ${shortcut}` : description;
 }
 
-const COMBAT_ATTACK_SECTION_HINT_PT =
-  'Corpo a corpo e magias ofensivas atingem o primeiro inimigo vivo na lista.';
-
-const COMBAT_SPELL_SECTION_HINT_PT =
-  'Cada magia consome o turno e a mana indicada no botão. Magias de dano atingem o primeiro inimigo com vida; curas e buffs seguem cada magia — passe o cursor no botão para o efeito exato.';
-
-const COMBAT_FLEE_SECTION_HINT_PT =
-  'Consome o teu turno. Rola 2d6 + mod(Agilidade) e compara com o alvo da fuga deste encontro (encontros mais perigosos exigem rolagem mais alta). Se passares, sais do combate sem vitória por eliminação. Se falhares, a vez passa aos inimigos. O número exato aparece na dica do botão.';
-
-const COMBAT_CONSUMABLES_SECTION_HINT_PT =
-  'Cada uso gasta o turno. Consumíveis aplicam-se ao líder do grupo. Quantidade no inventário aparece no botão quando há mais de uma unidade. Passe o cursor em cada item para ver HP, mana, Stress e restrições.';
+const COMBAT_ATTACK_SECTION_HINT = () => t('combat.attackSectionHint');
+const COMBAT_SPELL_SECTION_HINT = () => t('combat.spellSectionHint');
+const COMBAT_FLEE_SECTION_HINT = () => t('combat.fleeSectionHint');
+const COMBAT_CONSUMABLES_SECTION_HINT = () => t('combat.consumablesSectionHint');
 
 export function appendCombatSectionHeader(
   parent: HTMLElement,
@@ -164,37 +183,46 @@ export function appendCombatSectionHeader(
 }
 
 const STANCE_COMBAT_HINT: Record<Stance, string> = {
-  aggressive:
-    'Postura ofensiva: +1 no acerto (2d6+mod) e +1 no dano fixo; não aumenta a CA contra golpes inimigos.',
-  defensive:
-    'Postura guardada: +2 na CA quando os inimigos te atacam; −1 no acerto (2d6+mod).',
-  focus:
-    'Postura técnica: o acerto usa mod de Mente (+1 extra) no lugar do mod de Força; o dano da arma segue o normal.',
+  get aggressive() {
+    return t('combat.stanceAggressiveHint');
+  },
+  get defensive() {
+    return t('combat.stanceDefensiveHint');
+  },
+  get focus() {
+    return t('combat.stanceFocusHint');
+  },
 };
 
 function spellCombatHoverText(sp: SpellDef): string {
   if (sp.spellKind === 'damage') {
-    return `Dano mágico no primeiro inimigo com vida: ${sp.dice}d6+${sp.base}+mod(Mente). Consome o turno.`;
+    return t('combat.spellHoverDamage', { dice: String(sp.dice), base: String(sp.base) });
   }
   if (sp.spellKind === 'heal_self') {
-    return `Cura em você: ${sp.dice}d6+${sp.base}+mod(Mente), até o HP máximo. Consome o turno.`;
+    return t('combat.spellHoverHeal', { dice: String(sp.dice), base: String(sp.base) });
   }
   if (sp.spellKind === 'buff_attack_roll') {
-    return 'Suporte: +1 no seu ataque físico até o fim do combate. Consome o turno.';
+    return t('combat.spellHoverBuffAttack');
   }
-  return 'Suporte: +1 na sua CA até o fim do combate. Consome o turno.';
+  return t('combat.spellHoverBuffArmor');
 }
 
 function consumableCombatHover(def: ItemDef): string {
   const bits: string[] = [];
-  if (def.restoreHp && def.restoreHp > 0) bits.push(`até +${def.restoreHp} HP`);
-  if (def.restoreMana && def.restoreMana > 0) bits.push(`até +${def.restoreMana} mana`);
-  if (def.stressRelief && def.stressRelief > 0) bits.push(`−${def.stressRelief} Stress`);
-  const summary = bits.length > 0 ? bits.join(', ') : 'efeito do item';
-  return `Usa no líder: ${summary}. Consome o turno.`;
+  if (def.restoreHp && def.restoreHp > 0) {
+    bits.push(t('combat.consumableHoverHp', { n: def.restoreHp }));
+  }
+  if (def.restoreMana && def.restoreMana > 0) {
+    bits.push(t('combat.consumableHoverMana', { n: def.restoreMana }));
+  }
+  if (def.stressRelief && def.stressRelief > 0) {
+    bits.push(t('combat.consumableHoverStress', { n: def.stressRelief }));
+  }
+  const summary = bits.length > 0 ? bits.join(', ') : t('combat.consumableHoverDefault');
+  return t('combat.consumableHover', { summary });
 }
 
-export function playCombatLogSound(
+function playCombatLogSound(
   entry: CombatLogEntry,
   partyMemberNames: ReadonlySet<string>,
   audio: GameAudio
@@ -337,15 +365,15 @@ function appendCombatLogMergedHitMeta(
   if (attack.final === undefined || attack.vsDefense === undefined) return;
   const meta = document.createElement('div');
   meta.className = 'combat-log-meta combat-log-meta--attack-roll';
-  let line = `${attack.final} vs CA ${attack.vsDefense}`;
+  let line = `${attack.final} vs ${t('engine.ac')} ${attack.vsDefense}`;
   if (attack.modifier !== undefined) {
-    line += ` · bônus ${fmtSignedMod(attack.modifier)}`;
+    line += ` ${t('combat.logMetaBonus', { mod: fmtSignedMod(attack.modifier) })}`;
   }
   if (damage.final !== undefined) {
-    line += ` · dano ${damage.final}`;
+    line += ` ${t('combat.logMetaDamage', { amount: damage.final })}`;
   }
   if (damage.damageKind === 'crit') {
-    line += ' · crítico';
+    line += ` ${t('combat.logMetaCrit')}`;
   }
   meta.textContent = line;
   wrap.appendChild(meta);
@@ -355,9 +383,9 @@ function appendCombatLogMeta(wrap: HTMLElement, entry: CombatLogEntry): void {
   if (entry.kind === 'attack' && entry.final !== undefined && entry.vsDefense !== undefined) {
     const meta = document.createElement('div');
     meta.className = 'combat-log-meta combat-log-meta--attack-roll';
-    let line = `${entry.final} vs CA ${entry.vsDefense}`;
+    let line = `${entry.final} vs ${t('engine.ac')} ${entry.vsDefense}`;
     if (entry.modifier !== undefined) {
-      line += ` · bônus ${fmtSignedMod(entry.modifier)}`;
+      line += ` ${t('combat.logMetaBonus', { mod: fmtSignedMod(entry.modifier) })}`;
     }
     meta.textContent = line;
     wrap.appendChild(meta);
@@ -366,14 +394,14 @@ function appendCombatLogMeta(wrap: HTMLElement, entry: CombatLogEntry): void {
 
   const parts: string[] = [];
   if (entry.modifier !== undefined) {
-    parts.push(`Modificador ${fmtSignedMod(entry.modifier)}`);
+    parts.push(t('combat.logMetaModifier', { mod: fmtSignedMod(entry.modifier) }));
   }
   if (entry.kind === 'damage' && entry.final !== undefined) {
-    parts.push(`Dano ${entry.final}`);
+    parts.push(t('combat.logMetaDamageAmount', { amount: entry.final }));
   } else if (entry.kind === 'heal' && entry.final !== undefined) {
-    parts.push(`Cura ${entry.final} HP`);
+    parts.push(t('combat.logMetaHealAmount', { amount: entry.final }));
   } else if (entry.final !== undefined) {
-    parts.push(`Total ${entry.final}`);
+    parts.push(t('combat.logMetaTotal', { amount: entry.final }));
   }
 
   if (parts.length === 0) return;
@@ -550,12 +578,8 @@ function scrollCombatLogToLatestRound(scrollEl: HTMLElement, stackEl: HTMLElemen
   scrollEl.scrollTop = Math.max(0, top);
 }
 
-/**
- * Entorno amarelo no painel do campo: último dano resolvido foi crítico
- * (ignora rodada / vitória / pânico após o golpe).
- */
 /** Última fala de combate registada para o inimigo nesse índice (log pode crescer). */
-export function lastEnemyCombatLine(
+function lastEnemyCombatLine(
   log: CombatLogEntry[],
   enemyIndex: number
 ): string | undefined {
@@ -568,7 +592,11 @@ export function lastEnemyCombatLine(
   return undefined;
 }
 
-export function combatLastResolvedDamageWasCrit(log: CombatLogEntry[]): boolean {
+/**
+ * Entorno amarelo no painel do campo: último dano resolvido foi crítico
+ * (ignora rodada / vitória / pânico após o golpe).
+ */
+function combatLastResolvedDamageWasCrit(log: CombatLogEntry[]): boolean {
   let i = log.length - 1;
   while (i >= 0) {
     const e = log[i]!;
@@ -580,11 +608,11 @@ export function combatLastResolvedDamageWasCrit(log: CombatLogEntry[]): boolean 
       i--;
       continue;
     }
-    if (e.kind === 'info' && (e.message === 'Vitória!' || e.message === 'Fim de linha.')) {
+    if (e.kind === 'info' && (matchesAnyLocale('combatLog.victory', e.message) || matchesAnyLocale('combatLog.gameOver', e.message))) {
       i--;
       continue;
     }
-    if (e.kind === 'stress' && e.message?.startsWith('Pânico!')) {
+    if (e.kind === 'stress' && matchesAnyLocale('combatLog.panic', e.message ?? '')) {
       i--;
       continue;
     }
@@ -706,7 +734,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
 
   const inner = document.createElement('div');
   inner.className = 'shell combat-shell';
-  inner.innerHTML = `<h1>Combate</h1>`;
+  inner.innerHTML = `<h1>${escHtml(t('combat.title'))}</h1>`;
 
   const layout = document.createElement('div');
   layout.className = 'combat-layout';
@@ -737,8 +765,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   for (let enemyIdx = 0; enemyIdx < c.enemies.length; enemyIdx++) {
     const inst = c.enemies[enemyIdx]!;
     if (inst.hp <= 0) continue;
-    const battleDef = ctx.registry.data.enemies[inst.defId];
-    const def = battleDef;
+    const def = ctx.registry.data.enemies[inst.defId];
     if (!def) continue;
     const panel = document.createElement('div');
     panel.className = 'enemy-panel';
@@ -774,15 +801,15 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       });
     }
     const hpPct = Math.max(0, Math.min(100, Math.round((inst.hp / inst.maxHp) * 100)));
-    panel.innerHTML = `<div class="enemy-panel-header"><strong>${escHtml(def.name)}</strong><span class="enemy-hp-text">HP ${inst.hp}/${inst.maxHp}</span></div>
-      <div class="enemy-hp-track" title="HP ${inst.hp}/${inst.maxHp}">
+    panel.innerHTML = `<div class="enemy-panel-header"><strong>${escHtml(def.name)}</strong><span class="enemy-hp-text">${t('combat.hpLabel', { current: inst.hp, max: inst.maxHp })}</span></div>
+      <div class="enemy-hp-track" title="${escHtml(t('combat.hpLabel', { current: inst.hp, max: inst.maxHp }))}">
         <div class="enemy-hp-fill" style="width:${hpPct}%"></div>
       </div>`;
     if (def.type === 'armored') {
       const armorChips = Math.max(0, Math.min(2, inst.armorChipsRemaining));
       const armorLine = document.createElement('div');
       armorLine.className = 'enemy-armor-line';
-      armorLine.innerHTML = `Armadura <span class="enemy-armor-slot${armorChips >= 1 ? ' enemy-armor-slot--filled' : ''}">■</span><span class="enemy-armor-slot${armorChips >= 2 ? ' enemy-armor-slot--filled' : ''}">■</span>`;
+      armorLine.innerHTML = `${escHtml(t('combat.armorLabel'))} <span class="enemy-armor-slot${armorChips >= 1 ? ' enemy-armor-slot--filled' : ''}">■</span><span class="enemy-armor-slot${armorChips >= 2 ? ' enemy-armor-slot--filled' : ''}">■</span>`;
       panel.appendChild(armorLine);
     }
     panel.appendChild(stack);
@@ -809,7 +836,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     fxLayer.setAttribute('aria-hidden', 'true');
     stack.appendChild(pre);
     stack.appendChild(fxLayer);
-    panel.innerHTML = `<div class="enemy-panel-header"><strong>${escHtml(ghost.name)}</strong><span class="enemy-hp-text enemy-hp-text--defeated">Abatido</span></div>`;
+    panel.innerHTML = `<div class="enemy-panel-header"><strong>${escHtml(ghost.name)}</strong><span class="enemy-hp-text enemy-hp-text--defeated">${escHtml(t('combat.downed'))}</span></div>`;
     panel.appendChild(stack);
     left.appendChild(panel);
   }
@@ -834,41 +861,22 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   }
   const actionsHdr = document.createElement('div');
   actionsHdr.className = 'combat-actions-panel-hdr';
-  actionsHdr.textContent = 'Ações';
+  actionsHdr.textContent = t('combat.actions');
   actionsPanel.appendChild(actionsHdr);
   const buffParts: string[] = [];
   if ((c.buffAttackRoll ?? 0) > 0) {
-    buffParts.push(`+${c.buffAttackRoll} acerto`);
+    buffParts.push(t('combat.buffAttackShort', { n: c.buffAttackRoll! }));
   }
   if ((c.buffArmorClass ?? 0) > 0) {
-    buffParts.push(`+${c.buffArmorClass} CA`);
+    buffParts.push(t('combat.buffArmorShort', { n: c.buffArmorClass! }));
   }
   if (buffParts.length > 0) {
     const buffHint = document.createElement('div');
     buffHint.className = 'combat-active-buffs-hint';
-    buffHint.textContent = `Buffs ativos: ${buffParts.join(' · ')}.`;
+    buffHint.textContent = t('combat.activeBuffs', { buffs: buffParts.join(' · ') });
     actionsPanel.appendChild(buffHint);
   }
-  let combatQuickNavIndex = 0;
-  const decorateCombatQuickNav = (
-    btn: HTMLButtonElement,
-    setLabel: (key: string | null) => void
-  ): void => {
-    const key = combatQuickKeyAt(combatQuickNavIndex);
-    combatQuickNavIndex += 1;
-    if (key != null) {
-      btn.dataset.quickNavCombat = key;
-    } else {
-      delete btn.dataset.quickNavCombat;
-    }
-    setLabel(key);
-    const shortcut = combatShortcutTitle(btn);
-    if (shortcut) {
-      btn.title = shortcut;
-    } else {
-      btn.removeAttribute('title');
-    }
-  };
+  const decorateCombatQuickNav = createCombatQuickNavDecorator();
 
   if (c.phase === 'choose_stance' && lead) {
     const attackBar = document.createElement('div');
@@ -876,17 +884,17 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     appendCombatSectionHeader(
       attackBar,
       'combat-attack-hdr',
-      'Ataques',
-      COMBAT_ATTACK_SECTION_HINT_PT,
-      'Ajuda: alvos dos ataques corpo a corpo'
+      t('combat.attacks'),
+      COMBAT_ATTACK_SECTION_HINT(),
+      t('combat.attackHelpAria')
     );
     const bar = document.createElement('div');
     bar.className = 'stance-bar';
     const stances: Stance[] = ['aggressive', 'defensive', 'focus'];
     const labels: Record<Stance, string> = {
-      aggressive: 'Agressivo',
-      defensive: 'Defensivo',
-      focus: 'Foco',
+      aggressive: t('combat.stanceAggressive'),
+      defensive: t('combat.stanceDefensive'),
+      focus: t('combat.stanceFocus'),
     };
     for (const st of stances) {
       const btn = document.createElement('button');
@@ -910,14 +918,18 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       const sacrifice = document.createElement('button');
       sacrifice.className = 'stance special';
       decorateCombatQuickNav(sacrifice, (key) => {
-        const base = 'Selo do Vazio';
+        const base = t('combat.voidSeal');
         sacrifice.textContent = key != null ? `${key} - ${base}` : base;
       });
       const sacVals = getSacrificeValues(ctx.state);
       const sacExplain =
         sacVals != null
-          ? `Selo do Vazio: sacrifica até ${sacVals.hpCost} HP neste ataque por +${sacVals.damageBonus} de dano (postura agressiva). Corrupção ${ctx.state.resources.corruption}.`
-          : `Selo do Vazio. Corrupção ${ctx.state.resources.corruption}.`;
+          ? t('combat.voidSealHintActive', {
+              hpCost: sacVals.hpCost,
+              damageBonus: sacVals.damageBonus,
+              corruption: ctx.state.resources.corruption,
+            })
+          : t('combat.voidSealHintShort', { corruption: ctx.state.resources.corruption });
       sacrifice.title = joinCombatActionHint(sacExplain, sacrifice);
       sacrifice.disabled = lead.hp <= 1;
       sacrifice.addEventListener('click', () => {
@@ -935,12 +947,12 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     const sp = document.createElement('button');
     sp.className = 'stance special';
     decorateCombatQuickNav(sp, (key) => {
-      const base = lead.specialUsedThisCombat ? 'Especial já usado' : 'Golpe especial';
+      const base = lead.specialUsedThisCombat ? t('combat.specialStrikeUsed') : t('combat.specialStrike');
       sp.textContent = key != null ? `${key} - ${base}` : base;
     });
     const specialExplain = lead.specialUsedThisCombat
-      ? 'Golpe especial já usado neste combate.'
-      : 'Golpe especial (uma vez por combate): +2 no acerto e +1 de Stress; o golpe usa a postura agressiva.';
+      ? t('combat.specialStrikeUsedHint')
+      : t('combat.specialStrikeHint');
     sp.title = joinCombatActionHint(specialExplain, sp);
     sp.disabled = lead.specialUsedThisCombat;
     sp.addEventListener('click', () => {
@@ -964,9 +976,9 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       appendCombatSectionHeader(
         spellBar,
         'combat-spell-hdr',
-        'Magias',
-        COMBAT_SPELL_SECTION_HINT_PT,
-        'Ajuda: magias em combate'
+        t('combat.spells'),
+        COMBAT_SPELL_SECTION_HINT(),
+        t('combat.spellHelpAria')
       );
       const spells = ctx.registry.data.spells;
       for (const spellId of ctx.state.knownSpells) {
@@ -1010,9 +1022,9 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       appendCombatSectionHeader(
         potionBar,
         'combat-potion-hdr',
-        'Consumíveis',
-        COMBAT_CONSUMABLES_SECTION_HINT_PT,
-        'Ajuda: consumíveis em combate'
+        t('combat.consumables'),
+        COMBAT_CONSUMABLES_SECTION_HINT(),
+        t('combat.consumableHelpAria')
       );
       for (const itemId of potionIds) {
         const def = ctx.registry.data.items[itemId];
@@ -1022,7 +1034,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         btn.className = 'combat-potion';
         btn.type = 'button';
         decorateCombatQuickNav(btn, (key) => {
-          const base = count > 1 ? `${def.name} (${count} qty)` : def.name;
+          const qty = count > 1 ? ` ${t('combat.itemQty', { count })}` : '';
+          const base = `${def.name}${qty}`;
           btn.textContent = key != null ? `${key} - ${base}` : base;
         });
         btn.title = joinCombatActionHint(consumableCombatHover(def), btn);
@@ -1047,22 +1060,22 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   appendCombatSectionHeader(
     fleeBar,
     'combat-flee-hdr',
-    'Fuga',
-    COMBAT_FLEE_SECTION_HINT_PT,
-    'Ajuda: fugir do combate'
+    t('combat.fleeSection'),
+    COMBAT_FLEE_SECTION_HINT(),
+    t('combat.fleeHelpAria')
   );
   const flee = document.createElement('button');
   flee.className = 'combat-flee-btn';
   const canFlee = c.phase === 'choose_stance' && lead != null && lead.hp > 0;
   flee.disabled = !canFlee;
   decorateCombatQuickNav(flee, (key) => {
-    const base = 'Tentar fugir (2d6 + Agilidade)';
+    const base = t('combat.tryFlee');
     flee.textContent = key != null ? `${key} - ${base}` : base;
   });
   const fleeTn = fleeDifficultyTn(c.fleeRate ?? 0.5);
   const fleeExplain = canFlee
-    ? `Fuga: 2d6 + mod(Agilidade) ≥ ${fleeTn} para sair. Se falhar, vem a rodada dos inimigos.`
-    : 'Só é possível tentar fugir na fase de escolha de ações, com o líder vivo.';
+    ? t('combat.fleeHintActive', { tn: fleeTn })
+    : t('combat.fleeHintBlocked');
   flee.title = joinCombatActionHint(fleeExplain, flee);
   flee.addEventListener('click', () => {
     if (!canFlee) return;
@@ -1085,9 +1098,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   dice.className = 'dice-panel';
   const hdr = document.createElement('div');
   hdr.className = 'dice-panel-header';
-  hdr.textContent = 'Dados & log de batalha';
-  hdr.title =
-    'A rodada atual fica visível abaixo; role para cima dentro deste painel para ver rodadas anteriores.';
+  hdr.textContent = t('combat.diceLog');
+  hdr.title = t('combat.diceLogScrollHint');
   dice.appendChild(hdr);
 
   const logScroll = document.createElement('div');
@@ -1114,7 +1126,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     pre.className = 'combat-log-preamble';
     const preHdr = document.createElement('div');
     preHdr.className = 'combat-log-preamble-hdr';
-    preHdr.textContent = 'Abertura';
+    preHdr.textContent = t('combat.opening');
     pre.appendChild(preHdr);
     const preBody = document.createElement('div');
     preBody.className = 'combat-log-preamble-body';
@@ -1133,7 +1145,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     roundEl.className = 'combat-log-round';
     const roundHdr = document.createElement('div');
     roundHdr.className = 'combat-log-round-header';
-    roundHdr.textContent = `Rodada ${bundle.round}`;
+    roundHdr.textContent = t('combat.round', { round: String(bundle.round) });
     roundEl.appendChild(roundHdr);
 
     for (const section of bundle.sections) {
@@ -1141,7 +1153,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       phase.className = `combat-log-phase combat-log-phase--${section.kind}`;
       const label = document.createElement('div');
       label.className = 'combat-log-phase-label';
-      label.textContent = section.kind === 'player' ? 'Seu turno' : 'Inimigos';
+      label.textContent =
+        section.kind === 'player' ? t('combat.yourTurn') : t('combat.enemiesTurn');
       phase.appendChild(label);
       const body = document.createElement('div');
       body.className = 'combat-log-phase-body';

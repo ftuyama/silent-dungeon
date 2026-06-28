@@ -1,0 +1,34 @@
+{
+  "name": "The Silent Dungeon",
+  "chapterTitles": {
+    "1": "Opening",
+    "2": "Catacombs of the echo",
+    "3": "Mute depths",
+    "4": "The Throne",
+    "5": "Snow",
+    "6": "The Void",
+    "7": "Ashes of the Sky"
+  },
+  "endings": {
+    "epilogue_apocalypse": {
+      "title": "Ashes with a name",
+      "blurb": "The apocalypse grew more honest; your echo splits between road and silence."
+    },
+    "epilogue_depths": {
+      "title": "Depths of the axis",
+      "blurb": "Another fold of stone — a deeper stratum, silence under a different name."
+    },
+    "frost_epilogue": {
+      "title": "Frost epilogue",
+      "blurb": "Vetrnax fell; under the ice, the Third Bell learns a new name."
+    },
+    "epilogue_mirror": {
+      "title": "Broken mirror",
+      "blurb": "The fractured nave stays with you like a cut in the palm; you chose how to tell the pulse."
+    },
+    "passage_graywind_heights": {
+      "title": "Passage to the axis floor",
+      "blurb": "Beyond the throne, another layer — a fold of stone and ice that still asks who rules the silence."
+    }
+  }
+}

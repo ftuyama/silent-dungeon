@@ -1,7 +1,7 @@
 /**
  * Valida referências entre cenas (next, onVictory, onFlee, skillCheck, etc.).
  * Uso: node scripts/validate-scenes.mjs [--campaign <id>]
- * Default: calvario
+ * Default: calvario, scenes/pt-BR (canonical scene markdown)
  */
 import fs from 'fs';
 import path from 'path';
@@ -16,13 +16,16 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.join(__dirname, '..');
 
-const campaignId = parseCampaignArgv(process.argv.slice(2));
-const { scenesDir } = campaignPaths(repoRoot, campaignId);
+const { campaignId } = parseCampaignArgv(process.argv.slice(2));
+const locale = 'pt-BR';
+const { scenesDir } = campaignPaths(repoRoot, campaignId, locale);
 
 if (!fs.existsSync(scenesDir)) {
   console.error(`Pasta de cenas não encontrada: ${scenesDir}`);
   process.exit(1);
 }
+
+let failed = false;
 
 const refRe = /\b(?:next|successNext|failNext|onVictory|onDefeat|onFlee|fallbackNext):\s*([a-z0-9_/]+)/gi;
 
@@ -53,11 +56,13 @@ for (const f of files) {
 }
 
 if (missing.length) {
-  console.error('Referências a cenas inexistentes:');
+  failed = true;
+  console.error(`Referências a cenas inexistentes [${campaignId}/${locale}]:`);
   for (const x of missing) {
     console.error(`  ${x.from} → "${x.target}"`);
   }
-  process.exit(1);
+} else {
+  console.log(`OK [${campaignId}/${locale}]: ${ids.size} cenas, referências cruzadas válidas.`);
 }
 
-console.log(`OK [${campaignId}]: ${ids.size} cenas, referências cruzadas válidas.`);
+process.exit(failed ? 1 : 0);

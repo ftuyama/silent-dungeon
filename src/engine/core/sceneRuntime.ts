@@ -293,7 +293,7 @@ export function resolveLuckCheck(
   return { state: newState, breakdown };
 }
 
-export function resolveRandomBranch(
+function resolveRandomBranch(
   state: GameState,
   scene: LoadedScene
 ): { state: GameState; nextSceneId: string } {

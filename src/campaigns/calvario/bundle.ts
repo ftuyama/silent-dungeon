@@ -28,13 +28,17 @@ import { getHeroClassLabel, getHeroLore, getHeroStoryProgress } from './classHer
 import { getCompanionLore, getCompanionStoryProgress } from './classCompanion.ts';
 import { EXPLORATION_GRAPHS } from './exploration/graphs.ts';
 
-validateExplorationGraphCatalog(EXPLORATION_GRAPHS);
+import { pickSceneFilesFromGlob } from '../sceneLocale.ts';
+import type { Locale } from '../../i18n/locale.ts';
+import { applyCampaignIndexOverlay, applyEntityLocaleOverlay } from './localeLoad.ts';
 
-const sceneRaw = import.meta.glob<string>('./scenes/**/*.md', {
+const SCENE_GLOB_PT = import.meta.glob<string>('./scenes/pt-BR/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
+
+validateExplorationGraphCatalog(EXPLORATION_GRAPHS);
 
 export const calvarioUI: CampaignUIAdapter = {
   renderMap,
@@ -47,8 +51,8 @@ export const calvarioUI: CampaignUIAdapter = {
   getExplorationGraph: (id: string) => EXPLORATION_GRAPHS[id] ?? null,
 };
 
-export function loadCalvarioContent() {
-  const idx = CampaignIndexSchema.parse(campaignIndex);
+export function loadCalvarioContent(locale: Locale) {
+  const idx = CampaignIndexSchema.parse(applyCampaignIndexOverlay(campaignIndex, locale));
   const data = emptyGameData(idx, calvarioHeroNarrative);
   data.enemies = enemiesTs as Record<string, EnemyDef>;
   for (const def of Object.values(dialogueEnemiesTs)) {
@@ -73,5 +77,6 @@ export function loadCalvarioContent() {
   data.passives = passivesTs;
   data.journeyMarks = { ...journeyMarksTs };
   data.leadStoryPassives = { ...leadStoryPassivesTs };
-  return { data, sceneFiles: sceneRaw, ui: calvarioUI };
+  applyEntityLocaleOverlay(data, locale);
+  return { data, sceneFiles: pickSceneFilesFromGlob(SCENE_GLOB_PT), ui: calvarioUI };
 }

@@ -21,7 +21,10 @@ import { SCENE_ART } from './ascii/art.ts';
 import { getHeroClassLabel, getHeroLore, getHeroStoryProgress } from './classHero.ts';
 import { getCompanionLore, getCompanionStoryProgress } from './classCompanion.ts';
 
-const sceneRaw = import.meta.glob<string>('./scenes/**/*.md', {
+import { pickSceneFilesFromGlob } from '../sceneLocale.ts';
+import type { Locale } from '../../i18n/locale.ts';
+
+const SCENE_GLOB_PT = import.meta.glob<string>('./scenes/pt-BR/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -37,7 +40,7 @@ export const demoUI: CampaignUIAdapter = {
   getCompanionStoryProgress,
 };
 
-export function loadDemoContent() {
+export function loadDemoContent(_locale: Locale) {
   const idx = CampaignIndexSchema.parse(campaignIndex);
   const data = emptyGameData(idx, demoHeroNarrative);
   data.enemies = enemiesTs as Record<string, EnemyDef>;
@@ -50,5 +53,5 @@ export function loadDemoContent() {
   data.items = itemsTs as Record<string, ItemDef>;
   data.companions = companions as Record<string, CompanionDef>;
   data.spells = spellsTs as Record<string, SpellDef>;
-  return { data, sceneFiles: sceneRaw, ui: demoUI };
+  return { data, sceneFiles: pickSceneFilesFromGlob(SCENE_GLOB_PT), ui: demoUI };
 }
