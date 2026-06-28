@@ -12,7 +12,7 @@
  *   node scripts/bump-version.mjs 1.2.3
  *   node scripts/bump-version.mjs --no-git patch
  */
-import { execSync } from 'child_process';
+import { execFileSync, execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -34,7 +34,7 @@ function usage() {
 }
 
 function runGit(args) {
-  execSync(['git', ...args].join(' '), { cwd: repoRoot, stdio: 'inherit' });
+  execFileSync('git', args, { cwd: repoRoot, stdio: 'inherit' });
 }
 
 function tagExists(tag) {
