@@ -6,6 +6,7 @@
     "fullscreenUnavailable": "Fullscreen is not available in this browser.",
     "hideTopBar": "Hide top bar",
     "showTopBar": "Show top bar",
+    "compactControls": "Compact controls",
     "sectionGame": "Game",
     "sectionSettings": "Settings",
     "sectionDev": "Development",
@@ -31,7 +32,7 @@
     "scenesGraphTitle": "Graph by act (?view=scenes-graph). Available with developer mode.",
     "kofi": "Support on Ko-fi",
     "kofiTitle": "Opens the Ko-fi support page (new tab)",
-    "version": "Silent Dungeon v{version}"
+    "version": "Silent Dungeon v{version} · {author}"
   },
   "save": {
     "save": "Save",
@@ -75,6 +76,7 @@
     "noMarks": "No marks yet.",
     "diaryLines": "Diary entries",
     "noDiary": "No entries yet.",
+    "author": "Author",
     "aboutProject": "About the project",
     "thanks": "Thank you",
     "thanksBody": "Thank you for playing — and good luck in the depths.",
@@ -369,6 +371,20 @@
     "slotEmpty": "This slot is empty.",
     "loadFailed": "Could not load this save.",
     "xpReceived": "Experience received",
+    "xpGainedTitle": "+{amount} XP",
+    "dayTitle": "Day {day}",
+    "dayAdvanceLines": [
+      "Time has passed since the last halt.",
+      "First marks on the count — you still know it aloud.",
+      "Each turn drags more silence.",
+      "The tunnels do not forget who passed.",
+      "No sun: only habit and echo.",
+      "The abyss is in no hurry — you are.",
+      "The depths do not forgive those who linger.",
+      "Stone does not distinguish haste from despair.",
+      "Who counts days also counts fear.",
+      "Even the number seems strange on the tongue."
+    ],
     "levelUpSubtitle": "You leveled up.",
     "catacombsReturnTitle": "Return to the catacombs",
     "catacombsReturnSubtitle": "+1 supply and +4 gold for returning today.",
@@ -567,6 +583,18 @@
   },
   "engineNotify": {
     "bondGain": "+{delta} bond",
-    "bondLoss": "−{delta} bond"
+    "bondLoss": "−{delta} bond",
+    "markAdded": "New mark on the character",
+    "storyPassiveAdded": "New story passive",
+    "factionsUnlocked": "Factions unlocked",
+    "factionsUnlockedHint": "You can now see the reputation board in the sidebar (Vigil, Circle, Cult).",
+    "spellLearnedSubtitle": "New spell learned",
+    "statPermanentGain": "Permanent improvement to the character",
+    "statPermanentLoss": "Permanent effect on the character",
+    "maxHpLoss": "−{amount} max HP",
+    "maxHpSet": "Max HP {amount}",
+    "maxHpSacrificeHint": "The altar charges those who retreat — flesh and life ceiling",
+    "tempBuffTitle": "{attr} {delta} · {scenes} scene(s)",
+    "tempBuffSubtitle": "Temporary buff (decays when changing scene)"
   }
 }

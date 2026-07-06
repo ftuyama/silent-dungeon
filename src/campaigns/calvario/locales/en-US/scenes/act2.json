@@ -10,7 +10,7 @@
   },
   "act2/camp/camp_companion_chat": {
     "title": "Words by the fire",
-    "body": "{{companionLine}}\n\n*Someone murmurs the count — **day {{day}}** — like confessing an age.*\n\nThe fire asks for no **permission** — only witnesses. If you are alone, the embers spit into the void and still it feels like conversation.",
+    "body": "{{companionLine}}\n\n*Someone murmurs the number — **day {{day}}** — as one confessing age.* The fire asks no **permission**, but asks for witnesses.",
     "choices": [
       {
         "text": "Listen to Mira without the stone judging",
@@ -52,7 +52,7 @@
   },
   "act2/camp/camp_mira_fireside": {
     "title": "Embers — words with Mira",
-    "body": "**Mira** does not sit like a soldier: she slides to the ground, knees to chest, eyes on the flame — and on your **jaw**, the city still **weighs**.\n\n> *\"Speak quickly. The fire **hears** better than stone — and I hear better than both.\"*\n\n---\n\n{{companionLine}}",
+    "body": "> *\"Speak fast. The fire **hears** better than stone — and I hear better than both.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask what she no longer steals from the dark"
@@ -70,7 +70,7 @@
   },
   "act2/camp/camp_mira_topic_shadows": {
     "title": "What stays in the dark",
-    "body": "> *\"I steal what gives me my name back,\" she says, without looking at you. \"Fear, sometimes. Hope, when it weighs little. The rest I leave **on the ground** — someone will find it and call it treasure.\"*\n\nA spark bites the air. She finally smiles sideways:\n\n> *\"You leave **promises** in the dark. I **know** the weight when you pretend it is light.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"I steal what returns my name. The rest I leave **on the ground** — someone will think it treasure. You leave **promises** in the dark; I **know** the weight when you pretend it is light.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Let the matter die in the embers"
@@ -79,7 +79,7 @@
   },
   "act2/camp/camp_mira_topic_silence": {
     "title": "Shared silence",
-    "body": "You say nothing. Neither does she. The camp noise recedes; only the crackle of wood and the false warmth on your skin remain.\n\nWhen Mira speaks, it is almost a gentle insult:\n\n> *\"See? **This** is how you make a truce.\"*\n\n---\n\n{{companionLine}}",
+    "body": "> *\"See? **That** is how you make a truce.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Breathe and return to what matters",
@@ -91,7 +91,7 @@
   },
   "act2/camp/camp_mira_topic_vigilia": {
     "title": "The Vigil by the fire",
-    "body": "> *\"The Vigil loves **order**,\" murmurs Mira. \"Order is history written by whoever survived the first blackout. I am not on that page — but your fire **needs** someone who knows how to read shadows.\"*\n\nShe lifts her chin toward the soldiers in the back.\n\n> *\"Do not trust them. Use them. It is different.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"The **Vigil** likes **order** — order is history written by survivors. Do not trust them. **Use** them.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Agree to change the subject"
@@ -100,7 +100,7 @@
   },
   "act2/camp/camp_tomas_fireside": {
     "title": "Embers — words with Tomás",
-    "body": "**Tomás** sets the shield on the earth as one who marks a boundary; your **posture** has already told him *why* — only **words** remain that do not shame those who stay above.\n\n> *\"If you came for pity, save your breath. If you came for **words**, speak — the fire will not interrupt out of courtesy.\"*\n\n---\n\n{{companionLine}}",
+    "body": "> *\"If you came for pity, save your breath. If you came for **words**, speak — the fire will not interrupt out of politeness.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask if the shield still weighs"
@@ -115,7 +115,7 @@
   },
   "act2/camp/camp_tomas_topic_oath": {
     "title": "Oath without master",
-    "body": "> *\"The order did not die in a day,\" says Tomás. \"It **forgot** names — first the dead, then the living. I still say the prayers. I do not know if anyone hears.\"*\n\nHe wipes soot from the metal with his thumb.\n\n> *\"As long as you rise **before** I fall, the oath holds. After that… it is only iron.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"The order did not die in a day — it died **forgetting** names. As long as you rise before I fall, the **oath** holds.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Leave the past in the embers"
@@ -124,7 +124,7 @@
   },
   "act2/camp/camp_tomas_topic_shield": {
     "title": "The weight of the shield",
-    "body": "He looks at the marks on the leather as one reading a crooked genealogy.\n\n> *\"It weighs what I **failed** to stop. The rest is wood and nails — any smith can mend that.\"*\n\nA second later, lower:\n\n> *\"You carry too much as well. Do not grow used to calling it honor.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"It weighs what I could **not** stop. You also carry too much — do not get used to calling that **honor**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Accept his silence as answer"
@@ -284,7 +284,7 @@
   },
   "act2/encounters/rats_combat_intro": {
     "title": "Before the leap",
-    "body": "The floor **vibrates** — not from your fear, but from **claws** digging soft stone.\n\nThe rats **do not flee**. They advance in an arc, as if someone taught them **formation**.\n\nClench your teeth. The **dice** will count what flesh refuses to admit.",
+    "body": "The floor **vibrates** — **claws** digging soft stone. The rats do not **flee**; they advance in an arc, as if someone taught them **formation**.\n\nClench your teeth. The **dice** will tell what flesh does not want to admit.",
     "choices": [
       {
         "text": "Fight!"
@@ -788,7 +788,7 @@
   },
   "act2/merchant/merchant_moon": {
     "title": "Faceless merchant",
-    "body": "A hood **without face** extends a **map** with gnawed margins. The fingers beneath the cloth are **too long** to be merely human.\n\nIt smells your **haste** — the haste of one who does not wish to return to the city empty-handed.\n\n\"Rumors change **weights**,\" says the voice — as if the air came from the stone itself.\n\nIf someone **recognizes** you among the factions, the price ceases to be only gold — it becomes **gaze**.",
+    "body": "A hood **without a face** extends a **map** with gnawed margins. The fingers beneath the cloth are **too long** to be merely human.\n\n*\"Rumors change **weights**,\"* says the voice — as if the air came from the stone itself. If someone **recognizes** you among the factions, the price stops being gold alone.",
     "choices": [
       {
         "text": "Accept the torn map (−1 gold)",

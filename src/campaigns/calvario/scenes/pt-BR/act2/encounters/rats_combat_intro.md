@@ -14,8 +14,6 @@ choices:
         onFlee: act2/flee_rats
 onEnter: []
 ---
-O chão **vibra** — não de medo teu, mas de **garras** a escavar pedra mole.
-
-Os ratos **não fogem**. Avançam em arco, como se alguém os ensinara **formação**.
+O chão **vibra** — **garras** a escavar pedra mole. Os ratos **não fogem**; avançam em arco, como se alguém os ensinara **formação**.
 
 Aperta os dentes. Os **dados** vão contar o que a carne não quer admitir.

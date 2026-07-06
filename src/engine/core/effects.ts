@@ -22,6 +22,7 @@ import {
 } from '../progression/companionFriendship.ts';
 import { applyConsumableToCharacter, isConsumable, removeOneInventoryItem } from '../progression/consumables.ts';
 import { injectText } from './template.ts';
+import { t } from '../../i18n/index.ts';
 import {
   clampReputation,
   computeAddRepResult,
@@ -96,7 +97,7 @@ function applyOne(
         type: 'statusHighlight',
         variant: isBad ? 'bad' : 'neutral',
         title: displayTitleForMark(e.mark, ctx.data),
-        subtitle: 'Nova marca no personagem',
+        subtitle: t('engineNotify.markAdded'),
         ...(isBad ? { autoDismissMs: 0 } : {}),
       });
       return { ...state, marks: [...state.marks, e.mark] };
@@ -110,7 +111,7 @@ function applyOne(
         type: 'statusHighlight',
         variant: 'neutral',
         title: def?.name ?? humanizeMarkId(e.id),
-        subtitle: 'Novo passivo de história',
+        subtitle: t('engineNotify.storyPassiveAdded'),
       });
       return { ...state, leadStoryPassives: [...state.leadStoryPassives, e.id] };
     }
@@ -153,9 +154,8 @@ function applyOne(
         bus.emit({
           type: 'statusHighlight',
           variant: 'good',
-          title: 'Facções desbloqueadas',
-          subtitle:
-            'Agora podes ver o tabuleiro de reputação na barra lateral (Vigília, Círculo, Culto).',
+          title: t('engineNotify.factionsUnlocked'),
+          subtitle: t('engineNotify.factionsUnlockedHint'),
         });
       }
       if (isDirectPositiveGain) {
@@ -445,8 +445,8 @@ function applyOne(
       bus.emit({
         type: 'statusHighlight',
         variant: 'good',
-        title: `Magia: ${sp.name}`,
-        subtitle: 'Nova magia aprendida',
+        title: t('story.spellLearned', { name: sp.name }),
+        subtitle: t('engineNotify.spellLearnedSubtitle'),
       });
       return { ...state, knownSpells: [...state.knownSpells, e.spellId] };
     }
@@ -519,8 +519,8 @@ function applyOne(
           title: `${label} ${actual > 0 ? '+' : ''}${actual}`,
           subtitle:
             actual < 0
-              ? 'Efeito permanente no personagem'
-              : 'Melhoria permanente no personagem',
+              ? t('engineNotify.statPermanentLoss')
+              : t('engineNotify.statPermanentGain'),
         });
       }
       return {
@@ -538,8 +538,11 @@ function applyOne(
       bus.emit({
         type: 'statusHighlight',
         variant: 'bad',
-        title: lostMax > 0 ? `−${lostMax} PV máx.` : `PV máx. ${newMaxHp}`,
-        subtitle: 'O altar cobra quem recua — carne e teto de vida',
+        title:
+          lostMax > 0
+            ? t('engineNotify.maxHpLoss', { amount: String(lostMax) })
+            : t('engineNotify.maxHpSet', { amount: String(newMaxHp) }),
+        subtitle: t('engineNotify.maxHpSacrificeHint'),
       });
       return {
         ...state,
@@ -554,8 +557,12 @@ function applyOne(
       bus.emit({
         type: 'statusHighlight',
         variant: e.delta >= 0 ? 'good' : 'bad',
-        title: `${label} ${e.delta >= 0 ? '+' : ''}${e.delta} · ${e.remainingScenes} cena(s)`,
-        subtitle: 'Buff temporário (decresce ao mudar de cena)',
+        title: t('engineNotify.tempBuffTitle', {
+          attr: label,
+          delta: `${e.delta >= 0 ? '+' : ''}${e.delta}`,
+          scenes: String(e.remainingScenes),
+        }),
+        subtitle: t('engineNotify.tempBuffSubtitle'),
       });
       return {
         ...state,

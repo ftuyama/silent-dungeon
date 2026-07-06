@@ -18,11 +18,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: -3, onceFlag: ff_cf_act5_frost_mira_fireside_leave }
 onEnter: []
 ---
-**Mira** usa o vento em vez de encolher-se; no fogo, o teu rosto **duplica** um instante — truque velho do subsolo.
-
-Ainda **desces** — o teto só **mudou** de forma.
-
-> *"Neve **apaga pegadas**", diz. "Escolhe o que queres esquecer."*
----
+> *"Neve **apaga pegadas**. Escolhe o que queres esquecer."*
 
 {{companionLine}}

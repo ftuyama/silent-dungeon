@@ -10,8 +10,6 @@ onEnter:
   - { op: addXp, amount: 14 }
   - { op: addDiary, text: "Na cidade, as janelas fecham cedo. O silêncio não é paz — é fila." }
 ---
-Entre **vigias** que fingem não ver e mercadores que desviam o olhar, uma voz — não a tua — descreve o que vais fazer antes de pensares.
+Entre **vigias** que fingem não ver, uma voz — não a tua — descreve o que vais fazer antes de pensares. *"**Serve**."* Não é pedido — é **compasso**.
 
-**"Serve."** Não é pedido. É **compasso**.
-
-O Terceiro Sino não precisa de metal: precisa de **alguém** que carregue o eco sem partir.
+O **Terceiro Sino** não precisa de metal; precisa de **alguém** que carregue o eco sem partir.

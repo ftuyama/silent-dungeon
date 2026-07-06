@@ -43,6 +43,4 @@ onEnter: []
 ---
 {{companionLine}}
 
-*Alguém murmura o número — **dia {{day}}** — como quem confessa idade.*
-
-O fogo não pede **permissão** — mas pede testemunhas. Se estiveres só, as brasas cuspirão para o vazio e mesmo assim parecerá conversa.
+*Alguém murmura o número — **dia {{day}}** — como quem confessa idade.* O fogo não pede **permissão**, mas pede testemunhas.

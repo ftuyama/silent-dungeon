@@ -21,7 +21,7 @@
   },
   "shared/explore_nav_act3": {
     "title": "Perimeter of the depths",
-    "body": "In the **depths**, the echo chews names before returning them. The map promises no exit — only direction.\n\n**Morvayn** needs no witnesses to govern fear: the **Vigil** tightening the oath, the **Circle** bargaining over ash, and the **Third Bell** collecting what remains are enough. With the **torn map** in your head, you see where the stone **lies** least — without it, only **ear** and **haste** remain, and both fail at once.",
+    "body": "In the **depths**, echo chews names before returning them. The map promises no exit — only **direction**.\n\nWith the **torn map** in your head, you see where the stone **lies** less. Without it, only **ear** and **haste** remain.",
     "choices": [
       {
         "text": "Patrol at random (random encounter)",
@@ -74,7 +74,7 @@
   },
   "shared/game_over": {
     "title": "Journey's End",
-    "body": "# Silence of stone\n\nSomething in you **yields** without thunder — a void that leaves no echo.\n\nThe **Silent Dungeon** **opens** and **closes** like a wound; your name becomes a whisper in the damp. If thread remains, descend again: the abyss does not fill — silence, yes, takes note.",
+    "body": "Something in you **gives** without a crash — emptiness that leaves no echo. The **Dungeon of Silence** **opens** and **closes** like a wound; your name becomes a whisper in the damp.\n\nIf there is thread, descend again: the abyss does not fill — **silence** does, and notes.",
     "choices": [
       {
         "text": "Start over"
@@ -119,7 +119,7 @@
   },
   "shared/kaelsworn_oath": {
     "title": "Oath of ash",
-    "body": "**Kael** **removes** his **helm**: tired **face**, **clean** **gaze**.\n\n> *\"**Three** **times** **I** **fell**. **Three** **times** **you** **did not** **lie** **in** **the** **blow**. That **is** **enough** **for** **an** **oath** **of** **mine**: **I** **do not** **serve** **you** **as** **dog** — **I** **serve** **as** **iron** **that** **learned** **to** **bend** **only** **to** **your** **hand**.\"*",
+    "body": "**Kael** removes his **helm** — tired face, clean gaze.\n\n> *\"**Three** times I fell. **Three** times you did not lie in the strike. That is **enough**: I serve as **iron** that only bends to **your** hand.\"*",
     "choices": [
       {
         "text": "Accept — sword to one who beat you three times",

@@ -40,7 +40,7 @@ describe('injectText', () => {
     s.resources = { ...s.resources, corruption: 2, faith: 1 };
     const out = injectText('{{throneOutcomeLine}}', s);
     expect(out).toContain('fé');
-    expect(out).toContain('subsolo');
+    expect(out).toContain('peso');
   });
 
   it('substitui factionThroneEcho quando Vigília favorece selo', () => {

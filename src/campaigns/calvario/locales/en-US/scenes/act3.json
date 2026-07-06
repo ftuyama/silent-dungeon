@@ -19,7 +19,7 @@
   },
   "act3/cult_passage": {
     "title": "Cult Passage",
-    "body": "The torn map **whispers** where to turn. A Third Bell symbol gleams.\n\nIn a niche: small **bones** bound with copper wire, a **bell shard** driven in like a nail, and a Vigil crest **scraped** until illegible — someone wanted to erase the order before erasing the name **Morvayn** from rumor.\n\nThe **narrow** passage smells of burnt tallow; every second you stand still is a vote cast by whoever watches these tunnels.",
+    "body": "The torn map **whispers** where to turn — in a niche, **bones** bound with copper wire and a **bell shard** driven in like a nail. The **narrow** passage smells of burnt tallow.",
     "choices": [
       {
         "text": "Leave a coin in the niche — ask passage from the Bell's ear",
@@ -43,7 +43,7 @@
   },
   "act3/descent": {
     "title": "Descent into Deep Silence",
-    "body": "The stairs **sink** and the green pulse beats with your heart — below, tunnels are also **deals** between factions. Each flight steals a thread of **noise** until only stone's rhythm and yours remain. **No fire** here is worth shelter — only damp stone and agreements that never asked your permission.\n\nWith the **Torn Map**, a shortcut opens that honest maps do not show.",
+    "body": "The stairs **sink** and the **green pulse** beats with your heart — each flight steals **noise** until only damp stone remains. **No fire** here counts as shelter.\n\nWith the **Torn Map**, a shortcut opens that honest maps do not show.",
     "choices": [
       {
         "text": "Descend to the well",
@@ -131,7 +131,7 @@
   },
   "act3/hub_depths": {
     "title": "Heart of the Depths",
-    "body": "Silent **depths**. Morvayn is not far — and his silence was already **politics** before it was magic: web in the ceiling, faction in the corridor, corpse on the throne like a **pending invoice**. Below him, a **hole** with no name on the map.\n\nYou do not **camp** here as at the crossroads: the depths charge for continuous presence — Vigil, Circle, and cult leave **tracks** in the same air, and your breath becomes rare coin. If you brought **company**, silence weighs double; if you came **alone**, the echo pretends to answer.",
+    "body": "**Silent** depths. **Morvayn** is not far — his silence was **politics** before it was magic.\n\nYou cannot **camp** here as at the crossroads: the underworld charges continuous presence, and your breath becomes rare **coin**.",
     "choices": [
       {
         "text": "Patrol the depths (explore map)",
@@ -188,7 +188,7 @@
   },
   "act3/lore/cult_negotiate": {
     "title": "Pact Without Altar",
-    "body": "**Low voice**, short speech: *\"I bring a simple contract — you descend, we write the right name in the pipes. In return, **silence** outside the tunnel when you leave.\"*\n\nThe **cultist** holds an old coin between two fingers, without affectation. Not a fanatic: an **agent**. Behind him, the shadow of two others — not to threaten you, to **record** your answer.\n\nThe offer has no altar or incense. It has **pragmatism**: the Circle pays so the Vigil does not learn what you will see below. **You decide** if that is business.",
+    "body": "**Low voice**: *\"I bring a simple contract — you descend, we write the right name in the pipes. In return, **silence** outside the tunnel.\"*\n\nThe **cultist** holds an old coin — a **clerk**, not a fanatic. Behind him, two others **record** your answer. The **Circle** pays so the **Vigil** will not know what you will see below.",
     "choices": [
       {
         "text": "Show the Third Bell signet — ask favor at the margin of the contract",
@@ -350,7 +350,7 @@
   },
   "act3/secret/forgotten_shrine": {
     "title": "Forgotten Shrine",
-    "body": "Behind a **veil** of cracked stone — almost wall, almost door — the floor **opens** into an antechamber that was not on the map. Low slabs, **runes** sealed with lead, still water that **mirrors** without reflecting.\n\nAt the center, a larger **rune**. No one drew it to be **read** by intruders: it was traced by someone who was leaving and wanted **something** locked forever. There is a **smell** of old incense, too old, that no one orders burned anymore.\n\nNo altar. **Promises** folded between the joints of stone. One of them would **open** if you touched it.",
+    "body": "Behind a cracked stone **veil** opens an antechamber that was not on the map — low slabs, **runes** sealed with lead, still water that **mirrors** without reflecting.\n\nAt the center, a greater **rune**. No altar — only **promises** folded between the joints. One would **open** if you touched it.",
     "choices": [
       {
         "text": "Touch the central rune — remember silence before the name",

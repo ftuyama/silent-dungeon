@@ -21,6 +21,6 @@ choices:
     preview: "Voltar ao hub e manter o stress atual."
 onEnter: []
 ---
-Nas **profundezas**, o eco mastiga nomes antes de os devolver. O mapa não promete saída — só direção.
+Nas **profundezas**, o eco mastiga nomes antes de os devolver. O mapa não promete saída — só **direção**.
 
-**Morvayn** não precisa de testemunhas para governar o medo: basta **Vigília** a apertar o juramento, **Círculo** a negociar o cinza, e **Terceiro Sino** a cobrar o que sobrou. Com o **mapa rasgado** na cabeça, vês onde a pedra **mente** menos — sem ele, só restam **ouvido** e **pressa**, e ambos falham ao mesmo tempo.
+Com o **mapa rasgado** na cabeça, vês onde a pedra **mente** menos. Sem ele, só restam **ouvido** e **pressa**.

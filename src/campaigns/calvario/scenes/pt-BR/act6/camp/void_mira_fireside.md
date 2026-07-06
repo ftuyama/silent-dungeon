@@ -20,10 +20,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: -3, onceFlag: ff_cf_act6_void_mira_fs_leave }
 onEnter: []
 ---
-**Mira** observa a chama que não consome madeira — e mesmo assim recua, hábito de sobrevivente.
-
-> *"Aqui o eco **mente** menos que as pessoas. Isso não é conforto: é **aviso**."*
-
----
+> *"Aqui o eco **mente** menos que as pessoas. Isso não é conforto — é **aviso**."*
 
 {{companionLine}}

@@ -12,9 +12,6 @@ onEnter:
   - { op: grantTemporaryBuff, attr: agi, delta: -1, remainingScenes: 3 }
   - { op: grantTemporaryBuff, attr: mind, delta: -1, remainingScenes: 3 }
 ---
-A paz **falha** por um instante que basta.
+A paz **falha** por um instante que basta. As pedras tremem, o selo abre uma fenda, e levas no peito a cicatriz do que não conseguiste conter.
 
-As pedras tremem, o selo abre uma fenda, e levas no peito a cicatriz do que não
-conseguiste conter.
-
-Morvayn sorri como quem já sabia: agora a luta começa com o mundo contra ti.
+**Morvayn** sorri como quem já sabia: agora a luta começa com o mundo contra ti.

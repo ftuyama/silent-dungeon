@@ -37,7 +37,7 @@
   },
   "act4/late_merchant": {
     "title": "Throne Merchant",
-    "body": "Between **chains** that bind nothing, someone **unfolds** a cloth — vials that **tremble** as if they still had **patience**.\n\nThe merchant **measures** you: he smells like someone who **fears** climbing without having cut the shadow at the root.\n\nThe voice does not come from the **throat**; it comes from the **echo** that already knows your name.\n\n> Stock **limited**. The throne **eats** memory, but **gold** pays for silence.",
+    "body": "Between **chains** that bind nothing, someone **unfolds** a cloth — vials that **tremble** as if they still had **patience**. The merchant **measures** you: smells of one who **fears** climbing without cutting the shadow at the root.\n\n> **Limited** stock. The throne **eats** memory, but **gold** pays for silence.",
     "choices": [
       {
         "text": "Buy Red Potion (14 gold) (x2)",
@@ -137,7 +137,7 @@
   },
   "act4/pact/pact_ascent": {
     "title": "Pact Ascent",
-    "body": "The **dungeon** falls behind you like a damp cocoon — **silence** stuck to skin. The air above smells of old rain and cheap incense — but beneath the skin, something **pulls** downward, always, as if the world had learned a new rhythm to obey.\n\nA **bell** does not ring. Even so, your pulse tries to follow what does not exist.",
+    "body": "The **dungeon** leaves your back like a damp cocoon — **silence** stuck to skin. Beneath the skin, something **pulls** downward, always.\n\nA **bell** does not ring. Even so, your pulse tries to follow what does not exist.",
     "onEnterDiaryTexts": [
       "I accepted the Third Bell. Each step upward sounds like a peal only I hear."
     ],
@@ -157,7 +157,7 @@
   },
   "act4/pact/pact_coda": {
     "title": "Pact Coda",
-    "body": "The hunter falls or flees; the city **learns** to pretend asleep.\n\nYou serve the **Third Bell** as **conduit** — beat without tower, because the tower **learned** through you. The **ring** on your finger: **mute** to others, deafening to you.\n\nCold rises into the city's skin; day arrives **obedient** — and you hear the promised fourth stroke, never fused.",
+    "body": "The hunter falls or flees; the city **learns** to pretend asleep. You serve the **Third Bell** as **conduit** — the **ring** on your finger is **mute** to others, deafening to you.\n\nCold climbs the city's skin; you hear the promised fourth toll, never melted.",
     "choices": [
       {
         "text": "Accept what was written in you"
@@ -174,7 +174,7 @@
   },
   "act4/pact/pact_whispers": {
     "title": "Pact Whispers",
-    "body": "Between **watchmen** who pretend not to see and merchants who look away, a voice — not yours — describes what you will do before you think it.\n\n**\"Serve.\"** Not a request. A **measure**.\n\nThe Third Bell needs no metal: it needs **someone** to carry the echo without breaking.",
+    "body": "Among **sentries** who pretend not to see, a voice — not yours — describes what you will do before you think. *\"**Serve**.\"* Not a request — a **compass**.\n\nThe **Third Bell** needs no metal; it needs **someone** who carries the echo without breaking.",
     "choices": [
       {
         "text": "Let the whisper finish"
@@ -186,7 +186,7 @@
   },
   "act4/passage_graywind_heights": {
     "title": "Passage",
-    "body": "## Passage\n\n{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\n**You find** what the throne **hid**: not an **end** — a **deeper reach**, a **fold** in the axis where stone **learns** a **new cold**. The throne did **not** close the **axis**: in the **Heights**, the wound **opens** a pocket of ice so vast it **seems** a mountain — a **chamber** with snow for **ceiling**. **Debt** with **interest** in **wind**.",
+    "body": "{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\nThe throne did not close the **axis** — in the **Peaks**, the wound opens a pocket of ice vast enough to seem like mountain. **Debt** with interest in **wind**.",
     "choices": [
       {
         "text": "Stop at the threshold — gray armor that did not come from the throne",
@@ -205,7 +205,7 @@
   },
   "act4/seal_ending_fail": {
     "title": "Peace Ruptured",
-    "body": "Peace **fails** for an instant that is enough.\n\nThe stones tremble, the seal opens a crack, and you take in the chest the scar of what you could\nnot contain.\n\nMorvayn smiles like someone who already knew: now the fight begins with the world against you.",
+    "body": "Peace **fails** for an instant that is enough. Stones tremble, the seal opens a crack, and you take in the chest the scar of what you could not contain.\n\n**Morvayn** smiles as one who already knew: now the fight begins with the world against you.",
     "choices": [
       {
         "text": "The seal breaks. Fight Morvayn"
@@ -293,7 +293,7 @@
   },
   "act4/throne/throne_gate": {
     "title": "Throne Antechamber",
-    "body": "The **Bone Throne** rises in interlaced ribs; **chains** groan without wind.\n\n**Morvayn** precedes the chair — **shadow**, then a smile with **no certain lips**. The green pulse **beats** with your heart; the hall returns **foreign whispers** that know your name.\n\nEach **rehearsal** in the hall **spends** itself on bone: you can still **bargain** with the merchant or let steel **wait**.",
+    "body": "The **Bone Throne** rises in intertwined ribs; **chains** creak without wind. **Morvayn** precedes the chair — **shadow**, then a smile **without certain lips**.\n\nEach **rehearsal** in the hall **spends itself** on bone; you can still bargain with the merchant or let the steel **wait**.",
     "choices": [
       {
         "text": "Hear the necromancer before crossing steel",

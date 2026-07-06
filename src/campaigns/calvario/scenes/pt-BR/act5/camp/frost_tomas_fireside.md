@@ -15,9 +15,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -3, onceFlag: ff_cf_act5_frost_tomas_fireside_leave }
 onEnter: []
 ---
-**Tomás** esfrega as mãos sem drama; o escudo perto, **segunda pele**. **Mesma** ferida, **outro** teto.
-
-> *"Montanha não é inimigo — inimigo é **confundir** cansaço com sinal de Deus."* A sombra no metal lembra: **postura** também é máscara.
----
+> *"Montanha não é inimigo — inimigo é **confundir** cansaço com sinal de Deus."*
 
 {{companionLine}}

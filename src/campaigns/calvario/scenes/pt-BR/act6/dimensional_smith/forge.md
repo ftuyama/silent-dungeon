@@ -51,10 +51,6 @@ choices:
     next: act6/hub_fractured_nave
 onEnter: []
 ---
-O teto da oficina respira torto. Sem fogo visível.
+O teto da oficina respira torto — sem fogo visível. O ferreiro não sorri; só mede a tua respiração entre golpes.
 
-O ferreiro não sorri. Só mede tua respiração entre golpes.
-
-"**Ferro vive. Ouro cala.**"
-
-"Quer milagre? Traz sobra de encontro. Eu junto as partes."
+*"**Ferro** vive. **Ouro** cala. Quer milagre? Traz sobra de encontro."*

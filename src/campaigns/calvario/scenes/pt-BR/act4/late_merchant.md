@@ -69,10 +69,6 @@ choices:
     next: act4/throne/throne_gate
 onEnter: []
 ---
-Entre **correntes** que não prendem, alguém **desdobra** um pano — frascos que **tremem** como se ainda tivessem **paciência**.
-
-O mercador **mede-te**: cheira a quem **teme** subir sem ter cortado a sombra na raiz.
-
-A voz não vem da **garganta**; vem do **eco** que já te conhece o nome.
+Entre **correntes** que não prendem, alguém **desdobra** um pano — frascos que **tremem** como se ainda tivessem **paciência**. O mercador **mede-te**: cheira a quem **teme** subir sem ter cortado a sombra na raiz.
 
 > Estoque **limitado**. O trono **come** a memória, mas o **ouro** paga o silêncio.

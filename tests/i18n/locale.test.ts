@@ -13,6 +13,7 @@ import { clearStoredLocale } from '../../src/i18n/store.ts';
 import { pickLocalized } from '../../src/i18n/localized.ts';
 import { loadParsedCampaignContent } from '../../src/campaigns/registry.ts';
 import { getHeroLore } from '../../src/campaigns/calvario/classHero.ts';
+import { dayAdvanceSubtitle } from '../../src/ui/gameAppEvents.ts';
 import type { GameState } from '../../src/engine/schema/index.ts';
 
 describe('i18n locale', () => {
@@ -27,6 +28,12 @@ describe('i18n locale', () => {
     expect(normalizeLocale('en')).toBe('en-US');
     expect(normalizeLocale('en-GB')).toBe('en-US');
     expect(normalizeLocale('fr')).toBeNull();
+  });
+
+  it('defaults to pt-BR when no URL or stored locale', () => {
+    clearStoredLocale();
+    initI18n(null);
+    expect(getLocale()).toBe('pt-BR');
   });
 
   it('translates menu keys in pt-BR', () => {
@@ -94,6 +101,13 @@ describe('i18n locale', () => {
     expect(en.data.spells.warriors_focus?.name).toBe("Warrior's Focus");
   });
 
+  it('keeps Portuguese entity names and journey marks in pt-BR', () => {
+    const pt = loadParsedCampaignContent('calvario', 'pt-BR');
+    expect(pt.data.items.iron_dagger?.name).toBe('Adaga de Ferro');
+    expect(pt.data.journeyMarks.act1_surface_whisper_intel?.name).toBe('Rumor que paga');
+    expect(pt.data.passives.knight?.name).toBe('Aço Implacável');
+  });
+
   it('applies English hero lore via narrative overlay', () => {
     initI18n('en-US');
     const state = {
@@ -106,5 +120,22 @@ describe('i18n locale', () => {
     const lore = getHeroLore(state, 'knight', null);
     expect(lore).toContain('Galen grew up');
     expect(lore).not.toContain('Galen cresceu');
+  });
+
+  it('dayAdvanceSubtitle differs by locale', () => {
+    initI18n('pt-BR');
+    const ptLine = dayAdvanceSubtitle(15);
+    initI18n('en-US');
+    const enLine = dayAdvanceSubtitle(15);
+    expect(ptLine).toContain('subsolo');
+    expect(enLine).toContain('depths');
+    expect(ptLine).not.toBe(enLine);
+  });
+
+  it('engineNotify strings differ by locale', () => {
+    initI18n('pt-BR');
+    expect(t('engineNotify.markAdded')).toBe('Nova marca no personagem');
+    initI18n('en-US');
+    expect(t('engineNotify.markAdded')).toBe('New mark on the character');
   });
 });

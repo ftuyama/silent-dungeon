@@ -67,5 +67,3 @@ onEnter: []
 Não há **lenha** — só **restos** de quem já se queimou a si próprio. A fogueira **imita** calor; o teu corpo aceita a mentira porque **precisa** de um sítio onde fingir que ainda há **amanhã**.
 
 *Mesmo aqui, o número segue: **dia {{day}}** — espelhado em cinza.*
-
-O fumo sobe em **espirais** que lembram corredores — não perguntes para onde vão.

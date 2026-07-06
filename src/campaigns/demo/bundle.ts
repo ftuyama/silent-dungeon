@@ -45,9 +45,9 @@ export function loadDemoContent(_locale: Locale) {
   const data = emptyGameData(idx, demoHeroNarrative);
   data.enemies = enemiesTs as Record<string, EnemyDef>;
   data.dialogueEnemies = {};
-  const encRecord = encounters as Record<string, Encounter>;
-  for (const enc of Object.values(encRecord)) {
-    EncounterSchema.parse(enc);
+  const encRecord: Record<string, Encounter> = {};
+  for (const [key, raw] of Object.entries(encounters as Record<string, unknown>)) {
+    encRecord[key] = EncounterSchema.parse(raw);
   }
   data.encounters = encRecord;
   data.items = itemsTs as Record<string, ItemDef>;

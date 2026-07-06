@@ -44,8 +44,6 @@ choices:
     condition: { noFlag: throne_acted_class_blessing }
     preview: "A tua classe abre um caminho ritual."
 ---
-O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento.
+O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — **sombra**, depois sorriso **sem lábios** certos.
 
-**Morvayn** antecede a cadeira — **sombra**, depois sorriso **sem lábios** certos. O pulso verde **bate** com o teu coração; o salão devolve **sussurros** alheios que sabem o teu nome.
-
-Cada **ensaio** no salão **gasta-se** no osso: ainda dá para **negociar** ao mercador ou deixar o aço **esperar**.
+Cada **ensaio** no salão **gasta-se** no osso; ainda dá para **negociar** ao mercador ou deixar o aço **esperar**.

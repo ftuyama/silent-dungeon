@@ -18,10 +18,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -2, onceFlag: ff_cf_act2_camp_tomas_fireside_leave }
 onEnter: []
 ---
-**Tomás** apoia o escudo na terra como quem afirma um limite; a tua **postura** já lhe contou *porquê* — falta **palavra** que não envergonhe quem fica em cima.
-
 > *"Se vieste por pena, poupa saliva. Se vieste por **palavra**, fala — o fogo não vai interromper por educação."*
-
----
 
 {{companionLine}}

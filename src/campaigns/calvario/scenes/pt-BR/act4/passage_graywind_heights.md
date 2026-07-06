@@ -23,10 +23,8 @@ onEnter:
   - { op: registerEnding, endingId: passage_graywind_heights }
   - { op: addXp, amount: 16 }
 ---
-## Passagem
-
 {{throneOutcomeLine}}
 
 {{factionThroneEcho}}
 
-**Encontras** o que o trono **escondeu**: não um **fim** — um **alcance** mais **fundo**, uma **dobra** no eixo onde a pedra **aprende** um **frio** **novo**. O trono **não** fechou o **eixo**: nas **Cimeiras**, a ferida **abre** um **bolso** de gelo tão vasto que **parece** montanha — uma **câmara** com neve por **teto**. **Dívida** com **juro** em **vento**.
+O trono não fechou o **eixo** — nas **Cimeiras**, a ferida abre um bolso de gelo vasto o suficiente para parecer montanha. **Dívida** com juro em **vento**.

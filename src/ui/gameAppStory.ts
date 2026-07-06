@@ -505,36 +505,23 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     inner.appendChild(promo);
   }
 
-  const xpGain = ctx.state.lastCombatXpGain;
   const levelUps = ctx.state.lastCombatLevelUps;
   const lootLines = ctx.state.lastCombatLootLines;
   const hasLootLines = lootLines != null && lootLines.length > 0;
-  if (
-    (xpGain != null && xpGain > 0) ||
-    (levelUps != null && levelUps.length > 0) ||
-    hasLootLines
-  ) {
+  if ((levelUps != null && levelUps.length > 0) || hasLootLines) {
     const wrap = document.createElement('div');
     wrap.className =
       levelUps != null && levelUps.length > 0
         ? 'victory-progress-banner victory-progress-banner--level-up'
         : 'victory-progress-banner';
-    if ((xpGain != null && xpGain > 0) || hasLootLines) {
+    if (hasLootLines) {
       const rewardsWrap = document.createElement('div');
       rewardsWrap.className = 'victory-combat-rewards';
-      if (xpGain != null && xpGain > 0) {
-        const xpEl = document.createElement('div');
-        xpEl.className = 'victory-xp-line';
-        xpEl.textContent = t('story.xpGained', { xp: String(xpGain) });
-        rewardsWrap.appendChild(xpEl);
-      }
-      if (hasLootLines) {
-        for (const line of lootLines!) {
-          const lootEl = document.createElement('div');
-          lootEl.className = 'victory-loot-line';
-          lootEl.textContent = line;
-          rewardsWrap.appendChild(lootEl);
-        }
+      for (const line of lootLines!) {
+        const lootEl = document.createElement('div');
+        lootEl.className = 'victory-loot-line';
+        lootEl.textContent = line;
+        rewardsWrap.appendChild(lootEl);
       }
       wrap.appendChild(rewardsWrap);
     }

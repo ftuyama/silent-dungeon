@@ -11,12 +11,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act2_camp_mira_topic_silence }
 onEnter: []
 ---
-Não dizes nada. Ela também não. O ruído do acampamento recua; só resta o estalar da lenha e o calor mentiroso na pele.
-
-Quando Mira fala, é quase um insulto suave:
-
 > *"Vê? **Assim** se faz trégua."*
-
----
 
 {{companionLine}}

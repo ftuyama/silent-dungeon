@@ -255,7 +255,7 @@
   },
   "act1/title": {
     "title": "Opening",
-    "body": "# The Silent Dungeon\n\nThe **green pulse** climbs the city's throat; below, the **dungeon** opens a mute mouth: damp stone, old iron, copper at the wrong temperature — and **silence** that is **shadow** spreading, **weight** pushing inward.\n\nAbove they pretend routine; someone must **cut** it at the root — *{{playerName}}*, honor or hunger, the first step is to **descend** where the voice no longer sounds like yours.",
+    "body": "The **green pulse** climbs the city's throat; below, the **dungeon** opens a mute mouth — damp stone, old iron, and **silence** that pushes inward.\n\nAbove they pretend routine; someone must **cut** it at the root — *{{playerName}}*, the first step is to **descend**.",
     "choices": [
       {
         "text": "Descend the steps toward the text carved in stone",
@@ -286,7 +286,7 @@
   },
   "act1/title_examine": {
     "title": "Inscriptions",
-    "body": "Someone chiseled **three lines** before rust ate the stone:\n\n> *\"Here there is no forgiveness — only echo.\"*\n\nA fourth symbol was scratched by a newer hand: a **spiral** pointing down.",
+    "body": "Someone chiseled **three lines** before rust ate the stone:\n\n> *\"Here there is no forgiveness — only echo.\"*\n\nA fourth symbol was scratched by a more recent hand: a **spiral** pointing down.",
     "choices": [
       {
         "text": "Notice a broken mirror in a niche — face the reflection"

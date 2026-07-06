@@ -31,6 +31,6 @@ choices:
     condition: { companionInParty: rogue_mira }
 onEnter: []
 ---
-A escada **afunda** e o pulso verde bate com o teu coração — por baixo, túneis são também **tratos** entre facções. Cada lance rouba um fio de **ruído** até restar só o ritmo da pedra e o teu. **Não há fogo** que valha abrigo aqui — só pedra húmida e acordos que não pediram a tua permissão.
+A escada **afunda** e o **pulso verde** bate com o teu coração — cada lance rouba **ruído** até restar só pedra húmida. **Não há fogo** que valha abrigo aqui.
 
 Com o **Mapa Rasgado**, abre-se um atalho que o mapa comum não mostra.

@@ -6,6 +6,7 @@
     "fullscreenUnavailable": "Ecrã inteiro não está disponível neste navegador.",
     "hideTopBar": "Ocultar barra superior",
     "showTopBar": "Mostrar barra superior",
+    "compactControls": "Controles compactos",
     "sectionGame": "Partida",
     "sectionSettings": "Configurações",
     "sectionDev": "Desenvolvimento",
@@ -31,7 +32,7 @@
     "scenesGraphTitle": "Grafo por act (?view=scenes-graph). Disponível com modo desenvolvedor.",
     "kofi": "Apoiar no Ko-fi",
     "kofiTitle": "Abre a página de apoio no Ko-fi (novo separador)",
-    "version": "Silent Dungeon v{version}"
+    "version": "Silent Dungeon v{version} · {author}"
   },
   "save": {
     "save": "Salvar",
@@ -60,7 +61,7 @@
     "mana": "Mana",
     "stress": "Stress",
     "bond": "Vínculo",
-    "gold": "Gold",
+    "gold": "Ouro",
     "supply": "Suprimento",
     "faith": "Fé",
     "corruption": "Corrupção",
@@ -75,6 +76,7 @@
     "noMarks": "Nenhuma marca ainda.",
     "diaryLines": "Linhas do diário",
     "noDiary": "Nenhuma entrada ainda.",
+    "author": "Autor",
     "aboutProject": "Sobre o projeto",
     "thanks": "Obrigado",
     "thanksBody": "Obrigado por jogar — e boa sorte nas profundezas.",
@@ -356,7 +358,7 @@
     "attrAgi": "AGI",
     "attrMind": "MEN",
     "attrLuck": "SOR",
-    "resourceGold": "Gold",
+    "resourceGold": "Ouro",
     "resourceSupply": "Suprimento",
     "resourceFaith": "Fé",
     "resourceCorruption": "Corrupção",
@@ -408,6 +410,20 @@
     "slotEmpty": "Este slot está vazio.",
     "loadFailed": "Não foi possível carregar esta gravação.",
     "xpReceived": "Experiência recebida",
+    "xpGainedTitle": "+{amount} XP",
+    "dayTitle": "Dia {day}",
+    "dayAdvanceLines": [
+      "Passou tempo desde a última paragem.",
+      "Primeiras marcas na contagem — ainda sabes em voz alta.",
+      "Cada viragem arrasta mais silêncio.",
+      "Os túneis não esquecem quem passa.",
+      "Sem sol: só hábito e eco.",
+      "O abismo não tem pressa — tu é que tens.",
+      "O subsolo não perdoa quem demora.",
+      "A pedra não distingue pressa de desespero.",
+      "Quem conta dias conta também medo.",
+      "Até o número parece estranho na língua."
+    ],
     "levelUpSubtitle": "Subiste de nível.",
     "catacombsReturnTitle": "Retorno às catacombas",
     "catacombsReturnSubtitle": "+1 suprimento e +4 ouro por voltares hoje.",
@@ -567,6 +583,18 @@
   },
   "engineNotify": {
     "bondGain": "+{delta} vínculo",
-    "bondLoss": "−{delta} vínculo"
+    "bondLoss": "−{delta} vínculo",
+    "markAdded": "Nova marca no personagem",
+    "storyPassiveAdded": "Novo passivo de história",
+    "factionsUnlocked": "Facções desbloqueadas",
+    "factionsUnlockedHint": "Agora podes ver o tabuleiro de reputação na barra lateral (Vigília, Círculo, Culto).",
+    "spellLearnedSubtitle": "Nova magia aprendida",
+    "statPermanentGain": "Melhoria permanente no personagem",
+    "statPermanentLoss": "Efeito permanente no personagem",
+    "maxHpLoss": "−{amount} PV máx.",
+    "maxHpSet": "PV máx. {amount}",
+    "maxHpSacrificeHint": "O altar cobra quem recua — carne e teto de vida",
+    "tempBuffTitle": "{attr} {delta} · {scenes} cena(s)",
+    "tempBuffSubtitle": "Buff temporário (decresce ao mudar de cena)"
   }
 }

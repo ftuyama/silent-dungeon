@@ -11,8 +11,6 @@ choices:
     preview: "Escolher quem fica do lado de fora da humanidade."
 onEnter: []
 ---
-No **umbral** julgavas que o frio era só **clima**. Aqui, no **centro**, percebes que é **cerca**: a pedra negra **segura** o que não devia ser visto até alguém **chegar** com corpo suficiente para **traduzir** o silêncio.
+No **umbral** o frio parecia **clima**; aqui é **cerca** — pedra negra que só abre para quem veio **traduzir** o silêncio.
 
-O **altar** não pede **oração**. Pede **substituição** — **carne** que assine o que os deuses antigos **não** quiseram escrever com **palavras**. Não há **terceira** porta: ou **aceitas** o contrato, ou **mentes** para ti mesmo que ainda **importas**.
-
-Só há **um** caminho daqui para **dentro** do que vem a seguir.
+O **altar** não pede oração. Pede **substituição**; não há **terceira** porta.

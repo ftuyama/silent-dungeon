@@ -15,6 +15,4 @@ onEnter:
 ---
 A corda cai; **Tomás** rouba ar ao céu e agarra o escudo como **nome**.
 
-> *"Não vim por ti — vim pelo que deixas para trás. Ordena levantar, levanto; senão, caminho contigo."*
-
-**Contrato** de ferro e silêncio, não romance.
+> *"Ordena levantar, levanto; senão, caminho contigo."*

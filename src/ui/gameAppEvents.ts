@@ -1,21 +1,28 @@
 import type { GameEvent } from '../engine/core/index.ts';
+import { tArray } from '../i18n/index.ts';
+
+/** Índice em `toast.dayAdvanceLines` por limiar de dia narrativo. */
+function dayAdvanceLineIndex(day: number): number {
+  if (day >= 30) return 9;
+  if (day >= 25) return 8;
+  if (day >= 20) return 7;
+  if (day >= 15) return 6;
+  if (day >= 12) return 5;
+  if (day >= 9) return 4;
+  if (day >= 6) return 3;
+  if (day >= 4) return 2;
+  if (day >= 2) return 1;
+  return 0;
+}
 
 /** Legenda do aviso quando o dia narrativo avança (varia com o tempo sob pedra). */
 export function dayAdvanceSubtitle(day: number): string {
-  if (day >= 30) return 'Até o número parece estranho na língua.';
-  if (day >= 25) return 'Quem conta dias conta também medo.';
-  if (day >= 20) return 'A pedra não distingue pressa de desespero.';
-  if (day >= 15) return 'O subsolo não perdoa quem demora.';
-  if (day >= 12) return 'O abismo não tem pressa — tu é que tens.';
-  if (day >= 9) return 'Sem sol: só hábito e eco.';
-  if (day >= 6) return 'Os túneis não esquecem quem passa.';
-  if (day >= 4) return 'Cada viragem arrasta mais silêncio.';
-  if (day >= 2) return 'Primeiras marcas na contagem — ainda sabes em voz alta.';
-  return 'Passou tempo desde a última paragem.';
+  const lines = tArray('toast.dayAdvanceLines');
+  const idx = dayAdvanceLineIndex(day);
+  return lines[idx] ?? lines[0] ?? '';
 }
 
 export type GameEventHandlers = {
-  isStoryMode: boolean;
   onCombatVictory: () => void;
   onCombatFlee: () => void;
   onCombatDefeat: () => void;
@@ -37,7 +44,8 @@ export function handleGameEvent(ev: GameEvent, h: GameEventHandlers): void {
   }
   if (ev.type === 'faith.miracle') h.onFaithMiracle();
   if (ev.type === 'item.acquired') h.onItemAcquired(ev.itemId);
-  if (ev.type === 'xp.gained' && ev.amount > 0 && h.isStoryMode) h.onXpGained(ev.amount);
+  // XP de vitória em combate é aplicado antes de `mode` virar `story` no GameApp.
+  if (ev.type === 'xp.gained' && ev.amount > 0) h.onXpGained(ev.amount);
   if (ev.type === 'diary.entryAdded') h.onDiaryEntryAdded(ev.text);
   if (ev.type === 'camp.rest') h.onCampRest();
   if (ev.type === 'time.dayAdvanced') h.onTimeDayAdvanced(ev.day);

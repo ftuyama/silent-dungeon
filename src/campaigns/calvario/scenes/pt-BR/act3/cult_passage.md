@@ -31,8 +31,4 @@ choices:
 onEnter:
   - { op: addRep, faction: culto, delta: 1 }
 ---
-O mapa rasgado **sussurra** onde dobrar. Um símbolo do Terceiro Sino brilha.
-
-Num nicho: **ossos** pequenos amarrados com fio de cobre, um **caco de sino** fincado como cravo, e um brasão da Vigília **raspado** até ficar ilegível — alguém quis apagar a ordem antes de apagar o nome **Morvayn** do rumor.
-
-A passagem **estreita** cheira a sebo queimado; cada segundo parado é voto em quem vigia estes túneis.
+O mapa rasgado **sussurra** onde dobrar — num nicho, **ossos** amarrados com fio de cobre e um **caco de sino** fincado como cravo. A passagem **estreita** cheira a sebo queimado.

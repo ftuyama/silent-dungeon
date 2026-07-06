@@ -19,4 +19,4 @@ Alguém cinzelou **três linhas** antes que a ferrugem comesse a pedra:
 
 > *"Aqui não há perdão — há eco."*
 
-Um quarto símbolo foi riscado por mão mais recente: parece uma **espiral** a apontar para baixo.
+Um quarto símbolo foi riscado por mão mais recente: uma **espiral** a apontar para baixo.

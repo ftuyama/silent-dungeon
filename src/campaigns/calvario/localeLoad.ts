@@ -4,6 +4,7 @@ import type { GameData } from '../../engine/data/index.ts';
 import type { LoadedScene } from '../../engine/core/index.ts';
 import indexEn from './locales/en-US/index.json';
 import entitiesEn from './locales/en-US/entities.json';
+import entitiesPt from './locales/pt-BR/entities.json';
 import dialogueEn from './locales/en-US/dialogue.json';
 import sceneAct1En from './locales/en-US/scenes/act1.json';
 import sceneAct2En from './locales/en-US/scenes/act2.json';
@@ -55,6 +56,7 @@ export type ExplorationOverlay = Record<string, Record<string, { text?: string }
 
 const INDEX_OVERLAY_EN = indexEn as CampaignIndexOverlay;
 const ENTITY_OVERLAY_EN = entitiesEn as EntityOverlay;
+const ENTITY_OVERLAY_PT = entitiesPt as EntityOverlay;
 
 const SCENE_OVERLAYS_EN: Record<string, SceneOverlay> = {
   ...(sceneAct1En as Record<string, SceneOverlay>),
@@ -99,8 +101,7 @@ export function applySceneLocaleOverlay(scene: LoadedScene, locale: Locale): Loa
 }
 
 export function applyEntityLocaleOverlay(data: GameData, locale: Locale): void {
-  if (locale === 'pt-BR') return;
-  const overlay = ENTITY_OVERLAY_EN;
+  const overlay = locale === 'pt-BR' ? ENTITY_OVERLAY_PT : ENTITY_OVERLAY_EN;
   applyRecordOverlay(data.items, overlay.items, (def, o) => {
     if (o.name) def.name = o.name;
   });
@@ -135,7 +136,9 @@ export function applyEntityLocaleOverlay(data: GameData, locale: Locale): void {
       if (def && patch.description) def.description = patch.description;
     }
   }
-  applyDialogueLocaleOverlay(data);
+  if (locale === 'en-US') {
+    applyDialogueLocaleOverlay(data);
+  }
 }
 
 function applyDialogueLocaleOverlay(data: GameData): void {

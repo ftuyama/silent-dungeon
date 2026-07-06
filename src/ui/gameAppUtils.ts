@@ -310,7 +310,7 @@ export function hpBarMarkup(
   const fillCls = fill === 'hp' ? 'hp-bar-fill hp-bar-fill--hp' : 'hp-bar-fill hp-bar-fill--xp';
   if (max <= 0) return `<div class="${trackCls} empty"></div>`;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  const label = fill === 'hp' ? 'HP' : 'XP';
+  const label = fill === 'hp' ? t('sidebar.hp') : t('sidebar.xp');
   return `<div class="${trackCls}" role="img" aria-label="${escHtml(resourceBarAria(label, cur, max))}">
       <div class="${fillCls}" style="width:${pct}%"></div>
     </div>`;
@@ -319,7 +319,7 @@ export function hpBarMarkup(
 export function manaBarMarkup(cur: number, max: number): string {
   if (max <= 0) return '';
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  return `<div class="mana-bar-track" role="img" aria-label="${escHtml(resourceBarAria('Mana', cur, max))}">
+  return `<div class="mana-bar-track" role="img" aria-label="${escHtml(resourceBarAria(t('sidebar.mana'), cur, max))}">
       <div class="mana-bar-fill" style="width:${pct}%"></div>
     </div>`;
 }
@@ -327,7 +327,7 @@ export function manaBarMarkup(cur: number, max: number): string {
 export function stressBarMarkup(cur: number): string {
   const max = 4;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  return `<div class="stress-bar-track" role="img" aria-label="${escHtml(resourceBarAria('Stress', cur, max))}">
+  return `<div class="stress-bar-track" role="img" aria-label="${escHtml(resourceBarAria(t('sidebar.stress'), cur, max))}">
       <div class="stress-bar-fill" style="width:${pct}%"></div>
     </div>`;
 }

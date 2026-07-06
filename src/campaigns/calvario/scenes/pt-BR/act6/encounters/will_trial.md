@@ -17,11 +17,8 @@ choices:
       - { op: startCombat, encounterId: act6_penitent_blade, onVictory: act6/will_after, onDefeat: shared/game_over, onFlee: act6/hub_fractured_nave }
 onEnter: []
 ---
-No alto do altar, uma coroa de espinhos de obsidiana gira lentamente, esperando um rei cansado o bastante para chamá-la de destino.
+No alto do altar, uma coroa de espinhos de **obsidiana** gira lentamente. Um penitente sem rosto segura uma lâmina sem metal:
 
-Um penitente sem rosto segura uma lâmina sem metal. A voz dele vem de dentro da tua armadura:
-
-> *"Queres poder para proteger, ou para nunca mais tremer?"*
+> *"Queres **poder** para proteger, ou para nunca mais tremer?"*
 
 Escolher é perder uma versão tua para sempre.
-

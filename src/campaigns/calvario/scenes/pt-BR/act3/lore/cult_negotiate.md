@@ -88,8 +88,6 @@ choices:
     preview: "O cultista desapareceu nas tubagens; o eco do gesto continua."
 onEnter: []
 ---
-**Voz baixa**, fala curta: *"Trago contrato simples — vocês descem, nós escrevemos o nome certo nos canos. Em troca, **silêncio** fora do túnel quando saírem."*
+**Voz baixa**: *"Trago contrato simples — descem, escrevemos o nome certo nos canos. Em troca, **silêncio** fora do túnel."*
 
-O **cultista** segura uma moeda velha entre dois dedos, sem afetação. Não é fanático: é **encarregado**. Atrás dele, a sombra de dois outros — não para te ameaçar, para **registrar** a tua resposta.
-
-A oferta não tem altar nem incenso. Tem **pragmatismo**: o Círculo paga para que a Vigília não saiba o que vais ver lá em baixo. **Tu decides** se isso é negócio.
+O **cultista** segura uma moeda velha — **encarregado**, não fanático. Atrás dele, dois outros **registram** a tua resposta. O **Círculo** paga para que a **Vigília** não saiba o que vais ver lá em baixo.

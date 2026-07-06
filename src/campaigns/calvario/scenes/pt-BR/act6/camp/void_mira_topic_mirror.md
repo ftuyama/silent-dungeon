@@ -11,11 +11,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act6_void_mira_topic_mirror }
 onEnter: []
 ---
-> *"Sombras aqui têm **dentes**", diz Mira. "A minha inclui tudo o que roubei ao medo — e o medo gosta de cobrar juros."*
-
-Ela fecha os olhos um instante.
-
-> *"Se me vires a hesitar, não chames piedade. Chama **tempo**."*
----
+> *"Sombras aqui têm **dentes**. Se me vires a hesitar, não chames piedade — chama **tempo**."*
 
 {{companionLine}}

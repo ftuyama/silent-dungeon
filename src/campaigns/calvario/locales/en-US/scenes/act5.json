@@ -119,7 +119,7 @@
   },
   "act5/camp/frost_duo_fireside": {
     "title": "Two Blades, One Fire",
-    "body": "**Mira** and **Tomás** **weigh** words at the fire — she wants a **name** for leaving; he straightens the shield: *order is a **place** where no one falls alone.*\n\nYou are not arbiter — **witness**.\n\n---\n\n{{companionLine}}",
+    "body": "**Mira** and **Tomás** measure words at the fire — she wants a **name** on the way out; he straightens the shield. You are not arbiter — **witness**.\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Interrupt before the cold enters the conversation"
@@ -128,7 +128,7 @@
   },
   "act5/camp/frost_mira_fireside": {
     "title": "Ice — Confidences with Mira",
-    "body": "**Mira** uses the wind instead of shrinking; at the fire, your face **doubles** for an instant — an old trick from below.\n\nYou still **descend** — the ceiling only **changed** shape.\n\n> *\"Snow **erases footprints\"*, she says. \"Choose what you want to forget.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"Snow **erases footprints**. Choose what you want to forget.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask if the cold returned something she lost"
@@ -143,7 +143,7 @@
   },
   "act5/camp/frost_mira_topic_pact": {
     "title": "Pact with the Cold",
-    "body": "> *\"The cold returns nothing,\"* Mira laughs, dry. *\"It only **hardens** what stayed with you. I did not come to the mountain for longing — I came because climbing alone is folly, and with you it is still business.\"*\n\nShe kicks a dead ember back into the light.\n\n> *\"If this is a pact, let it be short. Long pacts turn into chains.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"The cold returns nothing — it only **hardens** what stayed with you. If this is a pact, let it be **short**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Do not press — the wind already speaks loud enough"
@@ -152,7 +152,7 @@
   },
   "act5/camp/frost_mira_topic_summit": {
     "title": "The Summit Ahead",
-    "body": "Mira looks into the darkness above the pass.\n\n> *\"The summit is not victory. It is **exposure**. The sky likes to see who trembles first — I will not give that spectacle for free.\"*\n\nShe crosses her arms.\n\n> *\"When we climb, do not ask me for heroism. Ask for **clarity**. I cut what stands in front.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"The summit is not victory — it is **exposure**. When we climb, do not ask me for heroism. Ask for **clarity**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Return to the group's relative warmth"
@@ -161,7 +161,7 @@
   },
   "act5/camp/frost_tomas_fireside": {
     "title": "Ice — Word with Tomás",
-    "body": "**Tomás** rubs his hands without drama; the shield close, **second skin**. **Same** wound, **different** ceiling.\n\n> *\"The mountain is not the enemy — the enemy is **confusing** weariness with a sign from God.\"* The shadow on the metal reminds you: **posture** is also a mask.\n---\n\n{{companionLine}}",
+    "body": "> *\"Mountain is not enemy — enemy is **confusing** weariness with a sign from God.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask if the rope still gnawed his palm"
@@ -176,7 +176,7 @@
   },
   "act5/camp/frost_tomas_topic_rope": {
     "title": "The Mark of the Rope",
-    "body": "He opens his palm for an instant — pink lines, living memory.\n\n> *\"The rope remembers when I do not want it to. Good: it **reminds** me to fall with care.\"*\n\nTomás breathes deep.\n\n> *\"If we climb together, I do not need you to save me — I need you not to invent victory before its time. The ice loves **haste**.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"The rope remembers when I do not want it to. If we climb together, I do not need you to save me — I need you not to declare **victory** before its time.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Let the matter close with the wind"
@@ -185,7 +185,7 @@
   },
   "act5/camp/frost_tomas_topic_temple": {
     "title": "Temple in the Ice",
-    "body": "> *\"Black stone is not morality,\"* Tomás murmurs. *\"It is **weight**. The temple will ask for knees — I give knees from habit, not for show. If voices wait inside, remember: echo is not order.\"*\n\nHe taps the shield lightly.\n\n> *\"I go first when the ground is doubtful. Not from bravery — from **measure**.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"Black stone is not morality — it is **weight**. I enter first when the ground is doubtful. Not for bravery — for **measure**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Return to the camp's warmth",
@@ -218,7 +218,7 @@
   },
   "act5/encounters/fight_ice_dragon_2": {
     "title": "Silence of Ice",
-    "body": "The dragon **tears** its own roar and lets in a **silence** worse than the noise.\n\nIn its chest, something **pulses** — not blood, but a **note** trapped, like a bell fused to bone.\n\nIf you break it, the Third Bell hears — or **falls silent** forever.",
+    "body": "The dragon **tears** its own roar and lets in a **silence** worse than noise. In its chest, something **pulses** — not blood, but a **note** trapped, like a bell melted to bone.\n\nIf you break it, the **Third Bell** hears — or **falls silent** forever.",
     "choices": [
       {
         "text": "Drink Red Potion (self)"
@@ -323,7 +323,7 @@
   },
   "act5/frost_epilogue": {
     "title": "Frost Epilogue",
-    "body": "**Vetrnax** turns to **waterfall**; the wind stops biting and **whispers** empty order — an instant when silence weighs more than the roar.\n\nIn your hand, a **scale** that burns cold: a trophy that likes to **turn** into guilt. The rumor will change — dead or **sleeping** deeper.\n\nYou know the **damp** truth: every victory is a **rope**; the Bell favors those who pull without complaint.",
+    "body": "**Vetrnax** becomes **waterfall**; the wind stops biting. In your hand, a **scale** that burns cold — trophy that likes to become guilt.\n\nEvery victory is **rope**; the **Bell** likes those who pull without complaining.",
     "choices": [
       {
         "text": "Follow the echo under the ice — cross the Void Threshold"
@@ -488,7 +488,7 @@
   },
   "act5/frost_opening": {
     "title": "Graywind Heights",
-    "body": "## Graywind Heights\n\nThe map is **shadows** on snow — *here the wind cuts those who speak loud*. You did not return to the street: **same** silence, **different** ceiling — snow pretending range. Echo, wound, or promise: altitude **evens** even the rumor of **Vetrnax**, thread of ancient frost like the first night afraid of the sky.\n\n{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\n**White** purse, **axis** to follow — the throne stayed behind. Every breath pays **interest** to the cold.",
+    "body": "The map is **shadows** on snow — here the wind cuts those who speak loud. **Same** silence, **another** ceiling; rumor of **Vetrnax** on the horizon.\n\n{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\nThe throne stayed behind. Each breath pays **interest** to the cold.",
     "choices": [
       {
         "text": "Find shelter and plan on the snow"
@@ -626,7 +626,7 @@
   },
   "act5/frost_summit/ritual_altar": {
     "title": "The Altar That Learns Your Name",
-    "body": "At the **threshold** you thought the cold was only **climate**. Here, at the **center**, you understand it is **fence**: black stone **holds** what should not be seen until someone **arrives** with enough body to **translate** the silence.\n\nThe **altar** asks no **prayer**. It asks **substitution** — **flesh** that signs what the ancient gods **did not** want written in **words**. There is no **third** door: either you **accept** the contract, or you **lie** to yourself that you still **matter**.\n\nThere is only **one** path from here **inward** to what comes next.",
+    "body": "At the **threshold** the cold seemed like **weather**; here it is a **fence** — black stone that only opens for those who came to **translate** the silence.\n\nThe **altar** does not ask for prayer. It asks for **substitution**; there is no **third** door.",
     "choices": [
       {
         "text": "Proceed — blood in the ritual, without pretending innocence",
@@ -682,7 +682,7 @@
   },
   "act5/frost_tomas/encounters/fight_adv": {
     "title": "Advantage in the Clearing",
-    "body": "You reach the **clearing** in **shadow** — **whelp** sniffing wrong wind; **cultist** with knife at **Tomás's** **throat**. **Silence** pays **interest** in blood.\n\nTomás **closes** his eyes for **counting**, not fear.\n\n---\n\n*Advantage: you surprised the captors before the final blow.*",
+    "body": "You reach the **clearing** in **shadow** — **whelp** sniffing wrong wind; **cultist** with knife at **Tomás**'s throat. Tomás **closes** his eyes by **count**, not fear.\n\n*Advantage: you surprised the captors before the final blow.*",
     "choices": [
       {
         "text": "Strike before the blade wakes"
@@ -691,7 +691,7 @@
   },
   "act5/frost_tomas/encounters/fight_hard": {
     "title": "The Ice Does Not Forgive",
-    "body": "**Crack** under the boot — **too much** give. The **cultist** lifts his face; the **whelp** **hisses**; **Tomás** pulls the **trapped** shield, still **alive**.\n\nOnly **fight**; **hesitation** pays **interest** in flesh.\n\n---\n\n*The captors saw you first: combat at disadvantage.*",
+    "body": "**Crack** under the boot — **too** early. The **cultist** lifts his face; the **whelp** **hisses**; **Tomás** pulls the **trapped** shield, still **alive**. Only **fight**; **hesitation** pays **interest** in flesh.\n\n*The captors saw you first: combat at disadvantage.*",
     "choices": [
       {
         "text": "Answer the clash even without surprise"
@@ -725,7 +725,7 @@
   },
   "act5/frost_tomas/rescued": {
     "title": "The Shield Rises",
-    "body": "The rope falls; **Tomás** steals air from the sky and grabs the shield like a **name**.\n\n> *\"I did not come for you — I came for what you leave behind. Order me to rise, I rise; otherwise, I walk with you.\"*\n\n**Contract** of iron and silence, not romance.",
+    "body": "The rope falls; **Tomás** steals air from the sky and grips the shield like a **name**.\n\n> *\"Order me to rise, I rise; otherwise, I walk with you.\"*",
     "choices": [
       {
         "text": "Return to the pass"

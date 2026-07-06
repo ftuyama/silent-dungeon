@@ -58,8 +58,6 @@ choices:
     preview: "O selo lembra-te como lembras dele."
 onEnter: []
 ---
-Atrás de um **véu** de pedra rachada — quase parede, quase porta — o chão **abre** numa antessala que não estava no mapa. Lajes baixas, **runas** seladas com chumbo, água parada que **espelha** sem refletir.
+Atrás de um **véu** de pedra rachada abre-se uma antessala que não estava no mapa — lajes baixas, **runas** seladas com chumbo, água parada que **espelha** sem refletir.
 
-No centro, uma **runa** maior. Ninguém a desenhou para ser **lida** por intrusos: foi traçada por quem ia partir e queria deixar **algo** trancado para sempre. Há um **cheiro** de incenso velho, demasiado velho, que ninguém manda mais queimar.
-
-Não há altar. Há **promessas** dobradas entre as juntas das pedras. Uma delas **abrir-se-ia** se a tocares.
+No centro, uma **runa** maior. Não há altar — só **promessas** dobradas entre as juntas. Uma **abrir-se-ia** se a tocares.

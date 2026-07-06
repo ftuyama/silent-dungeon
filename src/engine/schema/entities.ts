@@ -119,8 +119,9 @@ export type Encounter = z.infer<typeof EncounterSchema>;
 export type BattleEncounter = Extract<Encounter, { combatType: 'battle' }>;
 export type DialogueEncounter = Extract<Encounter, { combatType: 'dialogue' }>;
 
+/** Encontros de batalha no JSON omitem `combatType`; o preprocess do schema assume `battle`. */
 export function isBattleEncounter(e: Encounter | undefined | null): e is BattleEncounter {
-  return e != null && e.combatType === 'battle';
+  return e != null && e.combatType !== 'dialogue';
 }
 
 export function isDialogueEncounter(e: Encounter | undefined | null): e is DialogueEncounter {

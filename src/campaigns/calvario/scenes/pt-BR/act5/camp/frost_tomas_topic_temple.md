@@ -11,11 +11,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act5_frost_tomas_topic_temple }
 onEnter: []
 ---
-> *"Pedra negra não é moral", murmura Tomás. "É **peso**. O templo vai pedir joelhos — eu dou joelhos por hábito, não por teatro. Se lá dentro houver vozes, lembra-te: eco não é ordem."*
-
-Ele bate leve no escudo.
-
-> *"Eu entro primeiro quando o chão for duvidoso. Não por bravura — por **medida**."*
----
+> *"Pedra negra não é moral — é **peso**. Eu entro primeiro quando o chão for duvidoso. Não por bravura — por **medida**."*
 
 {{companionLine}}

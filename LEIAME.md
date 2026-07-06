@@ -1,20 +1,20 @@
 <div align="center">
 
-**A text game where every click cuts like a blade.**
+**Um jogo de texto onde cada clique pesa como uma lâmina.**
 
-[How to play](#how-to-play) · [Screenshots](#screenshots) · [What awaits you](#what-awaits-you-below) · [Tips](#survival-tips)
+[Como jogar](#como-jogar) · [Capturas](#capturas-de-ecrã) · [O que te espera](#o-que-te-espera-lá-embaixo) · [Dicas](#dicas-de-sobrevivência)
 
-*Read in Portuguese: [LEIAME.md](LEIAME.md)*
+*Leia em inglês: [README.md](README.md)*
 
 </div>
 
 ---
 
-## Beneath the city, stone shows no mercy
+## Por baixo da cidade, a pedra não perdoa
 
-The **green pulse** never stops — it rises through the city's throat like poisoned moonlight vomit. Beneath the foundations, the **Silent Dungeon** opens its mouth: damp stone, rusted iron, the smell of copper that should not have a temperature — and a **silence** that learns your name before you speak it aloud.
+O **pulso verde** não cessa — sobe pela garganta da cidade como vómito de luar envenenado. Sob os fundamentos, a **Masmorra do Silêncio** abre a boca: pedra húmida, ferro oxidado, cheiro a cobre que não deveria ter temperatura — e um **silêncio** que aprende o teu nome antes de tu o dizeres em voz alta.
 
-Whether for honor, greed, or despair, the first step is always the same: **descend**.
+Seja por honra, ganância ou desespero, o primeiro passo é sempre o mesmo: **descer**.
 
 ```
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠄⡐⠊⠀⠀⢀⠠⢄⡔⡲⢂⡶⢊⢣⡼⣟⣻⣷⡹⣿⣿⡇⣏⡳⣿⣿⣿⡿⣿⢿⣯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⡷⢏⠝⠌⠒⢍⡛⣛⣛⣍⣋⢏⡴⣱⢖⡼⣲⣜⢶⡌⢆⡇⡒⢬⡐⠢⣐⠂⡔⠠⢂⡀⠀⠀⡀⠀⡀⠀⠀⠀⠀⠀
@@ -49,17 +49,17 @@ Whether for honor, greed, or despair, the first step is always the same: **desce
 ⠀⠀⠄⠀⠀⠀⠠⢈⠀⡀⠀⠂⠄⡀⠄⠠⢀⡈⡁⠜⠢⠙⡜⣌⡑⣓⣌⡱⣨⣖⡶⡶⠿⢟⠿⢿⠿⠟⣛⠛⢋⡙⠚⣛⣙⣛⣷⣻⢮⣭⣵⣮⣧⢯⣴⣮⠶⣵⣮⣴⣭⣤⣦⡥⢤⣦⡴⣴⢦⡴⣥⠦⣴⣖⡶⣷⣾⠷⡿⡖⡷⣤⣤⣤⣂⡤⣄⡴⢡⣄⢊⠴⠌⠆⠡⠐⡀⠢⠐⠠
 ```
 
-*ASCII art used in the game — opening excerpt.*
+*Arte ASCII usada no jogo — trecho da abertura.*
 
 ---
 
-## How to play
+## Como jogar
 
-Runs **in the browser** — no installation required. Use the official page:
+Corre **no navegador** — não precisas de instalar nada. Usa a página oficial:
 
 <div align="center">
 
-[![Play now — The Silent Dungeon](https://img.shields.io/badge/Play%20now-The%20Silent%20Dungeon-5c3d6e?style=for-the-badge)](https://ftuyama.github.io/silent-dungeon/)
+[![Jogar agora — A Masmorra do Silêncio](https://img.shields.io/badge/Jogar%20agora-A%20Masmorra%20do%20Sil%C3%AAncio-5c3d6e?style=for-the-badge)](https://ftuyama.github.io/silent-dungeon/)
 
 **[https://ftuyama.github.io/silent-dungeon/](https://ftuyama.github.io/silent-dungeon/)**
 
@@ -67,51 +67,51 @@ Runs **in the browser** — no installation required. Use the official page:
 
 ---
 
-## Screenshots
+## Capturas de ecrã
 
-**The Silent Dungeon** (*A Masmorra do Silêncio*) interface: ASCII narrative, turn-based combat, and exploration.
+Interface de **A Masmorra do Silêncio**: narrativa com ASCII, combate por turnos e exploração.
 
-**Story and choices** — *Umbral of the Void*
+**Narrativa e escolhas** — *Umbral do Vazio*
 
-![Narrative scene with ASCII art, hero sidebar, and choice options](screenshots/Screenshot%202026-04-10%20at%2020.53.35.png)
+![Cena de narrativa com arte ASCII, barra lateral do herói e opções de escolha](screenshots/Screenshot%202026-04-10%20at%2020.53.35.png)
 
-**Combat** — *turns, actions, and battle log*
+**Combate** — *turnos, ações e log de batalha*
 
-![Turn-based combat with enemy, actions, and battle log](screenshots/Screenshot%202026-04-10%20at%2020.54.11.png)
+![Combate por turnos com inimigo, ações e log de batalha](screenshots/Screenshot%202026-04-10%20at%2020.54.11.png)
 
-**Exploration** — *catacombs and camp*
+**Exploração** — *catacumbas e acampamento*
 
-![Camp scene with ASCII art, progress, and gameplay tip](screenshots/Screenshot%202026-04-10%20at%2020.54.24.png)
+![Acampamento com arte ASCII, progresso e dica de jogo](screenshots/Screenshot%202026-04-10%20at%2020.54.24.png)
 
 ---
 
-## What awaits you below
+## O que te espera lá embaixo
 
 | | |
 |:---|:---|
-| **Choices that matter** | Every decision opens paths — and closes others. |
-| **Dungeon atmosphere** | Catacombs, rituals, stone mouths, and what crawls in the corners. |
-| **Encounters** | Not everything that moves wants to talk. |
-| **A chaptered campaign** | The story unfolds in acts; the ending depends on you. |
+| **Escolhas com peso** | Cada decisão abre caminhos — e fecha outros. |
+| **Atmosfera de masmorra** | Catacumbas, rituais, bocas de pedra e o que rasteja nos cantos. |
+| **Encontros** | Nem tudo que se move quer conversar. |
+| **Uma campanha em capítulos** | A história avança em atos; o fim depende de ti. |
 
-> *Dark fantasy content. If you are sensitive to themes of death, cults, or implied violence, play with discretion.*
+> *Conteúdo de fantasia sombria. Se fores sensível a temas de morte, culto ou violência implícita, joga com critério.*
 
 ---
 
-## Survival tips
+## Dicas de sobrevivência
 
-- **Read everything.** Clues hide in long descriptions and seemingly useless details.
-- **Don't rush.** The game rewards those who picture the space before clicking.
-- **If you die, it's not a bug — it's a consequence.** Come back and try another angle.
+- **Lê tudo.** Pistas escondem-se em descrições longas e em detalhes aparentemente inúteis.
+- **Não tenhas pressa.** O jogo recompensa quem imagina o espaço antes de clicar.
+- **Se morreres, não é bug — é consequência.** Volta, experimenta outro ângulo.
 
 ---
 
 <div align="center">
 
-*"Beneath the city, there are only stairs."*
+*“Sob a cidade, só há escadas.”*
 
 </div>
 
-If you enjoyed this experience, consider leaving a small tip:
+Se você apreciou essa experiência, considere doar um pequeno incentivo:
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R21XLX02)

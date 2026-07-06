@@ -13,10 +13,6 @@ choices:
         onFlee: act5/frost_hub
 onEnter: []
 ---
-Chegas à **clareira** em **sombra** — **whelp** a farejar vento errado; **cultista** com faca no **pescoço** de **Tomás**. **Silêncio** paga **juros** em sangue.
-
-Tomás **fecha** os olhos por **contagem**, não por medo.
-
----
+Chegas à **clareira** em **sombra** — **whelp** a farejar vento errado; **cultista** com faca no pescoço de **Tomás**. Tomás **fecha** os olhos por **contagem**, não por medo.
 
 *Vantagem: surpreendeste os captores antes do golpe final.*

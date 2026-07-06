@@ -56,6 +56,35 @@ describe('computeCombatXp', () => {
     expect(computeCombatXp(enc, data)).toBe(12 + 5);
   });
 
+  it('battle encounter without combatType in JSON still awards XP (runtime raw JSON)', () => {
+    const enc = {
+      id: 'raw_battle',
+      enemies: ['gob'],
+      xpReward: 2,
+    } as Encounter;
+    const data = {
+      ...minimalData,
+      enemies: {
+        gob: {
+          id: 'gob',
+          name: 'Gob',
+          hp: 10,
+          maxHp: 10,
+          xp: 8,
+          str: 8,
+          agi: 8,
+          mind: 6,
+          armor: 0,
+          type: 'normal' as const,
+          armorChips: 0,
+          sprite: 'g',
+          attackStrategy: 'random' as const,
+        },
+      },
+    };
+    expect(computeCombatXp(enc, data)).toBe(10);
+  });
+
   it('dialogue encounter uses tensionMax base xp plus xpReward', () => {
     const enc: Encounter = {
       combatType: 'dialogue',

@@ -1,16 +1,6 @@
 import { DEFAULT_LOCALE, normalizeLocale, type Locale } from './locale.ts';
 import { loadStoredLocale } from './store.ts';
 
-export function detectLocaleFromNavigator(): Locale {
-  if (typeof navigator === 'undefined') return DEFAULT_LOCALE;
-  const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
-  for (const tag of langs) {
-    const locale = normalizeLocale(tag);
-    if (locale) return locale;
-  }
-  return DEFAULT_LOCALE;
-}
-
 export function resolveLocale(urlLang: string | null): Locale {
   if (urlLang) {
     const fromUrl = normalizeLocale(urlLang);
@@ -18,5 +8,6 @@ export function resolveLocale(urlLang: string | null): Locale {
   }
   const stored = loadStoredLocale();
   if (stored) return stored;
-  return detectLocaleFromNavigator();
+  // Campanha principal em pt-BR: só muda para en-US via ?lang= ou seletor de idioma.
+  return DEFAULT_LOCALE;
 }

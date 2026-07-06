@@ -10,7 +10,7 @@
   },
   "act6/camp/void_camp": {
     "title": "Fire of Mirrored Ash",
-    "body": "There is no **wood** — only **remains** of those who already burned themselves. The fire **imitates** warmth; your body accepts the lie because it **needs** a place to pretend there is still **tomorrow**.\n\n*Even here, the number follows: **day {{day}}** — mirrored in ash.*\n\nSmoke rises in **spirals** that recall corridors — do not ask where they go.",
+    "body": "There is no **firewood** — only **remains** of those who already burned themselves. The fire **imitates** warmth; your body accepts the lie because it **needs** a place to pretend there is still **tomorrow**.\n\n*Even here, the number follows: **day {{day}}** — mirrored in ash.*",
     "choices": [
       {
         "text": "Feed the flame with memory (−1 supply)",
@@ -101,7 +101,7 @@
   },
   "act6/camp/void_duo_fireside": {
     "title": "Three Voices in the Fractured Nave",
-    "body": "**Mira** and **Tomás** measure each other at the fire; the truth is only one: no one wants to die **alone** here.\n\nTomás murmurs **exit**; Mira murmurs **silence**. You, {{leadName}}, stand between — witness, not judge.\n---\n\n{{companionLine}}",
+    "body": "**Mira** and **Tomás** measure each other at the fire; no one wants to die **alone** here. You, {{leadName}}, stand in the middle — **witness**, not judge.\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Choose neither — only continue"
@@ -110,7 +110,7 @@
   },
   "act6/camp/void_mira_fireside": {
     "title": "Ash — Confidences with Mira",
-    "body": "**Mira** watches the flame that consumes no wood — and still recoils, survivor's habit.\n\n> *\"Here the echo **lies** less than people. That is not comfort: it is **warning**.\"*\n\n---\n\n{{companionLine}}",
+    "body": "> *\"Here echo **lies** less than people. That is not comfort — it is **warning**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask if she still recognizes her own shadow"
@@ -125,7 +125,7 @@
   },
   "act6/camp/void_mira_topic_end": {
     "title": "Door or Pit",
-    "body": "> *\"A door closes; a pit **swallows**,\"* **Mira** murmurs. *\"I prefer a door. I know alleys.\"*\n\nShort laugh; from here on the **Void** does not forgive — it follows your **decision** with your real weight.\n\n---\n\n{{companionLine}}",
+    "body": "> *\"Door closes; well **swallows**. I prefer door — I know alleys.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Return to the unstable light",
@@ -137,7 +137,7 @@
   },
   "act6/camp/void_mira_topic_mirror": {
     "title": "Shadow and Mirror",
-    "body": "> *\"Shadows here have **teeth\"*, Mira says. *\"Mine includes everything I stole from fear — and fear likes to charge interest.\"*\n\nShe closes her eyes for an instant.\n\n> *\"If you see me hesitate, do not call it pity. Call it **time**.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"Shadows here have **teeth**. If you see me hesitate, do not call pity — call **time**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Leave this reflection — return to the group"
@@ -146,7 +146,7 @@
   },
   "act6/camp/void_tomas_fireside": {
     "title": "Ash — Word with Tomás",
-    "body": "**Tomás** leans the shield on ash that spreads no warmth.\n\n> *\"This is not a field,\"* he says low. *\"It is **trial**. And trial asks no applause — it asks steps.\"*\n\n---\n\n{{companionLine}}",
+    "body": "> *\"This is not a field — it is **trial**. And trial asks no applause; it asks **steps**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask if his faith sounds different here"
@@ -161,7 +161,7 @@
   },
   "act6/camp/void_tomas_topic_duty": {
     "title": "Duty Without Ground",
-    "body": "> *\"Duty needs no soil,\"* he murmurs. *\"It needs **someone** not to lie to. I chose that someone when I followed you.\"*\n\nThe metal trembles lightly — or the air pretends to tremble.\n\n> *\"If we fall, we fall **together**. Short promise. Too long turns into rope at the neck.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"Duty needs no ground — it needs **someone** not to lie to. If we fall, we fall **together**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Return to the group"
@@ -170,7 +170,7 @@
   },
   "act6/camp/void_tomas_topic_faith": {
     "title": "Faith in the Void",
-    "body": "> *\"Faith does not change sound,\"* Tomás says. *\"It changes **echo**. Here the echo repeats what you want to hear — so I distrust it.\"*\n\nHe breathes slow.\n\n> *\"If God falls silent, I still raise the shield. Not theater. **Habit** of one who still believes in ground.\"*\n---\n\n{{companionLine}}",
+    "body": "> *\"Faith does not change sound — it changes **echo**. If God falls silent, I still raise the **shield**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Leave the prayer unfinished — and return"
@@ -194,7 +194,7 @@
   },
   "act6/dimensional_smith/forge": {
     "title": "Dimensional Workshop",
-    "body": "The workshop ceiling breathes crooked. No visible fire.\n\nThe smith does not smile. He only measures your breath between strikes.\n\n\"**Iron lives. Gold silences.**\"\n\n\"Want a miracle? Bring surplus from an encounter. I join the parts.\"",
+    "body": "The workshop ceiling breathes crooked — no visible fire. The smith does not smile; only measures your breath between strikes.\n\n*\"**Iron** lives. **Gold** silences. Want a miracle? Bring scrap from an encounter.\"*",
     "choices": [
       {
         "text": "Temper Iron Dagger (10 gold)",
@@ -409,7 +409,7 @@
   },
   "act6/encounters/will_trial": {
     "title": "Trial of Will",
-    "body": "At the altar's height, a crown of obsidian thorns turns slowly, waiting for a king tired enough to call it destiny.\n\nA faceless penitent holds a blade without metal. His voice comes from inside your armor:\n\n> *\"Do you want power to protect, or to never tremble again?\"*\n\nTo choose is to lose a version of yourself forever.",
+    "body": "Atop the altar, a crown of **obsidian** thorns turns slowly. A faceless penitent holds a blade without metal:\n\n> *\"Do you want **power** to protect, or to never tremble again?\"*\n\nTo choose is to lose a version of yourself forever.",
     "choices": [
       {
         "text": "Submit impulse to the altar's chance"
@@ -502,7 +502,7 @@
   },
   "act6/hub_fractured_nave": {
     "title": "Fractured Nave",
-    "body": "Three corridors lie about what living is; the **Void** opens **one at a time** — **sentence**, not map, only **versions** in queue.\n\nOn the ceiling, cracks **constellate** impossible faces of yours. To leave **whole** may mean calling **incomplete** by a pretty label.\n\nBetween columns, a fire that should not exist and a **stall** with no owner pretend business with one who is already the void's client.",
+    "body": "Three corridors lie about what it means to live; the **Void** opens **one at a time** — **sentence**, not map.\n\nIn the ceiling, cracks **constellate** impossible faces of yours. Between columns, fire and ownerless **stall** pretend business with those already clients of the void.",
     "choices": [
       {
         "text": "Patrol the fractured nave (explore map)",
@@ -593,7 +593,7 @@
   },
   "act6/memory_trial": {
     "title": "Trial of Memory",
-    "body": "In the pit, you see scenes of your life in layers, like dreams within dreams. When you try to touch a memory, another wakes beneath it and asks who wrote the first.\n\nChildish, old, and wounded voices sing your name in different tones, without deciding which is true.\n\nThe chorus rises from below:\n\n> *\"To remember is to choose what to kill.\"*",
+    "body": "In the well, you see scenes of your life in layers — when you try to touch one memory, another wakes beneath and asks who wrote the first.\n\n> *\"To **remember** is to choose what to kill.\"*",
     "choices": [
       {
         "text": "Hold a name on your tongue before diving",

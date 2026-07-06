@@ -5,13 +5,13 @@ import { factionRepTier } from '../progression/reputation.ts';
 /** Resumo humano do desfecho do trono (Act 4) para epílogo e abertura do gelo. */
 function throneOutcomeLine(state: GameState): string {
   if (state.marks.includes('calvario_sealed')) {
-    return 'Pagamento feito em **fé** e cicatriz: o subsolo cala porque **tu** decidiste carregar o peso em vez de o emprestar ao rumor.';
+    return 'Selaste o buraco em **fé** — o subsolo cala porque carregaste o **peso** tu mesma.';
   }
   if (state.marks.includes('pact_bound')) {
-    return 'O **Terceiro Sino** inscreveu-se na tua pele: a **corrupção** que sobe é o juro do silêncio que pediste em nome da cidade.';
+    return 'O **Terceiro Sino** inscreveu-se na tua pele; a **corrupção** que sobe é o juro.';
   }
   if (state.marks.includes('morvayn_slain')) {
-    return '**Ferro** no trono: Morvayn findou — o **eixo** segue; a ferida **afunda** onde o mapa desiste.';
+    return '**Ferro** no trono: Morvayn findou, mas o **eixo** segue para baixo.';
   }
   return '';
 }
@@ -26,22 +26,22 @@ function factionThroneEcho(state: GameState): string {
   const slain = state.marks.includes('morvayn_slain');
 
   if (sealed && v >= 1 && v >= c) {
-    return 'Um **capeador** inclina a lanterna para a neve: *"Selar é língua da Vigília. Se o buraco obedece, talvez o prefeito volte a dormir."* Não pede saudação — pede testemunho.';
+    return 'Um **capeador** na neve: *"Selar é língua da **Vigília**."*';
   }
   if (sealed && c >= 1 && c > v) {
-    return 'Alguém no acampamento **desenha** um círculo na cinza e apaga antes de fechar: *"Selo bonito. A rede agradece quando ninguém grita o preço."*';
+    return 'Alguém desenha um **círculo** na cinza: *"Selo bonito. A **rede** agradece."*';
   }
   if (pact && k >= 0) {
-    return 'Um **devoto** cheira o teu passo e sorri sem mostrar dentes: *"O Sino lembra-te a quem não lembra a si. Geada ou cidade — o silêncio é o mesmo metal."*';
+    return 'Um **devoto** sorri sem dentes: *"O **Sino** lembra-te."*';
   }
   if (slain && v >= 1 && v >= c) {
-    return 'Um sal da Vigília roçou-te o ombro: *"Morvayn era laço. Cortaste. O tribunal de cima vai inventar versão — nós guardamos a lâmina."*';
+    return 'Um sal da **Vigília**: *"Morvayn era laço. **Cortaste**."*';
   }
   if (slain && c >= 1 && c > v) {
-    return 'Voz baixa do **Círculo** no frio: *"Mataram o nome no trono. Ótimo. Nomes mentem; corpos não."*';
+    return 'Voz do **Círculo**: *"Mataram o nome no trono. **Ótimo**."*';
   }
   if (pact && c >= 1 && c > v) {
-    return 'Sussurro da **rede**: *"Assinaste o silêncio que a cidade já coreografava. Não julgamos — arquivamos."*';
+    return 'Sussurro da **rede**: *"Assinaste o **silêncio**. **Arquivamos**."*';
   }
   return '';
 }
@@ -52,7 +52,7 @@ export function injectText(text: string, state: GameState): string {
   const companionLine =
     companions.length === 0
       ? ''
-      : `${companions.map((c) => c.name).join(' e ')} ${companions.length > 1 ? 'trocam' : 'troca'} um olhar que não pede permissão à pedra.`;
+      : `${companions.map((c) => c.name).join(' e ')} ${companions.length > 1 ? 'trocam' : 'troca'} um olhar seco contigo.`;
   const lv = state.level;
   const xpNext = lv >= MAX_LEVEL ? 0 : xpToNextLevel(lv);
   return text

@@ -306,6 +306,8 @@ function openDiaryModal({ diary: entries, marks, registry }: DiaryModalOpenParam
 /** Página de apoio (menu Sobre → Apoiar no Ko-fi). */
 export const KOFI_SUPPORT_URL = 'https://ko-fi.com/lelouchiee';
 
+export const CREATOR_NAME = 'Felipe Tuyama';
+
 export type OpenCreditsModalOpts = {
   campaignName: string;
   gameVersion: string;
@@ -359,6 +361,17 @@ export function openCreditsModal({
   secAbout.appendChild(hAbout);
   secAbout.appendChild(aboutBody);
 
+  const secAuthor = document.createElement('section');
+  secAuthor.className = 'diary-modal-section';
+  const hAuthor = document.createElement('h3');
+  hAuthor.className = 'diary-modal-section-title';
+  hAuthor.textContent = t('sidebar.author');
+  const pAuthor = document.createElement('p');
+  pAuthor.className = 'diary-modal-section-body credits-modal-about';
+  pAuthor.textContent = CREATOR_NAME;
+  secAuthor.appendChild(hAuthor);
+  secAuthor.appendChild(pAuthor);
+
   const secThanks = document.createElement('section');
   secThanks.className = 'diary-modal-section';
   const hThanks = document.createElement('h3');
@@ -372,6 +385,7 @@ export function openCreditsModal({
 
   scroll.appendChild(kofiHint);
   scroll.appendChild(secAbout);
+  scroll.appendChild(secAuthor);
   scroll.appendChild(secThanks);
 
   document.body.appendChild(layer);

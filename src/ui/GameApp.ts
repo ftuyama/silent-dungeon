@@ -235,7 +235,6 @@ export class GameApp {
 
     this.bus.subscribe((ev) =>
       handleGameEvent(ev, {
-        isStoryMode: this.state.mode === 'story',
         onCombatVictory: () => this.audio.playVictory(),
         onCombatFlee: () => this.audio.playFlee(),
         onCombatDefeat: () => this.audio.playDefeat(),
@@ -253,7 +252,7 @@ export class GameApp {
           this.enqueueStatusHighlight({
             type: 'statusHighlight',
             variant: 'good',
-            title: `+${amount} XP`,
+            title: t('toast.xpGainedTitle', { amount: String(amount) }),
             subtitle: t('toast.xpReceived'),
           });
           this.unlockAudio();
@@ -272,7 +271,7 @@ export class GameApp {
           this.enqueueStatusHighlight({
             type: 'statusHighlight',
             variant: 'good',
-            title: `Dia ${day}`,
+            title: t('toast.dayTitle', { day: String(day) }),
             subtitle: dayAdvanceSubtitle(day),
           });
         },
@@ -280,13 +279,12 @@ export class GameApp {
           this.enqueueStatusHighlight(event);
         },
         onLevelUp: (level) => {
-          if (this.state.mode !== 'story') return;
           this.unlockAudio();
           this.audio.playLevelUpCelebration();
           this.enqueueStatusHighlight({
             type: 'statusHighlight',
             variant: 'good',
-            title: `Nível ${level}`,
+            title: t('story.levelTitleNoName', { level: String(level) }),
             subtitle: t('toast.levelUpSubtitle'),
           });
         },
@@ -381,7 +379,7 @@ export class GameApp {
       this.enqueueStatusHighlight({
         type: 'statusHighlight',
         variant: 'good',
-        title: 'Retorno às catacumbas',
+        title: t('toast.catacombsReturnTitle'),
         subtitle: t('toast.catacombsReturnSubtitle'),
       });
     } catch {
@@ -828,6 +826,34 @@ export class GameApp {
     this.cancelStatusHighlightDismissalPipeline();
     this.cancelDiaryBannerPipeline();
     this.cancelItemBannerPipeline();
+  }
+
+  private commitCombatState(s: GameState): void {
+    const prevScene = this.state.sceneId;
+    const prevDiaryQueueLen = this.diaryEntryQueue.length;
+    const prevStatusQueueLen = this.statusHighlightQueue.length;
+    const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
+    const xpGain = s.lastCombatXpGain;
+    this.state = this.stabilize(s);
+    this.trimOverlayQueuesIfSceneChanged(
+      prevScene,
+      prevDiaryQueueLen,
+      prevStatusQueueLen,
+      prevItemAcquireQueueLen
+    );
+    if (xpGain != null && xpGain > 0) {
+      const xpTitle = `+${xpGain} XP`;
+      if (!this.statusHighlightQueue.some((h) => h.title === xpTitle)) {
+        this.enqueueStatusHighlight({
+          type: 'statusHighlight',
+          variant: 'good',
+          title: xpTitle,
+          subtitle: t('toast.xpReceived'),
+        });
+        this.unlockAudio();
+      }
+    }
+    this.render();
   }
 
   /** Mantém só overlays ligados à transição atual (como diário / destaques / itens). */
@@ -1611,20 +1637,7 @@ export class GameApp {
             lifecycle: {
               unlockAudio: () => this.unlockAudio(),
               stabilize: (s) => this.stabilize(s),
-              commitState: (s) => {
-                const prevScene = this.state.sceneId;
-                const prevDiaryQueueLen = this.diaryEntryQueue.length;
-                const prevStatusQueueLen = this.statusHighlightQueue.length;
-                const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
-                this.state = this.stabilize(s);
-                this.trimOverlayQueuesIfSceneChanged(
-                  prevScene,
-                  prevDiaryQueueLen,
-                  prevStatusQueueLen,
-                  prevItemAcquireQueueLen
-                );
-                this.render();
-              },
+              commitState: (s) => this.commitCombatState(s),
             },
             onBossTwistReveal: (messages) => this.enqueueBossTwistReveal(messages),
           });
@@ -1644,20 +1657,7 @@ export class GameApp {
             lifecycle: {
               unlockAudio: () => this.unlockAudio(),
               stabilize: (s) => this.stabilize(s),
-              commitState: (s) => {
-                const prevScene = this.state.sceneId;
-                const prevDiaryQueueLen = this.diaryEntryQueue.length;
-                const prevStatusQueueLen = this.statusHighlightQueue.length;
-                const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
-                this.state = this.stabilize(s);
-                this.trimOverlayQueuesIfSceneChanged(
-                  prevScene,
-                  prevDiaryQueueLen,
-                  prevStatusQueueLen,
-                  prevItemAcquireQueueLen
-                );
-                this.render();
-              },
+              commitState: (s) => this.commitCombatState(s),
             },
           });
         } else {

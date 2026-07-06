@@ -5,6 +5,7 @@ import {
   fleeDifficultyTn,
   getCharacterArmorClass,
 } from '../../src/engine/combat/index.ts';
+import { finishCombat } from '../../src/engine/combat/resolution.ts';
 import { createInitialState, createPlayerCharacter } from '../../src/engine/core/index.ts';
 import type { EnemyDef, Encounter, ItemDef } from '../../src/engine/schema/index.ts';
 import { createTestData, testCampaign } from '../helpers/engineTestData.ts';
@@ -63,6 +64,35 @@ describe('fleeDifficultyTn', () => {
     expect(fleeDifficultyTn(1)).toBe(7);
     expect(fleeDifficultyTn(0)).toBe(12);
     expect(fleeDifficultyTn(0.5)).toBe(10);
+  });
+});
+
+describe('finishCombat XP', () => {
+  it('awards XP and lastCombatXpGain on battle victory', () => {
+    const data = combatTestData();
+    data.enemies = {
+      dummy: { ...dummyEnemy, hp: 1, maxHp: 1, xp: 22 },
+    };
+    const enc: Encounter = { combatType: 'battle', id: 'x', enemies: ['dummy'] };
+    let state = createInitialState(testCampaign, 77);
+    state.party = [createPlayerCharacter('Hero', 'knight')];
+    state = beginEncounter(state, enc, data, { returnScene: 'hub', onVictory: 'won' });
+    const c = state.combat!;
+    const after = finishCombat(
+      state,
+      {
+        ...c,
+        enemies: c.enemies.map((e) => ({ ...e, hp: 0 })),
+        log: [...c.log, { kind: 'info', message: 'Vitória.' }],
+        phase: 'ended',
+      },
+      true,
+      data
+    );
+    expect(after.mode).toBe('story');
+    expect(after.sceneId).toBe('won');
+    expect(after.xp).toBe(22);
+    expect(after.lastCombatXpGain).toBe(22);
   });
 });
 

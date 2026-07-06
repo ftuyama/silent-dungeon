@@ -1,6 +1,6 @@
 import type { GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
-import { buildGameSidebar, KOFI_SUPPORT_URL } from './gameAppSidebar.ts';
+import { buildGameSidebar, CREATOR_NAME, KOFI_SUPPORT_URL } from './gameAppSidebar.ts';
 import { buildMenuSaveSlot, saveSlotLimit } from './gameAppSaveSlots.ts';
 import {
   getLocale,
@@ -76,6 +76,7 @@ export type AppChromeRefs = {
   fullscreenCb: HTMLInputElement;
   devSaveExtrasEl: HTMLElement;
   devSettingsExtrasEl: HTMLElement;
+  chronicleBtn: HTMLButtonElement;
   /** Só os cartões de slot (actualizado em `syncAppChrome` após gravar/importar). */
   saveSlotsWrap: HTMLElement;
   /** Painel `aria-live` para mensagens não bloqueantes (substitui `alert`). */
@@ -144,7 +145,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
 
   const edgeRail = document.createElement('nav');
   edgeRail.className = 'app-edge-rail';
-  edgeRail.setAttribute('aria-label', 'Controles compactos');
+  edgeRail.setAttribute('aria-label', t('menu.compactControls'));
   edgeRail.hidden = true;
   const edgeRailRestoreBtn = document.createElement('button');
   edgeRailRestoreBtn.type = 'button';
@@ -347,6 +348,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   chronicleBtn.className = 'menu-item';
   chronicleBtn.textContent = t('menu.chronicle');
   chronicleBtn.title = t('menu.chronicleTitle');
+  chronicleBtn.hidden = opts.state.legacy.echoes <= 0;
   chronicleBtn.addEventListener('click', () => opts.onChronicle());
 
   const creditsBtn = document.createElement('button');
@@ -371,10 +373,11 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
 
   const versionLabel = document.createElement('div');
   versionLabel.className = 'menu-version';
-  versionLabel.textContent = t('menu.version', { version: opts.gameVersion });
+  versionLabel.textContent = t('menu.version', { version: opts.gameVersion, author: CREATOR_NAME });
 
   const devSaveExtrasEl = document.createElement('div');
   devSaveExtrasEl.className = 'menu-dev-save-extras';
+  devSaveExtrasEl.appendChild(exportBtn);
   devSaveExtrasEl.appendChild(importBtn);
 
   const devSettingsExtrasEl = document.createElement('div');
@@ -388,7 +391,6 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   fillMenuSaveSlots(saveSlotsWrap, opts.campaignId, opts.devMode, opts.onSaveSlot, opts.onLoadSlot);
   saveSection.appendChild(saveSlotsWrap);
   saveSection.appendChild(devSaveExtrasEl);
-  saveSection.appendChild(exportBtn);
 
   const settingsSection = createMenuSection(t('menu.sectionSettings'));
   settingsSection.appendChild(volumeRow);
@@ -470,6 +472,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     fullscreenCb,
     devSaveExtrasEl,
     devSettingsExtrasEl,
+    chronicleBtn,
     saveSlotsWrap,
     toastRegion,
     menuDrawer: drawer,
@@ -491,6 +494,7 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
 
   refs.devSaveExtrasEl.hidden = !opts.showImportInPartida;
   refs.devSettingsExtrasEl.hidden = !opts.showGraphInSettings;
+  refs.chronicleBtn.hidden = opts.state.legacy.echoes <= 0;
 
   const pct = Math.round(opts.getVolume() * 100);
   refs.volumeRange.value = String(pct);

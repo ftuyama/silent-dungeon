@@ -59,9 +59,9 @@ export function loadCalvarioContent(locale: Locale) {
     DialogueEnemyDefSchema.parse(def);
   }
   data.dialogueEnemies = dialogueEnemiesTs as Record<string, DialogueEnemyDef>;
-  const encRecord = encounters as unknown as Record<string, Encounter>;
-  for (const enc of Object.values(encRecord)) {
-    EncounterSchema.parse(enc);
+  const encRecord: Record<string, Encounter> = {};
+  for (const [key, raw] of Object.entries(encounters as Record<string, unknown>)) {
+    const enc = EncounterSchema.parse(raw);
     if (
       enc.combatType === 'battle' &&
       (enc.twists?.length ?? 0) > 0 &&
@@ -69,6 +69,7 @@ export function loadCalvarioContent(locale: Locale) {
     ) {
       throw new Error(`[calvario] Encounter "${enc.id}" has twists but isBoss is not true`);
     }
+    encRecord[key] = enc;
   }
   data.encounters = encRecord;
   data.items = itemsTs as Record<string, ItemDef>;

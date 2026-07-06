@@ -12,8 +12,6 @@ onEnter:
   - { op: grantItem, itemId: third_bell }
   - { op: addDiary, text: "Servi ao Terceiro Sino. O anel no dedo não toca — mas o mundo aprendeu a calar quando eu respiro." }
 ---
-O caçador cai ou foge; a cidade **aprende** a fingir adormecida.
+O caçador cai ou foge; a cidade **aprende** a fingir adormecida. Servis ao **Terceiro Sino** como **conduto** — o **anel** no dedo é **mudo** para os outros, ensurdecedor para ti.
 
-Servis ao **Terceiro Sino** como **conduto** — batida sem torre, porque a torre **soubeste** tu. O **anel** no dedo: **mudo** para os outros, ensurdecedor para ti.
-
-O frio sobe à pele da cidade; o dia chega **obediente** — e ouves o quarto toque **prometido**, nunca fundido.
+O frio sobe à pele da cidade; ouves o quarto toque **prometido**, nunca fundido.

@@ -85,6 +85,6 @@ onEnter:
   - { op: addXp, amount: 10 }
   - { op: clearAsciiMap }
 ---
-Profundezas **silenciosas**. Morvayn não está longe — e o silêncio dele já foi **política** antes de ser magia: rede no teto, facção no corredor, cadáver no trono como **factura** pendente. Por baixo dele, **buraco** sem nome no mapa.
+Profundezas **silenciosas**. **Morvayn** não está longe — o silêncio dele já foi **política** antes de magia.
 
-Aqui não se **acampa** como no cruzeiro: o subsolo cobra presença contínua — Vigília, Círculo e culto deixam **rasto** no mesmo ar, e o teu fôlego torna-se moeda rara. Se trouxeste **companhia**, o silêncio pesa em voz dupla; se vieste **só**, o eco finge ser resposta.
+Aqui não se **acampa** como no cruzeiro: o subsolo cobra presença contínua, e o teu fôlego torna-se **moeda** rara.
