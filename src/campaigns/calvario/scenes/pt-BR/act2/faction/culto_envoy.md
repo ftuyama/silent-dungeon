@@ -39,6 +39,6 @@ choices:
 onEnter:
   - { op: setFlag, key: act2_faction_envoy_culto_done, value: true }
 ---
-Um **sino** sem badalo vibra na **garganta** do túnel. A sombra **dobra** o joelho antes que tu o faças.
+Um **sino** sem badalo vibra na **garganta** do túnel. A sombra **dobra** o joelho antes que você o faças.
 
 *"Devoto é quem **paga** o silêncio com outro silêncio."*

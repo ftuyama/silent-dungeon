@@ -153,5 +153,32 @@ Quando o usuário pedir cena nova sem editar arquivo automaticamente:
 - `chapter` coerente com o ato.
 - `choices` com destinos plausíveis.
 - Sem campos fora do schema.
-- Tom consistente com a campanha (português, fantasia sombria, masmorra e silêncio como fio condutor).
+- Tom consistente com a campanha (português brasileiro, fantasia sombria, masmorra e silêncio como fio condutor).
 - Se aplicável, checks/effects/condições compatíveis com engine.
+
+## pt-BR — evitar PT-PT
+
+Texto do jogador em **português brasileiro**. Tratamento padrão: **você / seu / sua** (nunca tu/teu/tua).
+
+Termos proibidos (usar coluna pt-BR):
+
+| Evitar (PT-PT) | Usar (pt-BR) |
+|----------------|--------------|
+| telemóvel | celular |
+| húmido/a | úmido/a |
+| ecrã | tela |
+| bónus | bônus |
+| Crónica | Crônica |
+| facto | fato |
+| miúda/o | pequena/o |
+| comboio | trem |
+| carris | trilhos |
+| em lado nenhum | em lugar nenhum |
+| demasiado (excesso) | demais |
+| num PC / num computador | em um PC / em um computador |
+| portátil (laptop) | notebook |
+| separador (browser) | aba |
+
+**Nota:** *portátil* no sentido transportável (ex.: altar portátil) é válido em pt-BR.
+
+Validar com `npm run check:pt-br` antes de entregar cenas novas.

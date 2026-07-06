@@ -13,7 +13,7 @@ onEnter:
   - { op: addResource, resource: supply, delta: -1 }
   - { op: addDiary, text: "Depois do trono: vão de gelo, ar de masmorra, céu mentiroso. Rumor de dragão nas Cimeiras — só o céu hesita." }
 ---
-O mapa é **sombras** sobre neve — aqui o vento corta quem fala alto. **Mesmo** silêncio, **outro** teto; rumor de **Vetrnax** no horizonte.
+O mapa é **sombras** sobre neve — o vento corta quem fala alto. Rumor de **Vetrnax** no horizonte.
 
 {{throneOutcomeLine}}
 

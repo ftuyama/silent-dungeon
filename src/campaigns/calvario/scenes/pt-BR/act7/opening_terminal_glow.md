@@ -13,6 +13,6 @@ onEnter:
   - { op: setChapter, chapter: 7 }
   - { op: addDiary, text: "Saí da nave e o mundo não era continuação — era cobrança. O horizonte puxou uma linha vermelha como quem fecha conta." }
 ---
-O **ar** cheira a papel queimado e **ferro** demasiado frio; nuvens **ameaçam** sem chover — **silêncio com dentes**.
+O **ar** cheira a papel queimado e **ferro** demais frio; nuvens **ameaçam** sem chover — **silêncio com dentes**.
 
 A estrada **parte-se**: **coser** o céu até calar, ou **deixá-lo** rasgar e dançar na cinza. Um passo já é **lado**.

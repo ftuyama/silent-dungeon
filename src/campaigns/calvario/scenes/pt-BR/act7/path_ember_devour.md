@@ -13,6 +13,6 @@ onEnter:
   - { op: addResource, resource: supply, delta: -1 }
   - { op: addDiary, text: "Não cosi o céu — alimentei o que já ardia. O calor não perdoa, mas cobre o frio como cobertor sujo." }
 ---
-Abres a garganta e o calor **responde** sem pedir nome: não é possessão de pulpito — é **acordo** com o que já queimava em ti antes do fim do mundo ser moda.
+Abres a garganta e o calor **responde** sem pedir nome — **acordo** com o que já queimava em você antes do fim do mundo ser moda.
 
-O fogo **come** suprimento e **deixa** corrupção como brasão: não és santo; és **chaminé** ambulante — e a estrada gosta de quem não finge frio.
+O fogo **come** suprimento e **deixa** corrupção como brasão: não é santo; és **chaminé** ambulante.

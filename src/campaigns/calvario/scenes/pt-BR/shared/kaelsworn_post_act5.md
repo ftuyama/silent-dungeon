@@ -29,4 +29,4 @@ choices:
 ---
 **Vapor** **rói** o **aço**; **Kael** **ri** **baixo**, **som** de **pedra** **molhada**.
 
-> *"O **frio** **testa** **junta**. Tu **passaste**. **Falta** **saber** se **aceitas** **o** **que** **junta** **exige**."*
+> *"O **frio** **testa** **junta**. Você **passaste**. **Falta** **saber** se **aceitas** **o** **que** **junta** **exige**."*

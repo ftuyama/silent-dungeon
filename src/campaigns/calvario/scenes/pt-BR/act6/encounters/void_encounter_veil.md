@@ -4,7 +4,7 @@ title: Escrivão entre espelhos mortos
 chapter: 6
 ambientTheme: void
 choices:
-  - text: "Responder ao escrivão antes que costure o céu à tua garganta"
+  - text: "Responder ao escrivão antes que costure o céu à sua garganta"
     effects:
       - op: startCombat
         encounterId: act6_wild_scribe_solo
@@ -15,4 +15,4 @@ onEnter: []
 ---
 Uma figura **alta** atravessa a penumbra como quem **escreve** no ar — não há sangue, há **certeza** a escorrer dos cantos do véu; **tinta** onde devia haver pele.
 
-A voz não pergunta se estás pronto. Trata **prontidão** como defeito de criança.
+A voz não pergunta se está pronto. Trata **prontidão** como defeito de criança.

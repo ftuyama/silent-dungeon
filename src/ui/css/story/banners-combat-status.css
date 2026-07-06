@@ -6,27 +6,27 @@
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #e8e0c8;
-  background: linear-gradient(135deg, #2a2618 0%, #1e2218 100%);
-  border: 1px solid #5a6a3a;
+  color: var(--text-strong);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, var(--surface-inset)) 0%, var(--surface-raised) 100%);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
   border-radius: 2px;
-  box-shadow: 0 0 12px rgba(90, 106, 58, 0.25);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 .victory-progress-banner--level-up {
   padding: 0.75rem 1rem 0.9rem;
   border-width: 2px;
-  border-color: #a8c040;
+  border-color: color-mix(in srgb, var(--crit-highlight) 65%, var(--accent));
   background: linear-gradient(
     155deg,
-    rgba(52, 48, 28, 0.98) 0%,
-    rgba(28, 36, 22, 0.98) 45%,
-    rgba(18, 26, 14, 0.99) 100%
+    color-mix(in srgb, var(--crit-highlight) 14%, var(--surface-inset)) 0%,
+    color-mix(in srgb, var(--accent) 10%, var(--surface-raised)) 45%,
+    var(--surface-drawer) 100%
   );
   box-shadow:
-    0 0 0 1px rgba(220, 230, 140, 0.12),
-    0 0 28px rgba(140, 180, 50, 0.45),
-    inset 0 1px 0 rgba(255, 250, 200, 0.06);
+    0 0 0 1px color-mix(in srgb, var(--crit-highlight) 18%, transparent),
+    0 0 28px color-mix(in srgb, var(--crit-highlight) 35%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--text-strong) 8%, transparent);
   animation: victory-level-up-glow 1.15s ease-out 1;
 }
 
@@ -53,14 +53,14 @@
   margin-bottom: 0.25rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #c8d8a8;
+  color: color-mix(in srgb, var(--accent) 75%, var(--text-strong));
   letter-spacing: 0.03em;
 }
 
 .victory-loot-line {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #d4c898;
+  color: color-mix(in srgb, var(--crit-highlight) 55%, var(--text-strong));
   letter-spacing: 0.03em;
   line-height: 1.35;
 }

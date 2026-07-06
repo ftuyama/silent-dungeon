@@ -31,6 +31,7 @@ import { getEffectiveLuck } from '../progression/luck.ts';
 import {
   DEFAULT_ENEMY_COMBAT_LINE_CHANCE,
   DEFAULT_ENEMY_CRIT_CONFIRM,
+  ARCHER_DODGE_CHANCE,
   getSacrificeValues,
   pickEnemyMeleeTarget,
   toRollOutcome,
@@ -155,6 +156,12 @@ export function applyPlayerStance(
   };
 }
 
+function headshotManaCost(_state: GameState, data: GameData): number {
+  const sp = data.spells.headshot;
+  if (!sp) return 16;
+  return sp.manaCost;
+}
+
 /**
  * Um ataque físico (líder ou companheiro). Na mesma vaga de combate, todos usam a postura escolhida pelo líder.
  * Golpe especial só para o índice 0.
@@ -171,7 +178,8 @@ function physicalAttackForCharacter(
   data: GameData,
   rng: () => number,
   log: CombatLogEntry[],
-  _bus?: EventBus
+  _bus?: EventBus,
+  attackOpts?: { forcedCrit?: boolean; spellId?: string }
 ): {
   party: Character[];
   enemies: EnemyInstance[];
@@ -210,19 +218,21 @@ function physicalAttackForCharacter(
 
   let dice: number[] = [];
   let total = 0;
-  if (c.playerAdvantage) {
+  let special: AttackRollSpecial = 'normal';
+
+  if (attackOpts?.forcedCrit) {
+    special = 'crit';
+  } else if (c.playerAdvantage) {
     const r = roll3d6DropLowest(rng);
     dice = [...r.dice];
     total = r.sum + atkMod;
+    special = attackRollSpecial3d6dl(r.dice);
   } else {
     const [d1, d2] = roll2d6(rng);
     dice = [d1, d2];
     total = d1 + d2 + atkMod;
+    special = attackRollSpecial2d6(d1, d2);
   }
-
-  const special: AttackRollSpecial = c.playerAdvantage
-    ? attackRollSpecial3d6dl(dice as [number, number, number])
-    : attackRollSpecial2d6(dice[0]!, dice[1]!);
 
   const targetDef = def.agi + def.armor;
   const defense = 7 + Math.floor(targetDef / 2) + (c.enemyBuffArmorClass ?? 0);
@@ -259,7 +269,9 @@ function physicalAttackForCharacter(
 
   const rollOutcome = toRollOutcome(special);
   let attackMsg: string;
-  if (special === 'fumble') {
+  if (attackOpts?.forcedCrit) {
+    attackMsg = combatLog.logHeadshotCrit(attacker.name, def.name);
+  } else if (special === 'fumble') {
     attackMsg = combatLog.logAttackFumble(attacker.name);
   } else if (special === 'crit') {
     attackMsg = combatLog.logAttackCrit(attacker.name, def.name);
@@ -281,6 +293,7 @@ function physicalAttackForCharacter(
     vsDefense: defense,
     rollOutcome,
     enemyIndex,
+    ...(attackOpts?.spellId ? { spellId: attackOpts.spellId } : {}),
   });
 
   if (hit) {
@@ -347,6 +360,7 @@ function physicalAttackForCharacter(
         damageKind: isPlayerCrit ? 'crit' : 'normal',
         enemyIndex,
         lethal: nh <= 0,
+        ...(attackOpts?.spellId ? { spellId: attackOpts.spellId } : {}),
       });
     }
   }
@@ -387,6 +401,25 @@ export function playerAttack(
   let party = state.party.map((p) => ({ ...p }));
   let enemies = [...c.enemies];
 
+  const pendingSpellId = c.pendingSpellId;
+  let attackOpts: { forcedCrit?: boolean; spellId?: string } | undefined;
+  if (pendingSpellId) {
+    const sp = data.spells[pendingSpellId];
+    if (!sp || sp.spellKind !== 'targeted_crit_attack') return state;
+    const lead = party[0];
+    if (!lead) return state;
+    const manaCost = headshotManaCost(state, data);
+    if (lead.mana < manaCost) return state;
+    party[0] = { ...lead, mana: lead.mana - manaCost };
+    log.push({
+      kind: 'info',
+      message: combatLog.logCastsSpell(lead.name, sp.name, manaCost),
+      actor: lead.name,
+      spellId: pendingSpellId,
+    });
+    attackOpts = { forcedCrit: true, spellId: pendingSpellId };
+  }
+
   const st = { ...state, party };
   const r0 = physicalAttackForCharacter(
     st,
@@ -400,7 +433,8 @@ export function playerAttack(
     data,
     rng,
     log,
-    bus
+    bus,
+    attackOpts
   );
   if (!r0) return state;
   party = r0.party;
@@ -476,6 +510,7 @@ export function playerAttack(
       log,
       phase: 'enemy',
       pendingStance: undefined,
+      pendingSpellId: undefined,
       pendingSacrificeDamage: 0,
       pendingSacrificeCost: 0,
       defenseStanceForEnemyTurn: c.pendingStance,
@@ -562,6 +597,19 @@ export function advanceToEnemyTurn(
       enemyHit = atk >= defScore;
     }
 
+    let dodged = false;
+    if (
+      enemyHit &&
+      !enemyCritDmg &&
+      targetIndex === 0 &&
+      target.class === 'archer' &&
+      isLeadPassiveUnlocked(carryState) &&
+      rng() < ARCHER_DODGE_CHANCE
+    ) {
+      enemyHit = false;
+      dodged = true;
+    }
+
     const rollOutcome = toRollOutcome(special);
     let enemyAtkMsg: string;
     if (special === 'fumble') {
@@ -570,6 +618,8 @@ export function advanceToEnemyTurn(
       enemyAtkMsg = combatLog.logAttackCrit(def.name, target.name);
     } else if (enemyHit) {
       enemyAtkMsg = combatLog.logAttackHit(def.name, target.name);
+    } else if (dodged) {
+      enemyAtkMsg = combatLog.logArcherDodge(target.name, def.name);
     } else {
       enemyAtkMsg = combatLog.logEnemyMiss(def.name);
     }

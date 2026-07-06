@@ -14,6 +14,6 @@ choices: []
 onEnter:
   - { op: addDiary, text: "Aceitei o Terceiro Sino. Cada degrau para cima soa como um badalar que só eu ouço." }
 ---
-A **masmorra** deixa-te nas costas como um casulo húmido — **silêncio** colado à pele. Por baixo da pele, algo **puxa** para baixo, sempre.
+A **masmorra** te deixa nas costas como um casulo úmido — **silêncio** colado à pele. Por baixo da pele, algo **puxa** para baixo, sempre.
 
-Um **sino** não toca. Mesmo assim, o teu pulso tenta acompanhar o que não existe.
+Um **sino** não toca. Mesmo assim, seu pulso tenta acompanhar o que não existe.

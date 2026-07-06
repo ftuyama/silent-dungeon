@@ -12,7 +12,7 @@ export const act2_vigilia_envoy_verbal: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'A lanterna sobe um dedo. “Quem o subsolo nomeia, a Vigília repete”, diz a voz — não sermão, acusação em fila. “Tua língua cheira a pacto com sombra.”',
+          'A lanterna sobe um dedo. “Quem o subsolo nomeia, a Vigília repete”, diz a voz — não sermão, acusação em fila. “Sua língua cheira a pacto com sombra.”',
         choices: [
           {
             text:
@@ -77,7 +77,7 @@ export const act2_vigilia_envoy_verbal: DialogueEnemyDef = {
       },
       v_success: {
         line:
-          '“Segue”, diz por fim, lanterna já virada para o lado. “Mas o teu rasto fica na lista.”',
+          '“Segue”, diz por fim, lanterna já virada para o lado. “Mas seu rasto fica na lista.”',
         terminal: 'victory',
       },
       d_fail: {
@@ -187,7 +187,7 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'O sino vibra sem badalo. “Devoto paga silêncio com silêncio”, diz a sombra. “Tu pagaste com escândalo.”',
+          'O sino vibra sem badalo. “Devoto paga silêncio com silêncio”, diz a sombra. “Você pagaste com escândalo.”',
         choices: [
           {
             text:
@@ -252,7 +252,7 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
       },
       v_success: {
         line:
-          '“Vai”, diz por fim. “O Sino anota. Não perdoes a ti mesmo — perdoa-nos o silêncio.”',
+          '“Vai”, diz por fim. “O Sino anota. Não perdoes a você mesmo — perdoa-nos o silêncio.”',
         terminal: 'victory',
       },
       d_fail: {

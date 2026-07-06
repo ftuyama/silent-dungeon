@@ -174,14 +174,21 @@ export const CompanionDefSchema = z.object({
 
 export type CompanionDef = z.infer<typeof CompanionDefSchema>;
 
-/** Magias de campanha — dano, cura em si mesmo ou buffs de combate (cavaleiro) */
+/** Magias de campanha — dano, cura em aliado escolhido ou buffs de combate (cavaleiro) */
 export const SpellDefSchema = z.object({
   id: z.string(),
   name: z.string(),
   manaCost: z.number().int().min(0),
   minLevel: z.number().int().min(1).default(1),
-  classId: z.enum(['knight', 'mage', 'cleric', 'any']),
-  spellKind: z.enum(['damage', 'heal_self', 'buff_attack_roll', 'buff_armor_class']),
+  classId: z.enum(['knight', 'mage', 'cleric', 'archer', 'any']),
+  spellKind: z.enum([
+    'damage',
+    'heal_self',
+    'buff_attack_roll',
+    'buff_armor_class',
+    'targeted_crit_attack',
+    'damage_all_enemies',
+  ]),
   /** Número de dados d6 (ignorado em buffs) */
   dice: z.number().int().min(1),
   /** Valor fixo somado aos dados e ao mod Mente (ignorado em buffs) */
@@ -272,6 +279,8 @@ export const CombatLogEntrySchema = z.object({
   spellId: z.string().optional(),
   /** Item consumido (poção em combate — FX / som) */
   itemId: z.string().optional(),
+  /** Nomes na ordem de iniciativa (cabeçalho em `message`) */
+  initiativeLabels: z.array(z.string()).optional(),
 });
 
 export type CombatLogEntry = z.infer<typeof CombatLogEntrySchema>;
@@ -285,6 +294,8 @@ export const CombatStateSchema = z.object({
   round: z.number().int().min(1),
   phase: z.enum(['choose_stance', 'choose_target', 'enemy', 'ended']),
   pendingStance: StanceSchema.optional(),
+  /** Magia com escolha de alvo — resolvida em `playerAttack`, `playerSpellOnEnemy` ou `playerSpellOnAlly`. */
+  pendingSpellId: z.string().optional(),
   pendingTargetIndex: z.number().int().optional(),
   /** Bônus temporário de dano vindo de sacrifício (reseta ao fim do turno do jogador). */
   pendingSacrificeDamage: z.number().int().min(0).default(0),

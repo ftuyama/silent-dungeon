@@ -21,6 +21,31 @@ const calvario = path.join(repoRoot, 'src/campaigns/calvario');
 
 const warnHeuristic = process.argv.includes('--warn-heuristic');
 
+/** UI keys where en-US may legitimately match pt-BR (abbreviations, proper names, loanwords). */
+const UI_IDENTICAL_ALLOWLIST = new Set([
+  'menu.menu',
+  'menu.volume',
+  'menu.version',
+  'save.slotTitle',
+  'sidebar.xp',
+  'sidebar.hp',
+  'sidebar.mana',
+  'sidebar.stress',
+  'sidebar.spellManaLine',
+  'story.levelUpDeltaHp',
+  'story.levelUpDeltaMana',
+  'combat.hpLabel',
+  'combat.consumableHoverStress',
+  'combat.itemQty',
+  'combat.logMetaTotal',
+  'engine.attrStr',
+  'engine.attrAgi',
+  'engine.crit',
+  'class.defaultNameMage',
+  'class.defaultNameArcher',
+  'toast.xpGainedTitle',
+]);
+
 /** @type {{ errors: string[]; warnings: string[] }} */
 const report = { errors: [], warnings: [] };
 
@@ -301,7 +326,7 @@ function checkUiCatalog() {
       error(`[ui.${p}] missing en-US text`);
       continue;
     }
-    if (identical(enLeaf.value, value)) {
+    if (identical(enLeaf.value, value) && !UI_IDENTICAL_ALLOWLIST.has(p)) {
       warn(`[ui.${p}] en-US identical to pt-BR (may be intentional, e.g. "Volume")`);
     }
   }

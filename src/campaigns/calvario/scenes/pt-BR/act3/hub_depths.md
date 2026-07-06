@@ -38,7 +38,7 @@ choices:
     uiSection: "Trono e pedra"
     next: act3/stone_corridor
     condition: { flag: stone_guard_defeated }
-    preview: "O silêncio agora é teu — runas e nicho, sem o golem."
+    preview: "O silêncio agora é seu — runas e nicho, sem o golem."
   - text: "Seguir rasto de cinza e corda — mensageiro interrompido"
     uiSection: "Rumores"
     next: act3/messenger_cold_trail
@@ -87,4 +87,4 @@ onEnter:
 ---
 Profundezas **silenciosas**. **Morvayn** não está longe — o silêncio dele já foi **política** antes de magia.
 
-Aqui não se **acampa** como no cruzeiro: o subsolo cobra presença contínua, e o teu fôlego torna-se **moeda** rara.
+Aqui não se **acampa** como no cruzeiro: o subsolo cobra presença contínua, e seu fôlego torna-se **moeda** rara.

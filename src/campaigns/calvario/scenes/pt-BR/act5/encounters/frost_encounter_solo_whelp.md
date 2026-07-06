@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Uma só **cria** te seguiu pelo eco dos teus passos — curiosidade ou **fome**, o resultado é o mesmo. Olha-te como quem lê **preço** numa vitrine: não há vergonha, só **cálculo** gelado.
+Uma só **cria** te seguiu pelo eco dos seus passos — curiosidade ou **fome**, o resultado é o mesmo. Olha para você como quem lê **preço** numa vitrine: não há vergonha, só **cálculo** gelado.
 
-Se a deixares ir, ela não te agradece — **aprende** o teu cheiro para a próxima vez.
+Se a deixar ir, ela não te agradece — **aprende** seu cheiro para a próxima vez.

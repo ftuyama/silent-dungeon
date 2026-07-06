@@ -4,6 +4,9 @@ import type { AttackRollSpecial } from '../core/rng.ts';
 /** Confirmação de crítico inimigo após 6+6 (padrão ~25%) */
 export const DEFAULT_ENEMY_CRIT_CONFIRM = 0.25;
 
+/** Esquiva do arqueiro com passivo desbloqueado (fragmento de Morvayn). */
+export const ARCHER_DODGE_CHANCE = 0.1;
+
 /** Com `attackStrategy: focus_leader` e `focusLeaderWeight` omitido no def */
 export const DEFAULT_FOCUS_LEADER_WEIGHT = 0.72;
 /** Chance de um inimigo com falas proferir uma linha no turno. */

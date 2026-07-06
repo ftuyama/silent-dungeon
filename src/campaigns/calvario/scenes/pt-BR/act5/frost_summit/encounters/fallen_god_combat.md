@@ -16,4 +16,4 @@ onEnter: []
 ---
 Um **ruído** antigo — não trovão, mas **memória** com dentes — rasga o ar. Do altar levanta-se uma **forma** que já foi número antes de ter rosto: **ecos** do panteão quebrado, famintos de **nome** e de **medida**.
 
-Se fugires, o templo **lembra**. Se ficares, o templo **cobre**.
+Se fugir, o templo **lembra**. Se ficar, o templo **cobre**.

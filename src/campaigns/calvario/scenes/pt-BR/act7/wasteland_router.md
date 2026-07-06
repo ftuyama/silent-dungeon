@@ -18,4 +18,4 @@ onEnter: []
 ---
 O vento **carrega** um cheiro que não é terra nem cidade — é **conta** pendente. Algo move-se na cinza: às vezes **voz**; outras, **forma**; outras, só **fome** com passos.
 
-Quando paras de tentar controlar o mapa, o descampo **escolhe** o teu próximo pecado — pequeno, mas **gravado**.
+Quando paras de tentar controlar o mapa, o descampo **escolhe** seu próximo pecado — pequeno, mas **gravado**.

@@ -17,7 +17,7 @@ choices:
     next: act2/recruit_mira
     condition: { not: { rep: { faction: circulo, gte: 2 } } }
     showWhenLocked: true
-    lockedHint: "Com o Círculo demasiado dentro de ti (rep ≥2), este convite fecha-se — usa a outra linha."
+    lockedHint: "Com o Círculo demais dentro de você (rep ≥2), este convite fecha-se — usa a outra linha."
     preview: "Compromisso na sombra — ou o silêncio decide."
     effects:
       - { op: recruit, companionId: rogue_mira }
@@ -26,7 +26,7 @@ choices:
     next: act2/recruit_mira
     condition: { rep: { faction: circulo, gte: 2 } }
     showWhenLocked: true
-    lockedHint: "Só quando o Círculo confia em ti o suficiente (rep ≥2) podes assinar com testemunhas."
+    lockedHint: "Só quando o Círculo confia em você o suficiente (rep ≥2) pode assinar com testemunhas."
     preview: "A rede cobra visibilidade — a Vigília desconfia."
     effects:
       - { op: recruit, companionId: rogue_mira }

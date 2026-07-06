@@ -16,7 +16,6 @@ choices:
 onEnter:
   - { op: setFlag, key: throne_acted_observe, value: true }
 ---
-Cada osso do trono tem **um nome** raspado — não consegues ler todos. Um deles é o teu **primeiro medo** em letras pequenas.
+Cada osso do trono tem **um nome** raspado — não consegue ler todos. Um deles é seu **primeiro medo** em letras pequenas.
 
-As correntes **pingam** algo espesso. Não é sangue. É **memória** demasiado densa para escorrer. Se ficares demasiado tempo a olhar, o trono **aprende** o formato do teu medo — e isso não se apaga com oração.
-
+As correntes **pingam** **memória** demais densa. Se ficar demais tempo a olhar, o trono **aprende** o formato do seu medo.

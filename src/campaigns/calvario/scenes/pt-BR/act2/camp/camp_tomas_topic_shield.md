@@ -10,6 +10,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act2_camp_tomas_topic_shield }
 onEnter: []
 ---
-> *"Pesa o que **não** consegui parar. Tu também carregas coisa demais — não te acostumes a chamar isso de **honra**."*
+> *"Pesa o que **não** consegui parar. Você também carregas coisa demais — não te acostumes a chamar isso de **honra**."*
 
 {{companionLine}}

@@ -42,7 +42,7 @@ choices:
         - { noFlag: tomas_rescued }
         - { noFlag: tomas_rescue_missed }
         - { day: { gte: 16 } }
-    preview: "Demasiado tarde; o desfiladeiro já aprendeu outro nome para justiça."
+    preview: "Demais tarde; o desfiladeiro já aprendeu outro nome para justiça."
   - text: "Viver o acampamento no gelo"
     uiSection: "Fogo e troca"
     next: act5/camp/frost_camp

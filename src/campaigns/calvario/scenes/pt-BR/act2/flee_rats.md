@@ -13,4 +13,4 @@ onEnter:
 ---
 Escorregas num **lodo** que não perdoa passos. **Mordidas** rasgam couro onde a armadura não chega — não é honra; é **sobrevivência**.
 
-O enxame **ri** em agudos — ou talvez só o teu ouvido **quebre** primeiro.
+O enxame **ri** em agudos — ou talvez só seu ouvido **quebre** primeiro.

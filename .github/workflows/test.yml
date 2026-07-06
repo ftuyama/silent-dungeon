@@ -17,7 +17,10 @@ jobs:
       - run: npm ci
       - run: npm run validate:scenes
       - run: npm run validate:unreachable
+      - run: npm run check:pt-br
+      - run: npm run check:ascii-art
       - run: npm run validate:i18n
       - run: npm run validate:i18n:translations
       - run: npm run check:engine-boundaries
+      - run: npm run build
       - run: npm run test

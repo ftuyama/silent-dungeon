@@ -13,12 +13,14 @@ const WEAPON_MELEE_STYLE: Partial<Record<string, 'slash' | 'blunt' | 'staff'>> =
   rusty_sword: 'slash',
   oak_staff: 'staff',
   mace: 'blunt',
+  short_bow: 'slash',
 };
 
 const CLASS_FALLBACK: Record<ClassId, 'slash' | 'blunt' | 'staff'> = {
   knight: 'slash',
   mage: 'staff',
   cleric: 'blunt',
+  archer: 'slash',
 };
 
 export type ResolvedEnemyFx = {
@@ -79,8 +81,10 @@ export function dialogueVerbalHitFxClass(attacker: Character | undefined, crit: 
 
 function spellDamageLayerClass(spell: SpellDef | undefined, spellId: string, crit: boolean): string {
   let base: string;
-  if (spellId === 'ember_spark') base = 'combat-fx-spell-ember';
+  if (spellId === 'headshot') base = 'combat-fx-spell-headshot';
+  else if (spellId === 'ember_spark') base = 'combat-fx-spell-ember';
   else if (spellId === 'silver_bolt') base = 'combat-fx-spell-silver';
+  else if (spellId === 'arrow_rain' || spell?.spellKind === 'damage_all_enemies') base = 'combat-fx-spell-arcane';
   else base = spell?.spellKind === 'damage' ? 'combat-fx-spell-arcane' : 'combat-fx-spell-arcane';
   return crit ? `${base}--crit` : base;
 }
@@ -142,7 +146,12 @@ export function resolveCombatLogFx(
       }
       if (e.enemyIndex == null) continue;
 
-      if (actorMember && e.outcome === 'miss') {
+      if (actorMember && e.spellId === 'headshot' && e.outcome === 'hit' && e.enemyIndex != null) {
+        mergeFx(byEnemyIndex, e.enemyIndex, {
+          layerClasses: ['combat-fx-spell-headshot--crit'],
+          spriteCritShake: true,
+        });
+      } else if (actorMember && e.outcome === 'miss') {
         const isFumble = e.rollOutcome === 'fumble_threat';
         mergeFx(byEnemyIndex, e.enemyIndex, {
           layerClasses: [isFumble ? 'combat-fx-fumble' : 'combat-fx-miss'],

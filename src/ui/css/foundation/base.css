@@ -125,3 +125,35 @@ body {
   )::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--scrollbar-thumb-hover), var(--scrollbar-thumb));
 }
+
+/** Foco de teclado padrão — história, combate, sidebar, menu. */
+:where(button, [role='button']):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/** Badge quadrado de atalho (1–9, A–Z) — escolhas narrativas e combate. */
+:root {
+  --ui-hotkey-size: 1.05rem;
+}
+
+.ui-hotkey-badge {
+  flex: 0 0 auto;
+  align-self: center;
+  width: var(--ui-hotkey-size);
+  height: var(--ui-hotkey-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, var(--muted));
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--surface-inset) 92%, var(--bg));
+  color: var(--muted);
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+}

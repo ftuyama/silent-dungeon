@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { finishCombat } from '../../src/engine/combat/resolution.ts';
-import { applyEffects, createInitialState, createPlayerCharacter, enterScene, parseSceneMarkdown } from '../../src/engine/core/index.ts';
-import type { Encounter, EnemyDef, GameState } from '../../src/engine/schema/index.ts';
+import { finishCombat } from '../../src/engine/combat/index.ts';
+import { applyEffects, createInitialState, createPlayerCharacter, enterScene, EventBus, parseSceneMarkdown } from '../../src/engine/core/index.ts';
+import type { EnemyDef, GameState } from '../../src/engine/schema/index.ts';
+import { EncounterSchema } from '../../src/engine/schema/index.ts';
 import { emptyGameData } from '../../src/engine/data/index.ts';
-import { computeCombatXp } from '../../src/engine/progression/progression.ts';
-import { EventBus } from '../../src/engine/core/eventBus.ts';
+import { computeCombatXp } from '../../src/engine/progression/index.ts';
 import { testCampaign } from '../helpers/engineTestData.ts';
 import encountersJson from '../../src/campaigns/calvario/data/encounters.json';
 import { enemies as calvarioEnemies } from '../../src/campaigns/calvario/data/enemies.ts';
@@ -31,7 +31,9 @@ function calvarioTestData() {
     getPathPromotionNarrativePt: () => null,
   });
   data.enemies = calvarioEnemies as Record<string, EnemyDef>;
-  data.encounters = encountersJson as Record<string, Encounter>;
+  data.encounters = Object.fromEntries(
+    Object.entries(encountersJson).map(([id, raw]) => [id, EncounterSchema.parse(raw)])
+  );
   return data;
 }
 

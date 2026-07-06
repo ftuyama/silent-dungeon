@@ -15,5 +15,5 @@ onEnter:
 ---
 O gelo **abre** sob as Cimeiras: **nave** sem altar, pendurada entre pedra e noite — catedral para uma pergunta.
 
-Cada eco volta **atrasado**, outra pessoa com o teu nome; o ar cheira a **verdade antes de ter nome**. Nas colunas partidas: *se o mundo for sonho, quem acorda quando cais?*
+Cada eco volta **atrasado**, outra pessoa com seu nome; o ar cheira a **verdade antes de ter nome**. Nas colunas partidas: *se o mundo for sonho, quem acorda quando cais?*
 

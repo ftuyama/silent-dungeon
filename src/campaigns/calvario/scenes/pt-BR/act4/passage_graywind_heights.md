@@ -27,4 +27,4 @@ onEnter:
 
 {{factionThroneEcho}}
 
-O trono não fechou o **eixo** — nas **Cimeiras**, a ferida abre um bolso de gelo vasto o suficiente para parecer montanha. **Dívida** com juro em **vento**.
+O trono não fechou o **eixo** — nas **Cimeiras**, a ferida abre um bolso de gelo vasto. **Dívida** com juro em **vento**.

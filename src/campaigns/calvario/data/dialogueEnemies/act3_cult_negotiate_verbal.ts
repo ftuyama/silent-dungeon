@@ -12,7 +12,7 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'O cultista inclina a moeda. “Contrato simples”, repete, voz seca. “Tu falas baixo; nós escrevemos baixo. Se a tua boca tremer, o cano lembra.” A tensão sobe do chão como humidade.',
+          'O cultista inclina a moeda. “Contrato simples”, repete, voz seca. “Você falas baixo; nós escrevemos baixo. Se sua boca tremer, o cano lembra.” A tensão sobe do chão como humidade.',
         choices: [
           {
             text:
@@ -35,7 +35,7 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
           },
           {
             text:
-              'Cortar com arrogância: exigir que o Sino prove que não és descartável.',
+              'Cortar com arrogância: exigir que o Sino prove que não é descartável.',
             resolution: { kind: 'fixed', nextNodeId: 'sharp' },
             effects: { enemyHpDelta: 4 },
           },
@@ -136,7 +136,7 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
       },
       v_success: {
         line:
-          '“Fechado”, diz ele, e recua meio passo. “Desce. E lembra: fora do túnel, o teu nome não ecoa.”',
+          '“Fechado”, diz ele, e recua meio passo. “Desce. E lembra: fora do túnel, seu nome não ecoa.”',
         terminal: 'victory',
       },
       d_fail: {

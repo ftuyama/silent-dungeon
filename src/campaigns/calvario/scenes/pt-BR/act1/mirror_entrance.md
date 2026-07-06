@@ -9,6 +9,6 @@ choices:
     next: act1/title_examine
 onEnter: []
 ---
-No nicho, **espelho oval** partido: metade do **teu rosto**, metade do **túnel** — tu e o abismo no mesmo corte.
+No nicho, **espelho oval** partido: metade do **seu rosto**, metade do **túnel** — você e o abismo no mesmo corte.
 
-O vidro **fixa** *{{playerName}}* a **escolher** a cidade em silêncio — antes que o silêncio escolha por ti.
+O vidro **fixa** *{{playerName}}* a **escolher** a cidade em silêncio — antes que o silêncio escolha por você.

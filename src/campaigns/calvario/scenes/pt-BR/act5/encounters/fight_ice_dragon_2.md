@@ -4,7 +4,7 @@ title: Silêncio de Gelo
 chapter: 5
 ambientTheme: act5
 choices:
-  - text: "Beber poção rubra (ti)"
+  - text: "Beber poção rubra (você)"
     next: act5/encounters/fight_ice_dragon_2
     condition: { hasItem: potion_hp }
     effects:

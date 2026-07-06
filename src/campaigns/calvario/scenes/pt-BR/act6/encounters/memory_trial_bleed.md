@@ -14,7 +14,7 @@ onEnter:
   - { op: addMark, mark: act6_memory_spoiled }
   - { op: addDiary, text: "As memorias vieram em bando e nenhuma pedia permissao." }
 ---
-Caes sem eixo no poço. Rostos antigos agarram teus pulsos como se fosses devedor de todos eles.
+Caes sem eixo no poço. Rostos antigos agarram seus pulsos como se fosses devedor de todos eles.
 
-Quando voltas a respirar, o Coro ja esta a tua frente.
+Quando voltas a respirar, o Coro ja esta sua frente.
 

@@ -1,6 +1,6 @@
 ---
 id: act5/frost_summit/ritual_altar
-title: O altar que aprende o teu nome
+title: O altar que aprende seu nome
 chapter: 5
 ambientTheme: ancient_macabre
 artKey: frost_summit_ritual_pick_sacrifice

@@ -15,4 +15,4 @@ onEnter: []
 ---
 Um **riso** baixo, geada a estalar: *agora não é ideia — é **queda** e **sorte**.*
 
-A gruta **inclina-se**; o próximo passo pode ser teu ou de quem acreditou demais em controlo. **Rola sorte** quando estiveres pronto.
+A gruta **inclina-se**; o próximo passo pode ser seu ou de quem acreditou demais em controlo. **Rola sorte** quando estiveres pronto.

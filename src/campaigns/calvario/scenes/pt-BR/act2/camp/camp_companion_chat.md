@@ -12,28 +12,28 @@ choices:
     uiSection: "Ao pé do fogo"
     next: act2/camp/camp_tomas_fireside
     condition: { companionInParty: squire_tomas }
-  - text: "Mira cruza contigo um olhar de quem reconhece muralha no ombro"
-    uiSection: "Tu e eles"
+  - text: "Mira cruza com você um olhar de quem reconhece muralha no ombro"
+    uiSection: "Você e eles"
     next: act2/camp/camp_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: knight } ] }
-  - text: "Mira mede o teu silêncio de arcanista — não julga, anota"
-    uiSection: "Tu e eles"
+  - text: "Mira mede seu silêncio de arcanista — não julga, anota"
+    uiSection: "Você e eles"
     next: act2/camp/camp_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: mage } ] }
-  - text: "Mira: «A Vigília fala alto; tu ouves baixo demais para ser só dogma»"
-    uiSection: "Tu e eles"
+  - text: "Mira: «A Vigília fala alto; você ouve baixo demais para ser só dogma»"
+    uiSection: "Você e eles"
     next: act2/camp/camp_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: cleric } ] }
-  - text: "Tomás: «Honra pesada empurra gente para buracos — estás inteiro?»"
-    uiSection: "Tu e eles"
+  - text: "Tomás: «Honra pesada empurra gente para buracos — está inteiro?»"
+    uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: knight } ] }
   - text: "Tomás hesita: «Torre e masmorra — qual das duas te come primeiro?»"
-    uiSection: "Tu e eles"
+    uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: mage } ] }
   - text: "Tomás baixa a voz: «Fé de vigia é coisa séria; não a uses como muro»"
-    uiSection: "Tu e eles"
+    uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: cleric } ] }
   - text: "Voltar ao acampamento"

@@ -15,7 +15,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'O bronze nos batentes não reflete: recolhe. Junta-te a ti num ângulo que não escolheste — armadura e capa parecem emprestadas a quem ensaiou o teu gesto antes de ti. O corredor respira por duas bocas ao mesmo tempo. O metal não pergunta “quem és”; pergunta “quanto de ti ainda é teu se eu te devolver o resto”.',
+          'O bronze nos batentes não reflete: recolhe. Junta-se a você num ângulo que não escolheu — armadura e capa parecem emprestadas a quem ensaiou seu gesto antes de você. O corredor respira por duas bocas ao mesmo tempo. O metal não pergunta “quem é”; pergunta “quanto de você ainda é seu se eu te devolver o resto”.',
         choices: [
           {
             text:
@@ -70,13 +70,13 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Confessar um pormenor ridículo (um tic, um cheiro, um medo de barata) para provar que a tua humanidade não cabe num slogan.',
+              'Confessar um pormenor ridículo (um tic, um cheiro, um medo de barata) para provar que sua humanidade não cabe num slogan.',
             resolution: { kind: 'fixed', nextNodeId: 'c_m_ok_b' },
             effects: { enemyHpDelta: -2 },
           },
           {
             text:
-              'Testar se consegues desviar o olhar sem fugir — aguentar o brilho até ele perder graça.',
+              'Testar se consegue desviar o olhar sem fugir — aguentar o brilho até ele perder graça.',
             resolution: {
               kind: 'skill',
               attr: 'agi',
@@ -91,7 +91,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       b_mind_fail: {
         line:
-          'A frase escorrega. O metal agradece: adora quando tentas ser profundo e sais pretensioso. O reflexo devolve-te uma versão mais limpa — e por isso mais falsa — do que disseste.',
+          'A frase escorrega. O metal agradece: adora quando tenta ser profundo e sai pretensioso. O reflexo te devolve uma versão mais limpa — e por isso mais falsa — do que disse.',
         choices: [
           {
             text:
@@ -155,7 +155,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       b_luck_ok: {
         line:
-          'Algo no ar desalinha a cópia. O reflexo ainda tenta acompanhar-te, mas chega atrasado: riso que não combinava, gesto que não ensaiaste — e mesmo assim foi teu.',
+          'Algo no ar desalinha a cópia. O reflexo ainda tenta acompanhar você, mas chega atrasado: riso que não combinava, gesto que não ensaiou — e mesmo assim foi seu.',
         choices: [
           {
             text:
@@ -178,7 +178,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Virar as costas meio segundo ao reflexo — não por desprezo, por confiança maldosa no teu próprio eixo.',
+              'Virar as costas meio segundo ao reflexo — não por desprezo, por confiança maldosa nseu próprio eixo.',
             resolution: { kind: 'fixed', nextNodeId: 'c_l_ok_c' },
             effects: { enemyHpDelta: -2 },
           },
@@ -186,11 +186,11 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       b_luck_fail: {
         line:
-          'O acaso escolhe o pior eco. O espelho devolve uma risada que não é tua e, mesmo assim, soa convincente. Por um segundo, acreditas — e esse segundo é buraco.',
+          'O acaso escolhe o pior eco. O espelho devolve uma risada que não é sua e, mesmo assim, soa convincente. Por um segundo, acreditas — e esse segundo é buraco.',
         choices: [
           {
             text:
-              'Soltar o orgulho e voltar ao básico: um facto simples, sem adorno, que nem o bronze consiga torcer.',
+              'Soltar o orgulho e voltar ao básico: um fato simples, sem adorno, que nem o bronze consiga torcer.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -225,7 +225,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       b_blunt: {
         line:
-          'O espelho não recua: espelha a tua dureza e acrescenta a dela. O verde do bronze espessa; vês dois rostos a discutir quem começou — e percebes que acusação é munição que tu entregaste.',
+          'O espelho não recua: espelha sua dureza e acrescenta a dela. O verde do bronze espessa; vês dois rostos a discutir quem começou — e percebe que acusação é munição que você entregaste.',
         choices: [
           {
             text:
@@ -257,7 +257,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_m_ok_a: {
         line:
-          'O silêncio que pediste não é bonito: é útil. O reflexo fica sem reverberação e, por um instante, parece… sobrar demasiado espaço.',
+          'O silêncio que pediste não é bonito: é útil. O reflexo fica sem reverberação e, por um instante, parece… sobrar demais espaço.',
         choices: [
           {
             text: 'Atravessar esse espaço sem olhar para trás.',
@@ -274,11 +274,11 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_truce_space: {
         line:
-          'No meio do espaço novo, o corredor parece mais alto e o bronze mais baixo — como se a distância tivesse mudado de dono. Ainda assim, o reflexo tenta colar-se ao teu ângulo de fuga.',
+          'No meio do espaço novo, o corredor parece mais alto e o bronze mais baixo — como se a distância tivesse mudado de dono. Ainda assim, o reflexo tenta colar-se ao seu ângulo de fuga.',
         choices: [
           {
             text:
-              'Parar, ouvir a pedra antes do metal — deixar o corredor falar baixo o suficiente para o espelho perder o costume da tua voz.',
+              'Parar, ouvir a pedra antes do metal — deixar o corredor falar baixo o suficiente para o espelho perder o costume dsua voz.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -305,7 +305,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_truce_space_agile: {
         line:
-          'O passo encaixa; o reflexo chega atrasado por um compasso. Por um instante, o corredor parece teu aliado mesquinho — só sombra e rangido, nada de teatro.',
+          'O passo encaixa; o reflexo chega atrasado por um compasso. Por um instante, o corredor parece seu aliado mesquinho — só sombra e rangido, nada de teatro.',
         choices: [
           {
             text: 'Não mitificar o instante: aproveitar e calar antes que o mito renasca.',
@@ -338,7 +338,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Testar se a tua mente aguenta o tom sem escorregar para teatro.',
+              'Testar se sua mente aguenta o tom sem escorregar para teatro.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -353,7 +353,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       h_armistice: {
         line:
-          'Rotas diferentes, mesmo limiar: o bronze baixa o volume como quem finalmente percebe que o teu silêncio não é falta de argumento — é recusa em emprestar-te o guião. Ainda assim, exige uma última escolha.',
+          'Rotas diferentes, mesmo limiar: o bronze baixa o volume como quem finalmente percebe que seu silêncio não é falta de argumento — é recusa em emprestar-te o guião. Ainda assim, exige uma última escolha.',
         choices: [
           {
             text:
@@ -363,7 +363,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Fechar em promessa mínima cumprida: não bonita, mas tua — e o espelho fica com a vergonha dele.',
+              'Fechar em promessa mínima cumprida: não bonita, mas sua — e o espelho fica com a vergonha dele.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -2 },
           },
@@ -386,7 +386,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           'O pormenor ridículo fica mais real que qualquer discurso. O bronze tenta ironizar e engasga-se: não há graça limpa quando a vergonha tem nome de cozinha.',
         choices: [
           {
-            text: 'Fechar o assunto com um aceno seco — sem vitória bonita, com vitória tua.',
+            text: 'Fechar o assunto com um aceno seco — sem vitória bonita, com vitória sua.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -400,7 +400,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_m_ok_c: {
         line:
-          'O brilho perde graça quando não o alimentas com medo. O reflexo ainda está lá, mas já não manda no ritmo da tua pupila.',
+          'O brilho perde graça quando não o alimentas com medo. O reflexo ainda está lá, mas já não manda no ritmo dsua pupila.',
         choices: [
           {
             text: 'Seguir em frente como quem sabe onde pisa.',
@@ -409,7 +409,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Guardar este truque para ti: olhar “morto” que desarma espelhos famintos.',
+              'Guardar este truque para você: olhar “morto” que desarma espelhos famintos.',
             resolution: { kind: 'fixed', nextNodeId: 'd_steady_prep' },
             effects: { enemyHpDelta: -1 },
           },
@@ -417,7 +417,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_steady_prep: {
         line:
-          'Antes de creres que já ganhaste o olhar, o corredor pede uma confirmação mesquinha: um som real — rangido, respiração tua, qualquer coisa que não seja eco do bronze.',
+          'Antes de crer que já ganhaste o olhar, o corredor pede uma confirmação mesquinha: um som real — rangido, sua respiração, qualquer coisa que não seja eco do bronze.',
         choices: [
           {
             text:
@@ -433,7 +433,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Deixar o espelho tentar copiar o teu “olhar morto” e rir por dentro quando ele exagera.',
+              'Deixar o espelho tentar copiar seu “olhar morto” e rir por dentro quando ele exagera.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -466,7 +466,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Transformar o tropeço em piada seca — arriscar o espelho rir contigo e não de ti.',
+              'Transformar o tropeço em piada seca — arriscar o espelho rir com você e não de você.',
             resolution: {
               kind: 'luck',
               tn: 8,
@@ -481,7 +481,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_m_fail_b: {
         line:
-          'A insistência acende o bronze. Agora o reflexo fala por ti em frases perfeitas — e cada uma é uma facada de cortesia.',
+          'A insistência acende o bronze. Agora o reflexo fala por você em frases perfeitas — e cada uma é uma facada de cortesia.',
         choices: [
           {
             text:
@@ -497,7 +497,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       h_winter_edge: {
         line:
-          'Chegas ao mesmo sítio quente por caminhos diferentes: o bronze aperta onde a pele ainda acredita que pode fingir que não sente. Aqui, hostilidade e vergonha trocam de lugar — e o corredor pede que escolhas como sais da borda, não como entras no mito.',
+          'Chegas ao mesmo sítio quente por caminhos diferentes: o bronze aperta onde a pele ainda acredita que pode fingir que não sente. Aqui, hostilidade e vergonha trocam de lugar — e o corredor pede que escolha como sai da borda, não como entras no mito.',
         choices: [
           {
             text:
@@ -527,7 +527,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_m_fail_c_ok: {
         line:
-          'A porta cede ao ombro — não por violência gloriosa, por teimosia física honesta. O reflexo perde um instante de sincronia e, nesse instante, tu existes inteiro.',
+          'A porta cede ao ombro — não por violência gloriosa, por teimosia física honesta. O reflexo perde um instante de sincronia e, nesse instante, você existes inteiro.',
         choices: [
           {
             text: 'Passar enquanto a fresta ainda respira.',
@@ -544,7 +544,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_m_fail_c_bad: {
         line:
-          'O ombro encontra pedra com pele de metal. O corredor ri por ti, baixinho. O reflexo agradece a lição de impaciência.',
+          'O ombro encontra pedra com pele de metal. O corredor ri por você, baixinho. O reflexo agradece a lição de impaciência.',
         choices: [
           {
             text:
@@ -563,7 +563,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_soft_a: {
         line:
-          'O silêncio aprende a tua forma. O bronze deixa de vibrar com frases prontas e passa a escutar pausas — essas, sim, tuas.',
+          'O silêncio aprende sua forma. O bronze deixa de vibrar com frases prontas e passa a escutar pausas — essas, sim, suas.',
         choices: [
           {
             text:
@@ -586,7 +586,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Convidar o reflexo a copiar o teu cansaço em vez do teu discurso — deixar as pálpebras pesadas falarem.',
+              'Convidar o reflexo a copiar seu cansaço em vez do seu discurso — deixar as pálpebras pesadas falarem.',
             resolution: { kind: 'fixed', nextNodeId: 'c_soft_a_tired' },
             effects: { enemyHpDelta: -2 },
           },
@@ -602,7 +602,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Oferecer ao bronze uma segunda pequena verdade — talvez cruel contigo, justa com o mundo.',
+              'Oferecer ao bronze uma segunda pequena verdade — talvez cruel com você, justa com o mundo.',
             resolution: { kind: 'fixed', nextNodeId: 'd_soft_merge' },
           },
         ],
@@ -613,7 +613,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Fechar com um aceno seco — sem vitória bonita, com vitória tua.',
+              'Fechar com um aceno seco — sem vitória bonita, com vitória sua.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -4 },
           },
@@ -625,7 +625,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Ouvir o corredor pedir trégua por ti — e deixar a palavra certa nascer no silêncio, não no bronze.',
+              'Ouvir o corredor pedir trégua por você — e deixar a palavra certa nascer no silêncio, não no bronze.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -650,7 +650,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_soft_a_hard: {
         line:
-          'A dureza devolve dureza. O reflexo ganha bordas; o teu rosto duplica-se em camadas que se julgam umas às outras.',
+          'A dureza devolve dureza. O reflexo ganha bordas; seu rosto duplica-se em camadas que se julgam umas às outras.',
         choices: [
           {
             text:
@@ -660,7 +660,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Manter a couraça e pagar o preço — ver se o metal cansa antes de ti.',
+              'Manter a couraça e pagar o preço — ver se o metal cansa antes de você.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_toll' },
             effects: { playerHpLossPercent: 11, enemyHpDelta: -3 },
           },
@@ -671,13 +671,13 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           'O cansaço não é espetáculo; é biologia. O espelho tenta transformá-lo em derrota e falha — porque cansaço também é humano demais para mito.',
         choices: [
           {
-            text: 'Deixar o cansaço ficar contigo sem vergonha.',
+            text: 'Deixar o cansaço ficar com você sem vergonha.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_fatigue' },
             effects: { enemyHpDelta: -4 },
           },
           {
             text:
-              'Usar o cansaço como escudo: “não tenho energia para a tua performance”.',
+              'Usar o cansaço como escudo: “não tenho energia para sua performance”.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_fatigue' },
             effects: { enemyHpDelta: -5 },
           },
@@ -686,7 +686,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_soft_b: {
         line:
-          'O olhar ardente alimenta o bronze. O reflexo sorri com a tua boca e soma-lhe um segundo sorriso — o que não pediste.',
+          'O olhar ardente alimenta o bronze. O reflexo sorri com sua boca e soma-lhe um segundo sorriso — o que não pediste.',
         choices: [
           {
             text:
@@ -717,7 +717,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_soft_b_wry: {
         line:
-          'O absurdo pequeno fica mais afiado que a bravura. O espelho tenta copiar o teu humor e atras-se meia batida — o suficiente para a cópia parecer doente.',
+          'O absurdo pequeno fica mais afiado que a bravura. O espelho tenta copiar seu humor e atras-se meia batida — o suficiente para a cópia parecer doente.',
         choices: [
           {
             text:
@@ -769,7 +769,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_soft_b_burn: {
         line:
-          'O calor torna-se húmidos e barulho dentro da cabeça. O reflexo dança na tua vertigem — e por um instante quase te convence que gostas disso.',
+          'O calor torna-se úmidos e barulho dentro da cabeça. O reflexo dança nsua vertigem — e por um instante quase te convence que gosta disso.',
         choices: [
           {
             text: 'Cortar o trance com dor física mínima — morder a língua, agarrar o cinto, ancorar.',
@@ -777,7 +777,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Deixar arder até o fim e arrancar vitória dos restos — caro, mas teu.',
+              'Deixar arder até o fim e arrancar vitória dos restos — caro, mas seu.',
             resolution: { kind: 'fixed', nextNodeId: 'd_burn_stall' },
           },
         ],
@@ -833,7 +833,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_soft_c_ok: {
         line:
-          'O corredor escolhe o teu lado por acidente — sombra na pedra, rangido longe do bronze. O espelho hesita como quem perdeu o compasso.',
+          'O corredor escolhe seu lado por acidente — sombra na pedra, rangido longe do bronze. O espelho hesita como quem perdeu o compasso.',
         choices: [
           {
             text: 'Seguir o acidente como bússola.',
@@ -878,7 +878,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_soft_c_fail: {
         line:
-          'O corredor entrega-te ao bronze outra vez. O acaso ri com dentes de metal; a tua sombra tropeça na dele.',
+          'O corredor entrega-te ao bronze outra vez. O acaso ri com dentes de metal; sua sombra tropeça na dele.',
         choices: [
           {
             text:
@@ -932,7 +932,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_trivial_merge: {
         line:
-          'No mesmo patamar de mesquinhez sagrada, o corredor sorri por ti: trivialidade venceu o pedestal. Falta só decidir se sais num sussurro ou numa avalanche controlada.',
+          'No mesmo patamar de mesquinhez sagrada, o corredor sorri por você: trivialidade venceu o pedestal. Falta só decidir se sai num sussurro ou numa avalanche controlada.',
         choices: [
           {
             text: 'Sair no sussurro — anti-clímax como espada.',
@@ -1005,16 +1005,16 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_l_fail_a_ok: {
         line:
-          'O facto simples corta como faca de cozinha: feio, eficiente. O espelho não consegue enfeitar sem mentir mais alto — e hesita.',
+          'O fato simples corta como faca de cozinha: feio, eficiente. O espelho não consegue enfeitar sem mentir mais alto — e hesita.',
         choices: [
           {
-            text: 'Fechar com esse facto como fecho de porta.',
+            text: 'Fechar com esse fato como fecho de porta.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -5 },
           },
           {
             text:
-              'Repetir o facto até o eco morrer de tédio.',
+              'Repetir o fato até o eco morrer de tédio.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -6 },
           },
@@ -1022,10 +1022,10 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_l_fail_a_bad: {
         line:
-          'Até o facto simples te foge à boca. O bronze agradece: adora quando a língua trava no básico.',
+          'Até o fato simples lhe foge à boca. O bronze agradece: adora quando a língua trava no básico.',
         choices: [
           {
-            text: 'Calares e deixar o silêncio ser o facto.',
+            text: 'Cale e deixe o silêncio ser o fato.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { playerHpLossPercent: 11, enemyHpDelta: -4 },
           },
@@ -1039,7 +1039,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_l_fail_b_ok: {
         line:
-          'A segunda moeda cai do lado certo por milímetro. O reflexo engole o desapontamento; tu engoles oxigénio.',
+          'A segunda moeda cai do lado certo por milímetro. O reflexo engole o desapontamento; você engoles oxigénio.',
         choices: [
           {
             text: 'Não tentar uma terceira — sabedoria de quem sobreviveu a casinos.',
@@ -1056,7 +1056,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_l_fail_b_bad: {
         line:
-          'A segunda moeda ruge a rir. O corredor inclina-se para o bronze; tu sentes o piso a sugerir joelhos.',
+          'A segunda moeda ruge a rir. O corredor inclina-se para o bronze; você sentes o piso a sugerir joelhos.',
         choices: [
           {
             text: 'Recusar joelhos; pagar em pele e sangue imaginário.',
@@ -1076,7 +1076,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           'Tremer sem discurso é oferta estranha ao espelho: ele não sabe se goza ou se inveja. O metal fica sem frase pronta para a vergonha honesta.',
         choices: [
           {
-            text: 'Deixar o tremor ficar contigo até passar.',
+            text: 'Deixar o tremor ficar com você até passar.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { playerHpLossPercent: 10, enemyHpDelta: -5 },
           },
@@ -1091,7 +1091,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_bl_a: {
         line:
-          'O bronze ainda resiste, mas já não como muralha: como pele depois de febre. O outro no bronze testa se vais voltar à agressão por hábito.',
+          'O bronze ainda resiste, mas já não como muralha: como pele depois de febre. O outro no bronze testa se vai voltar à agressão por hábito.',
         choices: [
           {
             text:
@@ -1139,7 +1139,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_bl_a_fail: {
         line:
-          'A paciente fingida vira passividade venenosa. O espelho enche o vazio com vozes que soam como tu — mas com melhor vocabulário.',
+          'A paciente fingida vira passividade venenosa. O espelho enche o vazio com vozes que soam como você — mas com melhor vocabulário.',
         choices: [
           {
             text: 'Quebrar a passividade com um gesto brusco e verdadeiro.',
@@ -1148,7 +1148,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Aceitar a voz e negociar com ela — caro, perigoso, teu.',
+              'Aceitar a voz e negociar com ela — caro, perigoso, seu.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_toll' },
             effects: { playerHpLossPercent: 14, enemyHpDelta: -5 },
           },
@@ -1191,7 +1191,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_bl_b: {
         line:
-          'Fogo com fogo espessa o verde do bronze. O reflexo inventa versões tuas — piores, mais limpas, mais cruéis — e quase te convence.',
+          'Fogo com fogo espessa o verde do bronze. O reflexo inventa versões suas — piores, mais limpas, mais cruéis — e quase te convence.',
         choices: [
           {
             text:
@@ -1224,7 +1224,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_bl_c_bad: {
         line:
-          'O corpo avança e o espelho devolve o avanço como escárnio sincronizado. Por um instante, és dois a tropeçar no mesmo sítio.',
+          'O corpo avança e o espelho devolve o avanço como escárnio sincronizado. Por um instante, são dois a tropeçar no mesmo sítio.',
         choices: [
           {
             text: 'Aceitar o embate e sair com dentes cerrados.',
@@ -1243,7 +1243,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       linger_steady: {
         line:
-          'O olhar “morto” ficou teu o suficiente para o corredor o reconhecer. Falta só fechar sem pose — uma linha humana, não um monumento — antes de o bronze voltar a pedir teatro.',
+          'O olhar “morto” ficou seu o suficiente para o corredor o reconhecer. Falta só fechar sem pose — uma linha humana, não um monumento — antes de o bronze voltar a pedir teatro.',
         choices: [
           {
             text:
@@ -1264,7 +1264,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       linger_irony: {
         line:
-          'O absurdo já fez o trabalho; agora o corredor pede uma saída sem segunda peça. O reflexo ainda tenta copiar o teu timing — e chega atrasado.',
+          'O absurdo já fez o trabalho; agora o corredor pede uma saída sem segunda peça. O reflexo ainda tenta copiar seu timing — e chega atrasado.',
         choices: [
           {
             text:
@@ -1285,7 +1285,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       linger_shoulder: {
         line:
-          'A fresta abriu por teimosia honesta. O espelho ainda quer transformar empurrão em discurso — e tu ainda respiras, o que já é conversa suficiente.',
+          'A fresta abriu por teimosia honesta. O espelho ainda quer transformar empurrão em discurso — e você ainda respiras, o que já é conversa suficiente.',
         choices: [
           {
             text:
@@ -1306,7 +1306,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       linger_fatigue: {
         line:
-          'O cansaço ficou contigo como testemunha chata e leal. O bronze insiste em ler isso como derrota; o corredor, porém, só quer saber como sais sem emprestar-lhe narrativa.',
+          'O cansaço ficou com você como testemunha chata e leal. O bronze insiste em ler isso como derrota; o corredor, porém, só quer saber como sai sem emprestar-lhe narrativa.',
         choices: [
           {
             text:
@@ -1315,7 +1315,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Respirar alto o suficiente para o som ser teu, não réplica.',
+              'Respirar alto o suficiente para o som ser seu, não réplica.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
           },
           {
@@ -1348,7 +1348,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       linger_burn: {
         line:
-          'O calor verbal deixa cinza no peito. O reflexo ainda tenta brilhar — mas o corredor já escolheu o teu lado com rangido e frio na pedra.',
+          'O calor verbal deixa cinza no peito. O reflexo ainda tenta brilhar — mas o corredor já escolheu seu lado com rangido e frio na pedra.',
         choices: [
           {
             text:
@@ -1357,7 +1357,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Sair da pira com queimadura assumida — caro, teu, sem segunda peça.',
+              'Sair da pira com queimadura assumida — caro, seu, sem segunda peça.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_toll' },
           },
           {
@@ -1369,16 +1369,16 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       gate_release: {
         line:
-          'O limiar cede sem fanfarra: armistício feio, verdade miúda ou silêncio que não pede aplausos. O bronze ainda mexe os lábios — tarde. Falta só escolheres como atravessas sem lhe dar o último verso.',
+          'O limiar cede sem fanfarra: armistício feio, verdade pequena ou silêncio que não pede aplausos. O bronze ainda mexe os lábios — tarde. Falta só escolhe como atravessa sem lhe dar o último verso.',
         choices: [
           {
             text:
-              'Atravessar como água parada — frio no peito, passo teu, réplica atrasada.',
+              'Atravessar como água parada — frio no peito, passseu, réplica atrasada.',
             resolution: { kind: 'fixed', nextNodeId: 'v_win_release' },
           },
           {
             text:
-              'Levar contigo um facto de cozinha, ridículo o bastante para não caber no mito.',
+              'Levar com você um fato de cozinha, ridículo o bastante para não caber no mito.',
             resolution: { kind: 'fixed', nextNodeId: 'v_win_release' },
           },
           {
@@ -1390,7 +1390,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       gate_toll: {
         line:
-          'A vitória definitiva cheira a metal quente e pele: corpo, empurrão ou preço pago até à vergonha. O reflexo cala porque finalmente não tens de lhe dever performance — só tens de atravessar sem lhe dar o epílogo.',
+          'A vitória definitiva cheira a metal quente e pele: corpo, empurrão ou preço pago até à vergonha. O reflexo cala porque finalmente não precisa lhe dever performance — só precisa atravessar sem lhe dar o epílogo.',
         choices: [
           {
             text:
@@ -1411,12 +1411,12 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       v_win_release: {
         line:
-          'O corredor deixa de exigir réplica: vitória de detalhe, de silêncio útil ou de mundo liso demais para o espelho mentir alto. O bronze fica com eco atrasado; tu segues com a palavra tua — feia, inteira, tua.',
+          'O corredor deixa de exigir réplica: vitória de detalhe, de silêncio útil ou de mundo liso demais para o espelho mentir alto. O bronze fica com eco atrasado; você segues com a palavra sua — feia, inteira, sua.',
         terminal: 'victory',
       },
       v_win_toll: {
         line:
-          'Vitória paga em corpo e nervo: empurrão, limite físico ou sangue de palavra. Ainda assim o espelho ficou sem o teu último verso — escreveste tu, com custo que não negas e fronteira que ele aprende a respeitar.',
+          'Vitória paga em corpo e nervo: empurrão, limite físico ou sangue de palavra. Ainda assim o espelho ficou sem seu último verso — escreveu você, com custo que não negas e fronteira que ele aprende a respeitar.',
         terminal: 'victory',
       },
     },

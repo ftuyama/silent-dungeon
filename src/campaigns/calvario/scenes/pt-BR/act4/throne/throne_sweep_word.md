@@ -13,4 +13,4 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-Há palavras que o ar **recusa**. Se acertares o timing, o silêncio paga; se falhares, o salão **cobre** juros.
+Há palavras que o ar **recusa**. Se acertar o timing, o silêncio paga; se falhar, o salão **cobre** juros.

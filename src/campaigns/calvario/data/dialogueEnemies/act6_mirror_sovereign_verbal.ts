@@ -12,7 +12,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'Do espelho sai o teu rosto sem hesitação. “Eu sou tu sem medo”, diz. “Tu és eu sem coragem.” O sorriso dele não pede licença — pede rendição.',
+          'Do espelho sai seu rosto sem hesitação. “Eu sou você sem medo”, diz. “Você é eu sem coragem.” O sorriso dele não pede licença — pede rendição.',
         choices: [
           {
             text:
@@ -38,7 +38,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
           },
           {
             text:
-              'Atacar a imagem com fúria — provar que ainda mandas no teu rosto.',
+              'Atacar a imagem com fúria — provar que ainda mandas nseu rosto.',
             resolution: { kind: 'fixed', nextNodeId: 'waver' },
             effects: { enemyHpDelta: 4 },
           },
@@ -63,7 +63,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
           },
           {
             text:
-              'Dar ao reflexo uma frase mínima — verdade miúda, sem lenda — para o vidro engasgar.',
+              'Dar ao reflexo uma frase mínima — verdade pequena, sem lenda — para o vidro engasgar.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -95,7 +95,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Traçar fronteira: sombra fica no vidro; tu ficas no corredor.',
+              'Traçar fronteira: sombra fica no vidro; você ficas no corredor.',
             resolution: { kind: 'fixed', nextNodeId: 'last_test' },
             effects: { enemyHpDelta: -4 },
           },
@@ -133,7 +133,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Aceitar a trégua feia — levar o que ainda é teu, sem discurso final.',
+              'Aceitar a trégua feia — levar o que ainda é seu, sem discurso final.',
             resolution: { kind: 'fixed', nextNodeId: 'v_success' },
             effects: { enemyHpDelta: -5 },
           },
@@ -167,11 +167,11 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
       },
       strain: {
         line:
-          'O reflexo lê cada tensão no teu pescoço como promessa de queda. “Vês?” murmura. “O corpo já assinou antes da boca.”',
+          'O reflexo lê cada tensão nseu pescoço como promessa de queda. “Vês?” murmura. “O corpo já assinou antes da boca.”',
         choices: [
           {
             text:
-              'Dizer o teu nome em voz alta — âncora feia, sem pose de palco.',
+              'Dizer seu nome em voz alta — âncora feia, sem pose de palco.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -203,7 +203,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Agarrar à última linha: dizer o teu nome em voz alta como âncora.',
+              'Agarrar à última linha: dizer seu nome em voz alta como âncora.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -222,7 +222,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
       },
       v_success: {
         line:
-          'O reflexo recua meio tom — não derrota limpa, trégua. “Vai”, diz com a tua boca. “Leva o que ainda é teu.”',
+          'O reflexo recua meio tom — não derrota limpa, trégua. “Vai”, diz com sua boca. “Leva o que ainda é seu.”',
         terminal: 'victory',
       },
       d_fail: {

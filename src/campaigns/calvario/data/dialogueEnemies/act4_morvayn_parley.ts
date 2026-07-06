@@ -11,7 +11,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'Morvayn inclina o cajado como quem ouve um voto — não uma promessa bonita, o peso do sim. “O Terceiro Sino não recolhe discursos”, murmura ele. “Recolhe silêncio com forma. Mostra-me se o teu sim aguenta o metal da tua língua, ou se parte à primeira nota.” A hostilidade no ar espessa-se; um passo em falso e o pacto deixa de ser conversa.',
+          'Morvayn inclina o cajado como quem ouve um voto — não uma promessa bonita, o peso do sim. “O Terceiro Sino não recolhe discursos”, murmura ele. “Recolhe silêncio com forma. Mostra-me se seu sim aguenta o metal dsua língua, ou se parte à primeira nota.” A hostilidade no ar espessa-se; um passo em falso e o pacto deixa de ser conversa.',
         choices: [
           {
             text:
@@ -34,7 +34,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
           },
           {
             text:
-              'Responder com fome de poder: exigir o que o culto te deve em troca do teu nome, como se o Sino fosse mercador e não sacerdote.',
+              'Responder com fome de poder: exigir o que o culto te deve em troca do seu nome, como se o Sino fosse mercador e não sacerdote.',
             resolution: { kind: 'fixed', nextNodeId: 'hungry_terms' },
             effects: { enemyHpDelta: 4 },
           },
@@ -46,13 +46,13 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Pedir a dobra em troca de uma verdade miúda que já carregas — não escândalo, um facto que te envergonha de leve e prova que ainda és carne.',
+              'Pedir a dobra em troca de uma verdade pequena que já carrega — não escândalo, um fato que te envergonha de leve e prova que ainda é carne.',
             resolution: { kind: 'fixed', nextNodeId: 'morvayn_probe' },
             effects: { enemyHpDelta: -2 },
           },
           {
             text:
-              'Silenciar e deixar o olhar negociar o resto — aguentar até ele perceber que não vais pedir desculpa por existir.',
+              'Silenciar e deixar o olhar negociar o resto — aguentar até ele perceber que não vai pedir desculpa por existir.',
             resolution: {
               kind: 'luck',
               tn: 9,
@@ -67,11 +67,11 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
       },
       morvayn_probe: {
         line:
-          'Morvayn atrai o cajado um dedo. “Uma dobra ainda”, murmura. “Mostra se o teu sim aguenta vergonha sem virar teatro — ou se precisas de plateia para creres nele.”',
+          'Morvayn atrai o cajado um dedo. “Uma dobra ainda”, murmura. “Mostra se seu sim aguenta vergonha sem virar teatro — ou se precisas de plateia para crer nele.”',
         choices: [
           {
             text:
-              'Entregar a vergonha miúda sem adorno — sem confissão de palco, só facto que não cabe em lenda.',
+              'Entregar a vergonha pequena sem adorno — sem confissão de palco, só fato que não cabe em lenda.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -90,7 +90,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
           },
           {
             text:
-              'Arriscar o silêncio como moeda — ver se o acaso paga do teu lado.',
+              'Arriscar o silêncio como moeda — ver se o acaso paga do seu lado.',
             resolution: {
               kind: 'luck',
               tn: 9,
@@ -165,7 +165,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
       },
       nerve_cracks: {
         line:
-          'O silêncio ganha dentes. Morvayn inclina-se: “O teu nervo partiu antes da frase.”',
+          'O silêncio ganha dentes. Morvayn inclina-se: “Seu nervo partiu antes da frase.”',
         choices: [
           {
             text: 'Manter a linha a todo o custo — mesmo partida.',

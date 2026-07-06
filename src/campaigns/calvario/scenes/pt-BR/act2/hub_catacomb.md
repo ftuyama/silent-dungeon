@@ -79,7 +79,7 @@ choices:
       all:
         - { level: { gte: 7 } }
         - { day: { lte: 6 } }
-    preview: "Memória antiga; perícia e sorte pesam — mas o eco some se demorares demasiado."
+    preview: "Memória antiga; perícia e sorte pesam — mas o eco some se demorares demais."
   - text: "Observar o cruzeiro: marcas no chão"
     uiSection: "Ecos do cruzeiro"
     next: act2/hub_observe
@@ -101,9 +101,9 @@ choices:
         - { day: { lte: 5 } }
     showWhenLocked: false
     lockedHint: "Precisas de nível 6 e de ouvir isto antes do dia 6 — depois o eco cala-se."
-    preview: "Voz seca no cruzeiro; registo no diário."
+    preview: "Voz seca no cruzeiro; registro no diário."
     effects:
-      - { op: addDiary, text: "Uma voz presa ao teto: \"Já vais no dia {{day}}.\"" }
+      - { op: addDiary, text: "Uma voz presa ao teto: \"Já vai no dia {{day}}.\"" }
   - text: "Descer mais fundo"
     uiSection: "Avançar"
     next: act3/descent
@@ -121,4 +121,4 @@ onEnter:
 ---
 Velas e **cera** prendem o passo no cruzeiro; *hoje é **dia {{day}}** no subsolo.*
 
-Um **eco** de sino sobe das profundezas e morre antes de chegar à cidade — como se o **silêncio** de lá em baixo **comesse** o som e só deixasse passar o necessário para te lembrar que ainda há ouvidos.
+Um **eco** de sino sobe das profundezas e morre antes da cidade — no intervalo, o ar arrasta **Morvayn**.

@@ -13,4 +13,4 @@ choices: []
 onEnter:
   - { op: setFlag, key: throne_acted_nerves, value: true }
 ---
-O chão **inventa** degraus. Se hesitares, o osso sob os pés **recorda** o teu peso como dívida.
+O chão **inventa** degraus. Se hesitar, o osso sob os pés **recorda** seu peso como dívida.

@@ -14,7 +14,7 @@ onEnter:
   - { op: addMark, mark: act6_veil_broken }
   - { op: addDiary, text: "Quando o real partiu, a sombra entrou primeiro." }
 ---
-As paredes trocam de lugar e o teu proprio corpo parece chegar atrasado a cada gesto. Pisar no chao vira um ato de fe.
+As paredes trocam de lugar e seu proprio corpo parece chegar atrasado a cada gesto. Pisar no chao vira um ato de fe.
 
-O Arauto nao avanca. Ele espera a tua queda para chamar isso de prova.
+O Arauto nao avanca. Ele espera sua queda para chamar isso de prova.
 

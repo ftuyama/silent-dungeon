@@ -13,4 +13,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Os nomes **murmuram** quando não deves estar a ouvir. Se leres em voz alta, o osso **responde** com o teu.
+Os nomes **murmuram** quando não deve estar ouvindo. Se ler em voz alta, o osso **responde** com o seu.

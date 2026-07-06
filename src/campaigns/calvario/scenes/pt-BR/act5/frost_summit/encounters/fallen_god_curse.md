@@ -13,6 +13,6 @@ onEnter:
   - { op: grantTemporaryBuff, attr: mind, delta: -4, remainingScenes: 14 }
   - { op: addDiary, text: "Perdi para o ecos — e o templo deixou-me uma maldição que não se confessa, só se carrega." }
 ---
-A derrota não vem só em **ferida**. Vem em **forma** — uma **mão** no espelho interior que te puxa para baixo, **três vezes** e em **três frentes**: corpo, reflexo, vontade.
+A derrota não vem só em **ferida**. Vem em **forma** — uma **mão** no espelho interior que te puxa para baixo em **três frentes**: corpo, reflexo, vontade.
 
-Levantas porque o **medo** ainda empurra — mas o mundo, por um tempo, **nega-te** facilidade. Cada passo é **prova**. Cada pensamento é **custo**.
+Levantas porque o **medo** ainda empurra — mas o mundo, por um tempo, **nega-te** facilidade.

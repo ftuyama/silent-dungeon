@@ -15,4 +15,4 @@ onEnter:
 ---
 A corda cai; **Tomás** rouba ar ao céu e agarra o escudo como **nome**.
 
-> *"Ordena levantar, levanto; senão, caminho contigo."*
+> *"Ordena levantar, levanto; senão, caminho com você."*

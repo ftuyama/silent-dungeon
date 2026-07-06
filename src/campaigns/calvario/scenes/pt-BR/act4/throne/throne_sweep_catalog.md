@@ -14,4 +14,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Cada costela é um **argumento**. Se te convenceres demais, o trono **junta** mais uma linha ao teu lado.
+Cada costela é um **argumento**. Se te convenceres demais, o trono **junta** mais uma linha ao seu lado.

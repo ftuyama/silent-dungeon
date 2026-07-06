@@ -857,6 +857,18 @@
       }
     ]
   },
+  "act2/path_archer_marksman": {
+    "title": "Marksman Archer",
+    "body": "The **angel** unravels into **ash** that does not fall — only drifts away. The arrow does **not** forgive; neither do you. From here on, whoever sees you reads **patience** where they once read shadow — and learns to fall **without witnesses**.",
+    "choices": [
+      {
+        "text": "Return to the crossroads"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I defeated the veil angel with the arrow; I accepted the name Marksman — distance as sentence, not as escape."
+    ]
+  },
   "act2/path_cleric_penitent": {
     "title": "Penitent Cleric",
     "body": "Incense **burns** finer when guilt **breathes** with you. You are no lesser servant — you are **more** truthful than the psalm allows.",

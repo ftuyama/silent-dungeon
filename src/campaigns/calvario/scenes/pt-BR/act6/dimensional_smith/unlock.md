@@ -14,10 +14,6 @@ choices:
     next: act6/hub_fractured_nave
 onEnter: []
 ---
-O ferreiro parece mais ruído que homem.
+O ferreiro parece mais ruído que homem. Bate metal invisível e para sem te olhar.
 
-Ele bate metal invisível e para sem te olhar.
-
-"**Pago. Troca. Some.**"
-
-"Se voltares, traz metal que já viu o vazio."
+"**Pago. Troca. Some.**" "Se voltares, traz metal que já viu o vazio."

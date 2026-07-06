@@ -32,6 +32,6 @@ choices:
 onEnter:
   - { op: addXp, amount: 6 }
 ---
-A **boca de pedra** range como mandíbula velha. O ar torna-se **denso**, como lã molhada a entrar pelos pulmões — e o **silêncio** da câmara parece **ouvir-te** antes de tu ouvires a ti.
+A **boca de pedra** range como mandíbula velha. O ar torna-se **denso**, como lã molhada a entrar pelos pulmões — e o **silêncio** da câmara parece **ouvir você** antes de você ouvir a você.
 
 Do interior vem um cheiro: **terra**, **cinza**, e algo doce demais para ser saudável.

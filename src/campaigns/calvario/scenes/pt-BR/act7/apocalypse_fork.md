@@ -15,6 +15,6 @@ choices:
     preview: "−1 suprimento · +2 corrupção · marca de testemunha do fogo."
 onEnter: []
 ---
-Não há terceira coluna a fingir neutralidade: o apocalipse **cobra** um verbo. Ou **seguras** o mundo como quem segura ferida aberta, ou **serves** de lenha e chamas o teu nome de **luz** para não ver o que ficas por baixo.
+Não há terceira coluna a fingir neutralidade: o apocalipse **cobra** um verbo. Ou **seguras** o mundo como quem segura ferida aberta, ou **serves** de lenha e chamas seu nome de **luz**.
 
-O vento para um instante — não para te poupar. Para **ouvir** qual das duas bocas vais abrir.
+O vento para um instante — não para poupar você. Para **ouvir** qual das duas bocas vai abrir.

@@ -12,7 +12,10 @@
     "sectionDev": "Development",
     "sectionAbout": "About",
     "volume": "Volume",
+    "mute": "Mute",
+    "unmute": "Unmute sound",
     "language": "Language",
+    "languageEdge": "Language: {locale}",
     "fontSize": "Text size ({percent}%)",
     "sceneArtHighlight": "Highlight art on first visit",
     "timedChoice": "Timed choices",
@@ -26,6 +29,8 @@
     "fullscreenExitEsc": "Exit fullscreen (Esc)",
     "importPrompt": "Paste the save JSON here:",
     "credits": "Credits",
+    "feedback": "Send feedback",
+    "feedbackTitle": "Opens the feedback form (new tab)",
     "devTools": "Developer tools",
     "devToolsTitle": "Items, scenes, music, enemies, dialogue (?view=dev). Available with developer mode.",
     "scenesGraph": "Scene graph",
@@ -33,6 +38,12 @@
     "kofi": "Support on Ko-fi",
     "kofiTitle": "Opens the Ko-fi support page (new tab)",
     "version": "Silent Dungeon v{version} · {author}"
+  },
+  "mobileNotice": {
+    "title": "Best on desktop",
+    "body": "This experience is designed for keyboard and a wide screen. Open the game on a PC or laptop for smoother combat, inventory, and choices.",
+    "dismiss": "Continue on mobile",
+    "dismissAria": "Dismiss notice and continue on mobile"
   },
   "save": {
     "save": "Save",
@@ -47,8 +58,11 @@
     "loadUnavailableAria": "Slot {slot} empty — load unavailable"
   },
   "sidebar": {
+    "title": "Silent Dungeon",
     "hero": "Hero",
     "progress": "Progress",
+    "mainMission": "Main quest",
+    "groupStatus": "Party status",
     "character": "Character",
     "companions": "Companions",
     "resources": "Resources",
@@ -192,12 +206,14 @@
     "itemCorruptionDrain": "In combat: spends up to {amount} corruption per damaging hit for extra damage.",
     "itemRumor": "Linked to rumors or clues in the narrative.",
     "spellManaLine": "{cost} mana · {mechanics}",
-    "spellMechanicsDamage": "damage ({dice}d6 + Mind)",
-    "spellMechanicsDamageBase": "damage ({base} + {dice}d6 + Mind)",
-    "spellMechanicsHeal": "heal ({dice}d6 + Mind)",
-    "spellMechanicsHealBase": "heal ({base} + {dice}d6 + Mind)",
+    "spellMechanicsDamage": "damage ({dice}d6 + Mind; choose target)",
+    "spellMechanicsDamageBase": "damage ({base} + {dice}d6 + Mind; choose target)",
+    "spellMechanicsHeal": "heal ({dice}d6 + Mind; choose ally)",
+    "spellMechanicsHealBase": "heal ({base} + {dice}d6 + Mind; choose ally)",
     "spellMechanicsBuffAttack": "+1 to attack (leader physical hits) until combat ends",
     "spellMechanicsBuffArmor": "+1 AC (leader) until combat ends",
+    "spellMechanicsHeadshot": "physical attack with guaranteed crit (costs mana; choose target)",
+    "spellMechanicsArrowRain": "reduced damage to all living enemies ({dice}d6 + AGI, half per target)",
     "closeSheet": "Close sheet",
     "closeChronicle": "Close chronicle",
     "chronicleKicker": "Echoes between runs",
@@ -287,7 +303,7 @@
     "hpLabel": "HP {current}/{max}",
     "activeBuffs": "Active buffs: {buffs}.",
     "attackSectionHint": "Melee and offensive spells hit the first living enemy in the list.",
-    "spellSectionHint": "Each spell consumes your turn and the mana shown on the button. Damage spells hit the first enemy with HP; heals and buffs follow each spell — hover the button for the exact effect.",
+    "spellSectionHint": "Each spell consumes your turn and the mana shown on the button. Damage and heal spells ask you to choose a target; buffs and area spells resolve immediately — hover the button for the exact effect.",
     "fleeSectionHint": "Consumes your turn. Roll 2d6 + Agility mod and compare to this encounter's flee target (deadlier fights need higher rolls). On success you leave without a kill victory. On failure, enemies act. The exact number appears on the button tooltip.",
     "consumablesSectionHint": "Each use spends your turn. Consumables apply to the party leader. Inventory count appears on the button when you have more than one. Hover each item for HP, mana, Stress, and restrictions.",
     "sectionHelpAria": "Help: {label}",
@@ -299,6 +315,7 @@
     "continueDash": "[Space] - Continue",
     "spells": "Spells",
     "consumables": "Consumables",
+    "consumablesToggle": "View consumables ({count})",
     "fleeSection": "Flee",
     "voidSeal": "Void Seal",
     "voidSealHintActive": "Void Seal: sacrifice up to {hpCost} HP on this attack for +{damageBonus} damage (aggressive stance). Corruption {corruption}.",
@@ -316,10 +333,16 @@
     "fleeHelpAria": "Help: fleeing combat",
     "buffAttackShort": "+{n} to hit",
     "buffArmorShort": "+{n} AC",
-    "spellHoverDamage": "Magic damage on the first living enemy: {dice}d6+{base}+mod(Mind). Consumes your turn.",
-    "spellHoverHeal": "Heal yourself: {dice}d6+{base}+mod(Mind), up to max HP. Consumes your turn.",
+    "spellHoverDamage": "Magic damage on chosen target: {dice}d6+{base}+mod(Mind). Consumes your turn.",
+    "spellHoverHeal": "Heal a living ally: {dice}d6+{base}+mod(Mind), up to max HP. Consumes your turn.",
     "spellHoverBuffAttack": "Support: +1 to your physical attack until combat ends. Consumes your turn.",
     "spellHoverBuffArmor": "Support: +1 to your AC until combat ends. Consumes your turn.",
+    "spellHoverHeadshot": "Precise shot: guaranteed crit on chosen target. Costs mana and consumes your turn.",
+    "spellHoverArrowRain": "Arrows on all living enemies: reduced damage per target. Consumes your turn.",
+    "chooseTargetHint": "Choose an enemy to attack.",
+    "chooseTargetHeadshot": "Choose the Headshot target.",
+    "chooseTargetSpell": "Choose the target for {spell}.",
+    "chooseTargetHeal": "Choose who to heal with {spell}.",
     "consumableHover": "Uses on the leader: {summary}. Consumes your turn.",
     "consumableHoverHp": "up to +{n} HP",
     "consumableHoverMana": "up to +{n} mana",
@@ -453,9 +476,11 @@
     "knight": "Border Knight",
     "mage": "Tower Arcanist",
     "cleric": "Vigil Cleric",
+    "archer": "Depths Archer",
     "defaultNameKnight": "Sir Galen",
     "defaultNameMage": "Ysara Vel",
-    "defaultNameCleric": "Friar Oris"
+    "defaultNameCleric": "Friar Oris",
+    "defaultNameArcher": "Veyr"
   },
   "session": {
     "objectiveEarly": "Session goal: use shortcuts [1-9] and finish the first 2 choices without rushing.",
@@ -468,6 +493,30 @@
     "objectiveCamp": "Session goal: review equipment and leave camp with a clear advantage.",
     "objectiveDefault": "Session goal: complete 1 new branch and record 1 new journey mark."
   },
+  "mainMission": {
+    "calvario": {
+      "descend": "Descend into the dungeon",
+      "chooseOath": "Choose your oath",
+      "reachMouth": "Reach the dungeon mouth",
+      "enterCatacomb": "Enter the catacombs",
+      "reachHub": "Reach the crossroads",
+      "exploreCatacombs": "Explore the catacombs",
+      "descendToAct3": "Descend to the depths",
+      "reachLevel5": "Reach level 5 to descend",
+      "reachDepthsHub": "Reach the depths core",
+      "exploreDepths": "Explore the depths",
+      "stoneGuardian": "Defeat the stone guardian",
+      "thronePath": "Prepare the path to the Bone Throne",
+      "reachLevel10": "Reach level 10 for the throne",
+      "faceMorvayn": "Face Morvayn",
+      "beyondThrone": "Press beyond the throne",
+      "surviveFrost": "Cross the snow and find shelter",
+      "faceVetrnax": "Face Vetrnax on the Peaks",
+      "enterVoid": "Enter the fractured nave",
+      "voidTrials": "Survive the Void trials",
+      "terminalFate": "Decide the fate of the sky"
+    }
+  },
   "reputation": {
     "titleSlowLedger": "{name} — open rumor",
     "titleCapped": "{name} — margins exhausted",
@@ -476,34 +525,34 @@
     "titleAdjust": "{name} — reputation adjusts{delta}",
     "subtitleValue": "{tone} Value: {prev} → {next}.",
     "slowLedger": [
-      "Um gesto ficou assinado nas margens do teu registo; falta outro feito para que o numero mude nos arquivos da faccao.",
-      "Os escribas anotam o rumor e fecham o livro sem mexer no marcador: ainda nao ha peso suficiente para virar a pagina."
+      "A gesture was signed in the margins of your ledger; another deed is needed before the number shifts in the faction archives.",
+      "The scribes note the rumor and close the book without moving the marker: there is not yet enough weight to turn the page."
     ],
     "cappedDirect": [
-      "Os escribas ja nao tem onde subir ou descer este nome: o tom mantem-se, por ora, inamovivel.",
-      "A margem do registro terminou; qualquer novo abalo bate no limite e retorna sem alterar o numero."
+      "The scribes have nowhere left to raise or lower this name: the tone holds, for now, unmoved.",
+      "The ledger margin is spent; any new shock hits the limit and rebounds without changing the number."
     ],
     "tone": {
       "up": {
         "vigilia": [
-          "Ecoa nos corredores da ordem: o teu nome ganha um selo menos sombrio nos arquivos da Vigília."
+          "Echoes in the order's corridors: your name gains a less somber seal in the Vigil's archives."
         ],
         "circulo": [
-          "O cinzento inclina-se: nos arquivos do Círculo, o teu símbolo ganha um traço que não apaga com o primeiro sopro."
+          "The grey inclines: in the Circle's archives, your symbol gains a stroke that does not fade with the first breath."
         ],
         "culto": [
-          "O Terceiro Sino parece mais perto sem haver torre: o Culto carimba o teu passo com interesse que não é benigno, mas é teu."
+          "The Third Bell seems closer though there is no tower: the Cult stamps your step with interest that is not benign, but is yours."
         ]
       },
       "down": {
         "vigilia": [
-          "Raspa-se o registo: a Vigília anota desconfiança onde antes só havia silêncio disciplinado."
+          "The ledger is scraped: the Vigil notes distrust where before there was only disciplined silence."
         ],
         "circulo": [
-          "O ritual recua: o Círculo descreve o teu nome com traço mais frio, como quem adia uma dívida que não esquece."
+          "The ritual recedes: the Circle describes your name with a colder stroke, as one who postpones a debt they do not forget."
         ],
         "culto": [
-          "Alguém no Culto apaga uma linha que te favorecia; ouve-se o sino sem torre, e o som não te chama."
+          "Someone in the Cult erases a line that favored you; the bell rings without a tower, and the sound does not call you."
         ]
       }
     }
@@ -557,10 +606,16 @@
     "enemyMiss": "{attacker} misses.",
     "playerDamageCrit": "{target} takes {amount} (crit)!",
     "playerDamage": "{target} takes {amount}.",
-    "initiativeOrder": "Initiative order: {order}",
+    "initiativeOrder": "Initiative order:",
     "enemyFallback": "Enemy {n}",
     "fleeSuccess": "{name} escapes! ({total} vs TN {tn}, Agility {mod})",
-    "fleeFailure": "{name} fails to flee. ({total} vs TN {tn}, Agility {mod})"
+    "fleeFailure": "{name} fails to flee. ({total} vs TN {tn}, Agility {mod})",
+    "headshotAim": "{name} aims with {spell}…",
+    "spellTargets": "{name} casts {spell} and chooses a target…",
+    "healTargets": "{name} prepares {spell} and chooses who to heal…",
+    "headshotCrit": "{attacker} hits {target} square between the eyes (crit)!",
+    "archerDodge": "{target} dodges {attacker}'s blow!",
+    "arrowRainDamage": "{target} takes {amount} damage (arrow rain)."
   },
   "faithMiracle": {
     "kicker": "Intercession",

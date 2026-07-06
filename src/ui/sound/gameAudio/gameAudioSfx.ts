@@ -120,6 +120,36 @@ export class GameSfxPlayer {
     });
   }
 
+  /** Confirmação de classe — Arqueiro: estalo de corda + nota seca ascendente. */
+  playClassCommitArcher(): void {
+    const ctx = this.host.ensureContext();
+    const t0 = ctx.currentTime;
+    const g = this.host.gain(0.1);
+    if (g <= 0) return;
+    const pluck = ctx.createOscillator();
+    const gPl = ctx.createGain();
+    pluck.type = 'triangle';
+    pluck.frequency.setValueAtTime(180, t0);
+    pluck.frequency.exponentialRampToValueAtTime(520, t0 + 0.05);
+    gPl.gain.setValueAtTime(g * 0.5, t0);
+    gPl.gain.exponentialRampToValueAtTime(0.01, t0 + 0.12);
+    pluck.connect(gPl);
+    gPl.connect(ctx.destination);
+    pluck.start(t0);
+    pluck.stop(t0 + 0.13);
+    const snap = ctx.createOscillator();
+    const gSn = ctx.createGain();
+    snap.type = 'square';
+    snap.frequency.setValueAtTime(90, t0);
+    snap.frequency.exponentialRampToValueAtTime(40, t0 + 0.04);
+    gSn.gain.setValueAtTime(g * 0.22, t0);
+    gSn.gain.exponentialRampToValueAtTime(0.01, t0 + 0.06);
+    snap.connect(gSn);
+    gSn.connect(ctx.destination);
+    snap.start(t0);
+    snap.stop(t0 + 0.07);
+  }
+
   playBlocked(): void {
     this.playTone(90, 0.06, 0.45, 'sine');
   }

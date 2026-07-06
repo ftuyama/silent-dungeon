@@ -8,6 +8,6 @@ choices:
     next: act1/class_gate
 onEnter: []
 ---
-Por um instante o reflexo **não é o teu rosto** — osso e ripple — e a água fica **demasiado quieta** para ser natural.
+Por um instante o reflexo **não é seu rosto** — osso e ripple — e a água fica **demais quieta** para ser natural.
 
 *{{playerName}}* debruça-se sobre *{{playerName}}*; ao levantar a cabeça, o pescoço doí de **ter visto** demais.

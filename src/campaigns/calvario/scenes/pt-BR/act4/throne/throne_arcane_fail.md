@@ -11,4 +11,4 @@ choices:
       - { op: addDiary, text: "A runa mordeu-me o pensamento — ficou um buraco onde devia haver ordem." }
 onEnter: []
 ---
-A linha **parte-te** ao meio: não é falta de inteligência — é **convite** demais. O trono ri **sem som**, e tu sentes o eco como **azia** sagrada.
+A linha **parte-te** ao meio: não é falta de inteligência — é **convite** demais. O trono ri **sem som**, e você sentes o eco como **azia** sagrada.

@@ -15,5 +15,5 @@ onEnter:
 O **Terceiro Sino** acerta por dentro como martelo em vidro.
 
 Por um instante, sobes com os joelhos de outro corpo, o folego curto e a mente em
-faíscas. A rua abre-se diante de ti — e Morvayn já está à espera, como se a tua falha
+faíscas. A rua abre-se diante de você — e Morvayn já está à espera, como se sua falha
 tivesse sido o convite.

@@ -13,4 +13,4 @@ onEnter:
   - { op: addMark, mark: act1_surface_whisper_taint }
   - { op: addDiary, text: "O que subiu não era conversa — era riso partido que entrou na minha boca sem convite." }
 ---
-A pedra **devolve** um riso que não é teu — húmido, **doce**, errado. Ficas com o eco na língua como **ferro** velho: não és pior, mas o subsolo **experimentou** o teu gosto.
+A pedra **devolve** um riso que não é seu — úmido, **doce**, errado. Ficas com o eco na língua como **ferro** velho: não é pior, mas o subsolo **experimentou** seu gosto.

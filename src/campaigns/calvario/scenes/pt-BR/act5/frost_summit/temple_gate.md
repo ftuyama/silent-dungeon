@@ -22,6 +22,6 @@ choices:
     preview: "Ir ao altar no fundo do templo — e perceber o que o ritual exige."
 onEnter: []
 ---
-No **cume**, o tempo não passa — **acumula**. Pilares partidos sustêm um teto que já não protege de nada, só **testemunha**. O frio aqui tem **sabor** metálico, como língua numa lâmina antiga.
+No **cume**, o tempo não passa — **acumula**. Pilares partidos sustêm um teto que já não protege de nada, só **testemunha**. O frio tem **sabor** metálico.
 
-Se ficares calado, ouves o **vazio** a discutir contigo. Se não ficares, o vazio **responde** na mesma língua — e cobra **preço**.
+Se ficar calado, ouve o **vazio** a discutir com você. Se não ficar, responde na mesma língua — e cobra **preço**.

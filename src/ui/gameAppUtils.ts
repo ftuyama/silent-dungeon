@@ -64,14 +64,19 @@ export function spellEmoji(spellId: string, spellDef: SpellDef): string {
     merciful_light: '🕯️',
     whisper_cache: '🫧',
     pilgrims_benediction: '🙏',
+    silent_arrow: '🏹',
     warriors_focus: '⚔️',
     iron_ward: '🛡️',
+    headshot: '🎯',
+    arrow_rain: '🏹',
   };
   const byKind: Record<SpellDef['spellKind'], string> = {
     damage: '✨',
     heal_self: '💚',
     buff_attack_roll: '⚔️',
     buff_armor_class: '🛡️',
+    targeted_crit_attack: '🎯',
+    damage_all_enemies: '🏹',
   };
   return byId[spellId] ?? byKind[spellDef.spellKind] ?? '✦';
 }
@@ -82,6 +87,7 @@ export function passiveSidebarIconSvg(passiveKey: string): string {
     knight_crit_edge: 'weapon',
     cleric_sacred_pulse: 'faith',
     mage_ley_trickle: 'spellbook',
+    archer_keen_reflex: 'weapon',
     monk_inner_peace: 'faith',
   };
   const id = byId[passiveKey] ?? 'tier';
@@ -155,6 +161,15 @@ export function spellSidebarMechanicsLine(sp: SpellDef): string {
   }
   if (sp.spellKind === 'buff_attack_roll') {
     return t('sidebar.spellMechanicsBuffAttack');
+  }
+  if (sp.spellKind === 'targeted_crit_attack') {
+    return t('sidebar.spellMechanicsHeadshot');
+  }
+  if (sp.spellKind === 'damage_all_enemies') {
+    return t('sidebar.spellMechanicsArrowRain', { dice: String(sp.dice) });
+  }
+  if (sp.spellKind === 'buff_armor_class') {
+    return t('sidebar.spellMechanicsBuffArmor');
   }
   return t('sidebar.spellMechanicsBuffArmor');
 }
@@ -327,7 +342,8 @@ export function manaBarMarkup(cur: number, max: number): string {
 export function stressBarMarkup(cur: number): string {
   const max = 4;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));
-  return `<div class="stress-bar-track" role="img" aria-label="${escHtml(resourceBarAria(t('sidebar.stress'), cur, max))}">
+  const criticalCls = cur >= 3 ? ' stress-bar-track--critical' : '';
+  return `<div class="stress-bar-track${criticalCls}" role="img" aria-label="${escHtml(resourceBarAria(t('sidebar.stress'), cur, max))}">
       <div class="stress-bar-fill" style="width:${pct}%"></div>
     </div>`;
 }

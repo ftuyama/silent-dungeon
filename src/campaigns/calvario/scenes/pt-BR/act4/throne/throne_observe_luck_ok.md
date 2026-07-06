@@ -16,4 +16,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 10 }
 ---
-No instante certo, a **memória** engana-se e pensa que és dono dela. Aproveita: o trono ainda não percebeu.
+No instante certo, a **memória** engana-se e pensa que é dono dela. Aproveita: o trono ainda não percebeu.

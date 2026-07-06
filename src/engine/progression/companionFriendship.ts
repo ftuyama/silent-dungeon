@@ -101,6 +101,7 @@ export function syncCompanionPartyWithFriendship(state: GameState, data: GameDat
     const newAgi = def.agi + b.agi;
     const newMind = def.mind + b.mind;
     const newMaxHp = def.maxHp + b.maxHp;
+    const newName = def.name;
     const oldMax = c.maxHp;
     const oldHp = c.hp;
     let newHp = oldHp;
@@ -116,12 +117,13 @@ export function syncCompanionPartyWithFriendship(state: GameState, data: GameDat
       newAgi === c.agi &&
       newMind === c.mind &&
       newMaxHp === c.maxHp &&
-      newHp === c.hp
+      newHp === c.hp &&
+      newName === c.name
     ) {
       return c;
     }
     changed = true;
-    return { ...c, str: newStr, agi: newAgi, mind: newMind, maxHp: newMaxHp, hp: newHp };
+    return { ...c, name: newName, str: newStr, agi: newAgi, mind: newMind, maxHp: newMaxHp, hp: newHp };
   });
   if (!changed) return state;
   return { ...state, party: nextParty };

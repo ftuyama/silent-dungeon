@@ -101,7 +101,7 @@ const kaelGraph = (
 export const kael_rival_act2_verbal: DialogueEnemyDef = kaelGraph(
   'kael_rival_act2_verbal',
   'Kael, o Rastreador Cinzento',
-  'O elmo devolve-te o teu próprio sopro distorcido. “Rastreado”, diz Kael. “Registado. Ainda não rematado — quero ver se a tua boca sabe o que a mão promete.”',
+  'O elmo te devolve seu próprio sopro distorcido. “Rastreado”, diz Kael. “Registado. Ainda não rematado — quero ver se sua boca sabe o que a mão promete.”',
   { tensionMax: 12, rootMindTn: 7, edgeStrTn: 8 },
 );
 
@@ -115,7 +115,7 @@ export const kael_rival_act4_verbal: DialogueEnemyDef = kaelGraph(
 export const kael_rival_act5_verbal: DialogueEnemyDef = kaelGraph(
   'kael_rival_act5_verbal',
   'Kael, o Rastreador Cinzento',
-  'A geada no elmo não esconde o olhar. “O terceiro encontro não pede nome”, diz Kael. “Pede prova. Mostra se ainda tens sílaba ou só dente.”',
+  'A geada no elmo não esconde o olhar. “O terceiro encontro não pede nome”, diz Kael. “Pede prova. Mostra se ainda tem sílaba ou só dente.”',
   { tensionMax: 15, rootMindTn: 8, edgeStrTn: 9 },
 );
 

@@ -17,7 +17,7 @@ choices:
       - { op: addXp, amount: 18 }
       - { op: addDiary, text: "O cobre lambeu a moeda e o ar ficou mais denso — como se o túnel tivesse fechado contabilidade." }
   - text: "Seguir o atalho sem profanar o nicho"
-    preview: "Deixar o ritual alheio no sítio — o mapa já mentiu por ti."
+    preview: "Deixar o ritual alheio no sítio — o mapa já mentiu por você."
     next: act3/hub_depths
   - text: "Arrancar o caco e o fio — o culto nota, a Vigília também"
     preview: "Símbolo e prova no bolso; pressa e inimizade."

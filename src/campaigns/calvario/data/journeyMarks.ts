@@ -13,7 +13,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act1_surface_whisper_taint: {
     name: 'Riso na língua',
     description:
-      'Algo na superfície devolveu um riso que não era teu; o eco ficou na boca como metal velho, e o subsolo lembrou-se do teu gosto.',
+      'Algo na superfície devolveu um riso que não era seu; o eco ficou na boca como metal velho, e o subsolo lembrou-se do seu gosto.',
   },
   act3_cult_flight: {
     name: 'Fuga sob capuzes',
@@ -28,12 +28,12 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act3_well_snare: {
     name: 'Reflexo enganador',
     description:
-      'Acreditaste no que o poço mostrou; o mapa mentiu. A próxima sala guarda a surpresa que escolheste não ver a tempo.',
+      'Acreditaste no que o poço mostrou; o mapa mentiu. A próxima sala guarda a surpresa que escolheu não ver a tempo.',
   },
   act3_rune_tuned: {
     name: 'Ritmo de pedra domado',
     description:
-      'Sintonizaste o pulso das runas; por instantes a tumba obedece à tua atenção, e o pensamento sobe mais limpo.',
+      'Sintonizaste o pulso das runas; por instantes a tumba obedece à sua atenção, e o pensamento sobe mais limpo.',
   },
   act3_rune_jarred: {
     name: 'Eco nas runas',
@@ -43,7 +43,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act6_memory_kept: {
     name: 'Memória intacta',
     description:
-      'No julgamento do véu, escolheste não sangrar o que guardas; o preço foi outro, mas o núcleo ficou teu.',
+      'No julgamento do véu, escolheu não sangrar o que guarda; o preço foi outro, mas o núcleo ficou seu.',
   },
   act6_memory_spoiled: {
     name: 'Memória manchada',
@@ -53,12 +53,12 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act6_shadow_faced: {
     name: 'Sombra encarada',
     description:
-      'No espelho final, não fugiste ao duplo; nomear o reflexo custou, mas arrancaste presença ao vazio.',
+      'No espelho final, não fugiu ao duplo; nomear o reflexo custou, mas arrancou presença ao vazio.',
   },
   act6_veil_aligned: {
     name: 'Véu alinhado',
     description:
-      'No tímpano do real, escolheste foco em vez de fuga; o mundo continua mentiroso, mas tu aprendeste onde pisa.',
+      'No tímpano do real, escolheu foco em vez de fuga; o mundo continua mentiroso, mas você aprendeu onde pisa.',
   },
   act6_veil_broken: {
     name: 'Véu em estilhaços',
@@ -68,12 +68,12 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act6_void_pact_mark: {
     name: 'Marca do pacto vazio',
     description:
-      'Reivindicaste o segredo do Vazio por nome; assinatura sem tinta, mas a narrativa lembra a quem cedeu o último grão.',
+      'Você reivindicou o segredo do Vazio por nome; assinatura sem tinta, mas a narrativa lembra a quem cedeu o último grão.',
   },
   act6_will_direct: {
     name: 'Vontade à frente',
     description:
-      'No desafio da vontade, cortaste em linha recta; pouca dança, muito embate — o teu caminho não pediu permição.',
+      'No desafio da vontade, cortaste em linha recta; pouca dança, muito embate — seu caminho não pediu permição.',
   },
   act6_will_measured: {
     name: 'Vontade medida',
@@ -83,17 +83,17 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act6_will_scattered: {
     name: 'Vontade em fuga',
     description:
-      'A horda partiu a tua concentração em retalhos; sobreviveste em dispersão — honra de quem atravessa caos sem fingir ordem.',
+      'A horda partiu sua concentração em retalhos; sobreviveste em dispersão — honra de quem atravessa caos sem fingir ordem.',
   },
   act7_bell_ate_promise: {
     name: 'Promessa digerida',
     description:
-      'O sino silencioso ofereceu pacto em susurro; escolheste engolir a promessa — sabor de futuro que não descreves por palavras.',
+      'O sino silencioso ofereceu pacto em susurro; escolheu engolir a promessa — sabor de futuro que não descreve por palavras.',
   },
   act7_bell_paid_faith: {
     name: 'Sino pago em fé',
     description:
-      'Pagaste o sino com o que não se pesa; a campainha mudou de dono e tu ficaste com o eco na consciência.',
+      'Pagaste o sino com o que não se pesa; a campainha mudou de dono e você ficaste com o eco na consciência.',
   },
   act7_broke_hollow_line: {
     name: 'Linha oca partida',
@@ -108,7 +108,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act7_cinder_favored: {
     name: 'Favorecido pela cinza',
     description:
-      'O dízimo aceitou o teu tributo; favorecido pela corrente que consome — não é bênção limpa, é reconhecimento de quem paga.',
+      'O dízimo aceitou seu tributo; favorecido pela corrente que consome — não é bênção limpa, é reconhecimento de quem paga.',
   },
   act7_ember_witness: {
     name: 'Testemunha do braseiro',
@@ -121,14 +121,14 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
       'Ouviste os versículos do último pregador de cinzas; a homilia não pede amém, pede silêncio — e guardaste ambos.',
   },
   act7_last_train_rider: {
-    name: 'Último comboio',
+    name: 'Último trem',
     description:
       'Montaste o rumor do último trem; passageiro de uma linha que não existe no mapa — chegada onde o calendário desiste.',
   },
   act7_paid_sky_in_faith: {
     name: 'Céu pago em fé',
     description:
-      'Antes do horizonte final, ofertaste convicção ao teto mentiroso; o céu ficou com dívida e tu com o arranhão da troca.',
+      'Antes do horizonte final, ofertaste convicção ao teto mentiroso; o céu ficou com dívida e você com o arranhão da troca.',
   },
   act7_sealed_in_ember: {
     name: 'Selado no braseiro',
@@ -138,7 +138,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act7_sky_stitch_torn: {
     name: 'Costura do céu rasgada',
     description:
-      'A costura falhou; o pano do firmamento escapou entre teus dedos — vergonha de quem tentou remendar o impossível e ouviu o estoirar.',
+      'A costura falhou; o pano do firmamento escapou entre seus dedos — vergonha de quem tentou remendar o impossível e ouviu o estoirar.',
   },
   act7_sky_stitch_true: {
     name: 'Costura verdadeira',
@@ -153,7 +153,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   calvario_sealed: {
     name: 'Masmorra selada',
     description:
-      'Carregaste o peso do selo em ti; o subsolo cala — silêncio de pedra — porque assumiste o custo em fé e cicatriz, em vez de emprestar o rumor.',
+      'Você carregou o peso do selo em você; o subsolo cala — silêncio de pedra — porque assumiu o custo em fé e cicatriz, em vez de emprestar o rumor.',
   },
   fled_rats: {
     name: 'Retirada dos ratos',
@@ -173,12 +173,12 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   mira_cruzeiro_confidencia: {
     name: 'Confidência no cruzeiro',
     description:
-      'Trocámo-nos verdades fracas no hub; ela guarda um sítio no teu mapa emocional que o mapa de pedra não tem.',
+      'Trocámo-nos verdades fracas no hub; ela guarda um sítio nseu mapa emocional que o mapa de pedra não tem.',
   },
   mira_frost_pact: {
     name: 'Pacto de geada',
     description:
-      'No gelo, a Mira amarrou palavra contigo; promessa que congela antes de partir — lealdade que não derrete com o primeiro sol.',
+      'No gelo, a Mira amarrou palavra com você; promessa que congela antes de partir — lealdade que não derrete com o primeiro sol.',
   },
   mira_void_endtalk: {
     name: 'Última conversa no vazio',
@@ -193,7 +193,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   morvayn_slain: {
     name: 'Morvayn findado',
     description:
-      'Ferro no trono; Morvayn caiu por tua mão. Carregas a limpeza suja de quem mata para calar um nome demasiado alto.',
+      'Ferro no trono; Morvayn caiu por sua mão. Carregas a limpeza suja de quem mata para calar um nome demais alto.',
   },
   pact_bound: {
     name: 'Pacto do Terceiro Sino',
@@ -203,7 +203,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   soul_scarred_by_seal: {
     name: 'Alma cicatriz do selo',
     description:
-      'O selo partiu mal; a alma ficou com a costura à mostra. Quem luta contigo nota o eco que não fecha.',
+      'O selo partiu mal; a alma ficou com a costura à mostra. Quem luta com você nota o eco que não fecha.',
   },
   title_fallen_god: {
     name: 'Título: deus caído',
@@ -213,7 +213,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   tomas_camp_oath: {
     name: 'Juramento com o Tomás',
     description:
-      'Ao lume do acampamento, o escudeiro amarrou palavra contigo; dever mútuo que cheira a ferro e pão partido.',
+      'Ao lume do acampamento, o escudeiro amarrou palavra com você; dever mútuo que cheira a ferro e pão partido.',
   },
   tomas_void_duty: {
     name: 'Dever no vazio',
@@ -228,6 +228,6 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   wound_mire_leg: {
     name: 'Mordida do poço',
     description:
-      'A sorte falhou no charco; a perna lembra dentes que não são teus — leme que tarda um segundo quando o perigo exige dois.',
+      'A sorte falhou no charco; a perna lembra dentes que não são seus — leme que tarda um segundo quando o perigo exige dois.',
   },
 };

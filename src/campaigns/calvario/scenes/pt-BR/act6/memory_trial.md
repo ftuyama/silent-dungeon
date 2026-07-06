@@ -17,6 +17,6 @@ choices:
     next: act6/encounters/memory_trial_bleed
 onEnter: []
 ---
-No poço, vês cenas da tua vida em camadas — quando tentas tocar uma lembrança, outra acorda por baixo e pergunta quem escreveu a primeira.
+No poço, vês cenas dsua vida em camadas — quando tentas tocar uma lembrança, outra acorda por baixo e pergunta quem escreveu a primeira.
 
 > *"**Recordar** é escolher o que matar."*

@@ -30,7 +30,7 @@ const ASCII_MAP_UNLOCK: Record<string, { itemId: string; lockedHint: string }> =
   act5_frost: {
     itemId: 'frost_pass_map',
     lockedHint:
-      'A neve engole marcos; sem o traçado que Tomás (ou o resgate) deixou legível, não sabes onde estás na grelha.',
+      'A neve engole marcos; sem o traçado que Tomás (ou o resgate) deixou legível, não sabes onde está na grelha.',
   },
   act6_fractured_nave: {
     itemId: 'fractured_nave_map',
@@ -114,7 +114,7 @@ export function appendStoryMapPanel(
       legend.className = 'ascii-map-legend';
       legend.innerHTML = [
         '<div class="ascii-map-legend__title">Legenda</div>',
-        '<div><code class="ascii-map-char ascii-map-char--player">@</code> tua posição</div>',
+        '<div><code class="ascii-map-char ascii-map-char--player">@</code> sua posição</div>',
         '<div><code class="ascii-map-char ascii-map-char--goal">X</code> destino</div>',
         '<div><code class="ascii-map-char ascii-map-char--floor">.</code> corredor</div>',
         '<div><code class="ascii-map-char ascii-map-char--wall">#</code> parede</div>',

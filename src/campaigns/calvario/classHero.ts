@@ -12,12 +12,14 @@ const CLASS_LABEL_KEY: Record<ClassId, string> = {
   knight: 'class.knight',
   mage: 'class.mage',
   cleric: 'class.cleric',
+  archer: 'class.archer',
 };
 
 const DEFAULT_HERO_NAME_KEY: Record<ClassId, string> = {
   knight: 'class.defaultNameKnight',
   mage: 'class.defaultNameMage',
   cleric: 'class.defaultNameCleric',
+  archer: 'class.defaultNameArcher',
 };
 
 /** Nome de herói por defeito quando se escolhe a classe. */
@@ -38,6 +40,10 @@ Na masmorra, estudo e culpa andam juntos: cada sigilo que traça aproxima-a de r
   cleric: `Oris vestiu a Vigília quando ainda acreditava que fé era muralha: oração certa, gesto certo, noite vencida. Depois viu gente boa afundar em silêncio sem milagre nenhum, e aprendeu que doutrina não aquece mão gelada.
 
 Desceu para medir o mal, sim — mas também para não abandonar quem já não consegue pedir socorro. Carrega incenso, salmos e vergonha antiga; quando Deus cala, ele responde do jeito que pode, ficando.`,
+
+  archer: `Veyr aprendeu a caçar onde a fronteira acaba e a pedra começa a mentir sobre a distância. Não jurou a ninguém: rastreia, espera, larga a flecha quando o alvo já se condenou ao movimento errado.
+
+Desceu à masmorra como quem segue um rastro que não cheira a sangue fresco — cheira a promessa quebrada. Não pede absolvição nem bandeira; só quer ver o que foge antes de ser nomeado.`,
 };
 
 /** Rótulos por arquétipo narrativo (`path`). Chave: `classId:path`. */
@@ -45,6 +51,7 @@ const PATH_LABEL_PT: Partial<Record<string, string>> = {
   'knight:fallen': 'Cavaleiro caído',
   'mage:dark': 'Mago das trevas',
   'cleric:penitent': 'Clérigo penitente',
+  'archer:marksman': 'Arqueiro atirador',
 };
 
 /** Texto do banner de promoção (`setPath`) — tom narrativo curto por arquétipo. */
@@ -52,12 +59,14 @@ const PATH_PROMOTION_NARRATIVE_PT: Partial<Record<string, string>> = {
   'knight:fallen':
     'O ferro não te largou; foi a inocência que ficou para trás. A armadura agora veste um nome novo: aquele que sobreviveu quando devia ter caído, e aprendeu a lutar sem esperar absolvição.',
   'mage:dark':
-    'Os símbolos seguros já não bastam para abrir as portas que escolheste atravessar. Daqui em diante, o véu responde ao teu pulso e à tua fome de verdade, e cada traço cobra um pedaço de quem o desenha.',
+    'Os símbolos seguros já não bastam para abrir as portas que escolheu atravessar. Daqui em diante, o véu responde ao seu pulso e à sua fome de verdade, e cada traço cobra um pedaço de quem o desenha.',
   'cleric:penitent':
     'A fé não te deixou; foi a paz que desertou primeiro. O corpo virou liturgia de cicatrizes, e cada oração agora soa menos como conforto e mais como juramento de continuar de pé apesar do silêncio.',
+  'archer:marksman':
+    'A distância deixou de ser fuga e virou ofício. Cada flecha pesa como pergunta fechada — e você aprendeu a não errar a resposta quando o silêncio já escolheu o alvo.',
 };
 
-/** Bónus de jogo ao desbloquear arquétipo (`classId:path`). Mago/clérigo já recebem magia nas cenas de path. */
+/** Bônus de jogo ao desbloquear arquétipo (`classId:path`). Mago, clérigo e arqueiro recebem magia nas cenas de path. */
 const PATH_UNLOCK_BONUS: Partial<Record<string, PathUnlockBonus>> = {
   'knight:fallen': {
     stats: { str: 1, luck: 1 },
@@ -71,6 +80,10 @@ const PATH_UNLOCK_BONUS: Partial<Record<string, PathUnlockBonus>> = {
     stats: { mind: 1 },
     addResource: { resource: 'faith', delta: 1 },
     backstoryPt: `As marcas do ritual não sangram, mas ardem nos dias em que a culpa encontra silêncio. A penitência já não é cerimônia: virou idioma íntimo, lembrando-o de que fé também é permanecer humano quando o céu parece fechado.`,
+  },
+  'archer:marksman': {
+    stats: { luck: 1 },
+    backstoryPt: `Medir distância ensinou-lhe paciência que nenhuma facção vende. O arco não pede testemunhas — só o instante em que o alvo acredita que ainda há tempo.`,
   },
 };
 
@@ -86,6 +99,10 @@ No caderno, há páginas que ela esconde não por vergonha do poder, mas por med
   'cleric:penitent': `Oris transformou culpa em rito para não deixá-la apodrecer em silêncio. A Vigília ainda o chama de irmão; ele responde, mas já sabe que algumas respostas vêm da carne ferida, não do altar.
 
 Cada prece é renegociação: entre misericórdia e disciplina, entre o homem que era e o que precisa ser para atravessar a escuridão sem negar o próprio coração.`,
+
+  'archer:marksman': `Veyr não busca glória de salão — busca o ângulo onde a flecha não mente. O nome de atirador não o engrandece; apenas confessa que aprendeu a matar sem barulho desnecessário.
+
+Nas galerias, a paciência virou arma tanto quanto o arco: quem o subestima por não jurar bandeira costuma ser o último a perceber que já estava na mira.`,
 };
 
 /** Revelação na História quando o passivo de classe desbloqueia (fragmento de Morvayn). */
@@ -93,6 +110,7 @@ const CLASS_PASSIVE_LORE_PT: Record<ClassId, string> = {
   knight: `O instinto que desperta em Galen não é sorte de batalha; é memória muscular de perdas que ele se recusou a repetir. Quando o momento fecha, o corpo decide antes da dúvida — e cobra depois, em silêncio.`,
   mage: `O fio na mana deixou de ser técnica e virou pacto íntimo. Ysara aprendeu a tocar o abismo sem se entregar inteiro a ele: sorve o bastante para avançar, recua o bastante para ainda se reconhecer.`,
   cleric: `O pulso de Oris não elimina o medo; ensina convivência. A fé dele, aqui embaixo, não é clarão repentino: é repetição teimosa de cuidado, mesmo quando a alma fraqueja e nenhuma voz do alto responde.`,
+  archer: `O reflexo de Veyr não veio de treino em praça — veio do fragmento que lateja como aviso antes do golpe. O corpo aprendeu a sair do caminho uma fração antes da dor; ainda não sabe se isso é dom ou dívida.`,
 };
 
 const CHAPTER_LORE_PT: Record<ClassId, { mid: string; late: string }> = {
@@ -107,6 +125,10 @@ const CHAPTER_LORE_PT: Record<ClassId, { mid: string; late: string }> = {
   cleric: {
     mid: `Oris aprende a medir o mal em respirações curtas, febres, olhos que evitam a luz. O incenso já não mascara nada; serve apenas para dar alguns segundos de coragem antes de nomear a ferida como ela é.`,
     late: `Perto do fim, ele entende que a Vigília o enviou para medir abismos, mas foi ele quem acabou sendo medido. Entre oração e silêncio, encontra um terceiro ofício: carregar gente quebrada sem esperar autorização do céu.`,
+  },
+  archer: {
+    mid: `Cada corredor ensina a Veyr que a distância é mentira — até que a flecha prova o contrário. Ele aprende a confiar menos em bandeiras e mais no instante em que o alvo respira errado.`,
+    late: `No limiar, o caçador percebe que a masmorra também rastreia. A pergunta deixa de ser "acerto?" e vira "quanto de mim ainda escolhe largar a flecha antes de ser visto?"`,
   },
 };
 
@@ -224,6 +246,14 @@ const BEATS: Record<ClassId, LoreBeat[]> = {
     beatClassPassiveLore('cleric'),
     beatChapterMid('cleric'),
     beatChapterLate('cleric'),
+  ],
+  archer: [
+    beatBase('archer'),
+    beatPathLore('archer'),
+    beatPathBackstory('archer'),
+    beatClassPassiveLore('archer'),
+    beatChapterMid('archer'),
+    beatChapterLate('archer'),
   ],
 };
 

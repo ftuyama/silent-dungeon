@@ -101,7 +101,7 @@
   font-weight: 600;
 }
 
-/** Linha com ícone à esquerda (recursos, facções, mapa, inventário, progresso). */
+/** Linha com ícone à esquerda (recursos, facções, mapa, inventário). */
 .sidebar-line--with-icon {
   display: flex;
   align-items: flex-start;
@@ -111,6 +111,62 @@
 .sidebar-line--with-icon > .ui-icon-wrap {
   flex-shrink: 0;
   margin-top: 0.12rem;
+}
+
+.sidebar-line--main-mission {
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+}
+
+.sidebar-line--main-mission strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.sidebar-mission-card {
+  margin-bottom: 0.5rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-inset));
+}
+
+.sidebar-mission-card__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-section);
+  margin-bottom: 0.35rem;
+}
+
+.sidebar-mission-card__label .ui-icon-wrap {
+  margin-top: 0;
+}
+
+.sidebar-mission-card__text {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-strong);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sidebar-line--chapter {
+  font-size: 0.84rem;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-line--chapter strong {
+  color: var(--text-strong);
 }
 
 .ui-icon-wrap {
@@ -276,6 +332,101 @@
   background: linear-gradient(90deg, #8a6a1a 0%, #c9a227 50%, #e8d060 100%);
   box-shadow: 0 0 8px rgba(201, 162, 39, 0.4);
   transition: width 0.2s ease;
+}
+
+.stress-bar-track--critical {
+  border-color: var(--danger);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--danger) 40%, transparent);
+}
+
+.stress-bar-track--critical .stress-bar-fill {
+  background: linear-gradient(90deg, #8a4010 0%, #c95820 50%, #e87840 100%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--danger) 55%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stress-bar-track--critical {
+    animation: stress-critical-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes stress-critical-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px color-mix(in srgb, var(--danger) 30%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 10px color-mix(in srgb, var(--danger) 55%, transparent);
+  }
+}
+
+@media (min-width: 721px) {
+  .sidebar-mobile-summary {
+    display: none !important;
+  }
+
+  .sidebar-mobile-details {
+    display: block;
+    border: none;
+    background: transparent;
+  }
+
+  .sidebar-mobile-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 720px) {
+  .sidebar-mobile-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0.55rem;
+    cursor: pointer;
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--surface-inset);
+    font-size: 0.78rem;
+    color: var(--fg);
+  }
+
+  .sidebar-mobile-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sidebar-mobile-summary__label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-section);
+    flex-shrink: 0;
+  }
+
+  .sidebar-mobile-summary__stats {
+    text-align: right;
+    color: var(--text-strong);
+    font-variant-numeric: tabular-nums;
+    min-width: 0;
+  }
+
+  .sidebar-mobile-details:not([open]) .sidebar-mobile-body {
+    display: none;
+  }
+
+  .sidebar-mobile-details[open] .sidebar-mobile-body {
+    margin-top: 0.45rem;
+    max-height: min(42vh, 17rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /** Vínculo (companheiro) — ficha modal */

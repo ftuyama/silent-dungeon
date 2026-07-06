@@ -25,9 +25,16 @@ choices:
       - { op: grantTemporaryBuff, attr: mind, delta: 1, remainingScenes: 3 }
       - { op: addXp, amount: 10 }
       - { op: addDiary, text: "Cada silêncio tem coeficiente — eu só anotei o que não me come primeiro." }
+  - text: "Medir o salão como linha de tiro — respiração longa"
+    next: act4/throne/throne_gate
+    condition: { class: archer }
+    effects:
+      - { op: grantTemporaryBuff, attr: agi, delta: 1, remainingScenes: 3 }
+      - { op: addXp, amount: 10 }
+      - { op: addDiary, text: "O trono não oferece alvo limpo — mas ensina a esperar o instante em que até ossos respiram errado." }
   - text: "Voltar sem invocar ofício"
     next: act4/throne/throne_gate
 onEnter:
   - { op: setFlag, key: throne_acted_class_blessing, value: true }
 ---
-O salão **reconhece** ofícios como quem reconhece **ferramentas**: não julga — **mede** o que podes estragar com elas.
+O salão **reconhece** ofícios como quem reconhece **ferramentas**: não julga — **mede** o que pode estragar com elas.

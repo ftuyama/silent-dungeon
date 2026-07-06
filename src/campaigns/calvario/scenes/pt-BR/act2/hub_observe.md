@@ -12,6 +12,6 @@ choices:
     next: act2/hub_catacomb
 onEnter: []
 ---
-No chão: **três sulcos** paralelos, como arranhões de garras grandes. Ao lado, **pegadas humanas** voltam atrás — alguém desistiu a meio.
+No chão: **três sulcos** paralelos e **pegadas** que voltam atrás — alguém desistiu a meio.
 
-Um **sino** minúsculo foi fincado na pedra, enferrujado.
+Entre as marcas, **Morvayn** riscado com seta para baixo; um **sino** enferrujado fincado na pedra.

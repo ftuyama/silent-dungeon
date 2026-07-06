@@ -13,4 +13,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 10 }
 ---
-O número **fecha** um círculo: não és mais visitante — és **medida** dentro da sala.
+O número **fecha** um círculo: não é mais visitante — és **medida** dentro da sala.

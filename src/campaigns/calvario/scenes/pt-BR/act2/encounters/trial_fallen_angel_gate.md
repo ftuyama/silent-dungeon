@@ -35,8 +35,17 @@ choices:
         onDefeat: act2/lore/lore_crossroads
         onFlee: act2/lore/lore_crossroads
     preview: "Combate · vantagem do inimigo"
+  - text: "Enfrentar o anjo com a flecha (arqueiro)"
+    condition: { class: archer }
+    effects:
+      - op: startCombat
+        encounterId: boss_fallen_angel_trial
+        onVictory: act2/path_archer_marksman
+        onDefeat: act2/lore/lore_crossroads
+        onFlee: act2/lore/lore_crossroads
+    preview: "Combate · vantagem do inimigo"
 onEnter: []
 ---
 Do **cinza** ergue-se **silhueta** que já foi luz demais para um corpo — não pede perdão, pede **prova**.
 
-*Quem quiser nome de queda, treva ou penitência que vença o que caiu e ainda corta* — sem **atalho**: ferro, arcano ou oração, ou **volta** sem título.
+*Quem quiser nome de queda, treva, penitência ou mira certa que vença o que caiu e ainda corta* — sem **atalho**: ferro, arcano, oração ou flecha, ou **volta** sem título.

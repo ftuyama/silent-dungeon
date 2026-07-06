@@ -42,7 +42,7 @@ choices:
     uiSection: "Provas no salão"
     next: act4/throne/throne_class_blessing
     condition: { noFlag: throne_acted_class_blessing }
-    preview: "A tua classe abre um caminho ritual."
+    preview: "Sua classe abre um caminho ritual."
 ---
 O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — **sombra**, depois sorriso **sem lábios** certos.
 

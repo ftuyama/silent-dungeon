@@ -22,4 +22,4 @@ choices:
 ---
 O **braseiro** está rachado de alto a baixo, e um selo de cera endurecida prende um saco de provisões no fundo da boca de ferro.
 
-O calor não é natural. Se puxares, levas mantimentos — e alguma coisa tua fica colada na cera.
+O calor não é natural. Se puxares, levas mantimentos — e alguma coissua fica colada na cera.

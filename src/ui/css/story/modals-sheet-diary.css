@@ -148,6 +148,32 @@
   color: var(--muted);
 }
 
+.diary-modal-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.diary-modal-progress-line {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-strong);
+}
+
+.diary-modal-progress-line--chapter {
+  font-size: 0.86rem;
+}
+
+.diary-modal-progress-line--chapter strong {
+  color: var(--fg);
+}
+
+.diary-modal-progress-line--muted {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 /** Conquistas — grelha de medalhas */
 .diary-modal-badges-grid {
   display: grid;

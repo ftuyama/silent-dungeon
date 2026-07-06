@@ -21,29 +21,37 @@ choices:
         - { companionInParty: rogue_mira }
         - { companionInParty: squire_tomas }
   - text: "Mira: «Cavaleiro caído ou não — aqui o chão não distingue juramento»"
-    uiSection: "Tu e eles"
+    uiSection: "Você e eles"
     next: act6/camp/void_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: knight } ] }
-  - text: "Mira: «Trevas honestas, disseste uma vez. O vazio cobra juros»"
-    uiSection: "Tu e eles"
+  - text: "Mira: «Trevas honestas, disse uma vez. O vazio cobra juros»"
+    uiSection: "Você e eles"
     next: act6/camp/void_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: mage } ] }
   - text: "Mira: «Penitência é peso; não o largues agora ou ficas leve demais»"
-    uiSection: "Tu e eles"
+    uiSection: "Você e eles"
     next: act6/camp/void_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: cleric } ] }
-  - text: "Tomás: «O escudo lembra-me o teu ferro — ambos mentem que aguentam tudo»"
-    uiSection: "Tu e eles"
+  - text: "Mira: «Atirador sem bandeira — aqui até a sombra quer saber de quem é»"
+    uiSection: "Você e eles"
+    next: act6/camp/void_mira_fireside
+    condition: { all: [ { companionInParty: rogue_mira }, { class: archer } ] }
+  - text: "Tomás: «O escudo lembra-me seu ferro — ambos mentem que aguentam tudo»"
+    uiSection: "Você e eles"
     next: act6/camp/void_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: knight } ] }
-  - text: "Tomás: «Se o vazio ler o teu caderno, o que fica por escrever?»"
-    uiSection: "Tu e eles"
+  - text: "Tomás: «Se o vazio ler seu caderno, o que fica por escrever?»"
+    uiSection: "Você e eles"
     next: act6/camp/void_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: mage } ] }
   - text: "Tomás: «Fé em sítio sem eco — é coragem ou hábito?»"
-    uiSection: "Tu e eles"
+    uiSection: "Você e eles"
     next: act6/camp/void_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: cleric } ] }
+  - text: "Tomás: «Flecha no escuro — confias no olho ou no silêncio antes do disparo?»"
+    uiSection: "Você e eles"
+    next: act6/camp/void_tomas_fireside
+    condition: { all: [ { companionInParty: squire_tomas }, { class: archer } ] }
   - text: "Voltar à fogueira"
     uiSection: "Voltar"
     next: act6/camp/void_camp

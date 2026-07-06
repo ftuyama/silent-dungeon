@@ -8,7 +8,7 @@ choices:
   - id: explore_patrol_random
     text: "Patrulhar ao acaso (encontro aleatório)"
     uiSection: "No perímetro"
-    preview: "Sem mover no mapa — os túneis escolhem por ti."
+    preview: "Sem mover no mapa — os túneis escolhem por você."
     effects:
       - op: startWildEncounterFromGraph
         graphId: act2_catacomb

@@ -85,4 +85,4 @@ onEnter:
 ---
 Três corredores mentem sobre o que é viver; o **Vazio** abre **um de cada vez** — **sentença**, não mapa.
 
-No teto, rachaduras **constelam** rostos teus impossíveis. Entre colunas, fogueira e **banca** sem dono fingem negócio com quem já é cliente do vazio.
+No teto, rachaduras **constelam** rostseus impossíveis. Entre colunas, fogueira e **banca** sem dono fingem negócio com quem já é cliente do vazio.

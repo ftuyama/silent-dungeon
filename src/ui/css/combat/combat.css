@@ -19,7 +19,7 @@ main.main--combat {
   align-items: start;
 }
 
-@media (max-width: 719px) {
+@media (max-width: 720px) {
   .combat-layout {
     grid-template-columns: 1fr;
   }
@@ -63,6 +63,43 @@ main.main--combat {
 
 .enemy-panel--verbal {
   padding: 0.5rem 0.55rem;
+}
+
+.enemy-panel--targetable {
+  cursor: pointer;
+  outline: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.enemy-panel--targetable:hover,
+.enemy-panel--targetable:focus-visible {
+  outline-color: var(--accent);
+}
+
+.combat-target-bar {
+  margin-bottom: 0.65rem;
+}
+
+.combat-target-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.combat-target-choices {
+  margin-top: 0.5rem;
+}
+
+.combat-target-choices .combat-target-choice {
+  width: 100%;
+}
+
+.combat-target-choices .combat-target-choice--ally {
+  border-color: color-mix(in srgb, var(--log-heal) 45%, var(--choice-border, transparent));
+}
+
+.combat-target-choices .combat-target-choice--ally:hover {
+  border-color: color-mix(in srgb, var(--log-heal) 70%, var(--choice-border, transparent));
 }
 
 .enemy-panel--verbal .enemy-panel-header {
@@ -187,6 +224,19 @@ main.main--combat {
     animation: none;
     opacity: 0;
   }
+
+  .combat-fx-spell-headshot::before,
+  .combat-fx-spell-headshot::after,
+  .combat-fx-spell-headshot--crit::before,
+  .combat-fx-spell-headshot--crit::after,
+  .combat-fx-spell-headshot--aim::before,
+  .combat-fx-spell-headshot--aim::after,
+  .combat-fx-spell-headshot,
+  .combat-fx-spell-headshot--crit,
+  .combat-fx-spell-headshot--aim {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 /** Postura, magias, itens e fugir — grelha visível (mesmo padrão que --ui-grid-*) */
@@ -245,9 +295,85 @@ main.main--combat {
   margin: 0.45rem 0 0.35rem;
 }
 
+.combat-actions-panel:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--combat-actions-border));
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 2px 10px rgba(0, 0, 0, 0.2),
+    0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.combat-actions-panel .stance-bar {
+  gap: 0.3rem;
+}
+
+.combat-actions-panel .stance-bar button.stance {
+  font-size: 0.74rem;
+  padding: 0.3rem 0.48rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+button.combat-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  max-width: 100%;
+  text-align: left;
+}
+
+.combat-actions-panel .stance-bar button.combat-action-btn {
+  --ui-hotkey-size: 0.95rem;
+}
+
+.combat-action-label {
+  min-width: 0;
+}
+
+button.combat-action-btn--primary:not(:disabled) {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-raised));
+}
+
+button.combat-action-btn--primary:not(:disabled):hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface-hover-alt));
+}
+
+.combat-potion-collapsible {
+  margin-top: 0.15rem;
+}
+
+.combat-potion-collapsible-summary {
+  cursor: pointer;
+  font-size: 0.72rem;
+  color: var(--text-section);
+  margin-bottom: 0.35rem;
+  list-style: none;
+}
+
+.combat-potion-collapsible-summary::-webkit-details-marker {
+  display: none;
+}
+
+.combat-potion-collapsible-summary::before {
+  content: '▸ ';
+  color: var(--muted);
+}
+
+.combat-potion-collapsible[open] > .combat-potion-collapsible-summary::before {
+  content: '▾ ';
+}
+
+.combat-potion-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.35rem;
+}
+
 .combat-flee-bar {
   margin: 0.5rem 0 0.75rem;
-  padding: 0.5rem 0.55rem;
+  padding: 0.4rem 0.5rem;
   border: 1px dashed color-mix(in srgb, var(--combat-flee-border) 75%, transparent);
   border-radius: 4px;
   background: color-mix(in srgb, var(--combat-flee-bg) 55%, transparent);
@@ -266,14 +392,15 @@ main.main--combat {
 
 button.combat-flee-btn {
   font: inherit;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   text-align: left;
   cursor: pointer;
-  padding: 0.35rem 0.5rem;
+  padding: 0.28rem 0.45rem;
   background: var(--combat-flee-bg);
   color: var(--combat-flee-fg);
   border: 1px solid var(--combat-flee-border);
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   margin-top: 0;
   box-sizing: border-box;
@@ -293,7 +420,7 @@ button.combat-flee-btn:hover {
   z-index: 2;
 }
 
-@media (max-width: 719px) {
+@media (max-width: 720px) {
   .combat-log-column {
     position: relative;
     top: auto;
@@ -322,15 +449,25 @@ button.combat-flee-btn:hover {
     inset 0 1px 0 rgba(120, 160, 130, 0.08);
 }
 
-@media (max-width: 719px) {
+@media (max-width: 720px) {
   .combat-log-outer {
-    max-height: min(56vh, 28rem);
-    min-height: 14rem;
+    max-height: min(28vh, 14rem);
+    min-height: 10rem;
   }
 
   .combat-log-outer--verbal {
     max-height: min(74vh, 44rem);
     min-height: 22rem;
+  }
+
+  .combat-actions-panel {
+    position: sticky;
+    bottom: 0.35rem;
+    z-index: 3;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.35),
+      0 2px 10px rgba(0, 0, 0, 0.2),
+      0 -4px 16px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -354,23 +491,23 @@ button.combat-flee-btn:hover {
 
 .enemy-hp-text {
   font-size: 0.78rem;
-  color: #f0c4c4;
+  color: var(--enemy-hp-label);
   font-variant-numeric: tabular-nums;
 }
 
 .enemy-hp-track {
   height: 7px;
   margin: 0 0 0.4rem;
-  background: linear-gradient(180deg, #351010 0%, #220b0b 100%);
-  border: 1px solid #5a2a2a;
+  background: var(--enemy-hp-track-bg);
+  border: 1px solid var(--enemy-hp-track-border);
   border-radius: 2px;
   overflow: hidden;
 }
 
 .enemy-hp-fill {
   height: 100%;
-  background: linear-gradient(90deg, #6a1616 0%, #b32020 55%, #de4a4a 100%);
-  box-shadow: 0 0 8px rgba(210, 70, 70, 0.35);
+  background: var(--enemy-hp-fill);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--danger) 35%, transparent);
   transition: width 0.2s ease;
 }
 
@@ -505,7 +642,10 @@ button.combat-flee-btn:hover {
     .combat-fx-spell-silver,
     .combat-fx-spell-silver--crit,
     .combat-fx-spell-arcane,
-    .combat-fx-spell-arcane--crit
+    .combat-fx-spell-arcane--crit,
+    .combat-fx-spell-headshot,
+    .combat-fx-spell-headshot--crit,
+    .combat-fx-spell-headshot--aim
   ) {
   overflow: visible;
 }
@@ -940,6 +1080,171 @@ button.combat-flee-btn:hover {
   animation:
     combatFxSpellSilver 0.44s ease-out forwards,
     combatFxCritExtra 0.48s ease-out forwards;
+}
+
+/** Tiro na Cabeça: retículo em X vermelho sobre o alvo */
+.combat-fx-spell-headshot,
+.combat-fx-spell-headshot--crit {
+  --combat-headshot-delay: 0s;
+  animation: combatFxHeadshotReticle 1.1s ease-out var(--combat-headshot-delay) forwards;
+}
+
+.combat-fx-spell-headshot::before,
+.combat-fx-spell-headshot--crit::before,
+.combat-fx-spell-headshot::after,
+.combat-fx-spell-headshot--crit::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  width: 78%;
+  height: 5px;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 70, 70, 0.35) 10%,
+    #ff3b3b 50%,
+    rgba(255, 70, 70, 0.35) 90%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 8px rgba(255, 45, 45, 0.95),
+    0 0 18px rgba(255, 30, 30, 0.65),
+    0 0 2px rgba(255, 220, 220, 0.9);
+}
+
+.combat-fx-spell-headshot::before,
+.combat-fx-spell-headshot--crit::before {
+  transform: translate(-50%, -50%) rotate(45deg) scaleX(0);
+  transform-origin: center;
+  animation: combatFxHeadshotXArm1 1.1s cubic-bezier(0.2, 0.85, 0.35, 1) var(--combat-headshot-delay) forwards;
+}
+
+.combat-fx-spell-headshot::after,
+.combat-fx-spell-headshot--crit::after {
+  transform: translate(-50%, -50%) rotate(-45deg) scaleX(0);
+  transform-origin: center;
+  animation: combatFxHeadshotXArm2 1.1s cubic-bezier(0.2, 0.85, 0.35, 1) var(--combat-headshot-delay) forwards;
+}
+
+/** Mira ativa: X vermelho pulsante enquanto o jogador escolhe o alvo */
+.combat-fx-spell-headshot--aim::before,
+.combat-fx-spell-headshot--aim::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  width: 72%;
+  height: 4px;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 80, 80, 0.45) 12%,
+    #ff5050 50%,
+    rgba(255, 80, 80, 0.45) 88%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px rgba(255, 50, 50, 0.85),
+    0 0 20px rgba(255, 35, 35, 0.45);
+  opacity: 0.92;
+}
+
+.combat-fx-spell-headshot--aim::before {
+  transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
+  animation: combatFxHeadshotAimPulse 1.15s ease-in-out infinite;
+}
+
+.combat-fx-spell-headshot--aim::after {
+  transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
+  animation: combatFxHeadshotAimPulse 1.15s ease-in-out infinite;
+  animation-delay: 0.12s;
+}
+
+.combat-fx-spell-headshot--aim {
+  animation: combatFxHeadshotAimGlow 1.15s ease-in-out infinite;
+}
+
+@keyframes combatFxHeadshotAimPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    filter: brightness(0.92);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes combatFxHeadshotAimGlow {
+  0%,
+  100% {
+    background: radial-gradient(circle at 50% 34%, rgba(255, 55, 55, 0.12) 0%, transparent 46%);
+  }
+  50% {
+    background: radial-gradient(circle at 50% 34%, rgba(255, 55, 55, 0.28) 0%, transparent 48%);
+  }
+}
+
+@keyframes combatFxHeadshotXArm1 {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(45deg) scaleX(0);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scaleX(1.12);
+  }
+  22% {
+    transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
+  }
+  58% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(45deg) scaleX(0.88);
+  }
+}
+
+@keyframes combatFxHeadshotXArm2 {
+  0%,
+  8% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-45deg) scaleX(0);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-45deg) scaleX(1.12);
+  }
+  28% {
+    transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
+  }
+  58% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-45deg) scaleX(0.88);
+  }
+}
+
+@keyframes combatFxHeadshotReticle {
+  0%,
+  100% {
+    background: transparent;
+  }
+  18%,
+  55% {
+    background: radial-gradient(circle at 50% 34%, rgba(255, 40, 40, 0.32) 0%, transparent 48%);
+  }
 }
 
 @keyframes combatFxMiss {
@@ -1605,15 +1910,20 @@ button.combat-flee-btn:hover {
 }
 
 .combat-log-phase--enemy .combat-log-phase-label {
-  color: #c4a080;
+  color: var(--log-enemy-phase);
 }
 
 .combat-log-phase--enemy .combat-log-phase-label::before {
-  background: #b06050;
+  background: var(--log-enemy-phase-dot);
 }
 
 .combat-log-phase-body {
   padding: 0.2rem 0.5rem 0.55rem;
+}
+
+.combat-log-preamble-body .combat-log-entry,
+.combat-log-phase-body .combat-log-entry {
+  list-style: none;
 }
 
 .combat-log-phase-body .combat-log-entry:last-child {
@@ -1639,11 +1949,59 @@ button.combat-flee-btn:hover {
 }
 
 .combat-log-entry {
-  margin: 0 0 0.42rem;
-  padding: 0.32rem 0.45rem;
-  background: var(--panel-overlay-35);
-  border: 1px solid var(--combat-log-entry-border);
-  border-radius: 2px;
+  position: relative;
+  margin: 0 0 0.3rem;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.combat-log-entry::before {
+  content: '•';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.05rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: color-mix(in srgb, var(--muted) 70%, var(--combat-log-msg));
+  font-weight: 700;
+}
+
+.combat-log-entry.combat-log-initiative {
+  padding-left: 0;
+}
+
+.combat-log-entry.combat-log-initiative::before {
+  display: none;
+}
+
+.combat-log-initiative-list {
+  list-style: none;
+  margin: 0.12rem 0 0;
+  padding: 0 0 0 0.35rem;
+}
+
+.combat-log-initiative-item {
+  position: relative;
+  margin: 0 0 0.18rem;
+  padding: 0 0 0 0.9rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--combat-log-msg);
+}
+
+.combat-log-initiative-item::before {
+  content: '•';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.05rem;
+  color: color-mix(in srgb, var(--muted) 70%, var(--combat-log-msg));
+  font-weight: 700;
+}
+
+.combat-log-initiative-item:last-child {
+  margin-bottom: 0;
 }
 
 .combat-log-entry:last-child {
@@ -1676,35 +2034,32 @@ button.combat-flee-btn:hover {
 }
 
 /** Ataque físico: jogador/companion acerta → verde; erra → sem tinta. Inimigo acerta → vermelho; erra → sem tinta. */
-.combat-log-entry.combat-attack-by-party.combat-outcome-hit {
-  border-color: #52a868;
-  background: rgba(48, 110, 68, 0.22);
+.combat-log-entry.combat-attack-by-party.combat-outcome-hit::before {
+  color: var(--log-hit-enemy);
 }
 
 .combat-log-entry.combat-attack-by-party.combat-outcome-hit .combat-log-msg {
-  color: #c8f2d4;
+  color: var(--log-hit-enemy-msg);
 }
 
 .combat-log-entry.combat-attack-by-party.combat-outcome-hit .combat-log-meta {
-  color: #a8dcb8;
+  color: var(--log-hit-enemy-soft);
 }
 
-.combat-log-entry.combat-attack-by-enemy.combat-outcome-hit {
-  border-color: #c85858;
-  background: rgba(140, 48, 52, 0.2);
+.combat-log-entry.combat-attack-by-enemy.combat-outcome-hit::before {
+  color: var(--log-hit-party);
 }
 
 .combat-log-entry.combat-attack-by-enemy.combat-outcome-hit .combat-log-msg {
-  color: #ffc8c8;
+  color: var(--log-hit-party-bright);
 }
 
 .combat-log-entry.combat-attack-by-enemy.combat-outcome-hit .combat-log-meta {
-  color: #f0a8a8;
+  color: var(--log-hit-party-soft);
 }
 
 .combat-log-entry.combat-attack-by-party.combat-outcome-miss,
 .combat-log-entry.combat-attack-by-enemy.combat-outcome-miss {
-  border-color: var(--combat-log-entry-border);
   background: transparent;
 }
 
@@ -1715,66 +2070,63 @@ button.combat-flee-btn:hover {
 
 .combat-log-entry.combat-attack-by-party.combat-outcome-miss .combat-log-meta,
 .combat-log-entry.combat-attack-by-enemy.combat-outcome-miss .combat-log-meta {
-  color: #aab8a8;
+  color: var(--log-miss);
 }
 
 /** Dano a inimigo (fonte jogador/companheiro/magia aliada): verde; crítico → amarelo abaixo. */
-.combat-log-entry.combat-log-damage.combat-damage-to-enemy:not(.combat-damage-crit) {
-  border-color: #52a868;
-  background: rgba(48, 110, 68, 0.18);
+.combat-log-entry.combat-log-damage.combat-damage-to-enemy:not(.combat-damage-crit)::before {
+  color: var(--log-hit-enemy);
 }
 
 .combat-log-entry.combat-log-damage.combat-damage-to-enemy:not(.combat-damage-crit) .combat-log-msg {
-  color: #b8ecc8;
+  color: var(--log-hit-enemy-bright);
 }
 
 /** Dano no grupo (inimigo acerta): vermelho; crítico → amarelo abaixo. */
-.combat-log-entry.combat-log-damage.combat-damage-to-hero:not(.combat-damage-crit) {
-  border-color: #c85858;
-  background: rgba(140, 48, 52, 0.2);
+.combat-log-entry.combat-log-damage.combat-damage-to-hero:not(.combat-damage-crit)::before {
+  color: var(--log-hit-party);
 }
 
 .combat-log-entry.combat-log-damage.combat-damage-to-hero:not(.combat-damage-crit) .combat-log-msg {
-  color: #ffc8c8;
+  color: var(--log-hit-party-bright);
 }
 
 .combat-log-entry.combat-log-damage.combat-damage-to-hero:not(.combat-damage-crit) .combat-log-meta--attack-roll {
-  color: #f0b0b0;
+  color: var(--log-hit-party-soft);
 }
 
 /** Crítico (dano físico): amarelo — sobrepõe verde/vermelho de acerto. */
-.combat-log-entry.combat-log-damage.combat-damage-crit {
-  border-color: #c4a028;
-  background: rgba(95, 78, 22, 0.34);
+.combat-log-entry.combat-log-damage.combat-damage-crit::before {
+  color: var(--log-crit-bullet);
 }
 
 .combat-log-entry.combat-log-damage.combat-damage-crit .combat-log-msg {
-  color: #e6c200;
+  color: var(--log-crit-msg);
   font-weight: 600;
 }
 
 .combat-log-entry.combat-log-damage.combat-damage-crit .combat-log-meta--attack-roll {
-  color: #e0c860;
+  color: var(--log-crit-meta);
   font-weight: 600;
 }
 
 .combat-log-entry.combat-log-damage:not(.combat-damage-to-hero):not(.combat-damage-to-enemy) .combat-log-msg {
-  color: #d09090;
+  color: var(--log-fallback-damage);
 }
 
 .combat-log-entry.combat-log-magic .combat-log-msg {
-  color: #8fc4a8;
+  color: var(--log-magic-msg);
 }
 
 .combat-log-entry.combat-log-stance .combat-log-msg,
 .combat-log-entry.combat-log-info .combat-log-msg {
-  color: #9a9a8a;
+  color: var(--log-neutral);
 }
 
 /** Twist de boss — destaque narrativo no log */
 .combat-log-entry.combat-log-boss_twist {
   margin: 0.35rem 0;
-  padding: 0.45rem 0.55rem;
+  padding: 0.45rem 0.55rem 0.45rem 0.55rem;
   border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--combat-log-entry-border));
   border-left: 4px solid color-mix(in srgb, var(--danger) 55%, var(--border));
   border-radius: 3px;
@@ -1782,6 +2134,10 @@ button.combat-flee-btn:hover {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--danger) 12%, transparent),
     inset 0 1px 0 color-mix(in srgb, #fff 6%, transparent);
+}
+
+.combat-log-entry.combat-log-boss_twist::before {
+  display: none;
 }
 
 .combat-log-entry.combat-log-boss_twist .combat-log-msg {
@@ -1793,21 +2149,25 @@ button.combat-flee-btn:hover {
 }
 
 .combat-log-entry.combat-log-stress .combat-log-msg {
-  color: #b898a8;
+  color: var(--log-stress);
 }
 
 .combat-log-entry.combat-log-armor_break .combat-log-msg {
-  color: #c4b080;
+  color: var(--log-armor-break);
 }
 
 /** Marcador de rodada / fase */
 .combat-log-entry.combat-log-turn_banner {
   margin: 0.55rem 0 0.42rem;
   padding: 0.4rem 0.5rem;
-  border: 1px dashed #4a5f4a;
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--border));
   border-left: 4px solid var(--accent);
   border-radius: 2px;
-  background: rgba(25, 40, 28, 0.45);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-inset));
+}
+
+.combat-log-entry.combat-log-turn_banner::before {
+  display: none;
 }
 
 .combat-log-entry.combat-log-turn_banner:first-child {
@@ -1819,7 +2179,7 @@ button.combat-flee-btn:hover {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #c8e2c8;
+  color: var(--log-turn-banner);
 }
 
 .combat-log-meta {
@@ -1828,7 +2188,8 @@ button.combat-flee-btn:hover {
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.3;
-  color: #aab8a8;
+  color: var(--log-meta);
+  font-variant-numeric: tabular-nums;
 }
 
 /** Rolagem de ataque: comparação (resultado vs CA) + bônus — mais legível que mod/total soltos */
@@ -1837,16 +2198,16 @@ button.combat-flee-btn:hover {
 }
 
 .combat-log-entry.combat-attack-by-party.combat-outcome-hit .combat-log-meta--attack-roll {
-  color: #b8f0cc;
+  color: var(--log-attack-roll-party);
 }
 
 .combat-log-entry.combat-attack-by-enemy.combat-outcome-hit .combat-log-meta--attack-roll {
-  color: #ffb8b8;
+  color: var(--log-attack-roll-enemy);
 }
 
 .combat-log-entry.combat-attack-by-party.combat-outcome-miss .combat-log-meta--attack-roll,
 .combat-log-entry.combat-attack-by-enemy.combat-outcome-miss .combat-log-meta--attack-roll {
-  color: #aab8a8;
+  color: var(--log-miss);
 }
 
 .combat-log-msg--sub {
@@ -1885,6 +2246,8 @@ button.stance {
   background: #151715;
   color: var(--fg);
   border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
 }
 
 button.stance:hover {
@@ -1967,13 +2330,13 @@ button.combat-spell {
   align-items: center;
   gap: 0.35rem;
   cursor: pointer;
-  background: #1a1e28;
-  color: #c8d0e8;
-  border: 1px solid #4a5a78;
+  background: color-mix(in srgb, var(--magic) 10%, var(--surface-raised));
+  color: var(--text-strong);
+  border: 1px solid color-mix(in srgb, var(--magic) 35%, var(--border));
 }
 
 button.combat-spell:hover:not(:disabled) {
-  border-color: #6a8ac8;
+  border-color: color-mix(in srgb, var(--magic) 65%, var(--accent));
 }
 
 button.combat-spell:disabled {
@@ -2004,15 +2367,15 @@ button.combat-potion {
   font: inherit;
   font-size: 0.78rem;
   padding: 0.35rem 0.5rem;
-  margin: 0.2rem 0.35rem 0 0;
+  margin: 0;
   cursor: pointer;
-  background: #161f22;
-  color: #b8e0c8;
-  border: 1px solid #4a6a58;
+  background: color-mix(in srgb, var(--combat-flee-border) 12%, var(--surface-raised));
+  color: var(--combat-flee-fg);
+  border: 1px solid color-mix(in srgb, var(--combat-flee-border) 55%, var(--border));
 }
 
 button.combat-potion:hover:not(:disabled) {
-  border-color: #5ac890;
+  border-color: var(--combat-flee-hover);
 }
 
 button.combat-potion:disabled {
@@ -2021,7 +2384,7 @@ button.combat-potion:disabled {
 }
 
 .combat-log-entry.combat-log-heal .combat-log-msg {
-  color: #7ec8a0;
+  color: var(--log-heal);
 }
 
 /* Overlay de twist de boss (acima de modais da app, z-index 60) */

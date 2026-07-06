@@ -12,6 +12,6 @@ choices:
 onEnter:
   - { op: addDiary, text: "O Vazio não abre menu — abre fila. Três gargantas, uma de cada vez, como se o tempo aqui fosse cordão e não relógio." }
 ---
-As colunas **ordenam-se** sem se mexerem: percebes que não vais escolher *tudo ao mesmo tempo* — vais **atravessar** uma de cada vez, e cada uma deixa **cicatriz** antes de deixar passar a seguinte.
+As colunas **ordenam-se** sem se mexerem: percebe que não vai escolher *tudo ao mesmo tempo* — vai **atravessar** uma de cada vez, e cada uma deixa **cicatriz** antes de deixar passar a seguinte.
 
-Um coro sem rosto ensaia o teu nome em três tons. O primeiro já **pede** entrada.
+Um coro sem rosto ensaia seu nome em três tons. O primeiro já **pede** entrada.

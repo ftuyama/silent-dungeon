@@ -14,7 +14,6 @@ onEnter:
   - { op: registerEnding, endingId: epilogue_mirror }
   - { op: addResource, resource: faith, delta: 1 }
 ---
-Levas a nave fraturada nos olhos — **caco** de espelho que mentiu no primeiro degrau, agora **corte** na palma. Para quem olha depressa, o mundo acima é o mesmo.
+Levas a nave fraturada nos olhos — **caco** de espelho que mentiu no primeiro degrau, agora **corte** na palma.
 
-Para ti, ruas viram hipóteses; o **pulso verde** não mudou de tom — mudaste tu a forma de o **contar**. Um passo, não por pureza: por **escolha**.
-
+Para você, ruas viram hipóteses; o **pulso verde** não mudou — mudaste a forma de o **contar**. Um passo por **escolha**.

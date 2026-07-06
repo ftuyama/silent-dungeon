@@ -17,12 +17,17 @@ export const passives: Record<ClassId, ClassPassiveDef> = {
   cleric: {
     id: 'cleric_sacred_pulse',
     name: 'Pulso Devoto',
-    description: 'No início do teu turno, regeneras 1% do HP máximo (arredondado para cima).',
+    description: 'No início do seu turno, regenera 1% do HP máximo (arredondado para cima).',
   },
   mage: {
     id: 'mage_ley_trickle',
     name: 'Fio Arcano',
-    description: 'No início do teu turno, regeneras 1% da mana máxima (arredondado para cima).',
+    description: 'No início do seu turno, regenera 1% da mana máxima (arredondado para cima).',
+  },
+  archer: {
+    id: 'archer_keen_reflex',
+    name: 'Reflexo de Caçador',
+    description: '10% de chance de esquivar ataques inimigos.',
   },
 };
 

@@ -116,6 +116,6 @@ choices:
     next: act6/hub_fractured_nave
 onEnter: []
 ---
-Sobre um pano que **não reflete** nada, frascos alinham-se como **dentes** em boca fechada. Quem vende não mostra **mãos** — só **preços** que sobem quando hesitas, porque aqui o **último** comprador já pagou com o que não tinha.
+Sobre um pano que **não reflete** nada, frascos alinham-se como **dentes** em boca fechada. Quem vende não mostra **mãos** — só **preços** que sobem quando hesitas.
 
 > Estoque **limitado**. O vazio **cobre** juros em ouro — e em **lembranças** que preferias ter deixado para trás.

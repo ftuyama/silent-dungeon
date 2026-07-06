@@ -44,7 +44,7 @@ export const PROGRESSION = {
       },
       mage: {
         effects: [
-          { kind: 'hp', delta: 3, when: 'every' },
+          { kind: 'hp', delta: 2, when: 'every' },
           { kind: 'stat', attr: 'mind', delta: 1, when: 'every' },
           { kind: 'stat', attr: 'agi', delta: 1, when: 'even' },
           { kind: 'mana', delta: 2, when: 'every' },
@@ -56,6 +56,14 @@ export const PROGRESSION = {
           { kind: 'stat', attr: 'mind', delta: 1, when: 'every' },
           { kind: 'stat', attr: 'agi', delta: 1, when: 'even' },
           { kind: 'mana', delta: 2, when: 'every' },
+        ] as const satisfies readonly LevelUpEffect[],
+      },
+      archer: {
+        effects: [
+          { kind: 'hp', delta: 2, when: 'every' },
+          { kind: 'stat', attr: 'agi', delta: 1, when: 'every' },
+          { kind: 'stat', attr: 'str', delta: 1, when: 'even' },
+          { kind: 'mana', delta: 2, when: 'even' },
         ] as const satisfies readonly LevelUpEffect[],
       },
     } satisfies Record<ClassId, { effects: readonly LevelUpEffect[] }>,

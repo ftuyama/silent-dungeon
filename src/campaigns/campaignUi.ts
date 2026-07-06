@@ -23,4 +23,6 @@ export type CampaignUIAdapter = {
   ) => { unlocked: number; total: number };
   /** Grafo de exploração por id (ex.: act2_catacomb); omitido se a campanha não usar. */
   getExplorationGraph?: ExplorationGraphProvider;
+  /** Objetivo narrativo principal exibido no bloco Progresso da sidebar. */
+  getMainMission?: (state: GameState) => string;
 };

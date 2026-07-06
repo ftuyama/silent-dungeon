@@ -31,6 +31,6 @@ choices:
     condition: { companionInParty: rogue_mira }
 onEnter: []
 ---
-A escada **afunda** e o **pulso verde** bate com o teu coração — cada lance rouba **ruído** até restar só pedra húmida. **Não há fogo** que valha abrigo aqui.
+A escada **afunda** e o **pulso verde** bate com seu coração — cada lance rouba **ruído** até restar só pedra úmida. **Não há fogo** que valha abrigo aqui.
 
 Com o **Mapa Rasgado**, abre-se um atalho que o mapa comum não mostra.

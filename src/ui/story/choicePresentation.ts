@@ -1,12 +1,13 @@
 import type { Choice, Effect } from '../../engine/schema/index.ts';
 
 /** Um carácter dentro de `[]` no início do texto: classe, risco, camp, exploração, descanso, combate. */
-const CHOICE_LEAD_BADGE_RE = /^\[([#*+!@>~%])\]\s*/;
+const CHOICE_LEAD_BADGE_RE = /^\[([#*+\-!@>~%])\]\s*/;
 
 export type ChoiceBadgeModifier =
   | 'hash'
   | 'star'
   | 'plus'
+  | 'dash'
   | 'bang'
   | 'at'
   | 'gt'
@@ -17,6 +18,7 @@ const BADGE_CHAR_TO_MODIFIER: Record<string, ChoiceBadgeModifier> = {
   '#': 'hash',
   '*': 'star',
   '+': 'plus',
+  '-': 'dash',
   '!': 'bang',
   '@': 'at',
   '>': 'gt',
@@ -145,7 +147,7 @@ export function resolveChoicePresentation(
   return { bodyText, badge: outBadge, toneClass };
 }
 
-/** Preenche o rótulo principal do botão: `N -`, badge opcional, corpo do texto. */
+/** Preenche o rótulo principal do botão: badge de atalho, glifo opcional, corpo do texto. */
 export function applyChoiceButtonLabel(
   btn: HTMLButtonElement,
   navNum: number,
@@ -157,7 +159,12 @@ export function applyChoiceButtonLabel(
     btn.classList.add(toneClass);
   }
 
-  btn.appendChild(document.createTextNode(`${navNum} - `));
+  const hotkey = document.createElement('span');
+  hotkey.className = 'ui-hotkey-badge';
+  hotkey.textContent = String(navNum);
+  hotkey.setAttribute('aria-hidden', 'true');
+  btn.appendChild(hotkey);
+
   if (badge) {
     const span = document.createElement('span');
     span.className = `choice-badge choice-badge--${badge.modifier}`;

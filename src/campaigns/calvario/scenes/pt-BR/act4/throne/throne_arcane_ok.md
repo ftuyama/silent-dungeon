@@ -12,4 +12,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 12 }
 ---
-Por um instante, o símbolo **encaixa**: não é poder — é **gramática**. O trono deixa de ser só medo e torna-se **frase** que podes recusar em voz alta.
+Por um instante, o símbolo **encaixa**: não é poder — é **gramática**. O trono deixa de ser só medo e torna-se **frase** que pode recusar em voz alta.

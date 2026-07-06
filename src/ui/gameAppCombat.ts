@@ -5,13 +5,18 @@ import {
   executeSpellTurn,
   fleeCombat,
   fleeDifficultyTn,
+  getEffectiveSpellManaCost,
   getSacrificeValues,
+  playerAttack,
+  playerSpellOnAlly,
+  playerSpellOnEnemy,
   SACRIFICE_MIN_CORRUPTION,
   useCombatConsumable,
 } from '../engine/combat/index.ts';
 import type {
   Character,
   CombatLogEntry,
+  CombatState,
   GameState,
   ItemDef,
   SpellDef,
@@ -59,6 +64,35 @@ type PendingEnemyFloatingDamage = {
 };
 
 let pendingEnemyFloatingDamage: PendingEnemyFloatingDamage[] = [];
+
+const HEADSHOT_IMPACT_FX_CLASS = 'combat-fx-spell-headshot--crit';
+const HEADSHOT_AIM_FX_CLASS = 'combat-fx-spell-headshot--aim';
+
+type PendingEnemyHeadshotFx = {
+  encId: string;
+  enemyIndex: number;
+  startMs: number;
+};
+
+let pendingEnemyHeadshotFx: PendingEnemyHeadshotFx[] = [];
+
+export function headshotFxDurationMs(): number {
+  if (typeof document === 'undefined') return 1100;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1100;
+}
+
+function applyHeadshotImpactFx(fxLayer: HTMLElement, elapsedMs = 0): void {
+  fxLayer.classList.add(HEADSHOT_IMPACT_FX_CLASS);
+  const reduced =
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  if (!reduced && elapsedMs > 0) {
+    fxLayer.style.setProperty('--combat-headshot-delay', `${-(elapsedMs / 1000)}s`);
+  }
+}
+
+function applyHeadshotAimFx(fxLayer: HTMLElement): void {
+  fxLayer.classList.add(HEADSHOT_AIM_FX_CLASS);
+}
 
 export function rollFloatingDmgAnchor(reducedMotion: boolean): { leftPct: number; topPct: number } {
   const leftPct = Math.round((28 + Math.random() * 44) * 10) / 10;
@@ -135,12 +169,23 @@ export function createCombatQuickNavDecorator(): (
   return (btn, setLabel) => {
     const key = combatQuickKeyAt(index);
     index += 1;
+    btn.classList.add('combat-action-btn');
     if (key != null) {
       btn.dataset.quickNavCombat = key;
     } else {
       delete btn.dataset.quickNavCombat;
     }
-    setLabel(key);
+    btn.querySelector('.ui-hotkey-badge')?.remove();
+    setLabel(null);
+    if (key != null) {
+      const hotkey = document.createElement('span');
+      hotkey.className = 'ui-hotkey-badge';
+      const display =
+        key.length === 1 && key >= 'a' && key <= 'z' ? key.toUpperCase() : key;
+      hotkey.textContent = display;
+      hotkey.setAttribute('aria-hidden', 'true');
+      btn.insertBefore(hotkey, btn.firstChild);
+    }
     const shortcut = combatShortcutTitle(btn);
     if (shortcut) {
       btn.title = shortcut;
@@ -194,6 +239,29 @@ const STANCE_COMBAT_HINT: Record<Stance, string> = {
   },
 };
 
+function combatTargetMode(
+  c: CombatState,
+  spells: GameData['spells']
+): 'physical' | 'enemy_spell' | 'ally_spell' | null {
+  if (c.phase !== 'choose_target') return null;
+  if (!c.pendingSpellId) return 'physical';
+  const sp = spells[c.pendingSpellId];
+  if (!sp) return 'physical';
+  if (sp.spellKind === 'heal_self') return 'ally_spell';
+  if (sp.spellKind === 'damage') return 'enemy_spell';
+  return 'physical';
+}
+
+function chooseTargetHintText(c: CombatState, spells: GameData['spells']): string {
+  if (!c.pendingSpellId) return t('combat.chooseTargetHint');
+  const sp = spells[c.pendingSpellId];
+  if (!sp) return t('combat.chooseTargetHint');
+  if (sp.spellKind === 'targeted_crit_attack') return t('combat.chooseTargetHeadshot');
+  if (sp.spellKind === 'damage') return t('combat.chooseTargetSpell', { spell: sp.name });
+  if (sp.spellKind === 'heal_self') return t('combat.chooseTargetHeal', { spell: sp.name });
+  return t('combat.chooseTargetHint');
+}
+
 function spellCombatHoverText(sp: SpellDef): string {
   if (sp.spellKind === 'damage') {
     return t('combat.spellHoverDamage', { dice: String(sp.dice), base: String(sp.base) });
@@ -203,6 +271,12 @@ function spellCombatHoverText(sp: SpellDef): string {
   }
   if (sp.spellKind === 'buff_attack_roll') {
     return t('combat.spellHoverBuffAttack');
+  }
+  if (sp.spellKind === 'targeted_crit_attack') {
+    return t('combat.spellHoverHeadshot');
+  }
+  if (sp.spellKind === 'damage_all_enemies') {
+    return t('combat.spellHoverArrowRain');
   }
   return t('combat.spellHoverBuffArmor');
 }
@@ -322,6 +396,52 @@ function playCombatFxImpactSounds(
 
 function escapeRegExp(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function parseLegacyInitiativeLabels(message: string): string[] | null {
+  const prefixes = [t('combatLog.initiativeOrder'), 'Ordem de iniciativa:', 'Initiative order:'];
+  let rest: string | null = null;
+  for (const prefix of prefixes) {
+    if (message.startsWith(prefix)) {
+      rest = message.slice(prefix.length).trim();
+      break;
+    }
+  }
+  if (!rest || !rest.includes('→')) return null;
+  const labels = rest
+    .split('→')
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+  return labels.length ? labels : null;
+}
+
+function appendInitiativeOrderEntry(
+  parent: HTMLElement,
+  entry: CombatLogEntry,
+  combatantNames: readonly string[]
+): boolean {
+  const labels = entry.initiativeLabels ?? parseLegacyInitiativeLabels(entry.message);
+  if (!labels?.length) return false;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'combat-log-entry combat-log-info combat-log-initiative';
+
+  const msg = document.createElement('div');
+  msg.className = 'combat-log-msg';
+  msg.textContent = t('combatLog.initiativeOrder');
+  wrap.appendChild(msg);
+
+  const list = document.createElement('ul');
+  list.className = 'combat-log-initiative-list';
+  for (const name of labels) {
+    const item = document.createElement('li');
+    item.className = 'combat-log-initiative-item';
+    appendCombatLogMessageWithBoldNames(item, name, combatantNames);
+    list.appendChild(item);
+  }
+  wrap.appendChild(list);
+  parent.appendChild(wrap);
+  return true;
 }
 
 export function appendCombatLogMessageWithBoldNames(
@@ -530,6 +650,9 @@ function appendCombatLogDisplayItems(
     if (entry.kind === 'enemy_line') {
       continue;
     }
+    if (entry.kind === 'info' && appendInitiativeOrderEntry(parent, entry, combatantNames)) {
+      continue;
+    }
     const wrap = document.createElement('div');
     wrap.className = `combat-log-entry combat-log-${entry.kind}`;
     if (entry.kind === 'attack' && entry.outcome) {
@@ -711,13 +834,29 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
 
   const floatNow = Date.now();
   const floatDurMs = floatingEnemyDamageDurationMs();
+  const headshotDurMs = headshotFxDurationMs();
   pendingEnemyFloatingDamage = pendingEnemyFloatingDamage.filter(
     (p) => p.encId === encId && floatNow - p.startMs < floatDurMs
+  );
+  pendingEnemyHeadshotFx = pendingEnemyHeadshotFx.filter(
+    (p) => p.encId === encId && floatNow - p.startMs < headshotDurMs
   );
   const reducedMotionFloat =
     typeof document !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   for (const logEntry of newLogEntries) {
+    if (
+      logEntry.kind === 'attack' &&
+      logEntry.spellId === 'headshot' &&
+      logEntry.enemyIndex != null &&
+      logEntry.outcome === 'hit'
+    ) {
+      pendingEnemyHeadshotFx.push({
+        encId,
+        enemyIndex: logEntry.enemyIndex,
+        startMs: floatNow,
+      });
+    }
     if (logEntry.kind === 'damage' && logEntry.enemyIndex != null && logEntry.final != null) {
       const anchor = rollFloatingDmgAnchor(reducedMotionFloat);
       pendingEnemyFloatingDamage.push({
@@ -731,6 +870,10 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       });
     }
   }
+
+  const targetMode = combatTargetMode(c, ctx.registry.data.spells);
+  const headshotAimMode =
+    c.phase === 'choose_target' && c.pendingSpellId === 'headshot' && targetMode === 'physical';
 
   const inner = document.createElement('div');
   inner.className = 'shell combat-shell';
@@ -769,6 +912,27 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     if (!def) continue;
     const panel = document.createElement('div');
     panel.className = 'enemy-panel';
+    if (targetMode === 'physical' || targetMode === 'enemy_spell') {
+      panel.classList.add('enemy-panel--targetable');
+      panel.setAttribute('role', 'button');
+      panel.tabIndex = 0;
+      const pickTarget = () => {
+        ctx.lifecycle.unlockAudio();
+        ctx.audio.playDice();
+        const next =
+          targetMode === 'enemy_spell'
+            ? playerSpellOnEnemy(ctx.state, enemyIdx, ctx.registry.data, ctx.bus)
+            : playerAttack(ctx.state, enemyIdx, ctx.registry.data, false, ctx.bus);
+        ctx.lifecycle.commitState(ctx.lifecycle.stabilize(next));
+      };
+      panel.addEventListener('click', pickTarget);
+      panel.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          pickTarget();
+        }
+      });
+    }
     const sprite = def.sprite;
     const fx = combatFx.byEnemyIndex.get(enemyIdx);
     const stack = document.createElement('div');
@@ -784,6 +948,14 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
       for (const cls of fx.layerClasses) {
         fxLayer.classList.add(cls);
       }
+    }
+    const pendingHeadshot = pendingEnemyHeadshotFx.find(
+      (p) => p.encId === encId && p.enemyIndex === enemyIdx
+    );
+    if (pendingHeadshot) {
+      applyHeadshotImpactFx(fxLayer, floatNow - pendingHeadshot.startMs);
+    } else if (headshotAimMode) {
+      applyHeadshotAimFx(fxLayer);
     }
     stack.appendChild(pre);
     stack.appendChild(fxLayer);
@@ -832,8 +1004,16 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     pre.className = 'enemy-sprite enemy-sprite--defeated';
     pre.textContent = ghost.sprite;
     const fxLayer = document.createElement('div');
-    fxLayer.className = 'enemy-fx-layer combat-fx-death';
+    fxLayer.className = 'enemy-fx-layer';
     fxLayer.setAttribute('aria-hidden', 'true');
+    const pendingHeadshot = pendingEnemyHeadshotFx.find(
+      (p) => p.encId === encId && p.enemyIndex === ghost.enemyIndex
+    );
+    if (pendingHeadshot) {
+      applyHeadshotImpactFx(fxLayer, floatNow - pendingHeadshot.startMs);
+    } else {
+      fxLayer.classList.add('combat-fx-death');
+    }
     stack.appendChild(pre);
     stack.appendChild(fxLayer);
     panel.innerHTML = `<div class="enemy-panel-header"><strong>${escHtml(ghost.name)}</strong><span class="enemy-hp-text enemy-hp-text--defeated">${escHtml(t('combat.downed'))}</span></div>`;
@@ -878,6 +1058,90 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   }
   const decorateCombatQuickNav = createCombatQuickNavDecorator();
 
+  if (c.phase === 'choose_target' && lead) {
+    const targetBar = document.createElement('div');
+    targetBar.className = 'combat-target-bar';
+    const hint = document.createElement('p');
+    hint.className = 'combat-target-hint';
+    hint.textContent = chooseTargetHintText(c, ctx.registry.data.spells);
+    targetBar.appendChild(hint);
+
+    const choicesWrap = document.createElement('div');
+    choicesWrap.className = 'choices combat-target-choices';
+
+    if (targetMode === 'ally_spell') {
+      for (let partyIdx = 0; partyIdx < ctx.state.party.length; partyIdx++) {
+        const member = ctx.state.party[partyIdx]!;
+        if (member.hp <= 0) continue;
+
+        const pickAlly = (): void => {
+          ctx.lifecycle.unlockAudio();
+          ctx.audio.playDice();
+          ctx.lifecycle.commitState(
+            ctx.lifecycle.stabilize(
+              playerSpellOnAlly(ctx.state, partyIdx, ctx.registry.data, ctx.bus)
+            )
+          );
+        };
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className =
+          'choice choice--tone-combat combat-target-choice combat-target-choice--ally combat-action-btn';
+        const hpLine = t('combat.hpLabel', { current: member.hp, max: member.maxHp });
+        decorateCombatQuickNav(btn, () => {
+          btn.replaceChildren();
+          btn.appendChild(document.createTextNode(member.name));
+          const prev = document.createElement('span');
+          prev.className = 'preview';
+          prev.textContent = hpLine;
+          btn.appendChild(prev);
+        });
+        btn.title = joinCombatActionHint(hpLine, btn);
+        btn.addEventListener('click', pickAlly);
+        choicesWrap.appendChild(btn);
+      }
+    } else if (targetMode === 'physical' || targetMode === 'enemy_spell') {
+      for (let enemyIdx = 0; enemyIdx < c.enemies.length; enemyIdx++) {
+        const inst = c.enemies[enemyIdx]!;
+        if (inst.hp <= 0) continue;
+        const def = ctx.registry.data.enemies[inst.defId];
+        if (!def) continue;
+
+        const pickTarget = (): void => {
+          ctx.lifecycle.unlockAudio();
+          ctx.audio.playDice();
+          const next =
+            targetMode === 'enemy_spell'
+              ? playerSpellOnEnemy(ctx.state, enemyIdx, ctx.registry.data, ctx.bus)
+              : playerAttack(ctx.state, enemyIdx, ctx.registry.data, false, ctx.bus);
+          ctx.lifecycle.commitState(ctx.lifecycle.stabilize(next));
+        };
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'choice choice--tone-combat combat-target-choice combat-action-btn';
+        const hpLine = t('combat.hpLabel', { current: inst.hp, max: inst.maxHp });
+        decorateCombatQuickNav(btn, () => {
+          btn.replaceChildren();
+          btn.appendChild(document.createTextNode(def.name));
+          const prev = document.createElement('span');
+          prev.className = 'preview';
+          prev.textContent = hpLine;
+          btn.appendChild(prev);
+        });
+        btn.title = joinCombatActionHint(hpLine, btn);
+        btn.addEventListener('click', pickTarget);
+        choicesWrap.appendChild(btn);
+      }
+    }
+
+    if (choicesWrap.childElementCount > 0) {
+      targetBar.appendChild(choicesWrap);
+    }
+    actionsPanel.appendChild(targetBar);
+  }
+
   if (c.phase === 'choose_stance' && lead) {
     const attackBar = document.createElement('div');
     attackBar.className = 'combat-attack-bar';
@@ -899,8 +1163,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     for (const st of stances) {
       const btn = document.createElement('button');
       btn.className = 'stance';
-      decorateCombatQuickNav(btn, (key) => {
-        btn.textContent = key != null ? `${key} - ${labels[st]}` : labels[st];
+      decorateCombatQuickNav(btn, () => {
+        btn.textContent = labels[st];
       });
       btn.title = joinCombatActionHint(STANCE_COMBAT_HINT[st], btn);
       btn.addEventListener('click', () => {
@@ -917,9 +1181,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     if (canSacrificeChoice) {
       const sacrifice = document.createElement('button');
       sacrifice.className = 'stance special';
-      decorateCombatQuickNav(sacrifice, (key) => {
-        const base = t('combat.voidSeal');
-        sacrifice.textContent = key != null ? `${key} - ${base}` : base;
+      decorateCombatQuickNav(sacrifice, () => {
+        sacrifice.textContent = t('combat.voidSeal');
       });
       const sacVals = getSacrificeValues(ctx.state);
       const sacExplain =
@@ -946,9 +1209,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     }
     const sp = document.createElement('button');
     sp.className = 'stance special';
-    decorateCombatQuickNav(sp, (key) => {
-      const base = lead.specialUsedThisCombat ? t('combat.specialStrikeUsed') : t('combat.specialStrike');
-      sp.textContent = key != null ? `${key} - ${base}` : base;
+    decorateCombatQuickNav(sp, () => {
+      sp.textContent = lead.specialUsedThisCombat ? t('combat.specialStrikeUsed') : t('combat.specialStrike');
     });
     const specialExplain = lead.specialUsedThisCombat
       ? t('combat.specialStrikeUsedHint')
@@ -987,14 +1249,11 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         if (spellDef.classId !== 'any' && spellDef.classId !== lead.class) continue;
         if (ctx.state.level < spellDef.minLevel) continue;
         const btn = document.createElement('button');
-        btn.className = 'combat-spell';
+        btn.className = 'combat-spell combat-action-btn--primary';
         btn.type = 'button';
-        decorateCombatQuickNav(btn, (key) => {
-          const name =
-            key != null
-              ? `${key} - ${spellDef.name} (${spellDef.manaCost} MP)`
-              : `${spellDef.name} (${spellDef.manaCost} MP)`;
-          btn.innerHTML = `<span class="spell-emoji" aria-hidden="true">${spellEmoji(spellId, spellDef)}</span><span>${escHtml(name)}</span>`;
+        decorateCombatQuickNav(btn, () => {
+          const manaCost = getEffectiveSpellManaCost(ctx.state, spellId, ctx.registry.data);
+          btn.innerHTML = `<span class="spell-emoji" aria-hidden="true">${spellEmoji(spellId, spellDef)}</span><span class="combat-action-label">${escHtml(`${spellDef.name} (${manaCost} MP)`)}</span>`;
         });
         btn.title = joinCombatActionHint(spellCombatHoverText(spellDef), btn);
         const castOk = canCastSpell(ctx.state, spellId, ctx.registry.data);
@@ -1026,17 +1285,38 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         COMBAT_CONSUMABLES_SECTION_HINT(),
         t('combat.consumableHelpAria')
       );
+      const potionListHost =
+        potionIds.length > 3
+          ? (() => {
+              const details = document.createElement('details');
+              details.className = 'combat-potion-collapsible';
+              details.open = true;
+              const summary = document.createElement('summary');
+              summary.className = 'combat-potion-collapsible-summary';
+              summary.textContent = t('combat.consumablesToggle', { count: potionIds.length });
+              const list = document.createElement('div');
+              list.className = 'combat-potion-list';
+              details.appendChild(summary);
+              details.appendChild(list);
+              potionBar.appendChild(details);
+              return list;
+            })()
+          : (() => {
+              const list = document.createElement('div');
+              list.className = 'combat-potion-list';
+              potionBar.appendChild(list);
+              return list;
+            })();
       for (const itemId of potionIds) {
         const def = ctx.registry.data.items[itemId];
         if (!def) continue;
         const count = ctx.state.inventory.filter((x) => x === itemId).length;
         const btn = document.createElement('button');
-        btn.className = 'combat-potion';
+        btn.className = 'combat-potion combat-action-btn--primary';
         btn.type = 'button';
-        decorateCombatQuickNav(btn, (key) => {
+        decorateCombatQuickNav(btn, () => {
           const qty = count > 1 ? ` ${t('combat.itemQty', { count })}` : '';
-          const base = `${def.name}${qty}`;
-          btn.textContent = key != null ? `${key} - ${base}` : base;
+          btn.textContent = `${def.name}${qty}`;
         });
         btn.title = joinCombatActionHint(consumableCombatHover(def), btn);
         const ok = canUseCombatConsumable(ctx.state, itemId, ctx.registry.data);
@@ -1049,7 +1329,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
             ctx.lifecycle.stabilize(useCombatConsumable(ctx.state, itemId, ctx.registry.data, ctx.bus))
           );
         });
-        potionBar.appendChild(btn);
+        potionListHost.appendChild(btn);
       }
       actionsPanel.appendChild(potionBar);
     }
@@ -1068,9 +1348,8 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   flee.className = 'combat-flee-btn';
   const canFlee = c.phase === 'choose_stance' && lead != null && lead.hp > 0;
   flee.disabled = !canFlee;
-  decorateCombatQuickNav(flee, (key) => {
-    const base = t('combat.tryFlee');
-    flee.textContent = key != null ? `${key} - ${base}` : base;
+  decorateCombatQuickNav(flee, () => {
+    flee.textContent = t('combat.tryFlee');
   });
   const fleeTn = fleeDifficultyTn(c.fleeRate ?? 0.5);
   const fleeExplain = canFlee

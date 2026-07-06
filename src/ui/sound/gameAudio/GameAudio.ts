@@ -96,6 +96,10 @@ export class GameAudio {
     this.sfx.playClassCommitMage();
   }
 
+  playClassCommitArcher(): void {
+    this.sfx.playClassCommitArcher();
+  }
+
   playBlocked(): void {
     this.sfx.playBlocked();
   }

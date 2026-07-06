@@ -39,13 +39,13 @@ choices:
       all:
         - { class: cleric }
         - { noFlag: act3_negotiate_done }
-    preview: "Vigília +1, fé +1; ele recua, mas registra o teu rosto."
+    preview: "Vigília +1, fé +1; ele recua, mas registra seu rosto."
     effects:
       - { op: setFlag, key: act3_negotiate_done, value: true }
       - { op: addRep, faction: vigilia, delta: 1 }
       - { op: addResource, resource: faith, delta: 1 }
       - { op: addDiary, text: "Recusei sem teatro; o cultista guardou a moeda como quem guarda dívida — eu também." }
-  - text: "Recusar — a Vigília reconhece o teu silêncio"
+  - text: "Recusar — a Vigília reconhece seu silêncio"
     uiSection: "Pacto"
     next: act3/hub_depths
     condition:
@@ -90,4 +90,4 @@ onEnter: []
 ---
 **Voz baixa**: *"Trago contrato simples — descem, escrevemos o nome certo nos canos. Em troca, **silêncio** fora do túnel."*
 
-O **cultista** segura uma moeda velha — **encarregado**, não fanático. Atrás dele, dois outros **registram** a tua resposta. O **Círculo** paga para que a **Vigília** não saiba o que vais ver lá em baixo.
+O **cultista** segura uma moeda velha — **encarregado**, não fanático. Atrás dele, dois outros **registram** sua resposta.

@@ -2,7 +2,7 @@
 
 **Um jogo de texto onde cada clique pesa como uma lâmina.**
 
-[Como jogar](#como-jogar) · [Capturas](#capturas-de-ecrã) · [O que te espera](#o-que-te-espera-lá-embaixo) · [Dicas](#dicas-de-sobrevivência)
+[Como jogar](#como-jogar) · [Capturas](#capturas-de-tela) · [O que espera por você](#o-que-espera-por-você-lá-embaixo) · [Dicas](#dicas-de-sobrevivência)
 
 *Leia em inglês: [README.md](README.md)*
 
@@ -12,7 +12,7 @@
 
 ## Por baixo da cidade, a pedra não perdoa
 
-O **pulso verde** não cessa — sobe pela garganta da cidade como vómito de luar envenenado. Sob os fundamentos, a **Masmorra do Silêncio** abre a boca: pedra húmida, ferro oxidado, cheiro a cobre que não deveria ter temperatura — e um **silêncio** que aprende o teu nome antes de tu o dizeres em voz alta.
+O **pulso verde** não cessa — sobe pela garganta da cidade como vómito de luar envenenado. Sob os fundamentos, a **Masmorra do Silêncio** abre a boca: pedra úmida, ferro oxidado, cheiro a cobre que não deveria ter temperatura — e um **silêncio** que aprende seu nome antes de você o dizer em voz alta.
 
 Seja por honra, ganância ou desespero, o primeiro passo é sempre o mesmo: **descer**.
 
@@ -67,7 +67,7 @@ Corre **no navegador** — não precisas de instalar nada. Usa a página oficial
 
 ---
 
-## Capturas de ecrã
+## Capturas de tela
 
 Interface de **A Masmorra do Silêncio**: narrativa com ASCII, combate por turnos e exploração.
 
@@ -85,14 +85,14 @@ Interface de **A Masmorra do Silêncio**: narrativa com ASCII, combate por turno
 
 ---
 
-## O que te espera lá embaixo
+## O que espera por você lá embaixo
 
 | | |
 |:---|:---|
 | **Escolhas com peso** | Cada decisão abre caminhos — e fecha outros. |
 | **Atmosfera de masmorra** | Catacumbas, rituais, bocas de pedra e o que rasteja nos cantos. |
 | **Encontros** | Nem tudo que se move quer conversar. |
-| **Uma campanha em capítulos** | A história avança em atos; o fim depende de ti. |
+| **Uma campanha em capítulos** | A história avança em atos; o fim depende de você. |
 
 > *Conteúdo de fantasia sombria. Se fores sensível a temas de morte, culto ou violência implícita, joga com critério.*
 

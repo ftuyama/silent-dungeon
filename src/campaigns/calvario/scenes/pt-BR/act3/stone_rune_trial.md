@@ -13,4 +13,4 @@ skillCheck:
   label: Ajustar a respiração ao ritmo da pedra
 onEnter: []
 ---
-As marcas na parede começam a **vibrar** quando aproximas a mão. O corredor exige foco: ou domas o ritmo antigo, ou ele invade os teus nervos.
+As marcas na parede começam a **vibrar** quando aproximas a mão. O corredor exige foco: ou domas o ritmo antigo, ou ele invade seus nervos.

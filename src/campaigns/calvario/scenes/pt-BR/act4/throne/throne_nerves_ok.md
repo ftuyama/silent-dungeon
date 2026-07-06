@@ -12,4 +12,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 12 }
 ---
-O teu corpo **acredita** em ti por uma vez. Não é heroísmo — é **contrato** mínimo com o chão.
+Seu corpo **acredita** em você por uma vez. Não é heroísmo — é **contrato** mínimo com o chão.

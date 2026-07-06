@@ -14,6 +14,11 @@ choices:
     next: act2/encounters/trial_fallen_angel_gate
     condition: { class: mage }
     preview: "Provação · anjo caído; título só se venceres"
+  - text: "Aceitar o nome de Atirador (arqueiro)"
+    uiSection: "Juramento"
+    next: act2/encounters/trial_fallen_angel_gate
+    condition: { class: archer }
+    preview: "Provação · anjo caído; título só se venceres"
   - text: "Voltar-se ao Clérigo penitente"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
@@ -44,11 +49,17 @@ choices:
     next: act2/lore/lore_penitent_recall_mind
     condition: { path: penitent }
     preview: "Mente — sustentar a memória (TN 8)"
+  - text: "Recordar o atirador (eco do path)"
+    uiSection: "Memória"
+    next: act2/hub_catacomb
+    condition: { path: marksman }
+    effects:
+      - { op: addDiary, text: "O cruzeiro lembrou-me a distância que escolhi: não fuga — mira." }
   - text: "Regressar ao cruzeiro"
     uiSection: "Partir"
     next: act2/hub_catacomb
 onEnter: []
 ---
-Uma **voz** sem dono pergunta o que foste e o que aceitas ser. O ar **pesa** como manto molhado; as pedras **lembram** juramentos que outros quebraram antes de ti.
+Uma **voz** sem dono pergunta o que foi e o que aceitas ser. O ar **pesa** como manto molhado; as pedras **lembram** juramentos que outros quebraram antes de você.
 
 Não há mapa para isto — só **decisões** que o jogo regista na carne.

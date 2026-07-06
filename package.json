@@ -1,7 +1,7 @@
 {
   "name": "silent-dungeon",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.6.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +20,7 @@
     "i18n:extract-scenes": "node scripts/i18n/extract-scene-overlays.mjs",
     "i18n:extract-dialogue": "node scripts/i18n/extract-dialogue-overlays.mjs",
     "check:ascii-art": "node scripts/check-pending-ascii-art.mjs",
+    "check:pt-br": "node scripts/check-pt-br.mjs",
     "lint:highlight-frames": "node scripts/highlight-frames-lint.mjs",
     "highlight:hotspots": "node scripts/highlight-hotspots-from-image.mjs",
     "braille:preview": "node scripts/braille-art-preview.mjs",
@@ -29,6 +30,7 @@
     "report:progression": "tsx scripts/progression-report.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "release": "node scripts/release.mjs",
     "release:bump": "node scripts/bump-version.mjs",
     "release:itch": "bash scripts/release-itch.sh",
     "release:itch:push": "bash scripts/release-itch.sh --push lelouchiee silent-dungeon"

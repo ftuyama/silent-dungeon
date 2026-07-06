@@ -52,6 +52,8 @@ type SidebarBuilderParams = {
   sidebarSections: Record<string, boolean>;
   onSectionToggle: (key: string, open: boolean) => void;
   playUiClick?: () => void;
+  /** Painel colapsável no mobile; desktop ignora e mantém sempre visível. */
+  mobileDetailsOpen?: boolean;
 };
 
 type SidebarDisclosure = {
@@ -166,12 +168,71 @@ function createSheetModalShell(opts: SheetModalShellOpts): {
 }
 
 type DiaryModalOpenParams = {
+  state: GameState;
   diary: string[];
   marks: string[];
   registry: ContentRegistry;
 };
 
-function openDiaryModal({ diary: entries, marks, registry }: DiaryModalOpenParams, playUiClick?: () => void): void {
+function buildDiaryProgressSection(state: GameState, registry: ContentRegistry): HTMLElement {
+  const sec = document.createElement('section');
+  sec.className = 'diary-modal-section';
+  const h = document.createElement('h3');
+  h.className = 'diary-modal-section-title';
+  h.textContent = t('sidebar.progress');
+  const body = document.createElement('div');
+  body.className = 'diary-modal-section-body diary-modal-progress';
+
+  const chapterPoetic = registry.data.campaign.chapterTitles?.[String(state.chapter)]?.trim();
+  const chapterLine = document.createElement('p');
+  chapterLine.className = 'diary-modal-progress-line diary-modal-progress-line--chapter';
+  chapterLine.title = progressChapterHoverTitle();
+  if (chapterPoetic) {
+    chapterLine.innerHTML = `${escHtml(t('sidebar.chapter'))} <strong>${state.chapter}</strong> — <em>${escHtml(chapterPoetic)}</em>`;
+  } else {
+    chapterLine.innerHTML = `${escHtml(t('sidebar.chapter'))} <strong>${state.chapter}</strong>`;
+  }
+  body.appendChild(chapterLine);
+
+  const dayLine = document.createElement('p');
+  dayLine.className = 'diary-modal-progress-line';
+  dayLine.title = statHint('day');
+  dayLine.innerHTML = `${escHtml(statLabel('day'))} <strong>${state.day}</strong>`;
+  body.appendChild(dayLine);
+
+  if (state.legacy.echoes > 0) {
+    const echoesLine = document.createElement('p');
+    echoesLine.className = 'diary-modal-progress-line';
+    echoesLine.title = progressEchoesHoverTitle();
+    echoesLine.innerHTML = `${escHtml(t('sidebar.inheritedEchoes'))} <strong>${state.legacy.echoes}</strong>`;
+    body.appendChild(echoesLine);
+  }
+  if (state.legacy.lastRunEchoGain > 0) {
+    const gainLine = document.createElement('p');
+    gainLine.className = 'diary-modal-progress-line diary-modal-progress-line--muted';
+    gainLine.textContent = t('sidebar.lastRestartEchoes', { count: state.legacy.lastRunEchoGain });
+    body.appendChild(gainLine);
+  }
+  if (state.legacy.titles.length > 0) {
+    const titleLine = document.createElement('p');
+    titleLine.className = 'diary-modal-progress-line diary-modal-progress-line--muted';
+    titleLine.innerHTML = `${escHtml(t('sidebar.recentTitle'))} <strong>${escHtml(state.legacy.titles[state.legacy.titles.length - 1]!)}</strong>.`;
+    body.appendChild(titleLine);
+  }
+  const lastSummary = state.legacy.lastRunSummary.trim();
+  if (lastSummary.length > 0) {
+    const summaryLine = document.createElement('p');
+    summaryLine.className = 'diary-modal-progress-line diary-modal-progress-line--muted';
+    summaryLine.textContent = lastSummary;
+    body.appendChild(summaryLine);
+  }
+
+  sec.appendChild(h);
+  sec.appendChild(body);
+  return sec;
+}
+
+function openDiaryModal({ state, diary: entries, marks, registry }: DiaryModalOpenParams, playUiClick?: () => void): void {
   closeOverlayModal();
   playUiClick?.();
 
@@ -280,6 +341,7 @@ function openDiaryModal({ diary: entries, marks, registry }: DiaryModalOpenParam
   secDiary.appendChild(hDiary);
   secDiary.appendChild(diaryBody);
 
+  scroll.appendChild(buildDiaryProgressSection(state, registry));
   scroll.appendChild(secMarks);
   scroll.appendChild(secDiary);
 
@@ -305,6 +367,7 @@ function openDiaryModal({ diary: entries, marks, registry }: DiaryModalOpenParam
 
 /** Página de apoio (menu Sobre → Apoiar no Ko-fi). */
 export const KOFI_SUPPORT_URL = 'https://ko-fi.com/lelouchiee';
+export const FEEDBACK_FORM_URL = 'https://forms.gle/CSE2zg94Eq3LD94S6';
 
 export const CREATOR_NAME = 'Felipe Tuyama';
 
@@ -786,6 +849,8 @@ function openCharacterSheetModal(params: CharacterSheetOpenParams, playUiClick?:
   const { state, registry, character: c } = params;
   const cid = c.class as ClassId;
   const clsLabel = registry.ui.getHeroClassLabel(cid, c.path);
+  const companionDef = params.kind === 'companion' ? registry.data.companions[c.id] : undefined;
+  const sheetTitle = params.kind === 'hero' ? c.name : (companionDef?.name ?? c.name);
 
   const titleId =
     params.kind === 'hero' ? 'character-sheet-title-hero' : `character-sheet-title-${c.id.replace(/[^a-zA-Z0-9_-]/g, '_')}`;
@@ -803,7 +868,7 @@ function openCharacterSheetModal(params: CharacterSheetOpenParams, playUiClick?:
     layerClass: 'sheet-modal-layer character-sheet-modal-layer',
     titleId,
     kicker: params.kind === 'hero' ? t('sidebar.hero') : t('sidebar.companions'),
-    title: c.name,
+    title: sheetTitle,
     sub: subParts.join(' · '),
     backdropAriaLabel: t('sidebar.closeSheet'),
   });
@@ -1132,6 +1197,7 @@ function companionCardMarkup(c: Character, state: GameState, registry: ContentRe
   const cid = c.class as ClassId;
   const clsLabel = registry.ui.getHeroClassLabel(cid, c.path);
   const def = registry.data.companions[c.id];
+  const displayName = def?.name ?? c.name;
   const hasLore = Boolean(def?.lorePt?.trim());
   const filled = countEquippedSlots(c);
   const metaParts: string[] = [
@@ -1140,7 +1206,7 @@ function companionCardMarkup(c: Character, state: GameState, registry: ContentRe
   ];
   const countLabel = metaParts.join(' · ');
   return `<div class="companion-sidebar-card">
-      <div class="companion-sidebar-name">${escHtml(c.name)}</div>
+      <div class="companion-sidebar-name">${escHtml(displayName)}</div>
       <div class="companion-sidebar-class">${escHtml(clsLabel)}</div>
       <div class="sidebar-line">${hintedStat('hp')} <strong>${c.hp}</strong> / <strong>${c.maxHp}</strong></div>
       ${hpBarMarkup(c.hp, c.maxHp, 'hp-bar-resource', 'hp')}
@@ -1216,6 +1282,7 @@ export function buildGameSidebar({
   sidebarSections,
   onSectionToggle,
   playUiClick,
+  mobileDetailsOpen = true,
 }: SidebarBuilderParams): HTMLElement {
   const hud = document.createElement('div');
   hud.className = 'sidebar-inner';
@@ -1224,10 +1291,14 @@ export function buildGameSidebar({
   const p = state.party[0];
   const rep = state.reputation;
   const disclosure = buildSidebarDisclosure(state);
-  const chapterPoetic = registry.data.campaign.chapterTitles?.[String(state.chapter)]?.trim();
-  const chapterProgressLine = chapterPoetic
-    ? `${t('sidebar.chapter')} <strong>${state.chapter}</strong> — <em>${escHtml(chapterPoetic)}</em>`
-    : `${t('sidebar.chapter')} <strong>${state.chapter}</strong>`;
+  const mainMissionText = registry.ui.getMainMission?.(state)?.trim() ?? '';
+  const mainMissionBlock =
+    mainMissionText.length > 0
+      ? `<div class="sidebar-mission-card" title="${escHtml(mainMissionText)}">
+          <div class="sidebar-mission-card__label">${iconWrap(icons.scroll)}<span>${escHtml(t('sidebar.mainMission'))}</span></div>
+          <p class="sidebar-mission-card__text">${escHtml(mainMissionText)}</p>
+        </div>`
+      : '';
 
   const openRec = sidebarSections['recursos'] ? ' open' : '';
   const openInv = disclosure.unlockInventory && sidebarSections['inventario'] ? ' open' : '';
@@ -1259,7 +1330,7 @@ export function buildGameSidebar({
       t('sidebar.equippedItems', { filled: filledEquip }),
     ];
     const heroCountLabel = heroMetaParts.join(' · ');
-    return `<div class="sidebar-line">${t('sidebar.name')} <strong>${escHtml(p.name)}</strong></div>
+    return `<div class="sidebar-line"><strong>${escHtml(p.name)}</strong></div>
         <div class="sidebar-line sidebar-class-line">${escHtml(registry.ui.getHeroClassLabel(cid, p.path))}</div>
         ${xpLine}
         <div class="sidebar-line">${hintedStat('hp')} <strong>${p.hp}/${p.maxHp}</strong></div>
@@ -1276,35 +1347,19 @@ export function buildGameSidebar({
         </div>`;
   })();
 
+  const mobileSummaryStats = p
+    ? `${escHtml(t('sidebar.hp'))} <strong>${p.hp}/${p.maxHp}</strong> · ${escHtml(t('sidebar.stress'))} <strong>${p.stress}/4</strong> · ${escHtml(t('sidebar.gold'))} <strong>${gold}</strong>`
+    : escHtml(t('sidebar.pickClassInStory'));
+
   hud.innerHTML = `
-      <h2 class="sidebar-title">${escHtml(t('sidebar.hero'))}</h2>
-      <div class="sidebar-static">
-        <div class="sidebar-static-title sidebar-static-title--with-icon">${iconWrap(icons.progress)}<span>${escHtml(t('sidebar.progress'))}</span></div>
-        <div class="sidebar-static-body">
-          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(progressChapterHoverTitle())}">${iconWrap(icons.progress)}<span>${chapterProgressLine}</span></div>
-          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(statHint('day'))}">${iconWrap(icons.memories)}<span>${hintedStat('day')} <strong>${state.day}</strong></span></div>
-          ${
-            state.legacy.echoes > 0
-              ? `<div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(progressEchoesHoverTitle())}">${iconWrap(icons.memories)}<span>${escHtml(t('sidebar.inheritedEchoes'))} <strong>${state.legacy.echoes}</strong></span></div>`
-              : ''
-          }
-          ${
-            state.legacy.lastRunEchoGain > 0
-              ? `<div class="sidebar-line sidebar-resource-hint">${escHtml(t('sidebar.lastRestartEchoes', { count: state.legacy.lastRunEchoGain }))}</div>`
-              : ''
-          }
-          ${
-            state.legacy.titles.length > 0
-              ? `<div class="sidebar-line sidebar-resource-hint">${escHtml(t('sidebar.recentTitle'))} <strong>${escHtml(state.legacy.titles[state.legacy.titles.length - 1]!)}</strong>.</div>`
-              : ''
-          }
-          ${
-            state.legacy.lastRunSummary.trim().length > 0
-              ? `<div class="sidebar-line sidebar-resource-hint">${escHtml(state.legacy.lastRunSummary)}</div>`
-              : ''
-          }
-        </div>
-      </div>
+      <h2 class="sidebar-title">${escHtml(t('sidebar.title'))}</h2>
+      ${mainMissionBlock}
+      <details class="sidebar-mobile-details"${mobileDetailsOpen ? ' open' : ''}>
+        <summary class="sidebar-mobile-summary">
+          <span class="sidebar-mobile-summary__label">${escHtml(t('sidebar.groupStatus'))}</span>
+          <span class="sidebar-mobile-summary__stats">${mobileSummaryStats}</span>
+        </summary>
+        <div class="sidebar-mobile-body">
       <div class="sidebar-static">
         <div class="sidebar-static-title sidebar-static-title--with-icon">${iconWrap(icons.person)}<span>${escHtml(t('sidebar.character'))}</span></div>
         <div class="sidebar-static-body sidebar-stats">
@@ -1374,9 +1429,11 @@ export function buildGameSidebar({
           ? `<div class="sidebar-line sidebar-muted sidebar-disclosure-hint">${escHtml(t('sidebar.inventoryLocked'))}</div>`
           : ''
       }
+        </div>
+      </details>
     `;
 
-  if (state.diary.length || state.marks.length) {
+  {
     const diaryCard = document.createElement('div');
     diaryCard.className = 'sidebar-collapse diary-sidebar-card';
     const metaParts: string[] = [];
@@ -1391,10 +1448,10 @@ export function buildGameSidebar({
     btn.type = 'button';
     btn.className = 'sidebar-collapse-trigger diary-sidebar-open-btn';
     btn.setAttribute('aria-haspopup', 'dialog');
-    btn.innerHTML = `${collapseTriggerStart(icons.diary, t('sidebar.diary'))}<span class="diary-sidebar-open-meta">${escHtml(countLabel)}<span class="diary-sidebar-open-hint" aria-hidden="true">›</span></span>`;
+    btn.innerHTML = `${collapseTriggerStart(icons.diary, t('sidebar.diary'))}${countLabel ? `<span class="diary-sidebar-open-meta">${escHtml(countLabel)}<span class="diary-sidebar-open-hint" aria-hidden="true">›</span></span>` : '<span class="diary-sidebar-open-hint diary-sidebar-open-hint--solo" aria-hidden="true">›</span>'}`;
     btn.title = t('sidebar.openDiary');
     btn.addEventListener('click', () =>
-      openDiaryModal({ diary: state.diary, marks: state.marks, registry }, playUiClick)
+      openDiaryModal({ state, diary: state.diary, marks: state.marks, registry }, playUiClick)
     );
     diaryCard.appendChild(btn);
     hud.appendChild(diaryCard);

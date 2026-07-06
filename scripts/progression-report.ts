@@ -416,7 +416,7 @@ function parseArgs(argv: string[]): { json: boolean; act: string | null; refClas
 Opções:
   --json           Saída JSON
   --act N          Filtra por ato (1..7)
-  --class ID       knight | mage | cleric (default knight)
+  --class ID       knight | mage | cleric | archer (default knight)
 `);
       process.exit(0);
     }
@@ -425,7 +425,7 @@ Opções:
       act = `act${argv[++i]!.replace(/^act/, '')}`;
     } else if (a === '--class' && argv[i + 1]) {
       const c = argv[++i] as ClassId;
-      if (c === 'knight' || c === 'mage' || c === 'cleric') refClass = c;
+      if (c === 'knight' || c === 'mage' || c === 'cleric' || c === 'archer') refClass = c;
     }
   }
   return { json, act, refClass };

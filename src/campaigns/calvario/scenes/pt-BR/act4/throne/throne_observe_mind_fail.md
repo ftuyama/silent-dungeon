@@ -14,4 +14,4 @@ choices:
     next: act4/throne/throne_gate
 onEnter: []
 ---
-A letra **escapa** e deixa um **zumbido** onde devia haver sentido. O trono gosta de **buracos** — tu acabaste de pagar um.
+A letra **escapa** e deixa um **zumbido** onde devia haver sentido. O trono gosta de **buracos** — você acabaste de pagar um.

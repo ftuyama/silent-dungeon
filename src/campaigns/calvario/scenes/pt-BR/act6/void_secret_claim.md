@@ -12,7 +12,7 @@ onEnter:
   - { op: addMark, mark: act6_void_pact_mark }
   - { op: addDiary, text: "Aprendi um credo novo: sangrar para ferir melhor." }
 ---
-O espelho toca teu peito por dentro. Fica uma linha escura sobre o esterno, quente como metal recem-forjado.
+O espelho toca seu peito por dentro. Fica uma linha escura sobre o esterno, quente como metal recem-forjado.
 
 Quando fechas a mao, a marca responde.
 

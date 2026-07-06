@@ -103,7 +103,7 @@ choices:
     next: act2/hub_catacomb
     condition: { rep: { faction: vigilia, gte: 2 } }
     showWhenLocked: true
-    lockedHint: "A Vigília só te dá esse gancho quando a reputação contigo é forte (≥2)."
+    lockedHint: "A Vigília só te dá esse gancho quando a reputação com você é forte (≥2)."
     effects:
       - { op: addDiary, text: "O mercador hesitou quando falei da Vigília — interesse compra silêncio." }
     preview: "Diário · rumor de respeito"
@@ -128,6 +128,6 @@ choices:
     preview: "+1 corrupção, diário (uma vez)"
 onEnter: []
 ---
-Um capuz **sem rosto** estende um **mapa** com margens roídas. Os dedos por baixo do tecido são **demasiado longos** para serem só humanos.
+Um capuz **sem rosto** estende um **mapa** com margens roídas. Os dedos por baixo do tecido são **demais longos** para serem só humanos.
 
-*"Rumores mudam **pesos**"*, diz a voz — como se o ar saísse da própria pedra. Se alguém te **reconhece** nas facções, o preço deixa de ser só ouro.
+*"Rumores mudam **pesos**"* — se alguém te **reconhece** nas facções, o preço deixa de ser só ouro.

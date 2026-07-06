@@ -5,10 +5,10 @@ import { factionRepTier } from '../progression/reputation.ts';
 /** Resumo humano do desfecho do trono (Act 4) para epílogo e abertura do gelo. */
 function throneOutcomeLine(state: GameState): string {
   if (state.marks.includes('calvario_sealed')) {
-    return 'Selaste o buraco em **fé** — o subsolo cala porque carregaste o **peso** tu mesma.';
+    return 'Selaste o buraco em **fé** — o subsolo cala porque carregaste o **peso** você mesma.';
   }
   if (state.marks.includes('pact_bound')) {
-    return 'O **Terceiro Sino** inscreveu-se na tua pele; a **corrupção** que sobe é o juro.';
+    return 'O **Terceiro Sino** inscreveu-se nsua pele; a **corrupção** que sobe é o juro.';
   }
   if (state.marks.includes('morvayn_slain')) {
     return '**Ferro** no trono: Morvayn findou, mas o **eixo** segue para baixo.';
@@ -52,7 +52,7 @@ export function injectText(text: string, state: GameState): string {
   const companionLine =
     companions.length === 0
       ? ''
-      : `${companions.map((c) => c.name).join(' e ')} ${companions.length > 1 ? 'trocam' : 'troca'} um olhar seco contigo.`;
+      : `${companions.map((c) => c.name).join(' e ')} ${companions.length > 1 ? 'trocam' : 'troca'} um olhar seco com você.`;
   const lv = state.level;
   const xpNext = lv >= MAX_LEVEL ? 0 : xpToNextLevel(lv);
   return text

@@ -3,9 +3,10 @@ import {
   beginEncounter,
   fleeCombat,
   fleeDifficultyTn,
+  finishCombat,
   getCharacterArmorClass,
+  refreshCombatLogInitiativeLabels,
 } from '../../src/engine/combat/index.ts';
-import { finishCombat } from '../../src/engine/combat/resolution.ts';
 import { createInitialState, createPlayerCharacter } from '../../src/engine/core/index.ts';
 import type { EnemyDef, Encounter, ItemDef } from '../../src/engine/schema/index.ts';
 import { createTestData, testCampaign } from '../helpers/engineTestData.ts';
@@ -168,5 +169,34 @@ describe('fleeCombat', () => {
       combat: { ...state.combat!, phase: 'enemy' as const },
     };
     expect(fleeCombat(mid, data)).toBe(mid);
+  });
+});
+
+describe('refreshCombatLogInitiativeLabels', () => {
+  it('updates initiative label names when game data names change', () => {
+    const data = combatTestData();
+    data.enemies = { dummy: { ...dummyEnemy, name: 'Boneco' } };
+    const enc: Encounter = { combatType: 'battle', id: 'x', enemies: ['dummy'] };
+    let state = createInitialState(testCampaign, 12345);
+    state.party = [createPlayerCharacter('Herói', 'knight')];
+    state = beginEncounter(state, enc, data, { returnScene: 'hub' });
+    const entry = state.combat!.log.find((e) => e.initiativeLabels);
+    expect(entry?.initiativeLabels).toContain('Boneco');
+
+    const localized = {
+      ...data,
+      enemies: { dummy: { ...dummyEnemy, name: 'Dummy' } },
+    };
+    const refreshed = refreshCombatLogInitiativeLabels(state, localized);
+    const refreshedEntry = refreshed.combat!.log.find((e) => e.initiativeLabels);
+    expect(refreshedEntry?.initiativeLabels).toContain('Dummy');
+    expect(refreshedEntry?.initiativeLabels).not.toContain('Boneco');
+  });
+
+  it('no-ops outside combat', () => {
+    const data = combatTestData();
+    let state = createInitialState(testCampaign, 1);
+    state.party = [createPlayerCharacter('H', 'knight')];
+    expect(refreshCombatLogInitiativeLabels(state, data)).toBe(state);
   });
 });

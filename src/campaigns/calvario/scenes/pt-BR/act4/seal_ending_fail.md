@@ -14,4 +14,4 @@ onEnter:
 ---
 A paz **falha** por um instante que basta. As pedras tremem, o selo abre uma fenda, e levas no peito a cicatriz do que não conseguiste conter.
 
-**Morvayn** sorri como quem já sabia: agora a luta começa com o mundo contra ti.
+**Morvayn** sorri como quem já sabia: agora a luta começa com o mundo contra você.

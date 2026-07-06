@@ -20,4 +20,4 @@ onEnter: []
 ---
 Pedra fria sob a palma. A umidade **não é água** — é algo que escorreu de cima há séculos e nunca secou de todo.
 
-Cada degrau consome um pouco de **luz**; atrás de ti, o **telhado** **escurece** até a tocha parecer memória de outra vida.
+Cada degrau consome um pouco de **luz**; atrás de você, o **telhado** **escurece** até a tocha parecer memória de outra vida.

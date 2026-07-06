@@ -12,6 +12,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -4, onceFlag: ff_cf_act5_frost_duo_interrupt_tomas }
 onEnter: []
 ---
-**Mira** e **Tomás** medem palavras no fogo — ela quer **nome** ao sair; ele endireita o escudo. Tu não és árbitro — **testemunha**.
+**Mira** e **Tomás** medem palavras no fogo — ela quer **nome** ao sair; ele endireita o escudo. Você não é árbitro — **testemunha**.
 
 {{companionLine}}

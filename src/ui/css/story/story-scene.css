@@ -155,6 +155,10 @@ h1 {
 }
 
 button.choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.42rem;
   text-align: left;
   font: inherit;
   cursor: pointer;
@@ -179,9 +183,13 @@ button.choice:focus-visible,
 
 button.choice .preview {
   display: block;
+  flex: 1 1 100%;
+  width: 100%;
+  padding-left: calc(var(--ui-hotkey-size) + 0.42rem);
+  box-sizing: border-box;
   font-size: 0.78rem;
   color: var(--magic);
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 
 button.choice.choice--locked {
@@ -198,6 +206,10 @@ button.choice.choice--locked:hover {
 
 button.choice.choice--locked .choice-locked-hint {
   display: block;
+  flex: 1 1 100%;
+  width: 100%;
+  padding-left: calc(var(--ui-hotkey-size) + 0.42rem);
+  box-sizing: border-box;
   font-size: 0.78rem;
   color: color-mix(in srgb, var(--fg) 58%, transparent);
   margin-top: 0.25rem;
@@ -220,6 +232,10 @@ button.choice .choice-badge--star {
 
 button.choice .choice-badge--plus {
   color: var(--sidebar-spell);
+}
+
+button.choice .choice-badge--dash {
+  color: color-mix(in srgb, var(--stat-build-bonus) 55%, var(--accent));
 }
 
 button.choice .choice-badge--bang {
@@ -587,9 +603,9 @@ button.camp-equip-candidate {
   font-size: 0.34rem;
   line-height: 1;
   white-space: pre;
-  color: #b8c4b0;
-  background: #0a0c0a;
-  border: 1px dashed #333630;
+  color: var(--scene-art-color);
+  background: var(--bg);
+  border: 1px dashed color-mix(in srgb, var(--border) 75%, transparent);
   overflow-x: auto;
   flex: 0 0 auto;
 }

@@ -50,7 +50,7 @@ export const enemies: Record<string, EnemyDef> = {
       'Sem pulmão, sem piedade.',
       'O osso lembra o golpe — eu só repito.',
       'Carne é passageira. Geometria é eterna.',
-      'Tu tremes; eu só estalo.',
+      'Você tremes; eu só estalo.',
     ],
   },
   cultist: {
@@ -74,7 +74,7 @@ export const enemies: Record<string, EnemyDef> = {
     combatLines: [
       'O sussurro já te escolheu.',
       'Sangue por oferta — não por acidente.',
-      'Abre a pele; deixa entrar o que reza por ti.',
+      'Abre a pele; deixa entrar o que reza por você.',
       'Não é loucura. É liturgia com dentes.',
     ],
   },
@@ -125,7 +125,7 @@ export const enemies: Record<string, EnemyDef> = {
     ],
     combatLines: [
       'Pedra não cansa. Pedra só permanece.',
-      'O salão lembra de ti — eu só executo a lembrança.',
+      'O salão lembra de você — eu só executo a lembrança.',
       'Um golpe por século, se for preciso.',
       'Não discuto intrusos. Eu nivelo-os ao limiar.',
     ],
@@ -180,7 +180,7 @@ export const enemies: Record<string, EnemyDef> = {
     combatLines: [
       'Carne é rude. Osso é elegante.',
       'Eu não mato — eu reciclo.',
-      'Tua coragem é barulho; meu trabalho é silêncio ordenado.',
+      'Sua coragem é barulho; meu trabalho é silêncio ordenado.',
       'Cada cadáver é um rascunho melhor que o anterior.',
       'O trono não pede desculpas ao que vira estrado.',
     ],
@@ -235,7 +235,7 @@ export const enemies: Record<string, EnemyDef> = {
     combatLines: [
       'A misericórdia morreu antes do véu.',
       'Eu era luz — agora sou lembrete.',
-      'Tu pediste sentido; eu trago veredicto.',
+      'Você pediste sentido; eu trago veredicto.',
       'Asas cortadas ainda fazem som ao cair.',
     ],
   },
@@ -260,7 +260,7 @@ export const enemies: Record<string, EnemyDef> = {
     combatLines: [
       'Rastreado. Registado. Rematado.',
       'A Vigília não negocia com fuga.',
-      'Teu rasto cheira a culpa — facilita.',
+      'Seu rasto cheira a culpa — facilita.',
       'Ordem acima de piedade. Sempre.',
     ],
   },
@@ -284,7 +284,7 @@ export const enemies: Record<string, EnemyDef> = {
     ],
     combatLines: [
       'O eco lembra-te antes de mim.',
-      'Três batidas — ainda não contaste a tua.',
+      'Três batidas — ainda não contou a sua.',
       'Não vim de tribunal; vim de rasto.',
       'A armadura não pergunta — repete.',
     ],
@@ -309,7 +309,7 @@ export const enemies: Record<string, EnemyDef> = {
     ],
     combatLines: [
       'Já te vi uma vez no silêncio — agora vês-me inteiro.',
-      'Cada vitória tua afia a minha.',
+      'Cada vitórisua afia a minha.',
       'Não é honra. É hábito que volta.',
       'O ferro não esquece quem o desvia.',
     ],
@@ -361,7 +361,7 @@ export const enemies: Record<string, EnemyDef> = {
       'O abismo não apaga o rasto — só afina.',
       'Se me vences outra vez, o ferro cala-se.',
       'Última dobra: ou juramento ou ruína.',
-      'Não sou sombra tua — sou o que sobrou de ti no aço.',
+      'Não sou sombrsua — sou o que sobrou de você no aço.',
     ],
   },
   frost_whelp: {
@@ -410,7 +410,7 @@ export const enemies: Record<string, EnemyDef> = {
     ],
     combatLines: [
       'Saque não pede licença ao congelado.',
-      'O teu calor é mapa — eu sigo.',
+      'Seu calor é mapa — eu sigo.',
       'Geada no machado, geada na consciência.',
       'Ruína com método ainda é arte.',
     ],
@@ -438,7 +438,7 @@ export const enemies: Record<string, EnemyDef> = {
     combatLines: [
       'O vento não julga — só corta.',
       'Vetrnax: nome que o gelo aprende a soletrar em sangue.',
-      'Tu és quente demais para este céu.',
+      'Você é quente demais para este céu.',
       'Asas de neve, vontade de lâmina.',
       'Não sou tempestade. Sou o que resta depois dela.',
     ],
@@ -488,10 +488,10 @@ export const enemies: Record<string, EnemyDef> = {
     critConfirm: 0.35,
     combatLines: [
       'Eu era número antes de ter nome.',
-      'O teu sangue ainda acredita em milagre — eu não.',
-      'Ouve: o silêncio também reza, só que por ti.',
+      'Seu sangue ainda acredita em milagre — eu não.',
+      'Ouve: o silêncio também reza, só que por você.',
       'Deus não morreu; fragmentou-se em vozes que te obedecem mal.',
-      'Cada hino teu ecoa aqui — distorcido, mas obediente.',
+      'Cada hinseu ecoa aqui — distorcido, mas obediente.',
       'O panteão não caiu: escolheu o chão.',
     ],
     lootDrops: [
@@ -515,7 +515,7 @@ export const enemies: Record<string, EnemyDef> = {
     sprite: E.act6_veil_herald.sprite,
     attackStrategy: 'focus_leader',
     combatLines: [
-      'Tu chamas isto de mundo porque ainda não viste as costuras.',
+      'Você chamas isto de mundo porque ainda não viste as costuras.',
       'Toda certeza é uma cela com paredes invisíveis.',
       'A verdade não consola. Ela exige.',
       'Eu não anuncio o fim — só torno o fim legível.',
@@ -546,7 +546,7 @@ export const enemies: Record<string, EnemyDef> = {
       'A memória mente para proteger quem a consulta.',
       'Qual de nós é o original?',
       'Repetição não é eco — é revisão.',
-      'Cada voz aqui já foi tua; só mudou o tom.',
+      'Cada voz aqui já foi sua; só mudou o tom.',
     ],
     lootDrops: [
       { chance: 0.8, resource: 'gold', amount: 3 },
@@ -570,9 +570,9 @@ export const enemies: Record<string, EnemyDef> = {
     attackStrategy: 'focus_leader',
     combatLines: [
       'Vontade sem limite é só fome com armadura.',
-      'Tu tremes porque ainda tens algo a perder.',
+      'Você tremes porque ainda tem algo a perder.',
       'Não é poder. É abstinência de misericórdia.',
-      'Penitência boa sangra em silêncio — a tua ainda grita.',
+      'Penitência boa sangra em silêncio — sua ainda grita.',
       'O rosto sumiu; a culpa não coube na viseira.',
     ],
     lootDrops: [
@@ -596,9 +596,9 @@ export const enemies: Record<string, EnemyDef> = {
     sprite: E.act6_shadow_self.sprite,
     attackStrategy: 'focus_leader',
     combatLines: [
-      'Eu sou tu sem a tua culpa.',
-      'Tu pedes sentido; eu imponho direção.',
-      'Se eu vencer, tu sobrevives. Só não escolhes mais.',
+      'Eu sou você sem sua culpa.',
+      'Você pedes sentido; eu imponho direção.',
+      'Se eu vencer, você sobrevives. Só não escolhes mais.',
       'Espelho partido ainda corta se apertares a mão.',
       'Soberania é aceitar o reflexo que não pede perdão.',
     ],
@@ -623,11 +623,11 @@ export const enemies: Record<string, EnemyDef> = {
     sprite: E.act6_shade_fragment.sprite,
     attackStrategy: 'random',
     combatLines: [
-      'Eu sou uma decisão tua que continuou viva.',
+      'Eu sou uma decisão sua que continuou viva.',
       'Toda renúncia deixa filhos no escuro.',
       'Não me mates. Assume-me.',
       'Fragmento é nome honesto: incompleto e cortante.',
-      'Tu fugiste ao custo; eu sou o recibo.',
+      'Você fugiu ao custo; eu sou o recibo.',
     ],
     lootDrops: [
       { chance: 0.8, resource: 'gold', amount: 3 },
@@ -651,9 +651,9 @@ export const enemies: Record<string, EnemyDef> = {
     sprite: E.act6_wild_splinter.sprite,
     attackStrategy: 'random',
     combatLines: [
-      'Sou o que sobrou quando fingiste que não escolheste.',
+      'Sou o que sobrou quando fingiste que não escolheu.',
       'Pequena demais para te nomear — grande demais para te ignorar.',
-      'Cada passo teu aqui deixou lascas. Eu sou uma delas.',
+      'Cada passseu aqui deixou lascas. Eu sou uma delas.',
       'Errante: não por geografia — por recusa em encaixar.',
       'A Nave range; eu sou a tradução do rangido.',
     ],
@@ -680,10 +680,10 @@ export const enemies: Record<string, EnemyDef> = {
     attackStrategy: 'focus_leader',
     combatLines: [
       'Não arauto — arquivo. Registo do que te falta coragem para rasgar.',
-      'Cada linha que traço é uma promessa tua mal escrita.',
+      'Cada linha que traço é uma promesssua mal escrita.',
       'O véu não esconde; arquiva.',
       'Tinta e sangue — a mesma assinatura, só muda o juiz.',
-      'Se leres em voz alta, o texto exige testemunhas.',
+      'Se ler em voz alta, o texto exige testemunhas.',
     ],
     lootDrops: [
       { chance: 0.8, resource: 'gold', amount: 3 },
@@ -707,9 +707,9 @@ export const enemies: Record<string, EnemyDef> = {
     sprite: E.act6_wild_murmur_host.sprite,
     attackStrategy: 'random',
     combatLines: [
-      'Trago bocas que não são minhas — todas lembram o teu nome errado.',
+      'Trago bocas que não são minhas — todas lembram seu nome errado.',
       'Murmúrio é memória com vergonha de ser alta.',
-      'Abre-me e ouves um coro; fecha-me e ouves ti.',
+      'Abre-me e ouve um coro; fecha-me e ouve você.',
       'Hospedeiro: palavra bonita para caixa de ecos.',
       'Não sou possessão — sou multidão com endereço único.',
     ],
@@ -738,7 +738,7 @@ export const enemies: Record<string, EnemyDef> = {
       'Os elos não prendem o corpo — prendem a desculpa.',
       'Penitência sem testemunhas ainda pesa.',
       'Cada batida é um “e se” temperado em ferro.',
-      'A corrente canta — tu é que chamas de tortura.',
+      'A corrente canta — você é que chamas de tortura.',
       'Arrasto o peso que juraste carregar sozinho.',
     ],
     lootDrops: [
@@ -765,7 +765,7 @@ export const enemies: Record<string, EnemyDef> = {
     combatLines: [
       'Reino sobre cacos — ainda é reino.',
       'O espelho partiu; o trono ficou.',
-      'Não sou o teu duplo. Sou o que sobrou quando o duplo caiu.',
+      'Não sou seu duplo. Sou o que sobrou quando o duplo caiu.',
       'Vidro quebrado ainda reflete — só não perdoa o suave.',
       'Coroa de estilhaços: cada face corta quem ajoelha errado.',
     ],

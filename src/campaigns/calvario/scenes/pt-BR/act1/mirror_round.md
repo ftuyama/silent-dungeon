@@ -11,4 +11,4 @@ onEnter: []
 ---
 Um **espelho de mão** na corrente enferrujada: ridículo aqui, mas o vidro **treme** e *{{playerName}}* encara *{{playerName}}* sem a água negra a mentir.
 
-É **só tu** — com **promessas** por cumprir; nada aqui absolve o próximo passo.
+É **só você** — com **promessas** por cumprir; nada aqui absolve o próximo passo.

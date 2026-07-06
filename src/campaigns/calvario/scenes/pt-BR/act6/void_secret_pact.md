@@ -16,7 +16,7 @@ choices:
 onEnter:
   - { op: addResource, resource: corruption, delta: 1 }
 ---
-Um espelho opaco sobe do chao e escreve teu nome com a tua propria sombra. A oferta e simples: converter dor em forca, turno apos turno.
+Um espelho opaco sobe do chao e escreve seu nome com sua propria sombra. A oferta e simples: converter dor em forca, turno apos turno.
 
 Nao ha testemunha, so custo.
 

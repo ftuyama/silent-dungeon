@@ -26,6 +26,7 @@ import {
   syncCompanionPartyWithFriendship,
   tickActiveBuffs,
 } from '../engine/progression/index.ts';
+import { refreshCombatLogInitiativeLabels } from '../engine/combat/index.ts';
 import type { Choice, Effect, GameState } from '../engine/schema/index.ts';
 import { isDialogueEncounter } from '../engine/schema/index.ts';
 import { GameAudio, type AmbientTheme } from './sound/index.ts';
@@ -52,7 +53,7 @@ import {
 import { formatCampaignHeaderTitle } from './campaignHeaderTitle.ts';
 import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
-import { mountAppChrome, syncAppChrome, type AppChromeRefs } from './gameAppShell.ts';
+import { mountAppChrome, syncAppChrome, fullscreenEdgeBtnGlyph, syncLanguageEdgeButton, syncVolumeEdgeButton, type AppChromeRefs } from './gameAppShell.ts';
 import { openChronicleModal, openCreditsModal } from './gameAppSidebar.ts';
 import { dayAdvanceSubtitle, handleGameEvent } from './gameAppEvents.ts';
 import {
@@ -72,7 +73,7 @@ import {
   type GameAppStorageKeys,
 } from './gameAppPreferences.ts';
 import './css/styles.css';
-import { getLocale, onLocaleChange, t } from '../i18n/index.ts';
+import { getLocale, onLocaleChange, setLocale, SUPPORTED_LOCALES, t } from '../i18n/index.ts';
 import gameVersionRaw from '../../VERSION?raw';
 
 const GAME_VERSION = gameVersionRaw.trim() || '?';
@@ -110,11 +111,11 @@ export class GameApp {
   private onboardingPrimerVisible = false;
   /** Meta da sessão aparece apenas até a primeira mudança de cena. */
   private sessionObjectiveVisible = true;
-  /** Barra superior oculta — trilho compacto à esquerda do `#app`. */
-  private topBarCollapsed = false;
   private readonly choiceHotkeyHandler: (e: KeyboardEvent) => void;
   /** Secções colapsáveis (recursos, inventário, facções, personagem…) — persistido em sessionStorage */
   private sidebarSections: Record<string, boolean> = {};
+  /** Volume restaurado ao desmutar (último valor > 0). */
+  private volumeBeforeMute = 1;
   /** Buffs/debuffs/marcas — fila com fade sequencial no `GameApp` */
   private statusHighlightQueue: StoryStatusHighlightRow[] = [];
   /** Itens recém-adquiridos (grantItem) — mostra banner até o jogador fechar */
@@ -166,6 +167,8 @@ export class GameApp {
     this.storageKeys = buildGameAppStorageKeys(campaignId);
     this.registry = new ContentRegistry(campaignId);
     this.audio = new GameAudio(campaignId);
+    const initialVolume = this.audio.getVolume();
+    if (initialVolume > 0) this.volumeBeforeMute = initialVolume;
     this.fontStep = loadFontStep(this.storageKeys.fontKey);
     this.timedChoiceMode = loadTimedChoiceMode(this.storageKeys.timedChoiceKey);
     this.sceneArtHighlightEnabled = loadSceneArtHighlightEnabled(this.storageKeys.sceneArtHighlightKey);
@@ -314,28 +317,17 @@ export class GameApp {
     this.root.addEventListener('click', this.onAppChromeDelegatedClick);
     onLocaleChange(() => {
       this.registry = new ContentRegistry(this.campaignId, getLocale());
+      this.state = syncCompanionPartyWithFriendship(this.state, this.registry.data);
+      this.state = refreshCombatLogInitiativeLabels(this.state, this.registry.data);
       this.render();
     });
     this.render();
   }
 
-  /** Controlo da barra superior / trilho — delegado em `#app` para evitar cliques bloqueados por camadas. */
+  /** Controlo do trilho lateral — delegado em `#app` para evitar cliques bloqueados por camadas. */
   private onAppChromeDelegatedClick = (e: MouseEvent): void => {
     const t = e.target;
     if (!(t instanceof Element)) return;
-    if (t.closest('.app-top-collapse')) {
-      this.topBarCollapsed = true;
-      this.syncTopBarCollapsePresentation();
-      this.audio.playUiClick();
-      return;
-    }
-    if (t.closest('[data-app-edge-restore]')) {
-      this.topBarCollapsed = false;
-      this.syncTopBarCollapsePresentation();
-      this.audio.playUiClick();
-      this.chromeRefs?.collapseTopBtn.focus();
-      return;
-    }
     if (t.closest('[data-app-edge-menu]')) {
       const hBtn = this.chromeRefs?.hamburgerBtn;
       if (!hBtn) return;
@@ -343,8 +335,8 @@ export class GameApp {
       hBtn.setAttribute('aria-expanded', this.menuOpen ? 'true' : 'false');
       return;
     }
-    if (t.closest('.app-top-fullscreen')) {
-      const btn = t.closest('.app-top-fullscreen');
+    if (t.closest('.app-edge-rail-fullscreen')) {
+      const btn = t.closest('.app-edge-rail-fullscreen');
       if (!(btn instanceof HTMLButtonElement) || btn.disabled || !this.isFullscreenSupported()) return;
       const want = this.getFullscreenElement() == null;
       void (async () => {
@@ -352,10 +344,18 @@ export class GameApp {
           if (want) await this.requestGameFullscreen();
           else await this.exitGameFullscreen();
         } catch {
-          /* mantém checkbox / botão alinhados ao estado real */
+          /* mantém botão alinhado ao estado real */
         }
         this.syncFullscreenUi();
       })();
+      return;
+    }
+    if (t.closest('.app-edge-rail-language')) {
+      this.cycleLocale();
+      return;
+    }
+    if (t.closest('.app-edge-rail-volume')) {
+      this.toggleMute();
     }
   };
 
@@ -465,7 +465,7 @@ export class GameApp {
     this.render();
   }
 
-  private showToast(message: string, variant: 'info' | 'error' = 'info'): void {
+  private showToast(message: string, variant: 'info' | 'error' | 'success' = 'info'): void {
     const el = this.chromeRefs?.toastRegion;
     if (!el) return;
     showAppToast(el, message, variant);
@@ -1219,12 +1219,6 @@ export class GameApp {
     document.documentElement.style.overflow = lock ? 'hidden' : '';
   }
 
-  private syncTopBarCollapsePresentation(): void {
-    const refs = this.chromeRefs;
-    if (!refs) return;
-    refs.topBarEl.hidden = this.topBarCollapsed;
-    refs.edgeRail.hidden = !this.topBarCollapsed;
-  }
 
   private toggleMenu(): void {
     if (this.menuOpen) {
@@ -1264,27 +1258,66 @@ export class GameApp {
     return typeof el.requestFullscreen === 'function' || typeof el.webkitRequestFullscreen === 'function';
   }
 
-  private syncFullscreenCheckbox(): void {
-    const cb = this.root.querySelector<HTMLInputElement>('[data-menu-fullscreen-cb]');
-    if (cb) cb.checked = this.getFullscreenElement() != null;
-  }
-
-  private syncFullscreenTopBarButton(): void {
-    const btn = this.chromeRefs?.fullscreenTopBtn;
+  private syncFullscreenEdgeButton(): void {
+    const btn = this.chromeRefs?.fullscreenEdgeBtn;
     if (!btn) return;
     if (btn.disabled || !this.isFullscreenSupported()) {
       btn.removeAttribute('aria-pressed');
       return;
     }
     const active = this.getFullscreenElement() != null;
+    btn.innerHTML = fullscreenEdgeBtnGlyph(active);
     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     btn.setAttribute('aria-label', active ? t('menu.fullscreenExit') : t('menu.fullscreenActive'));
     btn.title = active ? t('menu.fullscreenExitEsc') : t('menu.fullscreenActive');
   }
 
+  private cycleLocale(): void {
+    const locale = getLocale();
+    const idx = SUPPORTED_LOCALES.indexOf(locale);
+    const next = SUPPORTED_LOCALES[(idx + 1) % SUPPORTED_LOCALES.length]!;
+    setLocale(next);
+    this.audio.playUiClick();
+  }
+
+  private toggleMute(): void {
+    const v = this.audio.getVolume();
+    if (v > 0) {
+      this.volumeBeforeMute = v;
+      this.audio.setVolume(0);
+    } else {
+      this.audio.setVolume(this.volumeBeforeMute > 0 ? this.volumeBeforeMute : 1);
+    }
+    this.syncVolumeEdgeButton();
+    this.syncMenuVolumeUi();
+    this.audio.playUiClick();
+  }
+
+  private syncMenuVolumeUi(): void {
+    const refs = this.chromeRefs;
+    if (!refs) return;
+    const pct = Math.round(this.audio.getVolume() * 100);
+    refs.volumeRange.value = String(pct);
+    refs.volumeValue.textContent = `${pct}%`;
+    refs.volumeRange.setAttribute('aria-valuetext', `${pct}%`);
+  }
+
+  private syncVolumeEdgeButton(): void {
+    const btn = this.chromeRefs?.volumeEdgeBtn;
+    if (!btn) return;
+    syncVolumeEdgeButton(btn, this.audio.getVolume());
+  }
+
+  private syncLanguageEdgeButton(): void {
+    const btn = this.chromeRefs?.languageEdgeBtn;
+    if (!btn) return;
+    syncLanguageEdgeButton(btn);
+  }
+
   private syncFullscreenUi(): void {
-    this.syncFullscreenCheckbox();
-    this.syncFullscreenTopBarButton();
+    this.syncFullscreenEdgeButton();
+    this.syncLanguageEdgeButton();
+    this.syncVolumeEdgeButton();
   }
 
   private syncAppFullscreenLayout(): void {
@@ -1402,6 +1435,9 @@ export class GameApp {
         break;
       case 'class_mage':
         onHighlightSfx = unlockAnd(() => this.audio.playClassCommitMage());
+        break;
+      case 'class_archer':
+        onHighlightSfx = unlockAnd(() => this.audio.playClassCommitArcher());
         break;
       default:
         onHighlightSfx = undefined;
@@ -1550,16 +1586,16 @@ export class GameApp {
       state: this.state,
       registry: this.registry,
       sidebarSections: this.sidebarSections,
-      onMenuHamburgerClick: (hBtn: HTMLButtonElement) => {
-        this.toggleMenu();
-        hBtn.setAttribute('aria-expanded', this.menuOpen ? 'true' : 'false');
-      },
       onMenuBackdropClick: (hBtn: HTMLButtonElement) => {
         this.closeMenu();
         hBtn.setAttribute('aria-expanded', 'false');
       },
       getVolume: () => this.audio.getVolume(),
-      setVolume: (n: number) => this.audio.setVolume(n),
+      setVolume: (n: number) => {
+        this.audio.setVolume(n);
+        if (n > 0) this.volumeBeforeMute = n;
+        this.syncVolumeEdgeButton();
+      },
       onDevModeChange: (v: boolean) => {
         this.devMode = v;
         saveDevMode(this.storageKeys.devModeKey, this.devMode);
@@ -1580,14 +1616,6 @@ export class GameApp {
       },
       onCycleFont: () => this.cycleFontSize(),
       fullscreenSupported: this.isFullscreenSupported(),
-      getFullscreenActive: () => this.getFullscreenElement() != null,
-      onFullscreenChange: async (want: boolean) => {
-        if (want) {
-          await this.requestGameFullscreen();
-        } else {
-          await this.exitGameFullscreen();
-        }
-      },
       onExportSave: () => this.exportSaveToClipboard(),
       onImportSave: () => this.importSaveFromClipboard(),
       onCredits: () => this.showCredits(),
@@ -1691,7 +1719,6 @@ export class GameApp {
     } else {
       syncAppChrome(this.chromeRefs, chromeOpts);
     }
-    this.syncTopBarCollapsePresentation();
 
     if (
       this.state.lastCombatXpGain != null ||

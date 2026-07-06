@@ -141,9 +141,11 @@ function beginBattleEncounter(
 
   combat.turnOrder = buildTurnOrder(state, combat, data, mulberry32(state.rngSeed));
 
+  const initiativeLabels = formatTurnOrderLabels(combat.turnOrder, state, combat, data);
   log.push({
     kind: 'info',
-    message: formatTurnOrderForLog(combat.turnOrder, state, combat, data),
+    message: combatLog.logInitiativeOrder(),
+    initiativeLabels,
   });
   log.push({
     kind: 'turn_banner',
@@ -184,15 +186,15 @@ function buildTurnOrder(
   return rolls.map((r) => r.id);
 }
 
-/** Texto legível para o log (nomes em vez de p:rogue_mira, e:0…). */
-function formatTurnOrderForLog(
+/** Nomes legíveis na ordem de iniciativa (em vez de p:rogue_mira, e:0…). */
+function formatTurnOrderLabels(
   turnOrder: string[],
   state: GameState,
   combat: CombatState,
   data: GameData
-): string {
+): string[] {
   const enemyNameSeen = new Map<string, number>();
-  const labels = turnOrder.map((token) => {
+  return turnOrder.map((token) => {
     if (token.startsWith('p:')) {
       const pid = token.slice(2);
       const c = state.party.find((x) => x.id === pid);
@@ -210,5 +212,19 @@ function formatTurnOrderForLog(
     }
     return token;
   });
-  return combatLog.logInitiativeOrder(labels.join(' → '));
+}
+
+/** Recalcula nomes localizados nas entradas de iniciativa do log (ex.: troca de idioma em combate). */
+export function refreshCombatLogInitiativeLabels(state: GameState, data: GameData): GameState {
+  if (state.mode !== 'combat' || !state.combat) return state;
+  const combat = state.combat;
+  const freshLabels = formatTurnOrderLabels(combat.turnOrder, state, combat, data);
+  let logChanged = false;
+  const log = combat.log.map((entry) => {
+    if (entry.kind !== 'info' || !entry.initiativeLabels) return entry;
+    logChanged = true;
+    return { ...entry, initiativeLabels: freshLabels };
+  });
+  if (!logChanged) return state;
+  return { ...state, combat: { ...combat, log } };
 }

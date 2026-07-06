@@ -61,6 +61,16 @@ const minimalData = (): GameData => {
       dice: 1,
       base: 0,
     },
+    headshot: {
+      id: 'headshot',
+      name: 'Tiro na Cabeça',
+      manaCost: 16,
+      minLevel: 1,
+      classId: 'archer',
+      spellKind: 'targeted_crit_attack',
+      dice: 1,
+      base: 0,
+    },
   };
   d.items = {
     ...d.items,
@@ -224,6 +234,42 @@ describe('resolveCombatLogFx', () => {
     ];
     const r = resolveCombatLogFx(entries, [mage], data);
     expect(r.byEnemyIndex.get(0)?.layerClasses).toContain('combat-fx-melee-staff');
+  });
+
+  it('maps headshot attack hit to red reticle overlay', () => {
+    const archer = { ...createPlayerCharacter('Cael', 'archer'), name: 'Cael' };
+    const entries: CombatLogEntry[] = [
+      {
+        kind: 'attack',
+        message: 'Crítico.',
+        actor: 'Cael',
+        target: 'Goblin',
+        enemyIndex: 0,
+        outcome: 'hit',
+        spellId: 'headshot',
+      },
+    ];
+    const r = resolveCombatLogFx(entries, [archer], data);
+    expect(r.byEnemyIndex.get(0)?.layerClasses).toContain('combat-fx-spell-headshot--crit');
+    expect(r.byEnemyIndex.get(0)?.spriteCritShake).toBe(true);
+  });
+
+  it('maps headshot damage to red reticle overlay', () => {
+    const archer = { ...createPlayerCharacter('Cael', 'archer'), name: 'Cael' };
+    const entries: CombatLogEntry[] = [
+      {
+        kind: 'damage',
+        message: 'Crítico.',
+        target: 'Goblin',
+        enemyIndex: 0,
+        damageKind: 'crit',
+        spellId: 'headshot',
+        final: 9,
+      },
+    ];
+    const r = resolveCombatLogFx(entries, [archer], data);
+    expect(r.byEnemyIndex.get(0)?.layerClasses).toContain('combat-fx-spell-headshot--crit');
+    expect(r.byEnemyIndex.get(0)?.spriteCritShake).toBe(true);
   });
 
   it('maps spell damage with spellId to ember class', () => {

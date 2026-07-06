@@ -14,5 +14,5 @@ onEnter:
 ---
 As três marcas da nave brilham ao mesmo tempo e o chão abre-se num arco perfeito. Do outro lado, uma sala sem portas.
 
-No centro, um espelho de água vertical. Não reflete o teu corpo: reflete a tua **intenção**.
+No centro, um espelho de água vertical. Não reflete seu corpo: reflete sua **intenção**.
 

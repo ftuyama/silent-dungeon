@@ -21,6 +21,15 @@
     "chain_shirt": {
       "name": "Light Chain Shirt"
     },
+    "short_bow": {
+      "name": "Short Bow"
+    },
+    "hunter_robe": {
+      "name": "Hunter's Robe"
+    },
+    "leather_quiver": {
+      "name": "Leather Quiver"
+    },
     "third_bell": {
       "name": "Ring of the Third Bell"
     },
@@ -97,6 +106,15 @@
     },
     "pilgrims_benediction": {
       "name": "Pilgrim's Staff"
+    },
+    "silent_arrow": {
+      "name": "Silent Arrow"
+    },
+    "headshot": {
+      "name": "Headshot"
+    },
+    "arrow_rain": {
+      "name": "Arrow Rain"
     }
   },
   "enemies": {

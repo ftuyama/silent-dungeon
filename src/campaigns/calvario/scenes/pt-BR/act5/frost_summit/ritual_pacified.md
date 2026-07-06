@@ -13,4 +13,4 @@ onEnter:
 ---
 Por um **instante** — longo o bastante para doer — o templo fica **quieto** de verdade. Não é paz; é **acordo** imposto a algo que preferia **fome**.
 
-A corrupção em ti **arrefece**, como brasas pisadas. Não ganhaste coroa nem relíquia — ganhaste **margem**. E margem, na montanha, às vezes vale mais que **ouro**.
+A corrupção em você **arrefece**, como brasas pisadas. Ganhas **margem** — e margem, na montanha, às vezes vale mais que **ouro**.

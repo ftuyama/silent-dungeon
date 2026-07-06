@@ -14,4 +14,4 @@ onEnter: []
 ---
 **Cinza** nova sob as botas e **corda** cortada com pressa: alguém arrastou um corpo até aqui e depois **discutiu** com o túnel.
 
-No fundo, uma **luzinha** de sebo — dois **cultistas** contando moedas sobre um coldre vazio. O coldre tem o brasão da **Vigília** raspado: mensagem que nunca chegou ao farol.
+No fundo, dois **cultistas** contando moedas sobre um coldre vazio — brasão da **Vigília** raspado: mensagem que nunca chegou ao farol.

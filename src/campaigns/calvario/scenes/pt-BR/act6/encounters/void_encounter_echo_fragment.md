@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-O **hospedeiro** repete o que não disseste; a **lasca** completa com o que **fugiste** de dizer. Entre os dois, nasce uma história **nova** — pior que a tua, porque é **coerente**.
+O **hospedeiro** repete o que não disse; a **lasca** completa com o que **fugiu** de dizer. Entre os dois, nasce uma história **nova** — pior que a sua, porque é **coerente**.

@@ -15,4 +15,4 @@ onEnter:
 ---
 Na argamassa, um **caco de espelho** — borda negra, luz a mentir — devolve *{{playerName}}* **cansado**, boca mais fechada do que lembravas.
 
-Medo velho: **voltar** igual se a sombra **ganhar** em cima antes de ti.
+Medo velho: **voltar** igual se a sombra **ganhar** em cima antes de você.

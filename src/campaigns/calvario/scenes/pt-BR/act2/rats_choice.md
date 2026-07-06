@@ -16,4 +16,4 @@ onEnter: []
 ---
 **Chiar** alto demais para ser só vento. Olhos **rubros** no escuro movem-se em grupo — não há um roedor, há **uma decisão** com dentes.
 
-O chão está **húmido**; pegadas humanas antigas misturam-se com patas pequenas.
+O chão está **úmido**; pegadas humanas antigas misturam-se com patas pequenas.

@@ -1,9 +1,9 @@
 {
   "act1/start": {
-    "body": "**Demo campaign** — multi-campaign loading OK. Use `?campaign=demo` in the URL.",
+    "body": "**Campanha demo** — carregamento multi-campanha OK. Usa `?campaign=demo` na URL.",
     "choices": [
       {
-        "text": "Demo scene (repeat)"
+        "text": "Cena de demonstração (repetir)"
       }
     ]
   }

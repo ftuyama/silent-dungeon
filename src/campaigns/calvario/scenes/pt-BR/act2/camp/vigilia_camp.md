@@ -15,7 +15,7 @@ choices:
     effects:
       - { op: campRest }
       - { op: advanceDay }
-  - text: "Beber poção rubra (ti)"
+  - text: "Beber poção rubra (você)"
     uiSection: "Recuperar"
     next: act2/camp/vigilia_camp
     condition: { hasItem: potion_hp }
@@ -55,10 +55,10 @@ choices:
     showWhenLocked: false
     lockedHint: "Precisas de companheiro e de pelo menos quatro dias no subsolo para essa conversa."
     preview: "Contagem em voz alta; o eco não mente."
-  - text: "Riscar o dia na terra húmida"
+  - text: "Riscar o dia na terra úmida"
     uiSection: "Acampamento"
     next: act2/camp/vigilia_camp
-    preview: "Um registo no diário."
+    preview: "Um registro no diário."
     effects:
       - { op: addDiary, text: "Riscaste na terra o dia {{day}}. O relógio de cima já não manda." }
   - text: "Manusear equipamento no acampamento"

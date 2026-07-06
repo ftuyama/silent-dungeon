@@ -9,4 +9,4 @@ choices:
 ---
 Correias rangem, fivelas mordem couro e metal responde com um brilho cansado.
 
-Aqui, longe do primeiro golpe, tens um instante para ajustar **arma**, **armadura** e **relíquias** antes de seguir.
+Aqui, longe do primeiro golpe, tem um instante para ajustar **arma**, **armadura** e **relíquias** antes de seguir.

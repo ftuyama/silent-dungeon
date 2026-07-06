@@ -10,4 +10,4 @@ choices:
 onEnter:
   - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_act3_mira_depths_whisper }
 ---
-**Mira** inclina a cabeça sem olhar para ti: "Aqui o silêncio não é paz — é **trégua** entre quem manda no teto e quem manda no chão. Se ouvires o teu nome no escuro, não sejas o primeiro a responder."
+**Mira** inclina a cabeça sem olhar para você: "Aqui o silêncio não é paz — é **trégua** entre quem manda no teto e quem manda no chão. Se ouvir seu nome no escuro, não seja o primeiro a responder."

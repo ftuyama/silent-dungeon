@@ -10,7 +10,7 @@ choices:
     effects:
       - { op: grantTemporaryBuff, attr: mind, delta: 1, remainingScenes: 3 }
       - { op: addDiary, text: "O cinza arrepiou na palma e depois acalmou — empréstimo do Círculo, com juro em silêncio." }
-    preview: "Bónus temporário · MEN"
+    preview: "Bônus temporário · MEN"
   - text: "Rasgar o desenho antes que feche"
     condition: { rep: { faction: circulo, lte: -2 } }
     effects:

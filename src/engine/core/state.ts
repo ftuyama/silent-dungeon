@@ -111,6 +111,24 @@ export function createPlayerCharacter(name: string, cls: ClassId): GameState['pa
       path: null,
     };
   }
+  if (cls === 'archer') {
+    return {
+      ...base,
+      str: 6,
+      agi: 13,
+      mind: 8,
+      luck: 10,
+      hp: 10,
+      maxHp: 10,
+      mana: 16,
+      maxMana: 18,
+      critRatio: 0.02,
+      weaponId: 'short_bow',
+      armorId: 'hunter_robe',
+      relicId: 'leather_quiver',
+      path: null,
+    };
+  }
   return {
     ...base,
     str: 8,
@@ -130,6 +148,7 @@ export function createPlayerCharacter(name: string, cls: ClassId): GameState['pa
 
 function baseCritRatioForClass(cls: ClassId): number {
   if (cls === 'knight') return 0.03;
+  if (cls === 'archer') return 0.02;
   if (cls === 'mage') return 0.01;
   return 0.01;
 }

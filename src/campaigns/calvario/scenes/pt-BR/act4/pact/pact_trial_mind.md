@@ -13,6 +13,6 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-O ruído do mercado **dobra** sobre si mesmo. Vês símbolos onde não há nada — ou há sempre, e só agora consegues **ler**.
+O ruído do mercado **dobra** sobre si mesmo. Vês símbolos onde não há nada — ou há sempre, e só agora consegue **ler**.
 
 Para não te **partires** ao meio, precisas de uma só coisa: manter a cabeça como **câmara** do som, não como o sino.

@@ -6,7 +6,7 @@ export const SCHEMA_VERSION = '1.0.0';
 export const FactionIdSchema = z.enum(['vigilia', 'circulo', 'culto']);
 export type FactionId = z.infer<typeof FactionIdSchema>;
 
-export const ClassIdSchema = z.enum(['knight', 'mage', 'cleric']);
+export const ClassIdSchema = z.enum(['knight', 'mage', 'cleric', 'archer']);
 export type ClassId = z.infer<typeof ClassIdSchema>;
 
 export const StanceSchema = z.enum(['aggressive', 'defensive', 'focus']);
@@ -448,7 +448,7 @@ export const SceneFrontmatterSchema = z.object({
    * Implementação em `GameAudio` / UI — alinhar chaves ao runtime.
    */
   artHighlightSfx: z
-    .enum(['door_open', 'mysterious', 'class_knight', 'class_cleric', 'class_mage'])
+    .enum(['door_open', 'mysterious', 'class_knight', 'class_cleric', 'class_mage', 'class_archer'])
     .optional(),
   /** Combate embutido: após texto, se encounterId presente */
   encounterId: z.string().optional(),

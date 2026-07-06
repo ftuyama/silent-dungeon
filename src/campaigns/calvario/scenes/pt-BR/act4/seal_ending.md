@@ -18,6 +18,4 @@ onEnter:
 ---
 Selas a **Masmorra do Silêncio** com preço. Cicatrizes na alma; paz frágil nas pedras.
 
-O selo pede mais do que sangue: dois **impulsos** seguidos — primeiro a **mente** a
-aguentar o sino a rebentar por dentro, depois o **corpo** a não ceder quando o peso
-cai sobre os ossos como pedra.
+O selo pede dois **impulsos** seguidos — primeiro a **mente** a aguentar o sino a rebentar por dentro, depois o **corpo** quando o peso cai como pedra.

@@ -166,7 +166,7 @@
         "apply": [
           {
             "op": "combatLog",
-            "message": "O eco das catacumbas repete o teu nome uma vez a mais — como aviso, não como bênção."
+            "message": "O eco das catacumbas repete seu nome uma vez a mais — como aviso, não como bênção."
           },
           {
             "op": "buffBossAttackRoll",
@@ -194,7 +194,7 @@
         "apply": [
           {
             "op": "combatLog",
-            "message": "O eco das catacumbas repete o teu nome uma vez a mais — como aviso, não como bênção."
+            "message": "O eco das catacumbas repete seu nome uma vez a mais — como aviso, não como bênção."
           },
           {
             "op": "buffBossAttackRoll",
@@ -242,7 +242,7 @@
         "apply": [
           {
             "op": "combatLog",
-            "message": "Cada respiração tua pesa; o osso aprendeu o teu ritmo."
+            "message": "Cada sua respiração pesa; o osso aprendeu seu ritmo."
           },
           {
             "op": "buffBossArmorClass",
@@ -290,7 +290,7 @@
         "apply": [
           {
             "op": "combatLog",
-            "message": "Cada respiração tua pesa; o osso aprendeu o teu ritmo."
+            "message": "Cada sua respiração pesa; o osso aprendeu seu ritmo."
           },
           {
             "op": "buffBossArmorClass",

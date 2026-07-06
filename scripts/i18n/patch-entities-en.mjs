@@ -21,6 +21,7 @@ const EN = {
     silver_bolt: { name: 'Silver Bolt' },
     whisper_cache: { name: 'Whisper Cache' },
     pilgrims_benediction: { name: "Pilgrim's Staff" },
+    silent_arrow: { name: 'Silent Arrow' },
   },
   enemies: {
     rat_swarm: { name: 'Rat Swarm' },

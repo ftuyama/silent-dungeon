@@ -10,6 +10,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act2_camp_mira_topic_shadows }
 onEnter: []
 ---
-> *"Roubo o que me devolve o nome. O resto deixo **no chão** — alguém há-de achar que é tesouro. Tu deixas **promessas** no escuro; eu **sei** o peso quando finges que é leve."*
+> *"Roubo o que me devolve o nome. O resto deixo **no chão** — alguém há-de achar que é tesouro. Você deixas **promessas** no escuro; eu **sei** o peso quando finges que é leve."*
 
 {{companionLine}}

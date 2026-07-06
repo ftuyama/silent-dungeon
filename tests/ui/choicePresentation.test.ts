@@ -149,6 +149,12 @@ describe('resolveChoicePresentation', () => {
     expect(r.toneClass).toBeNull();
   });
 
+  it('[-] só badge de classe arqueiro, sem tom no botão', () => {
+    const r = resolveChoicePresentation(ch('[-] Rastrear presas'));
+    expect(r.badge).toEqual({ label: '[-]', modifier: 'dash' });
+    expect(r.toneClass).toBeNull();
+  });
+
   it('syntheticExplore sem outros sinais → explore e badge [>]', () => {
     const r = resolveChoicePresentation(ch('Túnel a norte'), { syntheticExplore: true });
     expect(r.toneClass).toBe('choice--tone-explore');

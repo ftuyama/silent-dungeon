@@ -15,7 +15,7 @@ choices:
     effects:
       - { op: campRest }
       - { op: advanceDay }
-  - text: "Beber poção rubra (ti)"
+  - text: "Beber poção rubra (você)"
     uiSection: "Recuperar"
     next: act5/camp/frost_camp
     condition: { hasItem: potion_hp }

@@ -5,18 +5,21 @@ const CLASS_LABEL: Record<ClassId, string> = {
   knight: 'Cavaleiro',
   mage: 'Mago',
   cleric: 'Clérigo',
+  archer: 'Arqueiro',
 };
 
 const DEFAULT_NAME: Record<ClassId, string> = {
   knight: 'Demo Knight',
   mage: 'Demo Mage',
   cleric: 'Demo Cleric',
+  archer: 'Demo Archer',
 };
 
 const LORE: Record<ClassId, string> = {
   knight: 'Personagem de demonstração.',
   mage: 'Personagem de demonstração.',
   cleric: 'Personagem de demonstração.',
+  archer: 'Personagem de demonstração.',
 };
 
 export const DEFAULT_HERO_NAME = DEFAULT_NAME;

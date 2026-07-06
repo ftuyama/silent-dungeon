@@ -8,8 +8,8 @@ choices:
     next: act2/hub_catacomb
 onEnter:
   - { op: addResource, resource: gold, delta: -1 }
-  - { op: addDiary, text: "Corri de um morto que caminhava demasiado depressa." }
+  - { op: addDiary, text: "Corri de um morto que caminhava demais depressa." }
 ---
-O esqueleto **não cansa** — tu cansas. Cada **estalido** atrás de ti parece **perguntas** que não queres responder.
+O esqueleto **não cansa** — você cansas. Cada **estalido** atrás de você parece **perguntas** que não queres responder.
 
 Na curva, um **osso** solto rola-te por baixo dos pés — o chão também **colabora** com o inimigo.

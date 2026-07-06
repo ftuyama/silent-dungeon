@@ -5,24 +5,35 @@
     "choices": [
       {
         "text": "[#] Forge the path as Knight",
+        "uiSection": "Oath",
         "preview": "Vigil honor; melee combat."
       },
       {
         "text": "[*] Unravel secrets as Mage",
+        "uiSection": "Oath",
         "preview": "Circle rituals; sharp mind."
       },
       {
         "text": "[+] Open the way as Cleric",
+        "uiSection": "Oath",
         "preview": "Faith and purification against the undead."
       },
       {
-        "text": "Stare into the black water: what does it reflect?"
+        "text": "[-] Track prey as Archer",
+        "uiSection": "Oath",
+        "preview": "Lone hunter; agility and precision."
       },
       {
-        "text": "Listen: is there another sound besides dripping?"
+        "text": "Stare into the black water: what does it reflect?",
+        "uiSection": "Exploration"
       },
       {
-        "text": "A hand mirror on the wall — hold it and see yourself without the water"
+        "text": "Listen: is there another sound besides dripping?",
+        "uiSection": "Exploration"
+      },
+      {
+        "text": "A hand mirror on the wall — hold it and see yourself without the water",
+        "uiSection": "Exploration"
       }
     ]
   },
@@ -218,6 +229,15 @@
   "act1/pick_mage": {
     "title": "Mage's oath",
     "body": "Symbols ignite on your retina. The **Grey Circle** does not forgive hesitation.",
+    "choices": [
+      {
+        "text": "Advance to the dungeon mouth"
+      }
+    ]
+  },
+  "act1/pick_archer": {
+    "title": "Archer's oath",
+    "body": "The string **sings** once — dry, honest. No one calls you brother or disciple; only the **target** you have not yet seen waits for you to learn to count steps before counting glories.",
     "choices": [
       {
         "text": "Advance to the dungeon mouth"

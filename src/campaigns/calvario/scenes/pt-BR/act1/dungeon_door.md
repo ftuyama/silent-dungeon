@@ -26,4 +26,4 @@ onEnter: []
 ---
 Runas **apagadas** foram re-riscadas por mãos recentes. Entre elas, um **sino** rudimentar — o Terceiro Sino, dizem os rumores.
 
-A madeira está húmida por **dentro**, como se a pedra respirasse.
+A madeira está úmida por **dentro**, como se a pedra respirasse.

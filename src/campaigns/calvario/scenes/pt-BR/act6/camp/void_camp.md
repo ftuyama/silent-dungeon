@@ -15,7 +15,7 @@ choices:
     effects:
       - { op: campRest }
       - { op: advanceDay }
-  - text: "Beber poção rubra (ti)"
+  - text: "Beber poção rubra (você)"
     uiSection: "Recuperar"
     next: act6/camp/void_camp
     condition: { hasItem: potion_hp }
@@ -64,6 +64,6 @@ choices:
       - { op: advanceDay }
 onEnter: []
 ---
-Não há **lenha** — só **restos** de quem já se queimou a si próprio. A fogueira **imita** calor; o teu corpo aceita a mentira porque **precisa** de um sítio onde fingir que ainda há **amanhã**.
+Não há **lenha** — só **restos** de quem já se queimou a si próprio. A fogueira **imita** calor; seu corpo aceita a mentira porque **precisa** de um sítio onde fingir que ainda há **amanhã**.
 
 *Mesmo aqui, o número segue: **dia {{day}}** — espelhado em cinza.*

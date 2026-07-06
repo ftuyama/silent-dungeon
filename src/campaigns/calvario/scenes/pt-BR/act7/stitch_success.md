@@ -13,6 +13,6 @@ onEnter:
   - { op: addXp, amount: 18 }
   - { op: addDiary, text: "Vi o céu como diagrama — por um instante, obedeceu. Paguei com suor frio, não com mentira." }
 ---
-O horizonte **estremece** e recua meio tom: não é milagre de praça — é **trégua** de laboratório. Sentes **fé** não como regra, mas como **músculo** que aguentou o peso sem partir.
+O horizonte **estremece** e recua meio tom — não é milagre de praça, é **trégua** de laboratório. Sentes **fé** como **músculo** que aguentou o peso sem partir.
 
-A costura não some: fica como **linha fina** na visão, lembrete de que mente também é **ferramenta** — e ferramenta cansa.
+A costura fica como **linha fina** na visão — mente também é **ferramenta**, e ferramenta cansa.

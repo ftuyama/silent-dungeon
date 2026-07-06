@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Três silhuetas fecham o cerco: duas crias de geada e um **fanático** de mantos rasgados, todos famintos de **calor** alheio. O cultista assobia um **compasso** que não combina com o vento — as crias só querem saber se o teu sangue ainda está **quente**.
+Três silhuetas fecham o cerco: duas crias de geada e um **fanático** de mantos rasgados, famintos de **calor** alheio. O cultista assobia um **compasso** que não combina com o vento.
 
-Se hesitares, o gelo **fecha** o contrato por ti.
+Se hesitar, o gelo **fecha** o contrato por você.

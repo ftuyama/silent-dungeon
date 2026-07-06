@@ -9,20 +9,21 @@ let toastHideTimer: number | null = null;
 
 function clearToastRegion(el: HTMLElement): void {
   el.replaceChildren();
-  el.classList.remove('app-toast-region--error');
+  el.classList.remove('app-toast-region--error', 'app-toast-region--success');
   el.setAttribute('aria-live', 'polite');
 }
 
 export function showAppToast(
   el: HTMLElement,
   message: string,
-  variant: 'info' | 'error' = 'info'
+  variant: 'info' | 'error' | 'success' = 'info'
 ): void {
   if (toastHideTimer != null) {
     clearTimeout(toastHideTimer);
     toastHideTimer = null;
   }
   el.classList.toggle('app-toast-region--error', variant === 'error');
+  el.classList.toggle('app-toast-region--success', variant === 'success');
   el.setAttribute('aria-live', variant === 'error' ? 'assertive' : 'polite');
 
   const msg = document.createElement('span');

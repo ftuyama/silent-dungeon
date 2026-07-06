@@ -1,6 +1,11 @@
 import type { GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
-import { buildGameSidebar, CREATOR_NAME, KOFI_SUPPORT_URL } from './gameAppSidebar.ts';
+import {
+  buildGameSidebar,
+  CREATOR_NAME,
+  FEEDBACK_FORM_URL,
+  KOFI_SUPPORT_URL,
+} from './gameAppSidebar.ts';
 import { buildMenuSaveSlot, saveSlotLimit } from './gameAppSaveSlots.ts';
 import {
   getLocale,
@@ -9,6 +14,7 @@ import {
   t,
   type Locale,
 } from '../i18n/index.ts';
+import { mountMobileNotice } from './mobileNotice.ts';
 
 /** Layout persistente: cabeçalho, menu lateral, sidebar do jogador e área principal (`main.story-shell`). */
 export type MountAppChromeOptions = {
@@ -24,7 +30,6 @@ export type MountAppChromeOptions = {
   state: GameState;
   registry: ContentRegistry;
   sidebarSections: Record<string, boolean>;
-  onMenuHamburgerClick: (hBtn: HTMLButtonElement) => void;
   onMenuBackdropClick: (hBtn: HTMLButtonElement) => void;
   getVolume: () => number;
   setVolume: (n: number) => void;
@@ -33,8 +38,6 @@ export type MountAppChromeOptions = {
   onSceneArtHighlightChange: (v: boolean) => void;
   onCycleFont: () => void;
   fullscreenSupported: boolean;
-  getFullscreenActive: () => boolean;
-  onFullscreenChange: (want: boolean) => Promise<void>;
   onExportSave: () => void;
   onImportSave: () => void;
   onCredits: () => void;
@@ -58,11 +61,10 @@ export type MountAppChromeOptions = {
 /** Referências estáveis ao chrome montado uma vez (menu + layout). */
 export type AppChromeRefs = {
   frame: HTMLElement;
-  topBarEl: HTMLElement;
-  collapseTopBtn: HTMLButtonElement;
-  fullscreenTopBtn: HTMLButtonElement;
   edgeRail: HTMLElement;
-  titleEl: HTMLElement;
+  fullscreenEdgeBtn: HTMLButtonElement;
+  languageEdgeBtn: HTMLButtonElement;
+  volumeEdgeBtn: HTMLButtonElement;
   sidebarEl: HTMLElement;
   mainEl: HTMLElement;
   hamburgerBtn: HTMLButtonElement;
@@ -73,7 +75,6 @@ export type AppChromeRefs = {
   timedChoiceCb: HTMLInputElement;
   sceneArtHighlightCb: HTMLInputElement;
   fontBtn: HTMLButtonElement;
-  fullscreenCb: HTMLInputElement;
   devSaveExtrasEl: HTMLElement;
   devSettingsExtrasEl: HTMLElement;
   chronicleBtn: HTMLButtonElement;
@@ -125,6 +126,35 @@ function fillMenuSaveSlots(
   }
 }
 
+export function fullscreenEdgeBtnGlyph(active: boolean): string {
+  return active ? '\u29C9' : '\u26F6';
+}
+
+export function languageEdgeBtnLabel(locale: Locale): string {
+  return locale === 'pt-BR' ? 'PT' : 'EN';
+}
+
+export function volumeEdgeBtnGlyph(muted: boolean): string {
+  return muted ? '\u00D7' : '\u266A';
+}
+
+export function syncLanguageEdgeButton(btn: HTMLButtonElement): void {
+  const locale = getLocale();
+  btn.textContent = languageEdgeBtnLabel(locale);
+  const label = t('menu.languageEdge', { locale: languageEdgeBtnLabel(locale) });
+  btn.setAttribute('aria-label', label);
+  btn.title = label;
+}
+
+export function syncVolumeEdgeButton(btn: HTMLButtonElement, volume: number): void {
+  const muted = volume <= 0;
+  btn.innerHTML = volumeEdgeBtnGlyph(muted);
+  btn.setAttribute('aria-pressed', muted ? 'true' : 'false');
+  const label = muted ? t('menu.unmute') : t('menu.mute');
+  btn.setAttribute('aria-label', label);
+  btn.title = label;
+}
+
 function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   const frame = document.createElement('div');
   frame.className = 'app-frame';
@@ -143,65 +173,44 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   toastRegion.setAttribute('aria-atomic', 'true');
   frame.appendChild(toastRegion);
 
+  const fullscreenSupported = opts.fullscreenSupported;
+
   const edgeRail = document.createElement('nav');
   edgeRail.className = 'app-edge-rail';
   edgeRail.setAttribute('aria-label', t('menu.compactControls'));
-  edgeRail.hidden = true;
-  const edgeRailRestoreBtn = document.createElement('button');
-  edgeRailRestoreBtn.type = 'button';
-  edgeRailRestoreBtn.className = 'app-edge-rail-btn';
-  edgeRailRestoreBtn.setAttribute('aria-label', t('menu.showTopBar'));
-  edgeRailRestoreBtn.setAttribute('data-app-edge-restore', '');
-  edgeRailRestoreBtn.innerHTML = '\u25BC';
-  const edgeRailMenuBtn = document.createElement('button');
-  edgeRailMenuBtn.type = 'button';
-  edgeRailMenuBtn.className = 'app-edge-rail-btn';
-  edgeRailMenuBtn.setAttribute('aria-label', t('menu.menu'));
-  edgeRailMenuBtn.setAttribute('data-app-edge-menu', '');
-  edgeRailMenuBtn.innerHTML = '\u2630';
-  edgeRail.appendChild(edgeRailRestoreBtn);
-  edgeRail.appendChild(edgeRailMenuBtn);
-
-  const header = document.createElement('header');
-  header.className = 'app-top';
-  const title = document.createElement('div');
-  title.className = 'game-title';
-  title.textContent = opts.headerTitle;
-  const topActions = document.createElement('div');
-  topActions.className = 'app-top-actions';
-  const collapseTopBtn = document.createElement('button');
-  collapseTopBtn.type = 'button';
-  collapseTopBtn.className = 'app-top-collapse';
-  collapseTopBtn.setAttribute('aria-label', t('menu.hideTopBar'));
-  collapseTopBtn.innerHTML = '\u25B2';
-  const fullscreenSupported = opts.fullscreenSupported;
-  const fullscreenTopBtn = document.createElement('button');
-  fullscreenTopBtn.type = 'button';
-  fullscreenTopBtn.className = 'app-top-fullscreen';
-  fullscreenTopBtn.innerHTML = '\u2922';
-  fullscreenTopBtn.disabled = !fullscreenSupported;
+  const fullscreenEdgeBtn = document.createElement('button');
+  fullscreenEdgeBtn.type = 'button';
+  fullscreenEdgeBtn.className = 'app-edge-rail-btn app-edge-rail-fullscreen';
+  fullscreenEdgeBtn.innerHTML = fullscreenEdgeBtnGlyph(false);
+  fullscreenEdgeBtn.disabled = !fullscreenSupported;
   if (!fullscreenSupported) {
-    fullscreenTopBtn.title = t('menu.fullscreenUnavailable');
-    fullscreenTopBtn.setAttribute('aria-label', t('menu.fullscreenUnavailable'));
+    fullscreenEdgeBtn.title = t('menu.fullscreenUnavailable');
+    fullscreenEdgeBtn.setAttribute('aria-label', t('menu.fullscreenUnavailable'));
   } else {
-    fullscreenTopBtn.setAttribute('aria-label', t('menu.fullscreen'));
-    fullscreenTopBtn.title = t('menu.fullscreen');
+    fullscreenEdgeBtn.setAttribute('aria-label', t('menu.fullscreen'));
+    fullscreenEdgeBtn.title = t('menu.fullscreen');
   }
   const hBtn = document.createElement('button');
   hBtn.type = 'button';
-  hBtn.className = 'hamburger';
+  hBtn.className = 'app-edge-rail-btn hamburger';
   hBtn.setAttribute('aria-label', t('menu.menu'));
   hBtn.setAttribute('aria-expanded', 'false');
+  hBtn.setAttribute('data-app-edge-menu', '');
   hBtn.innerHTML = '\u2630';
-  hBtn.addEventListener('click', () => opts.onMenuHamburgerClick(hBtn));
-  const languageSelect = createLanguageSelect('app-top-language-select', 'app-top-language-select');
-  topActions.appendChild(collapseTopBtn);
-  topActions.appendChild(fullscreenTopBtn);
-  topActions.appendChild(languageSelect);
-  topActions.appendChild(hBtn);
-  header.appendChild(title);
-  header.appendChild(topActions);
-  frame.appendChild(header);
+  const languageEdgeBtn = document.createElement('button');
+  languageEdgeBtn.type = 'button';
+  languageEdgeBtn.className = 'app-edge-rail-btn app-edge-rail-language';
+  syncLanguageEdgeButton(languageEdgeBtn);
+
+  const volumeEdgeBtn = document.createElement('button');
+  volumeEdgeBtn.type = 'button';
+  volumeEdgeBtn.className = 'app-edge-rail-btn app-edge-rail-volume';
+  syncVolumeEdgeButton(volumeEdgeBtn, opts.getVolume());
+
+  edgeRail.appendChild(hBtn);
+  edgeRail.appendChild(fullscreenEdgeBtn);
+  edgeRail.appendChild(languageEdgeBtn);
+  edgeRail.appendChild(volumeEdgeBtn);
 
   const backdrop = document.createElement('div');
   backdrop.className = 'menu-backdrop';
@@ -293,30 +302,14 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   fontBtn.textContent = t('menu.fontSize', { percent: String(100 + opts.fontStep * 10) });
   fontBtn.addEventListener('click', () => opts.onCycleFont());
 
-  const fullscreenRow = document.createElement('label');
-  fullscreenRow.className = 'menu-item menu-sound';
-  if (!fullscreenSupported) {
-    fullscreenRow.classList.add('menu-sound--disabled');
-    fullscreenRow.title = t('menu.fullscreenUnavailable');
-  }
-  const fullscreenCb = document.createElement('input');
-  fullscreenCb.type = 'checkbox';
-  fullscreenCb.dataset.menuFullscreenCb = '';
-  fullscreenCb.checked = opts.getFullscreenActive();
-  fullscreenCb.disabled = !fullscreenSupported;
-  fullscreenCb.addEventListener('change', () => {
-    if (!fullscreenSupported) return;
-    const goFullscreen = fullscreenCb.checked;
-    void (async () => {
-      try {
-        await opts.onFullscreenChange(goFullscreen);
-      } catch {
-        fullscreenCb.checked = opts.getFullscreenActive();
-      }
-    })();
-  });
-  fullscreenRow.appendChild(fullscreenCb);
-  fullscreenRow.appendChild(document.createTextNode(` ${t('menu.fullscreen')}`));
+  const languageRow = document.createElement('div');
+  languageRow.className = 'menu-item menu-language';
+  const languageLabel = document.createElement('label');
+  languageLabel.htmlFor = 'menu-language-select';
+  languageLabel.textContent = t('menu.language');
+  const languageSelect = createLanguageSelect('menu-language-select', 'menu-language-select');
+  languageRow.appendChild(languageLabel);
+  languageRow.appendChild(languageSelect);
 
   const sceneArtHighlightRow = document.createElement('label');
   sceneArtHighlightRow.className = 'menu-item menu-sound';
@@ -394,8 +387,8 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
 
   const settingsSection = createMenuSection(t('menu.sectionSettings'));
   settingsSection.appendChild(volumeRow);
+  settingsSection.appendChild(languageRow);
   settingsSection.appendChild(fontBtn);
-  settingsSection.appendChild(fullscreenRow);
   settingsSection.appendChild(sceneArtHighlightRow);
   settingsSection.appendChild(timedChoiceRow);
 
@@ -410,6 +403,15 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   const aboutSection = createMenuSection(t('menu.sectionAbout'));
   aboutSection.appendChild(chronicleBtn);
   aboutSection.appendChild(creditsBtn);
+
+  const feedbackLink = document.createElement('a');
+  feedbackLink.href = FEEDBACK_FORM_URL;
+  feedbackLink.target = '_blank';
+  feedbackLink.rel = 'noopener noreferrer';
+  feedbackLink.className = 'menu-item';
+  feedbackLink.textContent = t('menu.feedback');
+  feedbackLink.title = t('menu.feedbackTitle');
+  aboutSection.appendChild(feedbackLink);
 
   const kofiLink = document.createElement('a');
   kofiLink.href = KOFI_SUPPORT_URL;
@@ -454,11 +456,10 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
 
   return {
     frame,
-    topBarEl: header,
-    collapseTopBtn,
-    fullscreenTopBtn,
     edgeRail,
-    titleEl: title,
+    fullscreenEdgeBtn,
+    languageEdgeBtn,
+    volumeEdgeBtn,
     sidebarEl,
     mainEl,
     hamburgerBtn: hBtn,
@@ -469,7 +470,6 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     timedChoiceCb,
     sceneArtHighlightCb,
     fontBtn,
-    fullscreenCb,
     devSaveExtrasEl,
     devSettingsExtrasEl,
     chronicleBtn,
@@ -481,6 +481,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
 
 /** Monta frame, menu, sidebar e `main` uma vez; anexa a `root`. */
 export function mountAppChrome(root: HTMLElement, opts: MountAppChromeOptions): AppChromeRefs {
+  mountMobileNotice(root);
   const refs = buildChromeDom(opts);
   root.appendChild(refs.edgeRail);
   root.appendChild(refs.frame);
@@ -490,7 +491,6 @@ export function mountAppChrome(root: HTMLElement, opts: MountAppChromeOptions): 
 /** Atualiza título, tipografia, sidebar, área principal e estado do menu sem destruir listeners. */
 export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions): void {
   refs.frame.style.setProperty('--app-font-pct', `${100 + opts.fontStep * 10}%`);
-  refs.titleEl.textContent = opts.headerTitle;
 
   refs.devSaveExtrasEl.hidden = !opts.showImportInPartida;
   refs.devSettingsExtrasEl.hidden = !opts.showGraphInSettings;
@@ -510,16 +510,22 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
   for (const optEl of refs.languageSelect.options) {
     optEl.textContent = localeShortLabel(optEl.value as Locale);
   }
-  refs.fullscreenCb.checked = opts.getFullscreenActive();
-  refs.fullscreenTopBtn.disabled = !opts.fullscreenSupported;
+  refs.fullscreenEdgeBtn.disabled = !opts.fullscreenSupported;
   if (!opts.fullscreenSupported) {
-    refs.fullscreenTopBtn.title = t('menu.fullscreenUnavailable');
-    refs.fullscreenTopBtn.setAttribute('aria-label', `${t('menu.fullscreen')} (${t('menu.fullscreenUnavailable')})`);
+    refs.fullscreenEdgeBtn.title = t('menu.fullscreenUnavailable');
+    refs.fullscreenEdgeBtn.setAttribute('aria-label', `${t('menu.fullscreen')} (${t('menu.fullscreenUnavailable')})`);
   }
+  syncLanguageEdgeButton(refs.languageEdgeBtn);
+  syncVolumeEdgeButton(refs.volumeEdgeBtn, opts.getVolume());
 
   while (refs.sidebarEl.firstChild) {
     refs.sidebarEl.removeChild(refs.sidebarEl.firstChild);
   }
+  const prevSidebarScroll = refs.sidebarEl.scrollTop;
+  const prevMobileDetails = refs.sidebarEl.querySelector(
+    'details.sidebar-mobile-details'
+  ) as HTMLDetailsElement | null;
+  const prevMobileDetailsOpen = prevMobileDetails?.open ?? true;
   refs.sidebarEl.appendChild(
     buildGameSidebar({
       state: opts.state,
@@ -527,8 +533,10 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
       sidebarSections: opts.sidebarSections,
       onSectionToggle: opts.onSidebarSectionToggle,
       playUiClick: opts.playUiClick,
+      mobileDetailsOpen: prevMobileDetailsOpen,
     })
   );
+  refs.sidebarEl.scrollTop = prevSidebarScroll;
 
   refs.mainEl.classList.remove('main--combat');
   refs.mainEl.replaceChildren();

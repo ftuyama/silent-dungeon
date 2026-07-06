@@ -25,6 +25,6 @@ choices:
     next: act4/encounters/fight_morvayn_2
 onEnter: []
 ---
-Morvayn **vacila** — não por fraqueza, por **teatro**. O trono **respira** através dele, e tu sentes o ar a ficar **contagioso** como doença de catedral.
+Morvayn **vacila** — não por fraqueza, por **teatro**. O trono **respira** através dele, e você sentes o ar a ficar **contagioso** como doença de catedral.
 
 Tens um **instante** para decidir *como* carregas o próximo assalto: na **cabeça**, no **osso**, ou na **pressa** cega.

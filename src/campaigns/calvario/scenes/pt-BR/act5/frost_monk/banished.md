@@ -14,6 +14,6 @@ onEnter:
       text: "Falhei na gruta do monge. O vento empurrou-me para fora como quem tira um objeto errado de uma gaveta — e ouvi a pedra a fechar por dentro. Não há segunda entrada: aquele caminho acabou.",
     }
 ---
-A gruta **recusa-te** — ar **estreito**, voz seca: *volta para onde ainda podes mentir com conforto.*
+A gruta **te recusa** — ar **estreito**, voz seca: *volta para onde ainda pode mentir com conforto.*
 
 A montanha **empurra-te** para fora; **não há retorno** àquela boca — só **neve** que finge neutralidade.

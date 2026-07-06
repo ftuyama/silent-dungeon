@@ -10,4 +10,4 @@ choices:
   - text: "Voltar ao cruzeiro"
     next: act2/hub_catacomb
 ---
-O **anjo** desfaz-se em **cinza** que não queima. O ferro **não** perdoa; tu também não. A partir daqui, quem te vê lê **queda** onde antes lia muralha.
+O **anjo** desfaz-se em **cinza** que não queima. O ferro **não** perdoa; você também não. A partir daqui, quem te vê lê **queda** onde antes lia muralha.

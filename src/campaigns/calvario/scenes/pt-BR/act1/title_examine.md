@@ -17,6 +17,4 @@ onEnter: []
 ---
 Alguém cinzelou **três linhas** antes que a ferrugem comesse a pedra:
 
-> *"Aqui não há perdão — há eco."*
-
-Um quarto símbolo foi riscado por mão mais recente: uma **espiral** a apontar para baixo.
+> *"Aqui não há perdão — há eco."* Por cima, uma **espiral** riscada aponta para baixo.

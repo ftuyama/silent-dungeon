@@ -92,4 +92,4 @@ onEnter: []
 ---
 **Kael** tira o **elmo** — rosto **cansado**, olhar **limpo**.
 
-> *"**Três** vezes caí. **Três** vezes não mentiste no golpe. Isso **basta**: sirvo como **ferro** que só dobra à **tua** mão."*
+> *"**Três** vezes caí. **Três** vezes não mentiste no golpe. Isso **basta**: sirvo como **ferro** que só dobra à **sua** mão."*

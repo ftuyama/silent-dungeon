@@ -12,6 +12,6 @@ choices:
 onEnter:
   - { op: clearAsciiMap }
 ---
-Algo em ti **cede** sem estrondo — vazio que não deixa eco. A **Masmorra do Silêncio** **abre** e **fecha** como ferida; o teu nome vira sussurro na humidade.
+Algo em você **cede** sem estrondo — vazio que não deixa eco. A **Masmorra do Silêncio** **abre** e **fecha** como ferida; seu nome vira sussurro na humidade.
 
 Se houver fio, desce outra vez: o abismo não se enche — o **silêncio**, sim, anota.

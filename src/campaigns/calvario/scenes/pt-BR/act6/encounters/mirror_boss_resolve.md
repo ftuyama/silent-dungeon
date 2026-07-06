@@ -13,7 +13,7 @@ onEnter:
   - { op: addMark, mark: act6_shadow_faced }
   - { op: addDiary, text: "Não destruí minha sombra. Dei-lhe um nome e um limite." }
 ---
-O reflexo desfaz-se em fios negros que não te atacam. Eles procuram abrigo no contorno do teu corpo, como uma capa feita de tudo o que negaste.
+O reflexo desfaz-se em fios negros que não te atacam. Eles procuram abrigo no contorno do seu corpo, como uma capa feita de tudo o que negaste.
 
 Não há triunfo limpo. Só um pacto lúcido: caminhar com a escuridão em coleira curta.
 

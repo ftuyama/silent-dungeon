@@ -17,7 +17,7 @@ choices:
     next: act4/throne/throne_gate
     condition: { resource: { faith: { gte: 1 } } }
     showWhenLocked: true
-    lockedHint: "Sem fé para gastar, o gotejar não encontra moeda em ti — acumula pelo menos 1."
+    lockedHint: "Sem fé para gastar, o gotejar não encontra moeda em você — acumula pelo menos 1."
     effects:
       - { op: addResource, resource: corruption, delta: 1 }
       - { op: addResource, resource: faith, delta: -1 }
@@ -27,6 +27,6 @@ choices:
 onEnter:
   - { op: setFlag, key: throne_acted_chains, value: true }
 ---
-As correntes **querem** dedos. Não prendem só o trono — **ensaiam** o teu nome como quem experimenta uma corrente nova.
+As correntes **querem** dedos. Não prendem só o trono — **ensaiam** seu nome como quem experimenta uma corrente nova.
 
-Entre elas, preso em resina negra: um **dedo** com anel de sino partido e marcas de dentes humanos — não de fera — como se alguém tivesse **mordido** a mão que jurou antes de a Vigília raspar o juramento da pedra.
+Entre elas, preso em resina negra: um **dedo** com anel de sino partido e marcas de dentes humanos — como se alguém tivesse **mordido** a mão que jurou.

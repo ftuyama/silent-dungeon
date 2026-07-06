@@ -20,3 +20,6 @@ export const potion_hp = S('potion_hp');
 export const potion_mana = S('potion_mana');
 export const potion_stress = S('potion_stress');
 export const morvayn_heart_shard = S('morvayn_heart_shard');
+export const short_bow = S('short_bow');
+export const hunter_robe = S('hunter_robe');
+export const leather_quiver = S('leather_quiver');

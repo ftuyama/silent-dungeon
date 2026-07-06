@@ -223,12 +223,36 @@ export function logEnemyMiss(attacker: string): string {
   return t('combatLog.enemyMiss', { attacker });
 }
 
+export function logHeadshotAim(name: string, spell: string): string {
+  return t('combatLog.headshotAim', { name, spell });
+}
+
+export function logSpellTargets(name: string, spell: string): string {
+  return t('combatLog.spellTargets', { name, spell });
+}
+
+export function logHealTargets(name: string, spell: string): string {
+  return t('combatLog.healTargets', { name, spell });
+}
+
+export function logHeadshotCrit(attacker: string, target: string): string {
+  return t('combatLog.headshotCrit', { attacker, target });
+}
+
+export function logArcherDodge(target: string, attacker: string): string {
+  return t('combatLog.archerDodge', { target, attacker });
+}
+
+export function logArrowRainDamage(target: string, amount: number): string {
+  return t('combatLog.arrowRainDamage', { target, amount });
+}
+
 export function logPlayerDamage(target: string, amount: number, isCrit: boolean): string {
   return t(isCrit ? 'combatLog.playerDamageCrit' : 'combatLog.playerDamage', { target, amount });
 }
 
-export function logInitiativeOrder(order: string): string {
-  return t('combatLog.initiativeOrder', { order });
+export function logInitiativeOrder(): string {
+  return t('combatLog.initiativeOrder');
 }
 
 export function logEnemyFallback(n: number): string {

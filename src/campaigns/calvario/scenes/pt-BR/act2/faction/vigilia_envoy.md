@@ -10,7 +10,7 @@ choices:
     effects:
       - { op: grantTemporaryBuff, attr: agi, delta: 1, remainingScenes: 4 }
       - { op: addDiary, text: "Um capeador fechou o meu pulso como quem fecha uma porta — e disse ordem sem querer sermão." }
-    preview: "Bónus temporário · AGI"
+    preview: "Bônus temporário · AGI"
   - text: "Responder insulto com a lâmina"
     condition: { rep: { faction: vigilia, lte: -2 } }
     effects:
@@ -27,4 +27,4 @@ onEnter:
 ---
 Um **capeador** inclina a lanterna. O metal não brilha — **acusa**.
 
-*"Quem o subsolo nomeia, a Vigília **repete** em voz mais baixa."*
+*"Quem o subsolo nomeia, a Vigília **repete** em voz mais baixa. **Morvayn** segura o trono; queremo-lo de pé — ou morto."*

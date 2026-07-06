@@ -245,7 +245,7 @@ function parseArgs(argv: string[]): {
 
 Opções:
   --ref-level N     Nível do líder de referência para a tabela de inimigos (default: 10)
-  --class ID        knight | mage | cleric — classe de referência (default: knight)
+  --class ID        knight | mage | cleric | archer — classe de referência (default: knight)
   --levels A,B,...  Níveis na grelha de projeção (default: 1,5,10,…,50)
   --filter SUB      Só inimigos cujo id contém SUB
   --json            Saída JSON (projeção + inimigos + ref)
@@ -257,7 +257,7 @@ Opções:
       refLevel = Number(argv[++i]);
     } else if (a === '--class' && argv[i + 1]) {
       const c = argv[++i] as ClassId;
-      if (c === 'knight' || c === 'mage' || c === 'cleric') refClass = c;
+      if (c === 'knight' || c === 'mage' || c === 'cleric' || c === 'archer') refClass = c;
     } else if (a === '--levels' && argv[i + 1]) {
       levels = argv[++i]!.split(',').map((x) => Number(x.trim())).filter((n) => !Number.isNaN(n));
     } else if (a === '--filter' && argv[i + 1]) {
@@ -325,7 +325,7 @@ function main(): void {
     })
     .sort((a, b) => a.enemyCa - b.enemyCa);
 
-  const projection = (['knight', 'mage', 'cleric'] as const).map((cls) => {
+  const projection = (['knight', 'mage', 'cleric', 'archer'] as const).map((cls) => {
     const byLevel = levels.map((lv) => {
       const lead = projectCharacterToLevel(createPlayerCharacter('Hero', cls), lv);
       return {
