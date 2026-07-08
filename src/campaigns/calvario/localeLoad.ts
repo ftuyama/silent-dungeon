@@ -1,6 +1,7 @@
 import type { Locale } from '../../i18n/locale.ts';
 import type { CampaignIndex } from '../../engine/schema/index.ts';
 import type { GameData } from '../../engine/data/index.ts';
+import type { EnemyDef } from '../../engine/schema/index.ts';
 import type { LoadedScene } from '../../engine/core/index.ts';
 import indexEn from './locales/en-US/index.json';
 import entitiesEn from './locales/en-US/entities.json';
@@ -30,10 +31,15 @@ export type EnemyAbilityOverlay = {
   linePt?: string;
 };
 
+export type EnemyEntityOverlay = {
+  name?: string;
+  abilities?: Record<string, EnemyAbilityOverlay>;
+};
+
 export type EntityOverlay = {
   items?: Record<string, { name?: string; description?: string }>;
   spells?: Record<string, { name?: string; description?: string }>;
-  enemies?: Record<string, { name?: string; abilities?: Record<string, EnemyAbilityOverlay> }>;
+  enemies?: Record<string, EnemyEntityOverlay>;
   companions?: Record<string, { name?: string; lorePt?: string }>;
   journeyMarks?: Record<string, { name?: string; description?: string }>;
   passives?: Record<string, { name?: string; description?: string }>;
@@ -114,7 +120,7 @@ export function applyEntityLocaleOverlay(data: GameData, locale: Locale): void {
   applyRecordOverlay(data.spells, overlay.spells, (def, o) => {
     if (o.name) def.name = o.name;
   });
-  applyRecordOverlay(data.enemies, overlay.enemies, (def, o) => {
+  applyRecordOverlay<EnemyDef, EnemyEntityOverlay>(data.enemies, overlay.enemies, (def, o) => {
     if (o.name) def.name = o.name;
     if (o.abilities && def.abilities?.length) {
       for (const [abilityId, patch] of Object.entries(o.abilities)) {
@@ -186,10 +192,10 @@ export function getExplorationOverlay(locale: Locale): ExplorationOverlay | null
   return EXPLORATION_OVERLAY_EN;
 }
 
-function applyRecordOverlay<T extends { id?: string }>(
+function applyRecordOverlay<T extends { id?: string }, O = Partial<T>>(
   target: Record<string, T>,
-  overlay: Record<string, Partial<T>> | undefined,
-  merge: (def: T, o: Partial<T>) => void
+  overlay: Record<string, O> | undefined,
+  merge: (def: T, o: O) => void
 ): void {
   if (!overlay) return;
   for (const [id, patch] of Object.entries(overlay)) {

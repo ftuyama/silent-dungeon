@@ -20,6 +20,7 @@ export {
 } from './spells.ts';
 export { canUseCombatConsumable, useCombatConsumable } from './combatConsumables.ts';
 export {
+  advanceToEnemyTurn,
   executePlayerTurn,
   fleeCombat,
   fleeDifficultyTn,

@@ -1,17 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { beginEncounter, reducePartyStressAfterCombat } from '../../src/engine/combat/index.ts';
-import { chooseEnemyAction } from '../../src/engine/combat/enemyAi.ts';
-import { resolveEnemyAbility } from '../../src/engine/combat/enemyActions.ts';
-import { pickEnemyMeleeTarget } from '../../src/engine/combat/constants.ts';
 import {
+  advanceToEnemyTurn,
+  beginEncounter,
+  chooseEnemyAction,
   expireStatusesAtEnemyPhaseStart,
   maybeApplyStatus,
+  pickEnemyMeleeTarget,
+  reducePartyStressAfterCombat,
+  resolveEnemyAbility,
   rollParalysisSkip,
   statusAttackPenalty,
   statusDefensePenalty,
   tickPoisonAtRoundStart,
-} from '../../src/engine/combat/statusConditions.ts';
-import { advanceToEnemyTurn } from '../../src/engine/combat/turn.ts';
+} from '../../src/engine/combat/index.ts';
 import { createInitialState, createPlayerCharacter } from '../../src/engine/core/index.ts';
 import type {
   Character,

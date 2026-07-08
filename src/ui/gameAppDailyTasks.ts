@@ -1,6 +1,6 @@
 import type { Effect, GameState } from '../engine/schema/index.ts';
 import type { GameEvent } from '../engine/core/index.ts';
-import { mulberry32 } from '../engine/core/rng.ts';
+import { mulberry32 } from '../engine/core/index.ts';
 import { MAX_LEVEL } from '../engine/progression/index.ts';
 import { todayDateKey } from './gameAppDailyBonus.ts';
 import { t } from '../i18n/index.ts';
