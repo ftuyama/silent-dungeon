@@ -101,6 +101,17 @@ describe('i18n locale', () => {
     expect(en.data.spells.warriors_focus?.name).toBe("Warrior's Focus");
   });
 
+  it('applies English overlay for enemy combat abilities', () => {
+    const pt = loadParsedCampaignContent('calvario', 'pt-BR');
+    const en = loadParsedCampaignContent('calvario', 'en-US');
+    const ptMorvayn = pt.data.enemies.morvayn_p1?.abilities?.find((a) => a.id === 'bone_needles');
+    const enMorvayn = en.data.enemies.morvayn_p1?.abilities?.find((a) => a.id === 'bone_needles');
+    expect(ptMorvayn?.name).toBe('Agulhas de Osso');
+    expect(enMorvayn?.name).toBe('Bone Needles');
+    expect(enMorvayn?.linePt).toContain('bone shards');
+    expect(enMorvayn?.linePt).not.toMatch(/lascas de osso/i);
+  });
+
   it('keeps Portuguese entity names and journey marks in pt-BR', () => {
     const pt = loadParsedCampaignContent('calvario', 'pt-BR');
     expect(pt.data.items.iron_dagger?.name).toBe('Adaga de Ferro');

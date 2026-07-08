@@ -26,8 +26,10 @@ import { setupTimedChoices } from './story/storyTimedChoices.ts';
 import { applyChoiceButtonLabel } from './story/choicePresentation.ts';
 import {
   groupStoryChoiceRowsByUiSection,
+  normalizeChoiceUiSection,
   shouldUseChoiceSectionLayout,
 } from './story/choiceSections.ts';
+import { DAILY_COMBAT_CHOICE_ID, dailyCombatCopyForChapter } from './gameAppDailyCombat.ts';
 
 export { isCampEquipmentScene } from './story/storyCampEquipmentPanel.ts';
 export {
@@ -82,6 +84,23 @@ function buildExplorationMovementRows(
     }
   }
   return rows;
+}
+
+/** Insere a escolha temática do dia no bloco da secção correspondente do hub. */
+function insertDailyCombatAmongChoices(
+  rows: StoryChoiceRow[],
+  dailyRow: StoryChoiceRow
+): StoryChoiceRow[] {
+  const section = normalizeChoiceUiSection(dailyRow.choice);
+  if (!section) return [...rows, dailyRow];
+  let insertAt = rows.length;
+  for (let i = rows.length - 1; i >= 0; i--) {
+    if (normalizeChoiceUiSection(rows[i]!.choice) === section) {
+      insertAt = i + 1;
+      break;
+    }
+  }
+  return [...rows.slice(0, insertAt), dailyRow, ...rows.slice(insertAt)];
 }
 
 export type { CampEquipmentCallbacks } from './story/storyCampEquipmentPanel.ts';
@@ -140,6 +159,8 @@ export type StoryRenderContext = {
   sceneArtHighlight: SceneArtHighlightPayload | null;
   /** Meta curta para orientar a sessão atual. */
   sessionObjective: string | null;
+  /** Desafio de combate diário nos hubs (1 vitória por dia por gravação); null quando indisponível. */
+  dailyCombat: { chapter: number } | null;
   /** Bloco de primeiros passos mostrado apenas na primeira sessão. */
   onboardingPrimer: { onDismiss: () => void } | null;
   overlay: StoryOverlayState;
@@ -685,10 +706,25 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       ? buildExplorationMovementRows(ctx.state, ctx.registry)
       : [];
   const explorationMoveCount = explorationMoves.length;
-  const choiceRows = [
+  let choiceRows = [
     ...explorationMoves,
     ...buildStoryChoiceRows(ctx.scene.frontmatter.choices, ctx.state),
   ];
+  if (ctx.dailyCombat) {
+    const copy = dailyCombatCopyForChapter(ctx.dailyCombat.chapter);
+    if (copy) {
+      choiceRows = insertDailyCombatAmongChoices(choiceRows, {
+        kind: 'enabled',
+        choice: {
+          id: DAILY_COMBAT_CHOICE_ID,
+          text: copy.choiceText,
+          preview: copy.choicePreview,
+          effects: [],
+          uiSection: copy.uiSection,
+        },
+      });
+    }
+  }
   const enabledChoices = choiceRows
     .filter((r): r is { kind: 'enabled'; choice: Choice } => r.kind === 'enabled')
     .map((r) => r.choice);

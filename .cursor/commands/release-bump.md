@@ -3,6 +3,8 @@ description: Bump de versão de release (VERSION, package.json, package-lock)
 ---
 Você prepara um **release bump** de *Silent Dungeon* / *A Masmorra do Silêncio*: alinhar a versão do jogo, commitar e criar tag Git antes de build ou publicação no itch.io.
 
+> Se o utilizador pedir fluxo completo com checks de CI + bump + pacote itch opcional, preferir `npm run release -- ...` (ver `.cursor/commands/release.md`).
+
 Leia `.cursor/rules/kiss.mdc` antes de editar. **Não faça push** a menos que o usuário peça explicitamente.
 
 ## Fonte da verdade

@@ -28,9 +28,13 @@ const VERSION_PATHS = ['VERSION', 'package.json', 'package-lock.json'];
 const SEMVER_RE = /^(\d+)\.(\d+)\.(\d+)(?:-([\w.-]+))?(?:\+([\w.-]+))?$/;
 const EXPLICIT_SEMVER_RE = /^\d+\.\d+\.\d+(?:-[\w.-]+)?(?:\+[\w.-]+)?$/;
 
-function usage() {
-  console.error('Usage: node scripts/bump-version.mjs [--no-git] <patch|minor|major|x.y.z>');
-  process.exit(1);
+function usage(exitCode = 1) {
+  const out = exitCode === 0 ? console.log : console.error;
+  out('Usage: node scripts/bump-version.mjs [--no-git] <patch|minor|major|x.y.z>');
+  out('Options:');
+  out('  --no-git   Update files only; skip commit/tag');
+  out('  -h, --help Show this help');
+  process.exit(exitCode);
 }
 
 function runGit(args) {
@@ -158,8 +162,11 @@ function writePackageLock(next) {
 }
 
 const args = process.argv.slice(2);
+if (args.includes('--help') || args.includes('-h')) {
+  usage(0);
+}
 const noGit = args.includes('--no-git');
-const kind = args.find((arg) => arg !== '--no-git');
+const kind = args.find((arg) => arg !== '--no-git' && arg !== '--help' && arg !== '-h');
 if (!kind) usage();
 
 try {

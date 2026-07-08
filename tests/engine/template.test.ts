@@ -25,6 +25,7 @@ function baseState(): GameState {
         relicId: null,
         critRatio: 0,
         specialUsedThisCombat: false,
+        statusConditions: [],
         mana: 0,
         maxMana: 0,
         path: null,

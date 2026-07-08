@@ -11,8 +11,85 @@ import { EnemyLootDropSchema } from './loot.ts';
 export const EnemyTypeSchema = z.enum(['normal', 'undead', 'armored', 'cultist']);
 export type EnemyType = z.infer<typeof EnemyTypeSchema>;
 
-export const EnemyAttackStrategySchema = z.enum(['random', 'focus_leader']);
+export const EnemyAttackStrategySchema = z.enum([
+  'random',
+  'focus_leader',
+  /** Mira o membro vivo com menos HP atual (predador oportunista). */
+  'focus_low_hp',
+  /** Mira o membro vivo com mais stress (pressão psicológica). */
+  'focus_stressed',
+]);
 export type EnemyAttackStrategy = z.infer<typeof EnemyAttackStrategySchema>;
+
+/** Condições de status em combate aplicáveis a personagens do grupo. */
+export const StatusConditionKindSchema = z.enum(['paralysis', 'poison', 'freeze']);
+export type StatusConditionKind = z.infer<typeof StatusConditionKindSchema>;
+
+export const StatusConditionSchema = z.object({
+  kind: StatusConditionKindSchema,
+  /** Rodadas de jogador restantes; expira ao chegar a 0 no início da rodada. */
+  remainingRounds: z.number().int().min(0),
+  /** poison: dano por rodada; paralysis/freeze: sem uso (0). */
+  intensity: z.number().int().min(0).default(0),
+});
+export type StatusCondition = z.infer<typeof StatusConditionSchema>;
+
+/** Aplicação de status por habilidade inimiga (testada por alvo atingido). */
+export const EnemyStatusApplySchema = z.object({
+  kind: StatusConditionKindSchema,
+  chance: z.number().min(0).max(1),
+  rounds: z.number().int().min(1),
+  intensity: z.number().int().min(0).default(0),
+});
+export type EnemyStatusApply = z.infer<typeof EnemyStatusApplySchema>;
+
+export const EnemyAbilityKindSchema = z.enum([
+  /** Ataque físico pesado num alvo: dados extra de dano (2d6/3d6dl para acertar). */
+  'heavy_strike',
+  /** Golpe em área: dano automático reduzido em todos os vivos do grupo. */
+  'area_strike',
+  /** Pressão psicológica: +1 stress em todos os vivos do grupo. */
+  'stress_wave',
+  /** Auto-fortalecimento: +N no ataque inimigo (capado pelo engine). */
+  'self_buff',
+  /** Magia de dano num alvo: rola Mente para acertar; ignora armadura. */
+  'spell_damage',
+]);
+export type EnemyAbilityKind = z.infer<typeof EnemyAbilityKindSchema>;
+
+export const EnemyAbilitySchema = z.object({
+  id: z.string(),
+  /** Nome exibido no log de combate (pt-BR, como `combatLines`). */
+  name: z.string(),
+  kind: EnemyAbilityKindSchema,
+  /** Dados d6 de dano (heavy/area/spell); self_buff/stress_wave ignoram. */
+  dice: z.number().int().min(0).default(1),
+  /** Dano fixo somado; em self_buff é o delta de ataque (padrão 1). */
+  base: z.number().int().min(0).default(0),
+  applyStatus: EnemyStatusApplySchema.optional(),
+  /** Frase de telegraph opcional dita ao usar a habilidade. */
+  linePt: z.string().optional(),
+});
+export type EnemyAbility = z.infer<typeof EnemyAbilitySchema>;
+
+/**
+ * Padrão de turno declarativo. Tokens referem `abilities[].id` ou `'attack'`
+ * (ataque físico comum). Ids desconhecidos caem em ataque comum.
+ */
+export const EnemyBehaviorSchema = z.object({
+  /** Ação da rodada 1 (telegraph de abertura). */
+  opening: z.string().optional(),
+  /** Rotação cíclica após a abertura (ou desde a rodada 1 sem `opening`). */
+  rotation: z.array(z.string()).min(1).optional(),
+  /** Com HP <= fração do máximo, troca para esta rotação (fase de desespero). */
+  desperation: z
+    .object({
+      hpFractionLte: z.number().min(0).max(1),
+      rotation: z.array(z.string()).min(1),
+    })
+    .optional(),
+});
+export type EnemyBehavior = z.infer<typeof EnemyBehaviorSchema>;
 
 export const EnemyDefSchema = z.object({
   id: z.string(),
@@ -40,6 +117,10 @@ export const EnemyDefSchema = z.object({
   focusLeaderWeight: z.number().min(0).max(1).optional(),
   /** Frases opcionais ditas pelo inimigo durante o turno dele. */
   combatLines: z.array(z.string()).optional(),
+  /** Habilidades especiais usáveis via `behavior`; sem `behavior`, são ignoradas. */
+  abilities: z.array(EnemyAbilitySchema).optional(),
+  /** Padrão de turno; omitido = comportamento legado (só ataque físico). */
+  behavior: EnemyBehaviorSchema.optional(),
 });
 
 export type EnemyDef = z.infer<typeof EnemyDefSchema>;
@@ -218,6 +299,8 @@ export const CharacterSchema = z.object({
   /** Bônus de crítico adicional (0..1), somado às regras normais de crítico pelos dados. */
   critRatio: z.number().min(0).max(1).default(0),
   specialUsedThisCombat: z.boolean().default(false),
+  /** Condições ativas em combate (limpas ao terminar/fugir do combate). */
+  statusConditions: z.array(StatusConditionSchema).default([]),
   /** Arquétipo narrativo (Cavaleiro caído, Mago das trevas, …); mecânica continua em `class` */
   path: z.string().nullable().default(null),
 });

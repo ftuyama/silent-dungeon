@@ -293,6 +293,32 @@
   transition: width 0.2s ease;
 }
 
+.hp-bar-track--critical {
+  border-color: var(--danger);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--danger) 40%, transparent);
+}
+
+.hp-bar-track--critical .hp-bar-fill--hp {
+  background: linear-gradient(90deg, #8a1010 0%, #d02020 50%, #ff4040 100%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--danger) 55%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hp-bar-track--critical {
+    animation: hp-critical-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes hp-critical-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px color-mix(in srgb, var(--danger) 30%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 10px color-mix(in srgb, var(--danger) 55%, transparent);
+  }
+}
+
 /** Barra de HP do personagem; mana azul abaixo */
 .sidebar-stats .hp-bar-resource {
   margin-bottom: 0.2rem;

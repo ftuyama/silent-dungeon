@@ -33,6 +33,17 @@ export function pickEnemyMeleeTarget(party: Character[], def: EnemyDef, rng: () 
     return alive[Math.floor(rng() * alive.length)]!;
   }
 
+  if (strategy === 'focus_low_hp') {
+    return alive.reduce((best, i) => (party[i]!.hp < party[best]!.hp ? i : best), alive[0]!);
+  }
+
+  if (strategy === 'focus_stressed') {
+    return alive.reduce(
+      (best, i) => (party[i]!.stress > party[best]!.stress ? i : best),
+      alive[0]!
+    );
+  }
+
   const w = def.focusLeaderWeight ?? DEFAULT_FOCUS_LEADER_WEIGHT;
   const leadAlive = party[0]!.hp > 0;
   if (leadAlive && rng() < w) return 0;

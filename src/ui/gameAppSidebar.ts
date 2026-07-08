@@ -40,6 +40,20 @@ import {
   stressBarMarkup,
 } from './gameAppUtils.ts';
 import { formatItemEquipmentStatParts } from './formatItemEquipment.ts';
+import {
+  cycleDayForStreak,
+  dailyBonusRewardLabel,
+  DAILY_BONUS_CYCLE_LENGTH,
+  rewardForCycleDay,
+  type DailyBonusMeta,
+} from './gameAppDailyBonus.ts';
+import {
+  dailyTaskLabel,
+  dailyTaskRewardLabel,
+  dailyTasksCompletedCount,
+  DAILY_TASKS_PER_DAY,
+  type DailyTasksState,
+} from './gameAppDailyTasks.ts';
 import { collapseTriggerStart, iconWrap, icons } from './icons/index.ts';
 import { attachFocusTrap } from './focusTrap.ts';
 import { t, getLocale } from '../i18n/index.ts';
@@ -52,6 +66,10 @@ type SidebarBuilderParams = {
   sidebarSections: Record<string, boolean>;
   onSectionToggle: (key: string, open: boolean) => void;
   playUiClick?: () => void;
+  /** Sequência de logins diários; mostra o cartão "Bônus de login" quando definida. */
+  dailyBonus?: DailyBonusMeta;
+  /** Tarefas do dia da gravação ativa; acrescenta "{feitas}/{total}" ao cartão do bônus. */
+  dailyTasks?: DailyTasksState | null;
   /** Painel colapsável no mobile; desktop ignora e mantém sempre visível. */
   mobileDetailsOpen?: boolean;
 };
@@ -582,6 +600,180 @@ export function openChronicleModal({ state, campaign, playUiClick }: OpenChronic
     if (e.key === 'Escape') shut();
   };
   window.addEventListener('keydown', overlayModalOnKey);
+  requestAnimationFrame(() => {
+    dismiss.focus();
+    overlayModalFocusTrapRelease = attachFocusTrap(layer);
+  });
+}
+
+export type OpenDailyHubModalOpts = {
+  meta: DailyBonusMeta;
+  /** Tarefas do dia da gravação ativa; sem gravação mostra a dica de carregar um slot. */
+  tasks?: DailyTasksState | null;
+  playUiClick?: () => void;
+};
+
+/** Retorno diário: sequência de login, tarefas do dia e prêmios do ciclo de 7 dias. */
+export function openDailyHubModal({ meta, tasks, playUiClick }: OpenDailyHubModalOpts): void {
+  closeOverlayModal();
+  playUiClick?.();
+
+  const streak = Math.max(1, meta.streak);
+  const cycleDay = cycleDayForStreak(streak);
+  const total = DAILY_BONUS_CYCLE_LENGTH;
+
+  const { layer, scroll, dismiss, wireClose } = createSheetModalShell({
+    layerClass: 'sheet-modal-layer credits-modal-layer daily-bonus-modal-layer',
+    titleId: 'daily-bonus-modal-title',
+    kicker: t('dailyBonus.kicker'),
+    title: t('dailyBonus.title'),
+    sub: t('dailyBonus.modalSub', { streak: String(streak) }),
+    backdropAriaLabel: t('dailyBonus.close'),
+  });
+
+  const secProgress = document.createElement('section');
+  secProgress.className = 'diary-modal-section';
+  const hProgress = document.createElement('h3');
+  hProgress.className = 'diary-modal-section-title';
+  hProgress.textContent = t('dailyBonus.progressTitle');
+  secProgress.appendChild(hProgress);
+
+  const pct = Math.min(100, Math.round((100 * cycleDay) / total));
+  const meter = document.createElement('div');
+  meter.className = 'daily-bonus-progress-meter';
+  meter.setAttribute('role', 'progressbar');
+  meter.setAttribute('aria-valuenow', String(cycleDay));
+  meter.setAttribute('aria-valuemin', '1');
+  meter.setAttribute('aria-valuemax', String(total));
+  meter.setAttribute('aria-label', t('dailyBonus.progressAria'));
+  const fill = document.createElement('div');
+  fill.className = 'daily-bonus-progress-fill';
+  fill.style.width = `${pct}%`;
+  meter.appendChild(fill);
+  secProgress.appendChild(meter);
+
+  const cap = document.createElement('p');
+  cap.className = 'daily-bonus-progress-caption';
+  cap.textContent = t('dailyBonus.progressCaption', {
+    day: String(cycleDay),
+    total: String(total),
+  });
+  secProgress.appendChild(cap);
+
+  const todayLine = document.createElement('p');
+  todayLine.className = 'diary-modal-section-body daily-bonus-today-line';
+  todayLine.innerHTML = `${escHtml(t('dailyBonus.todayReward'))} <strong>${escHtml(dailyBonusRewardLabel(rewardForCycleDay(cycleDay)))}</strong>`;
+  secProgress.appendChild(todayLine);
+
+  const secTasks = document.createElement('section');
+  secTasks.className = 'diary-modal-section';
+  const hTasks = document.createElement('h3');
+  hTasks.className = 'diary-modal-section-title';
+  hTasks.textContent = t('dailyTasks.sectionTitle');
+  secTasks.appendChild(hTasks);
+  const taskList = document.createElement('div');
+  taskList.className = 'diary-modal-section-body daily-bonus-days';
+  if (tasks && tasks.tasks.length > 0) {
+    for (const task of tasks.tasks) {
+      const row = document.createElement('div');
+      row.className = `daily-bonus-day-row daily-task-row${task.claimed ? ' daily-bonus-day-row--done daily-task-row--done' : ''}`;
+
+      const progressCell = document.createElement('span');
+      progressCell.className = 'daily-bonus-day-label daily-task-progress';
+      progressCell.textContent = `${task.progress}/${task.target}`;
+
+      const labelCell = document.createElement('span');
+      labelCell.className = 'daily-bonus-day-reward';
+      labelCell.textContent = dailyTaskLabel(task);
+
+      const stateCell = document.createElement('span');
+      stateCell.className = 'daily-bonus-day-state';
+      stateCell.textContent = task.claimed
+        ? `✓ ${dailyTaskRewardLabel(task.reward)}`
+        : dailyTaskRewardLabel(task.reward);
+
+      row.append(progressCell, labelCell, stateCell);
+      taskList.appendChild(row);
+    }
+  } else {
+    const empty = document.createElement('p');
+    empty.className = 'diary-modal-section-body daily-tasks-empty';
+    empty.textContent = t('dailyTasks.sectionEmpty');
+    taskList.appendChild(empty);
+  }
+  secTasks.appendChild(taskList);
+
+  const secRewards = document.createElement('section');
+  secRewards.className = 'diary-modal-section';
+  const hRewards = document.createElement('h3');
+  hRewards.className = 'diary-modal-section-title';
+  hRewards.textContent = t('dailyBonus.rewardsTitle');
+  secRewards.appendChild(hRewards);
+
+  const list = document.createElement('div');
+  list.className = 'diary-modal-section-body daily-bonus-days';
+  for (let d = 1; d <= total; d++) {
+    const row = document.createElement('div');
+    const mod =
+      d === cycleDay ? ' daily-bonus-day-row--current' : d < cycleDay ? ' daily-bonus-day-row--done' : '';
+    row.className = `daily-bonus-day-row${mod}`;
+
+    const dayCell = document.createElement('span');
+    dayCell.className = 'daily-bonus-day-label';
+    dayCell.textContent = t('dailyBonus.dayLabel', { day: String(d) });
+
+    const rewardCell = document.createElement('span');
+    rewardCell.className = 'daily-bonus-day-reward';
+    rewardCell.textContent = dailyBonusRewardLabel(rewardForCycleDay(d));
+
+    const stateCell = document.createElement('span');
+    stateCell.className = 'daily-bonus-day-state';
+    stateCell.textContent =
+      d === cycleDay ? t('dailyBonus.stateToday') : d < cycleDay ? '✓' : '';
+
+    row.append(dayCell, rewardCell, stateCell);
+    list.appendChild(row);
+  }
+  secRewards.appendChild(list);
+
+  const secRules = document.createElement('section');
+  secRules.className = 'diary-modal-section';
+  const hRules = document.createElement('h3');
+  hRules.className = 'diary-modal-section-title';
+  hRules.textContent = t('dailyBonus.rulesTitle');
+  const rulesBody = document.createElement('div');
+  rulesBody.className = 'diary-modal-section-body credits-modal-about';
+  const pRule1 = document.createElement('p');
+  pRule1.textContent = t('dailyBonus.ruleStreak');
+  const pRule2 = document.createElement('p');
+  pRule2.textContent = t('dailyBonus.ruleApply');
+  const pRule3 = document.createElement('p');
+  pRule3.textContent = t('dailyTasks.ruleReset');
+  const pRule4 = document.createElement('p');
+  pRule4.textContent = t('dailyTasks.ruleClaim');
+  rulesBody.append(pRule1, pRule2, pRule3, pRule4);
+  secRules.appendChild(hRules);
+  secRules.appendChild(rulesBody);
+
+  scroll.appendChild(secProgress);
+  scroll.appendChild(secTasks);
+  scroll.appendChild(secRewards);
+  scroll.appendChild(secRules);
+
+  document.body.appendChild(layer);
+  overlayModalLayer = layer;
+
+  const shut = (): void => {
+    playUiClick?.();
+    closeOverlayModal();
+  };
+  wireClose(shut);
+
+  overlayModalOnKey = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') shut();
+  };
+  window.addEventListener('keydown', overlayModalOnKey);
+
   requestAnimationFrame(() => {
     dismiss.focus();
     overlayModalFocusTrapRelease = attachFocusTrap(layer);
@@ -1282,6 +1474,8 @@ export function buildGameSidebar({
   sidebarSections,
   onSectionToggle,
   playUiClick,
+  dailyBonus,
+  dailyTasks,
   mobileDetailsOpen = true,
 }: SidebarBuilderParams): HTMLElement {
   const hud = document.createElement('div');
@@ -1455,6 +1649,34 @@ export function buildGameSidebar({
     );
     diaryCard.appendChild(btn);
     hud.appendChild(diaryCard);
+  }
+
+  if (dailyBonus) {
+    const streak = Math.max(1, dailyBonus.streak);
+    const cycleDay = cycleDayForStreak(streak);
+    const bonusCard = document.createElement('div');
+    bonusCard.className = 'sidebar-collapse diary-sidebar-card daily-bonus-sidebar-card';
+    let metaLabel = t('dailyBonus.sidebarMeta', {
+      day: String(cycleDay),
+      total: String(DAILY_BONUS_CYCLE_LENGTH),
+    });
+    if (dailyTasks) {
+      metaLabel += ` · ${t('dailyTasks.sidebarMeta', {
+        done: String(dailyTasksCompletedCount(dailyTasks)),
+        total: String(DAILY_TASKS_PER_DAY),
+      })}`;
+    }
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'sidebar-collapse-trigger diary-sidebar-open-btn';
+    btn.setAttribute('aria-haspopup', 'dialog');
+    btn.innerHTML = `${collapseTriggerStart(icons.gold, t('dailyBonus.sidebarLabel'))}<span class="diary-sidebar-open-meta">${escHtml(metaLabel)}<span class="diary-sidebar-open-hint" aria-hidden="true">›</span></span>`;
+    btn.title = t('dailyBonus.sidebarHint');
+    btn.addEventListener('click', () =>
+      openDailyHubModal({ meta: dailyBonus, tasks: dailyTasks, playUiClick })
+    );
+    bonusCard.appendChild(btn);
+    hud.appendChild(bonusCard);
   }
 
   wireSidebarDetails(hud, sidebarSections, onSectionToggle);

@@ -24,36 +24,282 @@ const EN = {
     silent_arrow: { name: 'Silent Arrow' },
   },
   enemies: {
-    rat_swarm: { name: 'Rat Swarm' },
+    rat_swarm: {
+      name: 'Rat Swarm',
+      abilities: { venom_bite: { name: 'Filthy Bite' } },
+    },
     skeleton: { name: 'Skeleton' },
-    cultist: { name: 'Cultist' },
-    frost_cultist: { name: 'Frost Cultist' },
-    stone_guard: { name: 'Stone Guardian' },
-    elemental_golem: { name: 'Elemental Golem' },
-    morvayn_p1: { name: 'Morvayn, the Necromancer' },
-    morvayn_p2: { name: 'Morvayn (Throne of Bones)' },
-    fallen_angel: { name: 'Fallen Angel, Voice of the Veil' },
-    vigil_hunter: { name: 'Vigil Hunter' },
+    cultist: {
+      name: 'Cultist',
+      abilities: {
+        dread_whisper: {
+          name: 'Whisper of Dread',
+          linePt: 'The cultist chants low — the liturgy seeks cracks in your courage.',
+        },
+      },
+    },
+    frost_cultist: {
+      name: 'Frost Cultist',
+      abilities: {
+        frost_lash: {
+          name: 'Frost Lash',
+          linePt: 'The incense freezes in the air — the frost hunts your blood.',
+        },
+      },
+    },
+    stone_guard: {
+      name: 'Stone Guardian',
+      abilities: {
+        granite_slam: {
+          name: 'Granite Slam',
+          linePt: 'The guardian raises a stone arm — the whole hall seems to weigh on the blow.',
+        },
+      },
+    },
+    elemental_golem: {
+      name: 'Elemental Golem',
+      abilities: {
+        seismic_wave: {
+          name: 'Seismic Wave',
+          linePt: 'The colossus strikes the floor — stone ripples like water held still too long.',
+        },
+      },
+    },
+    morvayn_p1: {
+      name: 'Morvayn, the Necromancer',
+      abilities: {
+        bone_needles: {
+          name: 'Bone Needles',
+          linePt: 'Morvayn opens his hand — bone shards spin and point at you.',
+        },
+        dread_liturgy: {
+          name: 'Liturgy of Dread',
+          linePt: "The necromancer's voice drops an octave; the dead listen with you.",
+        },
+      },
+    },
+    morvayn_p2: {
+      name: 'Morvayn (Throne of Bones)',
+      abilities: {
+        throne_grasp: {
+          name: 'Throne Grasp',
+          linePt: 'Bones burst from the dais and seize — the throne fights too.',
+        },
+        marrow_curse: {
+          name: 'Marrow Curse',
+          linePt: 'Morvayn whispers to the bone inside you — and the bone answers.',
+        },
+      },
+    },
+    fallen_angel: {
+      name: 'Fallen Angel, Voice of the Veil',
+      abilities: {
+        veil_verdict: {
+          name: 'Veil Verdict',
+          linePt: 'The severed wings unfold — what light remains becomes sentence.',
+        },
+      },
+    },
+    vigil_hunter: {
+      name: 'Vigil Hunter',
+      abilities: {
+        pinning_shot: {
+          name: 'Pinning Shot',
+          linePt: 'The hunter locks on the wounded — the Vigil does not waste arrows.',
+        },
+      },
+    },
     rival_kael_i: { name: 'Kael, the Grey Tracker' },
-    rival_kael_ii: { name: 'Kael, the Grey Tracker' },
-    rival_kael_iii: { name: 'Kael, the Grey Tracker' },
-    rival_kael_iv: { name: 'Kael, the Grey Tracker' },
-    frost_whelp: { name: 'Frost Whelp' },
-    frost_reaver: { name: 'Frost Reaver' },
-    ice_dragon_p1: { name: "Vetrnax, the Wind's Edge" },
-    ice_dragon_p2: { name: 'Vetrnax (Frozen Heart)' },
-    summit_fallen_god: { name: 'Echoes of the Broken Pantheon' },
-    act6_veil_herald: { name: 'Herald of the Veil' },
-    act6_echo_chorus: { name: 'Chorus of Echoes' },
-    act6_penitent_blade: { name: 'Faceless Penitent' },
-    act6_shadow_self: { name: 'Sovereign Reflection' },
+    rival_kael_ii: {
+      name: 'Kael, the Grey Tracker',
+      abilities: {
+        gray_focus: {
+          name: 'Grey Focus',
+          linePt: 'Kael breathes deep and reads your guard like a fresh trail.',
+        },
+      },
+    },
+    rival_kael_iii: {
+      name: 'Kael, the Grey Tracker',
+      abilities: {
+        gray_focus: {
+          name: 'Grey Focus',
+          linePt: 'Kael breathes deep and reads your guard like a fresh trail.',
+        },
+        tracker_lunge: {
+          name: "Tracker's Lunge",
+          linePt: 'Grey steel closes the distance in a single step.',
+        },
+      },
+    },
+    rival_kael_iv: {
+      name: 'Kael, the Grey Tracker',
+      abilities: {
+        gray_focus: {
+          name: 'Grey Focus',
+          linePt: 'Kael breathes deep and reads your guard like a fresh trail.',
+        },
+        tracker_lunge: {
+          name: "Tracker's Lunge",
+          linePt: 'Grey steel closes the distance in a single step.',
+        },
+      },
+    },
+    frost_whelp: {
+      name: 'Frost Whelp',
+      abilities: { frost_nip: { name: 'Frost Nip' } },
+    },
+    frost_reaver: {
+      name: 'Frost Reaver',
+      abilities: {
+        glacial_cleave: {
+          name: 'Glacial Cleave',
+          linePt: 'The axe sweeps wide — frost follows the edge.',
+        },
+      },
+    },
+    ice_dragon_p1: {
+      name: "Vetrnax, the Wind's Edge",
+      abilities: {
+        frost_breath: {
+          name: 'Frost Breath',
+          linePt: 'Vetrnax inhales — the air around you surrenders first.',
+        },
+        wind_shear: {
+          name: 'Wind Shear',
+          linePt: 'The wings beat once; the wind cuts what will not bow.',
+        },
+      },
+    },
+    ice_dragon_p2: {
+      name: 'Vetrnax (Frozen Heart)',
+      abilities: {
+        deep_freeze: {
+          name: 'Deep Freeze',
+          linePt: 'The frozen heart pulses — deep cold does not scream; it occupies.',
+        },
+        avalanche_wing: {
+          name: 'Avalanche Wing',
+          linePt: 'Snow and thunder in the same wingbeat.',
+        },
+      },
+    },
+    summit_fallen_god: {
+      name: 'Echoes of the Broken Pantheon',
+      abilities: {
+        hymn_of_ruin: {
+          name: 'Hymn of Ruin',
+          linePt: 'The broken choir sings backwards — each note steals ground.',
+        },
+        shattered_verdict: {
+          name: 'Shattered Verdict',
+          linePt: 'Fragments of the pantheon converge in a single pointing finger.',
+        },
+      },
+    },
+    act6_veil_herald: {
+      name: 'Herald of the Veil',
+      abilities: {
+        unveiling: {
+          name: 'Unveiling',
+          linePt: 'The herald pulls an invisible seam — reality groans where you stand.',
+        },
+        seam_dread: {
+          name: 'Dread of the Seams',
+          linePt: 'For an instant, everyone sees the invisible walls of their own certainty.',
+        },
+      },
+    },
+    act6_echo_chorus: {
+      name: 'Chorus of Echoes',
+      abilities: {
+        chorus_of_you: {
+          name: 'Chorus of You',
+          linePt: 'The chorus repeats your words — in the tone you swore you never used.',
+        },
+        dissonant_echo: {
+          name: 'Dissonant Echo',
+          linePt: 'A wrong note, tuned on purpose, crosses your temple.',
+        },
+      },
+    },
+    act6_penitent_blade: {
+      name: 'Faceless Penitent',
+      abilities: {
+        penitent_vice: {
+          name: "Penitent's Vice",
+          linePt: 'The blade descends slowly — penance is never in a hurry.',
+        },
+      },
+    },
+    act6_shadow_self: {
+      name: 'Sovereign Reflection',
+      abilities: {
+        sovereign_poise: {
+          name: 'Sovereign Poise',
+          linePt: 'The reflection adjusts its stance — yours, without hesitation.',
+        },
+        mirror_edge: {
+          name: "Mirror's Edge",
+          linePt: 'The blow comes from the exact angle you would strike.',
+        },
+        guiltless_verdict: {
+          name: 'Guiltless Verdict',
+          linePt: 'The reflection decides for you — and the decision hurts.',
+        },
+      },
+    },
     act6_shade_fragment: { name: 'Shade Fragment' },
     act6_wild_splinter: { name: 'Wandering Splinter' },
-    act6_wild_veil_scribe: { name: 'Veil Scribe' },
-    act6_wild_murmur_host: { name: 'Host of Murmurs' },
-    act6_wild_chain_penitent: { name: 'Penitent of Links' },
-    act6_wild_glass_regent: { name: 'Regent of Broken Glass' },
-    act6_wild_stain_preacher: { name: 'Preacher of the Stain' },
+    act6_wild_veil_scribe: {
+      name: 'Veil Scribe',
+      abilities: {
+        binding_clause: {
+          name: 'Binding Clause',
+          linePt: 'The pen scores the air — the text demands your signature, still.',
+        },
+      },
+    },
+    act6_wild_murmur_host: {
+      name: 'Host of Murmurs',
+      abilities: {
+        murmur_swell: {
+          name: 'Murmur Swell',
+          linePt: 'Mouths open at once — none of them says your name right.',
+        },
+      },
+    },
+    act6_wild_chain_penitent: {
+      name: 'Penitent of Links',
+      abilities: {
+        chain_bind: {
+          name: 'Chain Bind',
+          linePt: 'The chain sings and seeks a pulse — the link learns your weight.',
+        },
+      },
+    },
+    act6_wild_glass_regent: {
+      name: 'Regent of Broken Glass',
+      abilities: {
+        crown_of_shards: {
+          name: 'Crown of Shards',
+          linePt: 'The crown spins — each shard picks a face to reflect and cut.',
+        },
+        regent_composure: {
+          name: "Regent's Composure",
+          linePt: 'The regent straightens the broken throne beneath them.',
+        },
+      },
+    },
+    act6_wild_stain_preacher: {
+      name: 'Preacher of the Stain',
+      abilities: {
+        stain_sermon: {
+          name: 'Stain Sermon',
+          linePt: 'The preacher reads aloud — and the stain on you answers the call.',
+        },
+      },
+    },
   },
   passives: {
     knight: { name: 'Relentless Steel', description: '+3% critical hit chance.' },

@@ -152,7 +152,11 @@ function beginBattleEncounter(
     message: combatLog.logRoundPlayer(combat.round),
   });
 
-  const party = state.party.map((p) => ({ ...p, specialUsedThisCombat: false }));
+  const party = state.party.map((p) => ({
+    ...p,
+    specialUsedThisCombat: false,
+    statusConditions: [],
+  }));
 
   return {
     ...bumpRngSeed(state),

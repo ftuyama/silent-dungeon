@@ -50,6 +50,8 @@ export function reducePartyStressAfterCombat(state: GameState): GameState {
   const party = state.party.map((member) => ({
     ...member,
     stress: Math.max(0, member.stress - 1),
+    /** Condições de combate não persistem fora do combate. */
+    statusConditions: [],
   }));
   return { ...state, party };
 }

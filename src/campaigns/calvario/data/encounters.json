@@ -687,6 +687,46 @@
     "dialogueEnemyId": "act2_circulo_envoy_verbal",
     "xpReward": 0
   },
+  "daily_hub_ch2": {
+    "id": "daily_hub_ch2",
+    "enemies": [
+      "rat_swarm"
+    ],
+    "playerAdvantage": true,
+    "enemyAdvantage": false,
+    "xpReward": 4,
+    "fleeRate": 0.75
+  },
+  "daily_hub_ch3": {
+    "id": "daily_hub_ch3",
+    "enemies": [
+      "cultist"
+    ],
+    "playerAdvantage": true,
+    "enemyAdvantage": false,
+    "xpReward": 4,
+    "fleeRate": 0.75
+  },
+  "daily_hub_ch5": {
+    "id": "daily_hub_ch5",
+    "enemies": [
+      "frost_whelp"
+    ],
+    "playerAdvantage": true,
+    "enemyAdvantage": false,
+    "xpReward": 4,
+    "fleeRate": 0.75
+  },
+  "daily_hub_ch6": {
+    "id": "daily_hub_ch6",
+    "enemies": [
+      "act6_wild_splinter"
+    ],
+    "playerAdvantage": true,
+    "enemyAdvantage": false,
+    "xpReward": 4,
+    "fleeRate": 0.75
+  },
   "act2_culto_envoy_dialogue": {
     "combatType": "dialogue",
     "id": "act2_culto_envoy_dialogue",

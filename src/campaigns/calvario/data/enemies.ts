@@ -15,7 +15,18 @@ export const enemies: Record<string, EnemyDef> = {
     armorChips: 0,
     xp: 13,
     sprite: E.act1_rat_swarm.sprite,
-    attackStrategy: 'random',
+    attackStrategy: 'focus_low_hp',
+    abilities: [
+      {
+        id: 'venom_bite',
+        name: 'Mordida Imunda',
+        kind: 'heavy_strike',
+        dice: 1,
+        base: 0,
+        applyStatus: { kind: 'poison', chance: 0.5, rounds: 2, intensity: 1 },
+      },
+    ],
+    behavior: { rotation: ['attack', 'venom_bite'] },
     lootDrops: [
       { chance: 0.01, itemId: 'potion_hp' },
       { chance: 0.05, resource: 'gold', amount: 1 },
@@ -66,7 +77,18 @@ export const enemies: Record<string, EnemyDef> = {
     armorChips: 0,
     xp: 16,
     sprite: E.act2_cultist.sprite,
-    attackStrategy: 'random',
+    attackStrategy: 'focus_stressed',
+    abilities: [
+      {
+        id: 'dread_whisper',
+        name: 'Sussurro de Pavor',
+        kind: 'stress_wave',
+        dice: 1,
+        base: 0,
+        linePt: 'O cultista entoa baixo — a liturgia procura fissuras na sua coragem.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'attack', 'dread_whisper'] },
     lootDrops: [
       { chance: 0.1, resource: 'gold', amount: 1 },
       { chance: 0.05, resource: 'gold', amount: 1 },
@@ -92,6 +114,18 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 23,
     sprite: E.act2_cultist.sprite,
     attackStrategy: 'random',
+    abilities: [
+      {
+        id: 'frost_lash',
+        name: 'Chicote de Geada',
+        kind: 'spell_damage',
+        dice: 2,
+        base: 1,
+        applyStatus: { kind: 'freeze', chance: 0.35, rounds: 1, intensity: 0 },
+        linePt: 'O incenso congela no ar — a geada procura o seu sangue.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'frost_lash'] },
     lootDrops: [
       { chance: 0.1, resource: 'gold', amount: 1 },
       { chance: 0.05, resource: 'gold', amount: 1 },
@@ -118,6 +152,18 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 21,
     sprite: E.act3_stone_guard.sprite,
     attackStrategy: 'random',
+    abilities: [
+      {
+        id: 'granite_slam',
+        name: 'Golpe de Granito',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 1,
+        applyStatus: { kind: 'paralysis', chance: 0.3, rounds: 1, intensity: 0 },
+        linePt: 'O guardião ergue o braço de pedra — o salão inteiro parece pesar no golpe.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'attack', 'granite_slam'] },
     lootDrops: [
       { chance: 0.5, resource: 'gold', amount: 1 },
       { chance: 0.25, resource: 'gold', amount: 1 },
@@ -144,6 +190,17 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 30,
     sprite: E.elemental_golem.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'seismic_wave',
+        name: 'Onda Sísmica',
+        kind: 'area_strike',
+        dice: 2,
+        base: 2,
+        linePt: 'O colosso bate no chão — a rocha ondula como água parada demais.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'attack', 'seismic_wave'] },
     lootDrops: [
       { chance: 0.4, resource: 'gold', amount: 1 },
       { chance: 0.2, resource: 'gold', amount: 1 },
@@ -170,6 +227,29 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 50,
     sprite: E.act4_morvayn_p1.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'bone_needles',
+        name: 'Agulhas de Osso',
+        kind: 'spell_damage',
+        dice: 2,
+        base: 2,
+        linePt: 'Morvayn abre a mão — lascas de osso giram e apontam para você.',
+      },
+      {
+        id: 'dread_liturgy',
+        name: 'Liturgia do Pavor',
+        kind: 'stress_wave',
+        dice: 1,
+        base: 0,
+        linePt: 'A voz do necromante desce uma oitava; os mortos escutam com você.',
+      },
+    ],
+    behavior: {
+      opening: 'bone_needles',
+      rotation: ['attack', 'bone_needles', 'dread_liturgy'],
+      desperation: { hpFractionLte: 0.35, rotation: ['bone_needles', 'attack'] },
+    },
     lootDrops: [
       { chance: 1, resource: 'gold', amount: 2 },
       { chance: 0.5, resource: 'gold', amount: 1 },
@@ -199,6 +279,31 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 120,
     sprite: E.act4_morvayn_p2.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'throne_grasp',
+        name: 'Garra do Trono',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 2,
+        applyStatus: { kind: 'paralysis', chance: 0.35, rounds: 1, intensity: 0 },
+        linePt: 'Ossos irrompem do estrado e agarram — o trono também luta.',
+      },
+      {
+        id: 'marrow_curse',
+        name: 'Maldição da Medula',
+        kind: 'spell_damage',
+        dice: 3,
+        base: 1,
+        applyStatus: { kind: 'poison', chance: 0.5, rounds: 2, intensity: 2 },
+        linePt: 'Morvayn sussurra ao osso dentro de você — e o osso responde.',
+      },
+    ],
+    behavior: {
+      opening: 'marrow_curse',
+      rotation: ['attack', 'throne_grasp', 'marrow_curse'],
+      desperation: { hpFractionLte: 0.35, rotation: ['throne_grasp', 'marrow_curse'] },
+    },
     lootDrops: [
       { chance: 1, resource: 'gold', amount: 4 },
       { chance: 0.5, resource: 'gold', amount: 1 },
@@ -228,6 +333,17 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 60,
     sprite: E.act2_fallen_angel.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'veil_verdict',
+        name: 'Veredicto do Véu',
+        kind: 'spell_damage',
+        dice: 2,
+        base: 2,
+        linePt: 'As asas cortadas abrem-se — o que resta de luz vira sentença.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'veil_verdict'] },
     lootDrops: [
       { chance: 0.75, resource: 'supply', amount: 1 },
       { chance: 0.15, itemId: 'potion_hp' },
@@ -252,7 +368,19 @@ export const enemies: Record<string, EnemyDef> = {
     armorChips: 1,
     xp: 45,
     sprite: E.act4_vigil_hunter.sprite,
-    attackStrategy: 'random',
+    attackStrategy: 'focus_low_hp',
+    abilities: [
+      {
+        id: 'pinning_shot',
+        name: 'Tiro de Fixação',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 0,
+        applyStatus: { kind: 'paralysis', chance: 0.3, rounds: 1, intensity: 0 },
+        linePt: 'O caçador trava a mira no ferido — a Vigília não desperdiça flechas.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'pinning_shot'] },
     lootDrops: [
       { chance: 0.25, resource: 'supply', amount: 1 },
       { chance: 0.4, resource: 'gold', amount: 3 },
@@ -303,6 +431,17 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 32,
     sprite: E.rival_kael.sprite,
     attackStrategy: 'random',
+    abilities: [
+      {
+        id: 'gray_focus',
+        name: 'Foco Cinzento',
+        kind: 'self_buff',
+        dice: 1,
+        base: 1,
+        linePt: 'Kael respira fundo e lê a sua guarda como um rasto fresco.',
+      },
+    ],
+    behavior: { opening: 'gray_focus', rotation: ['attack'] },
     lootDrops: [
       { chance: 0.4, resource: 'gold', amount: 2 },
       { chance: 0.2, resource: 'supply', amount: 1 },
@@ -328,6 +467,25 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 42,
     sprite: E.rival_kael.sprite,
     attackStrategy: 'random',
+    abilities: [
+      {
+        id: 'gray_focus',
+        name: 'Foco Cinzento',
+        kind: 'self_buff',
+        dice: 1,
+        base: 1,
+        linePt: 'Kael respira fundo e lê a sua guarda como um rasto fresco.',
+      },
+      {
+        id: 'tracker_lunge',
+        name: 'Investida do Rastreador',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 1,
+        linePt: 'O aço cinzento dobra a distância num passo só.',
+      },
+    ],
+    behavior: { opening: 'gray_focus', rotation: ['attack', 'tracker_lunge'] },
     lootDrops: [
       { chance: 0.45, resource: 'gold', amount: 2 },
       { chance: 0.25, resource: 'gold', amount: 1 },
@@ -353,6 +511,29 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 52,
     sprite: E.rival_kael.sprite,
     attackStrategy: 'random',
+    abilities: [
+      {
+        id: 'gray_focus',
+        name: 'Foco Cinzento',
+        kind: 'self_buff',
+        dice: 1,
+        base: 1,
+        linePt: 'Kael respira fundo e lê a sua guarda como um rasto fresco.',
+      },
+      {
+        id: 'tracker_lunge',
+        name: 'Investida do Rastreador',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 2,
+        linePt: 'O aço cinzento dobra a distância num passo só.',
+      },
+    ],
+    behavior: {
+      opening: 'gray_focus',
+      rotation: ['attack', 'tracker_lunge'],
+      desperation: { hpFractionLte: 0.3, rotation: ['tracker_lunge'] },
+    },
     lootDrops: [
       { chance: 0.5, resource: 'gold', amount: 3 },
       { chance: 0.3, resource: 'supply', amount: 1 },
@@ -377,7 +558,18 @@ export const enemies: Record<string, EnemyDef> = {
     armorChips: 0,
     xp: 28,
     sprite: E.act5_frost_whelp.sprite,
-    attackStrategy: 'random',
+    attackStrategy: 'focus_low_hp',
+    abilities: [
+      {
+        id: 'frost_nip',
+        name: 'Dentada Gélida',
+        kind: 'heavy_strike',
+        dice: 1,
+        base: 1,
+        applyStatus: { kind: 'freeze', chance: 0.25, rounds: 1, intensity: 0 },
+      },
+    ],
+    behavior: { rotation: ['attack', 'frost_nip'] },
     lootDrops: [
       { chance: 0.1, resource: 'gold', amount: 1 },
       { chance: 0.05, resource: 'gold', amount: 1 },
@@ -403,6 +595,18 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 38,
     sprite: E.act5_frost_reaver.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'glacial_cleave',
+        name: 'Talho Glacial',
+        kind: 'area_strike',
+        dice: 2,
+        base: 1,
+        applyStatus: { kind: 'freeze', chance: 0.2, rounds: 1, intensity: 0 },
+        linePt: 'O machado descreve um arco largo — a geada segue o fio.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'attack', 'glacial_cleave'] },
     lootDrops: [
       { chance: 0.25, resource: 'gold', amount: 2 },
       { chance: 0.05, resource: 'gold', amount: 1 },
@@ -429,6 +633,30 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 160,
     sprite: E.act5_ice_dragon_p1.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'frost_breath',
+        name: 'Sopro de Geada',
+        kind: 'spell_damage',
+        dice: 3,
+        base: 2,
+        applyStatus: { kind: 'freeze', chance: 0.5, rounds: 1, intensity: 0 },
+        linePt: 'Vetrnax inspira — o ar em volta rende-se primeiro.',
+      },
+      {
+        id: 'wind_shear',
+        name: 'Lâmina de Vento',
+        kind: 'area_strike',
+        dice: 3,
+        base: 2,
+        linePt: 'As asas batem uma vez; o vento corta o que não se abaixa.',
+      },
+    ],
+    behavior: {
+      opening: 'frost_breath',
+      rotation: ['attack', 'wind_shear', 'frost_breath'],
+      desperation: { hpFractionLte: 0.35, rotation: ['frost_breath', 'wind_shear'] },
+    },
     lootDrops: [
       { chance: 1, resource: 'gold', amount: 4 },
       { chance: 0.5, resource: 'gold', amount: 2 },
@@ -457,6 +685,30 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 200,
     sprite: E.act5_ice_dragon_p2.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'deep_freeze',
+        name: 'Congelamento Profundo',
+        kind: 'spell_damage',
+        dice: 3,
+        base: 3,
+        applyStatus: { kind: 'freeze', chance: 0.6, rounds: 2, intensity: 0 },
+        linePt: 'O coração congelado pulsa — o frio profundo não grita; ocupa.',
+      },
+      {
+        id: 'avalanche_wing',
+        name: 'Asa de Avalanche',
+        kind: 'area_strike',
+        dice: 3,
+        base: 3,
+        linePt: 'Neve e trovão na mesma batida de asa.',
+      },
+    ],
+    behavior: {
+      opening: 'deep_freeze',
+      rotation: ['attack', 'avalanche_wing', 'deep_freeze'],
+      desperation: { hpFractionLte: 0.3, rotation: ['deep_freeze', 'avalanche_wing'] },
+    },
     lootDrops: [
       { chance: 1, resource: 'gold', amount: 4 },
       { chance: 0.5, resource: 'gold', amount: 2 },
@@ -486,6 +738,29 @@ export const enemies: Record<string, EnemyDef> = {
     sprite: E.act5_summit_fallen_god.sprite,
     attackStrategy: 'focus_leader',
     critConfirm: 0.35,
+    abilities: [
+      {
+        id: 'hymn_of_ruin',
+        name: 'Hino da Ruína',
+        kind: 'stress_wave',
+        dice: 1,
+        base: 0,
+        linePt: 'O coro quebrado entoa de trás para a frente — cada nota tira chão.',
+      },
+      {
+        id: 'shattered_verdict',
+        name: 'Veredicto Estilhaçado',
+        kind: 'spell_damage',
+        dice: 4,
+        base: 2,
+        linePt: 'Fragmentos do panteão convergem num único dedo apontado.',
+      },
+    ],
+    behavior: {
+      opening: 'hymn_of_ruin',
+      rotation: ['attack', 'shattered_verdict', 'hymn_of_ruin'],
+      desperation: { hpFractionLte: 0.3, rotation: ['shattered_verdict', 'attack'] },
+    },
     combatLines: [
       'Eu era número antes de ter nome.',
       'Seu sangue ainda acredita em milagre — eu não.',
@@ -514,6 +789,29 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 180,
     sprite: E.act6_veil_herald.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'unveiling',
+        name: 'Desvelamento',
+        kind: 'spell_damage',
+        dice: 3,
+        base: 2,
+        linePt: 'O arauto puxa uma costura invisível — a realidade range onde você pisa.',
+      },
+      {
+        id: 'seam_dread',
+        name: 'Pavor das Costuras',
+        kind: 'stress_wave',
+        dice: 1,
+        base: 0,
+        linePt: 'Por um instante, todos veem as paredes invisíveis da própria certeza.',
+      },
+    ],
+    behavior: {
+      opening: 'seam_dread',
+      rotation: ['attack', 'unveiling', 'seam_dread'],
+      desperation: { hpFractionLte: 0.3, rotation: ['unveiling', 'attack'] },
+    },
     combatLines: [
       'Você chamas isto de mundo porque ainda não viste as costuras.',
       'Toda certeza é uma cela com paredes invisíveis.',
@@ -540,7 +838,26 @@ export const enemies: Record<string, EnemyDef> = {
     armorChips: 0,
     xp: 190,
     sprite: E.act6_echo_chorus.sprite,
-    attackStrategy: 'random',
+    attackStrategy: 'focus_stressed',
+    abilities: [
+      {
+        id: 'chorus_of_you',
+        name: 'Coro de Você',
+        kind: 'stress_wave',
+        dice: 1,
+        base: 0,
+        linePt: 'O coro repete as suas palavras — com o tom que você jurou nunca ter usado.',
+      },
+      {
+        id: 'dissonant_echo',
+        name: 'Eco Dissonante',
+        kind: 'spell_damage',
+        dice: 3,
+        base: 1,
+        linePt: 'Uma nota errada, afinada de propósito, atravessa a sua têmpora.',
+      },
+    ],
+    behavior: { rotation: ['chorus_of_you', 'attack', 'dissonant_echo'] },
     combatLines: [
       'Lembrar e reescrever.',
       'A memória mente para proteger quem a consulta.',
@@ -568,6 +885,21 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 210,
     sprite: E.act6_penitent_blade.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'penitent_vice',
+        name: 'Torno do Penitente',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 2,
+        applyStatus: { kind: 'paralysis', chance: 0.35, rounds: 1, intensity: 0 },
+        linePt: 'A lâmina desce devagar — penitência não tem pressa.',
+      },
+    ],
+    behavior: {
+      rotation: ['attack', 'attack', 'penitent_vice'],
+      desperation: { hpFractionLte: 0.3, rotation: ['penitent_vice', 'attack'] },
+    },
     combatLines: [
       'Vontade sem limite é só fome com armadura.',
       'Você tremes porque ainda tem algo a perder.',
@@ -595,6 +927,37 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 280,
     sprite: E.act6_shadow_self.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'sovereign_poise',
+        name: 'Porte Soberano',
+        kind: 'self_buff',
+        dice: 1,
+        base: 1,
+        linePt: 'O reflexo ajusta a postura — a sua, sem a hesitação.',
+      },
+      {
+        id: 'mirror_edge',
+        name: 'Fio do Espelho',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 2,
+        linePt: 'O golpe vem do ângulo exato em que você atacaria.',
+      },
+      {
+        id: 'guiltless_verdict',
+        name: 'Veredicto sem Culpa',
+        kind: 'spell_damage',
+        dice: 4,
+        base: 2,
+        linePt: 'O reflexo decide por você — e a decisão dói.',
+      },
+    ],
+    behavior: {
+      opening: 'sovereign_poise',
+      rotation: ['attack', 'mirror_edge', 'guiltless_verdict'],
+      desperation: { hpFractionLte: 0.3, rotation: ['mirror_edge', 'guiltless_verdict'] },
+    },
     combatLines: [
       'Eu sou você sem sua culpa.',
       'Você pedes sentido; eu imponho direção.',
@@ -678,6 +1041,18 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 145,
     sprite: E.act6_wild_veil_scribe.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'binding_clause',
+        name: 'Cláusula Vinculante',
+        kind: 'spell_damage',
+        dice: 3,
+        base: 1,
+        applyStatus: { kind: 'paralysis', chance: 0.25, rounds: 1, intensity: 0 },
+        linePt: 'A pena risca o ar — o texto exige a sua assinatura parada.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'binding_clause'] },
     combatLines: [
       'Não arauto — arquivo. Registo do que te falta coragem para rasgar.',
       'Cada linha que traço é uma promesssua mal escrita.',
@@ -705,7 +1080,18 @@ export const enemies: Record<string, EnemyDef> = {
     armorChips: 0,
     xp: 150,
     sprite: E.act6_wild_murmur_host.sprite,
-    attackStrategy: 'random',
+    attackStrategy: 'focus_stressed',
+    abilities: [
+      {
+        id: 'murmur_swell',
+        name: 'Maré de Murmúrios',
+        kind: 'stress_wave',
+        dice: 1,
+        base: 0,
+        linePt: 'As bocas abrem ao mesmo tempo — nenhuma diz o seu nome certo.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'murmur_swell'] },
     combatLines: [
       'Trago bocas que não são minhas — todas lembram seu nome errado.',
       'Murmúrio é memória com vergonha de ser alta.',
@@ -734,6 +1120,18 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 165,
     sprite: E.act6_wild_chain_penitent.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'chain_bind',
+        name: 'Elo que Prende',
+        kind: 'heavy_strike',
+        dice: 2,
+        base: 1,
+        applyStatus: { kind: 'paralysis', chance: 0.3, rounds: 1, intensity: 0 },
+        linePt: 'A corrente canta e procura pulso — o elo aprende o seu peso.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'chain_bind'] },
     combatLines: [
       'Os elos não prendem o corpo — prendem a desculpa.',
       'Penitência sem testemunhas ainda pesa.',
@@ -762,6 +1160,29 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 230,
     sprite: E.act6_wild_glass_regent.sprite,
     attackStrategy: 'focus_leader',
+    abilities: [
+      {
+        id: 'crown_of_shards',
+        name: 'Coroa de Estilhaços',
+        kind: 'area_strike',
+        dice: 3,
+        base: 2,
+        linePt: 'A coroa gira — cada caco escolhe um rosto para refletir e cortar.',
+      },
+      {
+        id: 'regent_composure',
+        name: 'Compostura do Regente',
+        kind: 'self_buff',
+        dice: 1,
+        base: 1,
+        linePt: 'O regente endireita o trono partido debaixo de si.',
+      },
+    ],
+    behavior: {
+      opening: 'regent_composure',
+      rotation: ['attack', 'crown_of_shards', 'attack'],
+      desperation: { hpFractionLte: 0.3, rotation: ['crown_of_shards', 'attack'] },
+    },
     combatLines: [
       'Reino sobre cacos — ainda é reino.',
       'O espelho partiu; o trono ficou.',
@@ -791,6 +1212,18 @@ export const enemies: Record<string, EnemyDef> = {
     xp: 158,
     sprite: E.act6_wild_stain_preacher.sprite,
     attackStrategy: 'random',
+    abilities: [
+      {
+        id: 'stain_sermon',
+        name: 'Sermão da Mancha',
+        kind: 'spell_damage',
+        dice: 2,
+        base: 2,
+        applyStatus: { kind: 'poison', chance: 0.5, rounds: 2, intensity: 2 },
+        linePt: 'O pregador lê em voz alta — e a mancha em você responde ao chamado.',
+      },
+    ],
+    behavior: { rotation: ['attack', 'stain_sermon'] },
     combatLines: [
       'A corrupção que carregas tem sermão — eu só leio em voz alta.',
       'Não vim salvar. Vim explicar o cheiro.',

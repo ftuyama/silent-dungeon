@@ -42,6 +42,14 @@ import {
   reducePartyStressAfterCombat,
 } from './resolution.ts';
 import { applyBossTwistsAfterEnemyPhase, finishCombatIfAllEnemiesDead } from './bossTwists.ts';
+import { chooseEnemyAction } from './enemyAi.ts';
+import { computePartyDefenseScore, resolveEnemyAbility } from './enemyActions.ts';
+import {
+  expireStatusesAtEnemyPhaseStart,
+  rollParalysisSkip,
+  statusAttackPenalty,
+  tickPoisonAtRoundStart,
+} from './statusConditions.ts';
 import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 function getLead(state: GameState): Character {
@@ -197,6 +205,21 @@ function physicalAttackForCharacter(
   if (!def) return null;
   if (useSpecial && attackerIndex !== 0) return null;
 
+  if (rollParalysisSkip(attacker, rng)) {
+    return {
+      party,
+      enemies,
+      log: [
+        ...log,
+        {
+          kind: 'info',
+          message: combatLog.logParalysisSkip(attacker.name),
+          actor: attacker.name,
+        },
+      ],
+    };
+  }
+
   let str = effectiveLeadAttr(state, attacker, 'str');
   let mind = effectiveLeadAttr(state, attacker, 'mind');
   for (const slot of [attacker.weaponId, attacker.armorId, attacker.relicId] as const) {
@@ -215,6 +238,7 @@ function physicalAttackForCharacter(
   } else if (stance === 'focus') {
     atkMod = statMod(mind) + 1;
   }
+  atkMod -= statusAttackPenalty(attacker);
 
   let dice: number[] = [];
   let total = 0;
@@ -527,7 +551,7 @@ export function advanceToEnemyTurn(
   bus?: EventBus
 ): GameState {
   const rng = mulberry32(state.rngSeed + 999);
-  const log = [
+  let log: CombatLogEntry[] = [
     ...c.log,
     {
       kind: 'turn_banner' as const,
@@ -537,6 +561,30 @@ export function advanceToEnemyTurn(
   let enemies = [...c.enemies];
   let party = state.party.map((p) => ({ ...p }));
   let carryState = state;
+  let enemyBuffAtk = c.enemyBuffAttackRoll ?? 0;
+
+  const statusExpiry = expireStatusesAtEnemyPhaseStart(party, log);
+  party = statusExpiry.party;
+  log = statusExpiry.log;
+
+  const handleCompanionKnockout = (idx: number): void => {
+    const pid = party[idx]!.id;
+    const bondBefore = getCompanionFriendshipScore(carryState, pid);
+    carryState = adjustCompanionFriendshipScore(
+      { ...carryState, party },
+      pid,
+      KNOCKOUT_FRIENDSHIP_DELTA
+    );
+    carryState = syncCompanionPartyWithFriendship(carryState, data);
+    notifyCompanionFriendshipChange(
+      bus,
+      data,
+      pid,
+      bondBefore,
+      getCompanionFriendshipScore(carryState, pid)
+    );
+    party = carryState.party.map((p) => ({ ...p }));
+  };
 
   for (let i = 0; i < enemies.length; i++) {
     const inst = enemies[i]!;
@@ -554,6 +602,30 @@ export function advanceToEnemyTurn(
         log.push({ kind: 'enemy_line', message: line, enemyIndex: i });
       }
     }
+
+    const action = chooseEnemyAction(def, inst, c.round);
+    if (action.type === 'ability') {
+      const resolved = resolveEnemyAbility({
+        state,
+        c,
+        data,
+        def,
+        ability: action.ability,
+        enemyIndex: i,
+        party,
+        enemyBuffAttackRoll: enemyBuffAtk,
+        rng,
+        log,
+      });
+      party = resolved.party;
+      log = resolved.log;
+      enemyBuffAtk += resolved.enemyBuffAttackRollDelta;
+      for (const koIdx of resolved.koCompanionIndexes) {
+        handleCompanionKnockout(koIdx);
+      }
+      continue;
+    }
+
     const targetIndex = pickEnemyMeleeTarget(party, def, rng);
     const target = party[targetIndex]!;
     let atk = 0;
@@ -570,16 +642,8 @@ export function advanceToEnemyTurn(
       atk = d1 + d2 + statMod(def.str);
       special = attackRollSpecial2d6(d1, d2);
     }
-    atk += c.enemyBuffAttackRoll ?? 0;
-    const panicPenalty =
-      targetIndex === 0 && party[0] && party[0].stress >= 4 ? 2 : 0;
-    const defScore =
-      7 +
-      statMod(effectiveLeadAttr(state, target, 'agi')) +
-      getArmorValue(data, target) +
-      (c.defenseStanceForEnemyTurn === 'defensive' ? 2 : 0) -
-      panicPenalty +
-      (targetIndex === 0 ? (c.buffArmorClass ?? 0) : 0);
+    atk += enemyBuffAtk;
+    const defScore = computePartyDefenseScore(state, c, party, targetIndex, data);
 
     const critConfirm = def.critConfirm ?? DEFAULT_ENEMY_CRIT_CONFIRM;
     let enemyHit = false;
@@ -667,35 +731,32 @@ export function advanceToEnemyTurn(
       st = Math.min(4, st + 1);
       party[targetIndex] = { ...party[targetIndex]!, stress: st };
       if (companionKnockout) {
-        const pid = party[targetIndex]!.id;
-        const bondBefore = getCompanionFriendshipScore(carryState, pid);
-        carryState = adjustCompanionFriendshipScore(
-          { ...carryState, party },
-          pid,
-          KNOCKOUT_FRIENDSHIP_DELTA
-        );
-        carryState = syncCompanionPartyWithFriendship(carryState, data);
-        notifyCompanionFriendshipChange(
-          bus,
-          data,
-          pid,
-          bondBefore,
-          getCompanionFriendshipScore(carryState, pid)
-        );
-        party = carryState.party.map((p) => ({ ...p }));
+        handleCompanionKnockout(targetIndex);
       }
     }
   }
+
+  /** Fase inimiga concluída: buffs de self_buff persistem no estado do combate. */
+  const cLive: CombatState = { ...c, enemyBuffAttackRoll: enemyBuffAtk };
 
   const leadDead = party[0]!.hp <= 0;
   if (leadDead) {
     const sWithParty = { ...carryState, party };
     if (sWithParty.resources.faith >= 5) {
-      return finishCombatFaithRescue(sWithParty, { ...c, enemies, log, phase: 'ended' }, data, bus);
+      return finishCombatFaithRescue(
+        sWithParty,
+        { ...cLive, enemies, log, phase: 'ended' },
+        data,
+        bus
+      );
     }
     log.push({ kind: 'info', message: combatLog.logGameOver() });
-    return finishCombat(sWithParty, { ...c, enemies, log, phase: 'ended' }, false, data, bus);
+    return finishCombat(sWithParty, { ...cLive, enemies, log, phase: 'ended' }, false, data, bus);
   }
+
+  const poisonTick = tickPoisonAtRoundStart(party, log);
+  party = poisonTick.party;
+  log = poisonTick.log;
 
   const nextRound = c.round + 1;
   const roundPrep = applyStartOfPlayerTurnPassive(state, party, log);
@@ -708,7 +769,7 @@ export function advanceToEnemyTurn(
     },
   ];
 
-  const twistOut = applyBossTwistsAfterEnemyPhase(data, c, party, enemies, nextRound);
+  const twistOut = applyBossTwistsAfterEnemyPhase(data, cLive, party, enemies, nextRound);
   party = twistOut.party;
   enemies = twistOut.enemies;
   nextLog = [...nextLog, ...twistOut.twistLog];
@@ -716,7 +777,7 @@ export function advanceToEnemyTurn(
 
   const victoryAfterTwist = finishCombatIfAllEnemiesDead(
     carryState,
-    c,
+    cLive,
     party,
     enemies,
     nextLog,
@@ -730,7 +791,7 @@ export function advanceToEnemyTurn(
     ...carryState,
     party,
     combat: {
-      ...c,
+      ...cLive,
       ...twistCombatPatch,
       enemies,
       log: nextLog,

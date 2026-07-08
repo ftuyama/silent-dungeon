@@ -36,8 +36,39 @@ import {
   saveSlotLimit,
   saveStateToSlot,
   readRawSlot as readSaveSlotRaw,
-  slotReturnRewardDateKey,
 } from './gameAppSaveSlots.ts';
+import {
+  cycleDayForStreak,
+  dailyBonusRewardEffects,
+  dailyBonusRewardLabel,
+  DAILY_BONUS_CYCLE_LENGTH,
+  hasSlotDailyBonusToday,
+  markSlotDailyBonusClaimed,
+  registerDailyLogin,
+  rewardForCycleDay,
+  todayDateKey,
+  type DailyBonusMeta,
+} from './gameAppDailyBonus.ts';
+import {
+  applyEventToDailyTasks,
+  dailyTaskLabel,
+  dailyTaskRewardEffects,
+  dailyTaskRewardLabel,
+  ensureDailyTasks,
+  saveDailyTasks,
+  type DailyTaskInstance,
+  type DailyTasksState,
+} from './gameAppDailyTasks.ts';
+import {
+  DAILY_COMBAT_CHOICE_ID,
+  dailyCombatCopyForChapter,
+  dailyCombatEncounterForChapter,
+  dailyCombatRewardEffects,
+  hasSlotDailyCombatWonToday,
+  isDailyCombatEncounter,
+  isHubScene,
+  markSlotDailyCombatWon,
+} from './gameAppDailyCombat.ts';
 import { appendCombatLogMessageWithBoldNames, renderCombatInto } from './gameAppCombat.ts';
 import { renderDialogueCombatInto } from './gameAppDialogueCombat.ts';
 import {
@@ -54,7 +85,7 @@ import { formatCampaignHeaderTitle } from './campaignHeaderTitle.ts';
 import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
 import { mountAppChrome, syncAppChrome, fullscreenEdgeBtnGlyph, syncLanguageEdgeButton, syncVolumeEdgeButton, type AppChromeRefs } from './gameAppShell.ts';
-import { openChronicleModal, openCreditsModal } from './gameAppSidebar.ts';
+import { openChronicleModal, openCreditsModal, openDailyHubModal } from './gameAppSidebar.ts';
 import { dayAdvanceSubtitle, handleGameEvent } from './gameAppEvents.ts';
 import {
   buildGameAppStorageKeys,
@@ -114,6 +145,18 @@ export class GameApp {
   private readonly choiceHotkeyHandler: (e: KeyboardEvent) => void;
   /** Secções colapsáveis (recursos, inventário, facções, personagem…) — persistido em sessionStorage */
   private sidebarSections: Record<string, boolean> = {};
+  /** Sequência de logins diários (streak) — persistida em localStorage por campanha. */
+  private dailyBonus: DailyBonusMeta = { lastLoginDate: null, streak: 0 };
+  /** Tarefas do dia (por slot) — persistidas em localStorage; `null` até salvar/carregar um slot. */
+  private dailyTasks: DailyTasksState | null = null;
+  /** Tarefas concluídas à espera do pagamento — pago no próximo `render` com o estado assentado. */
+  private pendingDailyTaskRewards: DailyTaskInstance[] = [];
+  /** Evita que XP/level-up do próprio prêmio conte progresso em outra tarefa. */
+  private applyingDailyTaskReward = false;
+  /** Slot da gravação ativa (último gravado/carregado); null em partida nova sem gravação. */
+  private activeSlot: number | null = null;
+  /** Vitória no desafio diário detectada em `combat.end`; prêmio aplicado no commit do estado. */
+  private pendingDailyCombatReward = false;
   /** Volume restaurado ao desmutar (último valor > 0). */
   private volumeBeforeMute = 1;
   /** Buffs/debuffs/marcas — fila com fade sequencial no `GameApp` */
@@ -236,9 +279,17 @@ export class GameApp {
     };
     document.addEventListener('keydown', this.choiceHotkeyHandler, true);
 
-    this.bus.subscribe((ev) =>
+    this.bus.subscribe((ev) => {
+      this.progressDailyTasks(ev);
       handleGameEvent(ev, {
-        onCombatVictory: () => this.audio.playVictory(),
+        onCombatVictory: () => {
+          this.audio.playVictory();
+          // `combat.end` dispara durante a resolução: `this.state.combat` ainda tem o encounter.
+          const encId = this.state.combat?.encounterId;
+          if (encId && isDailyCombatEncounter(encId) && this.activeSlot != null) {
+            this.pendingDailyCombatReward = true;
+          }
+        },
         onCombatFlee: () => this.audio.playFlee(),
         onCombatDefeat: () => this.audio.playDefeat(),
         onFaithMiracle: () => {
@@ -291,11 +342,12 @@ export class GameApp {
             subtitle: t('toast.levelUpSubtitle'),
           });
         },
-      })
-    );
+      });
+    });
     this.state = createInitialState(this.registry.data.campaign);
     this.state = this.stabilize(this.state);
     this.applyLegacyBriefingIfNeeded();
+    this.processDailyLoginBonus();
     this.sidebarSections = loadSidebarSections(this.storageKeys.sidebarKey);
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.menuOpen) {
@@ -359,32 +411,129 @@ export class GameApp {
     }
   };
 
-  /** Bônus diário de retorno: primeira carga de cada slot no dia (gravação existente). */
-  private applyReturnRewardIfNeededForLoadedSlot(slot: number): void {
-    const today = new Date().toISOString().slice(0, 10);
-    const key = slotReturnRewardDateKey(this.campaignId, slot);
+  /** Login diário (abertura do jogo): avança a sequência; prêmio só em gravação carregada ou salva. */
+  private processDailyLoginBonus(): void {
+    const { meta } = registerDailyLogin(this.campaignId);
+    this.dailyBonus = meta;
+  }
+
+  /** Bônus diário no save: primeira carga de cada slot no dia recebe o prêmio do ciclo. */
+  private applyDailyBonusIfNeededForLoadedSlot(slot: number): void {
+    const today = todayDateKey();
+    if (hasSlotDailyBonusToday(this.campaignId, slot, today)) return;
+    const cycleDay = cycleDayForStreak(this.dailyBonus.streak);
+    const reward = rewardForCycleDay(cycleDay);
+    this.state = this.stabilize(
+      applyEffects(this.state, dailyBonusRewardEffects(reward), this.ctx())
+    );
+    markSlotDailyBonusClaimed(this.campaignId, slot, today);
+    this.enqueueStatusHighlight({
+      type: 'statusHighlight',
+      variant: 'good',
+      title: t('dailyBonus.slotTitle', {
+        day: String(cycleDay),
+        total: String(DAILY_BONUS_CYCLE_LENGTH),
+      }),
+      subtitle: t('dailyBonus.slotSubtitle', { reward: dailyBonusRewardLabel(reward) }),
+    });
+  }
+
+  /** Define o slot ativo e garante as tarefas do dia dele (persistidas em localStorage). */
+  private activateDailyTasksForSlot(slot: number): void {
+    this.activeSlot = slot;
+    this.dailyTasks = ensureDailyTasks(this.campaignId, slot, this.state);
+    this.pendingDailyTaskRewards = [];
+  }
+
+  /**
+   * Avança o progresso das tarefas do dia. Eventos do bus disparam a meio de
+   * transições de estado, por isso só o progresso é registado aqui; o pagamento
+   * fica pendente e é aplicado no próximo `render`, com `this.state` assentado.
+   */
+  private progressDailyTasks(ev: GameEvent | null): void {
+    if (!this.dailyTasks || this.applyingDailyTaskReward) return;
+    const { state: next, completed } = applyEventToDailyTasks(this.dailyTasks, ev, this.state);
+    if (next === this.dailyTasks) return;
+    this.dailyTasks = next;
+    if (this.activeSlot != null) saveDailyTasks(this.campaignId, this.activeSlot, next);
+    this.pendingDailyTaskRewards.push(...completed);
+  }
+
+  /** Paga prêmios de tarefas concluídas (fora de combate) e auto-salva o slot ativo. */
+  private flushDailyTaskRewards(): void {
+    if (this.pendingDailyTaskRewards.length === 0) return;
+    if (this.state.mode === 'combat' || this.state.mode === 'dialogue_combat') return;
+    const completed = this.pendingDailyTaskRewards;
+    this.pendingDailyTaskRewards = [];
+    this.applyingDailyTaskReward = true;
     try {
-      if (localStorage.getItem(key) === today) return;
-      this.state = this.stabilize(
-        applyEffects(
-          this.state,
-          [
-            { op: 'addResource', resource: 'supply', delta: 1 },
-            { op: 'addResource', resource: 'gold', delta: 4 },
-          ],
-          this.ctx()
-        )
-      );
-      localStorage.setItem(key, today);
-      this.enqueueStatusHighlight({
-        type: 'statusHighlight',
-        variant: 'good',
-        title: t('toast.catacombsReturnTitle'),
-        subtitle: t('toast.catacombsReturnSubtitle'),
-      });
-    } catch {
-      /* noop */
+      for (const task of completed) {
+        this.state = this.stabilize(
+          applyEffects(this.state, dailyTaskRewardEffects(task.reward), this.ctx())
+        );
+        this.enqueueStatusHighlight({
+          type: 'statusHighlight',
+          variant: 'good',
+          title: t('dailyTasks.completeTitle', { task: dailyTaskLabel(task) }),
+          subtitle: t('dailyTasks.completeSubtitle', { reward: dailyTaskRewardLabel(task.reward) }),
+        });
+      }
+    } finally {
+      this.applyingDailyTaskReward = false;
     }
+    if (this.activeSlot != null) {
+      saveStateToSlot(this.campaignId, this.activeSlot, this.state, this.devMode);
+    }
+  }
+
+  /** Desafio diário disponível? Gravação ativa, cena hub, encounter do capítulo e ainda sem vitória hoje. */
+  private dailyCombatAvailable(scene: LoadedScene): boolean {
+    return (
+      this.activeSlot != null &&
+      isHubScene(scene) &&
+      dailyCombatEncounterForChapter(this.state.chapter) != null &&
+      !hasSlotDailyCombatWonToday(this.campaignId, this.activeSlot)
+    );
+  }
+
+  /** Inicia o desafio diário a partir do hub atual; vitória e fuga voltam ao hub. */
+  private startDailyHubCombat(): void {
+    const scene = this.registry.getScene(this.state.sceneId);
+    if (!scene || !this.dailyCombatAvailable(scene)) return;
+    const encounterId = dailyCombatEncounterForChapter(this.state.chapter);
+    if (!encounterId) return;
+    const hubSceneId = this.state.sceneId;
+    this.unlockAudio();
+    const effects: Effect[] = [
+      {
+        op: 'startCombat',
+        encounterId,
+        onVictory: hubSceneId,
+        onFlee: hubSceneId,
+        onDefeat: 'shared/game_over',
+      },
+    ];
+    this.state = this.stabilize(applyEffects(this.state, effects, this.ctx()));
+    this.render();
+  }
+
+  /** Prêmio fixo do desafio diário — aplicado após `combat.end` com vitória (nunca no clique). */
+  private applyDailyCombatRewardIfPending(): void {
+    if (!this.pendingDailyCombatReward) return;
+    this.pendingDailyCombatReward = false;
+    const slot = this.activeSlot;
+    if (slot == null) return;
+    this.state = this.stabilize(
+      applyEffects(this.state, dailyCombatRewardEffects(), this.ctx())
+    );
+    markSlotDailyCombatWon(this.campaignId, slot);
+    const copy = dailyCombatCopyForChapter(this.state.chapter);
+    this.enqueueStatusHighlight({
+      type: 'statusHighlight',
+      variant: 'good',
+      title: copy?.victoryTitle ?? '',
+      subtitle: copy?.victorySubtitle ?? '',
+    });
   }
 
   private buildSessionObjective(): string {
@@ -835,6 +984,7 @@ export class GameApp {
     const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
     const xpGain = s.lastCombatXpGain;
     this.state = this.stabilize(s);
+    this.applyDailyCombatRewardIfPending();
     this.trimOverlayQueuesIfSceneChanged(
       prevScene,
       prevDiaryQueueLen,
@@ -976,6 +1126,10 @@ export class GameApp {
     const id = choice.id;
     if (id?.startsWith('explore_move_')) {
       this.applyExplorationMove(id.slice('explore_move_'.length));
+      return;
+    }
+    if (id === DAILY_COMBAT_CHOICE_ID) {
+      this.startDailyHubCombat();
       return;
     }
     const prevScene = this.state.sceneId;
@@ -1156,6 +1310,8 @@ export class GameApp {
   private saveToSlot(slot: number): void {
     this.unlockAudio();
     saveStateToSlot(this.campaignId, slot, this.state, this.devMode);
+    this.activateDailyTasksForSlot(slot);
+    this.applyDailyBonusIfNeededForLoadedSlot(slot);
     this.closeMenu();
     this.render();
   }
@@ -1183,7 +1339,8 @@ export class GameApp {
       }
       this.state = parsed;
       this.state = this.stabilize(this.state);
-      this.applyReturnRewardIfNeededForLoadedSlot(slot);
+      this.applyDailyBonusIfNeededForLoadedSlot(slot);
+      this.activateDailyTasksForSlot(slot);
       this.render();
     } catch {
       this.showToast(t('toast.loadFailed'), 'error');
@@ -1473,6 +1630,7 @@ export class GameApp {
       scene,
       sceneArtHighlight,
       sessionObjective: this.sessionObjectiveVisible ? this.buildSessionObjective() : null,
+      dailyCombat: this.dailyCombatAvailable(scene) ? { chapter: this.state.chapter } : null,
       onboardingPrimer:
         this.onboardingPrimerVisible && this.state.chapter === 1 && this.state.day <= 2
           ? {
@@ -1549,6 +1707,8 @@ export class GameApp {
   }
 
   private render(): void {
+    this.progressDailyTasks(null);
+    this.flushDailyTaskRewards();
     this.flushSceneArtHighlightIfInterrupted();
     this.sceneArtHighlightGen += 1;
     if (this.state.mode === 'combat' || this.state.mode === 'dialogue_combat' || !this.timedChoiceMode) {
@@ -1639,6 +1799,17 @@ export class GameApp {
       showDevModeToggle: this.isLocalhostHost(),
       onSaveSlot: (slot: number) => this.saveToSlot(slot),
       onLoadSlot: (slot: number) => this.loadFromSlot(slot),
+      dailyBonus: this.dailyBonus,
+      dailyTasks: this.dailyTasks,
+      onDailyBonus: () => {
+        this.unlockAudio();
+        openDailyHubModal({
+          meta: this.dailyBonus,
+          tasks: this.dailyTasks,
+          playUiClick: () => this.audio.playUiClick(),
+        });
+        this.closeMenu();
+      },
       onSidebarSectionToggle: (key: string, open: boolean) => {
         if (open && !this.canOpenSidebarSection(key)) {
           return;

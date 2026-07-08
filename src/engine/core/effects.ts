@@ -375,6 +375,7 @@ function applyOne(
         relicId: null,
         critRatio: 0,
         specialUsedThisCombat: false,
+        statusConditions: [],
         path: null,
       };
       const priorFriend = state.companionFriendship[e.companionId];

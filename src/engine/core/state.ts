@@ -73,6 +73,7 @@ export function createPlayerCharacter(name: string, cls: ClassId): GameState['pa
     relicId: null as string | null,
     critRatio: 0,
     specialUsedThisCombat: false,
+    statusConditions: [] as GameState['party'][0]['statusConditions'],
     mana: 0,
     maxMana: 0,
     path: null,

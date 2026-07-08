@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import type { CombatLogEntry, Effect } from '../../src/engine/schema/index.ts';
 import {
+  hpBarMarkup,
   parseCombatLogRounds,
   parseTurnBannerMessage,
   preserveExplorationNodeForChoiceEffects,
+  stressBarMarkup,
 } from '../../src/ui/gameAppUtils.ts';
 
 describe('parseTurnBannerMessage', () => {
@@ -46,6 +48,30 @@ describe('parseCombatLogRounds', () => {
     expect(rounds[0]!.sections[1]!.kind).toBe('enemy');
     expect(rounds[1]!.round).toBe(2);
     expect(rounds[1]!.sections[0]!.body.map((e) => e.message)).toEqual(['Vitória!']);
+  });
+});
+
+describe('hpBarMarkup', () => {
+  it('aplica estado crítico com HP baixo (≤30%)', () => {
+    expect(hpBarMarkup(3, 10, 'hp-bar-resource', 'hp')).toContain('hp-bar-track--critical');
+    expect(hpBarMarkup(4, 10, 'hp-bar-resource', 'hp')).not.toContain('hp-bar-track--critical');
+    expect(hpBarMarkup(6, 20, 'hp-bar-resource', 'hp')).toContain('hp-bar-track--critical');
+    expect(hpBarMarkup(7, 20, 'hp-bar-resource', 'hp')).not.toContain('hp-bar-track--critical');
+  });
+
+  it('não aplica estado crítico com HP zerado', () => {
+    expect(hpBarMarkup(0, 10, 'hp-bar-resource', 'hp')).not.toContain('hp-bar-track--critical');
+  });
+
+  it('não aplica estado crítico na barra de XP', () => {
+    expect(hpBarMarkup(1, 10)).not.toContain('hp-bar-track--critical');
+  });
+});
+
+describe('stressBarMarkup', () => {
+  it('aplica estado crítico com stress alto (≥3)', () => {
+    expect(stressBarMarkup(3)).toContain('stress-bar-track--critical');
+    expect(stressBarMarkup(2)).not.toContain('stress-bar-track--critical');
   });
 });
 

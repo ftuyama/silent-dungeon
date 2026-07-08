@@ -13,7 +13,7 @@ Se faltar informação crítica, faça no máximo 3 perguntas curtas antes de ge
 
 ## Regras técnicas do projeto (obrigatórias)
 - Entregar **um arquivo `.md` de cena** com frontmatter no topo.
-- `id` da cena deve bater com o caminho relativo dentro de `scenes/` (sem `.md`), por exemplo: `act2/lore_crossroads`.
+- `id` da cena deve bater com o caminho relativo dentro de `scenes/` (sem `.md`), por exemplo: `act2/lore/lore_crossroads`.
 - `chapter` coerente com o `id` (ex.: `act2`).
 - `choices` devem apontar para IDs de cenas (não caminhos de arquivo).
 - Pode incluir `onEnter`, efeitos e condições compatíveis com o schema existente.

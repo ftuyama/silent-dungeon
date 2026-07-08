@@ -321,7 +321,11 @@ export function hpBarMarkup(
   trackClass?: string,
   fill: 'xp' | 'hp' = 'xp'
 ): string {
-  const trackCls = trackClass ? `hp-bar-track ${trackClass}` : 'hp-bar-track';
+  const stateCls =
+    fill === 'hp' && max > 0 && cur > 0 && cur / max <= 0.3 ? ' hp-bar-track--critical' : '';
+  const trackCls = trackClass
+    ? `hp-bar-track ${trackClass}${stateCls}`
+    : `hp-bar-track${stateCls}`;
   const fillCls = fill === 'hp' ? 'hp-bar-fill hp-bar-fill--hp' : 'hp-bar-fill hp-bar-fill--xp';
   if (max <= 0) return `<div class="${trackCls} empty"></div>`;
   const pct = Math.min(100, Math.max(0, Math.round((cur / max) * 100)));

@@ -1,4 +1,4 @@
-import type { Stance } from '../engine/schema/index.ts';
+import type { Stance, StatusConditionKind } from '../engine/schema/index.ts';
 import { SUPPORTED_LOCALES } from './locale.ts';
 import { t, translateKey } from './translate.ts';
 
@@ -275,4 +275,42 @@ export function logFleeFailure(
   mod: string
 ): string {
   return t('combatLog.fleeFailure', { name, total, tn, mod });
+}
+
+function statusLabel(kind: StatusConditionKind): string {
+  if (kind === 'paralysis') return t('combatLog.statusParalysis');
+  if (kind === 'poison') return t('combatLog.statusPoison');
+  return t('combatLog.statusFreeze');
+}
+
+export function logEnemyAbility(name: string, ability: string): string {
+  return t('combatLog.enemyAbility', { name, ability });
+}
+
+export function logEnemySelfBuff(name: string, delta: number): string {
+  return t('combatLog.enemySelfBuff', { name, delta });
+}
+
+export function logEnemyStressWave(name: string): string {
+  return t('combatLog.enemyStressWave', { name });
+}
+
+export function logStatusApplied(
+  target: string,
+  kind: StatusConditionKind,
+  rounds: number
+): string {
+  return t('combatLog.statusApplied', { target, status: statusLabel(kind), rounds });
+}
+
+export function logStatusExpired(name: string, kind: StatusConditionKind): string {
+  return t('combatLog.statusExpired', { name, status: statusLabel(kind) });
+}
+
+export function logParalysisSkip(name: string): string {
+  return t('combatLog.paralysisSkip', { name });
+}
+
+export function logPoisonTick(name: string, amount: number): string {
+  return t('combatLog.poisonTick', { name, amount });
 }

@@ -193,6 +193,7 @@ describe('applyEffects', () => {
       relicId: null,
       critRatio: 0,
       specialUsedThisCombat: false,
+      statusConditions: [],
       path: null,
     };
     let s = createInitialState(testCampaign, 1);

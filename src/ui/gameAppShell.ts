@@ -7,6 +7,8 @@ import {
   KOFI_SUPPORT_URL,
 } from './gameAppSidebar.ts';
 import { buildMenuSaveSlot, saveSlotLimit } from './gameAppSaveSlots.ts';
+import type { DailyBonusMeta } from './gameAppDailyBonus.ts';
+import type { DailyTasksState } from './gameAppDailyTasks.ts';
 import {
   getLocale,
   setLocale,
@@ -52,6 +54,12 @@ export type MountAppChromeOptions = {
   onSaveSlot: (slot: number) => void;
   onLoadSlot: (slot: number) => void;
   onSidebarSectionToggle: (key: string, open: boolean) => void;
+  /** Sequência de logins diários (sidebar + menu Partida). */
+  dailyBonus: DailyBonusMeta;
+  /** Tarefas do dia da gravação ativa (`null` sem gravação carregada). */
+  dailyTasks: DailyTasksState | null;
+  /** Abre o modal do bônus de login. */
+  onDailyBonus: () => void;
   /** Som de clique na UI (ex.: abrir/fechar diário). */
   playUiClick?: () => void;
   /** Preenche o `<main class="story-shell">` (combate ou narrativa). */
@@ -378,11 +386,19 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   devSettingsExtrasEl.appendChild(devToolsBtn);
   devSettingsExtrasEl.appendChild(graphBtn);
 
+  const dailyBonusBtn = document.createElement('button');
+  dailyBonusBtn.type = 'button';
+  dailyBonusBtn.className = 'menu-item';
+  dailyBonusBtn.textContent = t('dailyBonus.menuLabel');
+  dailyBonusBtn.title = t('dailyBonus.menuTitle');
+  dailyBonusBtn.addEventListener('click', () => opts.onDailyBonus());
+
   const saveSection = createMenuSection(t('menu.sectionGame'), 'menu-drawer-heading');
   const saveSlotsWrap = document.createElement('div');
   saveSlotsWrap.className = 'menu-save-slots';
   fillMenuSaveSlots(saveSlotsWrap, opts.campaignId, opts.devMode, opts.onSaveSlot, opts.onLoadSlot);
   saveSection.appendChild(saveSlotsWrap);
+  saveSection.appendChild(dailyBonusBtn);
   saveSection.appendChild(devSaveExtrasEl);
 
   const settingsSection = createMenuSection(t('menu.sectionSettings'));
@@ -441,6 +457,8 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
       sidebarSections: opts.sidebarSections,
       onSectionToggle: opts.onSidebarSectionToggle,
       playUiClick: opts.playUiClick,
+      dailyBonus: opts.dailyBonus,
+      dailyTasks: opts.dailyTasks,
     })
   );
 
@@ -533,6 +551,8 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
       sidebarSections: opts.sidebarSections,
       onSectionToggle: opts.onSidebarSectionToggle,
       playUiClick: opts.playUiClick,
+      dailyBonus: opts.dailyBonus,
+      dailyTasks: opts.dailyTasks,
       mobileDetailsOpen: prevMobileDetailsOpen,
     })
   );

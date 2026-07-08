@@ -429,3 +429,103 @@
   color: var(--muted);
   line-height: 1.45;
 }
+
+/* Bônus de login (sidebar → modal) — ciclo de 7 dias */
+.daily-bonus-progress-meter {
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--border) 55%, var(--surface-drawer));
+  border: 1px solid color-mix(in srgb, var(--border) 70%, var(--accent) 12%);
+}
+
+.daily-bonus-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 72%, var(--fg)),
+    color-mix(in srgb, var(--accent) 45%, var(--text-strong))
+  );
+  transition: width 0.25s ease-out;
+}
+
+.daily-bonus-progress-caption {
+  margin: 0.28rem 0 0;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  color: var(--text-section);
+}
+
+.daily-bonus-today-line {
+  margin: 0.55rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.daily-bonus-days {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.daily-bonus-day-row {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr auto;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.78rem;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, var(--accent) 10%);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--surface-inset) 94%, var(--accent) 6%);
+}
+
+.daily-bonus-day-row--done {
+  opacity: 0.62;
+}
+
+.daily-bonus-day-row--current {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  background: color-mix(in srgb, var(--surface-inset) 82%, var(--accent) 18%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.daily-bonus-day-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-emphasis);
+}
+
+.daily-bonus-day-reward {
+  color: var(--fg);
+}
+
+.daily-bonus-day-state {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 72%, var(--fg));
+}
+
+/* Tarefas do dia (mesmo modal do bônus de login) */
+.daily-task-row .daily-bonus-day-state {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.daily-task-row--done .daily-task-progress {
+  color: color-mix(in srgb, var(--accent) 72%, var(--fg));
+}
+
+.daily-task-progress {
+  font-variant-numeric: tabular-nums;
+}
+
+.daily-tasks-empty {
+  margin: 0;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--muted);
+}

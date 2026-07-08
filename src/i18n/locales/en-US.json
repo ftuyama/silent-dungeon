@@ -409,8 +409,6 @@
       "Even the number seems strange on the tongue."
     ],
     "levelUpSubtitle": "You leveled up.",
-    "catacombsReturnTitle": "Return to the catacombs",
-    "catacombsReturnSubtitle": "+1 supply and +4 gold for returning today.",
     "exploreGoalTitle": "Objective complete",
     "exploreGoalDefault": "This exploration objective is now marked.",
     "exploreGoalAct2": "Descent found. The crossing through the catacombs was worth it.",
@@ -440,6 +438,88 @@
   },
   "game": {
     "sceneNotFound": "Scene not found: {id}"
+  },
+  "dailyBonus": {
+    "rewardGold": "+{n} gold",
+    "rewardSupply": "+{n} supply",
+    "rewardFaith": "+{n} faith",
+    "loginTitle": "Daily bonus — day {day} of {total}",
+    "loginSubtitle": "{streak}-day streak: {reward}.",
+    "slotTitle": "Daily bonus — day {day} of {total}",
+    "slotSubtitle": "{reward} applied to this save (first load or save of the day).",
+    "kicker": "Daily return",
+    "title": "Login bonus",
+    "modalSub": "Current streak: {streak} day(s) in a row",
+    "close": "Close login bonus",
+    "progressTitle": "Cycle progress",
+    "progressAria": "Daily bonus cycle progress",
+    "progressCaption": "Day {day} of {total} in the cycle",
+    "todayReward": "Today's prize:",
+    "rewardsTitle": "Cycle prizes",
+    "dayLabel": "Day {day}",
+    "stateToday": "today",
+    "rulesTitle": "How it works",
+    "ruleStreak": "Returning every day adds +1 to the streak; missing a day restarts at day 1. Day 7 pays the biggest prize and the cycle restarts.",
+    "ruleApply": "The prize is applied to the first save loaded or saved each day (a fresh new game does not receive it on open).",
+    "sidebarLabel": "Login bonus",
+    "sidebarMeta": "day {day}/{total}",
+    "sidebarHint": "Open login bonus (streak and prizes)",
+    "menuLabel": "Login bonus",
+    "menuTitle": "Streak of consecutive days, today's prize and upcoming prizes."
+  },
+  "dailyCombat": {
+    "rewardGold": "+{n} gold",
+    "rewardSupply": "+{n} supply",
+    "rewardXp": "+{n} XP",
+    "ch2": {
+      "choiceText": "Follow the skittering on the perimeter",
+      "choicePreview": "A swarm still rolls near the crossroads — clearing it may yield tinder and coins stuck in wax.",
+      "uiSection": "Fire and patrol",
+      "victoryTitle": "Perimeter cleared",
+      "victorySubtitle": "The rats fall back; among the remains, a thread of supply and coins trapped in wax."
+    },
+    "ch3": {
+      "choiceText": "Follow fresh steps in the side corridor",
+      "choicePreview": "Someone crosses the depths uninvited — parley or steel.",
+      "uiSection": "Rumors",
+      "victoryTitle": "Trail closed",
+      "victorySubtitle": "The corridor settles back into its usual silence; your purse weighs a little more than before."
+    },
+    "ch5": {
+      "choiceText": "Investigate small claw marks in the snow by the fire",
+      "choicePreview": "An ice whelp prowls the camp — hunting it warms the tent and fills the pouch.",
+      "uiSection": "Missions",
+      "victoryTitle": "The snow goes quiet",
+      "victorySubtitle": "The whelp falls; warmth and provisions among the frozen remains."
+    },
+    "ch6": {
+      "choiceText": "Track the splinter moving between the columns",
+      "choicePreview": "A living shard cuts the nave's silence — beating it leaves something useful in the rubble.",
+      "uiSection": "Void",
+      "victoryTitle": "Shard broken",
+      "victorySubtitle": "The void steps back; something useful catches in the cracks."
+    }
+  },
+  "dailyTasks": {
+    "defeatEnemies": "Win {target} battles",
+    "levelUp": "Gain 1 level",
+    "campRest": "Rest at camp",
+    "earnXp": "Earn {target} XP",
+    "visitScenes": "Explore {target} new places",
+    "advanceDay": "See a new day dawn in the dungeon",
+    "diaryEntry": "Write a diary entry",
+    "acquireItem": "Obtain an item",
+    "rewardGold": "+{n} gold",
+    "rewardXp": "+{n} XP",
+    "rewardSupply": "+{n} supply",
+    "rewardFaith": "+{n} faith",
+    "sectionTitle": "Today's tasks",
+    "sectionEmpty": "Save or load a game to receive today's tasks.",
+    "ruleReset": "The 3 daily tasks are rolled each real-world day and are tracked per save.",
+    "ruleClaim": "Each task's prize is applied instantly, the moment the goal is met.",
+    "sidebarMeta": "{done}/{total}",
+    "completeTitle": "Task complete — {task}",
+    "completeSubtitle": "Prize: {reward}."
   },
   "engine": {
     "attrStr": "STR",
@@ -615,7 +695,17 @@
     "healTargets": "{name} prepares {spell} and chooses who to heal…",
     "headshotCrit": "{attacker} hits {target} square between the eyes (crit)!",
     "archerDodge": "{target} dodges {attacker}'s blow!",
-    "arrowRainDamage": "{target} takes {amount} damage (arrow rain)."
+    "arrowRainDamage": "{target} takes {amount} damage (arrow rain).",
+    "enemyAbility": "{name} uses {ability}!",
+    "enemySelfBuff": "{name} gathers power — +{delta} to enemy attacks.",
+    "enemyStressWave": "{name} spreads dread — +1 stress to everyone.",
+    "statusParalysis": "paralysis",
+    "statusPoison": "poison",
+    "statusFreeze": "freeze",
+    "statusApplied": "{target} suffers {status} ({rounds} round(s)).",
+    "statusExpired": "{name} shakes off {status}.",
+    "paralysisSkip": "{name} is paralyzed and cannot act!",
+    "poisonTick": "{name} takes {amount} poison damage."
   },
   "faithMiracle": {
     "kicker": "Intercession",

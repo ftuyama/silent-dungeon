@@ -56,11 +56,12 @@ export const calvarioUI: CampaignUIAdapter = {
 export function loadCalvarioContent(locale: Locale) {
   const idx = CampaignIndexSchema.parse(applyCampaignIndexOverlay(campaignIndex, locale));
   const data = emptyGameData(idx, calvarioHeroNarrative);
-  data.enemies = enemiesTs as Record<string, EnemyDef>;
+  /** Clone antes do overlay de locale — evita mutar o módulo fonte entre pt-BR e en-US. */
+  data.enemies = structuredClone(enemiesTs) as Record<string, EnemyDef>;
   for (const def of Object.values(dialogueEnemiesTs)) {
     DialogueEnemyDefSchema.parse(def);
   }
-  data.dialogueEnemies = dialogueEnemiesTs as Record<string, DialogueEnemyDef>;
+  data.dialogueEnemies = structuredClone(dialogueEnemiesTs) as Record<string, DialogueEnemyDef>;
   const encRecord: Record<string, Encounter> = {};
   for (const [key, raw] of Object.entries(encounters as Record<string, unknown>)) {
     const enc = EncounterSchema.parse(raw);
@@ -74,12 +75,12 @@ export function loadCalvarioContent(locale: Locale) {
     encRecord[key] = enc;
   }
   data.encounters = encRecord;
-  data.items = itemsTs as Record<string, ItemDef>;
-  data.companions = companions as Record<string, CompanionDef>;
-  data.spells = spellsTs as Record<string, SpellDef>;
-  data.passives = passivesTs;
-  data.journeyMarks = { ...journeyMarksTs };
-  data.leadStoryPassives = { ...leadStoryPassivesTs };
+  data.items = structuredClone(itemsTs) as Record<string, ItemDef>;
+  data.companions = structuredClone(companions) as Record<string, CompanionDef>;
+  data.spells = structuredClone(spellsTs) as Record<string, SpellDef>;
+  data.passives = structuredClone(passivesTs);
+  data.journeyMarks = structuredClone(journeyMarksTs);
+  data.leadStoryPassives = structuredClone(leadStoryPassivesTs);
   applyEntityLocaleOverlay(data, locale);
   return { data, sceneFiles: pickSceneFilesFromGlob(SCENE_GLOB_PT), ui: calvarioUI };
 }

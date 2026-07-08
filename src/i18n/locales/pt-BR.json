@@ -450,8 +450,6 @@
       "Até o número parece estranho na língua."
     ],
     "levelUpSubtitle": "Subiu de nível.",
-    "catacombsReturnTitle": "Retorno às catacombas",
-    "catacombsReturnSubtitle": "+1 suprimento e +4 ouro por voltares hoje.",
     "exploreGoalTitle": "Objetivo concluído",
     "exploreGoalDefault": "O objetivo desta exploração ficou marcado.",
     "exploreGoalAct2": "Descida encontrada. A travessia pelas catacumbas valeu a pena.",
@@ -481,6 +479,88 @@
   },
   "game": {
     "sceneNotFound": "Cena não encontrada: {id}"
+  },
+  "dailyBonus": {
+    "rewardGold": "+{n} ouro",
+    "rewardSupply": "+{n} suprimento",
+    "rewardFaith": "+{n} fé",
+    "loginTitle": "Bônus diário — dia {day} de {total}",
+    "loginSubtitle": "Sequência de {streak} dia(s) seguidos: {reward}.",
+    "slotTitle": "Bônus diário — dia {day} de {total}",
+    "slotSubtitle": "{reward} aplicados a esta gravação (primeira carga ou gravação do dia).",
+    "kicker": "Retorno diário",
+    "title": "Bônus de login",
+    "modalSub": "Sequência atual: {streak} dia(s) seguidos",
+    "close": "Fechar bônus de login",
+    "progressTitle": "Progresso do ciclo",
+    "progressAria": "Progresso do ciclo de bônus diário",
+    "progressCaption": "Dia {day} de {total} do ciclo",
+    "todayReward": "Prêmio de hoje:",
+    "rewardsTitle": "Prêmios do ciclo",
+    "dayLabel": "Dia {day}",
+    "stateToday": "hoje",
+    "rulesTitle": "Como funciona",
+    "ruleStreak": "Voltar todo dia soma +1 à sequência; faltar um dia reinicia no dia 1. No dia 7 o prêmio é maior e o ciclo recomeça.",
+    "ruleApply": "O prêmio é aplicado na primeira gravação carregada ou salva no dia (partida nova sem gravação não recebe ao abrir).",
+    "sidebarLabel": "Bônus de login",
+    "sidebarMeta": "dia {day}/{total}",
+    "sidebarHint": "Abrir bônus de login (sequência e prêmios)",
+    "menuLabel": "Bônus de login",
+    "menuTitle": "Sequência de dias seguidos, prêmio de hoje e próximos prêmios."
+  },
+  "dailyCombat": {
+    "rewardGold": "+{n} ouro",
+    "rewardSupply": "+{n} suprimento",
+    "rewardXp": "+{n} XP",
+    "ch2": {
+      "choiceText": "Seguir o rangido no perímetro",
+      "choicePreview": "Um enxame ainda rola perto do cruzeiro — limpar pode render lenha e moedas na cera.",
+      "uiSection": "Fogo e patrulha",
+      "victoryTitle": "Perímetro limpo",
+      "victorySubtitle": "Os ratos recuam; entre os restos, um fio de suprimento e moedas presas na cera."
+    },
+    "ch3": {
+      "choiceText": "Seguir passos frescos no corredor lateral",
+      "choicePreview": "Alguém cruza as profundezas sem pedir licença — convés ou ferro.",
+      "uiSection": "Rumores",
+      "victoryTitle": "Rasto cerrado",
+      "victorySubtitle": "O corredor volta ao silêncio habitual; o bolso pesa um pouco mais do que antes."
+    },
+    "ch5": {
+      "choiceText": "Investigar garras pequenas na neve perto do fogo",
+      "choicePreview": "Filhote de gelo ronda o acampamento — caçar aquece a tenda e enche a bolsa.",
+      "uiSection": "Missões",
+      "victoryTitle": "A neve cala-se",
+      "victorySubtitle": "O filhote cai; calor e provisões entre os restos gelados."
+    },
+    "ch6": {
+      "choiceText": "Rastrear o estilhaço que se move entre as colunas",
+      "choicePreview": "Fragmento vivo corta o silêncio da nave — vencê-lo deixa resquício útil nas ruínas.",
+      "uiSection": "Vazio",
+      "victoryTitle": "Fragmento partido",
+      "victorySubtitle": "O vazio recua um passo; algo útil fica preso nas fendas."
+    }
+  },
+  "dailyTasks": {
+    "defeatEnemies": "Vencer {target} combates",
+    "levelUp": "Subir 1 nível",
+    "campRest": "Descansar no acampamento",
+    "earnXp": "Ganhar {target} de XP",
+    "visitScenes": "Explorar {target} lugares novos",
+    "advanceDay": "Ver um novo dia raiar na masmorra",
+    "diaryEntry": "Registrar uma entrada no diário",
+    "acquireItem": "Obter um item",
+    "rewardGold": "+{n} ouro",
+    "rewardXp": "+{n} XP",
+    "rewardSupply": "+{n} suprimento",
+    "rewardFaith": "+{n} fé",
+    "sectionTitle": "Tarefas do dia",
+    "sectionEmpty": "Salve ou carregue uma gravação para receber as tarefas de hoje.",
+    "ruleReset": "As 3 tarefas do dia são sorteadas a cada dia real e valem por gravação.",
+    "ruleClaim": "O prêmio de cada tarefa é aplicado na hora, assim que a meta é atingida.",
+    "sidebarMeta": "{done}/{total}",
+    "completeTitle": "Tarefa concluída — {task}",
+    "completeSubtitle": "Prêmio: {reward}."
   },
   "session": {
     "objectiveEarly": "Meta da sessão: usar atalhos [1-9] e concluir as 2 primeiras escolhas sem pressa.",
@@ -615,7 +695,17 @@
     "healTargets": "{name} prepara {spell} e escolhe quem curar…",
     "headshotCrit": "{attacker} acerta {target} entre os olhos (crítico)!",
     "archerDodge": "{target} esquiva o golpe de {attacker}!",
-    "arrowRainDamage": "{target} sofre {amount} de dano (chuva de flechas)."
+    "arrowRainDamage": "{target} sofre {amount} de dano (chuva de flechas).",
+    "enemyAbility": "{name} usa {ability}!",
+    "enemySelfBuff": "{name} concentra poder — +{delta} no ataque inimigo.",
+    "enemyStressWave": "{name} espalha pavor — +1 stress em todos.",
+    "statusParalysis": "paralisia",
+    "statusPoison": "veneno",
+    "statusFreeze": "congelamento",
+    "statusApplied": "{target} sofre {status} ({rounds} rodada(s)).",
+    "statusExpired": "{name} livra-se de {status}.",
+    "paralysisSkip": "{name} está paralisado e não consegue agir!",
+    "poisonTick": "{name} sofre {amount} de dano de veneno."
   },
   "faithMiracle": {
     "kicker": "Intercessão",

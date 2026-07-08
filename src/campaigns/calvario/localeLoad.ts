@@ -24,10 +24,16 @@ export type CampaignIndexOverlay = {
   endings: Record<string, { title: string; blurb: string }>;
 };
 
+export type EnemyAbilityOverlay = {
+  name?: string;
+  /** Telegraph de habilidade (campo `linePt` no def; texto em inglês no overlay en-US). */
+  linePt?: string;
+};
+
 export type EntityOverlay = {
   items?: Record<string, { name?: string; description?: string }>;
   spells?: Record<string, { name?: string; description?: string }>;
-  enemies?: Record<string, { name?: string }>;
+  enemies?: Record<string, { name?: string; abilities?: Record<string, EnemyAbilityOverlay> }>;
   companions?: Record<string, { name?: string; lorePt?: string }>;
   journeyMarks?: Record<string, { name?: string; description?: string }>;
   passives?: Record<string, { name?: string; description?: string }>;
@@ -110,6 +116,14 @@ export function applyEntityLocaleOverlay(data: GameData, locale: Locale): void {
   });
   applyRecordOverlay(data.enemies, overlay.enemies, (def, o) => {
     if (o.name) def.name = o.name;
+    if (o.abilities && def.abilities?.length) {
+      for (const [abilityId, patch] of Object.entries(o.abilities)) {
+        const ability = def.abilities.find((a) => a.id === abilityId);
+        if (!ability) continue;
+        if (patch.name) ability.name = patch.name;
+        if (patch.linePt) ability.linePt = patch.linePt;
+      }
+    }
   });
   applyRecordOverlay(data.companions, overlay.companions, (def, o) => {
     if (o.name) def.name = o.name;

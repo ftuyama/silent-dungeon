@@ -31,3 +31,21 @@ export {
   finishDialogueCombat,
   reducePartyStressAfterCombat,
 } from './resolution.ts';
+export { chooseEnemyAction, type EnemyActionChoice } from './enemyAi.ts';
+export {
+  ENEMY_SELF_BUFF_CAP,
+  computePartyDefenseScore,
+  resolveEnemyAbility,
+} from './enemyActions.ts';
+export {
+  FREEZE_ATTACK_PENALTY,
+  FREEZE_DEFENSE_PENALTY,
+  PARALYSIS_SKIP_CHANCE,
+  expireStatusesAtEnemyPhaseStart,
+  hasStatus,
+  maybeApplyStatus,
+  rollParalysisSkip,
+  statusAttackPenalty,
+  statusDefensePenalty,
+  tickPoisonAtRoundStart,
+} from './statusConditions.ts';
