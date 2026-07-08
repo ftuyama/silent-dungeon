@@ -1,8 +1,6 @@
 /**
  * Release workflow: pre-flight checks → version bump → optional itch package.
  *
- * Mirrors CI (.github/workflows/test.yml) before bumping VERSION.
- *
  * Usage:
  *   node scripts/release.mjs [patch|minor|major|x.y.z] [options]
  *
@@ -28,18 +26,6 @@ const VERSION_FILE = path.join(repoRoot, 'VERSION');
 const EXPLICIT_SEMVER_RE = /^\d+\.\d+\.\d+(?:-[\w.-]+)?(?:\+[\w.-]+)?$/;
 const BUMP_KINDS = new Set(['patch', 'minor', 'major']);
 
-const CHECKS = [
-  ['validate:scenes', 'node scripts/validate-scenes.mjs'],
-  ['validate:unreachable', 'node scripts/find-unreachable-scenes.mjs'],
-  ['check:pt-br', 'node scripts/check-pt-br.mjs'],
-  ['check:ascii-art', 'node scripts/check-pending-ascii-art.mjs'],
-  ['validate:i18n', 'node scripts/i18n/validate-locale-parity.mjs'],
-  ['validate:i18n:translations', 'node scripts/i18n/validate-i18n-translations.mjs'],
-  ['check:engine-boundaries', 'node scripts/check-engine-boundaries.mjs'],
-  ['build', 'npm run build'],
-  ['test', 'npm run test'],
-];
-
 const useColor =
   !process.env.NO_COLOR &&
   process.env.FORCE_COLOR !== '0' &&
@@ -54,14 +40,11 @@ const c = useColor
       green: '\x1b[32m',
       yellow: '\x1b[33m',
       blue: '\x1b[34m',
-      magenta: '\x1b[35m',
       cyan: '\x1b[36m',
       gray: '\x1b[90m',
     }
   : Object.fromEntries(
-      ['reset', 'bold', 'dim', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'gray'].map(
-        (k) => [k, ''],
-      ),
+      ['reset', 'bold', 'dim', 'red', 'green', 'yellow', 'blue', 'cyan', 'gray'].map((k) => [k, '']),
     );
 
 function paint(color, text) {
@@ -155,47 +138,35 @@ function gitStatusPorcelain() {
   }
 }
 
-function runStep(label, command, dryRun, index, total) {
-  const progress = total ? paint('gray', `(${index}/${total})`) : '';
-  console.log(`\n${paint('blue', '▶')} ${paint('bold', label)} ${progress}`);
-  if (dryRun) {
-    console.log(`  ${badge('dry-run', 'yellow')} ${paint('dim', command)}`);
-    return;
-  }
-  try {
-    execSync(command, { cwd: repoRoot, stdio: 'inherit', shell: true });
-    console.log(`  ${badge('OK', 'green')} ${paint('dim', label)}`);
-  } catch {
-    console.log(`  ${badge('FAIL', 'red')} ${paint('bold', label)}`);
-    throw new Error(`Pre-release check failed: ${label}`);
-  }
-}
-
-function runChecks(dryRun) {
-  const total = CHECKS.length;
-  for (let i = 0; i < total; i++) {
-    const [label, command] = CHECKS[i];
-    runStep(label, command, dryRun, i + 1, total);
-  }
+function runValidateRelease(dryRun) {
+  const args = ['scripts/validate-release.mjs'];
+  if (dryRun) args.push('--dry-run');
+  execFileSync('node', args, { cwd: repoRoot, stdio: 'inherit' });
 }
 
 function runBump(bumpKind, noGit, dryRun) {
-  const args = ['node', 'scripts/bump-version.mjs'];
+  const args = ['scripts/bump-version.mjs'];
   if (noGit) args.push('--no-git');
   args.push(bumpKind);
-  const command = args.join(' ');
+  const command = `node ${args.join(' ')}`;
 
   console.log(`\n${paint('blue', '▶')} ${paint('bold', `bump version`)} ${paint('gray', `(${bumpKind})`)}`);
   if (dryRun) {
     console.log(`  ${badge('dry-run', 'yellow')} ${paint('dim', command)}`);
     return;
   }
-  execFileSync('node', args.slice(1), { cwd: repoRoot, stdio: 'inherit' });
+  execFileSync('node', args, { cwd: repoRoot, stdio: 'inherit' });
   console.log(`  ${badge('OK', 'green')} ${paint('dim', 'version bumped')}`);
 }
 
 function runItch(dryRun) {
-  runStep('itch package', 'npm run release:itch', dryRun);
+  console.log(`\n${paint('blue', '▶')} ${paint('bold', 'itch package')}`);
+  if (dryRun) {
+    console.log(`  ${badge('dry-run', 'yellow')} ${paint('dim', 'npm run release:itch')}`);
+    return;
+  }
+  execSync('npm run release:itch', { cwd: repoRoot, stdio: 'inherit', shell: true });
+  console.log(`  ${badge('OK', 'green')} ${paint('dim', 'itch package')}`);
 }
 
 const argv = process.argv.slice(2);
@@ -220,14 +191,14 @@ try {
   const dirty = gitStatusPorcelain();
   if (dirty && !flags.noGit && !flags.dryRun) {
     console.log(`\n${badge('WARN', 'yellow')} ${paint('yellow', 'Working tree has uncommitted changes.')}`);
-    console.log(`  ${paint('dim', 'Only VERSION, package.json and package-lock.json will be committed by the bump.')}`);
+    console.log(
+      `  ${paint('dim', 'All pending changes will be committed before the release tag is created.')}`,
+    );
     console.log(`  ${paint('dim', 'Review with:')} ${paint('cyan', 'git status')}`);
   }
 
   if (!flags.skipChecks) {
-    heading('Pre-release checks (CI parity)');
-    runChecks(flags.dryRun);
-    console.log(`\n${badge('PASS', 'green')} ${paint('green', `All ${CHECKS.length} checks passed.`)}`);
+    runValidateRelease(flags.dryRun);
   } else {
     console.log(`\n${badge('SKIP', 'yellow')} ${paint('yellow', 'Pre-release checks skipped (--skip-checks)')}`);
   }

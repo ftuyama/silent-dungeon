@@ -13,6 +13,7 @@
     "validate:unreachable": "node scripts/find-unreachable-scenes.mjs",
     "validate:i18n": "node scripts/i18n/validate-locale-parity.mjs",
     "validate:i18n:translations": "node scripts/i18n/validate-i18n-translations.mjs",
+    "validate:release": "node scripts/validate-release.mjs",
     "i18n:extract-entities": "node scripts/i18n/extract-campaign-locale.mjs",
     "i18n:patch-entities": "node scripts/i18n/patch-entities-en.mjs",
     "i18n:extract-exploration": "node scripts/i18n/extract-exploration-overlays.mjs",

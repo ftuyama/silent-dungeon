@@ -3,7 +3,7 @@
  *
  * Source of truth: VERSION (imported by GameApp via ?raw).
  * Also updates package.json and package-lock.json root version fields,
- * then commits and creates an annotated git tag (vX.Y.Z).
+ * then stages all changes, commits, and creates an annotated git tag (vX.Y.Z).
  *
  * Usage:
  *   node scripts/bump-version.mjs patch
@@ -23,8 +23,6 @@ const repoRoot = path.join(__dirname, '..');
 const VERSION_FILE = path.join(repoRoot, 'VERSION');
 const PACKAGE_JSON = path.join(repoRoot, 'package.json');
 const PACKAGE_LOCK = path.join(repoRoot, 'package-lock.json');
-const VERSION_PATHS = ['VERSION', 'package.json', 'package-lock.json'];
-
 const SEMVER_RE = /^(\d+)\.(\d+)\.(\d+)(?:-([\w.-]+))?(?:\+([\w.-]+))?$/;
 const EXPLICIT_SEMVER_RE = /^\d+\.\d+\.\d+(?:-[\w.-]+)?(?:\+[\w.-]+)?$/;
 
@@ -72,7 +70,7 @@ function commitAndTag(next, noGit) {
     throw new Error(`Tag ${tag} already exists`);
   }
 
-  runGit(['add', ...VERSION_PATHS]);
+  runGit(['add', '-A']);
 
   if (!hasStagedChanges()) {
     console.log('No staged changes; skipping commit and tag');
