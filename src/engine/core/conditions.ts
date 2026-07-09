@@ -101,5 +101,11 @@ export function evaluateCondition(cond: Condition | undefined, state: GameState)
     if (cond.day.lte !== undefined && d > cond.day.lte) return false;
     return true;
   }
+  if ('legacyUpgrade' in cond) {
+    return (state.legacy?.unlockedUpgrades ?? []).includes(cond.legacyUpgrade);
+  }
+  if ('noLegacyUpgrade' in cond) {
+    return !(state.legacy?.unlockedUpgrades ?? []).includes(cond.noLegacyUpgrade);
+  }
   return true;
 }

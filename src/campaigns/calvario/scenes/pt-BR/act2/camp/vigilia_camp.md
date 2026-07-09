@@ -78,6 +78,14 @@ choices:
       - { op: addRep, faction: vigilia, delta: 1 }
       - { op: addDiary, text: "Falei alto demais sobre o Terceiro Sino — o oficial anotou como vitória pequena." }
     preview: "Troca de reputação · Vigília lenta, Culto imediato (uma vez)"
+  - text: "Os sentinelas lembram o seu par de ecos"
+    uiSection: "Conversa"
+    next: act2/camp/vigilia_camp
+    condition: { legacyUpgrade: legacy_combo_faction_companion }
+    preview: "Legado: facção e companheiro em ressonância."
+    effects:
+      - { op: addRep, faction: vigilia, delta: 1 }
+      - { op: addDiary, text: "Um oficial murmura que já te viu ao lado do par certo — o acampamento abre um fio de confiança." }
   - text: "Continuar"
     uiSection: "Partir"
     next: act2/hub_catacomb

@@ -31,7 +31,7 @@ export function createInitialState(campaign: CampaignIndex, seed?: number): Game
     circuloSkillRerollReady: false,
     flags: {},
     marks: [],
-    legacy: { echoes: 0, titles: [], discoveredEndings: [], lastRunSummary: '', lastRunEchoGain: 0 },
+    legacy: { echoes: 0, titles: [], discoveredEndings: [], lastRunSummary: '', lastRunEchoGain: 0, unlockedUpgrades: [], lastRunStats: null, lastEndSceneId: '' },
     leadStoryPassives: [],
     resources: { supply: 5, faith: 3, corruption: 0, gold: 8 },
     extraLifeReady: false,
@@ -246,6 +246,40 @@ export function deserializeState(json: string): GameState {
       typeof rawLegacy?.lastRunEchoGain === 'number' && Number.isFinite(rawLegacy.lastRunEchoGain)
         ? Math.max(0, Math.floor(rawLegacy.lastRunEchoGain))
         : 0,
+    unlockedUpgrades: Array.isArray(rawLegacy?.unlockedUpgrades)
+      ? rawLegacy.unlockedUpgrades.filter(
+          (x): x is string => typeof x === 'string' && x.trim().length > 0
+        )
+      : [],
+    lastRunStats:
+      rawLegacy?.lastRunStats &&
+      typeof rawLegacy.lastRunStats === 'object' &&
+      rawLegacy.lastRunStats !== null
+        ? {
+            chapter: Math.max(0, Math.floor(Number(rawLegacy.lastRunStats.chapter) || 0)),
+            level: Math.max(0, Math.floor(Number(rawLegacy.lastRunStats.level) || 0)),
+            day: Math.max(1, Math.floor(Number(rawLegacy.lastRunStats.day) || 1)),
+            sceneTitle:
+              typeof rawLegacy.lastRunStats.sceneTitle === 'string'
+                ? rawLegacy.lastRunStats.sceneTitle
+                : '',
+            marksCount: Math.max(0, Math.floor(Number(rawLegacy.lastRunStats.marksCount) || 0)),
+            topFaction:
+              rawLegacy.lastRunStats.topFaction === 'circulo' ||
+              rawLegacy.lastRunStats.topFaction === 'culto'
+                ? rawLegacy.lastRunStats.topFaction
+                : 'vigilia',
+            outcome: rawLegacy.lastRunStats.outcome === 'victory' ? 'victory' : 'defeat',
+            gain: Math.max(0, Math.floor(Number(rawLegacy.lastRunStats.gain) || 0)),
+            title: typeof rawLegacy.lastRunStats.title === 'string' ? rawLegacy.lastRunStats.title : '',
+            sceneId:
+              typeof rawLegacy.lastRunStats.sceneId === 'string'
+                ? rawLegacy.lastRunStats.sceneId
+                : undefined,
+          }
+        : null,
+    lastEndSceneId:
+      typeof rawLegacy?.lastEndSceneId === 'string' ? rawLegacy.lastEndSceneId : '',
   };
   const rawHighlight = (o as Partial<GameState>).sceneArtHighlightShown;
   const sceneArtHighlightShown: GameState['sceneArtHighlightShown'] =

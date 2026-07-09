@@ -478,6 +478,26 @@ export const GameStateSchema = z.object({
       discoveredEndings: z.array(z.string()).default([]),
       lastRunSummary: z.string().default(''),
       lastRunEchoGain: z.number().int().min(0).default(0),
+      /** Melhorias permanentes compradas na Loja de Ecos. */
+      unlockedUpgrades: z.array(z.string()).default([]),
+      /** Stats estruturados da última liquidação (`settleRun`). */
+      lastRunStats: z
+        .object({
+          chapter: z.number().int(),
+          level: z.number().int(),
+          day: z.number().int(),
+          sceneTitle: z.string(),
+          sceneId: z.string().optional(),
+          marksCount: z.number().int(),
+          topFaction: FactionIdSchema,
+          outcome: z.enum(['defeat', 'victory']),
+          gain: z.number().int(),
+          title: z.string(),
+        })
+        .nullable()
+        .default(null),
+      /** Cena onde a run terminou por derrota (preenchida em `finishCombat`). */
+      lastEndSceneId: z.string().default(''),
     })
     .default({
       echoes: 0,
@@ -485,6 +505,9 @@ export const GameStateSchema = z.object({
       discoveredEndings: [],
       lastRunSummary: '',
       lastRunEchoGain: 0,
+      unlockedUpgrades: [],
+      lastRunStats: null,
+      lastEndSceneId: '',
     }),
   /** Passivos de história do líder (ids em `GameData.leadStoryPassives`), ex. bênção do monge. */
   leadStoryPassives: z.array(z.string()).default([]),

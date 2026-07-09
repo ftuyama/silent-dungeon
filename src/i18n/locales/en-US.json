@@ -24,6 +24,10 @@
     "importSave": "Import save (clipboard)",
     "chronicle": "Chronicle",
     "chronicleTitle": "Titles and endings seen in legacy; replay tips.",
+    "legacy": "Legacy",
+    "legacyTitle": "Chronicle, echo shop, and permanent upgrades between runs.",
+    "echoShop": "Echo Shop",
+    "echoShopTitle": "Permanent upgrades between runs; spend inherited echoes.",
     "fullscreenActive": "Fullscreen",
     "fullscreenExit": "Exit fullscreen",
     "fullscreenExitEsc": "Exit fullscreen (Esc)",
@@ -79,6 +83,7 @@
     "supply": "Supply",
     "faith": "Faith",
     "corruption": "Corruption",
+    "echoes": "Echoes",
     "extraLife": "Extra life",
     "noItems": "No items yet.",
     "noCompanions": "No companions in the party.",
@@ -134,6 +139,7 @@
       "supply": "Provisions (0–10). Spent on travel, rest, or events; restored through narrative and rewards.",
       "faith": "Conviction (0–5). At faith 5, if the leader falls to 0 HP in combat, the miracle spends 5 faith.",
       "corruption": "Shadow influence (0–10). Marks pacts and risks.",
+      "echoes": "Legacy currency between runs. Spend in the echo shop for permanent upgrades.",
       "extraLife": "Miracle available (faith 5)."
     },
     "statHint": {
@@ -725,6 +731,76 @@
     "echoGain": "+{count} echoes preserved between runs.",
     "echoPreserved": "Echoes preserved between runs.",
     "diaryPrefix": "Legacy: {summary}"
+  },
+  "echoSettlement": {
+    "defeatKicker": "Run echo",
+    "victoryKicker": "Victory echo",
+    "chapter": "Chapter {chapter}",
+    "level": "Level {level}",
+    "location": "You reached {place}",
+    "marks": "{count} marks recorded",
+    "title": "Title: {title}",
+    "gain": "+{count} Echoes preserved",
+    "bank": "Balance: {echoes} Echoes"
+  },
+  "echoShop": {
+    "kicker": "Legacy between runs",
+    "sub": "Permanent upgrades apply to all future runs",
+    "balance": "Available echoes: {echoes}",
+    "owned": "Owned",
+    "cost": "{cost} Echoes",
+    "buyShort": "Buy",
+    "buy": "Buy ({cost})",
+    "insufficient": "Not enough echoes",
+    "purchaseSuccess": "Upgrade unlocked",
+    "restart": "Start over",
+    "restartHint": "Begins a new run with active upgrades.",
+    "upgrade": {
+      "legacy_stat_str": {
+        "name": "Strength memory",
+        "description": "+1 base Strength on the leader, every run."
+      },
+      "legacy_stat_agi": {
+        "name": "Agility memory",
+        "description": "+1 base Agility on the leader, every run."
+      },
+      "legacy_stat_mind": {
+        "name": "Mind memory",
+        "description": "+1 base Mind on the leader, every run."
+      },
+      "legacy_stat_luck": {
+        "name": "Luck memory",
+        "description": "+1 base Luck on the leader, every run."
+      },
+      "legacy_max_hp": {
+        "name": "Etched flesh",
+        "description": "+2 max HP on the leader, every run."
+      },
+      "legacy_start_supply": {
+        "name": "Echo pouch",
+        "description": "+1 supply at the start of each run."
+      },
+      "legacy_start_faith": {
+        "name": "Inherited candle",
+        "description": "+1 faith at the start of each run."
+      },
+      "legacy_start_gold": {
+        "name": "Abyss coin",
+        "description": "+5 gold at the start of each run."
+      },
+      "legacy_combo_faction_companion": {
+        "name": "Paired echoes",
+        "description": "Faction and companion aligned: +1 reputation in the dominant faction from the previous run."
+      },
+      "legacy_combo_path_faction": {
+        "name": "Etched path",
+        "description": "Archetype and faction in resonance: +1 to the class primary attribute."
+      },
+      "legacy_combo_faith_corruption": {
+        "name": "Preserved duality",
+        "description": "Faith and corruption coexist: +1 faith and +1 corruption at the start of each run."
+      }
+    }
   },
   "engineNotify": {
     "bondGain": "+{delta} bond",

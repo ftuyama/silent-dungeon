@@ -36,6 +36,13 @@ choices:
     uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: cleric } ] }
+  - text: "O trilho gravado ressoa no fogo — arquétipo e facção alinhados"
+    uiSection: "Você e eles"
+    next: act2/camp/camp_companion_chat
+    condition: { legacyUpgrade: legacy_combo_path_faction }
+    preview: "Legado: trilho e facção em harmonia."
+    effects:
+      - { op: addDiary, text: "Ao pé do fogo, o eco do seu arquétipo encaixa na muralha de reputação — o grupo ouve você com outro peso." }
   - text: "Voltar ao acampamento"
     uiSection: "Voltar"
     next: act2/camp/vigilia_camp

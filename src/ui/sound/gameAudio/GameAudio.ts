@@ -208,6 +208,10 @@ export class GameAudio {
     this.sfx.playLevelUpCelebration();
   }
 
+  playEchoShopPurchase(): void {
+    this.sfx.playEchoShopPurchase();
+  }
+
   /** Arquétipo narrativo desbloqueado (ex.: Cavaleiro caído). */
   playPathPromotion(): void {
     this.sfx.playPathPromotion();

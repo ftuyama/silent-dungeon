@@ -22,6 +22,10 @@ import {
 } from './story/storyDiceBanner.ts';
 import { resolveSceneArt } from './story/storyArt.ts';
 import { appendFaithMiracleBanner } from './story/storyFaithMiracleBanner.ts';
+import {
+  appendEchoSettlementBanner,
+  shouldShowEchoSettlementBanner,
+} from './story/echoSettlementBanner.ts';
 import { setupTimedChoices } from './story/storyTimedChoices.ts';
 import { applyChoiceButtonLabel } from './story/choicePresentation.ts';
 import {
@@ -524,6 +528,10 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     sub.textContent = pathPromo.narrativePt?.trim() || t('story.pathPromotionSubtitle');
     promo.appendChild(sub);
     inner.appendChild(promo);
+  }
+
+  if (shouldShowEchoSettlementBanner(ctx.state)) {
+    appendEchoSettlementBanner(inner, ctx.state, ctx.registry);
   }
 
   const levelUps = ctx.state.lastCombatLevelUps;

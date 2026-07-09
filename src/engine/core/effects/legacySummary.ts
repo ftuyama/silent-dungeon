@@ -1,6 +1,21 @@
 import type { FactionId, GameState } from '../../schema/index.ts';
 import { FACTION_NAME_PT } from './reputationUi.ts';
 
+export type LegacyRunOutcome = 'defeat' | 'victory';
+
+export type LegacyRunStats = {
+  chapter: number;
+  level: number;
+  day: number;
+  sceneTitle: string;
+  sceneId?: string;
+  marksCount: number;
+  topFaction: FactionId;
+  outcome: LegacyRunOutcome;
+  gain: number;
+  title: string;
+};
+
 export function uniqueTitles(input: string[]): string[] {
   const out: string[] = [];
   const seen = new Set<string>();
@@ -13,7 +28,7 @@ export function uniqueTitles(input: string[]): string[] {
   return out.slice(-12);
 }
 
-function topFaction(state: GameState): FactionId {
+export function topFaction(state: GameState): FactionId {
   const list: FactionId[] = ['vigilia', 'circulo', 'culto'];
   let best: FactionId = 'vigilia';
   let bestScore = Number.NEGATIVE_INFINITY;
@@ -55,11 +70,37 @@ export function buildLegacySummary(state: GameState): string {
   return `Run anterior: ${factionLabel} em destaque, ${compLabel}, trilha ${pathLabel}.`;
 }
 
-export function computeLegacyEchoGain(state: GameState): number {
+export function computeLegacyEchoGain(state: GameState, outcome: LegacyRunOutcome = 'defeat'): number {
   const base = Math.floor(Math.max(0, state.chapter - 1) / 2);
   const levelBonus = Math.floor(Math.max(0, state.level - 1) / 3);
   const markBonus = Math.min(3, Math.floor(state.marks.length / 6));
-  return Math.max(1, base + levelBonus + markBonus);
+  const victoryBonus = outcome === 'victory' ? 5 : 0;
+  const raw = base + levelBonus + markBonus + victoryBonus;
+  const scaled = outcome === 'victory' ? Math.round(raw * 1.5) : raw;
+  return Math.max(1, scaled);
+}
+
+export function buildLegacyRunStats(
+  state: GameState,
+  outcome: LegacyRunOutcome,
+  sceneTitle: string,
+  sceneId?: string
+): LegacyRunStats {
+  const title = resolveLegacyTitle(state);
+  const gain = computeLegacyEchoGain(state, outcome);
+  const locId = sceneId?.trim() || state.legacy.lastEndSceneId || state.sceneId;
+  return {
+    chapter: state.chapter,
+    level: state.level,
+    day: state.day ?? 1,
+    sceneTitle: sceneTitle.trim() || locId,
+    sceneId: locId,
+    marksCount: state.marks.length,
+    topFaction: topFaction(state),
+    outcome,
+    gain,
+    title,
+  };
 }
 
 export function buildCompoundLegacyFlags(state: GameState): Record<string, boolean> {
@@ -78,3 +119,5 @@ export function buildCompoundLegacyFlags(state: GameState): Record<string, boole
       (state.resources.faith ?? 0) >= 3 && (state.resources.corruption ?? 0) >= 4,
   };
 }
+
+export const RUN_SETTLED_FLAG = 'run_settled';

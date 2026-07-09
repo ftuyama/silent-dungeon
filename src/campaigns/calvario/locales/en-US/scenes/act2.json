@@ -601,10 +601,15 @@
         ]
       },
       {
+        "text": "Climb to the last corridor — dungeon mouth",
+        "preview": "Cracked brazier, blind bell, and doorframe; the air there still listens.",
+        "uiSection": "Return and advance"
+      },
+      {
         "text": "Descend deeper",
         "preview": "Chapter 3 — the dungeon tightens the silence.",
         "lockedHint": "You need level 5 and must find the threshold on the perimeter map (exploration from the crossroads).",
-        "uiSection": "Advance"
+        "uiSection": "Return and advance"
       }
     ]
   },

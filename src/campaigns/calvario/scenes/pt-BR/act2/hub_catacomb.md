@@ -104,8 +104,12 @@ choices:
     preview: "Voz seca no cruzeiro; registro no diário."
     effects:
       - { op: addDiary, text: "Uma voz presa ao teto: \"Já vai no dia {{day}}.\"" }
+  - text: "Subir ao último corredor — boca da masmorra"
+    uiSection: "Regresso e avançar"
+    next: act1/dungeon_mouth
+    preview: "Braseiro, sino e batentes; o ar lá fora ainda ouve."
   - text: "Descer mais fundo"
-    uiSection: "Avançar"
+    uiSection: "Regresso e avançar"
     next: act3/descent
     condition:
       all:

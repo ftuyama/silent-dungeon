@@ -529,3 +529,117 @@
   font-style: italic;
   color: var(--muted);
 }
+
+/* Loja de Ecos */
+.echo-shop-balance {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--accent) 75%, var(--text-strong));
+}
+
+.echo-shop-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.echo-shop-item {
+  margin-bottom: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--surface-inset);
+}
+
+.echo-shop-item--owned {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  opacity: 0.85;
+}
+
+.echo-shop-item-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 0.2rem;
+}
+
+.echo-shop-item-cost {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--accent) 75%, var(--text-strong));
+  font-variant-numeric: tabular-nums;
+}
+
+.echo-shop-section-intro {
+  margin-bottom: 0.65rem;
+}
+
+.diary-modal-section-subtitle {
+  margin: 0.55rem 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.echo-shop-section {
+  margin-top: 0.5rem;
+}
+
+.echo-shop-item-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  margin-bottom: 0.2rem;
+}
+
+.echo-shop-item-desc {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-bottom: 0.45rem;
+}
+
+.echo-shop-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.echo-shop-buy-btn {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 50%, var(--border));
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-raised));
+  color: var(--text-strong);
+  cursor: pointer;
+}
+
+.echo-shop-buy-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.echo-shop-owned-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 70%, var(--muted));
+}
+
+.echo-shop-restart-hint {
+  margin: 0.85rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.echo-shop-restart-btn {
+  font-weight: 700;
+}

@@ -85,7 +85,7 @@ import { formatCampaignHeaderTitle } from './campaignHeaderTitle.ts';
 import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
 import { mountAppChrome, syncAppChrome, fullscreenEdgeBtnGlyph, syncLanguageEdgeButton, syncVolumeEdgeButton, type AppChromeRefs } from './gameAppShell.ts';
-import { openChronicleModal, openCreditsModal, openDailyHubModal } from './gameAppSidebar.ts';
+import { openCreditsModal, openDailyHubModal, openLegacyModal as openLegacyModalUi } from './gameAppSidebar.ts';
 import { dayAdvanceSubtitle, handleGameEvent } from './gameAppEvents.ts';
 import {
   buildGameAppStorageKeys,
@@ -1132,11 +1132,13 @@ export class GameApp {
       this.startDailyHubCombat();
       return;
     }
+    const wantsEchoShop = choice.effects.some((e) => e.op === 'openEchoShop');
+    const engineEffects = choice.effects.filter((e) => e.op !== 'openEchoShop');
     const prevScene = this.state.sceneId;
     const prevDiaryQueueLen = this.diaryEntryQueue.length;
     const prevStatusQueueLen = this.statusHighlightQueue.length;
     const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
-    const effects = preserveExplorationNodeForChoiceEffects(choice.effects, this.state.exploration);
+    const effects = preserveExplorationNodeForChoiceEffects(engineEffects, this.state.exploration);
     let s = applyEffects(this.state, effects, this.ctx());
     s = { ...s, timedChoiceDeadline: null };
     if (choice.next && s.mode === 'story') {
@@ -1154,6 +1156,56 @@ export class GameApp {
     );
     this.pendingStoryMainScrollTop = true;
     this.render();
+    if (wantsEchoShop) {
+      this.openLegacyModal(this.isSettlementScene());
+    }
+  }
+
+  private isSettlementScene(): boolean {
+    const sid = this.state.sceneId;
+    return sid === 'shared/game_over' || sid === 'endings/epilogue_depths';
+  }
+
+  private openLegacyModal(showRestart = false): void {
+    this.unlockAudio();
+    openLegacyModalUi({
+      state: this.state,
+      campaign: this.registry.data.campaign,
+      registry: this.registry,
+      playUiClick: () => this.audio.playUiClick(),
+      showRestart,
+      onPurchase: (upgradeId) => this.purchaseEchoUpgrade(upgradeId, showRestart),
+      onRestart: showRestart ? () => this.restartFromEchoShop() : undefined,
+    });
+  }
+
+  private purchaseEchoUpgrade(upgradeId: string, showRestart: boolean): void {
+    const before = this.state.legacy.unlockedUpgrades.length;
+    const s = applyEffects(
+      this.state,
+      [{ op: 'purchaseLegacyUpgrade', upgradeId }],
+      this.ctx()
+    );
+    if (s.legacy.unlockedUpgrades.length > before) {
+      this.unlockAudio();
+      this.audio.playEchoShopPurchase();
+    }
+    this.state = this.stabilize(s);
+    this.openLegacyModal(showRestart);
+  }
+
+  private restartFromEchoShop(): void {
+    const prevScene = this.state.sceneId;
+    let s = applyEffects(this.state, [{ op: 'resetRun' }], this.ctx());
+    s = { ...s, timedChoiceDeadline: null };
+    this.state = this.stabilize(s);
+    if (this.state.sceneId !== prevScene) {
+      this.sessionObjectiveVisible = false;
+      this.cancelAllStoryBannerAnimations();
+    }
+    this.pendingStoryMainScrollTop = true;
+    this.render();
+    this.applyLegacyBriefingIfNeeded();
   }
 
   private onSkillRoll(scene: LoadedScene): void {
@@ -1779,13 +1831,9 @@ export class GameApp {
       onExportSave: () => this.exportSaveToClipboard(),
       onImportSave: () => this.importSaveFromClipboard(),
       onCredits: () => this.showCredits(),
-      onChronicle: () => {
+      onLegacy: () => {
         this.unlockAudio();
-        openChronicleModal({
-          state: this.state,
-          campaign: this.registry.data.campaign,
-          playUiClick: () => this.audio.playUiClick(),
-        });
+        this.openLegacyModal(this.isSettlementScene());
         this.closeMenu();
       },
       onDevTools: () => {

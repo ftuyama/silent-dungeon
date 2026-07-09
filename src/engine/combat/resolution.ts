@@ -109,6 +109,10 @@ export function finishDialogueCombat(
       lastCombatXpGain: null,
       lastCombatLevelUps: null,
       lastCombatLootLines: null,
+      legacy: {
+        ...s.legacy,
+        lastEndSceneId: d.returnScene,
+      },
     };
     bus?.emit({ type: 'combat.end', victory: false });
   }
@@ -164,6 +168,10 @@ export function finishCombat(
       lastCombatXpGain: null,
       lastCombatLevelUps: null,
       lastCombatLootLines: null,
+      legacy: {
+        ...s.legacy,
+        lastEndSceneId: c.returnScene,
+      },
     };
     bus?.emit({ type: 'combat.end', victory: false });
   }

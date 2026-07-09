@@ -24,6 +24,10 @@
     "importSave": "Importar gravação (clipboard)",
     "chronicle": "Crônica",
     "chronicleTitle": "Títulos e finais vistos no legado; dicas de replay.",
+    "legacy": "Legado",
+    "legacyTitle": "Crônica, loja de ecos e melhorias permanentes entre runs.",
+    "echoShop": "Loja de Ecos",
+    "echoShopTitle": "Melhorias permanentes entre runs; gasta ecos herdados.",
     "fullscreenActive": "Tela cheia",
     "fullscreenExit": "Sair da tela cheia",
     "fullscreenExitEsc": "Sair da tela cheia (Esc)",
@@ -79,6 +83,7 @@
     "supply": "Suprimento",
     "faith": "Fé",
     "corruption": "Corrupção",
+    "echoes": "Ecos",
     "extraLife": "Vida extra",
     "noItems": "Nenhum item ainda.",
     "noCompanions": "Nenhum companheiro no grupo.",
@@ -134,6 +139,7 @@
       "supply": "Provisões (0–10). Podem ser gastas em viagem, descanso ou eventos; repõem-se pela narrativa e recompensas.",
       "faith": "Convicção (0–5). Com fé 5, se o líder cair a 0 HP em combate, o milagre gasta 5 fé.",
       "corruption": "Influência sombria (0–10). Marcas pactos e riscos.",
+      "echoes": "Moeda de legado entre runs. Gasta na loja de ecos para melhorias permanentes.",
       "extraLife": "Milagre disponível (fé 5)."
     },
     "statHint": {
@@ -725,6 +731,76 @@
     "echoGain": "+{count} ecos preservados entre runs.",
     "echoPreserved": "Ecos preservados entre runs.",
     "diaryPrefix": "Legado: {summary}"
+  },
+  "echoSettlement": {
+    "defeatKicker": "Eco da run",
+    "victoryKicker": "Eco da vitória",
+    "chapter": "Capítulo {chapter}",
+    "level": "Nível {level}",
+    "location": "Chegaste a {place}",
+    "marks": "{count} marcas gravadas",
+    "title": "Título: {title}",
+    "gain": "+{count} Ecos preservados",
+    "bank": "Saldo: {echoes} Ecos"
+  },
+  "echoShop": {
+    "kicker": "Legado entre runs",
+    "sub": "Melhorias permanentes aplicam-se em todas as runs futuras",
+    "balance": "Ecos disponíveis: {echoes}",
+    "owned": "Comprado",
+    "cost": "{cost} Ecos",
+    "buyShort": "Comprar",
+    "buy": "Comprar ({cost})",
+    "insufficient": "Ecos insuficientes",
+    "purchaseSuccess": "Melhoria desbloqueada",
+    "restart": "Recomeçar",
+    "restartHint": "Inicia nova run com as melhorias activas.",
+    "upgrade": {
+      "legacy_stat_str": {
+        "name": "Memória de força",
+        "description": "+1 Força base no líder, em todas as runs."
+      },
+      "legacy_stat_agi": {
+        "name": "Memória de agilidade",
+        "description": "+1 Agilidade base no líder, em todas as runs."
+      },
+      "legacy_stat_mind": {
+        "name": "Memória de mente",
+        "description": "+1 Mente base no líder, em todas as runs."
+      },
+      "legacy_stat_luck": {
+        "name": "Memória de sorte",
+        "description": "+1 Sorte base no líder, em todas as runs."
+      },
+      "legacy_max_hp": {
+        "name": "Carne gravada",
+        "description": "+2 PV máximos no líder, em todas as runs."
+      },
+      "legacy_start_supply": {
+        "name": "Bolsa do eco",
+        "description": "+1 suprimento no início de cada run."
+      },
+      "legacy_start_faith": {
+        "name": "Vela herdada",
+        "description": "+1 fé no início de cada run."
+      },
+      "legacy_start_gold": {
+        "name": "Moeda do abismo",
+        "description": "+5 ouro no início de cada run."
+      },
+      "legacy_combo_faction_companion": {
+        "name": "Par de ecos",
+        "description": "Facção e companheiro alinhados: +1 reputação na facção dominante da run anterior."
+      },
+      "legacy_combo_path_faction": {
+        "name": "Trilho gravado",
+        "description": "Arquétipo e facção em ressonância: +1 no atributo principal da classe."
+      },
+      "legacy_combo_faith_corruption": {
+        "name": "Dualidade preservada",
+        "description": "Fé e corrupção coexistem: +1 fé e +1 corrupção no início de cada run."
+      }
+    }
   },
   "engineNotify": {
     "bondGain": "+{delta} vínculo",

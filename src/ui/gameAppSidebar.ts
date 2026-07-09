@@ -59,6 +59,11 @@ import { attachFocusTrap } from './focusTrap.ts';
 import { t, getLocale } from '../i18n/index.ts';
 import { localeHtmlLang } from '../i18n/locale.ts';
 import { factionDisplayName } from '../i18n/factionName.ts';
+import {
+  canPurchaseLegacyUpgrade,
+  isUpgradeUnlocked,
+  legacyUpgradeCatalogFromData,
+} from '../engine/progression/index.ts';
 
 type SidebarBuilderParams = {
   state: GameState;
@@ -495,42 +500,48 @@ export type OpenChronicleModalOpts = {
   playUiClick?: () => void;
 };
 
-/** Crónica: títulos do legado e dica de replay. */
-export function openChronicleModal({ state, campaign, playUiClick }: OpenChronicleModalOpts): void {
-  closeOverlayModal();
-  playUiClick?.();
+export function legacyMenuVisible(state: GameState): boolean {
+  const legacy = state.legacy;
+  return (
+    legacy.echoes > 0 ||
+    (legacy.unlockedUpgrades?.length ?? 0) > 0 ||
+    (legacy.discoveredEndings?.length ?? 0) > 0 ||
+    (legacy.titles?.length ?? 0) > 0
+  );
+}
 
-  const { layer, scroll, dismiss, wireClose } = createSheetModalShell({
-    layerClass: 'sheet-modal-layer credits-modal-layer',
-    titleId: 'chronicle-modal-title',
-    kicker: t('sidebar.chronicleKicker'),
-    title: t('menu.chronicle'),
-    sub: t('sidebar.chronicleSub'),
-    backdropAriaLabel: t('sidebar.closeChronicle'),
-  });
+function appendChronicleContent(
+  scroll: HTMLElement,
+  state: GameState,
+  campaign: CampaignIndex
+): void {
+  const sec = document.createElement('section');
+  sec.className = 'diary-modal-section';
+  const h = document.createElement('h3');
+  h.className = 'diary-modal-section-title';
+  h.textContent = t('menu.chronicle');
+  sec.appendChild(h);
 
   const pIntro = document.createElement('p');
   pIntro.className = 'diary-modal-section-body';
   pIntro.textContent = t('sidebar.chronicleIntro');
-  scroll.appendChild(pIntro);
+  sec.appendChild(pIntro);
 
   const lead = state.party[0];
   if (lead) {
     const pClass = document.createElement('p');
     pClass.className = 'diary-modal-section-body';
     pClass.textContent = t('sidebar.thisRun', { name: lead.name, class: lead.class });
-    scroll.appendChild(pClass);
+    sec.appendChild(pClass);
   }
 
   const endingsMeta = campaign.endings ?? {};
   const discovered = state.legacy.discoveredEndings ?? [];
   if (discovered.length > 0) {
-    const secEnd = document.createElement('section');
-    secEnd.className = 'diary-modal-section';
-    const hEnd = document.createElement('h3');
-    hEnd.className = 'diary-modal-section-title';
+    const hEnd = document.createElement('h4');
+    hEnd.className = 'diary-modal-section-subtitle';
     hEnd.textContent = t('sidebar.endingsFound');
-    secEnd.appendChild(hEnd);
+    sec.appendChild(hEnd);
     const ulEnd = document.createElement('ul');
     ulEnd.className = 'credits-modal-about';
     for (const eid of discovered) {
@@ -552,41 +563,178 @@ export function openChronicleModal({ state, campaign, playUiClick }: OpenChronic
       }
       ulEnd.appendChild(li);
     }
-    secEnd.appendChild(ulEnd);
-    scroll.appendChild(secEnd);
+    sec.appendChild(ulEnd);
   }
 
   if (state.legacy.titles.length === 0) {
     const pEmpty = document.createElement('p');
     pEmpty.className = 'diary-modal-section-body';
     pEmpty.textContent = t('sidebar.chronicleNoTitles');
-    scroll.appendChild(pEmpty);
+    sec.appendChild(pEmpty);
   } else {
-    const sec = document.createElement('section');
-    sec.className = 'diary-modal-section';
-    const h = document.createElement('h3');
-    h.className = 'diary-modal-section-title';
-    h.textContent = t('sidebar.titlesSeen');
-    sec.appendChild(h);
+    const hTitles = document.createElement('h4');
+    hTitles.className = 'diary-modal-section-subtitle';
+    hTitles.textContent = t('sidebar.titlesSeen');
+    sec.appendChild(hTitles);
     const ul = document.createElement('ul');
     ul.className = 'credits-modal-about';
-    for (const t of state.legacy.titles) {
+    for (const title of state.legacy.titles) {
       const li = document.createElement('li');
-      li.textContent = t;
+      li.textContent = title;
       ul.appendChild(li);
     }
     sec.appendChild(ul);
-    scroll.appendChild(sec);
   }
 
-  if (state.legacy.echoes > 0) {
-    const pEcho = document.createElement('p');
-    pEcho.className = 'diary-modal-section-body';
-    pEcho.textContent = t('sidebar.legacyEchoes', {
-      echoes: String(state.legacy.echoes),
-      extra: state.legacy.lastRunSummary.trim() ? ` · ${state.legacy.lastRunSummary}` : '',
+  if (state.legacy.lastRunSummary.trim().length > 0) {
+    const pSummary = document.createElement('p');
+    pSummary.className = 'diary-modal-section-body diary-modal-progress-line--muted';
+    pSummary.textContent = state.legacy.lastRunSummary.trim();
+    sec.appendChild(pSummary);
+  }
+
+  scroll.appendChild(sec);
+}
+
+function appendEchoShopContent(
+  scroll: HTMLElement,
+  state: GameState,
+  registry: ContentRegistry,
+  onPurchase: (upgradeId: string) => void,
+  playUiClick?: () => void
+): void {
+  const sec = document.createElement('section');
+  sec.className = 'diary-modal-section echo-shop-section';
+  const h = document.createElement('h3');
+  h.className = 'diary-modal-section-title';
+  h.textContent = t('menu.echoShop');
+  sec.appendChild(h);
+
+  const sub = document.createElement('p');
+  sub.className = 'diary-modal-section-body echo-shop-section-intro';
+  sub.textContent = t('echoShop.sub');
+  sec.appendChild(sub);
+
+  const catalog = legacyUpgradeCatalogFromData(registry.data);
+  const upgradeIds = Object.keys(catalog);
+
+  const list = document.createElement('ul');
+  list.className = 'echo-shop-list';
+  for (const id of upgradeIds) {
+    const def = catalog[id]!;
+    const owned = isUpgradeUnlocked(state, id);
+    const canBuy = canPurchaseLegacyUpgrade(state, id, catalog);
+    const li = document.createElement('li');
+    li.className = 'echo-shop-item';
+    if (owned) li.classList.add('echo-shop-item--owned');
+
+    const head = document.createElement('div');
+    head.className = 'echo-shop-item-head';
+    const nameEl = document.createElement('div');
+    nameEl.className = 'echo-shop-item-name';
+    nameEl.textContent = t(def.nameKey);
+    head.appendChild(nameEl);
+    const costEl = document.createElement('div');
+    costEl.className = 'echo-shop-item-cost';
+    costEl.textContent = t('echoShop.cost', { cost: String(def.cost) });
+    head.appendChild(costEl);
+    li.appendChild(head);
+
+    const descEl = document.createElement('div');
+    descEl.className = 'echo-shop-item-desc';
+    descEl.textContent = t(def.descriptionKey);
+    li.appendChild(descEl);
+
+    const actions = document.createElement('div');
+    actions.className = 'echo-shop-item-actions';
+    if (owned) {
+      const ownedLbl = document.createElement('span');
+      ownedLbl.className = 'echo-shop-owned-label';
+      ownedLbl.textContent = t('echoShop.owned');
+      actions.appendChild(ownedLbl);
+    } else {
+      const buyBtn = document.createElement('button');
+      buyBtn.type = 'button';
+      buyBtn.className = 'echo-shop-buy-btn';
+      buyBtn.textContent = canBuy ? t('echoShop.buyShort') : t('echoShop.insufficient');
+      buyBtn.disabled = !canBuy;
+      buyBtn.addEventListener('click', () => {
+        playUiClick?.();
+        onPurchase(id);
+      });
+      actions.appendChild(buyBtn);
+    }
+    li.appendChild(actions);
+    list.appendChild(li);
+  }
+  sec.appendChild(list);
+  scroll.appendChild(sec);
+}
+
+export type OpenLegacyModalOpts = {
+  state: GameState;
+  campaign: CampaignIndex;
+  registry: ContentRegistry;
+  playUiClick?: () => void;
+  onPurchase: (upgradeId: string) => void;
+  onRestart?: () => void;
+  showRestart?: boolean;
+};
+
+/** Legado unificado: crônica + loja de ecos. */
+export function openLegacyModal({
+  state,
+  campaign,
+  registry,
+  playUiClick,
+  onPurchase,
+  onRestart,
+  showRestart = false,
+}: OpenLegacyModalOpts): void {
+  closeOverlayModal();
+  playUiClick?.();
+
+  const { layer, scroll, dismiss, wireClose } = createSheetModalShell({
+    layerClass: 'sheet-modal-layer credits-modal-layer echo-shop-modal-layer',
+    titleId: 'legacy-modal-title',
+    kicker: t('sidebar.chronicleKicker'),
+    title: t('menu.legacy'),
+    sub: t('menu.legacyTitle'),
+    backdropAriaLabel: t('sidebar.closeChronicle'),
+  });
+
+  const balance = document.createElement('p');
+  balance.className = 'echo-shop-balance';
+  balance.textContent = t('echoShop.balance', { echoes: String(state.legacy.echoes) });
+  scroll.appendChild(balance);
+
+  appendChronicleContent(scroll, state, campaign);
+  appendEchoShopContent(scroll, state, registry, onPurchase, playUiClick);
+
+  if (showRestart && onRestart) {
+    const hint = document.createElement('p');
+    hint.className = 'echo-shop-restart-hint';
+    hint.textContent = t('echoShop.restartHint');
+    scroll.appendChild(hint);
+    dismiss.textContent = t('echoShop.restart');
+    dismiss.classList.add('echo-shop-restart-btn');
+    const shut = (): void => {
+      playUiClick?.();
+      closeOverlayModal();
+      onRestart();
+    };
+    document.body.appendChild(layer);
+    overlayModalLayer = layer;
+    wireClose(shut);
+    overlayModalOnKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') shut();
+    };
+    window.addEventListener('keydown', overlayModalOnKey);
+    requestAnimationFrame(() => {
+      dismiss.focus();
+      overlayModalFocusTrapRelease = attachFocusTrap(layer);
     });
-    scroll.appendChild(pEcho);
+    return;
   }
 
   document.body.appendChild(layer);
@@ -1180,7 +1328,7 @@ function hintedStat(key: StatKey): string {
   return `<span class="sidebar-hint-label" title="${escHtml(statHint(key))}">${escHtml(label)}</span>`;
 }
 
-function resourceHover(key: 'gold' | 'supply' | 'faith' | 'corruption' | 'extraLife'): string {
+function resourceHover(key: 'gold' | 'supply' | 'faith' | 'corruption' | 'extraLife' | 'echoes'): string {
   return t(`sidebar.resourceHover.${key}`);
 }
 
@@ -1588,6 +1736,7 @@ export function buildGameSidebar({
           <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('faith'))}">${iconWrap(icons.faith)}<span>${escHtml(t('sidebar.faith'))} <strong>${r.faith}</strong></span></div>
           ${state.extraLifeReady ? `<div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('extraLife'))}">${iconWrap(icons.heart)}<span>${escHtml(t('sidebar.extraLife'))} <strong>${escHtml(t('sidebar.extraLifeReady'))}</strong> <span class="sidebar-resource-hint">${escHtml(t('sidebar.extraLifeCost'))}</span></span></div>` : ''}
           <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('corruption'))}">${iconWrap(icons.corruption)}<span>${escHtml(t('sidebar.corruption'))} <strong>${r.corruption}</strong></span></div>
+          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('echoes'))}">${iconWrap(icons.memories)}<span>${escHtml(t('sidebar.echoes'))} <strong>${state.legacy.echoes}</strong></span></div>
         </div>
       </details>
       ${

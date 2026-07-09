@@ -66,6 +66,8 @@ export const ConditionSchema: z.ZodType<Condition> = z.lazy(() =>
     z.object({
       day: z.object({ gte: z.number().optional(), lte: z.number().optional() }),
     }),
+    z.object({ legacyUpgrade: z.string() }),
+    z.object({ noLegacyUpgrade: z.string() }),
   ])
 );
 
@@ -99,7 +101,9 @@ export type Condition =
   | { companionCount: { gte?: number; lte?: number } }
   | { companionInParty: string }
   | { dayMod: { mod: number; eq: number } }
-  | { day: { gte?: number; lte?: number } };
+  | { day: { gte?: number; lte?: number } }
+  | { legacyUpgrade: string }
+  | { noLegacyUpgrade: string };
 
 export const EffectSchema: z.ZodType<Effect> = z.discriminatedUnion('op', [
   z.object({ op: z.literal('setFlag'), key: z.string(), value: z.boolean() }),
@@ -202,6 +206,9 @@ export const EffectSchema: z.ZodType<Effect> = z.discriminatedUnion('op', [
   }),
   z.object({ op: z.literal('advanceDay') }),
   z.object({ op: z.literal('registerEnding'), endingId: z.string() }),
+  z.object({ op: z.literal('settleRun'), outcome: z.enum(['defeat', 'victory']) }),
+  z.object({ op: z.literal('purchaseLegacyUpgrade'), upgradeId: z.string() }),
+  z.object({ op: z.literal('openEchoShop') }),
   z.object({ op: z.literal('resetRun') }),
 ]);
 
@@ -254,6 +261,9 @@ export type Effect =
   | { op: 'adjustCompanionFriendship'; companionId: string; delta: number; onceFlag?: string }
   | { op: 'advanceDay' }
   | { op: 'registerEnding'; endingId: string }
+  | { op: 'settleRun'; outcome: 'defeat' | 'victory' }
+  | { op: 'purchaseLegacyUpgrade'; upgradeId: string }
+  | { op: 'openEchoShop' }
   | { op: 'resetRun' };
 
 /** Som ao confirmar escolha (`commitSfx` no YAML). Alinhar a `GameAudio` / UI. */

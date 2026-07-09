@@ -8,6 +8,7 @@ import type {
   ItemDef,
   SpellDef,
 } from '../schema/index.ts';
+import type { LegacyUpgradeDef } from '../progression/legacyUpgrades.ts';
 
 /** Bônus aplicados uma vez ao ganhar um arquétipo narrativo (`setPath` com path não nulo). */
 export type PathUnlockBonus = {
@@ -59,6 +60,8 @@ export type GameData = {
   journeyMarks: Record<string, JourneyMarkDef>;
   /** Chave = id em `state.leadStoryPassives`. */
   leadStoryPassives: Record<string, LeadStoryPassiveDef>;
+  /** Melhorias permanentes da Loja de Ecos (campanha). */
+  legacyUpgrades: Record<string, LegacyUpgradeDef>;
 };
 
 export function emptyGameData(campaign: CampaignIndex, heroNarrative: HeroNarrative): GameData {
@@ -91,5 +94,6 @@ export function emptyGameData(campaign: CampaignIndex, heroNarrative: HeroNarrat
     },
     journeyMarks: {},
     leadStoryPassives: {},
+    legacyUpgrades: {},
   };
 }

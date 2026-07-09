@@ -906,6 +906,47 @@ export class GameSfxPlayer {
     }
   }
 
+  /** Compra na loja de ecos — cristal suave ascendente. */
+  playEchoShopPurchase(): void {
+    const ctx = this.host.ensureContext();
+    const g = this.host.gain(0.13);
+    if (g <= 0) return;
+    const t0 = ctx.currentTime;
+    const notes = [
+      { f: 440, t: 0, dur: 0.22 },
+      { f: 554.37, t: 0.08, dur: 0.24 },
+      { f: 659.25, t: 0.18, dur: 0.28 },
+      { f: 880, t: 0.32, dur: 0.38 },
+    ];
+    for (const { f, t, dur } of notes) {
+      const o = ctx.createOscillator();
+      const gn = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.value = f;
+      gn.gain.setValueAtTime(0.001, t0 + t);
+      gn.gain.exponentialRampToValueAtTime(g * 0.7, t0 + t + 0.03);
+      gn.gain.exponentialRampToValueAtTime(0.001, t0 + t + dur);
+      o.connect(gn);
+      gn.connect(ctx.destination);
+      o.start(t0 + t);
+      o.stop(t0 + t + dur + 0.04);
+    }
+    const shimmerT = t0 + 0.38;
+    for (const f of [1318.51, 1760]) {
+      const o = ctx.createOscillator();
+      const gn = ctx.createGain();
+      o.type = 'triangle';
+      o.frequency.value = f;
+      gn.gain.setValueAtTime(0.001, shimmerT);
+      gn.gain.exponentialRampToValueAtTime(g * 0.22, shimmerT + 0.02);
+      gn.gain.exponentialRampToValueAtTime(0.001, shimmerT + 0.35);
+      o.connect(gn);
+      gn.connect(ctx.destination);
+      o.start(shimmerT);
+      o.stop(shimmerT + 0.4);
+    }
+  }
+
   /** Fanfarra curta ao subir de nível (após vitória). */
   playLevelUpCelebration(): void {
     const ctx = this.host.ensureContext();

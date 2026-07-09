@@ -5,6 +5,7 @@ import {
   CREATOR_NAME,
   FEEDBACK_FORM_URL,
   KOFI_SUPPORT_URL,
+  legacyMenuVisible,
 } from './gameAppSidebar.ts';
 import { buildMenuSaveSlot, saveSlotLimit } from './gameAppSaveSlots.ts';
 import type { DailyBonusMeta } from './gameAppDailyBonus.ts';
@@ -43,8 +44,8 @@ export type MountAppChromeOptions = {
   onExportSave: () => void;
   onImportSave: () => void;
   onCredits: () => void;
-  /** Finais / legado (Crónica). */
-  onChronicle: () => void;
+  /** Legado unificado (crônica + loja de ecos). */
+  onLegacy: () => void;
   onDevTools: () => void;
   onScenesGraph: () => void;
   showImportInPartida: boolean;
@@ -85,7 +86,7 @@ export type AppChromeRefs = {
   fontBtn: HTMLButtonElement;
   devSaveExtrasEl: HTMLElement;
   devSettingsExtrasEl: HTMLElement;
-  chronicleBtn: HTMLButtonElement;
+  legacyBtn: HTMLButtonElement;
   /** Só os cartões de slot (actualizado em `syncAppChrome` após gravar/importar). */
   saveSlotsWrap: HTMLElement;
   /** Painel `aria-live` para mensagens não bloqueantes (substitui `alert`). */
@@ -344,13 +345,13 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   importBtn.textContent = t('menu.importSave');
   importBtn.addEventListener('click', () => opts.onImportSave());
 
-  const chronicleBtn = document.createElement('button');
-  chronicleBtn.type = 'button';
-  chronicleBtn.className = 'menu-item';
-  chronicleBtn.textContent = t('menu.chronicle');
-  chronicleBtn.title = t('menu.chronicleTitle');
-  chronicleBtn.hidden = opts.state.legacy.echoes <= 0;
-  chronicleBtn.addEventListener('click', () => opts.onChronicle());
+  const legacyBtn = document.createElement('button');
+  legacyBtn.type = 'button';
+  legacyBtn.className = 'menu-item';
+  legacyBtn.textContent = t('menu.legacy');
+  legacyBtn.title = t('menu.legacyTitle');
+  legacyBtn.hidden = !legacyMenuVisible(opts.state);
+  legacyBtn.addEventListener('click', () => opts.onLegacy());
 
   const creditsBtn = document.createElement('button');
   creditsBtn.type = 'button';
@@ -417,7 +418,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   }
 
   const aboutSection = createMenuSection(t('menu.sectionAbout'));
-  aboutSection.appendChild(chronicleBtn);
+  aboutSection.appendChild(legacyBtn);
   aboutSection.appendChild(creditsBtn);
 
   const feedbackLink = document.createElement('a');
@@ -490,7 +491,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     fontBtn,
     devSaveExtrasEl,
     devSettingsExtrasEl,
-    chronicleBtn,
+    legacyBtn,
     saveSlotsWrap,
     toastRegion,
     menuDrawer: drawer,
@@ -512,7 +513,7 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
 
   refs.devSaveExtrasEl.hidden = !opts.showImportInPartida;
   refs.devSettingsExtrasEl.hidden = !opts.showGraphInSettings;
-  refs.chronicleBtn.hidden = opts.state.legacy.echoes <= 0;
+  refs.legacyBtn.hidden = !legacyMenuVisible(opts.state);
 
   const pct = Math.round(opts.getVolume() * 100);
   refs.volumeRange.value = String(pct);

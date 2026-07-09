@@ -44,11 +44,19 @@ import {
 import { emitReputationUi } from './effects/reputationUi.ts';
 import {
   buildCompoundLegacyFlags,
+  buildLegacyRunStats,
   buildLegacySummary,
   computeLegacyEchoGain,
   resolveLegacyTitle,
+  RUN_SETTLED_FLAG,
   uniqueTitles,
 } from './effects/legacySummary.ts';
+import {
+  applyLegacyUpgradesToLeader,
+  applyLegacyUpgradesToRunState,
+  legacyUpgradeCatalogFromData,
+  purchaseLegacyUpgradeState,
+} from '../progression/legacyUpgrades.ts';
 
 export { displayTitleForMark };
 
@@ -427,7 +435,9 @@ function applyOne(
     }
     case 'initClass': {
       const heroName = ctx.data.heroNarrative.defaultHeroName(e.class);
-      const pc = createPlayerCharacter(heroName, e.class);
+      let pc = createPlayerCharacter(heroName, e.class);
+      const catalog = legacyUpgradeCatalogFromData(ctx.data);
+      pc = applyLegacyUpgradesToLeader(state, pc, catalog);
       const knownSpells = initialKnownSpellIds(pc, ctx.data);
       return {
         ...state,
@@ -624,27 +634,97 @@ function applyOne(
         },
       };
     }
-    case 'resetRun': {
-      const gain = computeLegacyEchoGain(state);
+    case 'settleRun': {
+      if (state.flags[RUN_SETTLED_FLAG]) return state;
       const title = resolveLegacyTitle(state);
+      const gain = computeLegacyEchoGain(state, e.outcome);
+      const locId =
+        e.outcome === 'defeat'
+          ? state.legacy.lastEndSceneId?.trim() || ctx.sceneId
+          : ctx.sceneId;
+      const runStats = buildLegacyRunStats(state, e.outcome, locId, locId);
+      const summary = buildLegacySummary(state);
       const nextLegacy: GameState['legacy'] = {
+        ...state.legacy,
         echoes: Math.max(0, (state.legacy?.echoes ?? 0) + gain),
         titles: uniqueTitles([...(state.legacy?.titles ?? []), title]),
-        discoveredEndings: [...(state.legacy?.discoveredEndings ?? [])],
-        lastRunSummary: buildLegacySummary(state),
+        lastRunSummary: summary,
         lastRunEchoGain: gain,
+        lastRunStats: runStats,
       };
-      const next = createInitialState(ctx.data.campaign, state.rngSeed);
-      const legacyFlags = buildCompoundLegacyFlags(state);
       return {
-        ...next,
+        ...state,
         legacy: nextLegacy,
-        flags: { ...next.flags, ...legacyFlags },
+        flags: { ...state.flags, [RUN_SETTLED_FLAG]: true },
         diary: [
-          ...next.diary,
-          `${nextLegacy.lastRunSummary} +${gain} ecos herdados; título registrado: ${title}.`,
+          ...state.diary,
+          `${summary} +${gain} ecos preservados; título: ${title}.`,
         ],
       };
+    }
+    case 'purchaseLegacyUpgrade': {
+      const catalog = legacyUpgradeCatalogFromData(ctx.data);
+      const next = purchaseLegacyUpgradeState(state, e.upgradeId.trim(), catalog);
+      if (next === state) return state;
+      const def = catalog[e.upgradeId.trim()];
+      bus.emit({
+        type: 'statusHighlight',
+        variant: 'good',
+        title: t('echoShop.purchaseSuccess'),
+        subtitle: def ? t(def.nameKey) : e.upgradeId,
+      });
+      return next;
+    }
+    case 'openEchoShop':
+      return state;
+    case 'resetRun': {
+      const catalog = legacyUpgradeCatalogFromData(ctx.data);
+      let settled = state;
+      if (!state.flags[RUN_SETTLED_FLAG]) {
+        const title = resolveLegacyTitle(state);
+        const gain = computeLegacyEchoGain(state, 'defeat');
+        const runStats = buildLegacyRunStats(state, 'defeat', ctx.sceneId, ctx.sceneId);
+        const summary = buildLegacySummary(state);
+        settled = {
+          ...state,
+          legacy: {
+            ...state.legacy,
+            echoes: Math.max(0, (state.legacy?.echoes ?? 0) + gain),
+            titles: uniqueTitles([...(state.legacy?.titles ?? []), title]),
+            lastRunSummary: summary,
+            lastRunEchoGain: gain,
+            lastRunStats: runStats,
+          },
+          flags: { ...state.flags, [RUN_SETTLED_FLAG]: true },
+        };
+      }
+      const legacy = settled.legacy;
+      const title = legacy.lastRunStats?.title ?? resolveLegacyTitle(settled);
+      const gain = legacy.lastRunEchoGain;
+      const nextLegacy: GameState['legacy'] = {
+        ...legacy,
+        lastEndSceneId: '',
+      };
+      let next = createInitialState(ctx.data.campaign, settled.rngSeed);
+      const earnedFlags = buildCompoundLegacyFlags(settled);
+      const purchasedFlags: Record<string, boolean> = {};
+      for (const id of legacy.unlockedUpgrades) {
+        const def = catalog[id];
+        if (def?.effect.kind === 'comboFlag') {
+          purchasedFlags[def.effect.flag] = true;
+        }
+      }
+      next = {
+        ...next,
+        legacy: nextLegacy,
+        flags: { ...next.flags, ...earnedFlags, ...purchasedFlags },
+        diary: [
+          ...next.diary,
+          `${legacy.lastRunSummary} +${gain} ecos herdados; título registrado: ${title}.`,
+        ],
+      };
+      next = applyLegacyUpgradesToRunState(next, catalog);
+      return next;
     }
     default:
       return state;
