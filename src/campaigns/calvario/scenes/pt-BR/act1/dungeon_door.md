@@ -3,7 +3,7 @@ id: act1/dungeon_door
 title: Batentes
 chapter: 1
 ambientTheme: explore
-artKey: dungeon_mouth
+artKey: dungeon_door
 highlight: true
 artHighlightFrames:
   - dungeon_mouth_hl0
@@ -28,6 +28,6 @@ choices:
 onEnter:
   - { op: addMark, mark: act1_door_runes }
 ---
-Runas **apagadas** foram re-riscadas por mãos recentes. Entre elas, um **sino** rudimentar — o Terceiro Sino, dizem os rumores.
+Runas apagadas foram riscadas de novo por mãos recentes. Entre elas, um **sino** rudimentar — o Terceiro Sino, dizem.
 
-A madeira está úmida por **dentro**, como se a pedra respirasse.
+A madeira está úmida por dentro.

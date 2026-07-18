@@ -9,6 +9,6 @@ choices:
 onEnter:
   - { op: addXp, amount: 10 }
 ---
-O eco **assenta**. Não desaparece — aprende seu nome e cala-se por educação.
+O eco **assenta**. Não some — guarda seu nome e cala por um tempo.
 
-Por um instante, sentes o mundo como uma **máquina** bem oleada: cada roda a girar porque **deixas**.
+Por um instante o mundo gira limpo: cada passo responde porque você **deixou**.

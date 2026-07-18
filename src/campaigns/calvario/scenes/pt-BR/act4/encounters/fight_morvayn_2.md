@@ -20,4 +20,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-O trono **desperta**. Sua forma encorpa-se com ossos alheios.
+O trono **desperta**. A forma dele engorda com ossos que não eram seus.

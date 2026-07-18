@@ -7,6 +7,6 @@ choices:
   - text: "Voltar ao acampamento da Vigília"
     next: act2/camp/vigilia_camp
 ---
-Correias rangem, fivelas mordem couro e metal responde com um brilho cansado.
+Correias rangem. Fivelas mordem o couro. O metal responde com um brilho cansado.
 
-Aqui, longe do primeiro golpe, tem um instante para ajustar **arma**, **armadura** e **relíquias** antes de seguir.
+Longe do primeiro golpe, dá tempo de ajustar **arma**, **armadura** e **relíquias** antes de seguir.

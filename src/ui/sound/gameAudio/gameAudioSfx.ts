@@ -947,6 +947,47 @@ export class GameSfxPlayer {
     }
   }
 
+  /** Companheiro entra na party — fanfarra calorosa (menor que level-up). */
+  playCompanionRecruit(): void {
+    const ctx = this.host.ensureContext();
+    const g = this.host.gain(0.16);
+    if (g <= 0) return;
+    const t0 = ctx.currentTime;
+    const notes = [
+      { f: 440, t: 0, dur: 0.11 },
+      { f: 554.37, t: 0.09, dur: 0.12 },
+      { f: 659.25, t: 0.2, dur: 0.14 },
+      { f: 880, t: 0.34, dur: 0.22 },
+    ];
+    for (const { f, t, dur } of notes) {
+      const o = ctx.createOscillator();
+      const gn = ctx.createGain();
+      o.type = 'triangle';
+      o.frequency.value = f;
+      gn.gain.setValueAtTime(0.001, t0 + t);
+      gn.gain.exponentialRampToValueAtTime(g, t0 + t + 0.02);
+      gn.gain.exponentialRampToValueAtTime(0.001, t0 + t + dur);
+      o.connect(gn);
+      gn.connect(ctx.destination);
+      o.start(t0 + t);
+      o.stop(t0 + t + dur + 0.04);
+    }
+    const chordT = t0 + 0.38;
+    for (const f of [440, 554.37, 659.25]) {
+      const o = ctx.createOscillator();
+      const gn = ctx.createGain();
+      o.type = 'sine';
+      o.frequency.value = f;
+      gn.gain.setValueAtTime(0.001, chordT);
+      gn.gain.exponentialRampToValueAtTime(g * 0.4, chordT + 0.04);
+      gn.gain.exponentialRampToValueAtTime(0.001, chordT + 0.45);
+      o.connect(gn);
+      gn.connect(ctx.destination);
+      o.start(chordT);
+      o.stop(chordT + 0.5);
+    }
+  }
+
   /** Fanfarra curta ao subir de nível (após vitória). */
   playLevelUpCelebration(): void {
     const ctx = this.host.ensureContext();

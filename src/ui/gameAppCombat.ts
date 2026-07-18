@@ -973,7 +973,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
           targetMode === 'enemy_spell'
             ? playerSpellOnEnemy(ctx.state, enemyIdx, ctx.registry.data, ctx.bus)
             : playerAttack(ctx.state, enemyIdx, ctx.registry.data, false, ctx.bus);
-        ctx.lifecycle.commitState(ctx.lifecycle.stabilize(next));
+        ctx.lifecycle.commitState(next);
       };
       panel.addEventListener('click', pickTarget);
       panel.addEventListener('keydown', (ev) => {
@@ -1146,9 +1146,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
           ctx.lifecycle.unlockAudio();
           ctx.audio.playDice();
           ctx.lifecycle.commitState(
-            ctx.lifecycle.stabilize(
-              playerSpellOnAlly(ctx.state, partyIdx, ctx.registry.data, ctx.bus)
-            )
+            playerSpellOnAlly(ctx.state, partyIdx, ctx.registry.data, ctx.bus)
           );
         };
 
@@ -1183,7 +1181,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
             targetMode === 'enemy_spell'
               ? playerSpellOnEnemy(ctx.state, enemyIdx, ctx.registry.data, ctx.bus)
               : playerAttack(ctx.state, enemyIdx, ctx.registry.data, false, ctx.bus);
-          ctx.lifecycle.commitState(ctx.lifecycle.stabilize(next));
+          ctx.lifecycle.commitState(next);
         };
 
         const btn = document.createElement('button');
@@ -1239,7 +1237,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         ctx.lifecycle.unlockAudio();
         ctx.audio.playDice();
         ctx.lifecycle.commitState(
-          ctx.lifecycle.stabilize(executePlayerTurn(ctx.state, st, ctx.registry.data, false, false, ctx.bus))
+          executePlayerTurn(ctx.state, st, ctx.registry.data, false, false, ctx.bus)
         );
       });
       bar.appendChild(btn);
@@ -1268,9 +1266,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         ctx.lifecycle.unlockAudio();
         ctx.audio.playDice();
         ctx.lifecycle.commitState(
-          ctx.lifecycle.stabilize(
-            executePlayerTurn(ctx.state, 'aggressive', ctx.registry.data, false, true, ctx.bus)
-          )
+          executePlayerTurn(ctx.state, 'aggressive', ctx.registry.data, false, true, ctx.bus)
         );
       });
       bar.appendChild(sacrifice);
@@ -1290,9 +1286,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         ctx.lifecycle.unlockAudio();
         ctx.audio.playDice();
         ctx.lifecycle.commitState(
-          ctx.lifecycle.stabilize(
-            executePlayerTurn(ctx.state, 'aggressive', ctx.registry.data, true, false, ctx.bus)
-          )
+          executePlayerTurn(ctx.state, 'aggressive', ctx.registry.data, true, false, ctx.bus)
         );
       }
     });
@@ -1331,7 +1325,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
           ctx.lifecycle.unlockAudio();
           ctx.audio.playDice();
           ctx.lifecycle.commitState(
-            ctx.lifecycle.stabilize(executeSpellTurn(ctx.state, spellId, ctx.registry.data, ctx.bus))
+            executeSpellTurn(ctx.state, spellId, ctx.registry.data, ctx.bus)
           );
         });
         spellBar.appendChild(btn);
@@ -1394,7 +1388,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
           ctx.lifecycle.unlockAudio();
           ctx.audio.playDice();
           ctx.lifecycle.commitState(
-            ctx.lifecycle.stabilize(useCombatConsumable(ctx.state, itemId, ctx.registry.data, ctx.bus))
+            useCombatConsumable(ctx.state, itemId, ctx.registry.data, ctx.bus)
           );
         });
         potionListHost.appendChild(btn);
@@ -1427,9 +1421,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   flee.addEventListener('click', () => {
     if (!canFlee) return;
     ctx.lifecycle.unlockAudio();
-    ctx.lifecycle.commitState(
-      ctx.lifecycle.stabilize(fleeCombat(ctx.state, ctx.registry.data, ctx.bus))
-    );
+    ctx.lifecycle.commitState(fleeCombat(ctx.state, ctx.registry.data, ctx.bus));
   });
   fleeBar.appendChild(flee);
   actionsPanel.appendChild(fleeBar);

@@ -29,6 +29,8 @@ choices:
       all:
         - { hasStoryPath: throne }
         - { noFlag: act8_hub_reached }
+    effects:
+      - { op: setChapter, chapter: 8 }
     preview: "O eixo ainda desce; o céu de cinza não é o fundo."
   - text: "Voltar às Cimeiras do Vento Cinzento"
     uiSection: "Eixo"
@@ -39,11 +41,21 @@ choices:
         - { flag: act5_hub_reached }
     effects:
       - { op: setChapter, chapter: 5 }
-    preview: "Regressar ao gelo — o eixo liga superfície e profundezas."
+    preview: "Voltar ao gelo — o eixo liga superfície e profundezas."
+  - text: "Subir rumo às Cimeiras — primeira neve no gelo"
+    uiSection: "Eixo"
+    next: act5/frost_opening
+    condition:
+      all:
+        - { hasStoryPath: throne }
+        - { noFlag: act5_hub_reached }
+    effects:
+      - { op: setChapter, chapter: 5 }
+    preview: "Abrir o caminho do gelo se você pulou a superfície."
 onEnter:
   - { op: addXp, amount: 20 }
   - { op: setFlag, key: act7_hub_reached, value: true }
 ---
-A estrada **não** volta atrás — só **ramifica** em males menores. Antes do último horizonte, o descampo impõe **um** evento que não pede desculpa: sermão, lâmina ou **sino** sem badalo.
+A estrada **não** volta atrás. Antes do último horizonte, o descampo cobra **um** evento: sermão, lâmina ou **sino** sem badalo.
 
-Isto **não** é o fundo do eixo — é fuga para o céu. O verdadeiro fecho ainda **arde** abaixo.
+Isto não é o fundo do eixo — é fuga para o céu. O verdadeiro fecho ainda **arde** abaixo.

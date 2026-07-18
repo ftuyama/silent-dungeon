@@ -3,6 +3,7 @@ id: act4/passage_graywind_heights
 title: Passagem
 chapter: 4
 ambientTheme: act4_peace
+artKey: passage_graywind_heights
 choices:
   - text: "Parar no limiar — armadura cinzenta que não veio do trono"
     condition:
@@ -16,14 +17,18 @@ choices:
         onVictory: shared/kaelsworn_post_act4
         onDefeat: shared/kael_act4_blades
         onFlee: act4/passage_graywind_heights
-  - text: "Partir rumo às Cimeiras do Vento Cinzento — seguir o rumor do gelo"
+  - text: "[↑] Subir ao mundo — ver como ficou o vilarejo e as Cimeiras"
     uiSection: "Eixo"
     next: act5/frost_opening
-    preview: "Capítulo 5. Superfície e frio — o caminho longo até ao vazio."
-  - text: "Descer às profundezas de magma — o fundo do eixo"
+    effects:
+      - { op: setChapter, chapter: 5 }
+    preview: "Capítulo 5. Superfície e frio; conferir se algo mudou."
+  - text: "[↓] Descer mais fundo — garganta de magma no fundo do eixo"
     uiSection: "Eixo"
     next: act8/opening_magma_throat
-    preview: "Capítulo 8. Calor hostil; sem o amuleto das provas do Vazio, cada cena cobra vida."
+    effects:
+      - { op: setChapter, chapter: 8 }
+    preview: "Capítulo 8. Calor hostil; ir até a raiz."
 onEnter:
   - { op: registerEnding, endingId: passage_graywind_heights }
   - { op: addXp, amount: 16 }
@@ -32,6 +37,6 @@ onEnter:
 
 {{factionThroneEcho}}
 
-O trono não fechou o **eixo** — abriu uma **bifurcação**. Para cima, **Cimeiras** e gelo. Para baixo, a **garganta** de magma onde a terra ainda tem nome.
+A ferida **não parece** resolvida. O trono abriu uma bifurcação no **eixo**: acima, ar de colheita estranha e gelo nas **Cimeiras**; abaixo, pedra quente onde a terra ainda tem nome.
 
-Escolhe o degrau. O silêncio cobra dos dois lados.
+Pode **subir** e ver como o mundo ficou lá em cima — ou **descer** mais fundo. Os dois lados cobram.

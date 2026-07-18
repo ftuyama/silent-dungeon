@@ -46,17 +46,17 @@ choices:
     preview: "Teste de Mente; sucesso revela o espelho de mão."
     effects:
       - { op: setFlag, key: class_gate_test_done, value: true }
-  - text: "Um espelho de mão na parede — segurá-lo e ver-te sem a água"
+  - text: "Um espelho de mão na parede — segurá-lo e ver você sem a água"
     uiSection: "Exploração"
     next: act1/mirror_round
     condition: { noFlag: act1_class_chosen }
     preview: "Só olhar; marca e diário."
-  - text: "Seguir em frente — boca da masmorra"
+  - text: "Seguir até a boca da masmorra"
     next: act1/dungeon_mouth
     condition: { flag: act1_class_chosen }
     preview: "O juramento já está feito; o ar lá fora ainda ouve."
 onEnter: []
 ---
-Três **juramentos** ecoam numa câmara redonda — e um **quarto** sussurro de caça, sem bandeira. No centro, uma lâmina de **água negra** não move — mas seu reflexo demora um instante a seguir-te, como se hesitasse entre **espada**, **arco de luz** e **símbolo sagrado**.
+Três **juramentos** ecoam na câmara redonda. Um quarto sussurro de caça, sem bandeira. No centro, **água negra** parada — e seu reflexo demora um instante a acompanhar, como se escolhesse entre **espada**, **arco** e **símbolo sagrado**.
 
-O ar cheira a **incenso queimado** e a ferro.
+O ar cheira a **incenso queimado** e ferro.

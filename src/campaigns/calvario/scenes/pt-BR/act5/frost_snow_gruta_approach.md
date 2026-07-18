@@ -9,6 +9,6 @@ choices:
     next: act5/frost_monk/trial_mind
 onEnter: []
 ---
-A boca **absorve**; dentro, ar **morno** que ensina o gelo a **mentir** sobre a temperatura.
+A boca **absorve**; dentro, ar morno que faz o gelo mentir sobre a temperatura.
 
-Um **eco** pergunta: *quem traz barulho para um lugar que só quer **lembrar**?* Errar aqui não é morrer — é **sair** com a memória cortada.
+Um eco pergunta: *quem traz barulho para um lugar que só quer quietude?*

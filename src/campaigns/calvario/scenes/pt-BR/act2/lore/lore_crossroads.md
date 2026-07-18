@@ -12,7 +12,7 @@ choices:
         - { class: knight }
         - not:
             path: fallen
-    preview: "Provação · anjo caído; título só se venceres"
+    preview: "Provação · anjo caído; título só se você vencer"
   - text: "Aceitar o título de Mago das trevas (arcanista)"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
@@ -21,7 +21,7 @@ choices:
         - { class: mage }
         - not:
             path: dark
-    preview: "Provação · anjo caído; título só se venceres"
+    preview: "Provação · anjo caído; título só se você vencer"
   - text: "Aceitar o nome de Atirador (arqueiro)"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
@@ -30,7 +30,7 @@ choices:
         - { class: archer }
         - not:
             path: marksman
-    preview: "Provação · anjo caído; título só se venceres"
+    preview: "Provação · anjo caído; título só se você vencer"
   - text: "Voltar-se ao Clérigo penitente"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
@@ -39,23 +39,23 @@ choices:
         - { class: cleric }
         - not:
             path: penitent
-    preview: "Provação · anjo caído; título só se venceres"
+    preview: "Provação · anjo caído; título só se você vencer"
   - text: "Mergulhar o braço no lodo que sussurra"
     uiSection: "Sorte"
     next: act2/luck_mire
-    preview: Sorte — 2d6 + SOR · sem decidir, recuas ao cruzeiro.
+    preview: Sorte — 2d6 + SOR · sem decidir, você volta ao cruzeiro.
   - text: "Recordar o cavaleiro caído (eco do path)"
     uiSection: "Memória"
     next: act2/hub_catacomb
     condition: { path: fallen }
     effects:
-      - { op: addDiary, text: "O cruzeiro lembrou-me o nome que aceitei: caído, mas ainda de pé." }
+      - { op: addDiary, text: "O cruzeiro me lembrou o nome que aceitei: caído, mas ainda de pé." }
   - text: "Recordar o arcano sombrio (eco do path)"
     uiSection: "Memória"
     next: act2/hub_catacomb
     condition: { path: dark }
     effects:
-      - { op: addDiary, text: "Sombras não pedem permissão — eu dei mesma assim." }
+      - { op: addDiary, text: "Sombras não pedem permissão — eu dei mesmo assim." }
   - text: "Recordar o penitente (eco do path)"
     uiSection: "Memória"
     next: act2/lore/lore_penitent_recall_mind
@@ -66,12 +66,12 @@ choices:
     next: act2/hub_catacomb
     condition: { path: marksman }
     effects:
-      - { op: addDiary, text: "O cruzeiro lembrou-me a distância que escolhi: não fuga — mira." }
-  - text: "Regressar ao cruzeiro"
+      - { op: addDiary, text: "O cruzeiro me lembrou a distância que escolhi: não fuga — mira." }
+  - text: "Voltar ao cruzeiro"
     uiSection: "Partir"
     next: act2/hub_catacomb
 onEnter: []
 ---
-Uma **voz** sem dono pergunta o que foi e o que aceitas ser. O ar **pesa** como manto molhado; as pedras **lembram** juramentos que outros quebraram antes de você.
+Uma **voz** sem dono pergunta o que você foi e o que aceita ser. O ar pesa — úmido, denso. As pedras guardam marcas de juramentos quebrados.
 
-Não há mapa para isto — só **decisões** que o jogo regista na carne.
+Não há mapa neste lugar. Só a escolha que você leva na carne.

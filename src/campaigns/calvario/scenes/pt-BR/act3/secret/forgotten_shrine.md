@@ -69,9 +69,9 @@ choices:
     uiSection: "Partir"
     next: act3/hub_depths
     condition: { flag: act3_shrine_done }
-    preview: "O selo lembra-te como lembras dele."
+    preview: "O selo lembra você como você lembra dele."
 onEnter: []
 ---
-Atrás de um **véu** de pedra rachada abre-se uma antessala que não estava no mapa — lajes baixas, **runas** seladas com chumbo, água parada que **espelha** sem refletir.
+Atrás de um **véu** de pedra rachada abre-se uma antessala que não estava no mapa — lajes baixas, runas seladas com chumbo, água parada que espelha sem refletir.
 
-No centro, uma **runa** maior. Não há altar — só **promessas** dobradas entre as juntas. Uma **abrir-se-ia** se a tocares.
+No centro, uma **runa** maior. Sem altar. Só o peso de quem selou isto.

@@ -13,6 +13,4 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Do **branco** saltam duas silhuetas famintas — não é a emboscada da missão; é a montanha a **cobrar** visita. Os dentes **tilintam** como vidro; o hálito cheira a **tempestade** adiada.
-
-Se venceres, aprendes uma regra rústica: na cordilheira, **fome** é mais fiel que mapa.
+Do **branco** saltam duas silhuetas famintas — não é a emboscada da missão; é a montanha cobrando visita. Os dentes tilintam como vidro; o hálito cheira a gelo podre.

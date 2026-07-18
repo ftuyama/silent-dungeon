@@ -5,6 +5,13 @@ import { t } from '../../i18n/index.ts';
 
 export const MERCHANT_SELL_CHOICE_PREFIX = 'merchant_sell_';
 
+export function isMerchantSellSection(sec: { rows: StoryChoiceRow[] }): boolean {
+  return (
+    sec.rows.length > 0 &&
+    sec.rows.every((row) => row.choice.id?.startsWith(MERCHANT_SELL_CHOICE_PREFIX) === true)
+  );
+}
+
 export function isSellableItem(def: ItemDef | undefined): def is ItemDef & { sellPrice: number } {
   return def != null && def.sellPrice != null && def.sellPrice >= 1;
 }

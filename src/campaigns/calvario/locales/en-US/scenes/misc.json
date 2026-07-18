@@ -1,7 +1,7 @@
 {
   "endings/epilogue_depths": {
     "title": "Depths of the axis",
-    "body": "The stone **drops**: you didn't close the dungeon — you **changed** **strata**. Here silence **weighs** like a lower ceiling; the air is **old** before it reaches your lungs.\n\nVictory **carved** more **Echoes** into your legacy. Invest them in the shop or **start over** when the abyss calls again.",
+    "body": "The stone descends. You did not close the dungeon — you changed stratum. Here silence weighs like a lower ceiling; the air arrives old in the lungs.\n\nVictory carved more **Echoes** into the legacy. Spend them in the shop or restart when the abyss calls.",
     "choices": [
       {
         "text": "Echo Shop"
@@ -13,7 +13,7 @@
   },
   "endings/epilogue_true_depths": {
     "title": "True depths",
-    "body": "The stone **stops** descending. You closed the axis at the **floor** — not in the ash sky, not in flight. Here silence **weighs** like hot victory.\n\nVictory **carved** Echoes into your legacy. Invest them in the shop or **start over** when the abyss calls again.",
+    "body": "The stone stops descending. You closed the axis at the **bottom** — not in the ash sky. Here silence weighs like hot victory.\n\nVictory carved **Echoes** into the legacy. Spend them in the shop or restart when the abyss calls.",
     "choices": [
       {
         "text": "Echo Shop"
@@ -25,7 +25,7 @@
   },
   "shared/explore_nav_act2": {
     "title": "Perimeter of the tunnels",
-    "body": "**Silence** is not absence of sound — it is the stone's **decision**. Each step **asks** whether you return to the Vigil's fire or **stay** with the echo.\n\nWith the **torn map**, you see where the corridor **lies** least; without it, you have only **skin** and **haste**.",
+    "body": "**Silence** here is not lack of sound — it is the weight of stone. Each step asks if you return to the Vigil's fire or stay with the echo.\n\nWith the **torn map**, you see where the corridor lies less; without it, only skin and haste remain.",
     "choices": [
       {
         "text": "Patrol at random (random encounter)",
@@ -41,7 +41,7 @@
   },
   "shared/explore_nav_act3": {
     "title": "Perimeter of the depths",
-    "body": "In the **depths**, echo chews names before returning them. The map promises no exit — only **direction**.\n\nWith the **torn map** in your head, you see where the stone **lies** less. Without it, only **ear** and **haste** remain.",
+    "body": "In the deep, echo chews names before returning them. The map does not promise exit — only direction.\n\nWith the **torn map**, you see where stone lies less. Without it, only ear and haste remain.",
     "choices": [
       {
         "text": "Patrol at random (random encounter)",
@@ -57,7 +57,7 @@
   },
   "shared/explore_nav_act5": {
     "title": "Ridge trails",
-    "body": "Snow erases new and old footprints with the same indifference. What changes is who can still read the trace.",
+    "body": "Snow erases new tracks and old ones with the same indifference. What changes is who can still read the mark.",
     "choices": [
       {
         "text": "Patrol at random (random encounter)",
@@ -73,7 +73,7 @@
   },
   "shared/explore_nav_act6": {
     "title": "Columns of the fractured nave",
-    "body": "Each column repeats a broken oath. To walk here is to choose which crack will answer first.",
+    "body": "Each column repeats a broken oath. Walking here is choosing which crack answers first.",
     "choices": [
       {
         "text": "Wander among the columns (random encounter)",
@@ -95,7 +95,7 @@
   },
   "shared/explore_nav_act8": {
     "title": "Lava veins",
-    "body": "The lava veins **pulse** under the stone. To walk here is to choose which crack will charge first.",
+    "body": "Lava veins pulse under the stone. Walking here is choosing which crack collects first.",
     "choices": [
       {
         "text": "Wander the black bridges (random encounter)",
@@ -111,7 +111,7 @@
   },
   "shared/game_over": {
     "title": "Journey's End",
-    "body": "Something in you **gives** without a crash — emptiness that leaves no echo. The **Dungeon of Silence** **opens** and **closes** like a wound; your name becomes a whisper in the damp.\n\n**Silence** noted what you reached. The **Echoes** keep that weight between runs — you can **invest** them or **start over** whenever you like.",
+    "body": "Something in you yields without a crash. The **Dungeon of Silence** opens and closes like a wound; your name becomes a whisper in the damp.\n\nSilence noted what you reached. The **Echoes** keep that weight between runs — you can spend them or restart.",
     "choices": [
       {
         "text": "Echo Shop"
@@ -123,7 +123,7 @@
   },
   "shared/kael_act2_blades": {
     "title": "Iron in the bone room",
-    "body": "[DRAFT] The **word** **broke**. What remains is **counting** — and the **grey one** **already** **advances**.",
+    "body": "[DRAFT] The word broke. The count remains — and the gray one already advanced.",
     "choices": [
       {
         "text": "Measure iron with Kael"
@@ -132,7 +132,7 @@
   },
   "shared/kael_act4_blades": {
     "title": "Iron in the passage",
-    "body": "[DRAFT] The **wind** **waits**. Kael **does not** — the **metal** **already** **decided** the **tone**.",
+    "body": "[DRAFT] The wind waits. Kael does not — the metal already chose the tone.",
     "choices": [
       {
         "text": "Measure iron with Kael"
@@ -141,7 +141,7 @@
   },
   "shared/kael_act5_blades": {
     "title": "Iron in the white breath",
-    "body": "[DRAFT] The **frost** **bites** the **phrase**. What remains is **iron** — and **trail** that **does not** **deny** **duel**.",
+    "body": "[DRAFT] Frost bites the sentence. Iron remains — and a trail that does not deny a duel.",
     "choices": [
       {
         "text": "Measure iron with Kael"
@@ -150,7 +150,7 @@
   },
   "shared/kael_act6_blades": {
     "title": "Iron in the rib",
-    "body": "[DRAFT] The **void** **swallows** the **last** **syllable**. The **echo** **falls silent** — the **grey one** **does not**.",
+    "body": "[DRAFT] The void swallows the last syllable. The echo stills — the gray one does not.",
     "choices": [
       {
         "text": "Measure iron with Kael"
@@ -159,7 +159,7 @@
   },
   "shared/kaelsworn_oath": {
     "title": "Oath of ash",
-    "body": "**Kael** removes his **helm** — tired face, clean gaze.\n\n> *\"**Three** times I fell. **Three** times you did not lie in the strike. That is **enough**: I serve as **iron** that only bends to **your** hand.\"*",
+    "body": "**Kael** removes the **helm** — tired face, clean gaze.\n\n> *\"**Three** times I fell. **Three** times you did not lie in the strike. That is enough: I serve as **iron** that bends only to your hand.\"*",
     "choices": [
       {
         "text": "Accept — sword to one who beat you three times",
@@ -201,7 +201,7 @@
   },
   "shared/kaelsworn_post_act2": {
     "title": "Iron that yields",
-    "body": "**Kael** inclines his helm; the metal **breathes** as one who **keeps** a phrase for **later**.\n\n> *\"It was not victory — it was **counting**. When the **number** **closes**, the **iron** **speaks**.\"*",
+    "body": "**Kael** tips the helm; the metal scrapes low.\n\n> *\"It was not victory — it was a **count**. When the number closes, the iron speaks.\"*",
     "choices": [
       {
         "text": "Hear what the iron promises — oath"
@@ -216,7 +216,7 @@
   },
   "shared/kaelsworn_post_act4": {
     "title": "Iron at the threshold",
-    "body": "**Kael** **anchors** his **sword** in the **shadow** of the **step** — **not** as **threat**, as **marker**.\n\n> *\"The **axis** **bends**; I **do not**. **Count** **again**.\"*",
+    "body": "**Kael** sets the sword in the shadow of his step — not as threat, as a marker.\n\n> *\"The axis bends; I do not. Count again.\"*",
     "choices": [
       {
         "text": "Hear what the iron promises — oath"
@@ -231,7 +231,7 @@
   },
   "shared/kaelsworn_post_act5": {
     "title": "Iron in the frost",
-    "body": "**Vapor** **gnaws** the **steel**; **Kael** **laughs** **low**, **sound** of **wet** **stone**.\n\n> *\"The **cold** **tests** **joint**. You **passed**. **Still** **to** **know** **if** **you** **accept** **what** **joint** **demands**.\"*",
+    "body": "Steam gnaws the steel. **Kael** laughs low — the sound of wet stone.\n\n> *\"Cold tests the joint. You passed. What remains is whether you accept what the joint demands.\"*",
     "choices": [
       {
         "text": "Hear what the iron promises — oath"
@@ -246,7 +246,7 @@
   },
   "shared/kaelsworn_post_act6": {
     "title": "Iron in the rib",
-    "body": "**Kael** **seems** **smaller** **against** the **impossible** **angle** — **the** **armor** **does not**: **it** **stays** **straight**.\n\n> *\"Here **even** **echo** **does not** **lie**. If **you** **swear**, **swear** **once** **only** — **or** **fall** **silent** **forever**.\"*",
+    "body": "**Kael** looks smaller against the impossible angle — the armor does not: it stays straight.\n\n> *\"Here even the echo does not lie. If you swear, swear once — or stay silent forever.\"*",
     "choices": [
       {
         "text": "Hear what the iron promises — oath"
@@ -257,6 +257,59 @@
     ],
     "onEnterDiaryTexts": [
       "On the rib the map denies, Kael touched his breastplate as one closing a book. The void heard the iron without contest."
+    ]
+  },
+  "shared/lore/world_wound_surface": {
+    "title": "Before the green",
+    "body": "Before the **green pulse**, the village still pretended morning: dry bread, early doors, wells that tasted of iron. The harvest thinned without drought — only less warmth in the hands.\n\nThen the air grew too **sweet**. Someone shut the window and called it wind. No one looked down.",
+    "choices": [
+      {
+        "text": "Keep remembering — what drains the village",
+        "preview": "The wound under the routine."
+      },
+      {
+        "text": "Stop for now — back to the moment",
+        "preview": "Memory stays half-finished."
+      },
+      {
+        "text": "Stop for now — back to the fire",
+        "preview": "Memory stays half-finished."
+      }
+    ]
+  },
+  "shared/lore/world_wound_drain": {
+    "title": "What drains",
+    "body": "No army came. Something **pulls**: hearth warmth, names on the tongue, the sound left between two sentences. Routine becomes a mask — market open, eyes down.\n\nAt night, a **bell** echo rises without striking bronze. The **Third Bell**, say those who still speak low. The rest call it wind and shut the door.",
+    "choices": [
+      {
+        "text": "Keep remembering — why you descend",
+        "preview": "The vow at the root."
+      },
+      {
+        "text": "Stop for now — back to the moment",
+        "preview": "Memory stays half-finished."
+      },
+      {
+        "text": "Stop for now — back to the fire",
+        "preview": "Memory stays half-finished."
+      }
+    ]
+  },
+  "shared/lore/world_wound_oath": {
+    "title": "At the root",
+    "body": "Someone had to go down. Not for glory — because above only sweet lies and bitter wells remained. *{{playerName}}* closed a hand on the gear and chose the **dungeon**.\n\nThe root of the evil is not in the square. It is below, where **silence** swallows the rest.",
+    "choices": [
+      {
+        "text": "Keep the vow and return to the moment",
+        "preview": "Memory closes; the dungeon mouth waits."
+      },
+      {
+        "text": "Keep the vow and return to the fire",
+        "preview": "Memory closes; the camp still warms."
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I remembered the village before the green — and why *{{playerName}}* descends: to find the root of what drains."
     ]
   }
 }

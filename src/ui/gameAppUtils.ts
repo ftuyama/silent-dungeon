@@ -97,6 +97,7 @@ export function passiveSidebarIconSvg(passiveKey: string): string {
 /** Ícone para badges de marca no diário (ids em `journeyMarks`). */
 export function markBadgeIconSvg(markId: string): string {
   const byMark: Partial<Record<string, IconId>> = {
+    world_wound_remembered: 'memories',
     act1_surface_whisper_intel: 'scroll',
     act1_surface_whisper_taint: 'corruption',
     act1_wall_memory: 'scroll',

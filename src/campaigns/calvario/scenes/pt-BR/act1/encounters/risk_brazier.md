@@ -20,6 +20,6 @@ choices:
       - { op: addDiary, text: "Não toquei no braseiro rachado. A fome fica para outro dia." }
     preview: "Sem ganho imediato; sem custo."
 ---
-O **braseiro** está rachado de alto a baixo, e um selo de cera endurecida prende um saco de provisões no fundo da boca de ferro.
+O **braseiro** está rachado de alto a baixo. Um selo de cera prende um saco de provisões no fundo.
 
-O calor não é natural. Se puxares, levas mantimentos — e alguma coissua fica colada na cera.
+O calor não é natural. Se puxar, leva mantimentos — e alguma coisa fica colada na cera.

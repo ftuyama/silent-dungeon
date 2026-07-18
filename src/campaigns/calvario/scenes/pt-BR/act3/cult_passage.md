@@ -51,4 +51,4 @@ choices:
 onEnter:
   - { op: addRep, faction: culto, delta: 1 }
 ---
-O mapa rasgado **sussurra** onde dobrar — num nicho, **ossos** amarrados com fio de cobre e um **caco de sino** fincado como cravo. A passagem **estreita** cheira a sebo queimado.
+O mapa rasgado aponta onde dobrar — num nicho, **ossos** amarrados com fio de cobre e um **caco de sino** fincado como cravo. A passagem estreita cheira a sebo queimado.

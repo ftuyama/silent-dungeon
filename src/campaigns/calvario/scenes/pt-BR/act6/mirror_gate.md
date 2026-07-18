@@ -12,7 +12,6 @@ choices:
 onEnter:
   - { op: addDiary, text: "Passei pelas três perguntas e nenhuma me absolveu." }
 ---
-As três marcas da nave brilham ao mesmo tempo e o chão abre-se num arco perfeito. Do outro lado, uma sala sem portas.
+As três marcas da nave brilham juntas. O chão abre um arco. Do outro lado, uma sala sem portas.
 
 No centro, um espelho de água vertical. Não reflete seu corpo: reflete sua **intenção**.
-

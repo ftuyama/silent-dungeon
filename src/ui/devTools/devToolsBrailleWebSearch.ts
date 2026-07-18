@@ -168,11 +168,11 @@ export function mountBrailleWebSearchPanel(parent: HTMLElement): void {
   thrRange.type = 'range';
   thrRange.min = '0';
   thrRange.max = '255';
-  thrRange.value = '127';
+  thrRange.value = '115';
   thrRange.className = 'dev-tools-braille-range dev-tools-braille-range--grow';
   const thrVal = document.createElement('span');
   thrVal.className = 'dev-tools-braille-value-pill';
-  thrVal.textContent = '127';
+  thrVal.textContent = '115';
   thrInner.appendChild(thrRange);
   thrInner.appendChild(thrVal);
   thrRow.appendChild(thrLab);
@@ -244,7 +244,7 @@ export function mountBrailleWebSearchPanel(parent: HTMLElement): void {
     return {
       asciiWidth,
       ditherer: parseDitherer(ditherSel.value),
-      threshold: Math.max(0, Math.min(255, parseInt(thrRange.value, 10) || 127)),
+      threshold: Math.max(0, Math.min(255, parseInt(thrRange.value, 10) || 115)),
       invert: invCb.checked,
     };
   }

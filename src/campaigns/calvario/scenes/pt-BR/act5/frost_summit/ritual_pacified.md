@@ -11,6 +11,6 @@ onEnter:
   - { op: addResource, resource: corruption, delta: -2 }
   - { op: addDiary, text: "Os selos fecharam a tempo. Senti o vazio recuar — não como vitória, como trégua." }
 ---
-Por um **instante** — longo o bastante para doer — o templo fica **quieto** de verdade. Não é paz; é **acordo** imposto a algo que preferia **fome**.
+Por um **instante** — longo o bastante para doer — o templo fica quieto de verdade. Não é paz; é acordo imposto a algo que preferia fome.
 
-A corrupção em você **arrefece**, como brasas pisadas. Ganhas **margem** — e margem, na montanha, às vezes vale mais que **ouro**.
+A corrupção recua um passo. O frio continua.

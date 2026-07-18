@@ -12,7 +12,7 @@ choices:
     next: act5/frost_hub
     condition: { resource: { supply: { gte: 1 } } }
     showWhenLocked: true
-    lockedHint: "Precisas de pelo menos 1 suprimento para pagar o descanso."
+    lockedHint: "Você precisa de pelo menos 1 suprimento para pagar o descanso."
     effects:
       - { op: campRest }
       - { op: advanceDay }
@@ -35,7 +35,7 @@ choices:
     uiSection: "Acampamento"
     uiSectionIcon: camp
     next: act5/camp/manage_equip
-  - text: "Partilhar uma prece com devotos do Terceiro Sino"
+  - text: "Compartilhar uma prece com devotos do Terceiro Sino"
     uiSection: "Acampamento"
     uiSectionIcon: camp
     condition:
@@ -104,6 +104,6 @@ choices:
 onEnter:
   - { op: addRep, faction: culto, delta: 1 }
 ---
-Peregrinos partilham calor em **pedaços**; o fogo **consome** — verdade única: **ninguém** sobe inteiro.
+Peregrinos **compartilham** calor em pedaços; o fogo consome. Ninguém sobe inteiro.
 
-*Sem calendário na tempestade: **dia {{day}}**.* Se o vento calar, pode ser **emboscada** a afinar o arco.
+*Sem calendário na tempestade: **dia {{day}}**.* Se o vento permitir, ainda dá para falar.

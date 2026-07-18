@@ -229,7 +229,7 @@ export const act2_culto_envoy_verbal: DialogueEnemyDef = {
       },
       ring: {
         line:
-          '“Então ouve o badalo que não vem”, diz a voz — e o túnel encosta-te.',
+          '“Então ouve o badalo que não vem”, diz a voz — e o túnel encosta em você.',
         choices: [
           {
             text:

@@ -42,4 +42,4 @@ choices:
     next: act2/camp/vigilia_camp
 onEnter: []
 ---
-Frascos batem no bolso. Cada rolha é uma **aposta** curta — vida, mana ou silêncio na cabeça — antes de voltar ao fogo da Vigília.
+Frascos batem no bolso. Cada rolha é uma **aposta** curta — vida, mana ou silêncio na cabeça — depois volta o fogo da Vigília.

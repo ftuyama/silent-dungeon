@@ -11,6 +11,6 @@ onEnter:
   - { op: addMark, mark: fled_rats }
   - { op: addDiary, text: "Fugi dos ratos. O chão lembrou-se do meu sabor — e eu deixei rasto." }
 ---
-Escorregas num **lodo** que não perdoa passos. **Mordidas** rasgam couro onde a armadura não chega — não é honra; é **sobrevivência**.
+Você escorrega num **lodo** que não perdoa. Mordidas rasgam couro onde a armadura não chega.
 
-O enxame **ri** em agudos — ou talvez só seu ouvido **quebre** primeiro.
+O enxame chia em agudos — ou talvez só o seu ouvido quebre primeiro.

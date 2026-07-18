@@ -21,6 +21,6 @@ choices:
     preview: "Um instante de calma; diário."
 onEnter: []
 ---
-O **pulso verde** sobe pela garganta da cidade; por baixo, a **masmorra** abre boca muda — pedra úmida, ferro velho, e **silêncio** que empurra para dentro.
+O **pulso verde** sobe pela garganta da cidade. Por baixo, a **masmorra** abre uma boca muda: pedra úmida, ferro velho, **silêncio** que empurra para dentro.
 
-Em cima fingem rotina; alguém tem de **cortar** isso na raiz — *{{playerName}}*, o primeiro passo é **descer**.
+Em cima fingem rotina. Alguém tem de cortar isso na raiz — *{{playerName}}*, o primeiro passo é **descer**.

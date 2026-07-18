@@ -261,6 +261,7 @@
     "itemAcquired": "Item adquirido",
     "itemsAcquired": "Novos itens adquiridos",
     "levelUp": "Subiu de nível!",
+    "companionRecruitedKicker": "Novo companheiro",
     "levelUpsMultiple": "{count} níveis de uma vez!",
     "levelTitle": "Nível {level} — {name}",
     "levelTitleNoName": "Nível {level}",
@@ -469,6 +470,8 @@
       "Até o número parece estranho na língua."
     ],
     "levelUpSubtitle": "Subiu de nível.",
+    "companionRecruitTitle": "Novo companheiro",
+    "companionRecruitSubtitle": "Entrou na party.",
     "exploreGoalTitle": "Objetivo concluído",
     "exploreGoalDefault": "O objetivo desta exploração ficou marcado.",
     "exploreGoalAct2": "Descida encontrada. A travessia pelas catacumbas valeu a pena.",

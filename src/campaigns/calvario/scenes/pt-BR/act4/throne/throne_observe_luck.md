@@ -12,4 +12,4 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-A gota **demora** no ar como decisão. Se errares o tempo, não molhas a mão — **molhas** o destino.
+A gota **demora** no ar. Se errar o tempo, não molha só a mão — mancha o resto do dia.

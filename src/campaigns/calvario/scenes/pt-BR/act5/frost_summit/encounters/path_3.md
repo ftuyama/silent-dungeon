@@ -14,6 +14,4 @@ choices:
         onFlee: act5/frost_summit/temple_gate
 onEnter: []
 ---
-Aqui o vento **não empurra** — **rasga**. Várias **crias** circulam como ideia ruim feita carne; o **cultista** ri baixo, como quem já leu seu fim numa **língua** que não ensinam em altar honesto.
-
-No topo, a **pedra negra** respira. Ou é você que **ofegas** — e ela só **escuta**.
+Aqui o vento não empurra — **rasga**. Várias **crias** circulam como ideia ruim feita carne; o **cultista** ri baixo, como quem já leu seu fim numa língua morta.

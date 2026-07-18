@@ -1,7 +1,7 @@
 import type { Choice, Effect } from '../../engine/schema/index.ts';
 
-/** Um carácter dentro de `[]` no início do texto: classe, risco, camp, exploração, descanso, combate. */
-const CHOICE_LEAD_BADGE_RE = /^\[([#*+\-!@>~%])\]\s*/;
+/** Um carácter dentro de `[]` no início do texto: classe, risco, camp, exploração, descanso, combate, eixo. */
+const CHOICE_LEAD_BADGE_RE = /^\[([#*+\-!@>~%↓↑])\]\s*/;
 
 export type ChoiceBadgeModifier =
   | 'hash'
@@ -26,6 +26,8 @@ const BADGE_CHAR_TO_MODIFIER: Record<string, ChoiceBadgeModifier> = {
   '>': 'gt',
   '~': 'tilde',
   '%': 'pct',
+  '↓': 'chapterDown',
+  '↑': 'chapterUp',
 };
 
 export type ChoiceToneClass =
@@ -151,7 +153,9 @@ export function resolveChoicePresentation(
     toneKind = 'rest';
   } else if (badgeChar === '@') {
     toneKind = 'camp';
-  } else if (chapterGate === 'advance') {
+  } else if (modifier === 'chapterDown') {
+    toneKind = 'chapterAdvance';
+  } else if (chapterGate === 'advance' && modifier !== 'chapterUp') {
     toneKind = 'chapterAdvance';
   } else if (badgeChar === '>' || exploreFromEffect) {
     toneKind = 'explore';
@@ -199,18 +203,26 @@ export function applyChoiceButtonLabel(
     btn.classList.add(toneClass);
   }
 
+  const main = document.createElement('span');
+  main.className = 'choice-main';
+
   const hotkey = document.createElement('span');
   hotkey.className = 'ui-hotkey-badge';
   hotkey.textContent = String(navNum);
   hotkey.setAttribute('aria-hidden', 'true');
-  btn.appendChild(hotkey);
+  main.appendChild(hotkey);
 
   if (badge) {
     const span = document.createElement('span');
     span.className = `choice-badge choice-badge--${badge.modifier}`;
     span.textContent = badge.label;
-    btn.appendChild(span);
-    btn.appendChild(document.createTextNode(' '));
+    main.appendChild(span);
   }
-  btn.appendChild(document.createTextNode(bodyText));
+
+  const label = document.createElement('span');
+  label.className = 'choice-label';
+  label.textContent = bodyText;
+  main.appendChild(label);
+
+  btn.appendChild(main);
 }

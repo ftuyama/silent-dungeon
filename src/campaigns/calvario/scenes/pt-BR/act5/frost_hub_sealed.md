@@ -3,7 +3,7 @@ id: act5/frost_hub_sealed
 chapter: 5
 type: hub
 ambientTheme: act5
-artKey: frost_peaks
+artKey: frost_peaks_sealed
 highlight: true
 title: Desfiladeiro — acampamento sob o selo
 choices:
@@ -14,6 +14,10 @@ choices:
     effects:
       - { op: setExploration, graphId: act5_frost, nodeId: frost_broken_watch }
       - { op: setAsciiMap, mapId: act5_frost }
+  - text: "Voltar aos ecos no gelo — marcas e rumor no desfiladeiro"
+    uiSection: "Explorar"
+    next: act5/frost_heights_rumors
+    preview: "Trecho acima do acampamento; testes e combate introdutório que ficaram para trás."
   - text: "Seguir o rasto de garras na neve (missão)"
     uiSection: "Missões"
     next: act5/frost_ridgeline
@@ -22,8 +26,8 @@ choices:
         - { level: { gte: 21 } }
         - { flag: act5_explore_goal_reached }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 21 e de alcançar primeiro a trilha do templo no mapa do desfiladeiro (patrulha a partir do acampamento)."
-    preview: "Rasto, emboscada ou caça — a neve não julga."
+    lockedHint: "Você precisa de nível 21 e de alcançar primeiro a trilha do templo no mapa do desfiladeiro (patrulha a partir do acampamento)."
+    preview: "Rasto de garras na neve; emboscada ou caça."
   - text: "Rumor do escudeiro — corda e ritual no gelo"
     uiSection: "Missões"
     next: act5/frost_tomas/intro
@@ -35,7 +39,7 @@ choices:
     condition: { level: { gte: 16 } }
     showWhenLocked: true
     lockedHint: "Requer nível 16+ e chegar até o dia 15 — depois o rumor esfria."
-    preview: "História de Tomás; corda e gelo — mas o rumor esfria depois do dia 15."
+    preview: "Tomás amarrado no gelo; o rumor some depois do dia 15."
   - text: "Rumor do escudeiro — só eco e corda vazia no gelo"
     uiSection: "Missões"
     next: act5/frost_tomas/missed
@@ -44,7 +48,7 @@ choices:
         - { noFlag: tomas_rescued }
         - { noFlag: tomas_rescue_missed }
         - { day: { gte: 16 } }
-    preview: "Demais tarde; o desfiladeiro já aprendeu outro nome para justiça."
+    preview: "Tarde demais: poste, corda vazia, eco."
   - text: "Viver o acampamento no gelo"
     uiSection: "Fogo e troca"
     next: act5/camp/frost_camp
@@ -91,11 +95,13 @@ choices:
       all:
         - { hasStoryPath: throne }
         - { noFlag: act8_hub_reached }
+    effects:
+      - { op: setChapter, chapter: 8 }
     preview: "Abrir o caminho do inferno sob a pedra; sem amuleto, cada cena cobra HP."
 onEnter:
   - { op: addXp, amount: 14 }
   - { op: setFlag, key: act5_hub_reached, value: true }
 ---
-**Tendas** rangem como dentes velhos; o fogo aquece **menos** do que deveria — como se o calor respeitasse um **selo** que não vê. A neve cobre pegadas, mas o peito ainda **pesa** o que fechaste em baixo.
+As **tendas** rangem; o fogo aquece menos do que deveria. A neve cobre pegadas, mas o peito ainda carrega o **selo** que você fechou lá embaixo.
 
-O mapa aqui é **decisão** em silêncio frágil: rumor, **troca**, ou deixar o vento **escolher**. Abaixo do gelo, o eixo **desce** — e a fé que gastaste no trono ainda **cobre** juros no frio.
+O desfiladeiro segue quieto demais — rumor, acampamento, cume. Embaixo o eixo desce. A fé que você gastou no trono ainda pesa no frio.

@@ -13,4 +13,4 @@ choices:
         onFlee: act8/lava_river
 onEnter: []
 ---
-Dois golems de lava **erguem-se** da margem. O calor deles não é ambiente — é **intenção**.
+Dois golems de lava erguem-se da margem. O calor deles não é ambiente — vem com intenção.

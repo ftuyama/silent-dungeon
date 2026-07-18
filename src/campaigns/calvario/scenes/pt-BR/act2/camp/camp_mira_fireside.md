@@ -12,7 +12,7 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act2_camp_mira_fireside_shadows }
   - text: "Falar da Vigília como quem fala baixo"
     next: act2/camp/camp_mira_topic_vigilia
-  - text: "Partilhar silêncio — só o estalar da lenha"
+  - text: "Compartilhar silêncio — só o estalar da lenha"
     next: act2/camp/camp_mira_topic_silence
   - text: "Voltar à roda da fogueira"
     next: act2/camp/camp_companion_chat

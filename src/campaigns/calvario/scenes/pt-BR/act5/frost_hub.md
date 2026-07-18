@@ -20,6 +20,10 @@ choices:
     effects:
       - { op: setExploration, graphId: act5_frost, nodeId: frost_broken_watch }
       - { op: setAsciiMap, mapId: act5_frost }
+  - text: "Voltar aos ecos no gelo — marcas e rumor no desfiladeiro"
+    uiSection: "Explorar"
+    next: act5/frost_heights_rumors
+    preview: "Trecho acima do acampamento; testes e combate introdutório que ficaram para trás."
   - text: "Seguir o rasto de garras na neve (missão)"
     uiSection: "Missões"
     next: act5/frost_ridgeline
@@ -28,8 +32,8 @@ choices:
         - { level: { gte: 21 } }
         - { flag: act5_explore_goal_reached }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 21 e de alcançar primeiro a trilha do templo no mapa do desfiladeiro (patrulha a partir do acampamento)."
-    preview: "Rasto, emboscada ou caça — a neve não julga."
+    lockedHint: "Você precisa de nível 21 e de alcançar primeiro a trilha do templo no mapa do desfiladeiro (patrulha a partir do acampamento)."
+    preview: "Rasto de garras na neve; emboscada ou caça."
   - text: "Rumor do escudeiro — corda e ritual no gelo"
     uiSection: "Missões"
     next: act5/frost_tomas/intro
@@ -41,7 +45,7 @@ choices:
     condition: { level: { gte: 16 } }
     showWhenLocked: true
     lockedHint: "Requer nível 16+ e chegar até o dia 15 — depois o rumor esfria."
-    preview: "História de Tomás; corda e gelo — mas o rumor esfria depois do dia 15."
+    preview: "Tomás amarrado no gelo; o rumor some depois do dia 15."
   - text: "Rumor do escudeiro — só eco e corda vazia no gelo"
     uiSection: "Missões"
     next: act5/frost_tomas/missed
@@ -50,7 +54,7 @@ choices:
         - { noFlag: tomas_rescued }
         - { noFlag: tomas_rescue_missed }
         - { day: { gte: 16 } }
-    preview: "Demais tarde; o desfiladeiro já aprendeu outro nome para justiça."
+    preview: "Tarde demais: poste, corda vazia, eco."
   - text: "Viver o acampamento no gelo"
     uiSection: "Fogo e troca"
     next: act5/camp/frost_camp
@@ -97,13 +101,13 @@ choices:
       all:
         - { hasStoryPath: throne }
         - { noFlag: act8_hub_reached }
+    effects:
+      - { op: setChapter, chapter: 8 }
     preview: "Abrir o caminho do inferno sob a pedra; sem amuleto, cada cena cobra HP."
 onEnter:
   - { op: addXp, amount: 14 }
   - { op: setFlag, key: act5_hub_reached, value: true }
 ---
-**Tendas** rangem como dentes velhos; o fogo mais **ameaça** do que aquece. **Mesmo** silêncio de peso, **palco** maior: neve, marcas **humanas**, **bestiais** e uma terceira sem nome.
+As **tendas** rangem no vento; o fogo cospe mais fumaça do que calor. Na neve, pegadas suas, de bicho — e outras que o frio já começou a apagar.
 
-O mapa aqui é **decisão** — rumor, **troca** de calor, ou deixar a neve **escolher**. O desfiladeiro só **cobre**. Abaixo do gelo, o eixo ainda **desce**.
-
-O trono ficou para trás em **ferro**: Morvayn caiu, mas o **eixo** não. Cada respiração no gelo lembra que a vitória foi **magra**.
+Daqui o **desfiladeiro** abre em trilhas: patrulha, rumor, cume. Embaixo, o eixo ainda desce. Morvayn caiu no trono; o frio não celebra.

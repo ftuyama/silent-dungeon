@@ -1,6 +1,6 @@
 ---
 id: act3/pipes_whisper
-title: Tubagens
+title: Canos
 chapter: 3
 ambientTheme: act3
 luckCheck:
@@ -12,4 +12,4 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-Por entre as **tubagens** de bronze verde, o ar **arranha** uma melodia — vozes de cima, distorcidas, a falar **imposto** e **descida** como se fossem a mesma palavra.
+Por entre os **canos** de bronze verde, o ar arranha uma melodia — vozes de cima, distorcidas, falando de imposto e descida como se fossem a mesma palavra.

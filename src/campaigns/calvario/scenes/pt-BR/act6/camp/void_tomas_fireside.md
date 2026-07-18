@@ -19,6 +19,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -3, onceFlag: ff_cf_act6_void_tomas_fs_leave }
 onEnter: []
 ---
-> *"Isto não é campo — é **prova**. E prova não pede aplausos; pede **passos**."*
+> *"Isto não é campo — é **prova**. Prova não pede aplauso; pede **passo**."*
 
 {{companionLine}}

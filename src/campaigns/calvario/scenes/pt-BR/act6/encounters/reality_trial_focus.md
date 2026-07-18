@@ -3,7 +3,7 @@ id: act6/encounters/reality_trial_focus
 title: Fenda Coerente
 chapter: 6
 ambientTheme: void
-artKey: fractured_nave
+artKey: reality_trial_nave
 choices:
   - text: "Enfrentar o Arauto com a mente fixa"
     effects:
@@ -12,7 +12,6 @@ onEnter:
   - { op: addMark, mark: act6_veil_aligned }
   - { op: addDiary, text: "Segurei o mundo por um fio de pensamento. Descobri que pensamento tambem corta." }
 ---
-Consegues sustentar uma unica versao da sala por alguns segundos. O suficiente para distinguir pedra de reflexo e medo de aviso.
+Você segura uma única versão da sala por alguns segundos. O bastante para distinguir pedra de reflexo.
 
 O Arauto sorri sem boca.
-

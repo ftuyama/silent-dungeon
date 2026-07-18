@@ -16,4 +16,4 @@ choices:
       - { op: addResource, resource: faith, delta: 1 }
 onEnter: []
 ---
-O emblema queima frio na palma. Palavras antigas repelhem o véu.
+O emblema queima frio na palma. Palavras antigas afastam o véu.

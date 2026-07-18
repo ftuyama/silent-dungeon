@@ -12,7 +12,7 @@ choices:
     next: act6/hub_fractured_nave
     condition: { resource: { supply: { gte: 1 } } }
     showWhenLocked: true
-    lockedHint: "Precisas de pelo menos 1 suprimento para alimentar a chama."
+    lockedHint: "Você precisa de pelo menos 1 suprimento para alimentar a chama."
     effects:
       - { op: campRest }
       - { op: advanceDay }
@@ -50,6 +50,6 @@ choices:
       - { op: advanceDay }
 onEnter: []
 ---
-Não há **lenha** — só **restos** de quem já se queimou a si mesmo. A fogueira **imita** calor; seu corpo aceita a mentira porque **precisa** de um lugar onde fingir que ainda há **amanhã**.
+Não há **lenha** de verdade — só restos queimados. A fogueira imita calor; seu corpo aceita porque precisa.
 
-*Mesmo aqui, o número segue: **dia {{day}}** — espelhado em cinza.*
+*Mesmo aqui, o número segue: **dia {{day}}**.*

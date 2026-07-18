@@ -12,6 +12,6 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-Por um instante o reflexo **não é seu rosto** — osso e ripple — e a água fica **demais quieta** para ser natural.
+Por um instante o reflexo não é seu rosto: osso e ondulação. A água fica quieta demais.
 
-*{{playerName}}* debruça-se sobre *{{playerName}}*; ao levantar a cabeça, o pescoço doí de **ter visto** demais.
+*{{playerName}}* se debruça sobre *{{playerName}}*. Ao levantar a cabeça, o pescoço dói de ter **visto** demais.

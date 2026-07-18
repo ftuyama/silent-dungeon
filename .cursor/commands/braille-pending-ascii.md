@@ -2,9 +2,11 @@
 description: Preenche arte ASCII Braille pendente (artKey) a partir de imagens — alinhado ao painel DevTools e ao CLI do repo.
 ---
 
-# Braille ASCII: arte pendente (`artKey`)
+# Braille ASCII: arte pendente (`artKey`) — Wikimedia
 
 Executa o fluxo completo para cenas com `artKey` sem ficheiro `.txt` ou com ficheiro vazio em `ascii/scenes/**`.
+
+**Preferência actual:** para consistência temática com IA + CLI, usar o comando [braille-ascii-generate](braille-ascii-generate.md) e a skill [braille-ascii-from-image](../skills/braille-ascii-from-image/SKILL.md). Este comando permanece para referência com licença clara (Commons).
 
 ## 1. Inventário
 

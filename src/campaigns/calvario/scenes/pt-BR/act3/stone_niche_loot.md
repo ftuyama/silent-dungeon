@@ -12,4 +12,4 @@ choices:
   - text: "Guardar as moedas e voltar"
     next: act3/stone_corridor
 ---
-Entre duas placas funerarias, encontras um nicho com moedas frias e resina seca. O altar protesta em silencio, mas nao o bastante para te parar.
+Entre duas placas funerárias, você encontra um nicho com moedas frias e resina seca. O altar protesta em silêncio — sem força para parar você.

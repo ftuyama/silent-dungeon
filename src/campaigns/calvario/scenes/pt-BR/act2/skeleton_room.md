@@ -23,4 +23,4 @@ choices:
     next: act2/encounters/skeleton_combat_intro
 onEnter: []
 ---
-Restos armados erguem-se por **hábito**, não por vontade.
+Restos armados erguem-se por **hábito**, não por vontade. A lâmina range no osso seco.

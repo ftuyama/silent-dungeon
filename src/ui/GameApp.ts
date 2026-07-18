@@ -311,6 +311,10 @@ export class GameApp {
           this.unlockAudio();
           this.audio.playItemAcquire();
         },
+        onCompanionRecruited: () => {
+          this.unlockAudio();
+          this.audio.playCompanionRecruit();
+        },
         onXpGained: (amount) => {
           this.enqueueStatusHighlight({
             type: 'statusHighlight',
@@ -1054,6 +1058,7 @@ export class GameApp {
     this.cancelItemBannerPipeline();
   }
 
+  /** `stabilize` runs here once; combat UI must not pre-stabilize or onEnter overlays are trimmed away. */
   private commitCombatState(s: GameState): void {
     const prevScene = this.state.sceneId;
     const prevDiaryQueueLen = this.diaryEntryQueue.length;

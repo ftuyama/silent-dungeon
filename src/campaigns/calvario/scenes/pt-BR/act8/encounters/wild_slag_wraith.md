@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act8
 onEnter: []
 ---
-Escória **levanta-se** em forma humana. Sem pele — só calor e rancor.
+Escória levanta-se em forma humana. Sem pele — só calor e rancor.

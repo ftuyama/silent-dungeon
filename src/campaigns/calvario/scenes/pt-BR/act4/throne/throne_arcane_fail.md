@@ -8,7 +8,7 @@ choices:
     next: act4/throne/throne_gate
     effects:
       - { op: addResource, resource: corruption, delta: 1 }
-      - { op: addDiary, text: "A runa mordeu-me o pensamento — ficou um buraco onde devia haver ordem." }
+      - { op: addDiary, text: "A runa mordeu o pensamento — ficou um buraco onde devia haver ordem." }
 onEnter: []
 ---
-A linha **parte-te** ao meio: não é falta de inteligência — é **convite** demais. O trono ri **sem som**, e você sentes o eco como **azia** sagrada.
+A linha **parte** você ao meio: convite demais, não falta de inteligência. O trono ri sem som; o eco fica como azia sagrada.

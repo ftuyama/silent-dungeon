@@ -25,4 +25,4 @@ choices:
     preview: "Círculo +1 · mais ouro · +1 corrupção"
 onEnter: []
 ---
-No coldre: **lista de nomes** com carimbo raspado e um **broche** de sentinela torto. Podes devolver à **ordem** ou transformar em **moeda** na rede — cada uma cobra um tipo de silêncio.
+No coldre: **lista de nomes** com carimbo raspado e um **broche** de sentinela torto. Você pode devolver à ordem ou transformar em moeda na rede — cada caminho cobra um tipo de silêncio.

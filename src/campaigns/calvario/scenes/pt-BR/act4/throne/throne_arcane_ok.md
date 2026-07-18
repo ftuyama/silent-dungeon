@@ -8,8 +8,8 @@ choices:
     next: act4/throne/throne_gate
     effects:
       - { op: grantTemporaryBuff, attr: mind, delta: 1, remainingScenes: 3 }
-      - { op: addDiary, text: "Vi o compasso do trono — não o suficiente para domá-lo, o suficiente para não me perder logo." }
+      - { op: addDiary, text: "Vi o ritmo do trono — pouco para domá-lo, o bastante para não me perder logo." }
 onEnter:
   - { op: addXp, amount: 12 }
 ---
-Por um instante, o símbolo **encaixa**: não é poder — é **gramática**. O trono deixa de ser só medo e torna-se **frase** que pode recusar em voz alta.
+Por um instante o símbolo **encaixa**. Não é poder solto — é gramática. O trono deixa de ser só medo e vira frase que você pode recusar em voz alta.

@@ -12,6 +12,6 @@ onEnter:
   - { op: addRep, faction: circulo, delta: 1 }
   - { op: addRep, faction: vigilia, delta: -1 }
   - { op: addResource, resource: gold, delta: 2 }
-  - { op: addDiary, text: "[RASCUNHO] O encarregado fechou o tom sem altar — barganha em voz mínima; o cano adiou o dente." }
+  - { op: addDiary, text: "O encarregado fechou o tom sem altar — barganha em voz mínima; o cano adiou o dente." }
 ---
-[RASCUNHO] O encarregado recua meio passo. A moeda desaparece na manga como quem guarda saldo. O contrato ficou **dito** — o túnel continua a pedir prova, mas não **nesta** dobra.
+O encarregado recua meio passo. A moeda some na manga. O contrato ficou dito — o túnel ainda pede prova, mas não nesta dobra.

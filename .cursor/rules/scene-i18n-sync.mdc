@@ -1,0 +1,42 @@
+---
+description: Qualquer edição de cena pt-BR exige sync do overlay en-US na mesma tarefa
+globs:
+  - src/campaigns/*/scenes/**/*.md
+  - src/campaigns/*/locales/en-US/scenes/**/*.json
+  - src/campaigns/*/data/journeyMarks.ts
+alwaysApply: false
+---
+
+# Sync cenas → traduções (en-US)
+
+## Regra dura
+
+Ao criar ou editar cenas em `src/campaigns/<campaign>/scenes/pt-BR/**/*.md`, **na mesma tarefa** atualize o overlay inglês correspondente. Não entregue só o Markdown.
+
+Cânone: prosa/YAML em **pt-BR**. Inglês vive só em JSON overlays — **não** criar `scenes/en-US/**/*.md`.
+
+| Mudança pt-BR | Overlay en-US |
+|---|---|
+| `title`, corpo | `locales/en-US/scenes/actN.json` → `title`, `body` |
+| `choices[].text` / `preview` / `lockedHint` / `uiSection` | mesmo índice em `choices[]` |
+| `addDiary` em choice / `onEnter` / `repeatOnEnter` | `diaryTexts` / `onEnterDiaryTexts` / `repeatOnEnterDiaryTexts` |
+| `skillCheck.label` / `luckCheck.label` / `dualAttrSkillCheck.label` | `skillCheckLabel` / `luckCheckLabel` / `dualAttrSkillCheckLabel` |
+| Novo `addMark` | `data/journeyMarks.ts` + `locales/pt-BR/entities.json` + `locales/en-US/entities.json` |
+
+Bucket do JSON = primeiro segmento do `id` (`act1/…` → `act1.json`; fora de `act1`–`act8` → `misc.json`).
+
+## Checklist antes de terminar
+
+1. Overlay EN com **mesmo número** de `choices` que o frontmatter pt-BR.
+2. Todo texto jogável novo traduzido (não deixar string pt-BR no EN).
+3. Remover do overlay campos que sumiram do pt-BR (ex.: `lockedHint`).
+4. Rodar:
+
+```bash
+npm run validate:scenes -- --campaign calvario
+npm run check:pt-br
+npm run validate:i18n
+npm run validate:i18n:translations
+```
+
+Referência: `src/campaigns/calvario/locales/en-US/README.md`.

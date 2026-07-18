@@ -12,11 +12,11 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
     nodes: {
       root: {
         line:
-          'Do espelho sai seu rosto sem hesitação. “Eu sou você sem medo”, diz. “Você é eu sem coragem.” O sorriso dele não pede licença — pede rendição.',
+          'Do espelho sai seu rosto sem hesitação. “Eu sou você sem medo”, diz. “Você é eu sem coragem.” O sorriso pede rendição, não licença.',
         choices: [
           {
             text:
-              'Nomear o medo sem poesia — o hábito feio, não o herói de palco.',
+              'Nomear o medo sem poesia — o hábito feio, sem pose.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -38,7 +38,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
           },
           {
             text:
-              'Atacar a imagem com fúria — provar que ainda mandas nseu rosto.',
+              'Atacar a imagem com fúria — provar que ainda manda no próprio rosto.',
             resolution: { kind: 'fixed', nextNodeId: 'waver' },
             effects: { enemyHpDelta: 4 },
           },
@@ -46,7 +46,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
       },
       silent_advance: {
         line:
-          '“Corpo sem frase”, murmura ele, irritado. “Isso também é linguagem — só que eu sei lê-la.”',
+          '“Corpo sem frase”, murmura ele, irritado. “Isso também é língua — e eu sei ler.”',
         choices: [
           {
             text:
@@ -76,7 +76,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
           },
           {
             text:
-              'Confiar no ritmo: deixar o acaso decidir se o silêncio te protege ou se o corredor te expõe.',
+              'Confiar no ritmo: deixar o acaso decidir se o silêncio protege você ou se o corredor expõe.',
             resolution: {
               kind: 'luck',
               tn: 10,
@@ -95,7 +95,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Traçar fronteira: sombra fica no vidro; você ficas no corredor.',
+              'Traçar fronteira: sombra fica no vidro; você fica no corredor.',
             resolution: { kind: 'fixed', nextNodeId: 'last_test' },
             effects: { enemyHpDelta: -4 },
           },
@@ -129,7 +129,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
       },
       last_test: {
         line:
-          'A fronteira está traçada; o vidro ainda tenta colonizar-te com um último sorriso. “Mostra”, sussurra o reflexo, “como fechas sem me dar o epílogo.”',
+          'A fronteira está traçada; o vidro ainda tenta um último sorriso. “Mostra”, sussurra o reflexo, “como você fecha sem me dar o epílogo.”',
         choices: [
           {
             text:
@@ -167,11 +167,11 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
       },
       strain: {
         line:
-          'O reflexo lê cada tensão nseu pescoço como promessa de queda. “Vês?” murmura. “O corpo já assinou antes da boca.”',
+          'O reflexo lê cada tensão no seu pescoço como promessa de queda. “Viu?” murmura. “O corpo já assinou antes da boca.”',
         choices: [
           {
             text:
-              'Dizer seu nome em voz alta — âncora feia, sem pose de palco.',
+              'Dizer seu nome em voz alta — âncora feia, sem pose.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -184,7 +184,7 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
           },
           {
             text:
-              'Recuar o queixo, abrir as mãos visíveis — geografia de rendição mínima, não de teatro.',
+              'Recuar o queixo, abrir as mãos — rendição mínima, sem teatro.',
             resolution: {
               kind: 'skill',
               attr: 'agi',
@@ -199,11 +199,11 @@ export const act6_mirror_sovereign_verbal: DialogueEnemyDef = {
       },
       waver: {
         line:
-          '“Vês?” sussurra o reflexo. “Já vacilaste antes da lâmina.”',
+          '“Viu?” sussurra o reflexo. “Você já vacilou antes da lâmina.”',
         choices: [
           {
             text:
-              'Agarrar à última linha: dizer seu nome em voz alta como âncora.',
+              'Agarrar a última linha: dizer seu nome em voz alta como âncora.',
             resolution: {
               kind: 'skill',
               attr: 'mind',

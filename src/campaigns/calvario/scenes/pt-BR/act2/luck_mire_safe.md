@@ -11,4 +11,4 @@ choices:
   - text: "Afastar-se e voltar ao cruzeiro"
     next: act2/hub_catacomb
 ---
-O lodo **solta** o braço como quem **perde** interesse. Ficas com um **calor** mentiroso nos músculos — **breve**, mas suficiente para um soco a mais.
+O lodo **solta** o braço como quem perde o interesse. Fica um calor mentiroso nos músculos — breve, mas basta para um soco a mais.

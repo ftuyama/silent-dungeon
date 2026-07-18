@@ -42,7 +42,7 @@
         "line": "At the threshold, the cold climbs the nape of your neck. The mirror assumes you were already there, only turned inside out. For an instant, two shadows argue over which was born first—and neither wants to lose.",
         "choices": [
           {
-            "text": "Empty your chest slowly, without theater, until the reflection has no ready line to steal."
+            "text": "Empty your chest slowly, without performance, until the reflection has no ready line to steal."
           },
           {
             "text": "Challenge the bronze with your gaze until it burns—\"prove I'm not me\"—without opening your mouth."
@@ -131,7 +131,7 @@
             "text": "Keep posture facing the reflection: eyes on it, body closed in silent promise."
           },
           {
-            "text": "Test whether your mind can hold the tone without slipping into theater."
+            "text": "Test whether your mind can hold the tone without turning into a performance."
           }
         ]
       },
@@ -178,7 +178,7 @@
         "line": "Before you believe you've won the gaze, the corridor asks for a petty confirmation: a real sound—creak, your breath, anything that isn't bronze echo.",
         "choices": [
           {
-            "text": "Give your body the command: broad shoulders, neutral chin, a gaze that doesn't feed the theater."
+            "text": "Give your body the command: broad shoulders, neutral chin, a gaze that doesn't feed the spectacle."
           },
           {
             "text": "Keep the trick as operational secret—don't display coldness, use it."
@@ -192,7 +192,7 @@
         "line": "The gaze slips at the crucial moment. The metal licks the failure and returns a tear you didn't ask for—convincing to a fault.",
         "choices": [
           {
-            "text": "Accept the cut and move on anyway—without negotiating with the theater."
+            "text": "Accept the cut and move on anyway—without negotiating with the reflection."
           },
           {
             "text": "Restore physical distance: one step back, shoulders low, air that doesn't feed the fire."
@@ -217,7 +217,7 @@
             "text": "Cut the thread: fall silent for good, even with your throat begging for justice."
           },
           {
-            "text": "Pay the price of theater and push to the end—bleed to see if the mirror bleeds too."
+            "text": "Pay the price and push to the end—bleed to see if the mirror bleeds too."
           }
         ]
       },
@@ -225,7 +225,7 @@
         "line": "You reach the same warm place by different paths: the bronze tightens where skin still believes it can pretend not to feel. Here, hostility and shame swap places—and the corridor asks you to choose how you leave the edge, not how you enter the myth.",
         "choices": [
           {
-            "text": "Accept the moral cut and move on without negotiating with the reflection's theater."
+            "text": "Accept the moral cut and move on without negotiating with the reflection."
           },
           {
             "text": "Restore distance in the body: one step back, shoulders low, air that doesn't feed the fire."
@@ -234,7 +234,7 @@
             "text": "Fall silent for good, even with your throat begging for justice—let silence be the knife."
           },
           {
-            "text": "Push the theater to the end—bleed to see if the mirror bleeds too."
+            "text": "Push to the end—bleed to see if the mirror bleeds too."
           }
         ]
       },
@@ -286,7 +286,7 @@
             "text": "Close with a dry nod—no pretty victory, your victory."
           },
           {
-            "text": "Allow yourself the ugly sigh and move on—no second act of theater."
+            "text": "Allow yourself the ugly sigh and move on—no second act."
           },
           {
             "text": "Listen to the corridor ask for truce on your behalf—and let the right word be born in silence, not in bronze."
@@ -396,13 +396,13 @@
             "text": "Anchor in the body when verbal heat turns to vertigo—bite your tongue, grip your belt."
           },
           {
-            "text": "Let it burn to the end and wrench victory from the remains—collision, not pose."
+            "text": "Let it burn to the end and wrench victory from the remains—a clean clash, no pose."
           },
           {
             "text": "Swallow pride and seek the edge of silence before it finds you with teeth."
           },
           {
-            "text": "Keep the rhythm of provocation to the end—collision, not theater."
+            "text": "Keep the rhythm of provocation to the end—a clean clash, no scene."
           }
         ]
       },
@@ -463,7 +463,7 @@
             "text": "Leave in the avalanche—triviality until the mirror loses timing."
           },
           {
-            "text": "Veer toward the hub of useful silence—there's still room for another lock without theater."
+            "text": "Veer toward the hub of useful silence—there's still room for another lock without a scene."
           }
         ]
       },
@@ -474,7 +474,7 @@
             "text": "Keep that discovery as talisman without romance."
           },
           {
-            "text": "Knock once more—mark rhythm, not theater."
+            "text": "Knock once more—mark rhythm, not a scene."
           }
         ]
       },
@@ -551,7 +551,7 @@
             "text": "Let the tremor stay with you until it passes."
           },
           {
-            "text": "Grip the tremor as living proof—\"this isn't theater.\""
+            "text": "Grip the tremor as living proof—\"this isn't a scene.\""
           }
         ]
       },
@@ -614,7 +614,7 @@
             "text": "Swallow pride and seek the edge of silence before it finds you with teeth."
           },
           {
-            "text": "Keep the rhythm of provocation to the end—collision, not theater."
+            "text": "Keep the rhythm of provocation to the end—a clean clash, no scene."
           }
         ]
       },
@@ -641,7 +641,7 @@
         ]
       },
       "linger_steady": {
-        "line": "The \"dead\" gaze stayed yours long enough for the corridor to recognize it. You only need to close without pose—a human line, not a monument—before the bronze asks for theater again.",
+        "line": "The \"dead\" gaze stayed yours long enough for the corridor to recognize it. You only need to close without pose—a human line, not a monument—before the bronze asks for spectacle again.",
         "choices": [
           {
             "text": "Nod inwardly and move on: no final line for the mirror to steal."
@@ -706,7 +706,7 @@
             "text": "Close your throat into a mute knife—silence that doesn't lend the metal a script."
           },
           {
-            "text": "Push the theater to the end and accept the cost—collision counted in flesh, not pose."
+            "text": "Push to the end and accept the cost—collision counted in flesh, not pose."
           }
         ]
       },
@@ -742,13 +742,13 @@
         "line": "Definitive victory smells of hot metal and skin: body, shove, or price paid down to shame. The reflection falls silent because finally you don't owe it performance—you only need to cross without giving it the epilogue.",
         "choices": [
           {
-            "text": "Pay the cost in silence and move on whole enough—without negotiating with the theater."
+            "text": "Pay the cost in silence and move on whole enough—without negotiating with the reflection."
           },
           {
             "text": "Carry the moral bruise as map, not prison—and occupy the corridor all the same."
           },
           {
-            "text": "Close in honest collision: shoulder, ground, swallowed fire—limit where before there was only copy."
+            "text": "Close in an honest clash: shoulder, ground, swallowed fire—limit where before there was only copy."
           }
         ]
       },

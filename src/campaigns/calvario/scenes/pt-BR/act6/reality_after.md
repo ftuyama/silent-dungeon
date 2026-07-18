@@ -11,6 +11,6 @@ onEnter:
   - { op: setFlag, key: act6_reality_done, value: true }
   - { op: addDiary, text: "A verdade não me libertou. Só me tirou o direito de mentir para mim." }
 ---
-A máscara do arauto racha como vidro que já sabia onde cair. Atrás dela não há carne, só vazio com sua respiração.
+A máscara do arauto racha. Atrás dela não há carne — só vazio com sua respiração.
 
-Recolhes um fragmento de espelho negro. Não reflete luz; reflete **decisão** — o **resto** da primeira descida.
+Você recolhe um fragmento de espelho negro. Não reflete luz; guarda a **decisão** da primeira descida.

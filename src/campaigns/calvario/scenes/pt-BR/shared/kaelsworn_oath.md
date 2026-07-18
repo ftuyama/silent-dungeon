@@ -90,6 +90,6 @@ choices:
     next: act6/void_secret_entry
 onEnter: []
 ---
-**Kael** tira o **elmo** — rosto **cansado**, olhar **limpo**.
+**Kael** tira o **elmo** — rosto cansado, olhar limpo.
 
-> *"**Três** vezes caí. **Três** vezes não mentiste no golpe. Isso **basta**: sirvo como **ferro** que só dobra à **sua** mão."*
+> *"**Três** vezes caí. **Três** vezes você não mentiu no golpe. Isso basta: sirvo como **ferro** que só dobra à sua mão."*

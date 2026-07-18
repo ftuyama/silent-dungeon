@@ -14,4 +14,4 @@ onEnter:
 ---
 Uma fenda corta a parede da nave.
 
-Lá dentro: **ferro, pausa, ferro**. Sem brasa. Sem fole.
+Lá dentro: **ferro**, pausa, ferro. Sem brasa. Sem fole.

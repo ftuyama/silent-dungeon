@@ -28,7 +28,7 @@ choices:
     uiSection: "Você e eles"
     next: act6/camp/void_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: mage } ] }
-  - text: "Mira: «Penitência é peso; não o largues agora ou ficas leve demais»"
+  - text: "Mira: «Penitência é peso; não largue agora ou fica leve demais»"
     uiSection: "Você e eles"
     next: act6/camp/void_mira_fireside
     condition: { all: [ { companionInParty: rogue_mira }, { class: cleric } ] }
@@ -59,4 +59,4 @@ onEnter: []
 ---
 {{companionLine}}
 
-Se estiveres só, o silêncio duplica a voz que já carregas dentro. Aqui, até o eco parece cansado de repetir mentiras.
+Se você estiver só, o silêncio dobra a voz que já carrega. Até o eco parece cansado.

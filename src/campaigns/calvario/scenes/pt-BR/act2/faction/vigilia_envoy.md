@@ -25,6 +25,6 @@ choices:
 onEnter:
   - { op: setFlag, key: act2_faction_envoy_vigilia_done, value: true }
 ---
-Um **capeador** inclina a lanterna. O metal não brilha — **acusa**.
+Um **capeador** inclina a lanterna. O metal não brilha — acusa.
 
-*"Quem o subsolo nomeia, a Vigília **repete** em voz mais baixa. **Morvayn** segura o trono; queremo-lo de pé — ou morto."*
+*"Quem o subsolo nomeia, a Vigília **repete** em voz mais baixa. **Morvayn** segura o trono; queremos ele de pé — ou morto."*

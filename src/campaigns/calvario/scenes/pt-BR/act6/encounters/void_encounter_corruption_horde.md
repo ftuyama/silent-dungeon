@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-A **corrupção** que carregas não é segredo para a pedra — ela **vibra**, chama **lascas** e um **pregador** que já **tinha** seu nome escrito na língua.
+A **corrupção** que você carrega vibra na pedra. Ela chama lascas — e um pregador que já tinha seu nome na língua.
 
-Não é punição divina. É **ecologia** do vazio: onde há mancha, há **predador**.
+Onde há mancha, há predador.

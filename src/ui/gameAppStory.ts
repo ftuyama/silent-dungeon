@@ -34,10 +34,11 @@ import {
   partitionChoiceRowsForDisplay,
   shouldUseChoiceSectionLayout,
   UI_SECTION_ICON_SVG,
+  type StoryChoiceSection,
 } from './story/choiceSections.ts';
 import { iconWrap } from './icons/index.ts';
 import { DAILY_COMBAT_CHOICE_ID, dailyCombatCopyForChapter } from './gameAppDailyCombat.ts';
-import { buildMerchantSellRows } from './story/merchantSell.ts';
+import { buildMerchantSellRows, isMerchantSellSection } from './story/merchantSell.ts';
 
 export { isCampEquipmentScene } from './story/storyCampEquipmentPanel.ts';
 export {
@@ -638,14 +639,25 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
   const attrModAbbrev = (attr: 'str' | 'agi' | 'mind'): 'STR' | 'AGI' | 'MEN' =>
     attr === 'str' ? 'STR' : attr === 'agi' ? 'AGI' : 'MEN';
 
-  /** Título curto + fórmula em `.preview`, como nas escolhas com `preview`. */
+  /** Título + hotkey badge + fórmula em `.preview`, alinhado às escolhas. */
   const setStoryRollChoiceContent = (
     btn: HTMLButtonElement,
     navNum: number,
     titleLine: string,
     previewLine: string
   ): void => {
-    btn.appendChild(document.createTextNode(`${navNum} - ${titleLine}`));
+    btn.classList.add('choice--tone-skill');
+    const main = document.createElement('span');
+    main.className = 'choice-main';
+    const hotkey = document.createElement('span');
+    hotkey.className = 'ui-hotkey-badge';
+    hotkey.textContent = String(navNum);
+    hotkey.setAttribute('aria-hidden', 'true');
+    const label = document.createElement('span');
+    label.className = 'choice-label';
+    label.textContent = titleLine;
+    main.append(hotkey, label);
+    btn.appendChild(main);
     const span = document.createElement('span');
     span.className = 'preview';
     span.textContent = previewLine;
@@ -657,6 +669,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const row = document.createElement('div');
     row.className = 'skill-row';
     const b = document.createElement('button');
+    b.type = 'button';
     b.className = 'choice';
     const sc = ctx.scene.frontmatter.skillCheck;
     const ab = attrModAbbrev(sc.attr);
@@ -678,6 +691,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const row = document.createElement('div');
     row.className = 'skill-row';
     const b = document.createElement('button');
+    b.type = 'button';
     b.className = 'choice';
     const dc = ctx.scene.frontmatter.dualAttrSkillCheck;
     const trimmedDl = dc.label?.trim();
@@ -699,6 +713,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const row = document.createElement('div');
     row.className = 'skill-row';
     const b = document.createElement('button');
+    b.type = 'button';
     b.className = 'choice';
     const lc = ctx.scene.frontmatter.luckCheck;
     const curse =
@@ -828,25 +843,41 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     parent.appendChild(details);
   };
 
+  const appendChoiceSectionTitle = (
+    parent: HTMLElement,
+    label: string,
+    icon: StoryChoiceSection['icon'],
+    asSummary: boolean
+  ): void => {
+    const titleEl = document.createElement(asSummary ? 'summary' : 'div');
+    titleEl.className = 'choices-section__title';
+    if (asSummary) titleEl.classList.add('choices-section__title--summary');
+    if (icon !== undefined) {
+      titleEl.classList.add('choices-section__title--with-icon');
+      titleEl.innerHTML = `${iconWrap(UI_SECTION_ICON_SVG[icon], 'ui-icon-wrap ui-icon-wrap--sm')}<span class="choices-section__title-text"></span>`;
+      const textEl = titleEl.querySelector('.choices-section__title-text');
+      if (textEl) textEl.textContent = label;
+    } else {
+      titleEl.textContent = label;
+    }
+    parent.appendChild(titleEl);
+  };
+
   if (useChoiceSections) {
     chWrap.classList.add('choices--sectioned');
     for (const sec of choiceSections) {
-      const secEl = document.createElement('div');
-      secEl.className = 'choices-section';
+      const collapsibleSell = isMerchantSellSection(sec) && sec.label !== undefined;
+      const secEl = document.createElement(collapsibleSell ? 'details' : 'div');
+      secEl.className = collapsibleSell
+        ? 'choices-section choices-section--collapsible'
+        : 'choices-section';
       if (sec.label !== undefined) {
-        const titleEl = document.createElement('div');
-        titleEl.className = 'choices-section__title';
-        if (sec.icon !== undefined) {
-          titleEl.classList.add('choices-section__title--with-icon');
-          titleEl.innerHTML = `${iconWrap(UI_SECTION_ICON_SVG[sec.icon], 'ui-icon-wrap ui-icon-wrap--sm')}<span class="choices-section__title-text"></span>`;
-          const textEl = titleEl.querySelector('.choices-section__title-text');
-          if (textEl) textEl.textContent = sec.label;
-        } else {
-          titleEl.textContent = sec.label;
-        }
-        secEl.appendChild(titleEl);
+        appendChoiceSectionTitle(secEl, sec.label, sec.icon, collapsibleSell);
       }
-      appendPartitionedRows(secEl, sec.rows);
+      const rowsHost = document.createElement('div');
+      rowsHost.className = 'choices-section__body';
+      appendPartitionedRows(rowsHost, sec.rows);
+      secEl.appendChild(rowsHost);
       chWrap.appendChild(secEl);
     }
   } else {

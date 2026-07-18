@@ -14,6 +14,4 @@ choices:
         onFlee: act5/frost_summit/temple_gate
 onEnter: []
 ---
-O ar **afina** até ferir. Um **cultista** canta um compasso que não combina com a neve; ao lado, o **saqueador** arrasta o metal — **aviso**, não música.
-
-Cada passo pergunta se ainda queres **chegar** ao templo, ou **virar** lenda de quem fugiu.
+O ar **afina** até ferir. Um **cultista** canta um ritmo que não combina com a neve; ao lado, o **saqueador** arrasta o metal — aviso, não música.

@@ -10,4 +10,4 @@ onEnter:
   - { op: addResource, resource: faith, delta: 1 }
   - { op: addXp, amount: 12 }
 ---
-A cinza **para** aos seus pés — não fica nada escrito em você. O silêncio, desta vez, é **seu**.
+A cinza **para** aos seus pés. Nada fica escrito em você. O silêncio, desta vez, é **seu**.

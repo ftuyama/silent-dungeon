@@ -42,7 +42,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
       },
       mind_measured: {
         line:
-          'Os cantos da boca dele mexem — não sorriso, alívio controlado. “Assim”, diz Morvayn. “Assim soa a corrente a fechar sem mentira. Ainda há uma dobra onde o metal pode pinçar-te.”',
+          'Os cantos da boca dele mexem — não sorriso, alívio controlado. “Assim”, diz Morvayn. “Assim soa a corrente fechando sem mentira. Ainda há uma dobra onde o metal pode pinçar-te.”',
         choices: [
           {
             text:
@@ -150,7 +150,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
           },
           {
             text:
-              'Engolir seco e refazer o tom: baixar volume, pedir direção, admitir que não sabes o custo inteiro.',
+              'Engolir seco e refazer o tom: baixar volume, pedir direção, admitir que não você sabe o custo inteiro.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -175,7 +175,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
       },
       v_success: {
         line:
-          '“Serve”, diz Morvayn por fim — palavra curta como um ferro a fechar. O ar rarefa; o Terceiro Sino parece adiar o osso para outra gaveta. “Agora sobes onde o pacto te espera.”',
+          '“Serve”, diz Morvayn por fim — palavra curta como um ferro fechando. O ar rarefa; o Terceiro Sino parece adiar o osso para outra gaveta. “Agora sobes onde o pacto te espera.”',
         terminal: 'victory',
       },
       d_fail: {

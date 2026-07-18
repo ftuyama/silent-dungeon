@@ -12,4 +12,4 @@ choices:
     next: act8/hub_magma_crucible
 onEnter: []
 ---
-Martelos **sem mãos** batem em bigornas de basalto. A forja não produz ferramentas — produz **ódio** com forma.
+Martelos sem mãos batem em bigornas de basalto. A forja não produz ferramentas — produz ódio com forma.

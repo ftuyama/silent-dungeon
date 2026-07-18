@@ -13,4 +13,4 @@ onEnter:
   - { op: addResource, resource: gold, delta: 8 }
   - { op: addDiary, text: "O colosso da forja caiu. Os martelos pararam — o ódio perdeu a bigorna." }
 ---
-A forja **esfria** um grau. Não o bastante para viver — o bastante para **avançar** ao altar de enxofre.
+A forja esfria um grau. Não o bastante para viver — o bastante para avançar ao altar de enxofre.

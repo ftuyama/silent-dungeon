@@ -167,6 +167,6 @@ choices:
     next: act5/frost_hub
 onEnter: []
 ---
-Dentro da tenda, frascos **tremem** como línguas. O mercador não mostra rosto — só **preços** que não congelam.
+Dentro da tenda, frascos **tremem**. O mercador não mostra o rosto — só preços que não congelam.
 
-> Estoque **limitado**. O vento cobra juros a quem **hesita** — e juros de verdade cobra quem finge que não precisa de nada.
+> Estoque **limitado**. O vento cobra caro de quem barganha demais.

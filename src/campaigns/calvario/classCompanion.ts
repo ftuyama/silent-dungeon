@@ -13,7 +13,7 @@ const MIR_CRUZEIRO_LORE_PT = `No cruzeiro de pedra, trocou com você verdades fr
 
 const MIR_FROST_LORE_PT = `No gelo, a palavra entre vocês congelou antes de partir: não é juramento de templo, é acordo de sobrevivência. Ela guarda isso como quem guarda um gancho — não para te puxar, mas para saber que ainda há onde agarrar quando a masmorra finge que não há chão.`;
 
-const MIR_VOID_END_LORE_PT = `No fim do vazio, falou como quem já tinha despedido o corpo da história. A frase que te deixou não cabe no inventário: fica a vibrar quando fechas os olhos, lembrete de que ela escolheu testemunhar seu nome até ao último sussurro.`;
+const MIR_VOID_END_LORE_PT = `No fim do vazio, falou como quem já tinha despedido o corpo da história. A frase que te deixou não cabe no inventário: fica a vibrar quando fechas os olhos, lembrete de que ela escolheu testemunhar seu nome até o último sussurro.`;
 
 const TOMAS_OATH_LORE_PT = `O juramento ao lume não foi teatro de ordem: foi ferro e pão partido, e a vergonha de carregar um escudo sem dono a afiar um pouco menos. Desde essa noite, o "dever" dele inclui sua coluna vertebral — não como cadeia, como alinhamento.`;
 

@@ -13,6 +13,4 @@ onEnter:
   - { op: equipItem, itemId: fallen_god_amulet, partyIndex: 0 }
   - { op: addDiary, text: "Venci um ecos do panteão. O título não aquece — mas o amuleto arde onde a corrupção morde." }
 ---
-O silêncio, depois da queda, não é **consolo**. É **contrato** lido em voz baixa. Algo em você **fica** com o nome errado no lugar certo: **deus caído** — **título**, não promessa.
-
-No relógio do peito, o **amuleto** pulsa quando a corrupção **lateja**: faminto, **útil**, perigoso.
+O silêncio, depois da queda, não é consolo. É contrato lido em voz baixa. Algo em você fica com o nome errado no lugar certo: **deus caído** — título que queima frio.

@@ -208,6 +208,10 @@ export class GameAudio {
     this.sfx.playItemAcquire();
   }
 
+  playCompanionRecruit(): void {
+    this.sfx.playCompanionRecruit();
+  }
+
   playFaithMiracle(): void {
     this.sfx.playFaithMiracle();
   }

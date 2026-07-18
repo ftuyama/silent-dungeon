@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act2
 onEnter: []
 ---
-Debaixo das tábuas soltas, um **enxame** sem toca corre em círculos, ferido e furioso. A fome dele ainda morde como um coro inteiro.
+Debaixo das tábuas soltas, um **enxame** sem toca corre em círculos — ferido, furioso, fedendo a ninho. A fome ainda morde.

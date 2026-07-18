@@ -7,3 +7,9 @@ declare module 'virtual:ascii-scene-dev-manifest' {
   >;
   export default manifest;
 }
+
+declare module 'virtual:scene-md-dev-manifest' {
+  /** campaignId → sceneId → mtimeMs (ficheiros em `scenes/pt-BR/`). */
+  const manifest: Record<string, Record<string, number>>;
+  export default manifest;
+}

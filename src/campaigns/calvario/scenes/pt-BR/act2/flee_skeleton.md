@@ -10,6 +10,6 @@ onEnter:
   - { op: addResource, resource: gold, delta: -1 }
   - { op: addDiary, text: "Corri de um morto que caminhava demais depressa." }
 ---
-O esqueleto **não cansa** — você cansas. Cada **estalido** atrás de você parece **perguntas** que não queres responder.
+O esqueleto **não cansa**. Você cansa. Cada estalo atrás de você soa como pergunta sem resposta.
 
-Na curva, um **osso** solto rola-te por baixo dos pés — o chão também **colabora** com o inimigo.
+Na curva, um osso solto rola sob os pés.

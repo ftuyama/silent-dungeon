@@ -12,6 +12,6 @@ choices:
       - { op: addResource, resource: gold, delta: 1 }
       - { op: addDiary, text: "O capuz inclinou-se: o Círculo pagou em moeda — desta vez os símbolos fecharam a favor." }
 ---
-Os símbolos **fecham** antes que a maldição **aperte**. Uma moeda **quente** cai na palma — **paga** do Círculo, não sua.
+Os símbolos **fecham** antes que a maldição aperte. Uma moeda quente cai na palma — paga do Círculo, não sua.
 
-O mercador **não ri**. Só **assente**.
+O mercador não ri. Só assente.

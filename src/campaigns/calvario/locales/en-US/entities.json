@@ -517,6 +517,10 @@
     }
   },
   "journeyMarks": {
+    "world_wound_remembered": {
+      "name": "World Wound",
+      "description": "You remembered the village before the green pulse: what drains warmth and names, and the vow to descend to the root."
+    },
     "act1_surface_whisper_intel": {
       "name": "Rumor That Pays",
       "description": "In the city underworld you heard what matters: names, hours, routes — intelligence worth gold, without asking for a miracle."

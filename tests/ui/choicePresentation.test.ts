@@ -232,6 +232,23 @@ describe('resolveChoicePresentation', () => {
     expect(r.toneClass).toBe('choice--tone-risk');
     expect(r.badge).toEqual({ label: '[!]', modifier: 'bang' });
   });
+
+  it('[↓] explícito → tom chapter-advance e badge [↓]', () => {
+    const r = resolveChoicePresentation(ch('[↓] Descer ao magma'));
+    expect(r.bodyText).toBe('Descer ao magma');
+    expect(r.toneClass).toBe('choice--tone-chapter-advance');
+    expect(r.badge).toEqual({ label: '[↓]', modifier: 'chapterDown' });
+  });
+
+  it('[↑] explícito → badge [↑] sem tom', () => {
+    const r = resolveChoicePresentation(
+      ch('[↑] Subir às cimeiras', [{ op: 'setChapter', chapter: 5 }]),
+      { currentChapter: 4 }
+    );
+    expect(r.bodyText).toBe('Subir às cimeiras');
+    expect(r.toneClass).toBeNull();
+    expect(r.badge).toEqual({ label: '[↑]', modifier: 'chapterUp' });
+  });
 });
 
 describe('inferChapterGateFromEffects', () => {

@@ -3,6 +3,7 @@ id: act3/well_lies
 title: O Poço que Mentiu
 chapter: 3
 ambientTheme: act3
+artKey: well_lies
 skillCheck:
   id: well
   attr: mind
@@ -13,4 +14,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-O **Poço que Mentiu** reflete um mapa que não corresponde às paredes — mentira de quem lucra com **cada** desvio: não é o poço que erra, é a mão que gravou o mapa para outro bolso.
+O **Poço que Mentiu** mostra um mapa que não casa com as paredes. Mentira gravada para outro bolso — cada desvio rende a alguém.

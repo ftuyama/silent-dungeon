@@ -438,6 +438,13 @@ function applyOne(
           [e.companionId]: friendScore,
         },
       };
+      bus.emit({ type: 'companion.recruited', companionId: e.companionId });
+      bus.emit({
+        type: 'statusHighlight',
+        variant: 'good',
+        title: t('toast.companionRecruitTitle'),
+        subtitle: `${def.name} — ${t('toast.companionRecruitSubtitle')}`,
+      });
       return syncCompanionPartyWithFriendship(withFriend, ctx.data);
     }
     case 'dismissCompanion':

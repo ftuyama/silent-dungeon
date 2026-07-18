@@ -12,8 +12,8 @@ choices:
         onDefeat: shared/game_over
 onEnter:
   - { op: addRep, faction: vigilia, delta: -1 }
-  - { op: addDiary, text: "Um caçador da Vigília reconheceu o meu passo — não o meu rosto. O pacto cheira a traição para quem jura pela luz." }
+  - { op: addDiary, text: "Um caçador da Vigília reconheceu meu passo, não meu rosto. Para quem jura pela luz, o pacto cheira a traição." }
 ---
-Do lado da **sombra** de um chafariz, um arqueiro da **Vigília** corta-te o caminho. Não vem com sermão — vem com **certeza**.
+Do lado da **sombra** de um chafariz, um arqueiro da **Vigília** corta seu caminho. Não traz sermão — traz **certeza**.
 
 "**Servo** não é cidadão", diz. "É **ferida** aberta na cidade."

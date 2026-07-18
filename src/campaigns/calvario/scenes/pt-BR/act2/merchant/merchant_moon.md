@@ -12,7 +12,7 @@ choices:
     visibleWhen: { noItem: rumor_map }
     condition: { resource: { gold: { gte: 1 } } }
     showWhenLocked: true
-    lockedHint: "Precisas de 1 ouro."
+    lockedHint: "Você precisa de 1 ouro."
     preview: "Item · mapa de rumor"
     effects:
       - { op: grantItem, itemId: rumor_map }
@@ -24,7 +24,7 @@ choices:
     visibleWhen: { noItem: iron_dagger }
     condition: { resource: { gold: { gte: 3 } } }
     showWhenLocked: true
-    lockedHint: "Precisas de 3 ouro."
+    lockedHint: "Você precisa de 3 ouro."
     effects:
       - { op: grantItem, itemId: iron_dagger }
       - { op: addResource, resource: gold, delta: -3 }
@@ -152,7 +152,7 @@ choices:
         - { noItem: rumor_map }
     condition: { mark: act1_surface_whisper_intel }
     showWhenLocked: true
-    lockedHint: "Precisas do sussurro da superfície."
+    lockedHint: "Você precisa do sussurro da superfície."
     preview: "Mapa rasgado sem cobrar ouro · uma vez."
     effects:
       - { op: setFlag, key: act2_merchant_whisper_discount_done, value: true }
@@ -181,6 +181,6 @@ choices:
     preview: "+1 corrupção, diário (uma vez)"
 onEnter: []
 ---
-Um capuz **sem rosto** estende um **mapa** com margens roídas. Os dedos por baixo do tecido são **demais longos** para serem só humanos.
+Um capuz **sem rosto** estende um mapa com margens roídas. Os dedos por baixo do tecido são longos demais para serem só humanos.
 
-*"Rumores mudam **pesos**"* — se alguém te **reconhece** nas facções, o preço deixa de ser só ouro.
+*"Rumores mudam **pesos**"* — se alguém o reconhece nas facções, o preço muda.

@@ -27,6 +27,6 @@ choices:
   - text: "Afastar-te rumo ao gelo"
     next: act4/passage_graywind_heights
 ---
-**Kael** **ancora** a **espada** na **sombra** do **passo** — **não** como **ameaça**, como **marco**.
+**Kael** ancora a espada na sombra do passo — não como ameaça, como marco.
 
-> *"O **eixo** **dobra**; eu **não**. **Conta** **de novo**."*
+> *"O eixo dobra; eu não. Conta de novo."*

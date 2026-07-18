@@ -9,4 +9,4 @@ choices:
 ---
 O vento afia cada gesto. Aço gelado, tiras de couro rígidas, dedos dormentes.
 
-Entre uma rajada e outra, reorganizas o que te mantém inteiro: **arma**, **armadura** e **relíquias**.
+Entre uma rajada e outra, você reorganiza o que mantém você inteiro: **arma**, **armadura**, o resto que ainda responde.

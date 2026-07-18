@@ -11,17 +11,17 @@ choices:
     next: act5/frost_hub
   - text: "Apenas contemplar o silêncio entre os pilares"
     next: act5/frost_summit/temple_quiet
-  - text: "Aproximar-te do coração do templo — onde o silêncio pesa como laje"
+  - text: "Aproximar do coração do templo — onde o silêncio pesa como laje"
     next: act5/frost_summit/ritual_altar
     condition:
       all:
         - { resource: { corruption: { gte: 7 } } }
         - { companionCount: { gte: 1 } }
     showWhenLocked: true
-    lockedHint: "Precisas de corrupção 7 ou mais e de pelo menos um companheiro no grupo."
+    lockedHint: "Você precisa de corrupção 7 ou mais e de pelo menos um companheiro no grupo."
     preview: "Ir ao altar no fundo do templo — e perceber o que o ritual exige."
 onEnter: []
 ---
-No **cume**, o tempo não passa — **acumula**. Pilares partidos sustêm um teto que já não protege de nada, só **testemunha**. O frio tem **sabor** metálico.
+No **cume**, o tempo não passa — acumula. Pilares partidos sustentam um teto que já não protege de nada, só testemunha. O frio tem sabor metálico.
 
-Se ficar calado, ouve o **vazio** a discutir com você. Se não ficar, responde na mesma língua — e cobra **preço**.
+Se entrar, entre acordado.

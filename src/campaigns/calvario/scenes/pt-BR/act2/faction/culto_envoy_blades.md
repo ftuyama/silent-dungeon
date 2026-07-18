@@ -14,4 +14,4 @@ choices:
     preview: "Combate · cultista"
 onEnter: []
 ---
-[RASCUNHO] O **badalo** que **não** veio **chega** na **garganta**. O **Sino** **cobra** **à** **carne**.
+O badalo que não veio chega na **garganta**. O **Sino** cobra na carne.

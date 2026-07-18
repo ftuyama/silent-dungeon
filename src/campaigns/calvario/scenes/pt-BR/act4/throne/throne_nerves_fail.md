@@ -8,7 +8,7 @@ choices:
     next: act4/throne/throne_gate
     effects:
       - { op: addResource, resource: supply, delta: -1 }
-      - { op: addDiary, text: "Tropecei onde não havia nada — o trono gosta de fingir buracos." }
+      - { op: addDiary, text: "Tropecei onde não havia nada. O trono gosta de fingir buracos." }
 onEnter: []
 ---
-A sola **escorrega** em memória espessa. Não caís — mas **pagar** o susto com fôlego e suor.
+A sola **escorrega** em memória espessa. Você não cai — mas paga o susto com fôlego e suor.

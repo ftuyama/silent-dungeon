@@ -33,4 +33,4 @@ choices:
     preview: "Sair do perímetro e manter o stress atual."
 onEnter: []
 ---
-Cada coluna repete um juramento quebrado. Caminhar aqui é escolher qual rachadura vai responder primeiro.
+Cada coluna repete um juramento quebrado. Caminhar aqui é escolher qual rachadura responde primeiro.

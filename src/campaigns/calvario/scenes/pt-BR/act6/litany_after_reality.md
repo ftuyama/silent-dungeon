@@ -9,6 +9,4 @@ choices:
     next: act6/hub_fractured_nave
 onEnter: []
 ---
-As colunas **repetem** seu passo um tom abaixo do seu ouvido — não é eco: é **dívida**. O real já te mordeu; o que vem a seguir não pergunta se ainda gosta do seu nome, só se o aguentas na língua.
-
----
+As colunas repetem seu passo um tom abaixo. O real já mordeu. O que vem a seguir não pergunta se você gosta do próprio nome — só se aguenta dizê-lo.

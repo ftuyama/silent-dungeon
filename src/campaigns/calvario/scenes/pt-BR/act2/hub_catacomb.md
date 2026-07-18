@@ -97,7 +97,7 @@ choices:
   - text: "Patrulha do perímetro (explorar mapa)"
     uiSection: "Fogo e patrulha"
     next: shared/explore_nav_act2
-    preview: "Move-te pelos túneis — stress sobe; encontros possíveis."
+    preview: "Você se move pelos túneis — stress sobe; encontros possíveis."
     effects:
       - { op: setExploration, graphId: act2_catacomb, nodeId: center_breach }
       - { op: setAsciiMap, mapId: act2_catacomb }
@@ -108,7 +108,7 @@ choices:
     condition: { level: { gte: 7 } }
     showWhenLocked: true
     lockedHint: "Requer nível 7+ e chegar até o dia 10 — depois o eco esfria."
-    preview: "Memória antiga; perícia e sorte pesam — o eco enfraquece se demorares demais."
+    preview: "Memória antiga; perícia e sorte pesam — o eco enfraquece se você demorar demais."
   - text: "Rasto frio — eco que quase se foi"
     uiSection: "Ecos do cruzeiro"
     next: act2/lore/lore_crossroads
@@ -126,7 +126,7 @@ choices:
   - text: "Observar o cruzeiro: marcas no chão"
     uiSection: "Ecos do cruzeiro"
     next: act2/hub_observe
-    preview: "Ler o chão como mapa de quem passou antes."
+    preview: "Ler o chão: quem passou antes."
   - text: "Mexer na cera das velas — moeda presa (uma vez)"
     uiSection: "Ecos do cruzeiro"
     next: act2/cruzeiro_echo_once
@@ -146,11 +146,11 @@ choices:
     effects:
       - { op: addDiary, text: "Uma voz presa ao teto: \"Já vai no dia {{day}}.\"" }
   - text: "Subir ao último corredor — boca da masmorra"
-    uiSection: "Regresso e avançar"
+    uiSection: "Voltar e avançar"
     next: act1/dungeon_mouth
     preview: "Braseiro, sino e batentes; o ar lá fora ainda ouve."
   - text: "Descer mais fundo"
-    uiSection: "Regresso e avançar"
+    uiSection: "Voltar e avançar"
     next: act3/descent
     condition:
       all:
@@ -158,12 +158,12 @@ choices:
         - { flag: act2_explore_goal_reached }
     showWhenLocked: true
     lockedHint: "Requer nível 6+ e alcançar a meta no mapa do cruzeiro (patrulha)."
-    preview: "Capítulo 3 — a masmorra aperta o silêncio."
+    preview: "Capítulo 3 — a masmorra aperta."
     effects:
       - { op: setChapter, chapter: 3 }
 onEnter:
   - { op: addXp, amount: 6 }
 ---
-Velas e **cera** prendem o passo no cruzeiro; *hoje é **dia {{day}}** no subsolo.*
+Quatro corredores abrem no **cruzeiro**. Velas gastas pingam **cera** no chão; *hoje é **dia {{day}}** no subsolo.*
 
-Um **eco** de sino sobe das profundezas e morre antes da cidade — no intervalo, o ar arrasta **Morvayn**.
+Um eco de sino sobe de baixo e some antes da superfície. No ar, cheiro de pedra molhada e metal frio — o nome **Morvayn** cola na língua.

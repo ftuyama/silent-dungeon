@@ -67,6 +67,11 @@ const BANNED = [
   { pattern: /trocámo-/i, label: 'trocámo-nos → trocamos' },
   { pattern: /\b(deu|dei|disse|ficou|ensinou)-lhe\b/i, label: '-lhe → a ele/a ela' },
   { pattern: /\bsi próprio\b/i, label: 'si próprio → si mesmo' },
+  { pattern: /\bPrecisas\b/, label: 'Precisas → Você precisa' },
+  { pattern: /\bRegressar\b/, label: 'Regressar → Voltar / Retornar' },
+  { pattern: /\bPartilhar\b/, label: 'Partilhar → Compartilhar' },
+  { pattern: /\baté ao\b/i, label: 'até ao → até o' },
+  { pattern: /\bprocurares\b/i, label: 'procurares → procurar' },
 ];
 
 function walk(dir, acc = []) {

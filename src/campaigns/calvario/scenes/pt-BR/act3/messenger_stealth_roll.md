@@ -13,4 +13,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-A pedra **julga** cada peso. Um rangido agora é sentença.
+O corredor é estreito demais para erro. Um rangido na armadura e o mensageiro vira a cabeça.

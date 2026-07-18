@@ -13,6 +13,4 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Três silhuetas fecham o cerco: duas crias de geada e um **fanático** de mantos rasgados, famintos de **calor** alheio. O cultista assobia um **compasso** que não combina com o vento.
-
-Se hesitar, o gelo **fecha** o contrato por você.
+Três silhuetas fecham o cerco: duas crias de geada e um **fanático** de mantos rasgados, famintos de calor alheio. O cultista assobia um ritmo que não pertence à neve.

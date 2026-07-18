@@ -4,7 +4,7 @@ chapter: 4
 ambientTheme: act4
 title: Trégua mentirosa
 choices:
-  - text: "Fazer uma última varredura ao salão"
+  - text: "Fazer uma última varredura no salão"
     next: act4/throne/throne_sweep
   - text: "Enterrar o medo na mente (+Mente, 3 cenas)"
     next: act4/throne/throne_sweep
@@ -25,6 +25,6 @@ choices:
     next: act4/encounters/fight_morvayn_2
 onEnter: []
 ---
-Morvayn **vacila** — não por fraqueza, por **teatro**. O trono **respira** através dele, e você sentes o ar a ficar **contagioso** como doença de catedral.
+Morvayn **vacila** — teatro, não fraqueza. O trono respira por ele; o ar fica denso, doce demais, como doença de catedral.
 
-Tens um **instante** para decidir *como* carregas o próximo assalto: na **cabeça**, no **osso**, ou na **pressa** cega.
+Você tem um **instante** para decidir *como* carregar o próximo assalto: na **cabeça**, no **osso**, ou na pressa cega.

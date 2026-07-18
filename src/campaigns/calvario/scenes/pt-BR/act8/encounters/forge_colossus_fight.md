@@ -13,4 +13,4 @@ choices:
         onFlee: act8/golem_forge
 onEnter: []
 ---
-O colosso **ergue-se** da bigorna. Cada passo derrama escória. Não é guarda — é o **produto** final da forja.
+O colosso ergue-se da bigorna. Cada passo derrama escória. Não é guarda — é o produto final da forja.

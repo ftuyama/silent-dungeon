@@ -12,4 +12,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-Pedra **contra** carne. Três camadas de armadura antes da ferida real.
+Pedra **contra** carne. O golem fecha o passo — três camadas de armadura antes da ferida real.

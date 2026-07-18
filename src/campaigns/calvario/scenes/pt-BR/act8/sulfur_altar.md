@@ -21,4 +21,4 @@ choices:
     next: act8/hub_magma_crucible
 onEnter: []
 ---
-O altar **cheira** a ovo podre e a juramento. Amarelo doentio cobre a pedra. Quem ajoelha paga; quem luta **também**.
+O altar cheira a ovo podre e a juramento. Amarelo doentio cobre a pedra. Quem ajoelha paga; quem luta também.

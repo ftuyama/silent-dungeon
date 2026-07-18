@@ -338,6 +338,16 @@
     "enemyAdvantage": false,
     "fleeRate": 0.8
   },
+  "frost_cultist_solo": {
+    "id": "frost_cultist_solo",
+    "enemies": [
+      "frost_cultist"
+    ],
+    "playerAdvantage": true,
+    "enemyAdvantage": false,
+    "xpReward": 4,
+    "fleeRate": 0.82
+  },
   "frost_hunt_party": {
     "id": "frost_hunt_party",
     "enemies": [

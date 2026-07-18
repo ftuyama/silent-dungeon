@@ -22,4 +22,4 @@ choices:
     next: act4/encounters/fight_morvayn_2
 onEnter: []
 ---
-Antes que o trono **feche** a conta, pode tratar o salão como **mesa** — medições, apostas, **erros** honestos.
+Antes que o trono feche a conta, você ainda pode tratar o salão como mesa: medições, apostas, erros honestos.

@@ -11,8 +11,8 @@ onEnter:
   - { op: addMark, mark: pact_bound }
   - { op: setStoryPath, id: throne, value: pact }
   - { op: grantItem, itemId: third_bell }
-  - { op: addDiary, text: "Servi ao Terceiro Sino. O anel no dedo não toca — mas o mundo aprendeu a calar quando eu respiro." }
+  - { op: addDiary, text: "Servi ao Terceiro Sino. O anel no dedo não toca — mas o mundo cala quando eu respiro." }
 ---
-O caçador cai ou foge; a cidade **aprende** a fingir adormecida. Servis ao **Terceiro Sino** como **conduto** — o **anel** no dedo é **mudo** para os outros, ensurdecedor para você.
+O caçador cai ou foge; a cidade finge dormir. Você serve ao **Terceiro Sino** como conduto — o **anel** no dedo é mudo para os outros, ensurdecedor para você.
 
-O frio sobe à pele da cidade; ouve o quarto toque **prometido**, nunca fundido.
+O frio sobe à pele da cidade. Você ouve o quarto toque **prometido**, nunca fundido.

@@ -13,6 +13,4 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Uma só **cria** te seguiu pelo eco dos seus passos — curiosidade ou **fome**, o resultado é o mesmo. Olha para você como quem lê **preço** numa vitrine: não há vergonha, só **cálculo** gelado.
-
-Se a deixar ir, ela não te agradece — **aprende** seu cheiro para a próxima vez.
+Uma só **cria** seguiu o eco dos seus passos — curiosidade ou fome, o resultado é o mesmo. Olha para você como quem lê preço numa vitrine: sem pressa, sem piedade.

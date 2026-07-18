@@ -28,11 +28,11 @@ choices:
     uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: knight } ] }
-  - text: "Tomás hesita: «Torre e masmorra — qual das duas te come primeiro?»"
+  - text: "Tomás hesita: «Torre e masmorra — qual das duas o come primeiro?»"
     uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: mage } ] }
-  - text: "Tomás baixa a voz: «Fé de vigia é coisa séria; não a uses como muro»"
+  - text: "Tomás baixa a voz: «Fé de vigia é coisa séria; não a use como muro»"
     uiSection: "Você e eles"
     next: act2/camp/camp_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: cleric } ] }
@@ -50,4 +50,4 @@ onEnter: []
 ---
 {{companionLine}}
 
-*Alguém murmura o número — **dia {{day}}** — como quem confessa idade.* O fogo não pede **permissão**, mas pede testemunhas.
+*Alguém murmura o número — **dia {{day}}** — como quem confessa a idade.* O fogo estala. Ninguém pede permissão para ouvir.

@@ -14,6 +14,4 @@ choices:
         onFlee: act5/frost_summit/temple_gate
 onEnter: []
 ---
-Um **ruído** antigo — não trovão, mas **memória** com dentes — rasga o ar. Do altar levanta-se uma **forma** que já foi número antes de ter rosto: **ecos** do panteão quebrado, famintos de **nome** e de **medida**.
-
-Se fugir, o templo **lembra**. Se ficar, o templo **cobre**.
+Um **ruído** antigo — não trovão, memória com dentes — rasga o ar. Do altar levanta-se uma forma que já foi número antes de ter rosto: ecos do que dormia sob os deuses.

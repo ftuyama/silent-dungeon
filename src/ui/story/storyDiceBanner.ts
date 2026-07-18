@@ -59,116 +59,74 @@ function storyDiceTargetTn(breakdown: StoryDiceRollBreakdown): number {
   return breakdown.tn;
 }
 
-function populateStoryDiceDifficulty(el: HTMLElement, breakdown: StoryDiceRollBreakdown): void {
-  el.replaceChildren();
-  const tn = storyDiceTargetTn(breakdown);
-  const row = document.createElement('div');
-  row.className = 'story-dice-difficulty-row';
-  const lab = document.createElement('span');
-  lab.className = 'story-dice-difficulty-label';
-  lab.textContent = t('story.difficulty');
-  const val = document.createElement('span');
-  val.className = 'story-dice-difficulty-value';
-  val.textContent = String(tn);
-  row.append(lab, val);
-  el.appendChild(row);
-  if (breakdown.kind === 'dualSkill') {
-    const sub = document.createElement('div');
-    sub.className = 'story-dice-difficulty-sub';
-    sub.textContent = t('story.dualSkillDifficultyHint');
-    el.appendChild(sub);
-  }
-}
-
 function formatModSigned(m: number): string {
   if (m > 0) return `+${m}`;
   if (m < 0) return `−${Math.abs(m)}`;
   return '0';
 }
 
-/** Cartão de modificador(es) visível desde o início da rolagem (ao lado dos dados ASCII). */
-function populateStoryDiceModSlot(slot: HTMLElement, breakdown: StoryDiceRollBreakdown): void {
-  slot.replaceChildren();
-  slot.className = 'story-dice-mod-slot';
+function appendModChip(parent: HTMLElement, label: string, value: string, curse = false): void {
+  const chip = document.createElement('span');
+  chip.className = curse
+    ? 'story-dice-mod-chip story-dice-mod-chip--curse'
+    : 'story-dice-mod-chip';
+  const lab = document.createElement('span');
+  lab.className = 'story-dice-mod-chip-label';
+  lab.textContent = label;
+  const val = document.createElement('span');
+  val.className = 'story-dice-mod-chip-value';
+  val.textContent = value;
+  chip.append(lab, val);
+  parent.appendChild(chip);
+}
+
+/** Meta compacta: TN + chips de modificador. */
+function populateStoryDiceMeta(el: HTMLElement, breakdown: StoryDiceRollBreakdown): void {
+  el.replaceChildren();
+  el.className = 'story-dice-meta';
+
+  const tnRow = document.createElement('div');
+  tnRow.className = 'story-dice-meta-tn';
+  const lab = document.createElement('span');
+  lab.className = 'story-dice-meta-tn-label';
+  lab.textContent = t('story.difficulty');
+  const val = document.createElement('span');
+  val.className = 'story-dice-meta-tn-value';
+  val.textContent = String(storyDiceTargetTn(breakdown));
+  tnRow.append(lab, val);
+  el.appendChild(tnRow);
+
+  if (breakdown.kind === 'dualSkill') {
+    const sub = document.createElement('div');
+    sub.className = 'story-dice-meta-hint';
+    sub.textContent = t('story.dualSkillDifficultyHint');
+    el.appendChild(sub);
+  }
+
+  const chips = document.createElement('div');
+  chips.className = 'story-dice-meta-chips';
 
   if (breakdown.kind === 'skill') {
-    if (breakdown.mod === 0) return;
-    const card = document.createElement('div');
-    card.className = 'story-dice-mod-card story-dice-mod-card--inline';
-    const line = document.createElement('span');
-    line.className = 'story-dice-mod-card-inline';
-    line.textContent = `${breakdown.attr.toUpperCase()}${formatModSigned(breakdown.mod)}`;
-    card.appendChild(line);
-    slot.appendChild(card);
-    return;
-  }
-
-  if (breakdown.kind === 'luck') {
-    if (breakdown.mod === 0 && breakdown.luckPenalty === 0) return;
-    const card = document.createElement('div');
-    card.className = 'story-dice-mod-card story-dice-mod-card--compact';
     if (breakdown.mod !== 0) {
-      const row = document.createElement('div');
-      row.className = 'story-dice-mod-card-row';
-      const l = document.createElement('span');
-      l.className = 'story-dice-mod-card-label';
-      l.textContent = t('engine.attrLuck');
-      const v = document.createElement('span');
-      v.className = 'story-dice-mod-card-value';
-      v.textContent = formatModSigned(breakdown.mod);
-      row.append(l, v);
-      card.appendChild(row);
+      appendModChip(chips, breakdown.attr.toUpperCase(), formatModSigned(breakdown.mod));
+    }
+  } else if (breakdown.kind === 'luck') {
+    if (breakdown.mod !== 0) {
+      appendModChip(chips, t('engine.attrLuck'), formatModSigned(breakdown.mod));
     }
     if (breakdown.luckPenalty > 0) {
-      const row = document.createElement('div');
-      row.className = 'story-dice-mod-card-row';
-      const l = document.createElement('span');
-      l.className = 'story-dice-mod-card-label';
-      l.textContent = t('story.diceCurse');
-      const v = document.createElement('span');
-      v.className = 'story-dice-mod-card-value story-dice-mod-card-value--curse';
-      v.textContent = `−${breakdown.luckPenalty}`;
-      row.append(l, v);
-      card.appendChild(row);
+      appendModChip(chips, t('story.diceCurse'), `−${breakdown.luckPenalty}`, true);
     }
-    slot.appendChild(card);
-    return;
+  } else {
+    const r0 = breakdown.rounds[0];
+    if (r0) {
+      const [a1, a2] = breakdown.attrs;
+      if (r0.mod1 !== 0) appendModChip(chips, a1.toUpperCase(), formatModSigned(r0.mod1));
+      if (r0.mod2 !== 0) appendModChip(chips, a2.toUpperCase(), formatModSigned(r0.mod2));
+    }
   }
 
-  const r0 = breakdown.rounds[0];
-  if (!r0) return;
-  const [a1, a2] = breakdown.attrs;
-  if (r0.mod1 === 0 && r0.mod2 === 0) return;
-  const card = document.createElement('div');
-  const dualCompact = r0.mod1 !== 0 && r0.mod2 !== 0;
-  card.className = dualCompact
-    ? 'story-dice-mod-card story-dice-mod-card--compact'
-    : 'story-dice-mod-card';
-  if (r0.mod1 !== 0) {
-    const row = document.createElement('div');
-    row.className = 'story-dice-mod-card-row';
-    const l = document.createElement('span');
-    l.className = 'story-dice-mod-card-label';
-    l.textContent = a1.toUpperCase();
-    const v = document.createElement('span');
-    v.className = 'story-dice-mod-card-value';
-    v.textContent = formatModSigned(r0.mod1);
-    row.append(l, v);
-    card.appendChild(row);
-  }
-  if (r0.mod2 !== 0) {
-    const row = document.createElement('div');
-    row.className = 'story-dice-mod-card-row';
-    const l = document.createElement('span');
-    l.className = 'story-dice-mod-card-label';
-    l.textContent = a2.toUpperCase();
-    const v = document.createElement('span');
-    v.className = 'story-dice-mod-card-value';
-    v.textContent = formatModSigned(r0.mod2);
-    row.append(l, v);
-    card.appendChild(row);
-  }
-  slot.appendChild(card);
+  if (chips.childNodes.length > 0) el.appendChild(chips);
 }
 
 /** Modificador após a soma dos dados (ex.: "+ 2" ou "− 1"). */
@@ -228,7 +186,9 @@ function populateStoryDiceRollResult(region: HTMLElement, breakdown: StoryDiceRo
   for (let i = 0; i < totalR; i++) {
     const r = breakdown.rounds[i]!;
     const seal = document.createElement('div');
-    seal.className = 'story-dice-result-seal';
+    seal.className = r.success
+      ? 'story-dice-result-seal story-dice-result-seal--ok'
+      : 'story-dice-result-seal story-dice-result-seal--fail';
     const st = document.createElement('div');
     st.className = 'story-dice-result-seal-title';
     st.textContent = t('story.diceSealTitle', { current: String(i + 1), total: String(totalR) });
@@ -262,9 +222,9 @@ export function appendStoryDiceRollBanner(
         : t('story.diceLuckResultAria')
   );
 
-  const kicker = document.createElement('div');
-  kicker.className = 'story-dice-banner-kicker';
-  kicker.textContent =
+  const hdr = document.createElement('div');
+  hdr.className = 'story-dice-banner-hdr';
+  hdr.textContent =
     breakdown.kind === 'skill'
       ? t('story.diceSkillKicker', { attr: breakdown.attr.toUpperCase() })
       : breakdown.kind === 'dualSkill'
@@ -273,45 +233,31 @@ export function appendStoryDiceRollBanner(
             a2: breakdown.attrs[1].toUpperCase(),
           })
         : t('story.diceLuckKicker');
-  panel.appendChild(kicker);
+  panel.appendChild(hdr);
 
-  const rollCard = document.createElement('div');
-  rollCard.className = 'story-dice-roll-card';
+  const body = document.createElement('div');
+  body.className = 'story-dice-banner-body';
 
-  const difficultyEl = document.createElement('div');
-  difficultyEl.className = 'story-dice-difficulty';
-  populateStoryDiceDifficulty(difficultyEl, breakdown);
-  rollCard.appendChild(difficultyEl);
+  const metaEl = document.createElement('div');
+  populateStoryDiceMeta(metaEl, breakdown);
+  body.appendChild(metaEl);
 
-  const dataRegion = document.createElement('div');
-  dataRegion.className = 'story-dice-data-region';
-
-  const diceRow = document.createElement('div');
-  diceRow.className = 'story-dice-dice-row';
-
-  const asciiStage = document.createElement('div');
-  asciiStage.className = 'story-dice-ascii-stage';
+  const stage = document.createElement('div');
+  stage.className = 'story-dice-stage';
   const pre = document.createElement('pre');
   pre.className = 'dice-ascii-block story-dice-pre story-dice-pre--rolling';
   pre.textContent = formatDiceAscii([3, 4]);
-  asciiStage.appendChild(pre);
-  diceRow.appendChild(asciiStage);
-
-  const modSlot = document.createElement('div');
-  populateStoryDiceModSlot(modSlot, breakdown);
-  diceRow.appendChild(modSlot);
-
-  dataRegion.appendChild(diceRow);
-  rollCard.appendChild(dataRegion);
+  stage.appendChild(pre);
+  body.appendChild(stage);
 
   const resultRegion = document.createElement('div');
   resultRegion.className = 'story-dice-reveal story-dice-result';
   resultRegion.setAttribute('aria-live', 'polite');
   resultRegion.setAttribute('aria-atomic', 'true');
   resultRegion.hidden = true;
-  rollCard.appendChild(resultRegion);
+  body.appendChild(resultRegion);
 
-  panel.appendChild(rollCard);
+  panel.appendChild(body);
 
   const btnRow = document.createElement('div');
   btnRow.className = 'story-dice-banner-actions';

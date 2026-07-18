@@ -28,7 +28,7 @@ choices:
     effects:
       - { op: setChapter, chapter: 2 }
       - { op: addResource, resource: supply, delta: -1 }
-  - text: "Inspeccionar os batentes da porta"
+  - text: "Inspecionar os batentes da porta"
     next: act1/dungeon_door
     preview: "Runas e bronze; espelho opcional."
   - text: "Um eco duplo pulsa em você — fé e sombra reconhecem-se"
@@ -43,6 +43,6 @@ choices:
 onEnter:
   - { op: addXp, amount: 6 }
 ---
-A **boca de pedra** range como mandíbula velha. O ar torna-se **denso**, como lã molhada a entrar pelos pulmões — e o **silêncio** da câmara parece **ouvir você** antes de você ouvir a você.
+A **boca de pedra** range. O ar pesa nos pulmões — úmido e frio. Lá dentro, o **silêncio** chega primeiro: você só ouve a própria respiração.
 
-Do interior vem um cheiro: **terra**, **cinza**, e algo doce demais para ser saudável.
+Do interior vem cheiro de **terra**, cinza, e algo doce demais para ser saudável.

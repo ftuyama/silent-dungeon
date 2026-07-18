@@ -14,4 +14,4 @@ choices:
       - { op: initClass, class: archer }
 onEnter: []
 ---
-A corda **canta** uma vez — seca, honesta. Ninguém te chama de irmão nem de discípulo; só o **alvo** que ainda não viste espera que aprendas a contar passos antes de contar glórias.
+A corda canta uma vez — seca, honesta. Ninguém chama você de irmão. Só o **alvo** que ainda não viu espera que você conte os passos antes das glórias.

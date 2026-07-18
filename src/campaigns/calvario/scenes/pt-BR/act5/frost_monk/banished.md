@@ -11,9 +11,9 @@ onEnter:
   - { op: setFlag, key: monk_cave_banished, value: true }
   - {
       op: addDiary,
-      text: "Falhei na gruta do monge. O vento empurrou-me para fora como quem tira um objeto errado de uma gaveta — e ouvi a pedra a fechar por dentro. Não há segunda entrada: aquele caminho acabou.",
+      text: "Falhei na gruta do monge. O vento me empurrou para fora — e ouvi a pedra fechar por dentro. Não há segunda entrada.",
     }
 ---
-A gruta **te recusa** — ar **estreito**, voz seca: *volta para onde ainda pode mentir com conforto.*
+A gruta **recusa** você — ar estreito, voz seca: *volte para onde ainda pode mentir com conforto.*
 
-A montanha **empurra-te** para fora; **não há retorno** àquela boca — só **neve** que finge neutralidade.
+A montanha empurra você para fora. **Não há retorno** àquela boca.

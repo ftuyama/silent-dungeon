@@ -12,6 +12,6 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-**Goteiras** desenham fios no ar. Entre as pedras, **raízes** finas buscam o que já não há de sol.
+**Goteiras** desenham fios no ar. Entre as pedras, **raízes** finas buscam um sol que não chega.
 
-No teto, uma **runa** foi raspada e substituída por um **X** — alguém quis apagar a direção certa.
+No teto, uma **runa** foi raspada e marcada com um **X** — alguém apagou a direção certa.

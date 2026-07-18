@@ -14,6 +14,4 @@ choices:
         onFlee: act5/frost_summit/temple_gate
 onEnter: []
 ---
-O gelo **engana**: parece silêncio, mas é **emboscada** com garras. Um **saqueador** fez deste desfiladeiro casa — e uma **cria** ainda aprende a comer **medo** ao seu ritmo cardíaco.
-
-Se recuares, não chames **prudência**. Chama **sobrevivência** — e aceita que o cume continua a **existir** sem você.
+O gelo **engana**: parece silêncio, mas é emboscada com garras. Um **saqueador** fez deste desfiladeiro casa — e uma **cria** ainda aprende a comer medo.

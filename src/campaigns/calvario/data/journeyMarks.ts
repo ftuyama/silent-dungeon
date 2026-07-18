@@ -5,6 +5,11 @@ import type { JourneyMarkDef } from '../../../engine/data/index.ts';
  * Passivos de história do líder: `passives.ts` (`leadStoryPassives`) + `grantLeadStoryPassive`.
  */
 export const journeyMarks: Record<string, JourneyMarkDef> = {
+  world_wound_remembered: {
+    name: 'Ferida do mundo',
+    description:
+      'Você lembrou o vilarejo antes do pulso verde: o que drena calor e nome, e o voto de descer até a raiz.',
+  },
   act1_surface_whisper_intel: {
     name: 'Rumor que paga',
     description:

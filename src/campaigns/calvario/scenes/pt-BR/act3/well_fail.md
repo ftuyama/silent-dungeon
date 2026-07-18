@@ -10,4 +10,4 @@ onEnter:
   - { op: setFlag, key: false_map, value: true }
   - { op: addMark, mark: act3_well_snare }
 ---
-Acreditas no reflexo. Algo na próxima sala **prepara-te** uma surpresa.
+Você acredita no reflexo. Algo na próxima sala prepara uma surpresa.

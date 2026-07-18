@@ -1,0 +1,62 @@
+---
+description: Voz narrativa da campanha calvario — prosa humana, curta, pt-BR. Aplicar ao editar cenas, diálogos verbais e overlays en-US.
+globs:
+  - src/campaigns/calvario/scenes/**/*.md
+  - src/campaigns/calvario/data/dialogueEnemies/**/*.ts
+  - src/campaigns/calvario/locales/**/*.json
+alwaysApply: false
+---
+
+# Voz narrativa — A Masmorra do Silêncio
+
+## Tom
+
+Fantasia sombria, segunda pessoa (**você** / **seu** / **sua**), presente. O **Silêncio** é tema da campanha, não palavra de preenchimento em cada frase.
+
+## Comprimento por tipo de cena
+
+| Tipo | Corpo | Negrito |
+|------|-------|---------|
+| Beat / combate / transição | 1–2 frases | 0–2 palavras |
+| Exploração / lore | 2–4 frases | 1–3 palavras |
+| Hub | 3–5 frases | 2–4 palavras (âncoras do mapa, não mood-board) |
+| Acampamento / NPC | voz do personagem; citação concreta | só o que o NPC enfatiza |
+
+## Negrito e travessão
+
+- **Negrito:** OK. Usar só onde o olho deve parar (lugar, perigo, objeto).
+- **Travessão (`—`):** OK. Moderação: no máximo ~1 por parágrafo; só quando acrescenta ritmo ou contraste. Evitar encadear várias frases só com travessão.
+
+## Evitar
+
+- Template *"não é X — é Y"* em cena após cena (a figura é válida; o abuso soa artificial)
+- Tripletos (*"A, B e uma terceira…"*)
+- Metáforas em série: *moeda, juros, palco, compasso, eixo, vitória magra*
+- Cenário a “pensar” (*a neve aprende*, *o mapa mente*)
+- Meta (*o jogo regista*, *decisões que o sistema…*)
+- PT-PT residual: *Precisas*, *Regressar*, *Partilhar*, *até ao*, *procurares*
+- Perguntas retóricas em itálico como fecho de cena
+
+## Fazer
+
+- Um detalhe sensorial concreto (som, cheiro, textura) por cena
+- Verbo forte no início da frase
+- Escolhas como ações do jogador, não poemas
+- Continuidade com a cena vizinha e com o ato
+
+## Exemplo
+
+Antes:
+> A **boca de pedra** range como mandíbula velha. O ar torna-se **denso**, como lã molhada a entrar pelos pulmões — e o **silêncio** da câmara parece **ouvir você** antes de você ouvir a você.
+
+Depois:
+> A **boca de pedra** range. O ar pesa nos pulmões — úmido e frio. Lá dentro, o **silêncio** chega primeiro: você só ouve a própria respiração.
+
+## Validação
+
+```bash
+npm run check:pt-br
+npm run check:narrative-voice
+```
+
+Ao editar cenas pt-BR, sync en-US na mesma tarefa (`validate:i18n` + `validate:i18n:translations`).

@@ -28,11 +28,11 @@ choices:
     next: act4/throne/throne_arcane
     condition: { noFlag: throne_acted_arcane }
     preview: "Mente contra runa; falha pode custar."
-  - text: "Prova de nervos — o chão que mente"
+  - text: "Prova de nervos — o chão traiçoeiro"
     uiSection: "Provas no salão"
     next: act4/throne/throne_nerves
     condition: { noFlag: throne_acted_nerves }
-    preview: "Sorte e perna firme; o chão engana."
+    preview: "Sorte e perna firme; o chão escorrega."
   - text: "Sondar correntes e gotejar"
     uiSection: "Provas no salão"
     next: act4/throne/throne_chains
@@ -50,6 +50,6 @@ choices:
     effects:
       - { op: setChapter, chapter: 3 }
 ---
-O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — **sombra**, depois sorriso **sem lábios** certos.
+O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — sombra, depois sorriso sem lábios certos.
 
-Cada **ensaio** no salão **gasta-se** no osso; ainda dá para **negociar** ao mercador ou deixar o aço **esperar**.
+Cada ensaio no salão gasta no osso. Ainda dá para negociar com o mercador ou deixar o aço esperar.

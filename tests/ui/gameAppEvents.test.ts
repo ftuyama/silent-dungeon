@@ -12,6 +12,7 @@ describe('handleGameEvent xp.gained', () => {
         onCombatDefeat: vi.fn(),
         onFaithMiracle: vi.fn(),
         onItemAcquired: vi.fn(),
+        onCompanionRecruited: vi.fn(),
         onXpGained,
         onDiaryEntryAdded: vi.fn(),
         onCampRest: vi.fn(),
@@ -32,6 +33,7 @@ describe('handleGameEvent xp.gained', () => {
         onCombatDefeat: vi.fn(),
         onFaithMiracle: vi.fn(),
         onItemAcquired: vi.fn(),
+        onCompanionRecruited: vi.fn(),
         onXpGained,
         onDiaryEntryAdded: vi.fn(),
         onCampRest: vi.fn(),
@@ -40,5 +42,28 @@ describe('handleGameEvent xp.gained', () => {
       }
     );
     expect(onXpGained).not.toHaveBeenCalled();
+  });
+});
+
+describe('handleGameEvent companion.recruited', () => {
+  it('fires onCompanionRecruited with companion id', () => {
+    const onCompanionRecruited = vi.fn();
+    handleGameEvent(
+      { type: 'companion.recruited', companionId: 'squire_tomas' },
+      {
+        onCombatVictory: vi.fn(),
+        onCombatFlee: vi.fn(),
+        onCombatDefeat: vi.fn(),
+        onFaithMiracle: vi.fn(),
+        onItemAcquired: vi.fn(),
+        onCompanionRecruited,
+        onXpGained: vi.fn(),
+        onDiaryEntryAdded: vi.fn(),
+        onCampRest: vi.fn(),
+        onTimeDayAdvanced: vi.fn(),
+        onStatusHighlight: vi.fn(),
+      }
+    );
+    expect(onCompanionRecruited).toHaveBeenCalled();
   });
 });

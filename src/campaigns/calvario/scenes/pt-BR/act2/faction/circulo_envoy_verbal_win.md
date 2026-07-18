@@ -8,6 +8,6 @@ choices:
     next: act2/hub_catacomb
 onEnter:
   - { op: addRep, faction: circulo, delta: 1 }
-  - { op: addDiary, text: "[RASCUNHO] O Círculo aceitou o tom — cinza que recua sem perdoar de graça." }
+  - { op: addDiary, text: "O Círculo aceitou o tom — cinza que recua sem perdoar de graça." }
 ---
-[RASCUNHO] O desenho **fecha** sem **mordida**. Ouves o **empréstimo** a **adormecer** no ar, como **respiração** **contida**.
+O desenho **fecha** sem mordida. Você ouve o empréstimo adormecer no ar — respiração contida, não trégua eterna.

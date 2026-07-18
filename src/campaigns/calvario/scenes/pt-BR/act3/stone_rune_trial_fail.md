@@ -13,4 +13,4 @@ choices:
   - text: "Recuar e recuperar o folego"
     next: act3/stone_corridor
 ---
-A resposta da parede vem como um choque seco pelos tendoes. Os seus passos ficam um meio-tempo atrasados.
+A resposta da parede vem como um choque seco pelos tendões. Seus passos ficam um meio-tempo atrasados.

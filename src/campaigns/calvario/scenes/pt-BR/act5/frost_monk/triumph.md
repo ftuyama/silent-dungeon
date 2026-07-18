@@ -6,7 +6,7 @@ ambientTheme: frost_mystery
 artKey: frost_monk_blessing
 highlight: true
 choices:
-  - text: "Regressar ao desfiladeiro — levar o silêncio no peito"
+  - text: "Voltar ao desfiladeiro — levar o silêncio no peito"
     next: act5/frost_hub
 onEnter:
   - { op: adjustLeadStat, attr: luck, delta: 1 }
@@ -19,6 +19,6 @@ onEnter:
       text: "Na gruta acima da tempestade, um monge sem rosto deu-me uma bênção estranha: não promessa, não milagre — só a certeza de que a sorte também pode ser disciplina. Ganhei a passiva Paz interior: +1 SOR, para sempre.",
     }
 ---
-O monge **inclina** a cabeça — *não leves eu; leva isto: o mundo atira dados, e você aprendeu a olhar sem pedir truque.*
+O monge **inclina** a cabeça — *não leve eu; leve isto: o mundo atira dados, e você aprendeu a olhar sem pedir truque.*
 
-Algo **assenta** no peito: **+1 SOR**, para sempre, como **passivo** silencioso. A gruta só **respira** quando sais.
+Algo assenta no peito: **+1 SOR**, e a gruta deixa você sair.

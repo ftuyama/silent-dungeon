@@ -32,7 +32,7 @@ choices:
         - { level: { gte: 31 } }
     showWhenLocked: true
     lockedHint: "Requer nível 31+ e concluir o rio de lava antes."
-    preview: "Onde a pedra aprende a odiar."
+    preview: "Onde a pedra vira ódio com forma."
   - text: "Ajoelhar no altar de enxofre (missão)"
     uiSection: "Missões"
     next: act8/sulfur_altar
@@ -65,7 +65,7 @@ choices:
     next: act8/magma_merchant
     condition: { flag: act8_merchant_found }
     showWhenLocked: true
-    lockedHint: "Ainda não encontraste a banca nas veias de lava — patrulha o mapa."
+    lockedHint: "Você ainda não encontrou a banca nas veias de lava — patrulhe o mapa."
     preview: "Preços em ouro e em pele queimada."
   - text: "Subir rumo à superfície — Cimeiras do Vento Cinzento"
     uiSection: "Eixo"
@@ -84,7 +84,9 @@ choices:
       all:
         - { hasStoryPath: throne }
         - { noFlag: act5_hub_reached }
-    preview: "Abrir o caminho das cimeiras se ainda não acampaste no gelo."
+    effects:
+      - { op: setChapter, chapter: 5 }
+    preview: "Abrir o caminho das cimeiras se você ainda não acampou no gelo."
   - text: "Seguir para as cinzas do céu (act7)"
     uiSection: "Eixo"
     next: act7/wasteland_antechamber
@@ -99,6 +101,6 @@ onEnter:
   - { op: addXp, amount: 12 }
   - { op: setFlag, key: act8_hub_reached, value: true }
 ---
-O **Crisol** não é sala — é **fornalha** com nome. Pontes de pedra negra cruzam um mar de lava; o ar arde como veredicto.
+O **Crisol** é fornalha com nome. Pontes de pedra negra cruzam um mar de lava; o ar arde na garganta.
 
-Aqui desces para **acabar** o eixo — ou sobes de volta à superfície, se ainda tens coragem de fingir frio.
+Aqui você desce para **acabar** o eixo — ou sobe de volta à superfície, se ainda aguenta fingir frio.

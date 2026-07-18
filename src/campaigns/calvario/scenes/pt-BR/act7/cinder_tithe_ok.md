@@ -12,6 +12,4 @@ onEnter:
   - { op: addResource, resource: gold, delta: 4 }
   - { op: addDiary, text: "A cinza cedeu — um saquinho de ouro derretido que ainda fingia ser moeda. Não agradeci; agradecer puxa olhos." }
 ---
-Escolhes o monte certo como quem **cheira** mentira no vento. Debaixo da cinza: **ouro** frio, derretido em formas inúteis — mas **ouro** mesmo assim.
-
----
+Você escolhe o monte certo. Debaixo da cinza: **ouro** frio, derretido em formas inúteis — mas ouro mesmo assim.

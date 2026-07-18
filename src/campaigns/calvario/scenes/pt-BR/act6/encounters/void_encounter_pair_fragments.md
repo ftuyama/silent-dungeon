@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-Duas sombras **discutem** em sussurro — não com você, **entre si** — sobre qual mentira serve você melhor. Quando veem você, o debate **acaba**: primeiro come você, depois o resto.
+Duas sombras discutem em sussurro — entre si, não com você — sobre qual mentira serve melhor. Quando veem você, o debate acaba: primeiro você, depois o resto.

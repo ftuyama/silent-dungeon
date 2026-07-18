@@ -20,4 +20,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-**Morvayn** levanta o cajado. Os dados decidem.
+**Morvayn** levanta o cajado. O salão aperta o peito — agora é aço.

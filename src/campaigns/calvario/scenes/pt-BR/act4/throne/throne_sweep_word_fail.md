@@ -5,12 +5,12 @@ chapter: 4
 ambientTheme: act4
 artKey: throne_sweep
 choices:
-  - text: "Continuar a varredura ao salão"
+  - text: "Continuar a varredura no salão"
     next: act4/throne/throne_sweep
   - text: "À segunda fase — trono!"
     next: act4/encounters/fight_morvayn_2
 onEnter:
   - { op: addResource, resource: supply, delta: -1 }
-  - { op: addDiary, text: "A palavra voltou como chicote — roubou-me fôlego e provisões." }
+  - { op: addDiary, text: "A palavra voltou como chicote — roubou fôlego e provisões." }
 ---
-O vácuo **não perdoa** audácia mal calibrada. Pagas com **corpo** e bolsa.
+O vácuo **não perdoa** audácia mal calibrada. Você paga com corpo e bolsa.

@@ -26,5 +26,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "A corrupcao abriu uma porta que a lucidez nao via." }
 ---
-As colunas afastam-se sem se mover. Entre elas surge um corredor de pedra molhada, feito de angulos que o olho recusa.
-
+As colunas se afastam sem se mover. Entre elas surge um corredor de pedra molhada — ângulos que o olho recusa.

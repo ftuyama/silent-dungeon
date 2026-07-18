@@ -10,6 +10,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act5_frost_mira_topic_summit }
 onEnter: []
 ---
-> *"O cume não é vitória — é **exposição**. Quando subirmos, não me peças heroísmo. Pede **clareza**."*
+> *"O cume não é vitória — é **exposição**. Quando subirmos, não me peça heroísmo. Peça **clareza**."*
 
 {{companionLine}}

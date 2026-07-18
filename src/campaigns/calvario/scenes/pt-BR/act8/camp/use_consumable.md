@@ -42,4 +42,4 @@ choices:
     next: act8/camp/magma_camp
 onEnter: []
 ---
-O calor **ameaça** o vidro. Cada gole é um instante de escolha entre o fogo lá fora e o que ainda resta no inventário.
+O calor ameaça o vidro. Cada gole é escolha entre o fogo lá fora e o que ainda resta no inventário.

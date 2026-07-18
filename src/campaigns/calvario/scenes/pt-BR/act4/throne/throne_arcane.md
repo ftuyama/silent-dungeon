@@ -14,4 +14,4 @@ choices: []
 onEnter:
   - { op: setFlag, key: throne_acted_arcane, value: true }
 ---
-As runas **não brilham** — **latem**. Se desviares o olhar, elas reorganizam-se como **dedos** numa garganta.
+As runas **latem** em vez de brilhar. Se você desvia o olhar, elas se reorganizam — como dedos numa garganta.

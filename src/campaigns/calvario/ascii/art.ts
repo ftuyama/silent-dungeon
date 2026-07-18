@@ -12,9 +12,14 @@ function buildSceneArt(): Record<string, string> {
     if (out[key]) {
       throw new Error(`Duplicate scene art key: ${key}`);
     }
+    if (isPlaceholderAsciiContent(content)) continue;
     out[key] = content;
   }
   return out;
+}
+
+function isPlaceholderAsciiContent(text: string): boolean {
+  return text.trim().toUpperCase() === 'PLACEHOLDER';
 }
 
 /** Arte ASCII reutilizável — paisagens e cenas (artKey no frontmatter). */

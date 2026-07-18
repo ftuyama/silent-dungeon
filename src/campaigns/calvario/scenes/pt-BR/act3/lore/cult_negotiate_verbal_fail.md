@@ -18,4 +18,4 @@ choices:
     preview: "Combate imediato; sem barganha."
 onEnter: []
 ---
-[RASCUNHO] A barganha **rompe**. O encarregado assobia entre dentes; atrás dele, o cano lembra que **silêncio** também tem **dente**.
+A barganha **rompe**. O encarregado assobia entre os dentes; atrás dele, o cano lembra que silêncio também tem dente.

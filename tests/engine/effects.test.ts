@@ -288,6 +288,12 @@ describe('applyEffects', () => {
         },
       },
     };
+    const recruited: unknown[] = [];
+    const highlights: unknown[] = [];
+    bus.subscribe((e) => {
+      if (e.type === 'companion.recruited') recruited.push(e);
+      if (e.type === 'statusHighlight') highlights.push(e);
+    });
     const next = applyEffects(s, [{ op: 'recruit', companionId: 'ally_test' }], {
       sceneId: 'test/scene',
       data,
@@ -295,6 +301,15 @@ describe('applyEffects', () => {
     });
     expect(next.companionFriendship.ally_test).toBe(8);
     expect(next.party).toHaveLength(2);
+    expect(recruited).toEqual([{ type: 'companion.recruited', companionId: 'ally_test' }]);
+    expect(highlights).toEqual([
+      {
+        type: 'statusHighlight',
+        variant: 'good',
+        title: expect.any(String),
+        subtitle: expect.stringContaining('Ally'),
+      },
+    ]);
   });
 
   it('setPath com path grava lastPathPromotion para o banner de UI', () => {

@@ -16,4 +16,4 @@ choices:
         onFlee: act6/hub_fractured_nave
 onEnter: []
 ---
-[RASCUNHO] O **espelho** **fecha** a **negociação**. Sobra **sombra** com **dente** — e **você** com **lâmina**.
+[RASCUNHO] O **espelho** fecha a negociação. Sobra sombra com dente — e você com **lâmina**.

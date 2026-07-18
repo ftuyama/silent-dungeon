@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act2
 onEnter: []
 ---
-Dois **vórtices** de dentes fecham-te o corredor. Não é emboscada de gente — é **fome** organizada.
+Dois **vórtices** de dentes fecham o corredor. Não é emboscada de gente. É **fome** organizada.

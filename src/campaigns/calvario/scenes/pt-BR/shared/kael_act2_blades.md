@@ -13,4 +13,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-[RASCUNHO] A **palavra** **partiu**. Resta **contagem** — e o **cinzento** **já** **avançou**.
+[RASCUNHO] A palavra partiu. Resta a contagem — e o cinzento já avançou.

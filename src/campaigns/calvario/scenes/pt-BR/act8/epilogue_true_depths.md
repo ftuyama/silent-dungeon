@@ -3,7 +3,7 @@ id: act8/epilogue_true_depths
 title: Epílogo — Profundezas Verdadeiras
 chapter: 8
 ambientTheme: act8
-artKey: magma_crucible
+artKey: epilogue_true_depths
 highlight: true
 choices:
   - text: "Fechar o diário — o fundo do eixo"
@@ -12,6 +12,6 @@ onEnter:
   - { op: registerEnding, endingId: epilogue_true_depths }
   - { op: addDiary, text: "Desci até onde a terra ainda tem nome. O calor cobrou; o amuleto guardou; o senhor caiu. O silêncio, desta vez, é meu." }
 ---
-Não há céu aqui — só **pedra** e a certeza de que a masmorra **acaba**. O silêncio não é fuga: é **vitória** com cheiro de enxofre.
+Não há céu aqui — só pedra e a certeza de que a masmorra **acaba**. O silêncio não é fuga: é vitória com cheiro de enxofre.
 
-Levas o fundo do eixo nos ossos. *(Podes **salvar** no menu ou **recomeçar**.)*
+Você leva o fundo do eixo nos ossos. *(Você pode **salvar** no menu ou **recomeçar**.)*

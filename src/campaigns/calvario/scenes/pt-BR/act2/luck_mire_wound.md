@@ -11,4 +11,4 @@ choices:
   - text: "Arrastar-se de volta ao cruzeiro"
     next: act2/hub_catacomb
 ---
-Algo **raspa** tendão e **confiança** ao mesmo tempo. Não é só dor — é **advertência** gravada na **ágil** postura que tinhas.
+Algo **raspa** tendão e confiança ao mesmo tempo. A dor fica na postura: o corpo hesita antes do próximo passo.

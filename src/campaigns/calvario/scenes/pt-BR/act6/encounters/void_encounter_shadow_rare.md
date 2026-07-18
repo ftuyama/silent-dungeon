@@ -13,6 +13,4 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-Por um **fio** de segundo, o ar **fica** com você — não espelha; **reina** sobre cacos. O que se move não pede nome: **impõe** silêncio onde você ainda **negociavas** com a dúvida.
-
-Não é emboscada de narrativa. É **consequência** a pedir lugar.
+Por um fio de segundo, o ar fica com você — não espelha; pesa. O que se move não pede nome: impõe silêncio onde você ainda negociava com a dúvida.

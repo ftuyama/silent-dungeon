@@ -12,5 +12,4 @@ onEnter:
   - { op: addMark, mark: act6_memory_kept }
   - { op: addDiary, text: "Repito meu nome como quem finca estaca num mar sem margem." }
 ---
-Escolhes um nome para te prender ao presente. Funciona por um momento, e um momento basta para encarar o abismo com espinha reta.
-
+Você escolhe um nome para se prender ao presente. Funciona por um momento — o bastante para encarar o abismo de pé.

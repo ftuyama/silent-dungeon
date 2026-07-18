@@ -33,6 +33,6 @@ choices:
     next: act2/hub_catacomb
 onEnter: []
 ---
-"De um **arquivo** que já não existe", murmura. "O arquivo queimou. O **mapa** lembrou-se de sobreviver."
+"De um **arquivo** que já não existe", murmura. "O arquivo queimou. O mapa sobreviveu."
 
-Por um segundo, o capuz **incha** — não há vento.
+Por um segundo, o capuz incha — sem vento.

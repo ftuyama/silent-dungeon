@@ -13,4 +13,4 @@ choices:
         onFlee: act3/hub_depths
 onEnter: []
 ---
-O metal **acorda** antes de você — não importa: já não há conversa que não seja **lâmina**.
+O metal **acorda** antes de você. Já não há conversa que não seja lâmina.

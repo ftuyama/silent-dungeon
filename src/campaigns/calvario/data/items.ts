@@ -125,7 +125,7 @@ export const items: Record<string, ItemDef> = {
     name: 'Croqui das Profundezas',
     slot: 'relic',
     rumor: true,
-    sprite: itemSprites.rumor_map,
+    sprite: itemSprites.depths_chart,
   }),
   /** Tomás ou o gelo deixaram traços legíveis do desfiladeiro (`act5_frost`). */
   frost_pass_map: z({
@@ -133,7 +133,7 @@ export const items: Record<string, ItemDef> = {
     name: 'Traçado do Desfiladeiro',
     slot: 'relic',
     rumor: true,
-    sprite: itemSprites.rumor_map,
+    sprite: itemSprites.frost_pass_map,
   }),
   /** Vendido na banca da nave fraturada — alinha a `act6_fractured_nave`. */
   fractured_nave_map: z({
@@ -141,7 +141,7 @@ export const items: Record<string, ItemDef> = {
     name: 'Planta da Nave Partida',
     slot: 'relic',
     rumor: true,
-    sprite: itemSprites.rumor_map,
+    sprite: itemSprites.fractured_nave_map,
   }),
   frost_wyrm_scale: z({
     id: 'frost_wyrm_scale',
@@ -159,7 +159,7 @@ export const items: Record<string, ItemDef> = {
     bonusMind: 1,
     corruptionDrainOnHit: 1,
     damageBonusPerCorruptionDrain: 3,
-    sprite: itemSprites.third_bell,
+    sprite: itemSprites.fallen_god_amulet,
   }),
   magma_ward_amulet: z({
     id: 'magma_ward_amulet',
@@ -167,19 +167,19 @@ export const items: Record<string, ItemDef> = {
     slot: 'relic',
     bonusMind: 1,
     armor: 1,
-    sprite: itemSprites.third_bell,
+    sprite: itemSprites.magma_ward_amulet,
   }),
   act6_fracture_iron: z({
     id: 'act6_fracture_iron',
     name: 'Ferro de Fratura',
     slot: 'relic',
-    sprite: itemSprites.morvayn_heart_shard,
+    sprite: itemSprites.act6_fracture_iron,
   }),
   act6_void_slag: z({
     id: 'act6_void_slag',
     name: 'Escória do Vazio',
     slot: 'relic',
-    sprite: itemSprites.third_bell,
+    sprite: itemSprites.act6_void_slag,
   }),
   iron_dagger_tempered: z({
     id: 'iron_dagger_tempered',
@@ -211,7 +211,7 @@ export const items: Record<string, ItemDef> = {
     bonusMind: 1,
     bonusLuck: 1,
     sellPrice: 8,
-    sprite: itemSprites.chain_shirt,
+    sprite: itemSprites.dimensional_ward_plate,
   }),
   morvayn_heart_shard: z({
     id: 'morvayn_heart_shard',
@@ -231,7 +231,7 @@ export const items: Record<string, ItemDef> = {
     bonusMind: 1,
     bonusLuck: 1,
     sellPrice: 2,
-    sprite: itemSprites.cloth_robe,
+    sprite: itemSprites.ash_veil,
   }),
   /** Ato 3 — arma de mente (alternativa caster). */
   cult_sickle: z({
@@ -241,7 +241,7 @@ export const items: Record<string, ItemDef> = {
     damage: 2,
     bonusMind: 1,
     sellPrice: 2,
-    sprite: itemSprites.mace,
+    sprite: itemSprites.cult_sickle,
   }),
   /** Ato 4 — relíquia de AGI/sorte. */
   wind_step_charm: z({
@@ -251,7 +251,7 @@ export const items: Record<string, ItemDef> = {
     bonusAgi: 1,
     bonusLuck: 1,
     sellPrice: 3,
-    sprite: itemSprites.leather_quiver,
+    sprite: itemSprites.wind_step_charm,
   }),
   /** Ato 5 — arma ágil intermediária. */
   frost_needle: z({
@@ -261,7 +261,7 @@ export const items: Record<string, ItemDef> = {
     damage: 3,
     bonusAgi: 1,
     sellPrice: 3,
-    sprite: itemSprites.iron_dagger,
+    sprite: itemSprites.frost_needle,
   }),
   /** Ato 5 — armadura leve com mente. */
   rime_cloak: z({
@@ -271,7 +271,7 @@ export const items: Record<string, ItemDef> = {
     armor: 1,
     bonusMind: 1,
     sellPrice: 3,
-    sprite: itemSprites.hunter_robe,
+    sprite: itemSprites.rime_cloak,
   }),
   /** Ato 6 — relíquia de mente (alternativa de build). */
   void_glass_shard: z({
@@ -281,7 +281,7 @@ export const items: Record<string, ItemDef> = {
     bonusMind: 2,
     cursed: true,
     sellPrice: 4,
-    sprite: itemSprites.third_bell,
+    sprite: itemSprites.void_glass_shard,
   }),
   /** Ato 7–8 — arma de força. */
   slag_cleaver: z({
@@ -291,7 +291,7 @@ export const items: Record<string, ItemDef> = {
     damage: 3,
     bonusStr: 1,
     sellPrice: 4,
-    sprite: itemSprites.rusty_sword,
+    sprite: itemSprites.slag_cleaver,
   }),
   /** Ato 8 — relíquia de sorte. */
   ember_ring: z({
@@ -300,7 +300,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'relic',
     bonusLuck: 2,
     sellPrice: 4,
-    sprite: itemSprites.third_bell,
+    sprite: itemSprites.ember_ring,
   }),
   potion_hp: z({
     id: 'potion_hp',

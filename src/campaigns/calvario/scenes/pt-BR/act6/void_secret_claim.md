@@ -3,7 +3,7 @@ id: act6/void_secret_claim
 title: Marca da Lamina Oca
 chapter: 6
 ambientTheme: void
-artKey: mirror_chamber
+artKey: void_secret_chamber
 choices:
   - text: "Voltar a nave fraturada com a marca ativa"
     next: act6/hub_fractured_nave
@@ -12,7 +12,6 @@ onEnter:
   - { op: addMark, mark: act6_void_pact_mark }
   - { op: addDiary, text: "Aprendi um credo novo: sangrar para ferir melhor." }
 ---
-O espelho toca seu peito por dentro. Fica uma linha escura sobre o esterno, quente como metal recem-forjado.
+O espelho toca seu peito por dentro. Fica uma linha escura sobre o esterno, quente como metal recém-forjado.
 
-Quando fechas a mao, a marca responde.
-
+Quando você fecha a mão, a marca responde.

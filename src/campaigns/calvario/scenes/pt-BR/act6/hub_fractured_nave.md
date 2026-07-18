@@ -21,7 +21,7 @@ choices:
     visibleWhen: { noFlag: act6_reality_done }
     condition: { level: { gte: 26 } }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 26 para o primeiro cordão; uma vez concluída a prova, o corredor deixa de abrir por aqui."
+    lockedHint: "Você precisa de nível 26 para o primeiro cordão; uma vez concluída a prova, o corredor deixa de abrir por aqui."
     preview: "Primeiro cordão: realidade; marca permanente conforme o desfecho."
   - text: "Descer ao poço de memórias sem fundo (Prova da Memória)"
     uiSection: "Provas"
@@ -89,6 +89,6 @@ choices:
 onEnter:
   - { op: addXp, amount: 16 }
 ---
-Três corredores mentem sobre o que é viver; o **Vazio** abre **um de cada vez** — **sentença**, não mapa.
+Três corredores partem da **nave**: realidade, memória, vontade. O **Vazio** só abre um de cada vez.
 
-No teto, rachaduras **constelam** rostseus impossíveis. Entre colunas, fogueira e **banca** sem dono fingem negócio com quem já é cliente do vazio.
+No teto, rachaduras cortam o escuro. Entre as colunas, uma **fogueira** e uma **banca** sem dono — o pouco que ainda parece humano.

@@ -13,4 +13,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-[RASCUNHO] A **geada** **morde** a **frase**. Sobra **ferro** — e **rasto** que **não** **nega** **duelo**.
+[RASCUNHO] A geada morde a frase. Sobra ferro — e rasto que não nega duelo.

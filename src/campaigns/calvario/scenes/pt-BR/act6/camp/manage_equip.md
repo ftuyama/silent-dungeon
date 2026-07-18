@@ -8,4 +8,4 @@ choices:
   - text: "Voltar à fogueira"
     next: act6/camp/void_camp
 ---
-A luz **treme**; cada fivela parece **negociar** com a sombra. Reorganizas o que ainda chama **seu**: **arma**, **armadura**, **relíquias** — pequenas promessas de que o próximo passo não será o último.
+A luz **treme**. Você reorganiza o que ainda é **seu**: arma, armadura, relíquias — o suficiente para o próximo passo.

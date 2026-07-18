@@ -478,9 +478,7 @@ export function renderDialogueCombatInto(
           ctx.lifecycle.unlockAudio();
           ctx.audio.playDice();
           ctx.lifecycle.commitState(
-            ctx.lifecycle.stabilize(
-              resolveDialogueChoice(ctx.state, ci, ctx.registry.data, ctx.bus)
-            )
+            resolveDialogueChoice(ctx.state, ci, ctx.registry.data, ctx.bus)
           );
         });
         btnRow.appendChild(btn);

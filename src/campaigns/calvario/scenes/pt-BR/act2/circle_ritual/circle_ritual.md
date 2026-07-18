@@ -31,4 +31,4 @@ choices:
     preview: "Mente — manter a clareza ao recusar (TN 8)"
 onEnter: []
 ---
-Um mago do **Círculo** desenha cinza no chão. "Um preço leve", diz.
+Um mago do **Círculo** risca cinza no chão com o polegar. "Um preço leve", diz — e espera.

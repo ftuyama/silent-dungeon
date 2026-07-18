@@ -6,7 +6,7 @@ ambientTheme: act2
 choices:
   - text: "Continuar"
     next: act2/hub_catacomb
-  - text: "Mira comenta o ritmo que ouviste no chiar"
+  - text: "Mira comenta o ritmo que você ouviu no chiar"
     next: act2/hub_catacomb
     condition:
       all:
@@ -17,8 +17,8 @@ choices:
     effects:
       - { op: setFlag, key: act2_mira_rats_listen_done, value: true }
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_mira_rats_listen }
-      - { op: addDiary, text: "Mira: «Contaste o chiar. Quem ouve antes de saltar vive mais no subsolo.»" }
-  - text: "Mira comenta o fedor que ainda tens nos dedos"
+      - { op: addDiary, text: "Mira: «Você contou o chiar. Quem ouve antes de saltar vive mais no subsolo.»" }
+  - text: "Mira comenta o fedor que ainda tem nos dedos"
     next: act2/hub_catacomb
     condition:
       all:
@@ -29,15 +29,15 @@ choices:
     effects:
       - { op: setFlag, key: act2_mira_rats_smell_done, value: true }
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_mira_rats_smell }
-      - { op: addDiary, text: "Mira: «Contaste-os pelo cheiro. Eu faço o mesmo — menos dentes, mais fuga.»" }
-  - text: "Mira nota que ainda cheiras a fuga"
+      - { op: addDiary, text: "Mira: «Você contou pelo cheiro. Eu faço o mesmo — menos dentes, mais fuga.»" }
+  - text: "Mira nota que ainda cheira a fuga"
     next: act2/hub_catacomb
     condition:
       all:
         - { companionInParty: rogue_mira }
         - { mark: fled_rats }
         - { noFlag: act2_mira_fled_rats_done }
-    preview: "Sem julgamento — só um aviso (uma vez)."
+    preview: "Sem julgamento. Só um aviso (uma vez)."
     effects:
       - { op: setFlag, key: act2_mira_fled_rats_done, value: true }
       - { op: addDiary, text: "Mira: «Fugir não é vergonha. Deixar rasto é. Limpa as botas.»" }
@@ -45,4 +45,4 @@ onEnter:
   - { op: addResource, resource: supply, delta: 1 }
   - { op: setFlag, key: rats_cleared, value: true }
 ---
-Viscos escuros no calcanhar. Uma **vitória pequena** — mas suficiente para respirar.
+Visco escuro no calcanhar. Uma **vitória pequena** — mas basta para respirar.

@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Alguém **canta** baixo — não uma oração, um **compasso** que não combina com o vento. Os olhos dele já **venderam** o céu a outro sino.
+Alguém **canta** baixo — não oração, um ritmo que não combina com o vento. Os olhos dele já venderam o céu a outro sino.
 
-Não é duelo de ideias — é **sorte** contra **fanatismo**. Um de vocês sai com o nome mais **barato**.
+Não é duelo de ideias. É ferro no frio.

@@ -25,7 +25,7 @@ const kaelGraph = (
         choices: [
           {
             text:
-              'Medir palavras como quem mede distância de lâmina — sem insulto, sem súplica.',
+              'Medir palavras como distância de lâmina — sem insulto, sem súplica.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -38,13 +38,13 @@ const kaelGraph = (
           },
           {
             text:
-              'Baixar o aço da voz: reconhecer o rasto, não a acusação.',
+              'Baixar a voz: reconhecer o rasto, não a acusação.',
             resolution: { kind: 'fixed', nextNodeId: 'respect' },
             effects: { enemyHpDelta: -3 },
           },
           {
             text:
-              'Escalar: perguntar se o cinzento só sabe contar almas em fila.',
+              'Provocar: perguntar se o cinzento só sabe contar almas em fila.',
             resolution: { kind: 'fixed', nextNodeId: 'edge' },
             effects: { enemyHpDelta: 5 },
           },
@@ -79,7 +79,7 @@ const kaelGraph = (
             effectsOnFailure: { enemyHpDelta: 2 },
           },
           {
-            text: 'Perder o compasso — deixar a provocação fechar o círculo.',
+            text: 'Perder o ritmo — deixar a provocação fechar o círculo.',
             resolution: { kind: 'fixed', nextNodeId: 'd_fail' },
           },
         ],
@@ -101,27 +101,27 @@ const kaelGraph = (
 export const kael_rival_act2_verbal: DialogueEnemyDef = kaelGraph(
   'kael_rival_act2_verbal',
   'Kael, o Rastreador Cinzento',
-  'O elmo te devolve seu próprio sopro distorcido. “Rastreado”, diz Kael. “Registado. Ainda não rematado — quero ver se sua boca sabe o que a mão promete.”',
+  'O elmo devolve seu próprio sopro distorcido. “Rastreado”, diz Kael. “Registrado. Ainda não rematado — quero ver se sua boca sabe o que a mão promete.”',
   { tensionMax: 12, rootMindTn: 7, edgeStrTn: 8 },
 );
 
 export const kael_rival_act4_verbal: DialogueEnemyDef = kaelGraph(
   'kael_rival_act4_verbal',
   'Kael, o Rastreador Cinzento',
-  '“Já te vi uma vez no silêncio”, diz Kael. “Agora vês-me inteiro. Fala se tiveres linha — senão, o ferro resume.”',
+  '“Já te vi uma vez no silêncio”, diz Kael. “Agora você me vê inteiro. Fale se tiver linha — senão, o ferro resume.”',
   { tensionMax: 13, rootMindTn: 8, edgeStrTn: 9 },
 );
 
 export const kael_rival_act5_verbal: DialogueEnemyDef = kaelGraph(
   'kael_rival_act5_verbal',
   'Kael, o Rastreador Cinzento',
-  'A geada no elmo não esconde o olhar. “O terceiro encontro não pede nome”, diz Kael. “Pede prova. Mostra se ainda tem sílaba ou só dente.”',
+  'A geada no elmo não esconde o olhar. “O terceiro encontro não pede nome”, diz Kael. “Pede prova. Mostre se ainda tem sílaba ou só dente.”',
   { tensionMax: 15, rootMindTn: 8, edgeStrTn: 9 },
 );
 
 export const kael_rival_act6_verbal: DialogueEnemyDef = kaelGraph(
   'kael_rival_act6_verbal',
   'Kael, o Rastreador Cinzento',
-  'Entre colunas que não existem no mapa, Kael parece feito de nervura e paciência. “O abismo ouve”, diz. “Escolhe: eco ou ferro.”',
+  'Entre colunas que o mapa nega, Kael parece feito de nervura e paciência. “O abismo ouve”, diz. “Escolha: eco ou ferro.”',
   { tensionMax: 16, rootMindTn: 9, edgeStrTn: 10 },
 );

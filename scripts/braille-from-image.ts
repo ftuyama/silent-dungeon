@@ -1,6 +1,6 @@
 /**
  * CLI: imagem → Braille Unicode (mesmo pipeline que `src/dev/brailleAsciiFromImage.ts`).
- * Uso: npx tsx scripts/braille-from-image.ts <ficheiro> [-w 160] [-o out.txt] [--no-invert] [--threshold 127] [--dither atkinson]
+ * Uso: npx tsx scripts/braille-from-image.ts <ficheiro> [-w 160] [-o out.txt] [--no-invert] [--threshold 115] [--dither atkinson]
  * Defaults alinhados a `src/ui/devTools/devToolsBrailleAscii.ts` (Conversão).
  */
 import { readFileSync, writeFileSync } from 'fs';
@@ -49,7 +49,7 @@ function parseArgs(argv: string[]): {
   const inputRaw = rest.shift();
   if (!inputRaw) {
     console.error(
-      'Uso: npx tsx scripts/braille-from-image.ts <imagem> [-w 160] [-o ficheiro.txt] [--no-invert] [--threshold 127] [--dither atkinson]',
+      'Uso: npx tsx scripts/braille-from-image.ts <imagem> [-w 160] [-o ficheiro.txt] [--no-invert] [--threshold 115] [--dither atkinson]',
     );
     process.exit(1);
   }
@@ -57,7 +57,7 @@ function parseArgs(argv: string[]): {
   let asciiWidth = 160;
   let out: string | null = null;
   let invert = true;
-  let threshold = 127;
+  let threshold = 115;
   let dither: BrailleDithererName = 'atkinson';
   while (rest.length) {
     const a = rest.shift()!;
@@ -68,7 +68,7 @@ function parseArgs(argv: string[]): {
     }
     else if (a === '--invert') invert = true;
     else if (a === '--no-invert') invert = false;
-    else if (a === '--threshold' && rest[0]) threshold = Math.max(0, Math.min(255, parseInt(rest.shift()!, 10) || 127));
+    else if (a === '--threshold' && rest[0]) threshold = Math.max(0, Math.min(255, parseInt(rest.shift()!, 10) || 115));
     else if (a === '--dither' && rest[0]) {
       const n = rest.shift()!;
       if (n === 'threshold' || n === 'floydSteinberg' || n === 'stucki' || n === 'atkinson') dither = n;

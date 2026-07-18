@@ -9,6 +9,7 @@ const CAMP_EQUIPMENT_SCENES = new Set([
   'act2/camp/manage_equip',
   'act5/camp/manage_equip',
   'act6/camp/manage_equip',
+  'act8/camp/manage_equip',
 ]);
 
 export function isCampEquipmentScene(sceneId: string): boolean {

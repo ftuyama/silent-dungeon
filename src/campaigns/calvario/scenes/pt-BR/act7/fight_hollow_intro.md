@@ -16,6 +16,4 @@ onEnter:
   - { op: addMark, mark: act7_broke_hollow_line }
   - { op: addDiary, text: "Vieram como procissão — máscaras de osso e hábito rasgado. Não queriam bênção; queriam corpo." }
 ---
-Figuras **alinhadas** demais para serem vivas: **culto** sem olhos, **osso** sem história. Avançam como **ritmo** — e ritmo, no fim, é só outra forma de **cerco**.
-
----
+Figuras alinhadas demais para serem vivas: culto sem olhos, osso sem história. Avançam no mesmo ritmo — e ritmo, aqui, é cerco.

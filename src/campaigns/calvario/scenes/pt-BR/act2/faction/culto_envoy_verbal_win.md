@@ -8,6 +8,6 @@ choices:
     next: act2/hub_catacomb
 onEnter:
   - { op: addRep, faction: culto, delta: 1 }
-  - { op: addDiary, text: "[RASCUNHO] O rumor recuou — o Sino anotou sem sangrar o corredor." }
+  - { op: addDiary, text: "O rumor recuou — o Sino anotou sem sangrar o corredor." }
 ---
-[RASCUNHO] A **sombra** **inclina** a cabeça. Não é **perdão** — é **dívida** **reconhecida** com **outro** **silêncio**.
+A sombra inclina a cabeça. Não perdoa. Só reconhece a dívida — e cobra outro silêncio.

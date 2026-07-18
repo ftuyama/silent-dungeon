@@ -18,6 +18,6 @@ choices:
         onFlee: act1/mirror_door
 onEnter: []
 ---
-Na madeira, **bronze polido** devolve seu rosto **esverdeado** num ângulo só — armadura ou capa parece **emprestada** a outrem.
+Na madeira, **bronze polido** devolve seu rosto esverdeado. A armadura parece emprestada.
 
-O corredor e o reflexo **respiram juntos**; por um segundo não sabes quem empurra quem para dentro.
+Por um segundo você não sabe quem empurra quem para dentro — o corredor ou o reflexo.

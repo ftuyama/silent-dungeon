@@ -13,4 +13,4 @@ onEnter:
   - { op: grantItem, itemId: ember_ring }
   - { op: addDiary, text: "O altar de enxofre aceitou o preço. Um anel de brasa ficou no dedo — e o caminho ao Senhor do Magma está aberto, se o mapa do crisol também." }
 ---
-O amarelo **recua**. No fundo do crisol, algo grande **move** a lava como se fosse capa.
+O amarelo recua. No fundo do crisol, algo grande move a lava como se fosse capa.

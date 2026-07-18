@@ -5,7 +5,7 @@ chapter: 5
 ambientTheme: camp
 artKey: frost_camp
 choices:
-  - text: "Perguntar se a corda ainda lhe roía a palma"
+  - text: "Perguntar se a corda ainda dói na palma"
     next: act5/camp/frost_tomas_topic_rope
   - text: "Falar do templo como de um campo de batalha"
     next: act5/camp/frost_tomas_topic_temple
@@ -15,6 +15,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -3, onceFlag: ff_cf_act5_frost_tomas_fireside_leave }
 onEnter: []
 ---
-> *"Montanha não é inimigo — inimigo é **confundir** cansaço com sinal de Deus."*
+> *"Montanha não é o inimigo. O inimigo é **confundir** cansaço com sinal de Deus."*
 
 {{companionLine}}

@@ -12,6 +12,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 3, onceFlag: ff_cf_act6_void_tomas_topic_duty }
 onEnter: []
 ---
-> *"Dever não precisa de solo — precisa de **alguém** a quem não mentir. Se cairmos, caímos **juntos**."*
+> *"Dever não precisa de solo — precisa de alguém a quem não mentir. Se cairmos, caímos **juntos**."*
 
 {{companionLine}}

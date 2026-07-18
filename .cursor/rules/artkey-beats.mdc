@@ -1,0 +1,21 @@
+---
+description: Política artKey por beat narrativo (cenas calvario)
+globs:
+  - src/campaigns/calvario/scenes/**/*.md
+  - src/campaigns/calvario/ascii/scenes/**/*.txt
+---
+
+# artKey — beats-only
+
+## Regra
+
+- **Beats distintos** (intro ≠ epílogo, hub ≠ prova, gate ≠ pacto, opening ≠ sealed/pact) → `artKey` **única** + `ascii/scenes/<actN>/<artKey>.txt`.
+- **Variantes do mesmo beat** (`_ok` / `_fail` / `_win`) → podem **reutilizar** a artKey do beat pai.
+- Com `highlight: true`, a mesma artKey partilha o estado “já visto” do overlay — não reutilizar entre marcos importantes.
+
+## Checklist
+
+1. Nova cena importante → basename novo (não copiar artKey do hub/vizinho por preguiça).
+2. Ficheiro `.txt` com o mesmo basename; `PLACEHOLDER` até arte final.
+3. `npm run check:ascii-art -- --campaign calvario`
+4. Em PRs narrativos grandes: `npm run check:ascii-art:relevance` — filtrar tier S/A com `reused` entre beats distintos.

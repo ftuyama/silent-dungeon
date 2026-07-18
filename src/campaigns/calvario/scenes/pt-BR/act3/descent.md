@@ -3,8 +3,9 @@ id: act3/descent
 title: Descida ao silêncio profundo
 chapter: 3
 ambientTheme: act3
+artKey: silence_descent
 choices:
-  - text: "Descer até ao poço"
+  - text: "Descer até o poço"
     preview: "Lá em baixo, a água sussurra promessas que ninguém confirma."
     next: act3/well_lies
   - text: "Forçar o atalho do mapa rasgado"
@@ -15,7 +16,7 @@ choices:
         - { hasItem: rumor_map }
         - { level: { gte: 7 } }
     showWhenLocked: true
-    lockedHint: "Precisas do mapa-rumor no inventário e de nível 7 para forçar esse atalho."
+    lockedHint: "Você precisa do mapa-rumor no inventário e de nível 7 para forçar esse atalho."
   - text: "Ir ao encontro do que a corrupção promete"
     preview: "Algo puxa por baixo da pele; fingir surdez custa cada vez mais caro."
     next: act3/corruption_event
@@ -31,6 +32,6 @@ choices:
     condition: { companionInParty: rogue_mira }
 onEnter: []
 ---
-A escada **afunda** e o **pulso verde** bate com seu coração — cada lance rouba **ruído** até restar só pedra úmida. **Não há fogo** que valha abrigo aqui.
+A escada **afunda**. Um pulso verde bate com o seu coração — cada lance rouba ruído até restar só pedra úmida. **Não há fogo** que valha abrigo aqui.
 
-Com o **Mapa Rasgado**, abre-se um atalho que o mapa comum não mostra.
+Com o **Mapa Rasgado**, abre-se um atalho que o mapa comum esconde.

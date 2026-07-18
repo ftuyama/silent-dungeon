@@ -8,7 +8,7 @@ choices:
     next: act5/frost_hub
     condition: { resource: { supply: { gte: 1 } } }
     showWhenLocked: true
-    lockedHint: "Sem suprimento não há corda nem calor de sobra para o acto de salvar — precisas de pelo menos 1."
+    lockedHint: "Sem suprimento não há corda nem calor de sobra para salvar — você precisa de pelo menos 1."
     effects:
       - { op: addResource, resource: supply, delta: -1 }
       - { op: addResource, resource: faith, delta: 1 }
@@ -25,6 +25,4 @@ choices:
 onEnter:
   - { op: setFlag, key: frost_stranded_traveler_done, value: true }
 ---
-Uma **mula** presa ao gelo — patas à mercê da crevasse, olho branco de pânico. O dono **morde** o lábio: *"Só preciso de corda e de alguém que ainda acredite em puxar."*
-
-Ou acreditas — ou **cobras** o mundo por te não ter poupado.
+Uma **mula** presa ao gelo — patas à mercê da crevasse, olho branco de pânico. O dono morde o lábio: *"Só preciso de corda e de alguém que ainda acredite em caminho."*

@@ -19,6 +19,7 @@ const CHECKS = [
   ['validate:scenes', 'node scripts/validate-scenes.mjs'],
   ['validate:unreachable', 'node scripts/find-unreachable-scenes.mjs'],
   ['check:pt-br', 'node scripts/check-pt-br.mjs'],
+  ['check:narrative-voice', 'node scripts/check-narrative-voice.mjs'],
   ['check:ascii-art', 'node scripts/check-pending-ascii-art.mjs'],
   ['validate:i18n', 'node scripts/i18n/validate-locale-parity.mjs'],
   ['validate:i18n:translations', 'node scripts/i18n/validate-i18n-translations.mjs'],

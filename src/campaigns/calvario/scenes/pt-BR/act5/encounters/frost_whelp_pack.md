@@ -12,6 +12,6 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-Duas **crias** rodeiam-te com fome de calor vivo. Os olhos delas são **buracos** onde o luar foi congelado — e onde seu reflexo **hesita** um segundo a mais.
+Duas **crias** rodeiam você com fome de calor vivo. Os olhos delas são buracos onde o luar congelou — e onde seu reflexo hesita um segundo a mais.
 
-Se passar, o covil deixa de ser rumor — torna-se **porta**. Depois disto, não há **volta atrás** barata.
+Sem saída limpa: aço ou queda.

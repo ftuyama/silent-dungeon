@@ -12,4 +12,4 @@ choices:
     next: act4/throne/throne_gate
 onEnter: []
 ---
-A gota **cai** onde não devia — **mancha** a manga, rouba calor, ri **sem dentes**.
+A gota **cai** onde não devia — mancha a manga, rouba calor, ri sem dentes.

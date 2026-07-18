@@ -25,4 +25,4 @@ choices:
         onFlee: shared/explore_nav_act2
 onEnter: []
 ---
-Um **cultista** demais confiante separa-se do coro. A voz dele **treme** — não de medo, de **êxtase** barato.
+Um **cultista** demais confiante separa-se do coro. A voz dele treme — não de medo, de êxtase barato.

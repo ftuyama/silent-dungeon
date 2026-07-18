@@ -27,6 +27,6 @@ choices:
   - text: "Recuar para a nave fraturada"
     next: act6/void_secret_entry
 ---
-**Kael** **parece** **menor** **contra** o **ângulo** **impossível** — **a** **armadura** **não**: **permanece** **reta**.
+**Kael** parece menor contra o ângulo impossível — a armadura, não: permanece reta.
 
-> *"Aqui **nem** **eco** **mente**. Se **juras**, **juras** **uma** **vez** **só** — **ou** **calas** **para** **sempre**."*
+> *"Aqui nem o eco mente. Se jurar, jura uma vez só — ou cala para sempre."*

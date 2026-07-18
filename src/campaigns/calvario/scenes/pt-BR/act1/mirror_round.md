@@ -3,7 +3,7 @@ id: act1/mirror_round
 title: Espelho na roda
 chapter: 1
 ambientTheme: explore
-artKey: class_gate
+artKey: mirror_round
 choices:
   - text: "Soltar o fôlego e voltar ao centro da câmara"
     next: act1/class_gate
@@ -15,8 +15,8 @@ choices:
     preview: "Juramento feito; o ar lá fora ainda ouve."
 onEnter:
   - { op: addMark, mark: act1_hand_mirror }
-  - { op: addDiary, text: "No espelho de mão, só eu — sem a água a mentir." }
+  - { op: addDiary, text: "No espelho de mão, só eu — sem a água mentindo." }
 ---
-Um **espelho de mão** na corrente enferrujada: ridículo aqui, mas o vidro **treme** e *{{playerName}}* encara *{{playerName}}* sem a água negra a mentir.
+Um **espelho de mão** na corrente enferrujada. Ridículo aqui — mas o vidro treme, e *{{playerName}}* encara *{{playerName}}* sem a água negrmentindo.
 
-É **só você** — com **promessas** por cumprir; nada aqui absolve o próximo passo.
+É só você, com promessas por cumprir.

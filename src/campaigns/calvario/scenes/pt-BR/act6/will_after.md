@@ -3,7 +3,7 @@ id: act6/will_after
 title: Juramento sem Testemunhas
 chapter: 6
 ambientTheme: void
-artKey: void_altar
+artKey: will_after_altar
 choices:
   - text: "Descer para a nave fraturada"
     next: act6/litany_after_will
@@ -13,7 +13,6 @@ onEnter:
   - { op: equipItem, itemId: magma_ward_amulet, partyIndex: 0 }
   - { op: addDiary, text: "Vontade não é força para vencer todos. É disciplina para não obedecer o pior em mim. O amuleto das provas lateja — guarda contra o calor que ainda não vi." }
 ---
-O penitente cai de joelhos, mas não sangra. Em vez disso, espalha um pó negro que escreve um círculo ao redor dos seus pés.
+O penitente cai de joelhos, mas não sangra. Espalha um pó negro que escreve um círculo ao redor dos seus pés.
 
-Dentro dele, percebe uma certeza nova: não é puro, mas ainda é seu.
-
+Dentro dele, uma certeza nova: você não é puro — mas ainda é **seu**.

@@ -8,7 +8,7 @@ choices:
     next: act1/class_gate
     condition: { noFlag: act1_class_chosen }
     preview: "Segue para o juramento."
-  - text: "Seguir em frente — boca da masmorra"
+  - text: "Seguir até a boca da masmorra"
     next: act1/dungeon_mouth
     condition: { flag: act1_class_chosen }
     preview: "Juramento feito; o ar lá fora ainda ouve."
@@ -21,6 +21,6 @@ onEnter:
   - { op: adjustLeadStress, delta: 1 }
   - { op: addDiary, text: "A parede lembrou-me de carne — e a mão tremeu." }
 ---
-**Úmida**, como pele doente. Sob a crosta de salitre, sentes veios **mais macios** — quase carne fossilizada.
+**Úmida**, como pele doente. Sob a crosta de salitre, veios mais macios — quase carne fossilizada.
 
-Um estremeção sobe-te o braço. Não é medo. É **memória** da pedra.
+Um arrepio sobe pelo braço. Não é medo. É **memória** da pedra.

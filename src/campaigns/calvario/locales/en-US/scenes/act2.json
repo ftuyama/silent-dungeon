@@ -1,7 +1,7 @@
 {
   "act2/after_rats": {
     "title": "After the Rats",
-    "body": "Dark viscera on your heel. A **small victory** — but enough to breathe.",
+    "body": "Dark slime on your heel. A **small victory** — enough to breathe.",
     "choices": [
       {
         "text": "Continue"
@@ -22,7 +22,7 @@
       },
       {
         "text": "Mira notices you still smell of flight",
-        "preview": "No judgment — only a warning (once).",
+        "preview": "No judgment. Only a warning (once).",
         "diaryTexts": [
           "Mira: «Flight is not shame. Leaving a trail is. Clean your boots.»"
         ]
@@ -31,7 +31,7 @@
   },
   "act2/camp/camp_companion_chat": {
     "title": "Words by the fire",
-    "body": "{{companionLine}}\n\n*Someone murmurs the number — **day {{day}}** — as one confessing age.* The fire asks no **permission**, but asks for witnesses.",
+    "body": "{{companionLine}}\n\n*Someone murmurs the number — **day {{day}}** — like confessing an age.* The fire pops. No one asks permission to listen.",
     "choices": [
       {
         "text": "Listen to Mira without the stone judging",
@@ -120,7 +120,7 @@
   },
   "act2/camp/camp_mira_topic_vigilia": {
     "title": "The Vigil by the fire",
-    "body": "> *\"The **Vigil** likes **order** — order is history written by survivors. Do not trust them. **Use** them.\"*\n\n{{companionLine}}",
+    "body": "> *\"The **Vigil** likes **order** — order written by whoever survived. Do not trust them. **Use them**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Agree to change the subject"
@@ -129,7 +129,7 @@
   },
   "act2/camp/camp_tomas_fireside": {
     "title": "Embers — words with Tomás",
-    "body": "> *\"If you came for pity, save your breath. If you came for **words**, speak — the fire will not interrupt out of politeness.\"*\n\n{{companionLine}}",
+    "body": "> *\"If you came out of pity, spare the spit. If you came for a **word**, speak — the fire will not interrupt out of manners.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Ask if the shield still weighs"
@@ -144,7 +144,7 @@
   },
   "act2/camp/camp_tomas_topic_oath": {
     "title": "Oath without master",
-    "body": "> *\"The order did not die in a day — it died **forgetting** names. As long as you rise before I fall, the **oath** holds.\"*\n\n{{companionLine}}",
+    "body": "> *\"The order did not die in a day — it kept **forgetting** names. As long as you stand before I fall, the **oath** holds.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Leave the past in the embers"
@@ -153,7 +153,7 @@
   },
   "act2/camp/camp_tomas_topic_shield": {
     "title": "The weight of the shield",
-    "body": "> *\"It weighs what I could **not** stop. You also carry too much — do not get used to calling that **honor**.\"*\n\n{{companionLine}}",
+    "body": "> *\"It weighs what I **could not** stop. You carry too much as well — do not get used to calling that **honor**.\"*\n\n{{companionLine}}",
     "choices": [
       {
         "text": "Accept his silence as answer"
@@ -162,7 +162,7 @@
   },
   "act2/camp/manage_equip": {
     "title": "Iron and oaths",
-    "body": "Straps creak, buckles bite leather, and metal answers with a tired gleam.\n\nHere, far from the first blow, you have a moment to adjust **weapon**, **armor**, and **relics** before moving on.",
+    "body": "Straps creak. Buckles bite leather. Metal answers with a tired gleam.\n\nAway from the first blow, there is time to set **weapon**, **armor**, and **relics** before you go.",
     "choices": [
       {
         "text": "Return to the Vigil camp"
@@ -171,7 +171,7 @@
   },
   "act2/camp/use_consumable": {
     "title": "Potions at hand",
-    "body": "Flasks knock in the pocket. Each cork is a short **wager** — life, mana, or quiet in the head — before returning to the Vigil fire.",
+    "body": "Vials knock in your pocket. Each cork is a short **bet** — life, mana, or quiet in the head — then back to the Vigil's fire.",
     "choices": [
       {
         "text": "Drink red potion (you)",
@@ -197,7 +197,7 @@
   },
   "act2/camp/vigilia_camp": {
     "title": "Vigil Camp",
-    "body": "Soldiers of the **Vigil** share dry bread. Honor tastes of ash.\n\n*With no sun for reference, the stone still records: **day {{day}}**.*",
+    "body": "Vigil soldiers share dry bread. Honor here tastes of ash.\n\n*With no sun, someone still counts: **day {{day}}**.*",
     "choices": [
       {
         "text": "Rest at camp (−1 supply)",
@@ -215,8 +215,13 @@
         "uiSection": "Talk"
       },
       {
-        "text": "Ask the group how many days you've been below",
+        "text": "Ask the group how many days you have been down",
         "preview": "Count aloud; the echo does not lie.",
+        "uiSection": "Talk"
+      },
+      {
+        "text": "Sit by the fire and remember why you descended",
+        "preview": "The village, the green, the vow — once.",
         "uiSection": "Talk"
       },
       {
@@ -224,7 +229,7 @@
         "preview": "An entry in the diary.",
         "uiSection": "Camp",
         "diaryTexts": [
-          "You scratched day {{day}} into the earth. The clock above no longer commands."
+          "I scratched day {{day}} into the damp earth. The clock above no longer rules."
         ]
       },
       {
@@ -275,7 +280,7 @@
   },
   "act2/catacomb_entry": {
     "title": "Cross of bones",
-    "body": "A **cross** of fine bones points to three paths. Melted candles left **rivers of black wax** on the floor — someone was here not long ago.\n\nThe echo **lies** about distance: one step sounds like three.",
+    "body": "A **crossroads** of thin bones points three ways. Melted candles left **rivers of black wax** on the floor — someone passed not long ago.\n\nThe echo lies: one step sounds like three.",
     "choices": [
       {
         "text": "Explore the side corridor (squeaking)",
@@ -297,12 +302,12 @@
   },
   "act2/catacomb_observe": {
     "title": "Ceiling",
-    "body": "**Drips** draw threads in the air. Between the stones, thin **roots** reach for what sunlight no longer gives.\n\nOn the ceiling, a **rune** was scraped away and replaced with an **X** — someone wanted to erase the right direction.",
+    "body": "**Drips** draw threads in the air. Between the stones, thin **roots** hunt a sun that never comes.\n\nOn the ceiling, a **rune** was scraped off and marked with an **X** — someone erased the right way.",
     "luckCheckLabel": "Read the ceiling without losing your footing at the crossroads"
   },
   "act2/circle_ritual/circle_ritual": {
     "title": "Circle Ritual",
-    "body": "A mage of the **Circle** draws ash on the floor. \"A light price,\" he says.",
+    "body": "A Circle mage scrapes ash on the floor with his thumb. \"A light price,\" he says — and waits.",
     "choices": [
       {
         "text": "Participate",
@@ -320,7 +325,7 @@
   },
   "act2/circle_ritual/circle_ritual_refuse_fail": {
     "title": "Trapped gaze",
-    "body": "You step back, but for an instant you **see** the design **complete** on your retina — a **ghost** of commitment you never asked for.\n\nNo **mark** remained… but an **echo** did.",
+    "body": "You step back, but for a moment you **see** the pattern **finish** on your retina — a ghost of a pact you did not ask for.\n\nNo mark. An **echo** remains.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -329,12 +334,12 @@
   },
   "act2/circle_ritual/circle_ritual_refuse_mind": {
     "title": "Quiet refusal",
-    "body": "You refuse the **circle** — but the pattern on the floor **pulls** your gaze, as if the lines wanted to **continue** inside you.\n\nTo leave **whole**, you need **clarity**: a straight line in your head that is not his.",
+    "body": "You refuse the **circle** — but the floor pattern pulls your eyes, as if the strokes want to keep going inside you.\n\nTo leave whole, you need **clarity**: a straight line in your head that is not his.",
     "skillCheckLabel": "Keep your mind steady when refusing the ritual"
   },
   "act2/circle_ritual/circle_ritual_refuse_success": {
     "title": "No signature",
-    "body": "The ash **stops** at your feet — nothing is written on you. The silence, this time, is **yours**.",
+    "body": "The ash **stops** at your feet. Nothing is written on you. The silence, this time, is **yours**.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -343,7 +348,7 @@
   },
   "act2/cruzeiro_echo_once": {
     "title": "Wax and copper",
-    "body": "Between **two** spent candles, the **wax** held a **coin** with its face scraped away: neither a full coin, nor a whole lie — only proof that someone **paid** to stay a little warmer.",
+    "body": "Between **two** spent candles, the **wax** kept a **coin** with its face scraped off. Not wealth, not a full lie — only proof someone paid to stay a little warmer.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -355,7 +360,7 @@
   },
   "act2/encounters/rats_combat_intro": {
     "title": "Before the leap",
-    "body": "The floor **trembles** — **claws** digging soft stone. The rats **do not flee**; they advance in an arc, as if someone taught them **formation**.\n\nGrit your teeth. The **dice** will count what flesh will not admit. If you smelled the air, you already know how many teeth await; if you listened, their step is already yours.",
+    "body": "The floor **shakes** — claws digging soft stone. The rats **do not flee**; they advance in an arc, as if someone taught them formation.\n\nClench your teeth. Combat starts now.",
     "choices": [
       {
         "text": "[%] Fight!",
@@ -365,7 +370,7 @@
   },
   "act2/encounters/skeleton_combat_intro": {
     "title": "Skull and Rust",
-    "body": "The skeleton **creaks** as it moves.",
+    "body": "The skeleton **clicks** as it moves. Dry bone, rusted blade, no hurry.",
     "choices": [
       {
         "text": "Fight!"
@@ -374,7 +379,7 @@
   },
   "act2/encounters/trial_fallen_angel_gate": {
     "title": "Veil trial",
-    "body": "From the **ash** rises a **silhouette** that was once too much light for one body — it asks no forgiveness, only **proof**.\n\n*Whoever would claim a name of fall, shadow, penance, or true aim must defeat what fell and still cuts* — no **shortcut**: steel, arcane, prayer, or arrow, or **return** without title.",
+    "body": "From the **ash** rises a silhouette that was once too much light for a body. It does not ask forgiveness. It asks for **proof**.\n\nWhoever wants a name of fall, dark, penance, or true aim must beat what fell — and still cuts.",
     "choices": [
       {
         "text": "Face the angel with steel (knight)",
@@ -396,7 +401,7 @@
   },
   "act2/encounters/wild_encounter_bones_rare": {
     "title": "Bones without choir",
-    "body": "A lone **skeleton** rises at the junction, without chant and without haste. When it sees you, it points its blade as one fulfilling an old oath.",
+    "body": "A single **skeleton** rises at the crossing, without chant and without hurry. When it sees you, it points the blade like someone keeping an old oath.",
     "choices": [
       {
         "text": "Face the bone sentinel"
@@ -405,7 +410,7 @@
   },
   "act2/encounters/wild_encounter_cultist": {
     "title": "Lone patrol",
-    "body": "A **cultist** too confident separates from the choir. His voice **trembles** — not from fear, from cheap **ecstasy**.",
+    "body": "An overconfident **cultist** peels off the choir. His voice shakes — not from fear, from cheap ecstasy.",
     "choices": [
       {
         "text": "Whisper the name of the Third Bell — buy mutual silence",
@@ -421,7 +426,7 @@
   },
   "act2/encounters/wild_encounter_lone_swarm_rare": {
     "title": "Broken nest",
-    "body": "Beneath loose planks, a **swarm** without a den runs in circles, wounded and furious. Its hunger still bites like a whole choir.",
+    "body": "Under loose boards, a **swarm** without a nest runs in circles — wounded, furious, smelling of nest. The hunger still bites.",
     "choices": [
       {
         "text": "Trample the isolated swarm"
@@ -430,7 +435,7 @@
   },
   "act2/encounters/wild_encounter_mixed": {
     "title": "Mixed cell",
-    "body": "**Rat** and **skeleton** share the same floor — as if death and life had agreed on a **price**.",
+    "body": "**Rat** and **skeleton** share the same floor. Hunger and bone in one corridor — and you in the middle.",
     "choices": [
       {
         "text": "Fight rats and bone"
@@ -439,7 +444,7 @@
   },
   "act2/encounters/wild_encounter_rats": {
     "title": "Double swarm",
-    "body": "Two **vortices** of teeth close the corridor on you. This is no ambush of men — it is organized **hunger**.",
+    "body": "Two **vortices** of teeth seal the corridor. Not a people ambush. Organized **hunger**.",
     "choices": [
       {
         "text": "Face two swarms"
@@ -448,7 +453,7 @@
   },
   "act2/faction/circulo_envoy": {
     "title": "Living ash — Circle",
-    "body": "**Ash** rises from the floor like the **breath** of one who died once and liked the silence.\n\n*\"The Circle **lends** form,\" a voice says. \"Whoever **tears** pays in cheap blood.\"*",
+    "body": "**Ash** rises from the floor like cold smoke.\n\n*\"The Circle **lends** form,\" a voice says. \"Whoever **tears** pays in cheap blood.\"*",
     "choices": [
       {
         "text": "Let the Circle close a favorable symbol",
@@ -468,7 +473,7 @@
   },
   "act2/faction/circulo_envoy_blades": {
     "title": "Living ash — iron",
-    "body": "[DRAFT] The **ash** **bites**. The **Circle** collects **by hand** what it **could not** collect by **voice**.",
+    "body": "Talk is over. The **ash** bites skin. The **Circle** collects with steel what the voice could not.",
     "choices": [
       {
         "text": "Tear the design before it closes",
@@ -478,19 +483,19 @@
   },
   "act2/faction/circulo_envoy_verbal_win": {
     "title": "Living ash — word",
-    "body": "[DRAFT] The design **closes** without **bite**. You hear the **loan** **sleep** in the air, like **held** **breath**.",
+    "body": "The pattern **closes** without a bite. You hear the loan fall asleep in the air — held breath, not eternal truce.",
     "choices": [
       {
         "text": "Return to the crossroads"
       }
     ],
     "onEnterDiaryTexts": [
-      "[DRAFT] The Circle accepted the tone — ash that retreats without forgiving for free."
+      "The Circle accepted the tone — ash that yields without forgiving for free."
     ]
   },
   "act2/faction/culto_envoy": {
     "title": "Bell flesh — Cult",
-    "body": "A **bell** without clapper vibrates in the tunnel's **throat**. The shadow **bends** the knee before you do.\n\n*\"A devotee is one who **pays** silence with another silence.\"*",
+    "body": "A **bell** without a clapper vibrates in the tunnel's throat. The shadow bends the knee before you do.\n\n*\"Devout is who **pays** silence with another silence.\"*",
     "choices": [
       {
         "text": "Confess as high debtor — the bell collects and pays",
@@ -517,7 +522,7 @@
   },
   "act2/faction/culto_envoy_blades": {
     "title": "Bell flesh — iron",
-    "body": "[DRAFT] The **clapper** that **never** came **arrives** in the **throat**. The **Bell** **collects** in **flesh**.",
+    "body": "The clapper that never came arrives in the **throat**. The **Bell** collects in flesh.",
     "choices": [
       {
         "text": "Cut the prayer in half",
@@ -527,19 +532,19 @@
   },
   "act2/faction/culto_envoy_verbal_win": {
     "title": "Bell flesh — word",
-    "body": "[DRAFT] The **shadow** **inclines** its head. This is not **forgiveness** — it is **debt** **acknowledged** with **another** **silence**.",
+    "body": "The shadow tilts its head. It does not forgive. It only recognizes the debt — and charges another silence.",
     "choices": [
       {
         "text": "Withdraw from the rumor"
       }
     ],
     "onEnterDiaryTexts": [
-      "[DRAFT] The rumor retreated — the Bell noted without bleeding the corridor."
+      "The rumor drew back — the Bell noted it without bleeding the corridor."
     ]
   },
   "act2/faction/vigilia_envoy": {
     "title": "Distant beacon — Vigil",
-    "body": "A **cloak-bearer** tilts the lantern. The metal does not shine — it **accuses**.\n\n*\"What the depths name, the Vigil **repeats** in a lower voice.\"*",
+    "body": "A **cloaked watcher** tips the lantern. The metal does not shine — it accuses.\n\n*\"Whoever the undercroft names, the Vigil **repeats** softer. **Morvayn** holds the throne; we want him standing — or dead.\"*",
     "choices": [
       {
         "text": "Accept military pay and the wrist grip",
@@ -559,7 +564,7 @@
   },
   "act2/faction/vigilia_envoy_blades": {
     "title": "Distant beacon — iron",
-    "body": "[DRAFT] The conversation **closed**. What remains is **counting** — and the **hunter** already **measures** your **step**.",
+    "body": "Talk closed. What remains is the count — and the hunter already measures your step.",
     "choices": [
       {
         "text": "Answer insult with blade",
@@ -569,19 +574,19 @@
   },
   "act2/faction/vigilia_envoy_verbal_win": {
     "title": "Distant beacon — word",
-    "body": "[DRAFT] The lantern **lowers** a finger. No wrist grip — only a **barracks truce**, cold as **metal** in the **damp**.",
+    "body": "The lantern drops a finger. No handshake: only barracks truce, cold as metal in the open.",
     "choices": [
       {
         "text": "Return to the crossroads"
       }
     ],
     "onEnterDiaryTexts": [
-      "[DRAFT] The cloak-bearer yielded the path — discipline without blood this time."
+      "The watcher yielded the step — discipline without blood this time."
     ]
   },
   "act2/flee_rats": {
     "title": "Flight — teeth in the boot",
-    "body": "You slip on **slime** that forgives no step. **Bites** tear leather where armor does not reach — this is not honor; it is **survival**.\n\nThe swarm **laughs** in shrill tones — or perhaps your ear **breaks** first.",
+    "body": "You slip in **mire** that does not forgive. Bites tear leather where armor does not reach.\n\nThe swarm squeals sharp — or maybe only your ear breaks first.",
     "choices": [
       {
         "text": "Frighten fear itself and return to the crossroads"
@@ -593,7 +598,7 @@
   },
   "act2/flee_skeleton": {
     "title": "Flight — bones in pursuit",
-    "body": "The skeleton **does not tire** — you do. Every **crack** behind you sounds like **questions** you do not want to answer.\n\nAt the bend, a **loose bone** rolls under your feet — the floor **collaborates** with the enemy.",
+    "body": "The skeleton **does not tire**. You tire. Each click behind you sounds like a question without an answer.\n\nAt the bend, a loose bone rolls under your feet.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -605,7 +610,7 @@
   },
   "act2/hub_catacomb": {
     "title": "Crossroads — hub",
-    "body": "Candles and **wax** hold your step at the crossroads; *today is **day {{day}}** below.*\n\nAn **echo** of a bell rises from the depths and dies before reaching the city — as if the **silence** down there **ate** the sound and only let through enough to remind you there are still ears.",
+    "body": "Four corridors open on the **crossroads**. Spent candles drip **wax** on the floor; *today is **day {{day}}** below.*\n\nA bell echo rises from below and dies before the surface. In the air, wet stone and cold metal — the name **Morvayn** sticks to the tongue.",
     "choices": [
       {
         "text": "Return to the rat corridor",
@@ -670,8 +675,8 @@
       },
       {
         "text": "Marked passage — echo of oaths",
-        "preview": "Old memory; skill and luck weigh — the echo weakens if you linger too long.",
-        "lockedHint": "Requires level 7+ and arriving by day 10 — afterward the echo cools.",
+        "preview": "Old memory; skill and luck weigh in — the echo weakens if you linger too long.",
+        "lockedHint": "Requires level 7+ and reach by day 10 — after that the echo cools.",
         "uiSection": "Crossroads echoes"
       },
       {
@@ -709,7 +714,7 @@
       },
       {
         "text": "Descend deeper",
-        "preview": "Chapter 3 — the dungeon tightens the silence.",
+        "preview": "Chapter 3 — the dungeon tightens.",
         "lockedHint": "Requires level 6+ and reaching the crossroads map goal (patrol).",
         "uiSection": "Return and advance"
       }
@@ -717,7 +722,7 @@
   },
   "act2/hub_mira_banter": {
     "title": "Crossroads — words with Mira",
-    "body": "**Mira** rests the sword on her shoulder as one holding a cheap secret: \"This place **charges** every step. I already left a name here — I will not leave yours **for free**.\"\n\nThe echo agrees, but does not say to whom it belongs.",
+    "body": "**Mira** rests the sword on her shoulder: \"This place **charges** every step. I already left a name here — I will not leave yours for free.\"\n\nThe echo answers. It does not say whose.",
     "choices": [
       {
         "text": "Return to the crossroads",
@@ -727,7 +732,7 @@
   },
   "act2/hub_observe": {
     "title": "Marks",
-    "body": "On the floor: **three parallel furrows**, like scratches from large claws. Beside them, **human footprints** turn back — someone gave up halfway.\n\nA tiny **bell** was driven into the stone, rusted.",
+    "body": "On the floor: **three parallel grooves** and footprints that turn back — someone quit halfway.\n\nAmong the marks, **Morvayn** scratched with an arrow down; a rusted **bell** driven into the stone.",
     "choices": [
       {
         "text": "Talk to Mira about the crossroads",
@@ -741,7 +746,7 @@
   },
   "act2/lore/lore_crossroads": {
     "title": "Echo of oaths",
-    "body": "A **voice** without owner asks what you were and what you accept becoming. The air **weighs** like a wet mantle; the stones **remember** oaths others broke before you.\n\nThere is no map for this — only **decisions** the game records in flesh.",
+    "body": "An ownerless **voice** asks what you were and what you accept to be. The air weighs — damp, dense. The stones keep marks of broken oaths.\n\nThere is no map here. Only the choice you carry in the flesh.",
     "choices": [
       {
         "text": "Accept the name of Fallen Knight (knight)",
@@ -765,7 +770,7 @@
       },
       {
         "text": "Plunge your arm into the whispering mire",
-        "preview": "Luck — 2d6 + LCK · without deciding, you withdraw to the crossroads.",
+        "preview": "Luck — 2d6 + LCK · without deciding, you return to the crossroads.",
         "uiSection": "Luck"
       },
       {
@@ -791,7 +796,7 @@
         "text": "Recall the marksman (path echo)",
         "uiSection": "Memory",
         "diaryTexts": [
-          "The crossroads reminded me of the distance I chose: not escape — aim."
+          "The crossroads reminded me of the distance I chose: not flight — aim."
         ]
       },
       {
@@ -802,7 +807,7 @@
   },
   "act2/lore/lore_penitent_recall_fail": {
     "title": "Truncated echo",
-    "body": "The voice **unravels** before forming a sentence. You are left with the **weight** without the **name** — like one who prays and forgets the last word.",
+    "body": "The voice **unravels** before it forms a sentence. You keep the weight without the name — like praying and forgetting the last word.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -814,12 +819,12 @@
   },
   "act2/lore/lore_penitent_recall_mind": {
     "title": "Memory that weighs",
-    "body": "The echo asks for a **name** — not your baptismal one, but the one you chose when guilt **sat** beside you.\n\nIf the memory comes **ordered**, perhaps it will leave you something beyond ash.",
+    "body": "The echo asks for a **name** — not your baptism one, but the one you chose when guilt sat beside you.\n\nIf the memory comes ordered, it may leave more than ash.",
     "skillCheckLabel": "Sustain the penitent's memory without breaking"
   },
   "act2/lore/lore_penitent_recall_success": {
     "title": "Confession that stays",
-    "body": "The memory **settles** — not as victory, but as **truth** you can bear without lying to yourself.",
+    "body": "The memory **settles**. Not as victory — as truth you can hold without lying to yourself.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -831,12 +836,12 @@
   },
   "act2/luck_mire": {
     "title": "The whispering mire",
-    "body": "The **mire** is not water: it is cheap **memory** that promises strength and collects on your **luck**. Reach out — the dice **decide** whether you return whole.",
+    "body": "The **mire** is not water: cheap memory that promises strength and charges your **luck**. Reach out — the dice decide if you return whole.",
     "luckCheckLabel": "Touch the mire without being devoured"
   },
   "act2/luck_mire_safe": {
     "title": "Thread of luck",
-    "body": "The mire **releases** your arm as one who **loses** interest. You are left with a false **warmth** in your muscles — **brief**, but enough for one more punch.",
+    "body": "The mire **releases** your arm as if it lost interest. A lying warmth stays in the muscles — brief, but enough for one more punch.",
     "choices": [
       {
         "text": "Withdraw and return to the crossroads"
@@ -848,7 +853,7 @@
   },
   "act2/luck_mire_wound": {
     "title": "Well's bite",
-    "body": "Something **scrapes** tendon and **confidence** at once. It is not only pain — it is **warning** carved into the **agile** posture you once had.",
+    "body": "Something **scrapes** tendon and confidence at once. The pain stays in your stance: the body hesitates before the next step.",
     "choices": [
       {
         "text": "Drag yourself back to the crossroads"
@@ -860,7 +865,7 @@
   },
   "act2/merchant/merchant_ask": {
     "title": "Origin",
-    "body": "\"From an **archive** that no longer exists,\" he murmurs. \"The archive burned. The **map** remembered how to survive.\"\n\nFor a second, the hood **swells** — there is no wind.",
+    "body": "\"From an **archive** that no longer exists,\" he murmurs. \"The archive burned. The map survived.\"\n\nFor a second the hood swells — no wind.",
     "choices": [
       {
         "text": "Accept the map (−1 gold)",
@@ -879,12 +884,12 @@
   },
   "act2/merchant/merchant_circle_bet": {
     "title": "Symbols that bite",
-    "body": "The hood **inclines** for a **wager**; you whisper **symbols** and the air **learns** the pattern — someone invisible **holds** the dice.\n\n*The Circle lends luck; whoever mistimes pays in another coin.* **Roll luck** (−1 to total: **debt** already counted).",
+    "body": "The hood tips for a **wager**. You whisper symbols and the air catches the pattern — someone unseen holds the dice.\n\n*The Circle lends luck; miss the timing and you pay another coin.* **Roll luck** (−1 on fail).",
     "luckCheckLabel": "Either the Circle pays, or it collects in secret"
   },
   "act2/merchant/merchant_circle_lose": {
     "title": "Price outside the purse",
-    "body": "The pattern **slips** one **symbol** too late. Something **pulls** from your purse — **not** a human hand.\n\nWhen you **see** clearly again, **two coins** are missing and **wet** laughter **echoes** beneath the hood.",
+    "body": "The pattern **slips** one symbol too late. Something pulls from your pocket — not a human hand.\n\nWhen you see clearly again, **two coins** are gone. A wet laugh echo remains under the hood.",
     "choices": [
       {
         "text": "Accept the loss and return to the crossroads",
@@ -896,7 +901,7 @@
   },
   "act2/merchant/merchant_circle_win": {
     "title": "The hood pays",
-    "body": "The symbols **close** before the curse **tightens**. A **warm** coin falls into your palm — paid by the Circle, not you.\n\nThe merchant does **not laugh**. He only **nods**.",
+    "body": "The symbols **close** before the curse tightens. A warm coin drops into your palm — paid by the Circle, not yours.\n\nThe merchant does not laugh. He only nods.",
     "choices": [
       {
         "text": "Collect the gold and return to the crossroads",
@@ -908,7 +913,7 @@
   },
   "act2/merchant/merchant_moon": {
     "title": "Faceless merchant",
-    "body": "A hood **without a face** extends a **map** with gnawed margins. The fingers beneath the cloth are **too long** to be merely human.\n\n*\"Rumors change **weights**,\"* says the voice — as if the air came from the stone itself. If someone **recognizes** you among the factions, the price stops being gold alone.",
+    "body": "A **faceless** hood holds out a map with gnawed margins. The fingers under the cloth are too long to be only human.\n\n*\"Rumors change **weights**\"* — if someone knows you among the factions, the price shifts.",
     "choices": [
       {
         "text": "Accept the torn map (−1 gold)",
@@ -1007,7 +1012,7 @@
   },
   "act2/path_archer_marksman": {
     "title": "Marksman Archer",
-    "body": "The **angel** unravels into **ash** that does not fall — only drifts away. The arrow does **not** forgive; neither do you. From here on, whoever sees you reads **patience** where they once read shadow — and learns to fall **without witnesses**.",
+    "body": "The **angel** unravels into ash that does not fall — it only drifts away. The arrow does not forgive; neither do you. From here, whoever sees you reads **patience** where they once read shadow.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -1019,7 +1024,7 @@
   },
   "act2/path_cleric_penitent": {
     "title": "Penitent Cleric",
-    "body": "Incense **burns** finer when guilt **breathes** with you. You are no lesser servant — you are **more** truthful than the psalm allows.",
+    "body": "The incense **burns** thinner when guilt breathes with you. Less psalm. More truth.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -1031,7 +1036,7 @@
   },
   "act2/path_knight_fallen": {
     "title": "Fallen Knight",
-    "body": "The **angel** unravels into **ash** that does not burn. Iron does **not** forgive; neither do you. From here on, whoever sees you reads **fall** where they once read wall.",
+    "body": "The **angel** unravels into ash that does not burn. Iron does not forgive; neither do you. From here, whoever sees you reads **fall** where they once read wall.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -1043,7 +1048,7 @@
   },
   "act2/path_mage_dark": {
     "title": "Dark Mage",
-    "body": "The angel's **broken light** **feeds** what you carry: the Tower **measures** light, the dungeon **teaches** what it will not pay for. Your notebook gains **margins** no scriptorium would approve.",
+    "body": "The angel's broken light feeds what you bring. The Tower measures light; the dungeon teaches what it will not pay. Your notebook gains margins no scriptorium approves.",
     "choices": [
       {
         "text": "Return to the crossroads"
@@ -1055,7 +1060,7 @@
   },
   "act2/rats_choice": {
     "title": "Squeak in the dark",
-    "body": "**Squeaking** too loud to be only wind. **Red** eyes in the dark move as a group — there is not one rodent, there is **a decision** with teeth.\n\nThe floor is **damp**; old human footprints mix with small paws.",
+    "body": "**Squeaking** too loud to be only wind. Ruby eyes in the dark move as a group — not one rodent, a decision with teeth.\n\nThe floor is damp; old human prints mix with small paws.",
     "choices": [
       {
         "text": "[%] Face the swarm",
@@ -1073,7 +1078,7 @@
   },
   "act2/rats_listen": {
     "title": "Listen",
-    "body": "The squeaking **breaks** into pattern — almost language. For an instant they seem to **whisper** how many steps you have left.\n\nSomething **larger** creaks deeper in, but does not move.",
+    "body": "The squeaking **breaks** into a pattern — almost language. For a moment they seem like whispers counting how many steps remain.\n\nSomething larger creaks deeper, but does not move.",
     "choices": [
       {
         "text": "[%] Prepare and face them",
@@ -1090,7 +1095,7 @@
   },
   "act2/rats_smell": {
     "title": "Smell",
-    "body": "**Mold** first, then **iron** — and finally a false sweetness, like heated **copper**.\n\nIt is not fresh blood. It is **old blood** that never fully dried. You count the swarm by stench: **three**, maybe **four**.",
+    "body": "**Mold** first, then iron — and at last a false sweet, like heated copper.\n\nNot fresh blood. Old blood that never fully dried. You count the swarm by the stench: **three**, maybe **four**.",
     "choices": [
       {
         "text": "[%] Face the swarm",
@@ -1107,7 +1112,7 @@
   },
   "act2/recruit_mira": {
     "title": "Mira Joins the Group",
-    "body": "Mira adjusts her dagger. \"Less talk. **More foot**.\"",
+    "body": "Mira tightens the sheath. \"Less talk. **More feet**.\"",
     "choices": [
       {
         "text": "Continue"
@@ -1116,7 +1121,7 @@
   },
   "act2/recruit_offer": {
     "title": "Mira's Offer",
-    "body": "**Mira** watches from the shadows: \"I need someone who does not fear silence.\"",
+    "body": "**Mira** watches from the shadows: \"I need someone who does not fear the silence.\"",
     "choices": [
       {
         "text": "Recruit Mira",
@@ -1138,7 +1143,7 @@
   },
   "act2/skeleton_room": {
     "title": "Room of Armed Bones",
-    "body": "Armed remains rise by **habit**, not by will.",
+    "body": "Armed remains rise by **habit**, not will. The blade scrapes dry bone.",
     "choices": [
       {
         "text": "Trail of iron in the gloom — a silhouette watches, unmoving",
@@ -1151,7 +1156,7 @@
   },
   "act2/faction/vigilia_cache": {
     "title": "Sealed Vigil cache",
-    "body": "Behind a **grate** marked with the beacon, a niche holds supplies sealed in wax. Only those who already **spoke** with the envoy know the path — the common crossroads does not show this fold.",
+    "body": "Behind a **grate** marked with the beacon, a niche holds supplies sealed in wax. Only those who already spoke with the envoy know the path.",
     "choices": [
       {
         "text": "Break the seal and take what the order hid",
@@ -1171,7 +1176,7 @@
   },
   "act2/faction/circulo_ash_nook": {
     "title": "Circle's ash nook",
-    "body": "A **nook** the crossroads map does not mark: living ash draws circles on the floor. Only those who already **heard** the envoy find the fold — and the fold remembers.",
+    "body": "A **nook** the crossroads map does not mark: living ash draws circles on the floor. Only those who already heard the envoy find the fold.",
     "choices": [
       {
         "text": "Accept the loan of form — read what the ash writes",
@@ -1191,7 +1196,7 @@
   },
   "act2/faction/culto_bell_alcove": {
     "title": "Third Bell alcove",
-    "body": "An **alcove** where the clapper does not exist, yet the air **vibrates**. The cult envoy spoke of this fold; the common crossroads **lies** about it.",
+    "body": "An **alcove** with no clapper, but the air vibrates. The cult envoy spoke of this fold; the common crossroads does not show the way.",
     "choices": [
       {
         "text": "Kneel and let the bell name the next step",

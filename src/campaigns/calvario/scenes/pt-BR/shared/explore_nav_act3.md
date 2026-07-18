@@ -21,6 +21,6 @@ choices:
     preview: "Voltar ao hub e manter o stress atual."
 onEnter: []
 ---
-Nas **profundezas**, o eco mastiga nomes antes de os devolver. O mapa não promete saída — só **direção**.
+Nas profundezas, o eco mastiga nomes antes de devolvê-los. O mapa não promete saída — só direção.
 
-Com o **mapa rasgado** na cabeça, vês onde a pedra **mente** menos. Sem ele, só restam **ouvido** e **pressa**.
+Com o **mapa rasgado**, você vê onde a pedra mente menos. Sem ele, só restam ouvido e pressa.

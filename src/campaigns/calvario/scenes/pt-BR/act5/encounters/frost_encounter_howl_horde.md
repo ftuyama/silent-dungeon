@@ -13,6 +13,4 @@ choices:
         onFlee: shared/explore_nav_act5
 onEnter: []
 ---
-Quando o vento **vira**, vês quatro formas: três crias e um **saqueador da geada** a abrir caminho como **machado** vivo. O uivo vem do **metal** e do **osso** a combinarem fome.
-
-É raro ver tantas bocas num só lugar — ou há **presa**, ou há **desespero**.
+Quando o vento **vira**, você vê quatro formas: três crias e um **saqueador da geada** abrindo caminho como machado vivo. O uivo vem do metal e do osso juntos.

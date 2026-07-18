@@ -66,6 +66,15 @@ Corpo da base = ramo default (ex. `slain`); variantes `_pact` / `_sealed` sem `s
 - **i18n:** cada variante = entrada própria no overlay en-US.
 - **Quando NÃO usar path:** one-shots locais (`flag`), flavor curto, checks `_ok`/`_fail` — preferir `flag`/`mark`/`condition` na mesma cena.
 
+### `artKey` — política beats-only
+
+- **Beats narrativos distintos** (intro ≠ epílogo, hub ≠ prova, gate ≠ pacto, opening ≠ sealed/pact) → **artKey única** + ficheiro `ascii/scenes/<actN>/<artKey>.txt`.
+- **Variantes do mesmo beat** (`_ok` / `_fail` / `_win` / ramos de skill check) → **podem partilhar** a artKey do beat pai.
+- Cenas **hub / opening / boss / epilogue** ou com `highlight: true`: nunca reutilizar artKey de outro beat — o overlay dedupeia por `artKey` (`sceneArtHighlightDedupeKey`), e a segunda cena importante não mostra overlay.
+- Basename do `.txt` = artKey; chaves duplicadas no glob de `ascii/art.ts` falham no build.
+- Novo ficheiro pode começar com `PLACEHOLDER` até arte final.
+- Antes de merge de blocos narrativos grandes: `npm run check:ascii-art:relevance` e rever tier S/A com issue `reused` entre beats distintos.
+
 ### Overlay `highlight` com animação (ASCII)
 
 - Com `highlight: true` e `artHighlightFrames` com **duas ou mais** chaves válidas em `sceneArt`, o overlay em tela cheia **cicla** esses ficheiros durante o hold.
@@ -154,12 +163,17 @@ choices:
 
 ## Qualidade narrativa
 
-- Gancho forte na abertura.
-- 2 a 4 escolhas relevantes.
-- Pelo menos 1 trade-off claro.
+Ver regra completa: `.cursor/rules/narrative-voice.mdc`.
+
+- Gancho forte na abertura; prosa **curta e humana** (não mood-board de metáforas).
+- 2 a 4 escolhas relevantes; pelo menos 1 trade-off claro.
 - Continuidade com ato/campanha.
-- Classes: `knight`, `mage`, `cleric`.
+- Classes: `knight`, `mage`, `cleric`, `archer`.
 - Facções: `vigilia`, `circulo`, `culto`.
+- **Negrito** e **travessão (`—`)** OK — com moderação (ênfase real, não ritmo de template).
+- Evitar: *"não é X — é Y"* em série, tripletos, metáforas económicas empilhadas, cenário que “pensa”, meta (*o jogo…*), PT-PT (*Precisas*, *Regressar*, *até ao*).
+- Preferir: um detalhe sensorial concreto; escolhas como ações do jogador.
+- Validar: `npm run check:pt-br` e `npm run check:narrative-voice`.
 
 ## Template base
 

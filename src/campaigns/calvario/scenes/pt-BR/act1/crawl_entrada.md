@@ -11,7 +11,7 @@ choices:
     preview: "Escolha de classe e primeiro passo firme."
     effects:
       - { op: addDiary, text: "Entrei na Masmorra do Silêncio." }
-  - text: "Seguir em frente — boca da masmorra"
+  - text: "Seguir até a boca da masmorra"
     next: act1/dungeon_mouth
     condition: { flag: act1_class_chosen }
     preview: "Juramento feito; o ar lá fora ainda ouve."
@@ -28,6 +28,6 @@ choices:
     preview: "Detalhe tátil; stress leve e uma marca."
 onEnter: []
 ---
-Pedra fria sob a palma. A umidade **não é água** — é algo que escorreu de cima há séculos e nunca secou de todo.
+Pedra fria sob a palma. A umidade grudou há séculos e nunca secou de todo.
 
-Cada degrau consome um pouco de **luz**; atrás de você, o **telhado** **escurece** até a tocha parecer memória de outra vida.
+Cada degrau come um pouco de **luz**. Atrás de você, o teto escurece até a tocha parecer memória.

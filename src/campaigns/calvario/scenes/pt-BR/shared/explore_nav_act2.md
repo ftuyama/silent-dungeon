@@ -21,6 +21,6 @@ choices:
     preview: "Recuar, erguer abrigo e manter o stress atual."
 onEnter: []
 ---
-O **silêncio** não é ausência de som — é **decisão** da pedra. Cada passo **pergunta** se voltas ao fogo da Vigília ou se **ficas** com o eco.
+O **silêncio** aqui não é falta de som — é peso da pedra. Cada passo pergunta se você volta ao fogo da Vigília ou fica com o eco.
 
-Com o **mapa rasgado**, vês onde o corredor **mente** menos; sem ele, só tens **pele** e **pressa**.
+Com o **mapa rasgado**, você vê onde o corredor mente menos; sem ele, só restam pele e pressa.

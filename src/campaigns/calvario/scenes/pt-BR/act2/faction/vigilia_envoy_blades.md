@@ -14,4 +14,4 @@ choices:
     preview: "Combate · caçador"
 onEnter: []
 ---
-[RASCUNHO] A conversa **fechou**. Sobra **contagem** — e o **caçador** já **mede** seu **passo**.
+A conversa fechou. Sobra a contagem — e o caçador já mede o seu passo.

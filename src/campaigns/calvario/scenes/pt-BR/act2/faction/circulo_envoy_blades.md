@@ -14,4 +14,4 @@ choices:
     preview: "Combate · adepto osso"
 onEnter: []
 ---
-[RASCUNHO] O **cinza** **morde**. O **Círculo** cobra **à mão** o que **não** conseguiu **cobrar** à **voz**.
+A conversa acabou. A **cinza** morde a pele. O **Círculo** cobra na lâmina o que a voz não conseguiu.

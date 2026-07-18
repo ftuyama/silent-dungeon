@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-Metal **range** onde não devia haver ferreiro — só **vontade** temperada em frio. A armadura não protege o corpo; **silencia** a hesitação.
+Metal range onde não deveria haver ferreiro — só vontade temperada a frio. A armadura não protege o corpo; silencia a hesitação.
 
-Cada passo dele é uma **sentença** lida em voz baixa.
+Cada passo dele é sentença em voz baixa.

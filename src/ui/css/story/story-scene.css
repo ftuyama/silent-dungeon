@@ -166,11 +166,48 @@ h1 {
   min-width: 0;
 }
 
+.choices-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.choices-section--collapsible > .choices-section__title--summary {
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.choices-section--collapsible > .choices-section__title--summary::-webkit-details-marker {
+  display: none;
+}
+
+.choices-section--collapsible > .choices-section__title--summary::after {
+  content: '▸';
+  margin-left: auto;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.choices-section--collapsible[open] > .choices-section__title--summary {
+  margin-bottom: 0.4rem;
+}
+
+.choices-section--collapsible[open] > .choices-section__title--summary::after {
+  content: '▾';
+}
+
+.choices > button.choice,
+.choices-section__body > button.choice,
+.choices-locked__list > button.choice {
+  width: 100%;
+}
+
 button.choice {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.35rem 0.42rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.15rem;
   text-align: left;
   font: inherit;
   cursor: pointer;
@@ -180,6 +217,25 @@ button.choice {
   border: 1px solid var(--border);
   border-radius: 2px;
   transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
+}
+
+button.choice .choice-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem 0.42rem;
+  width: 100%;
+  min-width: 0;
+}
+
+button.choice .choice-label {
+  flex: 1 1 0;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+button.choice .choice-main > .ui-hotkey-badge {
+  margin-top: 0.08rem;
 }
 
 button.choice:hover {
@@ -195,13 +251,12 @@ button.choice:focus-visible,
 
 button.choice .preview {
   display: block;
-  flex: 1 1 100%;
   width: 100%;
   padding-left: calc(var(--ui-hotkey-size) + 0.42rem);
   box-sizing: border-box;
   font-size: 0.78rem;
+  line-height: 1.35;
   color: var(--magic);
-  margin-top: 0.15rem;
 }
 
 button.choice.choice--locked {
@@ -218,13 +273,12 @@ button.choice.choice--locked:hover {
 
 button.choice.choice--locked .choice-locked-hint {
   display: block;
-  flex: 1 1 100%;
   width: 100%;
   padding-left: calc(var(--ui-hotkey-size) + 0.42rem);
   box-sizing: border-box;
   font-size: 0.78rem;
+  line-height: 1.35;
   color: color-mix(in srgb, var(--fg) 58%, transparent);
-  margin-top: 0.25rem;
   font-style: italic;
 }
 
@@ -344,6 +398,11 @@ button.choice.choice--tone-explore {
   box-shadow: inset 3px 0 0 0 color-mix(in srgb, var(--magic) 70%, var(--border));
 }
 
+button.choice.choice--tone-skill {
+  background: color-mix(in srgb, var(--magic) 12%, var(--surface-raised));
+  box-shadow: inset 3px 0 0 0 color-mix(in srgb, var(--magic) 70%, var(--border));
+}
+
 button.choice[class*='choice--tone-']:not(.choice--tone-chapter-advance):hover {
   background: color-mix(in srgb, var(--surface-hover-alt) 92%, var(--surface-raised));
   border-color: var(--accent);
@@ -377,6 +436,10 @@ button.choice.choice--tone-explore:hover {
   background: color-mix(in srgb, var(--magic) 14%, var(--surface-hover-alt));
 }
 
+button.choice.choice--tone-skill:hover {
+  background: color-mix(in srgb, var(--magic) 14%, var(--surface-hover-alt));
+}
+
 button.choice.choice--locked[class*='choice--tone-']:hover {
   border-color: var(--border);
   background: var(--surface-raised);
@@ -384,6 +447,8 @@ button.choice.choice--locked[class*='choice--tone-']:hover {
 
 .skill-row {
   margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
   display: flex;
   flex-direction: column;
 }

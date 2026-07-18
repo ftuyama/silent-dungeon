@@ -10,8 +10,8 @@ skillCheck:
   tn: 11
   successNext: act4/throne/throne_sweep_cat_ok
   failNext: act4/throne/throne_sweep_cat_fail
-  label: "Contar ossos sem te perderes no número"
+  label: "Contar ossos sem se perder no número"
 choices: []
 onEnter: []
 ---
-Cada costela é um **argumento**. Se te convenceres demais, o trono **junta** mais uma linha ao seu lado.
+Cada costela é um **argumento**. Se você se convencer demais, o trono junta mais uma linha do seu lado.

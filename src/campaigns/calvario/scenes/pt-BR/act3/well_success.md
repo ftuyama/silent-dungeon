@@ -11,4 +11,4 @@ onEnter:
   - { op: addXp, amount: 16 }
   - { op: addMark, mark: act3_well_truth }
 ---
-Vês o **truque**: espelho deslocado. O caminho real abre à esquerda.
+Você vê o **truque**: espelho deslocado. O caminho real abre à esquerda.

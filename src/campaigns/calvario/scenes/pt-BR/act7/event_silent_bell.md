@@ -21,6 +21,6 @@ choices:
     preview: "+1 corrupção · marca"
 onEnter: []
 ---
-No meio do descampo, um **sino** pendurado em nada — **língua** arrancada, badalo **mudo**. Ainda assim, o ar **vibra** como se alguém tivesse acabado de **mentir** em voz alta.
+No meio do descampo, um **sino** pendurado em nada — língua arrancada, badalo mudo. Ainda assim, o ar vibra.
 
-Tocar ou não tocar: o preço não está escrito — está **na mão**.
+Tocar ou não tocar: o preço não está escrito. Está na mão.

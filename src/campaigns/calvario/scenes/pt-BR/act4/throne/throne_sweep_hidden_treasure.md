@@ -10,8 +10,8 @@ choices:
 onEnter:
   - { op: grantItem, itemId: morvayn_heart_shard }
   - { op: addXp, amount: 16 }
-  - { op: addDiary, text: "Num corte escondido do trono, encontrei um fragmento vivo: lateja como memória afiada." }
+  - { op: addDiary, text: "Num corte escondido do trono, encontrei um fragmento vivo — lateja como memória afiada." }
 ---
-Entre costelas petrificadas, descobres um **nódulo negro** preso em ferro antigo. Ao tocá-lo, o salão muda de peso; algo em você aprende um ritmo novo.
+Entre costelas petrificadas, você acha um **nódulo negro** preso em ferro antigo. Ao tocá-lo, o salão muda de peso; algo em você aprende um ritmo novo.
 
-Não é ouro. É um **fragmento de vontade** arrancado ao trono.
+Não é ouro. É um **fragmento de vontade** arrancado do trono.

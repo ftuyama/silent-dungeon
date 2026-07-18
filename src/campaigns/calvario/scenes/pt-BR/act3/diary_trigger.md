@@ -9,4 +9,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "O ar cheira a cobre podre." }
 ---
-Uma sensação **grava** no diário.
+Uma sensação **grava** no diário. Você sente o peso da tinta antes de ver as palavras.

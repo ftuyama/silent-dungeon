@@ -261,6 +261,7 @@
     "itemAcquired": "Item acquired",
     "itemsAcquired": "New items acquired",
     "levelUp": "You leveled up!",
+    "companionRecruitedKicker": "New companion",
     "levelUpsMultiple": "{count} levels at once!",
     "levelTitle": "Level {level} — {name}",
     "levelTitleNoName": "Level {level}",
@@ -428,6 +429,8 @@
       "Even the number seems strange on the tongue."
     ],
     "levelUpSubtitle": "You leveled up.",
+    "companionRecruitTitle": "New companion",
+    "companionRecruitSubtitle": "Joined the party.",
     "exploreGoalTitle": "Objective complete",
     "exploreGoalDefault": "This exploration objective is now marked.",
     "exploreGoalAct2": "Descent found. The crossing through the catacombs was worth it.",

@@ -13,4 +13,4 @@ choices:
         onFlee: act3/flee_cult
 onEnter: []
 ---
-**Cultistas** já te esperavam. Vantagem deles — dados mostrarão.
+**Cultistas** já esperavam você. Vantagem deles — o ferro decide o resto.

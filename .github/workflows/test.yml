@@ -18,6 +18,7 @@ jobs:
       - run: npm run validate:scenes
       - run: npm run validate:unreachable
       - run: npm run check:pt-br
+      - run: npm run check:narrative-voice
       - run: npm run check:ascii-art
       - run: npm run validate:i18n
       - run: npm run validate:i18n:translations

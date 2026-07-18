@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act2
 onEnter: []
 ---
-**Rato** e **esqueleto** dividem o mesmo chão — como se a morte e a vida tivessem combinado **preço**.
+**Rato** e **esqueleto** dividem o mesmo chão. Fome e osso no mesmo corredor — e você no meio.

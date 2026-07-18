@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act8
 onEnter: []
 ---
-Um golem de lava **bloqueia** a ponte. Pedra viva, fogo por sangue.
+Um golem de lava bloqueia a ponte. Pedra viva, fogo por sangue.

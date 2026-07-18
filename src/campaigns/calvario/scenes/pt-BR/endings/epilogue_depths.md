@@ -14,6 +14,6 @@ onEnter:
   - { op: registerEnding, endingId: epilogue_depths }
   - { op: settleRun, outcome: victory }
 ---
-A pedra **desce**: não fechaste a masmorra — **mudaste** de **estrato**. Aqui o silêncio **pesa** como um teto mais baixo; o ar é **velho** antes de chegar aos pulmões.
+A pedra desce. Você não fechou a masmorra — mudou de estrato. Aqui o silêncio pesa como teto mais baixo; o ar chega velho aos pulmões.
 
-A vitória **gravou** mais **Ecos** no legado. Investe-os na loja ou **recomeça** quando o abismo chamar outra vez.
+A vitória gravou mais **Ecos** no legado. Invista-os na loja ou recomece quando o abismo chamar.

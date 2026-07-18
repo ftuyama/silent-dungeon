@@ -13,4 +13,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-[RASCUNHO] O **vento** **espera**. Kael **não** — o **metal** **já** **decidiu** o **tom**.
+[RASCUNHO] O vento espera. Kael não — o metal já decidiu o tom.

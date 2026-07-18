@@ -14,6 +14,4 @@ choices:
         onFlee: act5/frost_hub
 onEnter: []
 ---
-O rumor não mentiu por completo: antes da pedra que parece **boca**, a montanha cobra um **pedágio** de dentes. Duas sombras pequenas cortam o branco — fome com forma, não com ideologia.
-
-Se passar, não agradece ao acaso. Agradece ao **seu** corpo por ainda saber **cair** em pé.
+O rumor não mentiu por completo: antes da pedra que parece boca, a montanha cobra um pedágio de dentes. Duas sombras pequenas cortam o branco — fome com forma.

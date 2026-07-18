@@ -13,6 +13,6 @@ onEnter:
   - { op: addMark, mark: act3_cult_flight }
   - { op: addDiary, text: "Fugi da emboscada. O eco do Terceiro Sino ficou-me na nuca como unha suja." }
 ---
-Os **capuzes** não correm — **flutuam**. Você corres como quem tem **pulmões** ainda humanos.
+Os **capuzes** não correm — deslizam. Você corre com pulmões ainda humanos.
 
-Uma **lâmina** corta o ar perto demais da orelha; outra **risca** seu orgulho sem tocar na pele — humilhação é arma deles.
+Uma lâmina corta o ar perto demais da orelha; outra risca o orgulho sem tocar a pele.

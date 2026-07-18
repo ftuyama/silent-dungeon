@@ -8,4 +8,4 @@ choices:
   - text: "Voltar ao acampamento"
     next: act8/camp/magma_camp
 ---
-A brasa **pisca**; cada fivela parece **negociar** com o calor. Reorganizas o que ainda chama **seu**: **arma**, **armadura**, **relíquias** — pequenas promessas de que o próximo passo não será cinza.
+A brasa pisca. Você reorganiza o que ainda é **seu**: arma, armadura, relíquias — o suficiente para não virar cinza no próximo passo.

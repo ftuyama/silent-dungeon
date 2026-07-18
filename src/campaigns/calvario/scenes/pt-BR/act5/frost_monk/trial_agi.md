@@ -14,6 +14,6 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Placas sob as botas **mentem** sobre firmeza — *não digas; **faz** um passo sem trair o equilíbrio; quem tropeça **some**.*
+Placas sob as botas mentem sobre firmeza — *não diga; **faça** um passo sem trair o equilíbrio; quem tropeça some.*
 
-Coragem sem precisão é **pressa**. **Rola o teste de perícia** — ou a montanha decide.
+Coragem sem precisão é pressa. A gruta não perdoa pressa.

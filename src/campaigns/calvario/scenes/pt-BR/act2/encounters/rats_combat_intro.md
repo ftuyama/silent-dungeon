@@ -15,6 +15,6 @@ choices:
         onFlee: act2/flee_rats
 onEnter: []
 ---
-O chão **vibra** — **garras** a escavar pedra mole. Os ratos **não fogem**; avançam em arco, como se alguém os ensinara **formação**.
+O chão **vibra** — garras escavando pedra mole. Os ratos **não fogem**; avançam em arco, como se alguém os tivesse ensinado formação.
 
-Aperta os dentes. Os **dados** vão contar o que a carne não quer admitir. Se cheirou o ar, já sabe quantos dentes o esperam; se escutou, o passo deles já é seu.
+Aperte os dentes. O combate começa agora.

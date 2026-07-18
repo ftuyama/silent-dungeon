@@ -10,10 +10,10 @@ choices:
     effects:
       - { op: setFlag, key: throne_observe_drip_gold_done, value: true }
       - { op: addResource, resource: gold, delta: 1 }
-      - { op: addDiary, text: "A gota solidificou-se entre os dedos — pequena moeda de gelo e sorte." }
+      - { op: addDiary, text: "A gota solidificou entre os dedos — gelo pequeno, sorte viva." }
   - text: "Voltar ao momento da decisão"
     next: act4/throne/throne_gate
 onEnter:
   - { op: addXp, amount: 10 }
 ---
-No instante certo, a **memória** engana-se e pensa que é dono dela. Aproveita: o trono ainda não percebeu.
+No instante certo, a **memória** hesita e você pega a gota. O trono ainda não notou.

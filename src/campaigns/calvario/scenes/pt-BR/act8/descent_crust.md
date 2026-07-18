@@ -11,6 +11,6 @@ choices:
 onEnter:
   - { op: addXp, amount: 8 }
 ---
-A crosta **range** sob o peso. Veias de lava piscam entre as fendas — não como mapa, como **ameaça**.
+A crosta range sob o peso. Veias de lava piscam entre as fendas.
 
-Cada respiração chega **quente** demais. Quem desceu sem guarda magmática sente a pele aprender o preço antes do nome.
+Cada respiração chega quente demais. Sem guarda magmática, a pele sente o preço antes do nome.

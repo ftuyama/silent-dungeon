@@ -42,4 +42,4 @@ choices:
     next: act5/camp/frost_camp
 onEnter: []
 ---
-O frio **engrossa** o vidro. Você escolhe o frasco que ainda responde — e deixa o vento fora do gole.
+O frio **engrossa** o vidro do frasco. Você escolhe o que ainda responde — e deixa o vento fora do gole.

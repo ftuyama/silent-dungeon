@@ -13,4 +13,4 @@ choices:
         onDefeat: shared/game_over
 onEnter: []
 ---
-[RASCUNHO] O **vazio** **engole** a **última** **sílaba**. O **eco** **cala** — o **cinzento** **não**.
+[RASCUNHO] O vazio engole a última sílaba. O eco cala — o cinzento não.

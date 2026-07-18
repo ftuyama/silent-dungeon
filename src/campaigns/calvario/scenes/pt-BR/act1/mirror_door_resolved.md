@@ -11,4 +11,4 @@ onEnter:
   - { op: setFlag, key: act1_mirror_dialogue_done, value: true }
   - { op: addDiary, text: "No bronze dos batentes, o reflexo cedeu — mas ainda me reconhece de lado." }
 ---
-O **bronze** fica opaco outra vez. Por um instante ainda sente o olhar **defasado** — como se guardasse o seu nome para mais tarde.
+O **bronze** fica opaco outra vez. Ainda sente o olhar defasado, como se guardasse seu nome para mais tarde.

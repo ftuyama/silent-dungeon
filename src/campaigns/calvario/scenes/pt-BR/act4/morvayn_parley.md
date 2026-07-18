@@ -24,7 +24,7 @@ choices:
     next: act4/seal_ending
     condition: { resource: { faith: { gte: 2 } } }
     showWhenLocked: true
-    lockedHint: "Precisas de pelo menos 2 medidas de fé para arriscar o selo — convicção apertada."
+    lockedHint: "Você precisa de pelo menos 2 medidas de fé para arriscar o selo — convicção apertada."
 onEnter: []
 ---
-"A paz é **silêncio**", diz Morvayn. "Escolhe o silêncio que preferes ouvir."
+"A paz é **silêncio**", diz Morvayn. "Escolha o silêncio que você prefere ouvir."

@@ -27,6 +27,6 @@ choices:
   - text: "Recuar ao acampamento — o covil espera"
     next: act5/frost_lair_approach
 ---
-**Vapor** **rói** o **aço**; **Kael** **ri** **baixo**, **som** de **pedra** **molhada**.
+Vapor rói o aço. **Kael** ri baixo — som de pedra molhada.
 
-> *"O **frio** **testa** **junta**. Você **passaste**. **Falta** **saber** se **aceitas** **o** **que** **junta** **exige**."*
+> *"O frio testa a junta. Você passou. Falta saber se aceita o que a junta exige."*

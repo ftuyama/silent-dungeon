@@ -13,4 +13,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 10 }
 ---
-Encontras uma **linha** que não te pertence — e mesmo assim **alinha** seu medo como régua.
+Você encontra uma **linha** que não é sua — e mesmo assim alinha o medo como régua.

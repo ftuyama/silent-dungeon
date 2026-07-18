@@ -3,6 +3,7 @@ id: act4/seal_ending
 title: Final do Selo
 chapter: 4
 ambientTheme: act4
+artKey: seal_ending
 dualAttrSkillCheck:
   id: seal_calvario
   attrs: [mind, str]
@@ -17,6 +18,6 @@ onEnter:
   - { op: addMark, mark: calvario_sealed }
   - { op: setStoryPath, id: throne, value: sealed }
 ---
-Selas a **Masmorra do Silêncio** com preço. Cicatrizes na alma; paz frágil nas pedras.
+Você sela a **Masmorra do Silêncio** com preço. Cicatrizes na alma; paz frágil nas pedras.
 
-O selo pede dois **impulsos** seguidos — primeiro a **mente** a aguentar o sino a rebentar por dentro, depois o **corpo** quando o peso cai como pedra.
+O selo pede dois impulsos seguidos — primeiro a **mente** aguentar o sino a rebentar por dentro, depois o **corpo** quando o peso cai como pedra.

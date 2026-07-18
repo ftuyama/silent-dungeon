@@ -11,4 +11,4 @@ luckCheck:
   label: Tocar o lodo sem ser devorado
 onEnter: []
 ---
-O **lodo** não é água: é **memória** barata que promete força e cobra à sua **sorte**. Estende a mão — os dados **decidem** se voltas inteiro.
+O **lodo** não é água: é memória barata que promete força e cobra à sua **sorte**. Estenda a mão — os dados decidem se você volta inteiro.

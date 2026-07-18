@@ -24,6 +24,8 @@ choices:
       all:
         - { hasStoryPath: throne }
         - { noFlag: act8_hub_reached }
+    effects:
+      - { op: setChapter, chapter: 8 }
     preview: "Descer agora, antes de fechar o diário no céu mentiroso."
   - text: "Oferecer fé como moeda — comprar silêncio ao céu por um instante"
     next: act7/epilogue_apocalypse
@@ -35,7 +37,7 @@ choices:
       - { op: addMark, mark: act7_paid_sky_in_faith }
       - { op: addDiary, text: "Paguei o céu com o que ainda tinha de vertical. Sobrou corpo — não sobrou desculpa. O eixo, abaixo, ficou por fechar." }
     preview: "−2 fé · final incompleto — fuga ao céu"
-  - text: "Dar o que resta de humano ao rumor — deixar a pele aprender o preço"
+  - text: "Dar o que resta de humano ao rumor — pagar o preço na pele"
     next: act7/epilogue_apocalypse
     effects:
       - { op: addResource, resource: corruption, delta: 1 }
@@ -51,6 +53,6 @@ choices:
     preview: "Marca de recusa — final incompleto"
 onEnter: []
 ---
-O horizonte **descobre** a última linha: não é fronteira — é **recibo** de uma fuga. Fechar aqui é **incompleto**: o eixo ainda desce para o magma.
+O horizonte mostra a última linha. Fechar aqui é **incompleto**: o eixo ainda desce para o magma.
 
-O vento **para** outra vez. Desta vez não é cortesia — é **expectativa** de quem escolhe céu em vez de fundo.
+O vento para outra vez. Desta vez não é cortesia — é expectativa de quem escolhe céu em vez de fundo.

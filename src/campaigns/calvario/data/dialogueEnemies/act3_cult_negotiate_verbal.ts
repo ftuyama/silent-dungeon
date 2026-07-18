@@ -43,7 +43,7 @@ export const act3_cult_negotiate_verbal: DialogueEnemyDef = {
       },
       measured: {
         line:
-          '“Assim”, murmura ele. “Sem poesia. O cano gosta de gente que sabe contar até ao fim sem desviar o olhar.”',
+          '“Assim”, murmura ele. “Sem poesia. O cano gosta de gente que sabe contar até o fim sem desviar o olhar.”',
         choices: [
           {
             text:

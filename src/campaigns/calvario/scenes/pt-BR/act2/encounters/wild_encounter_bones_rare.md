@@ -13,4 +13,4 @@ choices:
         onFlee: shared/explore_nav_act2
 onEnter: []
 ---
-Um único **esqueleto** ergue-se no cruzamento, sem cântico e sem pressa. Quando te vê, aponta a lâmina como quem cumpre um juramento antigo.
+Um único **esqueleto** ergue-se no cruzamento, sem cântico e sem pressa. Quando vê você, aponta a lâmina como quem cumpre um juramento antigo.

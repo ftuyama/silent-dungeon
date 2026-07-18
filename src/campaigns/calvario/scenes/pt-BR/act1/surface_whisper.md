@@ -13,6 +13,6 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-Encostas o ouvido à **pedra**: de cima descem **vozes** cortadas — preço de pão, portas cedo fechadas, medo de **olhar** para onde a sombra come em silêncio.
+Você encosta o ouvido na **pedra**. De cima descem vozes cortadas: preço do pão, portas fechadas cedo, medo de olhar para onde a sombra come.
 
-Um fragmento de conversa **pega** na garganta da masmorra como anzol.
+Um fragmento de conversa gruda na garganta da masmorra.

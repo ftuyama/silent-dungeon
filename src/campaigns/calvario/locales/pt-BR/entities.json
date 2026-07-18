@@ -263,6 +263,10 @@
     }
   },
   "journeyMarks": {
+    "world_wound_remembered": {
+      "name": "Ferida do mundo",
+      "description": "Você lembrou o vilarejo antes do pulso verde: o que drena calor e nome, e o voto de descer até a raiz."
+    },
     "act1_surface_whisper_intel": {
       "name": "Rumor que paga",
       "description": "No subterrâneo da cidade, ouviste o que importa: nomes, horas, rotas — informação que vale ouro, sem pedir milagre."

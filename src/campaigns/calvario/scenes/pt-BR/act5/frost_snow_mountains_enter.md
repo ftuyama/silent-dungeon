@@ -10,6 +10,6 @@ choices:
 onEnter:
   - { op: addXp, amount: 14 }
 ---
-Acima da linha onde a **tempestade** cala, dizem que uma **gruta** respira — rastro só em **sussurro** e em quem voltou **meio** de lá.
+Acima da linha onde a **tempestade** cala, dizem que uma **gruta** respira — rastro só em sussurro e em quem voltou **meio** de lá.
 
-A neve **pergunta** se ainda precisas do nome; subir é **peregrinação** ou **fuga** com capa de coragem.
+A neve sob os pés range. Você decide se entra.

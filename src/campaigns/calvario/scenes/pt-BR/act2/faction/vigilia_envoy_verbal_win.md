@@ -8,6 +8,6 @@ choices:
     next: act2/hub_catacomb
 onEnter:
   - { op: addRep, faction: vigilia, delta: 1 }
-  - { op: addDiary, text: "[RASCUNHO] O capeador cedeu o passo — disciplina sem sangue desta vez." }
+  - { op: addDiary, text: "O capeador cedeu o passo — disciplina sem sangue desta vez." }
 ---
-[RASCUNHO] A lanterna **abaixa** um dedo. Não há aperto de pulso — há **trégua** de quartel, fria como **metal** ao **relento**.
+A lanterna abaixa um dedo. Sem aperto de mão: só trégua de quartel, fria como metal ao relento.

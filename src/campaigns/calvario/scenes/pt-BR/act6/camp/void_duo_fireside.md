@@ -12,6 +12,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act6_void_duo_neither_tomas }
 onEnter: []
 ---
-**Mira** e **Tomás** medem-se no fogo; ninguém quer morrer **sozinho** aqui. Você, {{leadName}}, fica no meio — **testemunha**, não juiz.
+**Mira** e **Tomás** medem o fogo; ninguém quer morrer sozinho aqui. Você, {{leadName}}, fica no meio.
 
 {{companionLine}}

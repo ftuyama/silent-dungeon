@@ -22,6 +22,6 @@ choices:
       - { op: addDiary, text: "Cobri o sino e recusei o pacto. A Vigília chamaria isto de disciplina." }
     preview: "Ganho de reputação com a Vigília, sem corrupção."
 ---
-Um **sino sem badalo** balança sozinho, preso por correntes finas. A boca de metal tem um brilho de carne fresca.
+Um **sino sem badalo** balança sozinho, preso por correntes finas. A boca de metal tem brilho de carne fresca.
 
-O eco pede uma oferta simples: um corte na palma, um voto de urgência, um atalho para descer mais forte.
+O eco pede oferta simples: um corte na palma, um voto urgente — atalho para descer mais forte.

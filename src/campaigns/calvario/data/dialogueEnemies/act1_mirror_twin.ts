@@ -32,7 +32,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Aproximar-te como quem entra em água fria: devagar, sem discurso, deixando o som dos passos dizer “ainda estou aqui”.',
+              'Aproximar-se como quem entra em água fria: devagar, sem discurso, deixando o som dos passos dizer “ainda estou aqui”.',
             resolution: { kind: 'fixed', nextNodeId: 'b_soft' },
             effects: { enemyHpDelta: -2 },
           },
@@ -123,11 +123,11 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       b_soft: {
         line:
-          'No limiar, o frio sobe-te pela nuca. O espelho assume que já lá estavas, só virado ao contrário. Por um instante, duas sombras discutem qual nasceu primeiro — e nenhuma quer perder.',
+          'No limiar, o frio sobe pela nuca. O espelho assume que você já estava lá, só virado ao contrário. Por um instante, duas sombras discutem qual nasceu primeiro — e nenhuma quer perder.',
         choices: [
           {
             text:
-              'Esvaziar o peito devagar, sem teatro, até o reflexo não ter frase pronta para roubar.',
+              'Esvaziar o peito devagar, sem performance, até o reflexo não ter frase pronta para roubar.',
             resolution: { kind: 'fixed', nextNodeId: 'c_soft_a' },
             effects: { enemyHpDelta: -3 },
           },
@@ -305,7 +305,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_truce_space_agile: {
         line:
-          'O passo encaixa; o reflexo chega atrasado por um compasso. Por um instante, o corredor parece seu aliado mesquinho — só sombra e rangido, nada de teatro.',
+          'O passo encaixa; o reflexo chega atrasado por um compasso. Por um instante, o corredor parece seu aliado mesquinho — só sombra e rangido, nada de cena.',
         choices: [
           {
             text: 'Não mitificar o instante: aproveitar e calar antes que o mito renasca.',
@@ -314,7 +314,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Permitir-te olhar uma vez — só uma — para confirmar que o espelho ainda está a tentar alcançar-te.',
+              'Permitir a você olhar uma vez — só uma — para confirmar que o espelho ainda está tentando alcançar você.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -338,7 +338,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Testar se sua mente aguenta o tom sem escorregar para teatro.',
+              'Testar se sua mente aguenta o tom sem virar peça.',
             resolution: {
               kind: 'skill',
               attr: 'mind',
@@ -357,7 +357,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Fechar em trégua quieta — sem música, sem pose — só espaço que respiras sem réplica.',
+              'Fechar em trégua quieta — sem música, sem pose — só espaço que respira sem réplica.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -3 },
           },
@@ -392,7 +392,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Permitir-te um suspiro feio, honesto, que o corredor ouça antes do metal.',
+              'Permitir a você um suspiro feio, honesto, que o corredor ouça antes do metal.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -421,7 +421,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Dar ao corpo o comando: ombros largos, queixo neutro, olhar que não alimenta o teatro.',
+              'Dar ao corpo o comando: ombros largos, queixo neutro, olhar que não alimenta o espetáculo.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_steady' },
             effects: { enemyHpDelta: -4 },
           },
@@ -441,10 +441,10 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_m_ok_c_fail: {
         line:
-          'O olhar escapa-te na hora H. O metal lambe a falha e devolve uma lágrima que não pediste — convincente até demais.',
+          'O olhar escapa na hora H. O metal lambe a falha e devolve uma lágrima que você não pediu — convincente até demais.',
         choices: [
           {
-            text: 'Aceitar o corte e seguir mesmo assim — sem negociar com o teatro.',
+            text: 'Aceitar o corte e seguir mesmo assim — sem negociar com o reflexo.',
             resolution: { kind: 'fixed', nextNodeId: 'h_winter_edge' },
           },
           {
@@ -457,7 +457,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_m_fail_a: {
         line:
-          'O tropeço fica no ar como cheiro a queimado. Ainda assim, o corpo lembra-te coisas que o discurso esqueceu: peso, chão, respiração.',
+          'O tropeço fica no ar como cheiro a queimado. Ainda assim, o corpo lembra você de coisas que o discurso esqueceu: peso, chão, respiração.',
         choices: [
           {
             text: 'Deixar o erro ficar pequeno onde está.',
@@ -485,12 +485,12 @@ export const act1_mirror_twin: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Cortar o fio: calar de vez, mesmo com a garganta a pedir justiça.',
+              'Cortar o fio: calar de vez, mesmo com a garganta pedindo justiça.',
             resolution: { kind: 'fixed', nextNodeId: 'h_winter_edge' },
           },
           {
             text:
-              'Pagar o preço do teatro e empurrar até o fim — sangrar para ver se o espelho sangra também.',
+              'Pagar o preço e empurrar até o fim — sangrar para ver se o espelho sangra também.',
             resolution: { kind: 'fixed', nextNodeId: 'h_winter_edge' },
           },
         ],
@@ -501,7 +501,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Aceitar o corte moral e seguir sem negociar com o teatro do reflexo.',
+              'Aceitar o corte moral e seguir sem negociar com o reflexo do reflexo.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_winter' },
             effects: { playerHpLossPercent: 9, enemyHpDelta: -3 },
           },
@@ -513,13 +513,13 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Calar de vez, mesmo com a garganta a pedir justiça — deixar o silêncio ser faca.',
+              'Calar de vez, mesmo com a garganta pedindo justiça — deixar o silêncio ser faca.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_winter' },
             effects: { playerHpLossPercent: 12, enemyHpDelta: -4 },
           },
           {
             text:
-              'Empurrar o teatro até ao fim — sangrar para ver se o espelho sangra também.',
+              'Empurrar até o fim — sangrar para ver se o espelho sangra também.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_winter' },
             effects: { playerHpLossPercent: 18, enemyHpDelta: -7 },
           },
@@ -580,7 +580,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Endurecer por dentro “para não ceder” — e sentir o metal agradecer-te a armadura invisível.',
+              'Endurecer por dentro “para não ceder” — e sentir o metal agradecer a você a armadura invisível.',
             resolution: { kind: 'fixed', nextNodeId: 'c_soft_a_hard' },
             effects: { enemyHpDelta: 2 },
           },
@@ -609,7 +609,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_soft_merge: {
         line:
-          'O corredor parece alargar um dedo: ainda há duas maneiras de saíres dali sem te tornares monumento — e ambas exigem que continues pequeno o suficiente para seres real.',
+          'O corredor parece alargar um dedo: ainda há duas maneiras de saíres dali sem  tornares monumento — e ambas exigem que continues pequeno o suficiente para seres real.',
         choices: [
           {
             text:
@@ -619,7 +619,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Permitir-te o suspiro feio e seguir — sem segunda peça de teatro.',
+              'Permitir o suspiro feio e seguir — sem segunda peça.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -5 },
           },
@@ -686,7 +686,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       c_soft_b: {
         line:
-          'O olhar ardente alimenta o bronze. O reflexo sorri com sua boca e soma-lhe um segundo sorriso — o que não pediste.',
+          'O olhar ardente alimenta o bronze. O reflexo sorri com sua boca e soma-lhe um segundo sorriso — o que você não pediu.',
         choices: [
           {
             text:
@@ -709,7 +709,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Deslocar o duelo para o ironismo mínimo — um detalhe absurdo que desmonte a pose heroica sem te transformares em palhaço.',
+              'Deslocar o duelo para o ironismo mínimo — um detalhe absurdo que desmonte a pose de herói sem virar palhaço.',
             resolution: { kind: 'fixed', nextNodeId: 'c_soft_b_wry' },
             effects: { enemyHpDelta: -1 },
           },
@@ -784,7 +784,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       d_burn_stall: {
         line:
-          'No meio do calor, o corredor oferece um instante de “real” — rangido, frio na pedra — como se quisesse lembrar-te que o fogo também cansa se não lhe deres palha.',
+          'No meio do calor, o corredor oferece um instante de “real” — rangido, frio na pedra — como se quisesse lembrar você que o fogo também cansa se não lhe deres palha.',
         choices: [
           {
             text:
@@ -794,7 +794,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Empurrar o fogo até ao limite e ver o que resta quando a chama não tem público.',
+              'Empurrar o fogo até o limite e ver o que resta quando a chama não tem público.',
             resolution: { kind: 'fixed', nextNodeId: 'h_burn_merge' },
             effects: { enemyHpDelta: -2 },
           },
@@ -812,7 +812,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Deixar arder até ao fim e arrancar vitória dos restos — colisão, não pose.',
+              'Deixar arder até o fim e arrancar vitória dos restos — choque limpo, sem pose.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_burn' },
             effects: { playerHpLossPercent: 12, enemyHpDelta: -5 },
           },
@@ -824,7 +824,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Manter o ritmo da provocação até ao fim — colisão, não teatro.',
+              'Manter o ritmo da provocação até o fim — choque limpo, sem cena.',
             resolution: { kind: 'fixed', nextNodeId: 'linger_burn' },
             effects: { playerHpLossPercent: 18, enemyHpDelta: -8 },
           },
@@ -878,7 +878,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_soft_c_fail: {
         line:
-          'O corredor entrega-te ao bronze outra vez. O acaso ri com dentes de metal; sua sombra tropeça na dele.',
+          'O corredor entrega você ao bronze outra vez. O acaso ri com dentes de metal; sua sombra tropeça na dele.',
         choices: [
           {
             text:
@@ -947,7 +947,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Desviar para o hub do silêncio útil — ainda há espaço para outra fechadura sem teatro.',
+              'Desviar para o hub do silêncio útil — ainda há espaço para outra fechadura sem cena.',
             resolution: { kind: 'fixed', nextNodeId: 'h_armistice' },
             effects: { enemyHpDelta: -2 },
           },
@@ -964,7 +964,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Bater mais uma vez — marca ritmo, não teatro.',
+              'Bater mais uma vez — marca ritmo, não cena.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
             effects: { enemyHpDelta: -4 },
           },
@@ -1082,7 +1082,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Agarrar o tremor como prova viva — “isto não é teatro”.',
+              'Agarrar o tremor como prova viva — “isto não é cena”.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_toll' },
             effects: { playerHpLossPercent: 11, enemyHpDelta: -6 },
           },
@@ -1108,7 +1108,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Impacientar-te: exigir resposta imediata à porta que ainda arrefece.',
+              'Impacientar-se: exigir resposta imediata à porta que ainda arrefece.',
             resolution: { kind: 'fixed', nextNodeId: 'c_bl_a_rush' },
             effects: { enemyHpDelta: 2 },
           },
@@ -1200,7 +1200,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Manter o ritmo da provocação até ao fim — colisão, não teatro.',
+              'Manter o ritmo da provocação até o fim — choque limpo, sem cena.',
             resolution: { kind: 'fixed', nextNodeId: 'h_burn_merge' },
           },
         ],
@@ -1243,7 +1243,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
 
       linger_steady: {
         line:
-          'O olhar “morto” ficou seu o suficiente para o corredor o reconhecer. Falta só fechar sem pose — uma linha humana, não um monumento — antes de o bronze voltar a pedir teatro.',
+          'O olhar “morto” ficou seu o suficiente para o corredor o reconhecer. Falta só fechar sem pose — uma linha humana, não um monumento — antes de o bronze voltar pedindo espetáculo.',
         choices: [
           {
             text:
@@ -1252,7 +1252,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Permitir-te um som ridículo e real — rangido, expiração — para o metal não ficar com a banda sonora.',
+              'Permitir a você um som ridículo e real — rangido, expiração — para o metal não ficar com a banda sonora.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_release' },
           },
           {
@@ -1285,7 +1285,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       linger_shoulder: {
         line:
-          'A fresta abriu por teimosia honesta. O espelho ainda quer transformar empurrão em discurso — e você ainda respiras, o que já é conversa suficiente.',
+          'A fresta abriu por teimosia honesta. O espelho ainda quer transformar empurrão em discurso — e você ainda respira, o que já é conversa suficiente.',
         choices: [
           {
             text:
@@ -1341,7 +1341,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Empurrar o teatro até ao fim e aceitar o custo — colisão contada em carne, não em pose.',
+              'Empurrar até o fim e aceitar o custo — colisão contada em carne, não em pose.',
             resolution: { kind: 'fixed', nextNodeId: 'gate_toll' },
           },
         ],
@@ -1394,7 +1394,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
         choices: [
           {
             text:
-              'Pagar o custo em silêncio e seguir inteiro o suficiente — sem negociar com o teatro.',
+              'Pagar o custo em silêncio e seguir inteiro o suficiente — sem negociar com o reflexo.',
             resolution: { kind: 'fixed', nextNodeId: 'v_win_toll' },
           },
           {
@@ -1404,7 +1404,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
           },
           {
             text:
-              'Fechar em colisão honesta: ombro, chão, fogo engolido — limite onde antes só havia cópia.',
+              'Fechar em choque honesto: ombro, chão, fogo engolido — limite onde antes só havia cópia.',
             resolution: { kind: 'fixed', nextNodeId: 'v_win_toll' },
           },
         ],

@@ -19,8 +19,11 @@ export type DevToolsTab = (typeof DEV_TOOLS_TABS)[number];
 
 export type DevToolsAsciiSort = 'name-asc' | 'name-desc' | 'mtime-desc' | 'mtime-asc';
 
+export type DevToolsSceneSort = DevToolsAsciiSort;
+
 export type DevToolsLinkOptions = {
   sceneId?: string | null;
+  sceneSort?: DevToolsSceneSort | null;
   asciiPath?: string | null;
   asciiSort?: DevToolsAsciiSort | null;
 };
@@ -55,6 +58,7 @@ export function buildGameHref(campaignId: string): string {
   u.searchParams.delete('scene');
   u.searchParams.delete('asciiPath');
   u.searchParams.delete('asciiSort');
+  u.searchParams.delete('sceneSort');
   u.searchParams.set('campaign', campaignId);
   const qs = u.searchParams.toString();
   return qs ? `${u.pathname}?${qs}` : u.pathname;
@@ -86,6 +90,13 @@ export function resolveDevToolsAsciiSortFromLocation(): DevToolsAsciiSort {
   return 'name-asc';
 }
 
+/** `?sceneSort=` quando `tab=scenes`. */
+export function resolveDevToolsSceneSortFromLocation(): DevToolsSceneSort {
+  const q = new URLSearchParams(window.location.search).get('sceneSort');
+  if (q === 'name-desc' || q === 'mtime-desc' || q === 'mtime-asc' || q === 'name-asc') return q;
+  return 'name-asc';
+}
+
 /** Opens dev tools (`?view=dev`). */
 export function buildDevToolsHref(
   campaignId: string,
@@ -98,10 +109,15 @@ export function buildDevToolsHref(
   u.searchParams.delete('act');
   const t = tab ?? 'scenes';
   u.searchParams.set('tab', t);
-  if (t === 'scenes' && options?.sceneId) {
-    u.searchParams.set('scene', options.sceneId);
+  if (t === 'scenes') {
+    if (options?.sceneId) u.searchParams.set('scene', options.sceneId);
+    else u.searchParams.delete('scene');
+    const sceneSort = options?.sceneSort ?? 'name-asc';
+    if (sceneSort !== 'name-asc') u.searchParams.set('sceneSort', sceneSort);
+    else u.searchParams.delete('sceneSort');
   } else {
     u.searchParams.delete('scene');
+    u.searchParams.delete('sceneSort');
   }
   if (t === 'ascii-browser') {
     if (options?.asciiPath) u.searchParams.set('asciiPath', options.asciiPath);
@@ -127,6 +143,7 @@ export function buildScenesGraphHref(campaignId: string): string {
   u.searchParams.delete('scene');
   u.searchParams.delete('asciiPath');
   u.searchParams.delete('asciiSort');
+  u.searchParams.delete('sceneSort');
   const qs = u.searchParams.toString();
   return qs ? `${u.pathname}?${qs}` : u.pathname;
 }

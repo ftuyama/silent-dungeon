@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-Do chão **levanta-se** uma silhueta sem rosto estável — não veio de fora; **escapou-te** há anos e aprendeu a **caminhar** sozinha.
+Do chão sobe uma silhueta sem rosto estável. Não veio de fora — escapou de você há anos e aprendeu a andar sozinha.
 
-Não pede perdão. Pede **continuidade**.
+Não pede perdão. Pede continuidade.

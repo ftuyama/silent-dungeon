@@ -14,6 +14,6 @@ luckCheck:
 onEnter: []
 choices: []
 ---
-O capuz **inclina-se** por **aposta**; sussurras **símbolos** e o ar **aprende** o padrão — alguém invisível **segura** os dados.
+O capuz inclina-se por **aposta**. Você sussurra símbolos e o ar agarra o padrão — alguém invisível segura os dados.
 
-*O Círculo empresta sorte; quem erra o timing paga outra moeda.* **Rola sorte** (−1 no total: **dívida** já contada).
+*O Círculo empresta sorte; quem erra o timing paga outra moeda.* **Role sorte** (−1 na falha).

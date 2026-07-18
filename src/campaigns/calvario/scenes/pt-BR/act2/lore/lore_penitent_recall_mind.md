@@ -13,6 +13,6 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-O eco pede **nome** — não seu de batismo, mas o que escolheu quando a culpa **sentou** ao seu lado.
+O eco pede **nome** — não o de batismo, mas o que você escolheu quando a culpa sentou ao seu lado.
 
-Se a lembrança vier **ordenada**, talvez te deixe algo além de cinza.
+Se a lembrança vier ordenada, talvez deixe algo além de cinza.

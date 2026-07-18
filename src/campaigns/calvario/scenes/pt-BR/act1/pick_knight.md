@@ -15,4 +15,4 @@ choices:
       - { op: addRep, faction: vigilia, delta: 1, directGain: true }
 onEnter: []
 ---
-O metal obedece. A **Ordem da Vigília** sussurra aprovação nas dobras da couraça.
+O metal obedece. A **Ordem da Vigília** aprova nas dobras da couraça.

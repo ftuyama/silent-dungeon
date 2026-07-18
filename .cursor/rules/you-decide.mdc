@@ -47,6 +47,7 @@ npm run validate:scenes      # [--campaign <id>]
 npm run validate:unreachable
 npm run check:ascii-art      # [--campaign <id>]
 npm run check:pt-br
+npm run check:narrative-voice
 npm run validate:i18n
 npm run validate:i18n:translations
 npm run release -- <patch|minor|major|x.y.z> [--itch|--no-bump|--no-git|--dry-run]

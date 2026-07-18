@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-Uma figura **alta** atravessa a penumbra como quem **escreve** no ar — não há sangue, há **certeza** a escorrer dos cantos do véu; **tinta** onde devia haver pele.
+Uma figura alta atravessa a penumbra. Não há sangue — há certeza escorrendo dos cantos do véu; tinta onde deveria haver pele.
 
-A voz não pergunta se está pronto. Trata **prontidão** como defeito de criança.
+A voz não pergunta se você está pronto. Trata prontidão como defeito de criança.

@@ -21,4 +21,4 @@ choices:
     preview: "Sair do perímetro e manter o stress atual."
 onEnter: []
 ---
-As veias de lava **pulsa** sob a pedra. Caminhar aqui é escolher qual rachadura vai cobrar primeiro.
+As veias de lava pulsam sob a pedra. Caminhar aqui é escolher qual rachadura cobra primeiro.

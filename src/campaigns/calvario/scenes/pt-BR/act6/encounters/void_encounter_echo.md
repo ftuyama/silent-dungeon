@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-O ar **espessa** com vozes que não têm dono — lembram-te de nomes **errados** e datas **certas**, e riem quando corrigis.
+O ar engrossa com vozes sem dono. Elas lembram nomes errados e datas certas — e riem quando você corrige.
 
-Não é música. É **memória** a fazer greve.
+Não é música. É memória em greve.

@@ -42,4 +42,4 @@ choices:
     next: act6/camp/void_camp
 onEnter: []
 ---
-À luz falsa da fogueira, os frascos parecem **espelhos** pequenos. Você escolhe qual mentira beber primeiro — vida, mana ou calma.
+À luz da fogueira, os frascos brilham. Você escolhe o que beber — vida, mana ou calma.

@@ -1,7 +1,7 @@
 {
   "act3/corruption_event": {
     "title": "Pulse of Corruption",
-    "body": "A green **crystal** pulses. The dungeon's echo answers — a pulse that asks no permission to whisper.\n\nThe air **vibrates** in your teeth; for an instant, **Morvayn** sounds like a tally-word, not a name — as if someone below **measured** how many hearts still beat in favor of denial.",
+    "body": "A green **crystal** pulses. The dungeon's echo answers — a pulse that does not ask permission.\n\nFor a moment **Morvayn** sounds like a count, not a name: someone below is measuring hearts.",
     "choices": [
       {
         "text": "Touch the crystal",
@@ -22,7 +22,7 @@
   },
   "act3/cult_passage": {
     "title": "Cult Passage",
-    "body": "The torn map **whispers** where to turn — in a niche, **bones** bound with copper wire and a **bell shard** driven in like a nail. The **narrow** passage smells of burnt tallow.",
+    "body": "The torn map points where to fold — in a niche, **bones** bound with copper wire and a **bell shard** driven like a nail. The narrow passage smells of burned tallow.",
     "choices": [
       {
         "text": "Leave a coin in the niche — ask passage from the Bell's ear",
@@ -57,7 +57,7 @@
   },
   "act3/descent": {
     "title": "Descent into Deep Silence",
-    "body": "The stairs **sink** and the **green pulse** beats with your heart — each flight steals **noise** until only damp stone remains. **No fire** here counts as shelter.\n\nWith the **Torn Map**, a shortcut opens that honest maps do not show.",
+    "body": "The stair **sinks**. A green pulse beats with your heart — each flight steals noise until only wet stone remains. **No fire** is shelter here.\n\nWith the **Torn Map**, a shortcut opens that the common map hides.",
     "choices": [
       {
         "text": "Descend to the well",
@@ -85,7 +85,7 @@
   },
   "act3/diary_trigger": {
     "title": "Diary Entry",
-    "body": "A sensation **etches** itself into the diary.",
+    "body": "A feeling **writes** itself into the diary. You feel the ink's weight before you see the words.",
     "choices": [
       {
         "text": "Return"
@@ -97,7 +97,7 @@
   },
   "act3/encounters/cult_ambush_scene": {
     "title": "Cultist Ambush",
-    "body": "**Cultists** were already waiting. Their advantage — the dice will show.",
+    "body": "**Cultists** were already waiting for you. Their edge — steel decides the rest.",
     "choices": [
       {
         "text": "Fight the ambush!"
@@ -106,7 +106,7 @@
   },
   "act3/encounters/cult_patrol_scene": {
     "title": "Blind Messenger Patrol",
-    "body": "A **messenger** without eyes guides two acolytes down the corridor. The bell bound to his wrist marks your time in beats of condemnation.",
+    "body": "An eyeless **messenger** leads two acolytes down the corridor. The bell on his wrist marks time in dry beats.",
     "choices": [
       {
         "text": "Strike before they ring the bell"
@@ -115,7 +115,7 @@
   },
   "act3/encounters/stone_combat_intro": {
     "title": "Stone Against Flesh",
-    "body": "Stone **against** flesh. Three layers of armor before the real wound.",
+    "body": "Stone **against** flesh. The golem seals the path — three layers of armor before the real wound.",
     "choices": [
       {
         "text": "Fight!"
@@ -124,7 +124,7 @@
   },
   "act3/encounters/vigil_hunter_scene": {
     "title": "Lost Vigil Hunter",
-    "body": "A Vigil **hunter**, covered in lime and soot, watches the passage as if still obeying orders from a dead commander.",
+    "body": "A Vigil **hunter**, covered in lime and soot, watches the passage as if he still obeyed a dead commander.",
     "choices": [
       {
         "text": "Face the hunter in the dark"
@@ -133,7 +133,7 @@
   },
   "act3/flee_cult": {
     "title": "Flight — hoods that laugh",
-    "body": "The **hoods** do not run — they **float**. You run like someone who still has **human lungs**.\n\nA **blade** cuts the air too close to your ear; another **scores** your pride without touching skin — humiliation is their weapon.",
+    "body": "The **hoods** do not run — they glide. You run with lungs still human.\n\nA blade cuts air too near the ear; another scrapes pride without touching skin.",
     "choices": [
       {
         "text": "Regroup in the depths"
@@ -145,11 +145,11 @@
   },
   "act3/hub_depths": {
     "title": "Heart of the Depths",
-    "body": "**Silent** depths. **Morvayn** is not far — his silence was **politics** before it was magic.\n\nYou cannot **camp** here as at the crossroads: the underworld charges continuous presence, and your breath becomes rare **coin**.",
+    "body": "The **core** is a drowned gallery: wet stone, bronze grates, and a corridor that drops toward the throne. **Morvayn** does not appear — but the air already carries his smell.\n\nThere is no campfire here. Only your breath and the slow drip of the walls.",
     "choices": [
       {
         "text": "Patrol the depths (explore map)",
-        "preview": "Move through the corridors; stress rises and encounters may happen.",
+        "preview": "You move through the corridors; stress rises and encounters may happen.",
         "uiSection": "Explore"
       },
       {
@@ -168,7 +168,7 @@
       },
       {
         "text": "Revisit the stone corridor (guardian echo)",
-        "preview": "The silence is yours now — runes and niche, without the golem.",
+        "preview": "Runes and niche, no golem.",
         "uiSection": "Throne and stone"
       },
       {
@@ -178,7 +178,7 @@
         "uiSection": "Rumors"
       },
       {
-        "text": "Listen to pipes beneath the stone",
+        "text": "Listen to the pipes under the stone",
         "preview": "Luck; success gives a clue, failure costs supply.",
         "lockedHint": "Requires level 8+ to hear what the pipes whisper.",
         "uiSection": "Rumors"
@@ -196,20 +196,20 @@
         "uiSection": "Rumors"
       },
       {
-        "text": "The green you ignored summons a messenger",
+        "text": "The green you ignored calls a messenger",
         "preview": "Ignoring the crystal collected an encounter — the cult noticed the deafness.",
         "uiSection": "Rumors"
       },
       {
         "text": "Return to the Crossroads — hub",
-        "preview": "Climb to the crossroads; chapter 2 on the story map.",
+        "preview": "Climb to the crossroads; chapter 2.",
         "uiSection": "Return"
       }
     ]
   },
   "act3/lore/cult_negotiate": {
     "title": "Pact Without Altar",
-    "body": "**Low voice**: *\"I bring a simple contract — you descend, we write the right name in the pipes. In return, **silence** outside the tunnel.\"*\n\nThe **cultist** holds an old coin — a **clerk**, not a fanatic. Behind him, two others **record** your answer. The **Circle** pays so the **Vigil** will not know what you will see below.",
+    "body": "**Low voice**: *\"Simple contract — you go down, we write the right name in the pipes. In exchange, **silence** outside the tunnel.\"*\n\nThe **cultist** holds an old coin — handler, not fanatic. Behind him, two others wait for the order.",
     "choices": [
       {
         "text": "Show the Third Bell signet — ask favor at the margin of the contract",
@@ -262,7 +262,7 @@
   },
   "act3/lore/cult_negotiate_verbal_fail": {
     "title": "Pact Without Altar (steel)",
-    "body": "[DRAFT] The bargain **breaks**. The agent whistles through his teeth; behind him, the pipe reminds you that **silence** also has **teeth**.",
+    "body": "The bargain **breaks**. The handler whistles through his teeth; behind him, the pipe reminds you that silence also has teeth.",
     "choices": [
       {
         "text": "[!] Steel before word",
@@ -272,19 +272,19 @@
   },
   "act3/lore/cult_negotiate_verbal_win": {
     "title": "Pact Without Altar (word)",
-    "body": "[DRAFT] The agent steps back half a pace. The coin disappears into his sleeve like someone closing a ledger. The contract was **spoken** — the tunnel still demands proof, but not **at this** turn.",
+    "body": "The handler steps half back. The coin vanishes into the sleeve. The contract was spoken — the tunnel still wants proof, but not in this fold.",
     "choices": [
       {
         "text": "Descend with the contract in your head"
       }
     ],
     "onEnterDiaryTexts": [
-      "[DRAFT] The agent closed the tone without altar — bargain in minimal voice; the pipe deferred its teeth."
+      "The handler closed the tone without an altar — bargain in a minimal voice; the pipe deferred its teeth."
     ]
   },
   "act3/messenger_cold_trail": {
     "title": "Messenger Trail",
-    "body": "Fresh **ash** under your boots and **rope** cut in haste: someone dragged a body here and then **argued** with the tunnel.\n\nBelow, a **tallow light** — two **cultists** counting coins over an empty holster. The holster bears a **Vigil** crest scraped away: a message that never reached the beacon.",
+    "body": "Fresh **ash** under your boots and rope cut in haste: someone dragged a body here, then fought the tunnel.\n\nAt the end, two **cultists** count coins over an empty holster — Vigil crest still visible.",
     "choices": [
       {
         "text": "Approach in silence (AGI test)",
@@ -298,7 +298,7 @@
   },
   "act3/messenger_combat_intro": {
     "title": "Cult in the Den",
-    "body": "Metal **wakes** before you — it does not matter: there is no conversation left that is not **blade**.",
+    "body": "Metal **wakes** before you. There is no talk left that is not blade.",
     "choices": [
       {
         "text": "Fall upon them"
@@ -307,7 +307,7 @@
   },
   "act3/messenger_payoff": {
     "title": "Dead Man's Inventory",
-    "body": "In the holster: a **name list** with the stamp scraped off and a crooked **sentinel brooch**. You can return it to the **order** or turn it into **coin** on the network — each charges a different kind of silence.",
+    "body": "In the holster: a **list of names** with a scraped stamp and a bent sentinel **brooch**. You can return it to the order or turn it into coin in the network — each path charges a kind of silence.",
     "choices": [
       {
         "text": "Leave the brooch and list where the Vigil will find them",
@@ -327,12 +327,12 @@
   },
   "act3/messenger_stealth_roll": {
     "title": "Silence in the Corridor",
-    "body": "The stone **judges** every weight. A creak now is sentence.",
+    "body": "The corridor is too narrow for a mistake. One creak of armor and the messenger turns his head.",
     "skillCheckLabel": "Crawl without making your armor groan"
   },
   "act3/mira_descent_whisper": {
     "title": "Whisper on the Descent",
-    "body": "**Mira** tilts her head without looking at you: \"Here silence is not peace — it is **truce** between whoever rules the ceiling and whoever rules the floor. If you hear your name in the dark, do not be the first to answer.\"",
+    "body": "**Mira** tips her head without looking at you: \"Here silence is not peace. It is a **truce** between who rules the ceiling and who rules the floor. If you hear your name in the dark, do not be the first to answer.\"",
     "choices": [
       {
         "text": "Continue the descent",
@@ -342,12 +342,12 @@
   },
   "act3/pipes_whisper": {
     "title": "Pipes",
-    "body": "Between green bronze **pipes**, the air **scrapes** a melody — voices from above, distorted, speaking **toll** and **descent** as if they were the same word.",
+    "body": "Between green-bronze **pipes**, the air scrapes a melody — voices from above, distorted, talking tax and descent as if they were the same word.",
     "luckCheckLabel": "Hear the rumor in the pipe before the stone swallows it"
   },
   "act3/pipes_whisper_fail": {
     "title": "Pipe That Bites",
-    "body": "The **condensation** runs like acid; coughs rise from the pipe and the stone **bites** your glove. You lost breath and **supply** learning what you already knew: the depths **charge** for curiosity.",
+    "body": "Condensation runs like acid; a cough rises from the pipe and stone bites the glove. You lose breath and a **pack** — the undercroft charges curiosity.",
     "choices": [
       {
         "text": "Pull your hand free and retreat"
@@ -359,7 +359,7 @@
   },
   "act3/pipes_whisper_ok": {
     "title": "Useful Echoes",
-    "body": "You catch **one whole sentence** before the wind cuts off: *\"… close the grate at the fourth stroke…\"* — not poetry; **instruction**.",
+    "body": "You catch **one full phrase** before the wind cuts it: *\"… close the grate on the fourth knock…\"* — not a poem. An **instruction**.",
     "choices": [
       {
         "text": "Write it down and move on"
@@ -371,7 +371,7 @@
   },
   "act3/secret/forgotten_shrine": {
     "title": "Forgotten Shrine",
-    "body": "Behind a cracked stone **veil** opens an antechamber that was not on the map — low slabs, **runes** sealed with lead, still water that **mirrors** without reflecting.\n\nAt the center, a greater **rune**. No altar — only **promises** folded between the joints. One would **open** if you touched it.",
+    "body": "Behind a cracked stone **veil** opens an antechamber missing from the map — low slabs, runes sealed in lead, still water that mirrors without reflecting.\n\nIn the center, a larger **rune**. No altar. Only the weight of whoever sealed this.",
     "choices": [
       {
         "text": "Touch the central rune — remember silence before the name",
@@ -422,7 +422,7 @@
   },
   "act3/stone_corridor": {
     "title": "Rune Corridor",
-    "body": "Runes ignite. A funeral **golem** blocks the throne.",
+    "body": "Runes light. A funerary **golem** blocks the path to the throne. Cold stone, joint by joint.",
     "choices": [
       {
         "text": "Wake the guardian"
@@ -447,7 +447,7 @@
   },
   "act3/stone_guard_victory": {
     "title": "The Guardian Yields",
-    "body": "The stone **cracks** with a dry snap. The corridor falls silent, as if the tomb itself accepted your passage.",
+    "body": "The stone **cracks** with a dry snap. The corridor goes quiet. The tomb accepts the passage.",
     "choices": [
       {
         "text": "Return to the heart"
@@ -459,7 +459,7 @@
   },
   "act3/stone_niche_loot": {
     "title": "Votive Niche",
-    "body": "Between two funeral plaques, you find a niche with cold coins and dry resin. The altar protests in silence, but not enough to stop you.",
+    "body": "Between two funerary plates, you find a niche with cold coins and dry resin. The altar protests in silence — without strength to stop you.",
     "choices": [
       {
         "text": "Take the coins and return"
@@ -471,12 +471,12 @@
   },
   "act3/stone_rune_trial": {
     "title": "Pulse of the Runes",
-    "body": "The marks on the wall begin to **vibrate** when you bring your hand close. The corridor demands focus: either you tame the old rhythm, or it invades your nerves.",
+    "body": "The wall marks begin to **vibrate** when you bring your hand near. The corridor demands focus: master the old rhythm, or it invades the nerves.",
     "skillCheckLabel": "Match your breath to the stone's rhythm"
   },
   "act3/stone_rune_trial_fail": {
     "title": "Echo in the Bones",
-    "body": "The wall's answer comes as a dry shock through your tendons. Your steps fall half a beat behind.",
+    "body": "The wall's answer comes as a dry shock through the tendons. Your steps lag a half-beat behind.",
     "choices": [
       {
         "text": "Pull back and catch your breath"
@@ -488,7 +488,7 @@
   },
   "act3/stone_rune_trial_success": {
     "title": "Rhythm Tamed",
-    "body": "The runes' glow drops one tone. The weight in your skull eases, and every sound in the tomb seems to arrive in order.",
+    "body": "The runes' glow drops a tone. The weight in your skull eases, and every sound of the tomb arrives in order.",
     "choices": [
       {
         "text": "Resume the corridor"
@@ -500,7 +500,7 @@
   },
   "act3/well_fail": {
     "title": "Well's Deception",
-    "body": "You believe the reflection. Something in the next room **prepares** a surprise for you.",
+    "body": "You trust the reflection. Something in the next room prepares a surprise.",
     "choices": [
       {
         "text": "Press on anyway"
@@ -509,12 +509,12 @@
   },
   "act3/well_lies": {
     "title": "The Well That Lied",
-    "body": "The **Well That Lied** reflects a map that does not match the walls — a lie from whoever profits from **every** detour: not the well that errs, but the hand that carved the map for another pocket.",
+    "body": "The **Well That Lied** shows a map that does not match the walls. A lie carved for another pocket — every detour pays someone.",
     "skillCheckLabel": "Discern the map carved in stone"
   },
   "act3/well_success": {
     "title": "Truth in the Mirror",
-    "body": "You see the **trick**: displaced mirror. The real path opens to the left.",
+    "body": "You see the **trick**: a shifted mirror. The real path opens left.",
     "choices": [
       {
         "text": "Advance"

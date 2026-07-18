@@ -15,4 +15,4 @@ onEnter:
   - { op: addMark, mark: act1_surface_whisper_intel }
   - { op: addDiary, text: "Ouvi quem paga o vigário para não dizer o nome do morto — e anotei o dia do mercado." }
 ---
-Apanhas **duas** palavras que valem moeda: **quem** fecha o armazém ao quarto toque e **onde** o vigário guarda o livro de dívida. Não é milagre — é **mapa**.
+Você pega **duas** palavras que valem ouro: quem fecha o armazém ao quarto toque, e onde o vigário guarda o livro de dívida. Não é milagre — é **mapa**.

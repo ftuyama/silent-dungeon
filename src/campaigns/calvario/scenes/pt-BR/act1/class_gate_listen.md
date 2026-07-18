@@ -13,4 +13,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Além do gotejar: um **ranger** metálico, longínquo, como alguém a puxar uma corrente no escuro. Depois **silêncio** — o tipo que pesa.
+Além do gotejar: um ranger metálico, longe, como corrente puxada no escuro. Depois **silêncio** — o tipo que pesa.

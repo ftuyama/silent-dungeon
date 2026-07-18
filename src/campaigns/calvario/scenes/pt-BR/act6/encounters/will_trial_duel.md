@@ -12,5 +12,4 @@ choices:
 onEnter:
   - { op: addMark, mark: act6_will_measured }
 ---
-O altar escolhe silencio. Apenas o Penitente avanca, como se cada passo dele fosse uma palavra que nao pode ser desdita.
-
+O altar escolhe silêncio. Só o Penitente avança — cada passo como uma palavra que não dá para desdizer.

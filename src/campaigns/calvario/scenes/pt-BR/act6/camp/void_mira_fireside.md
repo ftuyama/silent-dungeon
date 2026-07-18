@@ -20,6 +20,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: -3, onceFlag: ff_cf_act6_void_mira_fs_leave }
 onEnter: []
 ---
-> *"Aqui o eco **mente** menos que as pessoas. Isso não é conforto — é **aviso**."*
+> *"Aqui o eco mente menos que as pessoas. Não é conforto — é **aviso**."*
 
 {{companionLine}}

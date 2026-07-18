@@ -3,6 +3,7 @@ id: act2/faction/vigilia_cache
 title: Depósito selado da Vigília
 chapter: 2
 ambientTheme: camp
+artKey: vigilia_cache
 choices:
   - text: "Abrir o selo e tomar o que a ordem escondeu"
     next: act2/hub_catacomb
@@ -22,4 +23,4 @@ choices:
       - { op: addDiary, text: "Não toquei no depósito. O farol anotou a contenção." }
 onEnter: []
 ---
-Atrás de uma **grade** marcada com o farol, um nicho guarda mantimentos selados em cera. Só quem já **falou** com o enviado conhece o caminho — o cruzeiro comum não mostra esta dobra.
+Atrás de uma **grade** marcada com o farol, um nicho guarda mantimentos selados em cera. Só quem já falou com o enviado conhece o caminho.

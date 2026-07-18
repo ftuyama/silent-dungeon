@@ -3,7 +3,7 @@ id: act6/void_secret_pact
 title: Liturgia da Fenda
 chapter: 6
 ambientTheme: void
-artKey: mirror_chamber
+artKey: void_secret_chamber
 skillCheck:
   id: act6_void_pact_bind
   attr: mind
@@ -16,7 +16,6 @@ choices:
 onEnter:
   - { op: addResource, resource: corruption, delta: 1 }
 ---
-Um espelho opaco sobe do chao e escreve seu nome com sua propria sombra. A oferta e simples: converter dor em forca, turno apos turno.
+Um espelho opaco sobe do chão e escreve seu nome com sua própria sombra. A oferta é simples: converter dor em força, turno após turno.
 
-Nao ha testemunha, so custo.
-
+Não há testemunha — só custo.

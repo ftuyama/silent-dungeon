@@ -30,4 +30,4 @@ choices:
     next: act3/hub_depths
 onEnter: []
 ---
-Runas acendem. Um **golem** funerário bloqueia o trono.
+Runas acendem. Um **golem** funerário bloqueia o caminho do trono. Pedra fria, junta a junta.

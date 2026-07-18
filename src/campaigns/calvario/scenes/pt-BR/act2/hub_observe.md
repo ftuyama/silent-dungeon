@@ -14,6 +14,6 @@ choices:
 onEnter:
   - { op: addMark, mark: act2_cruzeiro_marks }
 ---
-No chão: **três sulcos** paralelos e **pegadas** que voltam atrás — alguém desistiu a meio.
+No chão: **três sulcos** paralelos e pegadas que voltam atrás — alguém desistiu no meio.
 
 Entre as marcas, **Morvayn** riscado com seta para baixo; um **sino** enferrujado fincado na pedra.

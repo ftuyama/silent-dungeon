@@ -3,6 +3,7 @@ id: act2/faction/culto_bell_alcove
 title: Alcove do Terceiro Sino
 chapter: 2
 ambientTheme: act2
+artKey: culto_bell_alcove
 choices:
   - text: "Ajoelhar e deixar o sino nomear o próximo passo"
     next: act2/hub_catacomb
@@ -21,4 +22,4 @@ choices:
       - { op: addDiary, text: "Não ajoelhei. O Terceiro Sino vibrou uma vez — e calou-se." }
 onEnter: []
 ---
-Uma **alcove** onde o badalo não existe, mas o ar **vibra**. O enviado do culto falou desta dobra; o cruzeiro comum **mente** sobre ela.
+Uma **alcova** onde o badalo não existe, mas o ar vibra. O enviado do culto falou desta dobra; o cruzeiro comum não mostra o caminho.

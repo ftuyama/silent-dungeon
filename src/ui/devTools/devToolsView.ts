@@ -20,16 +20,48 @@ import {
   buildDevToolsHref,
   resolveDevToolsTabFromLocation,
   resolveDevToolsSceneIdFromLocation,
+  resolveDevToolsSceneSortFromLocation,
   resolveDevToolsAsciiPathFromLocation,
   resolveDevToolsAsciiSortFromLocation,
   DEV_TOOLS_TABS,
   type DevToolsTab,
+  type DevToolsSceneSort,
 } from '../campaignUrl.ts';
 import { mountBejamasAsciiPanel } from './devToolsBejamasAscii.ts';
 import { mountBrailleAsciiPanel } from './devToolsBrailleAscii.ts';
 import { mountBrailleWebSearchPanel } from './devToolsBrailleWebSearch.ts';
 import { mountAsciiBrowserPanel } from './devToolsAsciiBrowser.ts';
 import { attachDevToolsEnemySpriteThumbnail } from './devToolsEnemySpriteModal.ts';
+import sceneMdManifest from 'virtual:scene-md-dev-manifest';
+
+function sortSceneIds(
+  ids: readonly string[],
+  sort: DevToolsSceneSort,
+  mtimeById: Readonly<Record<string, number>>
+): string[] {
+  const copy = [...ids];
+  switch (sort) {
+    case 'name-desc':
+      copy.sort((a, b) => b.localeCompare(a));
+      break;
+    case 'mtime-desc':
+      copy.sort(
+        (a, b) =>
+          (mtimeById[b] ?? 0) - (mtimeById[a] ?? 0) || a.localeCompare(b)
+      );
+      break;
+    case 'mtime-asc':
+      copy.sort(
+        (a, b) =>
+          (mtimeById[a] ?? 0) - (mtimeById[b] ?? 0) || a.localeCompare(b)
+      );
+      break;
+    case 'name-asc':
+    default:
+      copy.sort((a, b) => a.localeCompare(b));
+  }
+  return copy;
+}
 
 function itemStatsLines(def: ItemDef): string[] {
   const lines: string[] = [];
@@ -630,8 +662,10 @@ function mountScenesPanel(
   campaignId: string,
   scenes: Map<string, LoadedScene>,
   sceneArt: Record<string, string>,
-  initialSceneId: string | null
+  initialSceneId: string | null,
+  initialSort: DevToolsSceneSort
 ): void {
+  const mtimeById = sceneMdManifest[campaignId] ?? {};
   const acts = sortedSceneActsFromNodes(
     [...scenes.keys()].map(
       (id): SceneGraphNode => ({
@@ -669,6 +703,29 @@ function mountScenesPanel(
   actLab.appendChild(actSel);
   actRow.appendChild(actLab);
 
+  const sortRow = document.createElement('div');
+  sortRow.className = 'dev-tools-filter-row';
+  const sortLab = document.createElement('label');
+  sortLab.className = 'dev-tools-filter';
+  sortLab.textContent = 'Ordenar ';
+  const sortSel = document.createElement('select');
+  sortSel.className = 'dev-tools-select';
+  const sortOpts: { value: DevToolsSceneSort; label: string }[] = [
+    { value: 'name-asc', label: 'Nome (A→Z)' },
+    { value: 'name-desc', label: 'Nome (Z→A)' },
+    { value: 'mtime-desc', label: 'Mais recentes' },
+    { value: 'mtime-asc', label: 'Mais antigos' },
+  ];
+  for (const o of sortOpts) {
+    const opt = document.createElement('option');
+    opt.value = o.value;
+    opt.textContent = o.label;
+    if (o.value === initialSort) opt.selected = true;
+    sortSel.appendChild(opt);
+  }
+  sortLab.appendChild(sortSel);
+  sortRow.appendChild(sortLab);
+
   const searchRow = document.createElement('div');
   searchRow.className = 'dev-tools-filter-row';
   const searchLab = document.createElement('label');
@@ -685,20 +742,32 @@ function mountScenesPanel(
   listEl.className = 'dev-tools-scene-list';
 
   sidebar.appendChild(actRow);
+  sidebar.appendChild(sortRow);
   sidebar.appendChild(searchRow);
   sidebar.appendChild(listEl);
 
   const detail = document.createElement('div');
   detail.className = 'dev-tools-scene-detail';
 
-  const sceneIds = [...scenes.keys()].sort((a, b) => a.localeCompare(b));
+  const allSceneIds = [...scenes.keys()];
+
+  function currentSort(): DevToolsSceneSort {
+    return sortSel.value as DevToolsSceneSort;
+  }
+
+  function sortedSceneIds(): string[] {
+    return sortSceneIds(allSceneIds, currentSort(), mtimeById);
+  }
+
   let selectedId =
-    initialSceneId && scenes.has(initialSceneId) ? initialSceneId : sceneIds[0] ?? '';
+    initialSceneId && scenes.has(initialSceneId)
+      ? initialSceneId
+      : sortSceneIds(allSceneIds, initialSort, mtimeById)[0] ?? '';
 
   function filteredIds(): string[] {
     const act = actSel.value;
     const q = searchInp.value.trim().toLowerCase();
-    return sceneIds.filter((id) => {
+    return sortedSceneIds().filter((id) => {
       if (act !== 'all' && sceneActId(id) !== act) return false;
       if (q && !id.toLowerCase().includes(q)) return false;
       return true;
@@ -711,7 +780,7 @@ function mountScenesPanel(
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.className = 'dev-tools-scene-link';
-      a.href = buildDevToolsHref(campaignId, 'scenes', { sceneId: id });
+      a.href = buildDevToolsHref(campaignId, 'scenes', { sceneId: id, sceneSort: currentSort() });
       const sc = scenes.get(id);
       const shortTitle = sc?.frontmatter.title?.trim() || id.split('/').pop() || id;
       a.textContent = `${id} — ${shortTitle}`;
@@ -776,7 +845,10 @@ function mountScenesPanel(
       window.history.pushState(
         {},
         '',
-        buildDevToolsHref(campaignId, 'scenes', { sceneId: targetSceneId })
+        buildDevToolsHref(campaignId, 'scenes', {
+          sceneId: targetSceneId,
+          sceneSort: currentSort(),
+        })
       );
       renderList();
       showDetail(targetSceneId);
@@ -785,6 +857,18 @@ function mountScenesPanel(
   }
 
   actSel.addEventListener('change', () => renderList());
+  sortSel.addEventListener('change', () => {
+    const sort = currentSort();
+    window.history.replaceState(
+      {},
+      '',
+      buildDevToolsHref(campaignId, 'scenes', {
+        sceneId: selectedId || null,
+        sceneSort: sort,
+      })
+    );
+    renderList();
+  });
   searchInp.addEventListener('input', () => renderList());
 
   listEl.addEventListener('click', (e) => {
@@ -794,7 +878,11 @@ function mountScenesPanel(
     e.preventDefault();
     const id = a.dataset.sceneId;
     selectedId = id;
-    window.history.pushState({}, '', buildDevToolsHref(campaignId, 'scenes', { sceneId: id }));
+    window.history.pushState(
+      {},
+      '',
+      buildDevToolsHref(campaignId, 'scenes', { sceneId: id, sceneSort: currentSort() })
+    );
     renderList();
     showDetail(id);
   });
@@ -814,6 +902,7 @@ export function mountDevToolsView(root: HTMLElement, campaignId: string): void {
 
   const tab = resolveDevToolsTabFromLocation();
   const sceneParam = resolveDevToolsSceneIdFromLocation();
+  const sceneSortParam = resolveDevToolsSceneSortFromLocation();
   const asciiPathParam = resolveDevToolsAsciiPathFromLocation();
   const asciiSortParam = resolveDevToolsAsciiSortFromLocation();
 
@@ -857,6 +946,7 @@ export function mountDevToolsView(root: HTMLElement, campaignId: string): void {
   select.addEventListener('change', () => {
     window.location.href = buildDevToolsHref(select.value, tab, {
       sceneId: tab === 'scenes' ? sceneParam : null,
+      sceneSort: tab === 'scenes' ? sceneSortParam : null,
       asciiPath: tab === 'ascii-browser' ? asciiPathParam : null,
       asciiSort: tab === 'ascii-browser' ? asciiSortParam : null,
     });
@@ -890,6 +980,7 @@ export function mountDevToolsView(root: HTMLElement, campaignId: string): void {
     a.className = 'dev-tools-tab' + (t === tab ? ' dev-tools-tab--active' : '');
     a.href = buildDevToolsHref(campaignId, t, {
       sceneId: t === 'scenes' ? sceneParam : null,
+      sceneSort: t === 'scenes' ? sceneSortParam : null,
       asciiPath: t === 'ascii-browser' ? asciiPathParam : null,
       asciiSort: t === 'ascii-browser' ? asciiSortParam : null,
     });
@@ -975,7 +1066,7 @@ export function mountDevToolsView(root: HTMLElement, campaignId: string): void {
     }
     case 'scenes':
     default:
-      mountScenesPanel(main, campaignId, scenes, bundle.ui.sceneArt, sceneParam);
+      mountScenesPanel(main, campaignId, scenes, bundle.ui.sceneArt, sceneParam, sceneSortParam);
       break;
   }
 

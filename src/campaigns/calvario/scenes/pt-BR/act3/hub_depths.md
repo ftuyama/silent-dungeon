@@ -11,7 +11,7 @@ choices:
   - text: "Patrulhar as profundezas (explorar mapa)"
     uiSection: "Explorar"
     next: shared/explore_nav_act3
-    preview: "Mover-te pelos corredores; stress sobe e encontros podem acontecer."
+    preview: "Você se move pelos corredores; stress sobe e encontros podem acontecer."
     effects:
       - { op: setExploration, graphId: act3_depths, nodeId: depths_drowned_gallery }
       - { op: setAsciiMap, mapId: act3_depths }
@@ -24,8 +24,8 @@ choices:
         - { flag: stone_guard_defeated }
         - { flag: act3_explore_goal_reached }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 11, de derrotar o guardião de pedra e de alcançar o portão nas profundezas."
-    preview: "Capítulo 4 — confronto com Morvayn; o trono espera."
+    lockedHint: "Você precisa de nível 11, de derrotar o guardião de pedra e de alcançar o portão nas profundezas."
+    preview: "Capítulo 4 — o trono de Morvayn."
     effects:
       - { op: setChapter, chapter: 4 }
       - { op: addDiary, text: "O trono chama." }
@@ -38,7 +38,7 @@ choices:
     uiSection: "Trono e pedra"
     next: act3/stone_corridor
     condition: { flag: stone_guard_defeated }
-    preview: "O silêncio agora é seu — runas e nicho, sem o golem."
+    preview: "Runas e nicho, sem o golem."
   - text: "Seguir rasto de cinza e corda — mensageiro interrompido"
     uiSection: "Rumores"
     next: act3/messenger_cold_trail
@@ -47,13 +47,13 @@ choices:
     showWhenLocked: true
     lockedHint: "Requer nível 9+; o rasto só se lê quando você já pesa nas profundezas."
     preview: "Furtividade ou força; Vigília ou Círculo cobram o despacho."
-  - text: "Ouvir tubagens sob a pedra"
+  - text: "Ouvir os canos sob a pedra"
     uiSection: "Rumores"
     next: act3/pipes_whisper
     visibleWhen: { noFlag: act3_pipes_done }
     condition: { level: { gte: 8 } }
     showWhenLocked: true
-    lockedHint: "Requer nível 8+ para ouvir o que as tubagens sussurram."
+    lockedHint: "Requer nível 8+ para ouvir o que os canos sussurram."
     preview: "Sorte; sucesso dá pista, falha gasta suprimento."
   - text: "Descer ao santuário esquecido (selo de pedra)"
     uiSection: "Rumores"
@@ -61,7 +61,7 @@ choices:
     visibleWhen: { noFlag: act3_shrine_done }
     condition: { level: { gte: 8 } }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 8 para localizar o véu de pedra rachada — antes disso, o santuário continua só rumor."
+    lockedHint: "Você precisa de nível 8 para localizar o véu de pedra rachada — antes disso, o santuário continua só rumor."
     preview: "Selo antigo; classe define o caminho de abertura."
   - text: "Falar com o cultista que atravessa o corredor"
     uiSection: "Rumores"
@@ -71,7 +71,7 @@ choices:
     showWhenLocked: true
     lockedHint: "O cultista só aborda quem pesa o suficiente nas profundezas — nível 10."
     preview: "Pacto, recusa ou ferro; reputação muda em qualquer caso."
-  - text: "O verde que ignoraste chama um mensageiro"
+  - text: "O verde que você ignorou chama um mensageiro"
     uiSection: "Rumores"
     next: act3/encounters/cult_patrol_scene
     condition:
@@ -82,15 +82,15 @@ choices:
     effects:
       - { op: setFlag, key: act3_corruption_ignore_patrol_done, value: true }
   - text: "Voltar ao Cruzeiro — hub"
-    uiSection: "Regresso"
+    uiSection: "Voltar"
     next: act2/hub_catacomb
-    preview: "Sobe ao cruzeiro; capítulo 2 no mapa da história."
+    preview: "Sobe ao cruzeiro; capítulo 2."
     effects:
       - { op: setChapter, chapter: 2 }
 onEnter:
   - { op: addXp, amount: 8 }
   - { op: clearAsciiMap }
 ---
-Profundezas **silenciosas**. **Morvayn** não está longe — o silêncio dele já foi **política** antes de magia.
+O **núcleo** é uma galeria afogada: pedra úmida, grelhas de bronze e um corredor que desce até o trono. **Morvayn** não aparece — mas o ar já carrega o cheiro dele.
 
-Aqui não se **acampa** como no cruzeiro: o subsolo cobra presença contínua, e seu fôlego torna-se **moeda** rara.
+Aqui não há fogo de acampamento. Só o seu fôlego e o gotejar lento das paredes.

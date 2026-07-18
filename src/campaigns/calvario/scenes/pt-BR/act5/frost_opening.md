@@ -12,15 +12,15 @@ storyPathGate:
     pact: act5/frost_opening_pact
     sealed: act5/frost_opening_sealed
 choices:
-  - text: "Encontrar abrigo e traçar plano na neve"
-    next: act5/frost_hub
+  - text: "Descer do vão — ver como ficou Cimeria"
+    next: act5/frost_cimeria_snow
 onEnter:
   - { op: setChapter, chapter: 5 }
   - { op: addResource, resource: supply, delta: -1 }
-  - { op: addDiary, text: "Depois do trono: vão de gelo, ar de masmorra, céu mentiroso. Rumor de dragão nas Cimeiras — só o céu hesita." }
+  - { op: addDiary, text: "Depois do trono: Cimeria inteira em neve, ar de masmorra. Rumor de Vetrnax nas Cimeiras." }
 ---
-O mapa é **sombras** sobre neve — o vento corta quem fala alto. Rumor de **Vetrnax** no horizonte.
+Cimeria **inteira** parece coberta de neve — telhados brancos, campos sem contorno, estradas que sumiram debaixo do gelo. O **frio** entra pelo peito e prende a respiração.
 
-**Ferro** no trono: Morvayn findou, mas o **eixo** segue para baixo. A vitória chegou magra; o frio não absolve.
+Nas **Cimeiras do Vento Cinzento**, o vento corta a boca. De abrigo em abrigo, rumor de **Vetrnax**: dragão no cume, hálito que congela o grito antes do som.
 
-O trono ficou atrás. Cada respiração paga **juros** ao frio.
+Morvayn caiu no ferro. O **eixo** ainda desce. Vitória magra; gelo sem perdão.

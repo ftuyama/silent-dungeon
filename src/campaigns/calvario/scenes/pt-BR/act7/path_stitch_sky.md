@@ -14,6 +14,6 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Levantas as mãos sem credenciais. O céu **não é tecido** — é **ameaça** estática — mas a mente insiste em costura: padrão onde não há, **significado** onde só há medo.
+Você levanta as mãos sem credencial. O céu não é tecido — é ameaça parada — mas a mente insiste em costura.
 
-Cada segundo em que o desenho **segura** é um segundo em que o mundo não te engole inteiro.
+Cada segundo em que o desenho segura é um segundo em que o mundo não engole você inteiro.

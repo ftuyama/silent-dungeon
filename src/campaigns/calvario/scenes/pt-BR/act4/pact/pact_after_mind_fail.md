@@ -4,12 +4,12 @@ title: Mordida do Eco
 chapter: 4
 ambientTheme: act4
 choices:
-  - text: "Atravessar na mesma — à força"
+  - text: "Atravessar mesmo assim — à força"
     next: act4/encounters/pact_vigil_skirmish
 onEnter:
   - { op: addResource, resource: corruption, delta: 1 }
-  - { op: addDiary, text: "O eco escorreu-me pela garganta. Um dente partiu-se na minha atenção — e o Terceiro Sino riu baixinho." }
+  - { op: addDiary, text: "O eco escorreu pela garganta. Algo partiu na atenção — e o Terceiro Sino riu baixo." }
 ---
-O eco **morde**. Uma faísca atravessa-te os pensamentos como **ferro** em língua.
+O eco **morde**. Uma faísca atravessa seus pensamentos como ferro na língua.
 
-Ainda serves — mas sentes o preço como **náusea** doce, como mel venenoso colado ao céu da boca.
+Você ainda serve — mas o preço cola no céu da boca, doce e errado.

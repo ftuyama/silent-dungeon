@@ -13,4 +13,4 @@ choices:
         onFlee: act3/hub_depths
 onEnter: []
 ---
-Um **caçador** da Vigília, coberto de cal e fuligem, vigia a passagem como se ainda obedecesse ordens de um comandante morto.
+Um **caçador** da Vigília, coberto de cal e fuligem, vigia a passagem como se ainda obedecesse a um comandante morto.

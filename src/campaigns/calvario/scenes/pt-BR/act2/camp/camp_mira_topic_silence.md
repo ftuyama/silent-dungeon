@@ -1,6 +1,6 @@
 ---
 id: act2/camp/camp_mira_topic_silence
-title: Silêncio partilhado
+title: Silêncio compartilhado
 chapter: 2
 ambientTheme: camp
 choices:
@@ -11,6 +11,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act2_camp_mira_topic_silence }
 onEnter: []
 ---
-> *"Vê? **Assim** se faz trégua."*
+> *"Viu? **Assim** se faz trégua."*
 
 {{companionLine}}

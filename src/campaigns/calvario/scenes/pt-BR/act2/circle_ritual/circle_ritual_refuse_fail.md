@@ -8,6 +8,6 @@ choices:
     next: act2/hub_catacomb
 onEnter: []
 ---
-Recuas a passo, mas por um instante **vês** o desenho **completar-se** na retina — um **fantasma** de compromisso que não pediste.
+Você recua, mas por um instante **vê** o desenho **completar-se** na retina — um fantasma de compromisso que não pediu.
 
-Não ficou **marca**… mas ficou **eco**.
+Não ficou marca. Ficou **eco**.

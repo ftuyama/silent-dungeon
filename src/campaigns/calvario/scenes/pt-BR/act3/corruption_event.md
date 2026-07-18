@@ -27,4 +27,4 @@ onEnter: []
 ---
 Um **cristal** verde pulsa. O eco da masmorra responde — um pulso que não pede permissão.
 
-Por um instante, **Morvayn** soa como palavra de contagem, não como nome — como se alguém no fundo **medisse** quantos corações ainda batem.
+Por um instante, **Morvayn** soa como contagem, não como nome: alguém no fundo mede corações.

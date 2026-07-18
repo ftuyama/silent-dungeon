@@ -14,4 +14,4 @@ choices:
         onFlee: act2/flee_skeleton
 onEnter: []
 ---
-O esqueleto **crange** ao mover-se.
+O esqueleto **estala** ao mover-se. Ossos secos, lâmina enferrujada, sem pressa.

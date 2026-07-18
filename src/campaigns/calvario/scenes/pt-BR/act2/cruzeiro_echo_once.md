@@ -11,4 +11,4 @@ onEnter:
   - { op: addResource, resource: gold, delta: 1 }
   - { op: addDiary, text: "Arranquei uma moeda velha da cera — troco de quem rezou e fugiu." }
 ---
-Entre **duas** velas gastas, a **cera** guardou uma **moeda** com o rosto raspado: nem patacão, nem mentira inteira — só prova de que alguém **pagou** para ficar um pouco mais quente.
+Entre **duas** velas gastas, a **cera** guardou uma **moeda** com o rosto raspado. Nem riqueza, nem mentira inteira — só prova de que alguém pagou para ficar um pouco mais quente.

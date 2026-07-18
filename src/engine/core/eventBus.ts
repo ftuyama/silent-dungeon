@@ -13,6 +13,7 @@ export type GameEvent =
   | { type: 'time.dayAdvanced'; day: number }
   | { type: 'item.acquired'; itemId: string }
   | { type: 'item.sold'; itemId: string; gold: number }
+  | { type: 'companion.recruited'; companionId: string }
   /** Entrada nova no diário do jogador (`addDiary`) — texto já com templates resolvidos. */
   | { type: 'diary.entryAdded'; text: string }
   | { type: 'camp.rest' }

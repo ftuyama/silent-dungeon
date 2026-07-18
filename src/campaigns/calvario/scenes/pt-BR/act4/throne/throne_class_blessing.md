@@ -37,4 +37,4 @@ choices:
 onEnter:
   - { op: setFlag, key: throne_acted_class_blessing, value: true }
 ---
-O salão **reconhece** ofícios como quem reconhece **ferramentas**: não julga — **mede** o que pode estragar com elas.
+O salão **reconhece** ofícios como ferramentas: não julga — mede o que pode estragar com elas.

@@ -5,6 +5,12 @@ chapter: 1
 ambientTheme: explore
 artKey: title_breath
 choices:
+  - text: "Repassar o que aconteceu no vilarejo — por que você desce"
+    visibleWhen: { noFlag: shared_world_lore_done }
+    preview: "Memória da superfície; uma vez."
+    effects:
+      - { op: setFlag, key: shared_world_lore_from_camp, value: false }
+    next: shared/lore/world_wound_surface
   - text: "Está pronto. Descer."
     next: act1/crawl_entrada
     preview: "Segue para o primeiro degrau."
@@ -16,4 +22,4 @@ onEnter:
   - { op: addDiary, text: "Respirei antes do abismo." }
   - { op: adjustLeadStress, delta: -1 }
 ---
-O ar da superfície parece **doce** por um segundo. Depois, o pulso verde lembra-te que o doce é mentira — só o silêncio de baixo é real.
+O ar da superfície parece **doce** por um segundo. Depois o pulso verde lembra você: o doce é mentira. Só o silêncio de baixo é real.

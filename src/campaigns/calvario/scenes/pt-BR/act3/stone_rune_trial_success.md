@@ -14,4 +14,4 @@ choices:
   - text: "Retomar o corredor"
     next: act3/stone_corridor
 ---
-O brilho das runas baixa um tom. O peso no crânio alivia, e cada som da tumba parece chegar em ordem.
+O brilho das runas baixa um tom. O peso no crânio alivia, e cada som da tumba chega em ordem.

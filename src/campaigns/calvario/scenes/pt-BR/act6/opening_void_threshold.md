@@ -13,7 +13,6 @@ onEnter:
   - { op: setChapter, chapter: 6 }
   - { op: addDiary, text: "No fundo do gelo havia uma porta sem dobradiça. Entrei e o mundo respondeu com a minha voz, mas sem a minha piedade." }
 ---
-O gelo **abre** sob as Cimeiras: **nave** sem altar, pendurada entre pedra e noite — catedral para uma pergunta.
+O gelo **abre** sob as Cimeiras. Embaixo, uma **nave** sem altar — pedra e noite, sem porta de verdade.
 
-Cada eco volta **atrasado**, outra pessoa com seu nome; o ar cheira a **verdade antes de ter nome**. Nas colunas partidas: *se o mundo for sonho, quem acorda quando cais?*
-
+O eco volta atrasado, com sua voz e outra intenção. O ar cheira a pó frio. Nas colunas partidas, alguém já ensaiou seu nome.

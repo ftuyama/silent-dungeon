@@ -13,4 +13,4 @@ choices:
         onFlee: act3/hub_depths
 onEnter: []
 ---
-Um **mensageiro** sem olhos guia dois acólitos pelo corredor. O sino preso ao pulso dele marca seu tempo em batidas de condenação.
+Um **mensageiro** sem olhos guia dois acólitos pelo corredor. O sino no pulso dele marca o tempo em batidas secas.

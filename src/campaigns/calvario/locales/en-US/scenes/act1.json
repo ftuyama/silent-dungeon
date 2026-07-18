@@ -1,7 +1,7 @@
 {
   "act1/class_gate": {
     "title": "The mirror pool",
-    "body": "Three **oaths** echo in a round chamber. At the center, a sheet of **black water** does not move — yet your reflection takes a moment to follow you, as if hesitating between **sword**, **arc of light**, and **holy symbol**.\n\nThe air smells of **burnt incense** and iron.",
+    "body": "Three **oaths** echo in the round chamber. A fourth hunting whisper, without a banner. At the center, still **black water** — and your reflection takes a moment to catch up, as if choosing between **sword**, **bow**, and **holy symbol**.\n\nThe air smells of **burnt incense** and iron.",
     "choices": [
       {
         "text": "[#] Forge the path as Knight",
@@ -39,24 +39,24 @@
         "preview": "Just looking; mark and diary."
       },
       {
-        "text": "Press on — dungeon mouth",
+        "text": "Press on to the dungeon mouth",
         "preview": "The oath is done; the air outside still listens."
       }
     ]
   },
   "act1/class_gate_listen": {
     "title": "Listening",
-    "body": "Beyond the dripping: a distant **metallic scrape**, as if someone pulling a chain in the dark. Then **silence** — the kind that weighs.",
+    "body": "Beyond the drip: a distant metallic scrape, like a chain pulled in the dark. Then **silence** — the kind that weighs.",
     "skillCheckLabel": "Hear what the dripping hides"
   },
   "act1/class_gate_water": {
     "title": "Reflection",
-    "body": "For an instant the reflection **is not your face** — bone and ripple — and the water grows **too still** to be natural.\n\n*{{playerName}}* leans over *{{playerName}}*; when you lift your head, your neck aches from **having seen** too much.",
+    "body": "For an instant the reflection is not your face: bone and ripple. The water goes too still.\n\n*{{playerName}}* leans over *{{playerName}}*. When you lift your head, your neck aches from **having seen** too much.",
     "luckCheckLabel": "Look into the black water without losing yourself in the reflection"
   },
   "act1/crawl_entrada": {
     "title": "First step",
-    "body": "Cold stone under your palm. The dampness **is not water** — it is something that seeped from above centuries ago and never fully dried.\n\nEach step consumes a little **light**; behind you, the **ceiling** **darkens** until the torch feels like a memory from another life.",
+    "body": "Cold stone under your palm. The damp stuck centuries ago and never fully dried.\n\nEach step eats a little **light**. Behind you, the ceiling darkens until the torch feels like a memory.",
     "choices": [
       {
         "text": "Accept the call and press on",
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "text": "Press on — dungeon mouth",
+        "text": "Press on to the dungeon mouth",
         "preview": "Oath sworn; the air outside still listens."
       },
       {
@@ -81,14 +81,14 @@
   },
   "act1/crawl_touch": {
     "title": "The wall",
-    "body": "**Damp**, like sick skin. Under the salt crust, you feel veins **softer** — almost fossilized flesh.\n\nA shiver runs up your arm. It is not fear. It is the stone's **memory**.",
+    "body": "**Damp**, like sick skin. Under the salt crust, softer veins — almost fossilized flesh.\n\nA shiver runs up your arm. It is not fear. It is the stone's **memory**.",
     "choices": [
       {
         "text": "Continue the descent",
         "preview": "On to the oath."
       },
       {
-        "text": "Press on — dungeon mouth",
+        "text": "Press on to the dungeon mouth",
         "preview": "Oath sworn; the air outside still listens."
       },
       {
@@ -102,7 +102,7 @@
   },
   "act1/dungeon_door": {
     "title": "Doorframe",
-    "body": "**Faded runes** were re-scored by recent hands. Among them, a crude **bell** — the Third Bell, rumor says.\n\nThe wood is damp **inside**, as if the stone were breathing.",
+    "body": "Faded runes were scored again by recent hands. Among them, a crude **bell** — the Third Bell, they say.\n\nThe wood is damp inside.",
     "choices": [
       {
         "text": "Enter the catacombs",
@@ -120,7 +120,7 @@
   },
   "act1/dungeon_mouth": {
     "title": "Dungeon mouth",
-    "body": "The **stone mouth** creaks like an old jaw. The air grows **dense**, like wet wool filling your lungs — and the chamber's **silence** seems to **hear you** before you hear yourself.\n\nFrom within comes a smell: **earth**, **ash**, and something too sweet to be wholesome.",
+    "body": "The **stone mouth** creaks. Air weighs on your lungs — damp and cold. Inside, **silence** arrives first: you only hear your own breath.\n\nFrom within comes the smell of **earth**, ash, and something too sweet to be wholesome.",
     "choices": [
       {
         "text": "[!] Cracked brazier — tear off the seal (risk/reward)",
@@ -150,7 +150,7 @@
   },
   "act1/encounters/risk_bell": {
     "title": "Blind bell",
-    "body": "A **bell without a clapper** swings alone, hung by fine chains. The metal mouth has the sheen of fresh flesh.\n\nThe echo asks a simple offering: a cut on the palm, a vow of urgency, a shortcut to descend stronger.",
+    "body": "A **bell without a clapper** swings alone on fine chains. The metal mouth has the sheen of fresh flesh.\n\nThe echo asks a simple offering: a cut on the palm, an urgent vow — a shortcut to descend stronger.",
     "choices": [
       {
         "text": "Bleed on the bell's edge to bargain passage",
@@ -170,7 +170,7 @@
   },
   "act1/encounters/risk_brazier": {
     "title": "Cracked brazier",
-    "body": "The **brazier** is split top to bottom, and a wax seal holds a sack of provisions at the bottom of the iron mouth.\n\nThe heat is not natural. If you pull, you take rations — and something of yours sticks to the wax.",
+    "body": "The **brazier** is cracked top to bottom. A wax seal holds a sack of provisions at the bottom.\n\nThe heat is not natural. If you pull, you take rations — and something sticks to the wax.",
     "choices": [
       {
         "text": "Tear off the seal and swallow the taste of rust",
@@ -190,14 +190,14 @@
   },
   "act1/mirror_descent": {
     "title": "Shard on the step",
-    "body": "In the mortar, a **mirror shard** — black edge, lying light — returns *{{playerName}}* **weary**, mouth tighter than you remembered.\n\nOld fear: **returning** the same if the shadow **wins** before you do.",
+    "body": "In the mortar, a **mirror shard** returns *{{playerName}}* weary, mouth tighter than you remembered.\n\nOld fear: coming back the same if the shadow wins above before you do.",
     "choices": [
       {
         "text": "Lower your eyes and continue the descent",
         "preview": "On to the oath."
       },
       {
-        "text": "Press on — dungeon mouth",
+        "text": "Press on to the dungeon mouth",
         "preview": "Oath sworn; the air outside still listens."
       },
       {
@@ -211,7 +211,7 @@
   },
   "act1/mirror_door": {
     "title": "Bronze on the frame",
-    "body": "In the wood, **polished bronze** returns your face **greenish** at one angle only — armor or cloak seems **borrowed** from someone else.\n\nThe corridor and the reflection **breathe together**; for a second you cannot tell who pushes whom inside.",
+    "body": "In the wood, **polished bronze** returns your face greenish. The armor looks borrowed.\n\nFor a second you cannot tell who pushes whom inside — the corridor or the reflection.",
     "choices": [
       {
         "text": "Look away and return to the doorframe",
@@ -225,7 +225,7 @@
   },
   "act1/mirror_door_resolved": {
     "title": "Bronze on the frame",
-    "body": "The **bronze** goes dull again. For an instant you still feel the **lagging** gaze — as if it were keeping your name for later.",
+    "body": "The **bronze** goes dull again. You still feel the lagging gaze, as if it were keeping your name for later.",
     "choices": [
       {
         "text": "Look away and return to the doorframe",
@@ -238,7 +238,7 @@
   },
   "act1/mirror_entrance": {
     "title": "Glass against stone",
-    "body": "In the niche, a **broken oval mirror**: half your **face**, half the **tunnel** — you and the abyss in the same cut.\n\nThe glass **fixes** *{{playerName}}* to **choose** the silent city — before silence chooses for you.",
+    "body": "In the niche, a broken **oval mirror**: half your face, half the tunnel.\n\nThe glass returns *{{playerName}}* choosing the silent city — before silence chooses for you.",
     "choices": [
       {
         "text": "Leave and return to the inscriptions",
@@ -251,7 +251,7 @@
   },
   "act1/mirror_round": {
     "title": "Mirror on the wheel",
-    "body": "A **hand mirror** on a rusted chain: ridiculous here, yet the glass **trembles** and *{{playerName}}* faces *{{playerName}}* without black water to lie.\n\nIt is **only you** — with **promises** to keep; nothing here absolves the next step.",
+    "body": "A **hand mirror** on a rusted chain. Ridiculous here — but the glass trembles, and *{{playerName}}* faces *{{playerName}}* without black water lying.\n\nIt is only you, with promises to keep.",
     "choices": [
       {
         "text": "Release your breath and return to the chamber center",
@@ -268,7 +268,7 @@
   },
   "act1/pick_cleric": {
     "title": "Cleric's oath",
-    "body": "The emblem burns cold in your palm. Old words push back the veil.",
+    "body": "The emblem burns cold in your palm. Old words push the veil aside.",
     "choices": [
       {
         "text": "Advance to the dungeon mouth",
@@ -278,7 +278,7 @@
   },
   "act1/pick_knight": {
     "title": "Knight's oath",
-    "body": "The metal obeys. The **Order of the Vigil** whispers approval in the folds of the armor.",
+    "body": "The metal obeys. The **Order of the Vigil** approves in the folds of the armor.",
     "choices": [
       {
         "text": "Advance to the dungeon mouth",
@@ -298,7 +298,7 @@
   },
   "act1/pick_archer": {
     "title": "Archer's oath",
-    "body": "The string **sings** once — dry, honest. No one calls you brother or disciple; only the **target** you have not yet seen waits for you to learn to count steps before counting glories.",
+    "body": "The string sings once — dry, honest. No one calls you brother. Only the **target** you have not yet seen waits for you to count steps before glory.",
     "choices": [
       {
         "text": "Advance to the dungeon mouth",
@@ -308,12 +308,12 @@
   },
   "act1/surface_whisper": {
     "title": "Whisper in the throat",
-    "body": "You press your ear to the **stone**: from above come **cut voices** — price of bread, doors shut early, fear of **looking** where shadow eats in silence.\n\nA fragment of conversation **hooks** in the dungeon's throat like a barb.",
+    "body": "You press your ear to the **stone**. From above come cut voices: bread prices, doors shut early, fear of looking where shadow feeds.\n\nA scrap of talk sticks in the dungeon's throat.",
     "luckCheckLabel": "Listen to what rises from the city before the stone swallows it"
   },
   "act1/surface_whisper_fail": {
     "title": "Corroding noise",
-    "body": "The stone **returns** a laugh that is not yours — damp, **sweet**, wrong. You are left with the echo on your tongue like **old iron**: you are no worse, but the depths **tasted** you.",
+    "body": "The stone returns a laugh that is not yours — damp, sweet, wrong. The echo stays on your tongue like old iron. The depths tasted you.",
     "choices": [
       {
         "text": "Pull your ear away and return to the inscriptions",
@@ -326,7 +326,7 @@
   },
   "act1/surface_whisper_ok": {
     "title": "Information that pays",
-    "body": "You catch **two** words worth coin: **who** closes the warehouse at the fourth stroke and **where** the vicar keeps the debt ledger. It is not miracle — it is **map**.",
+    "body": "You catch **two** words worth gold: who closes the warehouse at the fourth stroke, and where the vicar keeps the debt ledger. Not a miracle — a **map**.",
     "choices": [
       {
         "text": "Keep the rumor and return to the inscriptions",
@@ -339,7 +339,7 @@
   },
   "act1/title": {
     "title": "Opening",
-    "body": "The **green pulse** climbs the city's throat; below, the **dungeon** opens a mute mouth — damp stone, old iron, and **silence** that pushes inward.\n\nAbove they pretend routine; someone must **cut** it at the root — *{{playerName}}*, the first step is to **descend**.",
+    "body": "The **green pulse** climbs the city's throat. Below, the **dungeon** opens a mute mouth: damp stone, old iron, **silence** that pushes you in.\n\nAbove they pretend routine. Someone has to cut this at the root — *{{playerName}}*, the first step is to **descend**.",
     "choices": [
       {
         "text": "Descend the steps toward the text carved in stone",
@@ -357,8 +357,12 @@
   },
   "act1/title_breath": {
     "title": "A moment",
-    "body": "The surface air seems **sweet** for a second. Then the green pulse reminds you sweetness is a lie — only the silence below is real.",
+    "body": "Surface air tastes **sweet** for a second. Then the green pulse reminds you: sweetness is a lie. Only the silence below is real.",
     "choices": [
+      {
+        "text": "Go back over what happened in the village — why you descend",
+        "preview": "Surface memory; once."
+      },
       {
         "text": "Ready. Descend.",
         "preview": "On to the first step."
@@ -374,7 +378,7 @@
   },
   "act1/title_examine": {
     "title": "Inscriptions",
-    "body": "Someone chiseled **three lines** before rust ate the stone:\n\n> *\"Here there is no forgiveness — only echo.\"*\n\nA fourth symbol was scratched by a more recent hand: a **spiral** pointing down.",
+    "body": "Someone chiseled **three lines** before rust ate the stone:\n\n> *\"Here there is no forgiveness — only echo.\"* Above it, a scratched **spiral** points down.",
     "choices": [
       {
         "text": "Notice a broken mirror in a niche — face the reflection",

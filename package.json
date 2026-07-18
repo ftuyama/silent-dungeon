@@ -22,6 +22,7 @@
     "i18n:extract-dialogue": "node scripts/i18n/extract-dialogue-overlays.mjs",
     "check:ascii-art": "node scripts/check-pending-ascii-art.mjs",
     "check:pt-br": "node scripts/check-pt-br.mjs",
+    "check:narrative-voice": "node scripts/check-narrative-voice.mjs",
     "lint:highlight-frames": "node scripts/highlight-frames-lint.mjs",
     "highlight:hotspots": "node scripts/highlight-hotspots-from-image.mjs",
     "braille:preview": "node scripts/braille-art-preview.mjs",

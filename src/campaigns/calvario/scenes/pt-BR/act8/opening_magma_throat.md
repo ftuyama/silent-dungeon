@@ -13,6 +13,6 @@ onEnter:
   - { op: setChapter, chapter: 8 }
   - { op: addDiary, text: "Além do trono, o eixo não sobe — desce. A garganta da terra engole a luz e devolve só calor." }
 ---
-A pedra **abre** como mandíbula. Não é porta — é **ferida** antiga que nunca cicatrizou. O ar cheira a enxofre e a dívida.
+A pedra abre como mandíbula. Não é porta — é ferida antiga. O ar cheira a enxofre.
 
-Abaixo, algo **pulsa** vermelho. Não pede nome. Cobra **presença**.
+Abaixo, algo pulsa vermelho. Não pede nome. Cobra presença.

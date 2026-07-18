@@ -13,6 +13,6 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-Três sombras **subiram** do mesmo vício — não são cópias; são **versões** que ganharam corpo em dias diferentes. Juntas, formam um **argumento** que não cabe numa só cabeça.
+Três sombras sobem do mesmo vício — não cópias; versões que ganharam corpo em dias diferentes. Juntas, ocupam mais espaço do que uma cabeça aguenta.
 
-A nave **inclina-se** como quem concorda.
+A nave inclina um pouco, como se concordasse.

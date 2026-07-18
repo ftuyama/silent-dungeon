@@ -28,6 +28,7 @@ export type GameEventHandlers = {
   onCombatDefeat: () => void;
   onFaithMiracle: () => void;
   onItemAcquired: (itemId: string) => void;
+  onCompanionRecruited: () => void;
   onXpGained: (amount: number) => void;
   onDiaryEntryAdded: (text: string) => void;
   onCampRest: () => void;
@@ -44,6 +45,7 @@ export function handleGameEvent(ev: GameEvent, h: GameEventHandlers): void {
   }
   if (ev.type === 'faith.miracle') h.onFaithMiracle();
   if (ev.type === 'item.acquired') h.onItemAcquired(ev.itemId);
+  if (ev.type === 'companion.recruited') h.onCompanionRecruited();
   // XP de vitória em combate é aplicado antes de `mode` virar `story` no GameApp.
   if (ev.type === 'xp.gained' && ev.amount > 0) h.onXpGained(ev.amount);
   if (ev.type === 'diary.entryAdded') h.onDiaryEntryAdded(ev.text);

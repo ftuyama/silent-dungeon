@@ -1,7 +1,7 @@
 {
   "act7/apocalypse_fork": {
     "title": "Where the end picks a mouth",
-    "body": "There is no third column pretending neutrality: the apocalypse **demands** a verb. Either you **hold** the world as one holds an open wound, or you **serve** as kindling and call your name **light** so you need not see what you become beneath.\n\nThe wind stops for an instant — not to spare you. To **hear** which of the two mouths you will open.",
+    "body": "There is no neutral third option. The apocalypse demands a verb: **hold** the world like an open wound, or **serve** as kindling and call it light.\n\nThe wind stops for a moment — not to spare you. To hear which mouth opens.",
     "choices": [
       {
         "text": "Try to stitch the firmament with thought and prayer — one thread at a time",
@@ -15,7 +15,7 @@
   },
   "act7/before_final_horizon": {
     "title": "Before the last horizon",
-    "body": "The horizon **reveals** the final line: not a border — a **receipt** of flight. Closing here is **incomplete**: the axis still descends into magma.\n\nThe wind **stops** again. This time it is not courtesy — it is **expectation** from those who choose sky over floor.",
+    "body": "The horizon shows the last line. Closing here is **incomplete**: the axis still descends into magma.\n\nThe wind stops again. This time it is not courtesy — it is the expectation of someone who chooses sky over depth.",
     "choices": [
       {
         "text": "Descend into the magma deeps — refuse the incomplete ending",
@@ -36,7 +36,7 @@
         ]
       },
       {
-        "text": "Give what remains of human to the rumor — let the skin learn the price",
+        "text": "Give what remains human to the rumor — pay the price on the skin",
         "preview": "+1 corruption · −1 supply · incomplete ending",
         "diaryTexts": [
           "I did not bargain with God — I bargained with fire. The result is the same: less skin, more truth — and the floor of the axis still to visit."
@@ -53,7 +53,7 @@
   },
   "act7/cinder_tithe_fail": {
     "title": "Biting ash",
-    "body": "The pile **ignites** without flame: heat that **steals** sweat and **patience**. When you retreat, you carry **corruption** in the throat — not possession; **residue** of having touched what was not yours.\n\n---",
+    "body": "The pile lights without flame: heat that steals sweat. When you step back, you bring **corruption** in the throat — residue from touching what was not yours.",
     "choices": [
       {
         "text": "Leave the mound with burning hands and a closed mouth"
@@ -65,7 +65,7 @@
   },
   "act7/cinder_tithe_ok": {
     "title": "Dry luck",
-    "body": "You choose the right mound as one who **smells** a lie on the wind. Beneath the ash: cold **gold**, melted into useless shapes — but **gold** all the same.\n\n---",
+    "body": "You pick the right mound. Under the ash: cold **gold**, melted into useless shapes — but gold all the same.",
     "choices": [
       {
         "text": "Slip the find into your pocket and move on"
@@ -77,7 +77,7 @@
   },
   "act7/epilogue_apocalypse": {
     "title": "Epilogue — incomplete ashes",
-    "body": "The world **continues** without you; your **echo** divides among **road**, **mark**, and **silence** bought or refused.\n\nThis is **not** complete victory — it is **flight** to the sky. The floor of the axis stayed below, burning. *(You can **save** from the menu or **start over**.)*",
+    "body": "The world goes on without you. Your echo splits among road, mark, and silence.\n\nThis is not a complete victory — it is flight into the sky. The bottom of the axis stayed below, burning. *(You can **save** from the menu or **restart**.)*",
     "choices": [
       {
         "text": "Close the diary — flight to the sky"
@@ -89,7 +89,7 @@
   },
   "act7/event_ash_sermon": {
     "title": "Sermon in the ash",
-    "body": "An ashen **preacher** gestures at a **rift** where the sky should be — empty audience, gesture of **official** ending.\n\nYou laugh, or you pay so the laugh does not become **guilt** — today: **coin** and reputation with those who pretend order.",
+    "body": "A gray **preacher** gestures at a rift where the sky should be — empty seats, the gesture of an official end.\n\nYou laugh, or pay so the laugh does not turn to guilt: today, **coin** and standing with those who fake order.",
     "choices": [
       {
         "text": "Toss a coin into the plate and move on — charity grows tired too"
@@ -101,12 +101,12 @@
   },
   "act7/event_cinder_tithe": {
     "title": "Ash tithe",
-    "body": "Someone **stacked** ashes like a portable altar. On top: a human **tooth**, too clean. A sign without ink asks if you still believe in **luck** when the world is already **ash and bone**.\n\n---",
+    "body": "Someone piled ash into a portable altar. On top: a human **tooth**, too clean. A sign without ink asks if you still believe in luck.",
     "luckCheckLabel": "Guess which ash mound still hides a tooth"
   },
   "act7/event_last_train": {
     "title": "Last train of dust",
-    "body": "An open **car**, full of **dust** that was once people. The engineer is a **clock** stopped at the center of the dial — smiling as one who knows **delay** and **end** are the same word with different accents.\n\n**Three coins** buy a place at the edge — not to flee: to **remember** that fleeing is also a way of **praying**.",
+    "body": "An open **car**, full of dust that used to be people. The engineer is a stopped clock — he smiles like someone who knows delay and ending are the same word.\n\n**Three coins** buy a seat on the edge — not to flee: to remember that fleeing costs too.",
     "choices": [
       {
         "text": "Climb into the car and let the wind steal what remains"
@@ -118,7 +118,7 @@
   },
   "act7/event_silent_bell": {
     "title": "Bell without a tongue",
-    "body": "In the middle of the wasteland, a **bell** hung from nothing — **tongue** torn out, clapper **mute**. Still, the air **vibrates** as if someone had just **lied** aloud.\n\nTo ring or not to ring: the price is not written — it is **in the hand**.",
+    "body": "In the middle of the waste, a **bell** hangs from nothing — tongue torn out, clapper mute. Even so, the air vibrates.\n\nTouch it or not: the price is not written. It is in the hand.",
     "choices": [
       {
         "text": "Hold the clapper with a gloved hand — pay in faith what has no price in gold",
@@ -138,7 +138,7 @@
   },
   "act7/fight_hollow_intro": {
     "title": "Hollow procession",
-    "body": "Figures **aligned** too neatly to be alive: **cult** without eyes, **bone** without history. They advance like **rhythm** — and rhythm, in the end, is only another form of **siege**.\n\n---",
+    "body": "Figures lined up too neatly to be alive: eyeless cult, bone without story. They advance in one rhythm — and rhythm, here, is a siege.",
     "choices": [
       {
         "text": "Cut the line before they canonize you without consent"
@@ -150,7 +150,7 @@
   },
   "act7/opening_terminal_glow": {
     "title": "Terminal glow",
-    "body": "The **air** smells of burnt paper and **iron** too cold; clouds **threaten** without rain — **silence with teeth**.\n\nThe road **splits**: **stitch** the sky until it falls silent, or **let it** tear and dance in the ash. One step is already a **side**.",
+    "body": "The air smells of burned paper and iron gone too cold. Clouds threaten without rain.\n\nThe road splits: **stitch** the sky until it stills, or let it tear and dance in the ash. One step already picks a side.",
     "choices": [
       {
         "text": "Walk until the sky stops pretending color"
@@ -162,7 +162,7 @@
   },
   "act7/path_ember_devour": {
     "title": "Living kindling",
-    "body": "You open your throat and the heat **answers** without asking a name: not pulpit possession — **agreement** with what already burned in you before the end of the world was fashionable.\n\nThe fire **eats** supply and **leaves** corruption as a crest: you are not saint; you are a walking **chimney** — and the road favors those who do not pretend cold.",
+    "body": "You open your throat and the heat answers. It is a deal with what was already burning in you.\n\nThe fire eats supply and leaves **corruption** as a mark: you do not become a saint — you become a chimney.",
     "choices": [
       {
         "text": "Cool your chest in the ash and move on — fire is also a path"
@@ -174,12 +174,12 @@
   },
   "act7/path_stitch_sky": {
     "title": "Thread in the sky",
-    "body": "You raise your hands without credentials. The sky **is not fabric** — it is static **threat** — but the mind insists on stitching: pattern where there is none, **meaning** where there is only fear.\n\nEach second the design **holds** is a second the world does not swallow you whole.",
+    "body": "You raise your hands with no credentials. The sky is not cloth — it is a still threat — but the mind insists on stitching.\n\nEach second the pattern holds is a second the world does not swallow you whole.",
     "skillCheckLabel": "Hold a pattern in the chaos before the retina gives up"
   },
   "act7/stitch_failure": {
     "title": "Broken thread",
-    "body": "The diagram **tears** and the world returns pure **noise**: not clean defeat — **entry** of another language into your head, one that asks no translation, only **obedience**.\n\nSomething in you **yields** with the right sound: less **trust** in what is above, more **seduction** by what bites back.",
+    "body": "The diagram tears. The world returns pure noise — another tongue in the head, asking for no translation, only obedience.\n\nSomething in you yields: less trust in the heights, more pull toward what bites back.",
     "choices": [
       {
         "text": "Spit the taste of metal and move on on your knees if you must"
@@ -191,7 +191,7 @@
   },
   "act7/stitch_success": {
     "title": "Stitch that holds",
-    "body": "The horizon **shudders** and retreats half a tone: not a plaza miracle — a **truce** of the laboratory. You feel **faith** not as rule, but as **muscle** that bore the weight without breaking.\n\nThe stitch does not vanish: it stays as a **fine line** in vision, reminder that mind is also **tool** — and tools grow tired.",
+    "body": "The horizon shudders and eases half a tone. It is not a plaza miracle — it is a truce. You feel **faith** like a muscle that held the weight.\n\nThe stitch stays as a thin line in vision. The mind tires too.",
     "choices": [
       {
         "text": "Lower your hands and move on — the wasteland still demands legs"
@@ -203,7 +203,7 @@
   },
   "act7/wasteland_antechamber": {
     "title": "Antechamber of ash",
-    "body": "The road does **not** turn back — it only **branches** into lesser evils. Before the last horizon, the wasteland imposes **one** event that asks no apology: sermon, blade, or **bell** without clapper.\n\nThis is **not** the floor of the axis — it is flight to the sky. The true close still **burns** below.",
+    "body": "The road does **not** go back. Before the last horizon, the waste demands **one** event: sermon, blade, or a **bell** without a clapper.\n\nThis is not the bottom of the axis — it is flight into the sky. The true close still **burns** below.",
     "choices": [
       {
         "text": "Let the wind decide the next sacrifice",
@@ -224,11 +224,16 @@
         "text": "Return to Graywind Heights",
         "preview": "Return to the ice — the axis links surface and deeps.",
         "uiSection": "Axis"
+      },
+      {
+        "text": "Climb toward Graywind Heights — first snow on the ice",
+        "preview": "Open the ice path if you skipped the surface.",
+        "uiSection": "Axis"
       }
     ]
   },
   "act7/wasteland_router": {
     "title": "Wasteland that draws lots",
-    "body": "The wind **carries** a smell that is neither earth nor city — it is **debt** outstanding. Something moves in the ash: sometimes **voice**; other times **shape**; other times only **hunger** with footsteps.\n\nWhen you stop trying to control the map, the wasteland **chooses** your next sin — small, but **etched**."
+    "body": "The wind carries a smell that is neither earth nor city. Something moves in the ash: sometimes a voice; sometimes a shape; sometimes only hunger with footsteps.\n\nWhen you stop trying to control the map, the waste picks the next sin — small, but recorded."
   }
 }

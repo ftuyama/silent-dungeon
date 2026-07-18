@@ -16,7 +16,7 @@ choices:
         - { flag: act3_corruption_ignore_paid }
     condition: { resource: { supply: { gte: 1 } } }
     showWhenLocked: true
-    lockedHint: "Precisas de pelo menos 1 suprimento para pagar o descanso."
+    lockedHint: "Você precisa de pelo menos 1 suprimento para pagar o descanso."
     preview: "Recupera; avança o dia."
     effects:
       - { op: campRest }
@@ -36,19 +36,27 @@ choices:
     uiSectionIcon: talk
     next: act2/camp/camp_companion_chat
     condition: { companionCount: { gte: 1 } }
-  - text: "Perguntar ao grupo há quantos dias desceste"
+  - text: "Perguntar ao grupo há quantos dias você desceu"
     uiSection: "Conversa"
     uiSectionIcon: talk
     next: act2/camp/camp_companion_chat
     condition: { all: [{ companionCount: { gte: 1 } }, { day: { gte: 4 } }] }
     preview: "Contagem em voz alta; o eco não mente."
+  - text: "Sentar perto do fogo e lembrar por que desceu"
+    uiSection: "Conversa"
+    uiSectionIcon: talk
+    visibleWhen: { noFlag: shared_world_lore_done }
+    preview: "O vilarejo, o verde, o voto — uma vez."
+    effects:
+      - { op: setFlag, key: shared_world_lore_from_camp, value: true }
+    next: shared/lore/world_wound_surface
   - text: "Riscar o dia na terra úmida"
     uiSection: "Acampamento"
     uiSectionIcon: camp
     next: act2/camp/vigilia_camp
     preview: "Um registro no diário."
     effects:
-      - { op: addDiary, text: "Riscaste na terra o dia {{day}}. O relógio de cima já não manda." }
+      - { op: addDiary, text: "Você riscou na terra o dia {{day}}. O relógio de cima já não manda." }
   - text: "Manusear equipamento no acampamento"
     uiSection: "Acampamento"
     uiSectionIcon: camp
@@ -93,7 +101,7 @@ choices:
         - { resource: { supply: { gte: 1 } } }
         - { flag: act3_corruption_ignored }
         - { noFlag: act3_corruption_ignore_paid }
-    preview: "O cristal que fingiste não ver ainda lateja sob a pele."
+    preview: "O cristal que você fingiu não ver ainda lateja sob a pele."
     effects:
       - { op: campRest }
       - { op: advanceDay }
@@ -110,7 +118,7 @@ choices:
     preview: "Legado: facção e companheiro em ressonância."
     effects:
       - { op: addRep, faction: vigilia, delta: 1 }
-      - { op: addDiary, text: "Um oficial murmura que já te viu ao lado do par certo — o acampamento abre um fio de confiança." }
+      - { op: addDiary, text: "Um oficial murmura que já o viu ao lado do par certo — o acampamento abre um fio de confiança." }
   - text: "Continuar"
     uiSection: "Partir"
     uiSectionIcon: leave
@@ -121,6 +129,6 @@ choices:
 onEnter:
   - { op: addRep, faction: vigilia, delta: 1 }
 ---
-Soldados da **Vigília** partilham pão seco. Honra tem gosto de cinza.
+Soldados da **Vigília** dividem pão seco. A honra aqui tem gosto de cinza.
 
-*Sem sol de referência, a pedra regista na mesma: **dia {{day}}**.*
+*Sem sol, alguém ainda conta: **dia {{day}}**.*

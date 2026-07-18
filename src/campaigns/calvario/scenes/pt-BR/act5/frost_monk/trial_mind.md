@@ -10,10 +10,10 @@ skillCheck:
   tn: 10
   successNext: act5/frost_monk/trial_luck
   failNext: act5/frost_monk/banished
-  label: "Ouvir até ao fim sem que a mente fuja (Mente)"
+  label: "Ouvir até o fim sem que a mente fuja (Mente)"
 choices: []
 onEnter: []
 ---
-Sombra sem rosto, só **hábito** quieto — *diz uma verdade que **odeias** saber.*
+Sombra sem rosto, só hábito quieto — *diga uma verdade que você **odeia** saber.*
 
-A gruta não castiga quem falha: **fecha**. **Rola o teste de perícia** quando estiveres pronto.
+A gruta não castiga quem falha: **fecha**. Role o teste de perícia quando estiver pronto.

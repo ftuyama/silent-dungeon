@@ -75,6 +75,36 @@
   border-bottom: 1px solid rgba(140, 160, 80, 0.35);
 }
 
+.victory-progress-banner--companion {
+  padding: 0.75rem 1rem 0.9rem;
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--accent) 55%, #4a7a52);
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--accent) 12%, var(--surface-inset)) 0%,
+    color-mix(in srgb, #4a7a52 14%, var(--surface-raised)) 50%,
+    var(--surface-drawer) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 16%, transparent),
+    0 0 24px color-mix(in srgb, #4a7a52 28%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--text-strong) 8%, transparent);
+}
+
+.companion-recruit-block + .companion-recruit-block {
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(74, 122, 82, 0.28);
+}
+
+.companion-recruit-subtitle {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--accent) 70%, var(--text-strong));
+  letter-spacing: 0.03em;
+}
+
 /* Promoção de arquétipo (setPath) — pós-combate ou cena de juramento */
 .path-promotion-banner {
   margin: 0 0 1.1rem;
