@@ -7,8 +7,8 @@ import {
   getCharacterArmorClass,
   refreshCombatLogInitiativeLabels,
   resolveHitChance,
+  agiToArmorClassMod,
 } from '../../src/engine/combat/index.ts';
-import { agiToArmorClassMod } from '../../src/engine/combat/combatStats.ts';
 import { createInitialState, createPlayerCharacter } from '../../src/engine/core/index.ts';
 import type { EnemyDef, Encounter, ItemDef } from '../../src/engine/schema/index.ts';
 import { createTestData, testCampaign } from '../helpers/engineTestData.ts';

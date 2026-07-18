@@ -1,6 +1,6 @@
 import type { StoryChoiceRow } from '../../engine/core/index.ts';
 import type { GameState, ItemDef } from '../../engine/schema/index.ts';
-import type { GameData } from '../../engine/data/gameData.ts';
+import type { GameData } from '../../engine/data/index.ts';
 import { t } from '../../i18n/index.ts';
 
 export const MERCHANT_SELL_CHOICE_PREFIX = 'merchant_sell_';

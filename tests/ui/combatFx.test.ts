@@ -134,6 +134,7 @@ const combatStub = (overrides?: Partial<CombatState>): CombatState => ({
       maxHp: 10,
       armorChipsRemaining: 0,
       stress: 0,
+      statusConditions: [],
     },
   ],
   turnOrder: [],
