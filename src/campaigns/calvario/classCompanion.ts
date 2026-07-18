@@ -17,7 +17,7 @@ const MIR_VOID_END_LORE_PT = `No fim do vazio, falou como quem já tinha despedi
 
 const TOMAS_OATH_LORE_PT = `O juramento ao lume não foi teatro de ordem: foi ferro e pão partido, e a vergonha de carregar um escudo sem dono a afiar um pouco menos. Desde essa noite, o "dever" dele inclui sua coluna vertebral — não como cadeia, como alinhamento.`;
 
-const TOMAS_VOID_DUTY_LORE_PT = `No vazio, o dever deixou de ser só herança de ordem morta: tornou-se pergunta feita em voz baixa — a quem se serve quando não há muralha nem patente. A resposta que ele escolheu ficou-lhe no ombro como peso novo, reconhecível a quem caminha ao lado.`;
+const TOMAS_VOID_DUTY_LORE_PT = `No vazio, o dever deixou de ser só herança de ordem morta: tornou-se pergunta feita em voz baixa — a quem se serve quando não há muralha nem patente. A resposta que ele escolheu ficou a ele no ombro como peso novo, reconhecível a quem caminha ao lado.`;
 
 function beatBase(companionId: keyof typeof companions): CompanionLoreBeat {
   return {

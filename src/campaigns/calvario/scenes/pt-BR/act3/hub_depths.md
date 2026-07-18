@@ -20,11 +20,11 @@ choices:
     next: act4/throne/throne_gate
     condition:
       all:
-        - { level: { gte: 10 } }
+        - { level: { gte: 11 } }
         - { flag: stone_guard_defeated }
         - { flag: act3_explore_goal_reached }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 10, de derrotar o guardião de pedra e de alcançar o portão nas profundezas."
+    lockedHint: "Precisas de nível 11, de derrotar o guardião de pedra e de alcançar o portão nas profundezas."
     preview: "Capítulo 4 — confronto com Morvayn; o trono espera."
     effects:
       - { op: setChapter, chapter: 4 }
@@ -42,39 +42,45 @@ choices:
   - text: "Seguir rasto de cinza e corda — mensageiro interrompido"
     uiSection: "Rumores"
     next: act3/messenger_cold_trail
-    condition:
-      all:
-        - { level: { gte: 8 } }
-        - { noFlag: act3_messenger_done }
+    visibleWhen: { noFlag: act3_messenger_done }
+    condition: { level: { gte: 9 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 9+; o rasto só se lê quando você já pesa nas profundezas."
     preview: "Furtividade ou força; Vigília ou Círculo cobram o despacho."
   - text: "Ouvir tubagens sob a pedra"
     uiSection: "Rumores"
     next: act3/pipes_whisper
-    condition:
-      all:
-        - { level: { gte: 7 } }
-        - { noFlag: act3_pipes_done }
+    visibleWhen: { noFlag: act3_pipes_done }
+    condition: { level: { gte: 8 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 8+ para ouvir o que as tubagens sussurram."
     preview: "Sorte; sucesso dá pista, falha gasta suprimento."
   - text: "Descer ao santuário esquecido (selo de pedra)"
     uiSection: "Rumores"
     next: act3/secret/forgotten_shrine
-    condition:
-      all:
-        - { level: { gte: 7 } }
-        - { noFlag: act3_shrine_done }
+    visibleWhen: { noFlag: act3_shrine_done }
+    condition: { level: { gte: 8 } }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 7 para localizar o véu de pedra rachada — antes disso, o santuário continua só rumor."
+    lockedHint: "Precisas de nível 8 para localizar o véu de pedra rachada — antes disso, o santuário continua só rumor."
     preview: "Selo antigo; classe define o caminho de abertura."
   - text: "Falar com o cultista que atravessa o corredor"
     uiSection: "Rumores"
     next: act3/lore/cult_negotiate
+    visibleWhen: { noFlag: act3_negotiate_done }
+    condition: { level: { gte: 10 } }
+    showWhenLocked: true
+    lockedHint: "O cultista só aborda quem pesa o suficiente nas profundezas — nível 10."
+    preview: "Pacto, recusa ou ferro; reputação muda em qualquer caso."
+  - text: "O verde que ignoraste chama um mensageiro"
+    uiSection: "Rumores"
+    next: act3/encounters/cult_patrol_scene
     condition:
       all:
-        - { level: { gte: 9 } }
-        - { noFlag: act3_negotiate_done }
-    showWhenLocked: true
-    lockedHint: "O cultista só aborda quem pesa o suficiente nas profundezas — nível 9."
-    preview: "Pacto, recusa ou ferro; reputação muda em qualquer caso."
+        - { flag: act3_corruption_ignored }
+        - { noFlag: act3_corruption_ignore_patrol_done }
+    preview: "Ignorar o cristal cobrou encontro — o culto notou a surdez."
+    effects:
+      - { op: setFlag, key: act3_corruption_ignore_patrol_done, value: true }
   - text: "Voltar ao Cruzeiro — hub"
     uiSection: "Regresso"
     next: act2/hub_catacomb
@@ -82,7 +88,7 @@ choices:
     effects:
       - { op: setChapter, chapter: 2 }
 onEnter:
-  - { op: addXp, amount: 10 }
+  - { op: addXp, amount: 8 }
   - { op: clearAsciiMap }
 ---
 Profundezas **silenciosas**. **Morvayn** não está longe — o silêncio dele já foi **política** antes de magia.

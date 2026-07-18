@@ -40,6 +40,7 @@ export const spells: Record<string, SpellDef> = {
     spellKind: 'damage',
     dice: 1,
     base: 0,
+    applyStatus: { kind: 'burn', chance: 0.25, rounds: 2, intensity: 1 },
   },
   lesser_heal: {
     id: 'lesser_heal',
@@ -62,15 +63,15 @@ export const spells: Record<string, SpellDef> = {
     dice: 2,
     base: 1,
   },
-  /** Nível 2 — desbloqueio automático ao subir de nível (mago). */
+  /** Nível 8 — desbloqueio automático ao subir de nível (mago). Dano em área, menor que alvo único. */
   silver_bolt: {
     id: 'silver_bolt',
     name: 'Raio de Prata',
     manaCost: 9,
     minLevel: 8,
     classId: 'mage',
-    spellKind: 'damage',
-    dice: 2,
+    spellKind: 'damage_all_enemies',
+    dice: 1,
     base: 2,
   },
   /** Só narrativa — Mago das trevas. */

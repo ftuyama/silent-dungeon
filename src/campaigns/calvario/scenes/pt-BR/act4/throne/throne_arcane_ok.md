@@ -2,7 +2,7 @@
 id: act4/throne/throne_arcane_ok
 title: Padrão contido
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Guardar o mapa mental e voltar à ante-sala"
     next: act4/throne/throne_gate

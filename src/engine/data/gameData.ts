@@ -37,11 +37,24 @@ export type JourneyMarkDef = {
   description: string;
 };
 
+/** Valor de um path narrativo (`state.storyPaths[id] === value`). */
+export type StoryPathValueDef = {
+  name: string;
+  description: string;
+};
+
+/** Decisão narrativa grande (`state.storyPaths` chave = id). */
+export type StoryPathDef = {
+  name: string;
+  description?: string;
+  values: Record<string, StoryPathValueDef>;
+};
+
 /** Passivo de história do líder (`state.leadStoryPassives`); não é marca nem passivo de classe. */
 export type LeadStoryPassiveDef = {
   name: string;
   description: string;
-  /** Texto só narrativo na secção História da ficha (opcional). */
+  /** Texto só narrativo na seção História da ficha (opcional). */
   heroLorePt?: string;
 };
 
@@ -58,6 +71,8 @@ export type GameData = {
   passives: Record<ClassId, { id: string; name: string; description: string }>;
   /** Chave = id em `state.marks`. */
   journeyMarks: Record<string, JourneyMarkDef>;
+  /** Chave = id em `state.storyPaths` (decisão); valores em `values`. */
+  storyPaths: Record<string, StoryPathDef>;
   /** Chave = id em `state.leadStoryPassives`. */
   leadStoryPassives: Record<string, LeadStoryPassiveDef>;
   /** Melhorias permanentes da Loja de Ecos (campanha). */
@@ -93,6 +108,7 @@ export function emptyGameData(campaign: CampaignIndex, heroNarrative: HeroNarrat
       },
     },
     journeyMarks: {},
+    storyPaths: {},
     leadStoryPassives: {},
     legacyUpgrades: {},
   };

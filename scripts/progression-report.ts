@@ -84,21 +84,22 @@ type ActConfig = {
 
 /**
  * Configuração curada por ato. Gates derivados de `hub_*` / `frost_hub`:
- *  - act2 hub_catacomb: descer mais fundo exige `level >= 5`.
- *  - act3 hub_depths: rumo ao trono exige `level >= 10` + stone_guard_defeated.
+ *  - act2 hub_catacomb: descer mais fundo exige `level >= 6`.
+ *  - act3 hub_depths: rumo ao trono exige `level >= 11` + stone_guard_defeated.
  *  - act4: sem gate explícito; cadeia de boss (Morvayn p1+p2) é a saída.
- *  - act5 frost_hub: cume exige `level >= 25`; saída via Vetrnax p1+p2.
- *  - act6 hub_fractured_nave: provas exigem `level >= 25`, espelho final `level >= 30`.
+ *  - act5 frost_hub: cume exige `level >= 23`; saída via Vetrnax p1+p2.
+ *  - act6 hub_fractured_nave: provas exigem `level >= 26`, espelho final `level >= 31`.
  *  - act7: sem gate; epílogo via `wasteland_router`.
  */
 const ACTS: ActConfig[] = [
   { id: 'act1', chapter: 1, entryLevel: 1, exitLevel: 1, mandatoryEncounterIds: [], wildPoolKey: null },
-  { id: 'act2', chapter: 2, entryLevel: 1, exitLevel: 5, mandatoryEncounterIds: ['rats_cellar', 'skeleton_hall'], wildPoolKey: 'act2_catacomb' },
-  { id: 'act3', chapter: 3, entryLevel: 5, exitLevel: 10, mandatoryEncounterIds: ['stone_guard_fight'], wildPoolKey: 'act3_depths' },
-  { id: 'act4', chapter: 4, entryLevel: 10, exitLevel: 11, mandatoryEncounterIds: ['boss_morvayn_1', 'boss_morvayn_2'], wildPoolKey: null },
-  { id: 'act5', chapter: 5, entryLevel: 11, exitLevel: 22, mandatoryEncounterIds: ['boss_ice_dragon_1', 'boss_ice_dragon_2'], wildPoolKey: 'act5_frost' },
-  { id: 'act6', chapter: 6, entryLevel: 25, exitLevel: 30, mandatoryEncounterIds: ['act6_veil_herald', 'act6_echo_chorus', 'act6_penitent_blade', 'act6_shadow_self'], wildPoolKey: 'act6_fractured_nave' },
-  { id: 'act7', chapter: 7, entryLevel: 30, exitLevel: 30, mandatoryEncounterIds: [], wildPoolKey: null },
+  { id: 'act2', chapter: 2, entryLevel: 1, exitLevel: 6, mandatoryEncounterIds: ['rats_cellar', 'skeleton_hall'], wildPoolKey: 'act2_catacomb' },
+  { id: 'act3', chapter: 3, entryLevel: 6, exitLevel: 11, mandatoryEncounterIds: ['stone_guard_fight'], wildPoolKey: 'act3_depths' },
+  { id: 'act4', chapter: 4, entryLevel: 11, exitLevel: 12, mandatoryEncounterIds: ['boss_morvayn_1', 'boss_morvayn_2'], wildPoolKey: null },
+  { id: 'act5', chapter: 5, entryLevel: 12, exitLevel: 23, mandatoryEncounterIds: ['boss_ice_dragon_1', 'boss_ice_dragon_2'], wildPoolKey: 'act5_frost' },
+  { id: 'act6', chapter: 6, entryLevel: 26, exitLevel: 31, mandatoryEncounterIds: ['act6_veil_herald', 'act6_echo_chorus', 'act6_penitent_blade', 'act6_shadow_self'], wildPoolKey: 'act6_fractured_nave' },
+  { id: 'act7', chapter: 7, entryLevel: 31, exitLevel: 31, mandatoryEncounterIds: [], wildPoolKey: null },
+  { id: 'act8', chapter: 8, entryLevel: 33, exitLevel: 37, mandatoryEncounterIds: ['act8_magma_lord'], wildPoolKey: 'act8_magma' },
 ];
 
 // --------- Helpers de XP / encontros ---------

@@ -2,9 +2,11 @@
 id: act4/throne/throne_sweep_word_fail
 title: Palavra que morde
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 artKey: throne_sweep
 choices:
+  - text: "Continuar a varredura ao salão"
+    next: act4/throne/throne_sweep
   - text: "À segunda fase — trono!"
     next: act4/encounters/fight_morvayn_2
 onEnter:

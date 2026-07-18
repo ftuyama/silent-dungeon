@@ -2,7 +2,7 @@
 id: act4/seal_ending
 title: Final do Selo
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 dualAttrSkillCheck:
   id: seal_calvario
   attrs: [mind, str]
@@ -15,6 +15,7 @@ choices: []
 onEnter:
   - { op: addResource, resource: faith, delta: -2 }
   - { op: addMark, mark: calvario_sealed }
+  - { op: setStoryPath, id: throne, value: sealed }
 ---
 Selas a **Masmorra do Silêncio** com preço. Cicatrizes na alma; paz frágil nas pedras.
 

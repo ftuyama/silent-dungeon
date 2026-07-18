@@ -11,4 +11,4 @@ onEnter: []
 ---
 A boca **absorve**; dentro, ar **morno** que ensina o gelo a **mentir** sobre a temperatura.
 
-Um **eco** pergunta: *quem traz barulho para um sítio que só quer **lembrar**?* Errar aqui não é morrer — é **sair** com a memória cortada.
+Um **eco** pergunta: *quem traz barulho para um lugar que só quer **lembrar**?* Errar aqui não é morrer — é **sair** com a memória cortada.

@@ -8,6 +8,7 @@ campCombatHint: true
 choices:
   - text: "Alimentar a chama com memória (−1 suprimento)"
     uiSection: "Recuperar"
+    uiSectionIcon: rest
     next: act6/hub_fractured_nave
     condition: { resource: { supply: { gte: 1 } } }
     showWhenLocked: true
@@ -15,55 +16,40 @@ choices:
     effects:
       - { op: campRest }
       - { op: advanceDay }
-  - text: "Beber poção rubra (você)"
+  - text: "Usar consumível"
     uiSection: "Recuperar"
-    next: act6/camp/void_camp
-    condition: { hasItem: potion_hp }
-    effects:
-      - { op: useConsumable, itemId: potion_hp, targetIndex: 0 }
-  - text: "Dar poção rubra ao companheiro"
-    uiSection: "Recuperar"
-    next: act6/camp/void_camp
-    condition: { all: [{ hasItem: potion_hp }, { companionCount: { gte: 1 } }] }
-    effects:
-      - { op: useConsumable, itemId: potion_hp, targetIndex: 1 }
-  - text: "Beber tônico azul (mana)"
-    uiSection: "Recuperar"
-    next: act6/camp/void_camp
+    uiSectionIcon: rest
+    next: act6/camp/use_consumable
     condition:
-      all:
+      any:
+        - { hasItem: potion_hp }
         - { hasItem: potion_mana }
-        - { any: [{ class: mage }, { class: cleric }] }
-    effects:
-      - { op: useConsumable, itemId: potion_mana, targetIndex: 0 }
-  - text: "Beber infusão serena (stress)"
-    uiSection: "Recuperar"
-    next: act6/camp/void_camp
-    condition: { hasItem: potion_stress }
-    effects:
-      - { op: useConsumable, itemId: potion_stress, targetIndex: 0 }
+        - { hasItem: potion_stress }
+    preview: "Escolher qual poção usar."
   - text: "Trocar duas palavras com o grupo"
     uiSection: "Conversa"
+    uiSectionIcon: talk
     next: act6/camp/void_companion_chat
     condition: { companionCount: { gte: 1 } }
-    showWhenLocked: true
-    lockedHint: "Sem companheiro, não há grupo com quem trocar palavra."
   - text: "Ver o cinzento engolir mais um dia"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act6/camp/void_camp
     preview: "O dia narrativo avança; não recuperas força."
     effects:
       - { op: advanceDay }
   - text: "Manusear equipamento junto à luz instável"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act6/camp/manage_equip
   - text: "Voltar à nave fraturada"
     uiSection: "Partir"
+    uiSectionIcon: leave
     next: act6/hub_fractured_nave
     effects:
       - { op: advanceDay }
 onEnter: []
 ---
-Não há **lenha** — só **restos** de quem já se queimou a si próprio. A fogueira **imita** calor; seu corpo aceita a mentira porque **precisa** de um sítio onde fingir que ainda há **amanhã**.
+Não há **lenha** — só **restos** de quem já se queimou a si mesmo. A fogueira **imita** calor; seu corpo aceita a mentira porque **precisa** de um lugar onde fingir que ainda há **amanhã**.
 
 *Mesmo aqui, o número segue: **dia {{day}}** — espelhado em cinza.*

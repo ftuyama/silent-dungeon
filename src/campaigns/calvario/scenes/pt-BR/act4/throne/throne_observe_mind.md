@@ -2,7 +2,7 @@
 id: act4/throne/throne_observe_mind
 title: Nomes raspados
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 skillCheck:
   id: throne_observe_names
   attr: mind

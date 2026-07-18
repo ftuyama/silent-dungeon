@@ -91,5 +91,6 @@ describe('resetRun applies legacy upgrades', () => {
     expect(s.resources.gold).toBeGreaterThanOrEqual(13);
     const afterClass = applyEffects(s, [{ op: 'initClass', class: 'knight' }], ctx);
     expect(afterClass.party[0]?.str).toBeGreaterThan(12);
+    expect(afterClass.flags.act1_class_chosen).toBe(true);
   });
 });

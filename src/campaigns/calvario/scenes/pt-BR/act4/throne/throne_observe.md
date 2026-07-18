@@ -2,15 +2,21 @@
 id: act4/throne/throne_observe
 title: O trono
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 artKey: morvayn_throne
 highlight: true
 artHighlightSfx: mysterious
 choices:
   - text: "Tentar ler um nome completo (teste de Mente)"
     next: act4/throne/throne_observe_mind
+    condition: { noFlag: throne_observe_test_done }
+    effects:
+      - { op: setFlag, key: throne_observe_test_done, value: true }
   - text: "Interceptar o gotejar das correntes (sorte)"
     next: act4/throne/throne_observe_luck
+    condition: { noFlag: throne_observe_test_done }
+    effects:
+      - { op: setFlag, key: throne_observe_test_done, value: true }
   - text: "Voltar ao momento da decisão"
     next: act4/throne/throne_gate
 onEnter:

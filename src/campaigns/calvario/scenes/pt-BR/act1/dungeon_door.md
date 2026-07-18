@@ -15,14 +15,18 @@ highlightHoldMs: 4000
 choices:
   - text: "Entrar na catacumba"
     next: act2/catacomb_entry
+    preview: "−1 suprimento; capítulo 2."
     effects:
       - { op: setChapter, chapter: 2 }
       - { op: addResource, resource: supply, delta: -1 }
   - text: "Inclinar-se para o brilho do bronze nos batentes — ver-te"
     next: act1/mirror_door
+    preview: "Espelho nos batentes; combate possível."
   - text: "Voltar ao último corredor (narrativa)"
     next: act1/dungeon_mouth
-onEnter: []
+    preview: "Braseiro, sino e a boca de pedra."
+onEnter:
+  - { op: addMark, mark: act1_door_runes }
 ---
 Runas **apagadas** foram re-riscadas por mãos recentes. Entre elas, um **sino** rudimentar — o Terceiro Sino, dizem os rumores.
 

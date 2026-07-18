@@ -2,6 +2,8 @@
 
 English player-facing text for **calvario** lives here as JSON overlays. It is **not** duplicated in `scenes/en-US/**/*.md`.
 
+**Agent rule:** any edit to `scenes/pt-BR/**/*.md` must update the matching overlay here in the same change. Cursor rule: `.cursor/rules/scene-i18n-sync.mdc`. Gate: `npm run validate:i18n:translations`.
+
 ## Canonical sources
 
 | Content | pt-BR source | en-US overlay |

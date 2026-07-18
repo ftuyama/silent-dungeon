@@ -18,6 +18,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'weapon',
     bonusAgi: 1,
     damage: 2,
+    sellPrice: 2,
     sprite: itemSprites.iron_dagger,
   }),
   rusty_sword: z({
@@ -27,6 +28,7 @@ export const items: Record<string, ItemDef> = {
     bonusStr: 1,
     bonusLuck: 1,
     damage: 1,
+    sellPrice: 1,
     sprite: itemSprites.rusty_sword,
   }),
   oak_staff: z({
@@ -36,6 +38,7 @@ export const items: Record<string, ItemDef> = {
     bonusMind: 1,
     bonusLuck: 1,
     damage: 1,
+    sellPrice: 1,
     sprite: itemSprites.oak_staff,
   }),
   mace: z({
@@ -45,6 +48,7 @@ export const items: Record<string, ItemDef> = {
     bonusMind: 1,
     bonusLuck: 1,
     damage: 2,
+    sellPrice: 1,
     sprite: itemSprites.mace,
   }),
   leather: z({
@@ -53,6 +57,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'armor',
     armor: 1,
     bonusAgi: 1,
+    sellPrice: 1,
     sprite: itemSprites.leather,
   }),
   cloth_robe: z({
@@ -61,6 +66,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'armor',
     armor: 0,
     bonusMind: 1,
+    sellPrice: 1,
     sprite: itemSprites.cloth_robe,
   }),
   chain_shirt: z({
@@ -68,6 +74,7 @@ export const items: Record<string, ItemDef> = {
     name: 'Cota de Malha Leve',
     slot: 'armor',
     armor: 2,
+    sellPrice: 1,
     sprite: itemSprites.chain_shirt,
   }),
   short_bow: z({
@@ -76,6 +83,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'weapon',
     damage: 1,
     bonusAgi: 1,
+    sellPrice: 1,
     sprite: itemSprites.short_bow,
   }),
   hunter_robe: z({
@@ -84,6 +92,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'armor',
     armor: 0,
     bonusAgi: 1,
+    sellPrice: 1,
     sprite: itemSprites.hunter_robe,
   }),
   leather_quiver: z({
@@ -92,6 +101,7 @@ export const items: Record<string, ItemDef> = {
     slot: 'relic',
     bonusAgi: 1,
     bonusLuck: 1,
+    sellPrice: 1,
     sprite: itemSprites.leather_quiver,
   }),
   third_bell: z({
@@ -151,6 +161,14 @@ export const items: Record<string, ItemDef> = {
     damageBonusPerCorruptionDrain: 3,
     sprite: itemSprites.third_bell,
   }),
+  magma_ward_amulet: z({
+    id: 'magma_ward_amulet',
+    name: 'Amuleto da Guarda Magmática',
+    slot: 'relic',
+    bonusMind: 1,
+    armor: 1,
+    sprite: itemSprites.third_bell,
+  }),
   act6_fracture_iron: z({
     id: 'act6_fracture_iron',
     name: 'Ferro de Fratura',
@@ -170,6 +188,7 @@ export const items: Record<string, ItemDef> = {
     bonusAgi: 2,
     bonusLuck: 1,
     damage: 4,
+    sellPrice: 6,
     sprite: itemSprites.iron_dagger,
   }),
   rusty_sword_reforged: z({
@@ -179,6 +198,7 @@ export const items: Record<string, ItemDef> = {
     bonusStr: 3,
     bonusLuck: 1,
     damage: 4,
+    sellPrice: 6,
     sprite: itemSprites.rusty_sword,
   }),
   dimensional_ward_plate: z({
@@ -190,6 +210,7 @@ export const items: Record<string, ItemDef> = {
     bonusAgi: 1,
     bonusMind: 1,
     bonusLuck: 1,
+    sellPrice: 8,
     sprite: itemSprites.chain_shirt,
   }),
   morvayn_heart_shard: z({
@@ -200,6 +221,86 @@ export const items: Record<string, ItemDef> = {
     bonusLuck: 0,
     armor: 0,
     sprite: itemSprites.morvayn_heart_shard,
+  }),
+  /** Ato 3 — manto leve de mente/sorte (alternativa ao couro). */
+  ash_veil: z({
+    id: 'ash_veil',
+    name: 'Véu de Cinzas',
+    slot: 'armor',
+    armor: 0,
+    bonusMind: 1,
+    bonusLuck: 1,
+    sellPrice: 2,
+    sprite: itemSprites.cloth_robe,
+  }),
+  /** Ato 3 — arma de mente (alternativa caster). */
+  cult_sickle: z({
+    id: 'cult_sickle',
+    name: 'Foice do Culto',
+    slot: 'weapon',
+    damage: 2,
+    bonusMind: 1,
+    sellPrice: 2,
+    sprite: itemSprites.mace,
+  }),
+  /** Ato 4 — relíquia de AGI/sorte. */
+  wind_step_charm: z({
+    id: 'wind_step_charm',
+    name: 'Amuleto do Passo do Vento',
+    slot: 'relic',
+    bonusAgi: 1,
+    bonusLuck: 1,
+    sellPrice: 3,
+    sprite: itemSprites.leather_quiver,
+  }),
+  /** Ato 5 — arma ágil intermediária. */
+  frost_needle: z({
+    id: 'frost_needle',
+    name: 'Agulha de Geada',
+    slot: 'weapon',
+    damage: 3,
+    bonusAgi: 1,
+    sellPrice: 3,
+    sprite: itemSprites.iron_dagger,
+  }),
+  /** Ato 5 — armadura leve com mente. */
+  rime_cloak: z({
+    id: 'rime_cloak',
+    name: 'Manto de Geada',
+    slot: 'armor',
+    armor: 1,
+    bonusMind: 1,
+    sellPrice: 3,
+    sprite: itemSprites.hunter_robe,
+  }),
+  /** Ato 6 — relíquia de mente (alternativa de build). */
+  void_glass_shard: z({
+    id: 'void_glass_shard',
+    name: 'Estilhaço de Vidro do Vazio',
+    slot: 'relic',
+    bonusMind: 2,
+    cursed: true,
+    sellPrice: 4,
+    sprite: itemSprites.third_bell,
+  }),
+  /** Ato 7–8 — arma de força. */
+  slag_cleaver: z({
+    id: 'slag_cleaver',
+    name: 'Cutelo de Escória',
+    slot: 'weapon',
+    damage: 3,
+    bonusStr: 1,
+    sellPrice: 4,
+    sprite: itemSprites.rusty_sword,
+  }),
+  /** Ato 8 — relíquia de sorte. */
+  ember_ring: z({
+    id: 'ember_ring',
+    name: 'Anel de Brasa',
+    slot: 'relic',
+    bonusLuck: 2,
+    sellPrice: 4,
+    sprite: itemSprites.third_bell,
   }),
   potion_hp: z({
     id: 'potion_hp',

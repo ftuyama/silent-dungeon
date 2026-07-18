@@ -12,14 +12,17 @@ choices:
     next: act3/hub_depths
     effects:
       - { op: addResource, resource: corruption, delta: 1 }
-  - text: "Recuar antes que o pulso te encontre de todo"
+  - text: "Recuar antes que o pulso o encontre de todo"
     preview: "O corpo fica a zumbir; o preço é nervo, não pele."
     next: act3/hub_depths
     effects:
       - { op: adjustLeadStress, delta: 1 }
   - text: "Ignorar de costas voltadas — fingir que o verde não existe"
-    preview: "Nada muda no mapa; talvez mude em você."
+    preview: "Nada muda agora; o próximo descanso pode cobrar fé."
     next: act3/hub_depths
+    effects:
+      - { op: setFlag, key: act3_corruption_ignored, value: true }
+      - { op: addDiary, text: "Virei as costas ao cristal. O pulso não perdoou — só adiou." }
 onEnter: []
 ---
 Um **cristal** verde pulsa. O eco da masmorra responde — um pulso que não pede permissão.

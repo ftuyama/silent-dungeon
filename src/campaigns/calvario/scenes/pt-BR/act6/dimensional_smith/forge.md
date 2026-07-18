@@ -9,11 +9,11 @@ choices:
     uiSection: "Melhoria de ferro"
     next: act6/dimensional_smith/forge
     showWhenLocked: true
-    lockedHint: "Requer Adaga de Ferro, 10 ouro e não possuir versão temperada."
+    lockedHint: "Requer Adaga de Ferro e 10 ouro."
+    visibleWhen: { noItem: iron_dagger_tempered }
     condition:
       all:
         - { hasItem: iron_dagger }
-        - { noItem: iron_dagger_tempered }
         - { resource: { gold: { gte: 10 } } }
     effects:
       - { op: addResource, resource: gold, delta: -10 }
@@ -22,11 +22,11 @@ choices:
     uiSection: "Melhoria de ferro"
     next: act6/dimensional_smith/forge
     showWhenLocked: true
-    lockedHint: "Requer Espada Enferrujada, 12 ouro e não possuir versão reforjada."
+    lockedHint: "Requer Espada Enferrujada e 12 ouro."
+    visibleWhen: { noItem: rusty_sword_reforged }
     condition:
       all:
         - { hasItem: rusty_sword }
-        - { noItem: rusty_sword_reforged }
         - { resource: { gold: { gte: 12 } } }
     effects:
       - { op: addResource, resource: gold, delta: -12 }
@@ -35,12 +35,12 @@ choices:
     uiSection: "Forja do vazio"
     next: act6/dimensional_smith/forge
     showWhenLocked: true
-    lockedHint: "Requer 1 Ferro de Fratura, 1 Escória do Vazio e não possuir a armadura."
+    lockedHint: "Requer 1 Ferro de Fratura e 1 Escória do Vazio."
+    visibleWhen: { noItem: dimensional_ward_plate }
     condition:
       all:
         - { hasItem: act6_fracture_iron }
         - { hasItem: act6_void_slag }
-        - { noItem: dimensional_ward_plate }
     effects:
       - { op: removeItem, itemId: act6_fracture_iron }
       - { op: removeItem, itemId: act6_void_slag }
@@ -48,6 +48,7 @@ choices:
       - { op: addDiary, text: "A armadura da guarda dimensional saiu da forja como se lembrasse meu nome." }
   - text: "Sair da oficina"
     uiSection: "Conversa"
+    uiSectionIcon: talk
     next: act6/hub_fractured_nave
 onEnter: []
 ---

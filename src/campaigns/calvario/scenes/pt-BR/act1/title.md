@@ -14,8 +14,11 @@ choices:
     preview: "O primeiro passo firme — ou hesitar e olhar antes."
   - text: "Examinar os símbolos na entrada (antes de descer)"
     next: act1/title_examine
+    preview: "Lore e um rumor da superfície (sorte)."
   - text: "Respirar fundo e ajustar o equipamento"
     next: act1/title_breath
+    condition: { noFlag: act1_title_breath_done }
+    preview: "Um instante de calma; diário."
 onEnter: []
 ---
 O **pulso verde** sobe pela garganta da cidade; por baixo, a **masmorra** abre boca muda — pedra úmida, ferro velho, e **silêncio** que empurra para dentro.

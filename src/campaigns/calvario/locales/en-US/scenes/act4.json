@@ -56,6 +56,12 @@
         "uiSection": "For sale"
       },
       {
+        "text": "Buy Wind-Step Charm (−8 gold)",
+        "preview": "Relic · AGI and luck",
+        "lockedHint": "Requires 8 gold.",
+        "uiSection": "For sale"
+      },
+      {
         "text": "Vigil field kit (−7 gold)",
         "preview": "Supply · Vigil seal (once at this stall)",
         "uiSection": "For sale"
@@ -186,7 +192,7 @@
   },
   "act4/passage_graywind_heights": {
     "title": "Passage",
-    "body": "{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\nThe throne did not close the **axis** — in the **Peaks**, the wound opens a pocket of ice vast enough to seem like mountain. **Debt** with interest in **wind**.",
+    "body": "{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\nThe throne did not close the **axis** — it opened a **fork**. Upward, the **Peaks** and ice. Downward, the **throat** of magma where the earth still has a name.\n\nChoose the step. Silence charges on both sides.",
     "choices": [
       {
         "text": "Stop at the threshold — gray armor that did not come from the throne",
@@ -194,7 +200,13 @@
       },
       {
         "text": "Set out for Graywind Heights — follow the ice rumor",
-        "preview": "Chapter 5. Far from the throne, the cold still asks who rules silence."
+        "preview": "Chapter 5. Surface and cold — the long path to the Void.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Descend into the magma deeps — the floor of the axis",
+        "preview": "Chapter 8. Hostile heat; without the Void trials amulet, each scene costs life.",
+        "uiSection": "Axis"
       }
     ]
   },
@@ -287,6 +299,12 @@
         ]
       },
       {
+        "text": "Measure the hall as a firing line — long breath",
+        "diaryTexts": [
+          "The throne offers no clean target — but teaches you to wait for the instant when even bones breathe wrong."
+        ]
+      },
+      {
         "text": "Return without invoking craft"
       }
     ]
@@ -334,6 +352,11 @@
         "text": "Craft in the hall: blessing, posture, or formula",
         "preview": "Your class opens one ritual path.",
         "uiSection": "Trials in the hall"
+      },
+      {
+        "text": "Return to the Depths Core",
+        "preview": "You can still postpone the throne; the core waits.",
+        "uiSection": "Return"
       }
     ]
   },
@@ -468,6 +491,9 @@
     "body": "The bone **multiplies** when you are not looking — not trick, **cruel pedagogy**.",
     "choices": [
       {
+        "text": "Continue sweeping the hall"
+      },
+      {
         "text": "To the second phase — throne!"
       }
     ],
@@ -480,11 +506,14 @@
     "body": "The number **closes** a circle: you are no longer visitor — you are **measure** inside the room.",
     "choices": [
       {
-        "text": "To the second phase — throne!",
-        "diaryTexts": [
-          "I counted until the hall grew small — space is a lie when you know where you step."
-        ]
+        "text": "Continue sweeping the hall"
+      },
+      {
+        "text": "To the second phase — throne!"
       }
+    ],
+    "onEnterDiaryTexts": [
+      "I counted until the hall grew small — space is a lie when you know where you step."
     ]
   },
   "act4/throne/throne_sweep_catalog": {
@@ -514,6 +543,9 @@
     "body": "The void **does not forgive** badly calibrated audacity. You pay with **body** and purse.",
     "choices": [
       {
+        "text": "Continue sweeping the hall"
+      },
+      {
         "text": "To the second phase — throne!"
       }
     ],
@@ -526,11 +558,14 @@
     "body": "For an instant, the hall **forgets** you. That is all you need: not to be the throne's **matter**.",
     "choices": [
       {
-        "text": "To the second phase — throne!",
-        "diaryTexts": [
-          "The syllable fell like coin — the void accepted payment."
-        ]
+        "text": "Continue sweeping the hall"
+      },
+      {
+        "text": "To the second phase — throne!"
       }
+    ],
+    "onEnterDiaryTexts": [
+      "The syllable fell like coin — the void accepted payment."
     ]
   },
   "act4/victory_peace": {

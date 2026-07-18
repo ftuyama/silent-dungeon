@@ -51,6 +51,9 @@
     "fallen_god_amulet": {
       "name": "Amuleto do Panteão Quebrado"
     },
+    "magma_ward_amulet": {
+      "name": "Amuleto da Guarda Magmática"
+    },
     "act6_fracture_iron": {
       "name": "Ferro de Fratura"
     },
@@ -68,6 +71,30 @@
     },
     "morvayn_heart_shard": {
       "name": "Fragmento do Trono de Morvayn"
+    },
+    "ash_veil": {
+      "name": "Véu de Cinzas"
+    },
+    "cult_sickle": {
+      "name": "Foice do Culto"
+    },
+    "wind_step_charm": {
+      "name": "Amuleto do Passo do Vento"
+    },
+    "frost_needle": {
+      "name": "Agulha de Geada"
+    },
+    "rime_cloak": {
+      "name": "Manto de Geada"
+    },
+    "void_glass_shard": {
+      "name": "Estilhaço de Vidro do Vazio"
+    },
+    "slag_cleaver": {
+      "name": "Cutelo de Escória"
+    },
+    "ember_ring": {
+      "name": "Anel de Brasa"
     },
     "potion_hp": {
       "name": "Poção Rubra"
@@ -207,6 +234,21 @@
     },
     "act6_wild_stain_preacher": {
       "name": "Pregador da Mancha"
+    },
+    "act8_lava_golem": {
+      "name": "Golem de Lava"
+    },
+    "act8_ember_hound": {
+      "name": "Cão de Brasas"
+    },
+    "act8_slag_wraith": {
+      "name": "Espectro de Escória"
+    },
+    "act8_forge_colossus": {
+      "name": "Colosso da Forja"
+    },
+    "act8_magma_lord": {
+      "name": "Senhor do Magma"
     }
   },
   "companions": {
@@ -275,7 +317,7 @@
     },
     "act6_will_direct": {
       "name": "Vontade à frente",
-      "description": "No desafio da vontade, cortaste em linha recta; pouca dança, muito embate — seu caminho não pediu permição."
+      "description": "No desafio da vontade, cortaste em linha reta; pouca dança, muito embate — seu caminho não pediu permissão."
     },
     "act6_will_measured": {
       "name": "Vontade medida",
@@ -355,7 +397,7 @@
     },
     "mira_cruzeiro_confidencia": {
       "name": "Confidência no cruzeiro",
-      "description": "Trocámo-nos verdades fracas no hub; ela guarda um sítio nseu mapa emocional que o mapa de pedra não tem."
+      "description": "Trocamos verdades fracas no hub; ela guarda um lugar nseu mapa emocional que o mapa de pedra não tem."
     },
     "mira_frost_pact": {
       "name": "Pacto de geada",
@@ -397,9 +439,65 @@
       "name": "Vetrnax findado",
       "description": "O gelo perdeu o seu titã; a cordilheira lembra quem fechou o nome na neve com lâmina ou ritual."
     },
+    "magma_lord_slain": {
+      "name": "Senhor do Magma findado",
+      "description": "O fundo do eixo perdeu o seu senhor; o crisol ainda arde, mas sem vontade — o silêncio finalmente tem chão."
+    },
     "wound_mire_leg": {
       "name": "Mordida do poço",
       "description": "A sorte falhou no charco; a perna lembra dentes que não são seus — leme que tarda um segundo quando o perigo exige dois."
+    },
+    "act1_wall_memory": {
+      "name": "Memória da parede",
+      "description": "Tocou pedra que parecia carne fossilizada; o braço lembra o estremecer — a masmorra também toca de volta."
+    },
+    "act1_mirror_shard": {
+      "name": "Caco no degrau",
+      "description": "Viu-se num fragmento de espelho: um estranho com o seu nome. O reflexo não absolve o próximo passo."
+    },
+    "act1_entrance_mirror": {
+      "name": "Nicho partido",
+      "description": "Metade do rosto, metade do túnel — o mesmo corte. O vidro pediu escolha antes que o silêncio escolhesse por você."
+    },
+    "act1_hand_mirror": {
+      "name": "Espelho de mão",
+      "description": "Segurou o espelho sem a água a mentir; só você e as promessas — sem absolvição barata."
+    },
+    "act1_door_runes": {
+      "name": "Runas nos batentes",
+      "description": "Leu runas re-riscadas e o sino rudimentar do Terceiro Sino; a madeira úmida por dentro ainda respira."
+    },
+    "act2_rats_listen": {
+      "name": "Chiar contado",
+      "description": "Ouviu o enxame em padrão — quase linguagem. Contou passos antes de avançar."
+    },
+    "act2_rats_smell": {
+      "name": "Fedor de ninho",
+      "description": "Mofo, ferro e cobre quente: sangue antigo que nunca secou. O nariz pagou o preço."
+    },
+    "act2_cruzeiro_marks": {
+      "name": "Marcas do cruzeiro",
+      "description": "Três sulcos, pegadas que voltam atrás, Morvayn e um sino fincado — o chão como mapa de quem desistiu a meio."
+    }
+  },
+  "storyPaths": {
+    "throne": {
+      "name": "Trono de Morvayn",
+      "description": "O que fizeste no trono define o tom do gelo — e do que desce depois.",
+      "values": {
+        "slain": {
+          "name": "Ferro no trono",
+          "description": "Morvayn caiu sob aço. O eixo segue aberto; a vitória é magra e o frio não absolve."
+        },
+        "pact": {
+          "name": "Pacto do Sino",
+          "description": "O Terceiro Sino escreveu-se na pele. A corrupção é o juro; o mundo aprende a calar quando respiras."
+        },
+        "sealed": {
+          "name": "Selo do Calvário",
+          "description": "Selaste o buraco em fé. O subsolo cala porque carregaste o peso — cicatrizes na alma, paz frágil nas pedras."
+        }
+      }
     }
   },
   "passives": {

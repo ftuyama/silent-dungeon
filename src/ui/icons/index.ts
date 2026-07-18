@@ -18,6 +18,7 @@ import resources from './resources.svg?raw';
 import scroll from './scroll.svg?raw';
 import spellbook from './spellbook.svg?raw';
 import supply from './supply.svg?raw';
+import talk from './talk.svg?raw';
 import tier from './tier.svg?raw';
 import weapon from './weapon.svg?raw';
 
@@ -43,6 +44,7 @@ export const icons = {
   scroll,
   spellbook,
   supply,
+  talk,
   tier,
   weapon,
 } as const;

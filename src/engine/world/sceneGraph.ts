@@ -95,6 +95,14 @@ export function edgesFromFrontmatter(fromId: string, fm: SceneFrontmatter): Scen
     out.push({ from: fromId, to: fm.chapterGate.passNext, kind: 'capítulo:passa' });
     out.push({ from: fromId, to: fm.chapterGate.failNext, kind: 'capítulo:falha' });
   }
+  if (fm.storyPathGate) {
+    for (const [branchKey, to] of Object.entries(fm.storyPathGate.branches)) {
+      out.push({ from: fromId, to, kind: `path:${branchKey}` });
+    }
+    if (fm.storyPathGate.fallback) {
+      out.push({ from: fromId, to: fm.storyPathGate.fallback, kind: 'path:fallback' });
+    }
+  }
   if (fm.onVictory) out.push({ from: fromId, to: fm.onVictory, kind: 'combate:vitória' });
   if (fm.onFlee) out.push({ from: fromId, to: fm.onFlee, kind: 'combate:fuga' });
   if (fm.onDefeat) out.push({ from: fromId, to: fm.onDefeat, kind: 'combate:derrota' });

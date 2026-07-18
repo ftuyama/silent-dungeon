@@ -2,7 +2,7 @@
 id: shared/kael_act4_blades
 title: Ferro na passagem
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Medir ferro com Kael"
     effects:

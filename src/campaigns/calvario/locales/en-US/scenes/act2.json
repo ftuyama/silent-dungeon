@@ -5,6 +5,27 @@
     "choices": [
       {
         "text": "Continue"
+      },
+      {
+        "text": "Mira comments on the rhythm you heard in the squeaking",
+        "preview": "She respects those who count steps (once).",
+        "diaryTexts": [
+          "Mira: «You counted the squeaking. Whoever listens before leaping lives longer below.»"
+        ]
+      },
+      {
+        "text": "Mira comments on the stench still on your fingers",
+        "preview": "She recognizes the scent — light friendship (once).",
+        "diaryTexts": [
+          "Mira: «You counted them by smell. I do the same — fewer teeth, more flight.»"
+        ]
+      },
+      {
+        "text": "Mira notices you still smell of flight",
+        "preview": "No judgment — only a warning (once).",
+        "diaryTexts": [
+          "Mira: «Flight is not shame. Leaving a trail is. Clean your boots.»"
+        ]
       }
     ]
   },
@@ -43,6 +64,14 @@
       {
         "text": "Tomás lowers his voice: «A watchman's faith is serious; do not use it as a wall»",
         "uiSection": "You and them"
+      },
+      {
+        "text": "The carved track resonates in the fire — archetype and faction aligned",
+        "uiSection": "You and them",
+        "preview": "Legacy: track and faction in harmony.",
+        "diaryTexts": [
+          "By the fire, the echo of your archetype locks into the wall of reputation — the group hears you with a different weight."
+        ]
       },
       {
         "text": "Return to camp",
@@ -140,40 +169,54 @@
       }
     ]
   },
+  "act2/camp/use_consumable": {
+    "title": "Potions at hand",
+    "body": "Flasks knock in the pocket. Each cork is a short **wager** — life, mana, or quiet in the head — before returning to the Vigil fire.",
+    "choices": [
+      {
+        "text": "Drink red potion (you)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Give red potion to companion",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Drink blue tonic (mana)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Drink serene infusion (stress)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Return to camp",
+        "uiSection": "Back"
+      }
+    ]
+  },
   "act2/camp/vigilia_camp": {
     "title": "Vigil Camp",
     "body": "Soldiers of the **Vigil** share dry bread. Honor tastes of ash.\n\n*With no sun for reference, the stone still records: **day {{day}}**.*",
     "choices": [
       {
         "text": "Rest at camp (−1 supply)",
+        "preview": "Recover; advance the day.",
         "lockedHint": "You need at least 1 supply to pay for rest.",
         "uiSection": "Recover"
       },
       {
-        "text": "Drink red potion (HP)",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Give red potion to companion",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Drink blue tonic (mana)",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Drink serene infusion (stress)",
+        "text": "Use a consumable",
+        "preview": "Choose which potion to use.",
         "uiSection": "Recover"
       },
       {
         "text": "Exchange a few words with the group",
-        "lockedHint": "Without a companion, there is no group to talk to.",
         "uiSection": "Talk"
       },
       {
         "text": "Ask the group how many days you've been below",
         "preview": "Count aloud; the echo does not lie.",
-        "lockedHint": "You need a companion and at least four days underground for that conversation.",
         "uiSection": "Talk"
       },
       {
@@ -186,18 +229,46 @@
       },
       {
         "text": "Handle equipment at camp",
+        "preview": "Inventory and equipment.",
         "uiSection": "Camp"
       },
       {
         "text": "Report a Cult mark to the officer (−1 cult)",
         "preview": "Reputation trade · Vigil slow, Cult immediate (once)",
+        "lockedHint": "Requires Vigil rep ≥1 and Cult ≥0.",
         "uiSection": "Camp",
         "diaryTexts": [
           "I spoke too loudly about the Third Bell — the officer noted it as a small victory."
         ]
       },
       {
+        "text": "The officer notices the wax scar on your wrist",
+        "preview": "Cracked brazier · Vigil respect (once).",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "The officer touched the wax scar: «Whoever pulls a hot seal does not flee the fire — the order remembers.»"
+        ]
+      },
+      {
+        "text": "Rest — the ignored green collects its due (−1 faith)",
+        "preview": "The crystal you pretended not to see still throbs under the skin.",
+        "uiSection": "Recover",
+        "diaryTexts": [
+          "On resting, the green pulse collected what I ignored — faith came out thinner."
+        ]
+      },
+      {
+        "text": "The sentries remember your pair of echoes",
+        "preview": "Legacy: faction and companion in resonance.",
+        "lockedHint": "Faction-and-companion legacy still locked.",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "An officer murmurs that he has seen you beside the right pair — the camp opens a thread of trust."
+        ]
+      },
+      {
         "text": "Continue",
+        "preview": "Advance the day and return to the crossroads.",
         "uiSection": "Depart"
       }
     ]
@@ -207,27 +278,27 @@
     "body": "A **cross** of fine bones points to three paths. Melted candles left **rivers of black wax** on the floor — someone was here not long ago.\n\nThe echo **lies** about distance: one step sounds like three.",
     "choices": [
       {
-        "text": "Explore the side corridor (squeaking)"
+        "text": "Explore the side corridor (squeaking)",
+        "preview": "Swarm encounter — combat or scouting."
       },
       {
-        "text": "Follow the chalk mark on the floor"
+        "text": "Follow the chalk mark on the floor",
+        "preview": "Armed bones; Kael may be watching."
       },
       {
-        "text": "Stop at the crossroads and open the hub"
+        "text": "Stop at the crossroads and open the hub",
+        "preview": "Hub: camp, factions, exploration."
       },
       {
-        "text": "Study the ceiling: drips, roots, runes?"
+        "text": "Study the ceiling: drips, roots, runes?",
+        "preview": "Luck check; success reads the floor marks."
       }
     ]
   },
   "act2/catacomb_observe": {
     "title": "Ceiling",
     "body": "**Drips** draw threads in the air. Between the stones, thin **roots** reach for what sunlight no longer gives.\n\nOn the ceiling, a **rune** was scraped away and replaced with an **X** — someone wanted to erase the right direction.",
-    "choices": [
-      {
-        "text": "Return to the crossroads"
-      }
-    ]
+    "luckCheckLabel": "Read the ceiling without losing your footing at the crossroads"
   },
   "act2/circle_ritual/circle_ritual": {
     "title": "Circle Ritual",
@@ -284,10 +355,11 @@
   },
   "act2/encounters/rats_combat_intro": {
     "title": "Before the leap",
-    "body": "The floor **vibrates** — **claws** digging soft stone. The rats do not **flee**; they advance in an arc, as if someone taught them **formation**.\n\nClench your teeth. The **dice** will tell what flesh does not want to admit.",
+    "body": "The floor **trembles** — **claws** digging soft stone. The rats **do not flee**; they advance in an arc, as if someone taught them **formation**.\n\nGrit your teeth. The **dice** will count what flesh will not admit. If you smelled the air, you already know how many teeth await; if you listened, their step is already yours.",
     "choices": [
       {
-        "text": "Fight!"
+        "text": "[%] Fight!",
+        "preview": "Dice and claws — victory opens the hub."
       }
     ]
   },
@@ -302,7 +374,7 @@
   },
   "act2/encounters/trial_fallen_angel_gate": {
     "title": "Veil trial",
-    "body": "From the **ash** rises a **silhouette** that was once too much light for one body — it asks no forgiveness, only **proof**.\n\n*Whoever would claim a name of fall, shadow, or penance must defeat what fell and still cuts* — no **shortcut**: steel, arcane, or prayer, or **return** without title.",
+    "body": "From the **ash** rises a **silhouette** that was once too much light for one body — it asks no forgiveness, only **proof**.\n\n*Whoever would claim a name of fall, shadow, penance, or true aim must defeat what fell and still cuts* — no **shortcut**: steel, arcane, prayer, or arrow, or **return** without title.",
     "choices": [
       {
         "text": "Face the angel with steel (knight)",
@@ -314,6 +386,10 @@
       },
       {
         "text": "Face the angel with faith (cleric)",
+        "preview": "Combat · enemy advantage"
+      },
+      {
+        "text": "Face the angel with the arrow (archer)",
         "preview": "Combat · enemy advantage"
       }
     ]
@@ -557,6 +633,21 @@
         "uiSection": "Factions"
       },
       {
+        "text": "Sealed cache — path the beacon showed",
+        "preview": "Vigil topology · supplies behind the grate.",
+        "uiSection": "Factions"
+      },
+      {
+        "text": "Ash nook — fold the Circle lends",
+        "preview": "Circle topology · borrowed form.",
+        "uiSection": "Factions"
+      },
+      {
+        "text": "Bell's alcove — door the cult confessed",
+        "preview": "Cult topology · faith and shadow.",
+        "uiSection": "Factions"
+      },
+      {
         "text": "Hear Mira's proposal",
         "preview": "A voice in the shadow offers company.",
         "uiSection": "Invitations and rites"
@@ -564,6 +655,7 @@
       {
         "text": "Circle Ritual (event)",
         "preview": "The Circle charges presence; corruption takes note.",
+        "lockedHint": "Requires level 4+ and a day multiple of 5; the Circle only charges once.",
         "uiSection": "Invitations and rites"
       },
       {
@@ -578,8 +670,18 @@
       },
       {
         "text": "Marked passage — echo of oaths",
-        "preview": "Old memory; skill and luck weigh — but the echo fades if you linger too long.",
+        "preview": "Old memory; skill and luck weigh — the echo weakens if you linger too long.",
+        "lockedHint": "Requires level 7+ and arriving by day 10 — afterward the echo cools.",
         "uiSection": "Crossroads echoes"
+      },
+      {
+        "text": "Cold trail — echo that almost left",
+        "preview": "There is still a thread; weaker, but present (once).",
+        "lockedHint": "Requires level 7+ and day 11+; one last time before the stone forgets.",
+        "uiSection": "Crossroads echoes",
+        "diaryTexts": [
+          "The echo of oaths had almost vanished — I touched the cold trail before the stone forgot."
+        ]
       },
       {
         "text": "Study the crossroads: marks on the floor",
@@ -594,7 +696,7 @@
       {
         "text": "Listen to an echo whispering the day",
         "preview": "Dry voice at the crossroads; diary entry.",
-        "lockedHint": "You need level 6 and must hear this before day 6 — after that the echo falls silent.",
+        "lockedHint": "Requires level 6+ and still being within the first five days.",
         "uiSection": "Crossroads echoes",
         "diaryTexts": [
           "A voice trapped in the ceiling: \"You are already on day {{day}}.\""
@@ -602,13 +704,13 @@
       },
       {
         "text": "Climb to the last corridor — dungeon mouth",
-        "preview": "Cracked brazier, blind bell, and doorframe; the air there still listens.",
+        "preview": "Brazier, bell, and doorframe; the air outside still listens.",
         "uiSection": "Return and advance"
       },
       {
         "text": "Descend deeper",
         "preview": "Chapter 3 — the dungeon tightens the silence.",
-        "lockedHint": "You need level 5 and must find the threshold on the perimeter map (exploration from the crossroads).",
+        "lockedHint": "Requires level 6+ and reaching the crossroads map goal (patrol).",
         "uiSection": "Return and advance"
       }
     ]
@@ -632,7 +734,8 @@
         "preview": "She already knows the price of this floor."
       },
       {
-        "text": "Return to the hub"
+        "text": "Return to the hub",
+        "preview": "Back to the crossroads."
       }
     ]
   },
@@ -647,6 +750,11 @@
       },
       {
         "text": "Accept the title of Dark Mage (arcanist)",
+        "preview": "Trial · fallen angel; title only if you win",
+        "uiSection": "Oath"
+      },
+      {
+        "text": "Accept the name of Marksman (archer)",
         "preview": "Trial · fallen angel; title only if you win",
         "uiSection": "Oath"
       },
@@ -678,6 +786,13 @@
         "text": "Recall the penitent (path echo)",
         "preview": "Mind — sustain the memory (TN 8)",
         "uiSection": "Memory"
+      },
+      {
+        "text": "Recall the marksman (path echo)",
+        "uiSection": "Memory",
+        "diaryTexts": [
+          "The crossroads reminded me of the distance I chose: not escape — aim."
+        ]
       },
       {
         "text": "Return to the crossroads",
@@ -797,44 +912,54 @@
     "choices": [
       {
         "text": "Accept the torn map (−1 gold)",
+        "preview": "Item · rumor map",
+        "lockedHint": "You need 1 gold.",
         "uiSection": "For sale"
       },
       {
         "text": "Buy iron dagger (−3 gold)",
         "preview": "Weapon · for inventory",
+        "lockedHint": "You need 3 gold.",
         "uiSection": "For sale"
       },
       {
         "text": "Buy Mead (−2 gold)",
         "preview": "Consumable · reduces stress",
+        "lockedHint": "Requires 2 gold and level 2+.",
         "uiSection": "For sale"
       },
       {
         "text": "Buy Supply (−5 gold)",
         "preview": "Rest is also part of battle",
+        "lockedHint": "Requires 5 gold and level 3+.",
         "uiSection": "For sale"
       },
       {
         "text": "Buy Supply (−5 gold)",
         "preview": "Resource · single stock",
+        "lockedHint": "Requires 5 gold and level 11+.",
         "uiSection": "For sale"
       },
       {
         "text": "Buy Supply Remnant (−10 gold)",
         "preview": "A true find",
+        "lockedHint": "Requires 10 gold and level 20+.",
         "uiSection": "For sale"
       },
       {
         "text": "Vigil field kit (−7 gold)",
         "preview": "Supply · Vigil seal (once at this stall)",
+        "lockedHint": "Requires Vigil rep ≥5, 7 gold, and supply ≤7.",
         "uiSection": "For sale"
       },
       {
         "text": "Politely refuse",
+        "preview": "Return to the crossroads without buying.",
         "uiSection": "Talk"
       },
       {
         "text": "Ask where the map came from",
+        "preview": "Talk; no cost.",
         "uiSection": "Talk"
       },
       {
@@ -847,6 +972,23 @@
         ]
       },
       {
+        "text": "Show the rat stench — he recognizes the nest",
+        "preview": "Scent intel · diary (once).",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "The hood inclined: «Three and a shadow. The nest rises when Vigilance falls.»"
+        ]
+      },
+      {
+        "text": "Repeat the surface whisper — he lowers the map price",
+        "preview": "Torn map without charging gold · once.",
+        "lockedHint": "You need the surface whisper.",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "I repeated the surface whisper; the hood handed over the map without taking copper."
+        ]
+      },
+      {
         "text": "Whisper Circle symbols",
         "preview": "Luck test · cursed wager",
         "lockedHint": "The Circle only hears whispers from those who already owe them attention (reputation ≥1).",
@@ -855,6 +997,7 @@
       {
         "text": "Let the Third Bell name the price",
         "preview": "+1 corruption, diary (once)",
+        "lockedHint": "Requires Cult rep ≥1.",
         "uiSection": "Talk",
         "diaryTexts": [
           "A dry laugh beneath the cloth — the cult favors those who already hear the same echo."
@@ -915,14 +1058,16 @@
     "body": "**Squeaking** too loud to be only wind. **Red** eyes in the dark move as a group — there is not one rodent, there is **a decision** with teeth.\n\nThe floor is **damp**; old human footprints mix with small paws.",
     "choices": [
       {
-        "text": "Face the swarm",
+        "text": "[%] Face the swarm",
         "preview": "Combat: starving rodents."
       },
       {
-        "text": "Listen to the sound before advancing"
+        "text": "Listen to the sound before advancing",
+        "preview": "Intel; light AGI buff if you fight next."
       },
       {
-        "text": "Smell the air: blood or mold?"
+        "text": "Smell the air: blood or mold?",
+        "preview": "+1 stress; swarm intel and light LCK buff if you fight next."
       }
     ]
   },
@@ -931,26 +1076,33 @@
     "body": "The squeaking **breaks** into pattern — almost language. For an instant they seem to **whisper** how many steps you have left.\n\nSomething **larger** creaks deeper in, but does not move.",
     "choices": [
       {
-        "text": "Prepare and face them"
+        "text": "[%] Prepare and face them",
+        "preview": "Combat with listening advantage (AGI)."
       },
       {
-        "text": "Return to the crossroads"
+        "text": "Return to the crossroads",
+        "preview": "Withdraw without combat."
       }
+    ],
+    "onEnterDiaryTexts": [
+      "The rats' squeaking almost spoke — I counted steps before advancing."
     ]
   },
   "act2/rats_smell": {
     "title": "Smell",
-    "body": "**Mold** first, then **iron** — and finally a false sweetness, like heated **copper**.\n\nIt is not fresh blood. It is **old blood** that never fully dried.",
+    "body": "**Mold** first, then **iron** — and finally a false sweetness, like heated **copper**.\n\nIt is not fresh blood. It is **old blood** that never fully dried. You count the swarm by stench: **three**, maybe **four**.",
     "choices": [
       {
-        "text": "Face the swarm"
+        "text": "[%] Face the swarm",
+        "preview": "Combat with scent advantage (LCK); you already paid the stress."
       },
       {
-        "text": "Return to the crossroads"
+        "text": "Return to the crossroads",
+        "preview": "Withdraw without combat — but the scent stays in the diary."
       }
     ],
     "onEnterDiaryTexts": [
-      "Smell of old flesh and fear."
+      "Smell of old flesh and fear: three small bodies, maybe four if the larger shadow counts."
     ]
   },
   "act2/recruit_mira": {
@@ -994,6 +1146,66 @@
       },
       {
         "text": "Force the door"
+      }
+    ]
+  },
+  "act2/faction/vigilia_cache": {
+    "title": "Sealed Vigil cache",
+    "body": "Behind a **grate** marked with the beacon, a niche holds supplies sealed in wax. Only those who already **spoke** with the envoy know the path — the common crossroads does not show this fold.",
+    "choices": [
+      {
+        "text": "Break the seal and take what the order hid",
+        "preview": "Supply and gold · Vigil topology (once).",
+        "diaryTexts": [
+          "The Vigil cache smelled of wax and order — I took what the beacon keeps for those who already gripped the wrist."
+        ]
+      },
+      {
+        "text": "Leave the seal intact and return",
+        "preview": "Respect without plunder — the path remains.",
+        "diaryTexts": [
+          "I did not touch the cache. The beacon noted the restraint."
+        ]
+      }
+    ]
+  },
+  "act2/faction/circulo_ash_nook": {
+    "title": "Circle's ash nook",
+    "body": "A **nook** the crossroads map does not mark: living ash draws circles on the floor. Only those who already **heard** the envoy find the fold — and the fold remembers.",
+    "choices": [
+      {
+        "text": "Accept the loan of form — read what the ash writes",
+        "preview": "MIND buff and XP · Circle topology (once).",
+        "diaryTexts": [
+          "The ash wrote a symbol on the palm and then erased it — the Circle lends form to those who already closed a deal."
+        ]
+      },
+      {
+        "text": "Scrape the ash and leave without reading",
+        "preview": "No new debt — only the path.",
+        "diaryTexts": [
+          "I scraped the ash. The Circle dislikes those who refuse reading — but also does not charge those who do not open the book."
+        ]
+      }
+    ]
+  },
+  "act2/faction/culto_bell_alcove": {
+    "title": "Third Bell alcove",
+    "body": "An **alcove** where the clapper does not exist, yet the air **vibrates**. The cult envoy spoke of this fold; the common crossroads **lies** about it.",
+    "choices": [
+      {
+        "text": "Kneel and let the bell name the next step",
+        "preview": "Faith and corruption · Cult topology (once).",
+        "diaryTexts": [
+          "In the bell's alcove, silence paid in faith and shadow — the cult opens doors to those who already confessed."
+        ]
+      },
+      {
+        "text": "Turn your back on the alcove",
+        "preview": "Refusal without combat — the path vanishes.",
+        "diaryTexts": [
+          "I did not kneel. The Third Bell vibrated once — and fell silent."
+        ]
       }
     ]
   }

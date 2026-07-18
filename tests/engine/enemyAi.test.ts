@@ -67,7 +67,14 @@ function makeEnemy(patch: Partial<EnemyDef>): EnemyDef {
 }
 
 function makeInstance(def: EnemyDef, hp?: number): EnemyInstance {
-  return { defId: def.id, hp: hp ?? def.hp, maxHp: def.maxHp, armorChipsRemaining: 0, stress: 0 };
+  return {
+    defId: def.id,
+    hp: hp ?? def.hp,
+    maxHp: def.maxHp,
+    armorChipsRemaining: 0,
+    stress: 0,
+    statusConditions: [],
+  };
 }
 
 describe('chooseEnemyAction', () => {

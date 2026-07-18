@@ -66,7 +66,7 @@ function extractSceneOverlay(data, body) {
 
 function actBucket(sceneId) {
   const seg = sceneId.split('/')[0];
-  if (seg === 'act1' || seg === 'act2' || seg === 'act3' || seg === 'act4' || seg === 'act5' || seg === 'act6' || seg === 'act7') {
+  if (seg === 'act1' || seg === 'act2' || seg === 'act3' || seg === 'act4' || seg === 'act5' || seg === 'act6' || seg === 'act7' || seg === 'act8') {
     return seg;
   }
   return 'misc';

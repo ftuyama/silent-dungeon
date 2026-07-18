@@ -49,6 +49,15 @@ export const ConditionSchema: z.ZodType<Condition> = z.lazy(() =>
     }),
     z.object({ class: ClassIdSchema }),
     z.object({ path: z.string() }),
+    /** Path narrativo (`state.storyPaths`): decisão grande com valor concreto. */
+    z.object({
+      storyPath: z.object({
+        id: z.string(),
+        eq: z.string(),
+      }),
+    }),
+    /** Tem qualquer valor gravado para este path narrativo. */
+    z.object({ hasStoryPath: z.string() }),
     z.object({ chapter: z.object({ gte: z.number().optional(), lte: z.number().optional() }) }),
     z.object({ level: z.object({ gte: z.number().optional(), lte: z.number().optional() }) }),
     z.object({ corruption: z.object({ gte: z.number().optional(), lte: z.number().optional() }) }),
@@ -95,6 +104,8 @@ export type Condition =
     }
   | { class: ClassId }
   | { path: string }
+  | { storyPath: { id: string; eq: string } }
+  | { hasStoryPath: string }
   | { chapter: { gte?: number; lte?: number } }
   | { level: { gte?: number; lte?: number } }
   | { corruption: { gte?: number; lte?: number } }
@@ -132,6 +143,7 @@ export const EffectSchema: z.ZodType<Effect> = z.discriminatedUnion('op', [
   z.object({ op: z.literal('setChapter'), chapter: z.number().int().min(1) }),
   z.object({ op: z.literal('grantItem'), itemId: z.string() }),
   z.object({ op: z.literal('removeItem'), itemId: z.string() }),
+  z.object({ op: z.literal('sellItem'), itemId: z.string() }),
   z.object({
     op: z.literal('equipItem'),
     itemId: z.string(),
@@ -176,6 +188,8 @@ export const EffectSchema: z.ZodType<Effect> = z.discriminatedUnion('op', [
   z.object({ op: z.literal('learnSpell'), spellId: z.string() }),
   z.object({ op: z.literal('addMana'), amount: z.number().int() }),
   z.object({ op: z.literal('setPath'), path: z.string().nullable() }),
+  /** Path narrativo de decisão grande (`state.storyPaths`); distinto do arquétipo de classe (`setPath`). */
+  z.object({ op: z.literal('setStoryPath'), id: z.string(), value: z.string() }),
   z.object({
     op: z.literal('adjustLeadStat'),
     attr: z.enum(['str', 'agi', 'mind', 'luck']),
@@ -185,6 +199,11 @@ export const EffectSchema: z.ZodType<Effect> = z.discriminatedUnion('op', [
     op: z.literal('multiplyLeadHp'),
     /** Multiplica PV atuais e máximos do líder (ex.: 0,5 = metade, permanente até ganhos de nível). */
     factor: z.number().gt(0).max(1),
+  }),
+  z.object({
+    op: z.literal('adjustLeadHp'),
+    /** Soma aos PV atuais do líder (clamp 0…maxHp). Delta negativo = dano narrativo. */
+    delta: z.number().int(),
   }),
   z.object({
     op: z.literal('grantTemporaryBuff'),
@@ -225,6 +244,7 @@ export type Effect =
   | { op: 'setChapter'; chapter: number }
   | { op: 'grantItem'; itemId: string }
   | { op: 'removeItem'; itemId: string }
+  | { op: 'sellItem'; itemId: string }
   | { op: 'equipItem'; itemId: string; partyIndex?: number }
   | { op: 'unequipSlot'; slot: 'weapon' | 'armor' | 'relic'; partyIndex?: number }
   | { op: 'goto'; sceneId: string }
@@ -249,8 +269,10 @@ export type Effect =
   | { op: 'learnSpell'; spellId: string }
   | { op: 'addMana'; amount: number }
   | { op: 'setPath'; path: string | null }
+  | { op: 'setStoryPath'; id: string; value: string }
   | { op: 'adjustLeadStat'; attr: 'str' | 'agi' | 'mind' | 'luck'; delta: number }
   | { op: 'multiplyLeadHp'; factor: number }
+  | { op: 'adjustLeadHp'; delta: number }
   | {
       op: 'grantTemporaryBuff';
       attr: 'str' | 'agi' | 'mind' | 'luck';
@@ -276,6 +298,11 @@ export const ChoiceSchema = z
     text: z.string(),
     next: z.string().optional(),
     condition: ConditionSchema.optional(),
+    /**
+     * Se falhar, a escolha some do menu (nem teaser). Use para one-shots (`noFlag`)
+     * quando `condition` + `showWhenLocked` ainda devem teasar requisitos (ex.: nível).
+     */
+    visibleWhen: ConditionSchema.optional(),
     /** Texto de preview de consequência (1 linha) */
     preview: z.string().optional(),
     effects: z.array(EffectSchema).default([]),
@@ -296,6 +323,13 @@ export const ChoiceSchema = z
      * Omitir em todas as escolhas mantém a lista única como antes.
      */
     uiSection: z.string().optional(),
+    /**
+     * Ícone decorativo no título da secção (`uiSection`). Estável entre idiomas —
+     * não derivar do texto do rótulo. Conjunto pequeno: mercador / acamp / consumíveis.
+     */
+    uiSectionIcon: z
+      .enum(['talk', 'shop', 'consumable', 'rest', 'leave', 'camp'])
+      .optional(),
     /** Se definido, toca este efeito em vez do clique de UI ao confirmar a escolha. */
     commitSfx: ChoiceCommitSfxSchema.optional(),
   })
@@ -399,6 +433,18 @@ export const ChapterGateSchema = z.object({
 
 export type ChapterGate = z.infer<typeof ChapterGateSchema>;
 
+/**
+ * Ao entrar, se `state.storyPaths[id]` bater numa chave de `branches`, redireciona para essa cena
+ * (como `chapterGate`). Sem valor / sem match → permanece na cena (ou `fallback` se definido).
+ */
+export const StoryPathGateSchema = z.object({
+  id: z.string(),
+  branches: z.record(z.string(), z.string()),
+  fallback: z.string().optional(),
+});
+
+export type StoryPathGate = z.infer<typeof StoryPathGateSchema>;
+
 export const SceneFrontmatterSchema = z.object({
   id: z.string(),
   title: z.string().optional(),
@@ -415,12 +461,15 @@ export const SceneFrontmatterSchema = z.object({
       'camp',
       'boss',
       'act3',
+      'act4',
+      'act4_peace',
       'act5',
       'frost_mystery',
       'merchant',
       'void',
       'ancient_macabre',
       'ash_sky',
+      'act8',
     ])
     .optional(),
   /** Dica de combate com aliados no acampamento (UI). */
@@ -435,6 +484,7 @@ export const SceneFrontmatterSchema = z.object({
   luckCheck: LuckCheckSchema.optional(),
   randomBranch: RandomBranchSchema.optional(),
   chapterGate: ChapterGateSchema.optional(),
+  storyPathGate: StoryPathGateSchema.optional(),
   /** Arte ASCII inline (multilinha no YAML) */
   art: z.string().optional(),
   /** Chave para arte na tabela `sceneArt` da campanha ativa */

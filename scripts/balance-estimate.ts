@@ -24,6 +24,7 @@ import {
   getWeaponDamage,
   statMod,
 } from '../src/engine/combat/combatStats.ts';
+import { resolveHitChance } from '../src/engine/combat/hitChance.ts';
 import { attackRollSpecial2d6 } from '../src/engine/core/rng.ts';
 import { emptyGameData, type GameData } from '../src/engine/data/gameData.ts';
 import { projectCharacterToLevel } from '../src/engine/progression/progression.ts';
@@ -125,15 +126,22 @@ function enemyDefenseCa(def: EnemyDef): number {
   return 7 + Math.floor((def.agi + def.armor) / 2);
 }
 
-/** P(2d6 + mod >= TN), sem regra de crítico/falha automática (estimativa). */
+/**
+ * P(acertar) com 2d6 + mod vs CA: falha 1+1 = miss, crítico 6+6 = hit,
+ * resto = chance percentual (`resolveHitChance`).
+ */
 function prob2d6PlusModGteTN(mod: number, tn: number): number {
-  let hits = 0;
+  let p = 0;
   for (let d1 = 1; d1 <= 6; d1++) {
     for (let d2 = 1; d2 <= 6; d2++) {
-      if (d1 + d2 + mod >= tn) hits++;
+      const atk = d1 + d2 + mod;
+      const special = attackRollSpecial2d6(d1, d2);
+      if (special === 'fumble') continue;
+      if (special === 'crit') p += 1;
+      else p += resolveHitChance(atk, tn);
     }
   }
-  return hits / 36;
+  return p / 36;
 }
 
 function playerDefenseCa(lead: Character, defensive: boolean): number {
@@ -160,7 +168,7 @@ function expectedDamageCritHit(strMod: number, reduc: number): number {
 
 /**
  * P(acertar) com 2d6 + mod(STR inimigo) vs CA, incluindo falha 1+1 e ameaça 6+6 + critConfirm
- * (igual a `advanceToEnemyTurn` sem vantagem inimiga).
+ * (igual a `advanceToEnemyTurn` sem vantagem inimiga; ramo normal = chance percentual).
  */
 function probEnemyHitExact(
   enemyStrMod: number,
@@ -174,9 +182,9 @@ function probEnemyHitExact(
       const special = attackRollSpecial2d6(d1, d2);
       if (special === 'fumble') continue;
       if (special === 'crit') {
-        p += critConfirm + (1 - critConfirm) * (atk >= defScore ? 1 : 0);
+        p += critConfirm + (1 - critConfirm) * resolveHitChance(atk, defScore);
       } else {
-        p += atk >= defScore ? 1 : 0;
+        p += resolveHitChance(atk, defScore);
       }
     }
   }
@@ -203,11 +211,10 @@ function expectedPlayerDamagePerEnemyAttack(
       if (special === 'fumble') {
         total += 0;
       } else if (special === 'crit') {
-        total +=
-          critConfirm * critAvg +
-          (1 - critConfirm) * (atk >= defScore ? normalAvg : 0);
+        const pNormalHit = resolveHitChance(atk, defScore);
+        total += critConfirm * critAvg + (1 - critConfirm) * pNormalHit * normalAvg;
       } else {
-        total += atk >= defScore ? normalAvg : 0;
+        total += resolveHitChance(atk, defScore) * normalAvg;
       }
     }
   }
@@ -372,7 +379,7 @@ function main(): void {
     `Classe: ${refClass}  |  Nível: ${refLevel}  |  CA: ${ca}  |  redução de dano (armadura+relíquia): ${armorReduc}  |  mod ataque (neutro/agressivo): ${atkN} / ${atkA}  |  dano arma: ${wd}`
   );
   console.log(
-    '(Jogador acerta: 2d6 + mod vs CA inimigo, sem crítico/falha. Inimigo vs ref: regras do motor — 1+1 falha, 6+6 + critConfirm, dano max(1, d6+mod(STR)−redução).)\n'
+    '(Jogador acerta: 2d6 + mod vs CA com chance percentual (falha/crítico automáticos). Inimigo vs ref: mesmas regras + critConfirm; dano max(1, d6+mod(STR)−redução).)\n'
   );
 
   const projWidths = [3, 3, 3, 3, 5, 7, 2, 4, 4, 4];
@@ -458,7 +465,7 @@ function main(): void {
   }
 
   console.log(`
-Legenda: pPlN/A = ref acerta inimigo (postura neutra/agressiva), est. simples 2d6.
+Legenda: pPlN/A = ref acerta inimigo (postura neutra/agressiva), 2d6+mod vs CA com chance percentual.
 pLvN/D = ref leva dano (inimigo acerta), postura normal / defensiva (+2 CA).
 E[D]n/d = dano médio por ataque do inimigo (inclui 0 quando erra).
 hitN/D = dano médio por ataque **se** o inimigo acertar.

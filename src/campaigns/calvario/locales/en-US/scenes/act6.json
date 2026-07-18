@@ -8,6 +8,32 @@
       }
     ]
   },
+  "act6/camp/use_consumable": {
+    "title": "Potions at hand",
+    "body": "In the false light of the fire, the flasks look like small **mirrors**. You choose which lie to drink first — life, mana, or calm.",
+    "choices": [
+      {
+        "text": "Drink Red Potion (self)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Give Red Potion to companion",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Drink Blue Tonic (mana)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Drink Mead (stress)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Return to camp",
+        "uiSection": "Back"
+      }
+    ]
+  },
   "act6/camp/void_camp": {
     "title": "Fire of Mirrored Ash",
     "body": "There is no **firewood** — only **remains** of those who already burned themselves. The fire **imitates** warmth; your body accepts the lie because it **needs** a place to pretend there is still **tomorrow**.\n\n*Even here, the number follows: **day {{day}}** — mirrored in ash.*",
@@ -18,24 +44,12 @@
         "uiSection": "Recover"
       },
       {
-        "text": "Drink Red Potion (self)",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Give Red Potion to companion",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Drink Blue Tonic (mana)",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Drink Mead (stress)",
+        "text": "Use a consumable",
+        "preview": "Choose which potion to use.",
         "uiSection": "Recover"
       },
       {
         "text": "Exchange a few words with the group",
-        "lockedHint": "Without a companion, there is no group to talk to.",
         "uiSection": "Talk"
       },
       {
@@ -82,6 +96,10 @@
         "uiSection": "You and them"
       },
       {
+        "text": "Mira: \"Marksman without a banner — here even the shadow wants to know whose you are\"",
+        "uiSection": "You and them"
+      },
+      {
         "text": "Tomás: \"The shield reminds me of your steel — both lie that they hold everything\"",
         "uiSection": "You and them"
       },
@@ -91,6 +109,10 @@
       },
       {
         "text": "Tomás: \"Faith in a place without echo — courage or habit?\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás: \"Arrow in the dark — do you trust the eye or the silence before the shot?\"",
         "uiSection": "You and them"
       },
       {
@@ -198,17 +220,17 @@
     "choices": [
       {
         "text": "Temper Iron Dagger (10 gold)",
-        "lockedHint": "Requires Iron Dagger, 10 gold, and not owning the tempered version.",
+        "lockedHint": "Requires Iron Dagger and 10 gold.",
         "uiSection": "Iron upgrade"
       },
       {
         "text": "Reforge Rusty Sword (12 gold)",
-        "lockedHint": "Requires Rusty Sword, 12 gold, and not owning the reforged version.",
+        "lockedHint": "Requires Rusty Sword and 12 gold.",
         "uiSection": "Iron upgrade"
       },
       {
         "text": "Forge Dimensional Ward Plate (Fracture Iron + Void Slag)",
-        "lockedHint": "Requires 1 Fracture Iron, 1 Void Slag, and not owning the armor.",
+        "lockedHint": "Requires 1 Fracture Iron and 1 Void Slag.",
         "uiSection": "Void forge",
         "diaryTexts": [
           "The dimensional ward plate left the forge as if it remembered my name."
@@ -487,6 +509,7 @@
       },
       {
         "text": "Buy Supply (10 gold) (×1)",
+        "lockedHint": "Requires 10 gold, level 32+, and prior stock already bought.",
         "uiSection": "For sale"
       },
       {
@@ -512,22 +535,25 @@
       {
         "text": "Follow the corridor of broken mirrors (Trial of Reality)",
         "preview": "First cord: reality; permanent mark according to outcome.",
-        "lockedHint": "You need level 25 for the first cord; once the trial is complete, the corridor no longer opens here.",
+        "lockedHint": "You need level 26 for the first cord; once the trial is complete, the corridor no longer opens here.",
         "uiSection": "Trials"
       },
       {
         "text": "Descend to the bottomless memory pit (Trial of Memory)",
         "preview": "Only after the real: memory; echo leaves a mark.",
+        "lockedHint": "Requires level 26+ and completing the Trial of Reality first.",
         "uiSection": "Trials"
       },
       {
         "text": "Climb to the altar of bare will (Trial of Will)",
         "preview": "Last trial before the mirror; will measured or split.",
+        "lockedHint": "Requires level 26+ and completing the Trial of Memory first.",
         "uiSection": "Trials"
       },
       {
         "text": "Cross the Inner Mirror Gate",
         "preview": "Three trials done; the final mirror opens.",
+        "lockedHint": "Three trials, map goal, and level 31 — the mirror does not open early.",
         "uiSection": "Trials"
       },
       {
@@ -548,6 +574,7 @@
       {
         "text": "Listen to the whisper beneath the columns (corruption route)",
         "preview": "Pact in the void; requires high corruption and level.",
+        "lockedHint": "Requires level 31+, corruption 4+, and the Trial of Reality completed.",
         "uiSection": "Void"
       }
     ]
@@ -714,7 +741,7 @@
       }
     ],
     "onEnterDiaryTexts": [
-      "Will is not strength to defeat everyone. It is discipline not to obey the worst in me."
+      "Will is not strength to defeat everyone. It is discipline not to obey the worst in me. The amulet of the trials pulses — a ward against heat you have not yet seen."
     ]
   }
 }

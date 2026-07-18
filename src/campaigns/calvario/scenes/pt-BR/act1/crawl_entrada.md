@@ -7,15 +7,25 @@ artKey: crawl
 choices:
   - text: "Aceitar o chamado e seguir"
     next: act1/class_gate
+    condition: { noFlag: act1_class_chosen }
     preview: "Escolha de classe e primeiro passo firme."
     effects:
       - { op: addDiary, text: "Entrei na Masmorra do Silêncio." }
+  - text: "Seguir em frente — boca da masmorra"
+    next: act1/dungeon_mouth
+    condition: { flag: act1_class_chosen }
+    preview: "Juramento feito; o ar lá fora ainda ouve."
   - text: "Um caco de espelho brilha na argamassa — ver o próprio rosto"
     next: act1/mirror_descent
-    preview: "Rota do espelho; descida simbólica antes da classe."
+    condition: { noFlag: act1_class_chosen }
+    preview: "Rota do espelho; marca no diário antes da classe."
   - text: "Tocar na parede: está fria ou úmida?"
     next: act1/crawl_touch
-    preview: "Detalhe tátil; eco de humidade e medo."
+    condition:
+      all:
+        - { noFlag: act1_wall_touched }
+        - { noFlag: act1_class_chosen }
+    preview: "Detalhe tátil; stress leve e uma marca."
 onEnter: []
 ---
 Pedra fria sob a palma. A umidade **não é água** — é algo que escorreu de cima há séculos e nunca secou de todo.

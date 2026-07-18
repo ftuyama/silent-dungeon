@@ -9,6 +9,7 @@ artHighlightSfx: class_cleric
 choices:
   - text: "Avançar para a boca da masmorra"
     next: act1/dungeon_mouth
+    preview: "Classe Clérigo; fé e Vigília."
     effects:
       - { op: initClass, class: cleric }
       - { op: addRep, faction: vigilia, delta: 1, directGain: true }

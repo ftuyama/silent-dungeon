@@ -34,6 +34,7 @@ alwaysApply: true
 - Frontmatter: `id` aligned with the path under `scenes/` (e.g. `act2/lore/lore_crossroads`), `chapter`, `choices`, `onEnter`.
 - Links: scene IDs (`act1/prologue/dungeon_mouth`), not `.md` paths.
 - Schema: classes `knight` \| `mage` \| `cleric`; reputation `vigilia`, `circulo`, `culto`.
+- **i18n:** editar `scenes/pt-BR/**/*.md` exige, na mesma tarefa, atualizar `locales/en-US/scenes/*.json` (e marcas novas em `journeyMarks` + entities). Ver regra `.cursor/rules/scene-i18n-sync.mdc`. Fechar com `validate:i18n` + `validate:i18n:translations`.
 
 ## Commands
 
@@ -57,7 +58,7 @@ Detail: `src/engine/combat/`, `src/engine/core/sceneRuntime.ts`, `src/engine/cor
 
 **Resources** (`state.resources`): supply 0–10; faith 0–5; corruption 0–10; gold 0–999.
 
-**Combat (summary):** initiative 2d6+AGI; physical attack 2d6+mod (stance adjusts STR/Mind); advantage 3d6 drop lowest; crit 6+6 / fumble 1+1 on 2d6 (3d6: two final dice). Enemy AC ~7+floor((AGI+armor)/2); hero 7+mod(AGI)+item armor; defensive +2 vs enemies. Attack crit = hit; physical damage 1d6+weapon+stance; +1 holy vs undead with cleric. Spells: mana, Nd6+mod(Mind) (`SpellDef` in schema). Stress 4 = panic. Flee (`onFlee` / `returnScene`) ≠ victory.
+**Combat (summary):** initiative 2d6+AGI; physical attack 2d6+mod (stance adjusts STR/Mind); advantage 3d6 drop lowest; crit 6+6 / fumble 1+1 on 2d6 (3d6: two final dice). Enemy AC ~7+floor((AGI+armor)/2); hero 7+agiToArmorClassMod(AGI)+item armor (full AGI mod through +4, then soft diminishing); defensive +2 vs enemies. Physical hit vs CA is **percentual** (not a hard threshold): base 50% + 8% per point (attack−CA), clamped 5–95%; crit auto-hits, fumble auto-misses. Attack crit = hit; physical damage 1d6+weapon+stance; +1 holy vs undead with cleric. Spells: mana, Nd6+mod(Mind) (`SpellDef` in schema). Stress 4 = panic. Flee (`onFlee` / `returnScene`) ≠ victory.
 
 **Out of combat:** `skillCheck`, `dualAttrSkillCheck`, `luckCheck`, `randomBranch` — see `sceneRuntime.ts`.
 

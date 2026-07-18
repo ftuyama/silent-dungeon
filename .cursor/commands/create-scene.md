@@ -17,6 +17,7 @@ Se faltar informação crítica, faça no máximo 3 perguntas curtas antes de ge
 - `chapter` coerente com o `id` (ex.: `act2`).
 - `choices` devem apontar para IDs de cenas (não caminhos de arquivo).
 - Pode incluir `onEnter`, efeitos e condições compatíveis com o schema existente.
+- Se a `condition` incluir requisito de **nível** (`level: { gte: N }`), **sempre** usar `showWhenLocked: true` + `lockedHint`.
 - Manter idioma em **português**.
 - Considerar classes: `knight`, `mage`, `cleric`.
 - Considerar facções de reputação: `vigilia`, `circulo`, `culto`.
@@ -38,6 +39,8 @@ Responda **exatamente** com:
 - `id` confere com caminho sugerido
 - frontmatter YAML está válido
 - `choices` têm destinos plausíveis no ato/campanha
+- Overlay en-US atualizado em `locales/en-US/scenes/` (mesma cena)
+- `npm run validate:i18n:translations` passa
 - tom narrativo está consistente com fantasia sombria
 - português natural e sem anacronismos
 - sem campos fora do schema esperado

@@ -355,4 +355,154 @@ describe('applyEffects', () => {
     const c = applyEffects(b, [{ op: 'registerEnding', endingId: 'fin_b' }], ctx);
     expect(c.legacy.discoveredEndings).toEqual(['fin_a', 'fin_b']);
   });
+
+  it('sellItem remove do inventário e concede ouro', () => {
+    let s = createInitialState(testCampaign, 1);
+    s = {
+      ...s,
+      party: [createPlayerCharacter('H', 'knight')],
+      inventory: ['test_dagger'],
+      resources: { ...s.resources, gold: 3 },
+    };
+    const bus = new EventBus();
+    const data = createTestData();
+    data.items.test_dagger = {
+      id: 'test_dagger',
+      name: 'Adaga teste',
+      slot: 'weapon',
+      bonusStr: 0,
+      bonusAgi: 0,
+      bonusMind: 0,
+      bonusLuck: 0,
+      armor: 0,
+      damage: 2,
+      sellPrice: 2,
+    };
+    const sold: unknown[] = [];
+    bus.subscribe((e) => {
+      if (e.type === 'item.sold') sold.push(e);
+    });
+    const next = applyEffects(s, [{ op: 'sellItem', itemId: 'test_dagger' }], {
+      sceneId: 'test/merchant',
+      data,
+      bus,
+    });
+    expect(next.inventory).not.toContain('test_dagger');
+    expect(next.resources.gold).toBe(5);
+    expect(sold).toEqual([{ type: 'item.sold', itemId: 'test_dagger', gold: 2 }]);
+  });
+
+  it('sellItem unequipa antes de vender', () => {
+    let s = createInitialState(testCampaign, 1);
+    const hero = createPlayerCharacter('H', 'knight');
+    s = {
+      ...s,
+      party: [{ ...hero, weaponId: 'test_blade' }],
+      inventory: [],
+      resources: { ...s.resources, gold: 0 },
+    };
+    const bus = new EventBus();
+    const data = createTestData();
+    data.items.test_blade = {
+      id: 'test_blade',
+      name: 'Lâmina teste',
+      slot: 'weapon',
+      bonusStr: 0,
+      bonusAgi: 0,
+      bonusMind: 0,
+      bonusLuck: 0,
+      armor: 0,
+      damage: 1,
+      sellPrice: 1,
+    };
+    const next = applyEffects(s, [{ op: 'sellItem', itemId: 'test_blade' }], {
+      sceneId: 'test/merchant',
+      data,
+      bus,
+    });
+    expect(next.party[0]!.weaponId).toBeNull();
+    expect(next.inventory).not.toContain('test_blade');
+    expect(next.resources.gold).toBe(1);
+  });
+
+  it('sellItem no-op sem sellPrice ou sem item', () => {
+    let s = createInitialState(testCampaign, 1);
+    s = {
+      ...s,
+      party: [createPlayerCharacter('H', 'knight')],
+      inventory: ['quest_map'],
+      resources: { ...s.resources, gold: 10 },
+    };
+    const bus = new EventBus();
+    const data = createTestData();
+    data.items.quest_map = {
+      id: 'quest_map',
+      name: 'Mapa',
+      slot: 'relic',
+      bonusStr: 0,
+      bonusAgi: 0,
+      bonusMind: 0,
+      bonusLuck: 0,
+      armor: 0,
+      damage: 0,
+      rumor: true,
+    };
+    data.items.priced = {
+      id: 'priced',
+      name: 'Priced',
+      slot: 'weapon',
+      bonusStr: 0,
+      bonusAgi: 0,
+      bonusMind: 0,
+      bonusLuck: 0,
+      armor: 0,
+      damage: 1,
+      sellPrice: 3,
+    };
+    const noPrice = applyEffects(s, [{ op: 'sellItem', itemId: 'quest_map' }], {
+      sceneId: 'test/merchant',
+      data,
+      bus,
+    });
+    expect(noPrice.inventory).toContain('quest_map');
+    expect(noPrice.resources.gold).toBe(10);
+
+    const missing = applyEffects(s, [{ op: 'sellItem', itemId: 'priced' }], {
+      sceneId: 'test/merchant',
+      data,
+      bus,
+    });
+    expect(missing.resources.gold).toBe(10);
+  });
+
+  it('sellItem respeita teto de ouro', () => {
+    let s = createInitialState(testCampaign, 1);
+    s = {
+      ...s,
+      party: [createPlayerCharacter('H', 'knight')],
+      inventory: ['pricey'],
+      resources: { ...s.resources, gold: 997 },
+    };
+    const bus = new EventBus();
+    const data = createTestData();
+    data.items.pricey = {
+      id: 'pricey',
+      name: 'Cara',
+      slot: 'armor',
+      bonusStr: 0,
+      bonusAgi: 0,
+      bonusMind: 0,
+      bonusLuck: 0,
+      armor: 1,
+      damage: 0,
+      sellPrice: 10,
+    };
+    const next = applyEffects(s, [{ op: 'sellItem', itemId: 'pricey' }], {
+      sceneId: 'test/merchant',
+      data,
+      bus,
+    });
+    expect(next.resources.gold).toBe(999);
+    expect(next.inventory).not.toContain('pricey');
+  });
 });

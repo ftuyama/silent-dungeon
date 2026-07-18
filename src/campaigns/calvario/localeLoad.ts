@@ -14,6 +14,7 @@ import sceneAct4En from './locales/en-US/scenes/act4.json';
 import sceneAct5En from './locales/en-US/scenes/act5.json';
 import sceneAct6En from './locales/en-US/scenes/act6.json';
 import sceneAct7En from './locales/en-US/scenes/act7.json';
+import sceneAct8En from './locales/en-US/scenes/act8.json';
 import sceneMiscEn from './locales/en-US/scenes/misc.json';
 import narrativeEn from './locales/en-US/narrative.json';
 import explorationEn from './locales/en-US/exploration.json';
@@ -42,6 +43,14 @@ export type EntityOverlay = {
   enemies?: Record<string, EnemyEntityOverlay>;
   companions?: Record<string, { name?: string; lorePt?: string }>;
   journeyMarks?: Record<string, { name?: string; description?: string }>;
+  storyPaths?: Record<
+    string,
+    {
+      name?: string;
+      description?: string;
+      values?: Record<string, { name?: string; description?: string }>;
+    }
+  >;
   passives?: Record<string, { name?: string; description?: string }>;
   leadStoryPassives?: Record<string, { name?: string; description?: string }>;
 };
@@ -78,6 +87,7 @@ const SCENE_OVERLAYS_EN: Record<string, SceneOverlay> = {
   ...(sceneAct5En as Record<string, SceneOverlay>),
   ...(sceneAct6En as Record<string, SceneOverlay>),
   ...(sceneAct7En as Record<string, SceneOverlay>),
+  ...(sceneAct8En as Record<string, SceneOverlay>),
   ...(sceneMiscEn as Record<string, SceneOverlay>),
 };
 
@@ -140,6 +150,22 @@ export function applyEntityLocaleOverlay(data: GameData, locale: Locale): void {
       const def = data.journeyMarks[id];
       if (def && patch.name) def.name = patch.name;
       if (def && patch.description) def.description = patch.description;
+    }
+  }
+  if (overlay.storyPaths) {
+    for (const [id, patch] of Object.entries(overlay.storyPaths)) {
+      const def = data.storyPaths[id];
+      if (!def) continue;
+      if (patch.name) def.name = patch.name;
+      if (patch.description !== undefined) def.description = patch.description;
+      if (patch.values) {
+        for (const [valueId, valuePatch] of Object.entries(patch.values)) {
+          const valueDef = def.values[valueId];
+          if (!valueDef) continue;
+          if (valuePatch.name) valueDef.name = valuePatch.name;
+          if (valuePatch.description) valueDef.description = valuePatch.description;
+        }
+      }
     }
   }
   if (overlay.passives) {

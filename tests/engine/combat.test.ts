@@ -6,7 +6,9 @@ import {
   finishCombat,
   getCharacterArmorClass,
   refreshCombatLogInitiativeLabels,
+  resolveHitChance,
 } from '../../src/engine/combat/index.ts';
+import { agiToArmorClassMod } from '../../src/engine/combat/combatStats.ts';
 import { createInitialState, createPlayerCharacter } from '../../src/engine/core/index.ts';
 import type { EnemyDef, Encounter, ItemDef } from '../../src/engine/schema/index.ts';
 import { createTestData, testCampaign } from '../helpers/engineTestData.ts';
@@ -24,12 +26,49 @@ const leather: ItemDef = {
 };
 
 describe('getCharacterArmorClass', () => {
-  it('uses 7 + AGI mod + item armor', () => {
+  it('uses 7 + agiToArmorClassMod(AGI) + item armor', () => {
     const data = createTestData();
     data.items = { leather };
     const knight = createPlayerCharacter('K', 'knight');
     // knight agi 9 -> mod 1; CA = 7 + 1 + 2 = 10
     expect(getCharacterArmorClass(data, { ...knight, armorId: 'leather' })).toBe(10);
+  });
+
+  it('applies soft diminishing AGI contribution above mod +4', () => {
+    const data = createTestData();
+    data.items = {};
+    const archer = createPlayerCharacter('A', 'archer');
+    // agi 13 -> mod 3 -> +3; CA = 7 + 3 + 0 = 10
+    expect(getCharacterArmorClass(data, { ...archer, agi: 13, armorId: null, relicId: null })).toBe(10);
+    // agi 22 -> mod 8 -> 4 + floor(4/2) = 6; CA = 13
+    expect(getCharacterArmorClass(data, { ...archer, agi: 22, armorId: null, relicId: null })).toBe(13);
+    // agi 32 -> mod 13 -> 4 + floor(9/2) = 8; CA = 15
+    expect(getCharacterArmorClass(data, { ...archer, agi: 32, armorId: null, relicId: null })).toBe(15);
+  });
+});
+
+describe('agiToArmorClassMod', () => {
+  it('is full mod through +4, then half of excess', () => {
+    expect(agiToArmorClassMod(13)).toBe(3);
+    expect(agiToArmorClassMod(14)).toBe(4);
+    expect(agiToArmorClassMod(22)).toBe(6);
+    expect(agiToArmorClassMod(32)).toBe(8);
+  });
+});
+
+describe('resolveHitChance', () => {
+  it('is 50% when attack equals defense', () => {
+    expect(resolveHitChance(13, 13)).toBe(0.5);
+  });
+
+  it('gains 8% per point above defense, capped at 95%', () => {
+    expect(resolveHitChance(18, 13)).toBeCloseTo(0.9);
+    expect(resolveHitChance(30, 13)).toBe(0.95);
+  });
+
+  it('loses 8% per point below defense, floored at 5%', () => {
+    expect(resolveHitChance(8, 13)).toBeCloseTo(0.1);
+    expect(resolveHitChance(1, 13)).toBe(0.05);
   });
 });
 

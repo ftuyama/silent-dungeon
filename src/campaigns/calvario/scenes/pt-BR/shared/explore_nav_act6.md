@@ -19,8 +19,10 @@ choices:
     condition:
       all:
         - { flag: act6_reality_done }
-        - { level: { gte: 27 } }
+        - { level: { gte: 28 } }
         - { noFlag: act6_dimensional_smith_unlocked }
+    showWhenLocked: true
+    lockedHint: "Requer nível 28+ e a Prova da Realidade concluída."
     preview: "Uma rota lateral; o eco bate no osso."
   - id: explore_leave
     text: "Recuar para a nave fraturada"

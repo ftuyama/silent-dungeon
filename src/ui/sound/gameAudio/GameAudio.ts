@@ -63,6 +63,18 @@ export class GameAudio {
     return this.ctx;
   }
 
+  /** Agenda SFX só depois do contexto estar a correr (evita perder o gesto no 1.º clique). */
+  private runSfxWhenRunning(play: () => void): void {
+    const ctx = this.ensureContext();
+    if (ctx.state === 'running') {
+      play();
+      return;
+    }
+    void ctx.resume().then(() => {
+      if (ctx.state === 'running') play();
+    });
+  }
+
   startAmbientWhenReady(): void {
     this.ambient.startWhenReady();
   }
@@ -237,6 +249,11 @@ export class GameAudio {
   /** Sussurro grave + harmónicos discretos — highlight de cena (`artHighlightSfx: mysterious`). */
   playMysteriousHighlight(): void {
     this.sfx.playMysteriousHighlight();
+  }
+
+  /** Avanço de capítulo (`setChapter` > actual) — descida grave, ar e tensão (~2,4s). */
+  playChapterDescent(): void {
+    this.runSfxWhenRunning(() => this.sfx.playChapterDescent());
   }
 
   /** Confirmação ritual abominável — escolha com `commitSfx: horrific_sacrifice` (~7s, gesto longo). */

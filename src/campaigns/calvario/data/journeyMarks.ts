@@ -15,6 +15,46 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
     description:
       'Algo na superfície devolveu um riso que não era seu; o eco ficou na boca como metal velho, e o subsolo lembrou-se do seu gosto.',
   },
+  act1_wall_memory: {
+    name: 'Memória da parede',
+    description:
+      'Tocou pedra que parecia carne fossilizada; o braço lembra o estremecer — a masmorra também toca de volta.',
+  },
+  act1_mirror_shard: {
+    name: 'Caco no degrau',
+    description:
+      'Viu-se num fragmento de espelho: um estranho com o seu nome. O reflexo não absolve o próximo passo.',
+  },
+  act1_entrance_mirror: {
+    name: 'Nicho partido',
+    description:
+      'Metade do rosto, metade do túnel — o mesmo corte. O vidro pediu escolha antes que o silêncio escolhesse por você.',
+  },
+  act1_hand_mirror: {
+    name: 'Espelho de mão',
+    description:
+      'Segurou o espelho sem a água a mentir; só você e as promessas — sem absolvição barata.',
+  },
+  act1_door_runes: {
+    name: 'Runas nos batentes',
+    description:
+      'Leu runas re-riscadas e o sino rudimentar do Terceiro Sino; a madeira úmida por dentro ainda respira.',
+  },
+  act2_rats_listen: {
+    name: 'Chiar contado',
+    description:
+      'Ouviu o enxame em padrão — quase linguagem. Contou passos antes de avançar.',
+  },
+  act2_rats_smell: {
+    name: 'Fedor de ninho',
+    description:
+      'Mofo, ferro e cobre quente: sangue antigo que nunca secou. O nariz pagou o preço.',
+  },
+  act2_cruzeiro_marks: {
+    name: 'Marcas do cruzeiro',
+    description:
+      'Três sulcos, pegadas que voltam atrás, Morvayn e um sino fincado — o chão como mapa de quem desistiu a meio.',
+  },
   act3_cult_flight: {
     name: 'Fuga sob capuzes',
     description:
@@ -73,7 +113,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   act6_will_direct: {
     name: 'Vontade à frente',
     description:
-      'No desafio da vontade, cortaste em linha recta; pouca dança, muito embate — seu caminho não pediu permição.',
+      'No desafio da vontade, cortaste em linha reta; pouca dança, muito embate — seu caminho não pediu permissão.',
   },
   act6_will_measured: {
     name: 'Vontade medida',
@@ -173,7 +213,7 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
   mira_cruzeiro_confidencia: {
     name: 'Confidência no cruzeiro',
     description:
-      'Trocámo-nos verdades fracas no hub; ela guarda um sítio nseu mapa emocional que o mapa de pedra não tem.',
+      'Trocamos verdades fracas no hub; ela guarda um lugar nseu mapa emocional que o mapa de pedra não tem.',
   },
   mira_frost_pact: {
     name: 'Pacto de geada',
@@ -224,6 +264,11 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
     name: 'Vetrnax findado',
     description:
       'O gelo perdeu o seu titã; a cordilheira lembra quem fechou o nome na neve com lâmina ou ritual.',
+  },
+  magma_lord_slain: {
+    name: 'Senhor do Magma findado',
+    description:
+      'O fundo do eixo perdeu o seu senhor; o crisol ainda arde, mas sem vontade — o silêncio finalmente tem chão.',
   },
   wound_mire_leg: {
     name: 'Mordida do poço',

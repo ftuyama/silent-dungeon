@@ -10,7 +10,9 @@ choices:
     preview: "Ela já conhece o preço deste chão."
   - text: "Voltar ao hub"
     next: act2/hub_catacomb
-onEnter: []
+    preview: "Volta ao cruzeiro."
+onEnter:
+  - { op: addMark, mark: act2_cruzeiro_marks }
 ---
 No chão: **três sulcos** paralelos e **pegadas** que voltam atrás — alguém desistiu a meio.
 

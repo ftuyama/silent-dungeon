@@ -25,35 +25,34 @@
       },
       {
         "text": "Stare into the black water: what does it reflect?",
-        "uiSection": "Exploration"
+        "uiSection": "Exploration",
+        "preview": "Luck check; success reveals the hand mirror."
       },
       {
         "text": "Listen: is there another sound besides dripping?",
-        "uiSection": "Exploration"
+        "uiSection": "Exploration",
+        "preview": "Mind check; success reveals the hand mirror."
       },
       {
         "text": "A hand mirror on the wall — hold it and see yourself without the water",
-        "uiSection": "Exploration"
+        "uiSection": "Exploration",
+        "preview": "Just looking; mark and diary."
+      },
+      {
+        "text": "Press on — dungeon mouth",
+        "preview": "The oath is done; the air outside still listens."
       }
     ]
   },
   "act1/class_gate_listen": {
     "title": "Listening",
     "body": "Beyond the dripping: a distant **metallic scrape**, as if someone pulling a chain in the dark. Then **silence** — the kind that weighs.",
-    "choices": [
-      {
-        "text": "Return and choose the oath"
-      }
-    ]
+    "skillCheckLabel": "Hear what the dripping hides"
   },
   "act1/class_gate_water": {
     "title": "Reflection",
     "body": "For an instant the reflection **is not your face** — bone and ripple — and the water grows **too still** to be natural.\n\n*{{playerName}}* leans over *{{playerName}}*; when you lift your head, your neck aches from **having seen** too much.",
-    "choices": [
-      {
-        "text": "Step back from the edge and choose the oath"
-      }
-    ]
+    "luckCheckLabel": "Look into the black water without losing yourself in the reflection"
   },
   "act1/crawl_entrada": {
     "title": "First step",
@@ -67,12 +66,16 @@
         ]
       },
       {
+        "text": "Press on — dungeon mouth",
+        "preview": "Oath sworn; the air outside still listens."
+      },
+      {
         "text": "A shard of mirror gleams in the mortar — see your own face",
-        "preview": "Mirror route; symbolic descent before class."
+        "preview": "Mirror route; diary mark before class."
       },
       {
         "text": "Touch the wall: is it cold or damp?",
-        "preview": "Tactile detail; echo of moisture and fear."
+        "preview": "Tactile detail; light stress and a mark."
       }
     ]
   },
@@ -81,11 +84,20 @@
     "body": "**Damp**, like sick skin. Under the salt crust, you feel veins **softer** — almost fossilized flesh.\n\nA shiver runs up your arm. It is not fear. It is the stone's **memory**.",
     "choices": [
       {
-        "text": "Continue the descent"
+        "text": "Continue the descent",
+        "preview": "On to the oath."
       },
       {
-        "text": "Step back a moment"
+        "text": "Press on — dungeon mouth",
+        "preview": "Oath sworn; the air outside still listens."
+      },
+      {
+        "text": "Step back a moment",
+        "preview": "No cost; one step back."
       }
+    ],
+    "onEnterDiaryTexts": [
+      "The wall reminded me of flesh — and my hand trembled."
     ]
   },
   "act1/dungeon_door": {
@@ -93,13 +105,16 @@
     "body": "**Faded runes** were re-scored by recent hands. Among them, a crude **bell** — the Third Bell, rumor says.\n\nThe wood is damp **inside**, as if the stone were breathing.",
     "choices": [
       {
-        "text": "Enter the catacombs"
+        "text": "Enter the catacombs",
+        "preview": "−1 supply; chapter 2."
       },
       {
-        "text": "Lean toward the bronze gleam on the frame — see yourself"
+        "text": "Lean toward the bronze gleam on the frame — see yourself",
+        "preview": "Mirror on the frame; combat possible."
       },
       {
-        "text": "Return to the last corridor (story)"
+        "text": "Return to the last corridor (story)",
+        "preview": "Brazier, bell, and the stone mouth."
       }
     ]
   },
@@ -108,18 +123,28 @@
     "body": "The **stone mouth** creaks like an old jaw. The air grows **dense**, like wet wool filling your lungs — and the chamber's **silence** seems to **hear you** before you hear yourself.\n\nFrom within comes a smell: **earth**, **ash**, and something too sweet to be wholesome.",
     "choices": [
       {
-        "text": "Cracked brazier — tear off the seal (risk/reward)",
+        "text": "[!] Cracked brazier — tear off the seal (risk/reward)",
         "preview": "May yield rare resources, but drains conviction."
       },
       {
-        "text": "Blind bell — promise blood to the echo (risk/reward)",
+        "text": "[!] Blind bell — promise blood to the echo (risk/reward)",
         "preview": "Immediate power gain, with visible cost."
       },
       {
-        "text": "Enter the catacombs"
+        "text": "Enter the catacombs",
+        "preview": "−1 supply; chapter 2."
       },
       {
-        "text": "Inspect the doorframe"
+        "text": "Inspect the doorframe",
+        "preview": "Runes and bronze; optional mirror."
+      },
+      {
+        "text": "A twin echo pulses in you — faith and shadow recognize each other",
+        "preview": "Legacy unlocked: duality preserved.",
+        "lockedHint": "Faith-and-corruption legacy still locked.",
+        "diaryTexts": [
+          "At the dungeon mouth, faith and corruption coexist without splitting you — the twin echo opened a thread of calm."
+        ]
       }
     ]
   },
@@ -168,10 +193,16 @@
     "body": "In the mortar, a **mirror shard** — black edge, lying light — returns *{{playerName}}* **weary**, mouth tighter than you remembered.\n\nOld fear: **returning** the same if the shadow **wins** before you do.",
     "choices": [
       {
-        "text": "Lower your eyes and continue the descent"
+        "text": "Lower your eyes and continue the descent",
+        "preview": "On to the oath."
       },
       {
-        "text": "Turn from the gleam and return to the previous step"
+        "text": "Press on — dungeon mouth",
+        "preview": "Oath sworn; the air outside still listens."
+      },
+      {
+        "text": "Turn from the gleam and return to the previous step",
+        "preview": "Withdraw without combat."
       }
     ],
     "onEnterDiaryTexts": [
@@ -183,11 +214,26 @@
     "body": "In the wood, **polished bronze** returns your face **greenish** at one angle only — armor or cloak seems **borrowed** from someone else.\n\nThe corridor and the reflection **breathe together**; for a second you cannot tell who pushes whom inside.",
     "choices": [
       {
-        "text": "Look away and return to the doorframe"
+        "text": "Look away and return to the doorframe",
+        "preview": "No combat; back to the runes."
       },
       {
-        "text": "Stare into the mirror until the reflection yields"
+        "text": "[%] Stare into the mirror until the reflection yields",
+        "preview": "Dialogue combat; victory marks the mirror."
       }
+    ]
+  },
+  "act1/mirror_door_resolved": {
+    "title": "Bronze on the frame",
+    "body": "The **bronze** goes dull again. For an instant you still feel the **lagging** gaze — as if it were keeping your name for later.",
+    "choices": [
+      {
+        "text": "Look away and return to the doorframe",
+        "preview": "Reflection mastered; runes waiting."
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "In the bronze on the frame, the reflection yielded — but it still recognizes me from the side."
     ]
   },
   "act1/mirror_entrance": {
@@ -195,8 +241,12 @@
     "body": "In the niche, a **broken oval mirror**: half your **face**, half the **tunnel** — you and the abyss in the same cut.\n\nThe glass **fixes** *{{playerName}}* to **choose** the silent city — before silence chooses for you.",
     "choices": [
       {
-        "text": "Leave and return to the inscriptions"
+        "text": "Leave and return to the inscriptions",
+        "preview": "Back to the chiseled lines."
       }
+    ],
+    "onEnterDiaryTexts": [
+      "In the niche, half my face and half the tunnel — the same cut."
     ]
   },
   "act1/mirror_round": {
@@ -204,8 +254,16 @@
     "body": "A **hand mirror** on a rusted chain: ridiculous here, yet the glass **trembles** and *{{playerName}}* faces *{{playerName}}* without black water to lie.\n\nIt is **only you** — with **promises** to keep; nothing here absolves the next step.",
     "choices": [
       {
-        "text": "Release your breath and return to the chamber center"
+        "text": "Release your breath and return to the chamber center",
+        "preview": "Back to the oath."
+      },
+      {
+        "text": "Release your breath and press on",
+        "preview": "Oath sworn; the air outside still listens."
       }
+    ],
+    "onEnterDiaryTexts": [
+      "In the hand mirror, only me — without the water lying."
     ]
   },
   "act1/pick_cleric": {
@@ -213,7 +271,8 @@
     "body": "The emblem burns cold in your palm. Old words push back the veil.",
     "choices": [
       {
-        "text": "Advance to the dungeon mouth"
+        "text": "Advance to the dungeon mouth",
+        "preview": "Cleric class; faith and Vigil."
       }
     ]
   },
@@ -222,7 +281,8 @@
     "body": "The metal obeys. The **Order of the Vigil** whispers approval in the folds of the armor.",
     "choices": [
       {
-        "text": "Advance to the dungeon mouth"
+        "text": "Advance to the dungeon mouth",
+        "preview": "Knight class; +Vigil reputation."
       }
     ]
   },
@@ -231,7 +291,8 @@
     "body": "Symbols ignite on your retina. The **Grey Circle** does not forgive hesitation.",
     "choices": [
       {
-        "text": "Advance to the dungeon mouth"
+        "text": "Advance to the dungeon mouth",
+        "preview": "Mage class; +Circle reputation."
       }
     ]
   },
@@ -240,7 +301,8 @@
     "body": "The string **sings** once — dry, honest. No one calls you brother or disciple; only the **target** you have not yet seen waits for you to learn to count steps before counting glories.",
     "choices": [
       {
-        "text": "Advance to the dungeon mouth"
+        "text": "Advance to the dungeon mouth",
+        "preview": "Archer class; hunter without faction."
       }
     ]
   },
@@ -254,7 +316,8 @@
     "body": "The stone **returns** a laugh that is not yours — damp, **sweet**, wrong. You are left with the echo on your tongue like **old iron**: you are no worse, but the depths **tasted** you.",
     "choices": [
       {
-        "text": "Pull your ear away and return to the inscriptions"
+        "text": "Pull your ear away and return to the inscriptions",
+        "preview": "Back to the chiseled lines."
       }
     ],
     "onEnterDiaryTexts": [
@@ -266,7 +329,8 @@
     "body": "You catch **two** words worth coin: **who** closes the warehouse at the fourth stroke and **where** the vicar keeps the debt ledger. It is not miracle — it is **map**.",
     "choices": [
       {
-        "text": "Keep the rumor and return to the inscriptions"
+        "text": "Keep the rumor and return to the inscriptions",
+        "preview": "Back to the chiseled lines."
       }
     ],
     "onEnterDiaryTexts": [
@@ -282,10 +346,12 @@
         "preview": "The first firm step — or hesitate and look first."
       },
       {
-        "text": "Examine the symbols at the entrance (before descending)"
+        "text": "Examine the symbols at the entrance (before descending)",
+        "preview": "Lore and a surface rumor (luck)."
       },
       {
-        "text": "Breathe deep and adjust your equipment"
+        "text": "Breathe deep and adjust your equipment",
+        "preview": "A moment of calm; diary."
       }
     ]
   },
@@ -294,10 +360,12 @@
     "body": "The surface air seems **sweet** for a second. Then the green pulse reminds you sweetness is a lie — only the silence below is real.",
     "choices": [
       {
-        "text": "Ready. Descend."
+        "text": "Ready. Descend.",
+        "preview": "On to the first step."
       },
       {
-        "text": "Return to the entrance"
+        "text": "Return to the entrance",
+        "preview": "No cost; hesitation is still an option."
       }
     ],
     "onEnterDiaryTexts": [
@@ -309,14 +377,16 @@
     "body": "Someone chiseled **three lines** before rust ate the stone:\n\n> *\"Here there is no forgiveness — only echo.\"*\n\nA fourth symbol was scratched by a more recent hand: a **spiral** pointing down.",
     "choices": [
       {
-        "text": "Notice a broken mirror in a niche — face the reflection"
+        "text": "Notice a broken mirror in a niche — face the reflection",
+        "preview": "Just looking; the abyss returns your face."
       },
       {
-        "text": "Listen to voices descending from the city (luck)",
+        "text": "[%] Listen to voices descending from the city (luck)",
         "preview": "Gold or corruption — rumor from the surface."
       },
       {
-        "text": "Return to the entrance"
+        "text": "Return to the entrance",
+        "preview": "No risk; back to the threshold."
       }
     ]
   }

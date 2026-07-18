@@ -314,15 +314,24 @@ function appendDevToolsSfxPreviewTable(
 }
 
 /** Alinhado a `GameApp.resolveVisualTheme` — paleta CSS (`html[data-theme]`). */
-type DevToolsVisualThemeId = 'default' | 'snow' | 'void' | 'ash';
+type DevToolsVisualThemeId = 'default' | 'bone' | 'snow' | 'void' | 'ash' | 'lava';
 
-const DEV_TOOLS_VISUAL_THEMES: readonly DevToolsVisualThemeId[] = ['default', 'snow', 'void', 'ash'];
+const DEV_TOOLS_VISUAL_THEMES: readonly DevToolsVisualThemeId[] = [
+  'default',
+  'bone',
+  'snow',
+  'void',
+  'ash',
+  'lava',
+];
 const DEV_TOOLS_VISUAL_THEME_STORAGE_KEY = 'silent-dungeon.devTools.visualTheme';
 
 function inferVisualThemeForScene(id: string, chapter: number | undefined): DevToolsVisualThemeId {
+  if (chapter === 8 || id.startsWith('act8/')) return 'lava';
   if (chapter === 6 || id.startsWith('act6/')) return 'void';
   if (chapter === 7 || id.startsWith('act7/')) return 'ash';
   if (chapter === 5 || id.startsWith('act5/')) return 'snow';
+  if (chapter === 4 || id.startsWith('act4/')) return 'bone';
   return 'default';
 }
 
@@ -349,9 +358,11 @@ function readStoredDevToolsVisualTheme(): DevToolsVisualThemeId {
     const raw = window.localStorage.getItem(DEV_TOOLS_VISUAL_THEME_STORAGE_KEY);
     if (
       raw === 'default' ||
+      raw === 'bone' ||
       raw === 'snow' ||
       raw === 'void' ||
-      raw === 'ash'
+      raw === 'ash' ||
+      raw === 'lava'
     ) {
       return raw;
     }
@@ -376,7 +387,7 @@ function mountVisualPanel(
   const note = document.createElement('p');
   note.className = 'dev-tools-note';
   note.textContent =
-    'Paleta da interface (`html[data-theme]` em tokens/theme-tokens.css): padrão, neve (ato 5), vazio (ato 6), cinzas (ato 7). A pré-visualização altera esta página até clicar em Restaurar.';
+    'Paleta da interface (`html[data-theme]` em tokens/theme-tokens.css): padrão, osso (ato 4), neve (ato 5), vazio (ato 6), cinzas (ato 7), lava (ato 8). A pré-visualização altera esta página até clicar em Restaurar.';
 
   const table = document.createElement('table');
   table.className = 'dev-tools-table';
@@ -386,9 +397,11 @@ function mountVisualPanel(
   const tbody = document.createElement('tbody');
   const labels: Record<DevToolsVisualThemeId, string> = {
     default: 'default (sem data-theme)',
+    bone: 'bone (ato 4)',
     snow: 'snow',
     void: 'void',
     ash: 'ash',
+    lava: 'lava',
   };
   for (const theme of DEV_TOOLS_VISUAL_THEMES) {
     const tr = document.createElement('tr');

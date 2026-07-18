@@ -86,6 +86,43 @@ export const ACT3_DEPTH_MELODY: number[] = [
   293.66, // D4
 ];
 
+/**
+ * Ato 4 (trono de ossos): linha baixa e opressiva — trítonos e saltos pesados,
+ * pouco brilho no agudo; tensão pré-Morvayn sem soar como o kit de boss.
+ */
+export const ACT4_THRONE_MELODY: number[] = [
+  73.42, // D2
+  87.31, // F2
+  98.0, // G2
+  110.0, // A2
+  130.81, // C3
+  146.83, // D3
+  174.61, // F3 — cume ainda grave
+  155.56, // D#3 — trítono amargo
+  123.47, // B2
+  103.83, // G#2
+  87.31, // F2
+  69.3, // C#2
+  55.0, // A1 — fundo
+  73.42, // D2
+];
+
+/** Pós-vitória no trono: mesma tonalidade, linha lenta e espaçada — silêncio que respira. */
+export const ACT4_PEACE_MELODY: number[] = [
+  146.83, // D3
+  155.56, // D#3
+  174.61, // F3
+  155.56, // D#3
+  146.83, // D3
+  130.81, // C3
+  146.83, // D3
+  174.61, // F3
+  155.56, // D#3
+  146.83, // D3
+  130.81, // C3
+  110.0, // A2
+];
+
 /** Ritual no cume: registro fundo, semitonações e trítono (F3) como ferida — lento, opressivo. */
 export const ANCIENT_MACABRE_MELODY: number[] = [
   146.83, // D3
@@ -123,6 +160,19 @@ export const ASH_SKY_MELODY: number[] = [
   174.61, // F3
   130.81, // C3
   116.54, // A#2
+];
+
+/** Profundezas de magma (act8): graves quentes + trítonos lentos — calor que respira. */
+export const ACT8_MAGMA_MELODY: number[] = [
+  82.41, // E2
+  110.0, // A2
+  146.83, // D3
+  103.83, // G#2
+  87.31, // F2
+  123.47, // B2
+  164.81, // E3
+  98.0, // G2
+  73.42, // D2
 ];
 
 /** Combate verbal: 2ªs menores e quase-uníssono — tensão de espelho / duelo de palavras, sem percussão marcial. */

@@ -7,6 +7,7 @@ title: Banca do último preço
 choices:
   - text: "Comprar planta da nave (−4 ouro)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -17,6 +18,7 @@ choices:
       - { op: addResource, resource: gold, delta: -4 }
   - text: "Comprar Poção Rubra (8 ouro) (x2)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -28,6 +30,7 @@ choices:
       - { op: setFlag, key: act6_merch_hp_1, value: true }
   - text: "Comprar Poção Rubra (5 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -40,6 +43,7 @@ choices:
       - { op: setFlag, key: act6_merch_hp_2, value: true }
   - text: "Comprar Tônico Azul (7 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -51,6 +55,7 @@ choices:
       - { op: setFlag, key: act6_merch_mana_1, value: true }
   - text: "Comprar Hidromel (6 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -62,6 +67,7 @@ choices:
       - { op: setFlag, key: act6_merch_stress_1, value: true }
   - text: "Comprar Suprimento (5 ouro) (x2)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -73,6 +79,7 @@ choices:
       - { op: setFlag, key: act6_merch_supply_1, value: true }
   - text: "Comprar Suprimento (5 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -85,20 +92,24 @@ choices:
       - { op: setFlag, key: act6_merch_supply_2, value: true }
   - text: "Comprar Suprimento (10 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
+    visibleWhen: { noFlag: act6_merch_supply_3 }
     condition:
       all:
         - { resource: { gold: { gte: 10 } } }
-        - { level: { gte: 31 } }
+        - { level: { gte: 32 } }
         - { flag: act6_merch_supply_1 }
         - { flag: act6_merch_supply_2 }
-        - { noFlag: act6_merch_supply_3 }
+    showWhenLocked: true
+    lockedHint: "Requer 10 ouro, nível 32+, e estoques anteriores já comprados."
     effects:
       - { op: addResource, resource: gold, delta: -10 }
       - { op: addResource, resource: supply, delta: 1 }
       - { op: setFlag, key: act6_merch_supply_3, value: true }
   - text: "Kit de campo da Vigília (−7 ouro)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     condition:
       all:
@@ -113,6 +124,7 @@ choices:
     preview: "Suprimento · selo da Vigília (uma vez nesta banca)"
   - text: "Afastar-me da banca"
     uiSection: "Conversa"
+    uiSectionIcon: talk
     next: act6/hub_fractured_nave
 onEnter: []
 ---

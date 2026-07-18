@@ -9,6 +9,7 @@ artHighlightSfx: class_archer
 choices:
   - text: "Avançar para a boca da masmorra"
     next: act1/dungeon_mouth
+    preview: "Classe Arqueiro; caçador sem facção."
     effects:
       - { op: initClass, class: archer }
 onEnter: []

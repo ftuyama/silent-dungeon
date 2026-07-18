@@ -22,14 +22,14 @@ export const EnemyAttackStrategySchema = z.enum([
 export type EnemyAttackStrategy = z.infer<typeof EnemyAttackStrategySchema>;
 
 /** Condições de status em combate aplicáveis a personagens do grupo. */
-export const StatusConditionKindSchema = z.enum(['paralysis', 'poison', 'freeze']);
+export const StatusConditionKindSchema = z.enum(['paralysis', 'poison', 'freeze', 'burn']);
 export type StatusConditionKind = z.infer<typeof StatusConditionKindSchema>;
 
 export const StatusConditionSchema = z.object({
   kind: StatusConditionKindSchema,
   /** Rodadas de jogador restantes; expira ao chegar a 0 no início da rodada. */
   remainingRounds: z.number().int().min(0),
-  /** poison: dano por rodada; paralysis/freeze: sem uso (0). */
+  /** poison/burn: dano por rodada; paralysis/freeze: sem uso (0). */
   intensity: z.number().int().min(0).default(0),
 });
 export type StatusCondition = z.infer<typeof StatusConditionSchema>;
@@ -234,6 +234,8 @@ export const ItemDefSchema = z.object({
    */
   corruptionDrainOnHit: z.number().int().min(0).max(3).optional(),
   damageBonusPerCorruptionDrain: z.number().int().min(1).max(5).optional(),
+  /** Ouro ao vender no mercador; ausente = não vendável (quest, craft, chaves). */
+  sellPrice: z.number().int().min(1).optional(),
 });
 
 export type ItemDef = z.infer<typeof ItemDefSchema>;
@@ -276,6 +278,8 @@ export const SpellDefSchema = z.object({
   base: z.number().int().min(0).default(0),
   /** Só via narrativa (learnSpell), não no nível 1 nem ao subir de nível */
   learnOnly: z.boolean().optional(),
+  /** Chance de aplicar status no alvo atingido (magias de dano). */
+  applyStatus: EnemyStatusApplySchema.optional(),
 });
 
 export type SpellDef = z.infer<typeof SpellDefSchema>;
@@ -322,6 +326,7 @@ export const EnemyInstanceSchema = z.object({
   maxHp: z.number().int(),
   armorChipsRemaining: z.number().int().min(0),
   stress: z.number().int().min(0).max(4).default(0),
+  statusConditions: z.array(StatusConditionSchema).default([]),
 });
 
 export type EnemyInstance = z.infer<typeof EnemyInstanceSchema>;
@@ -352,6 +357,8 @@ export const CombatLogEntrySchema = z.object({
   outcome: z.enum(['hit', 'miss']).optional(),
   /** CA usada na resolução (para exibir no log) */
   vsDefense: z.number().int().optional(),
+  /** Chance de acerto usada na resolução percentual (0–1); omitido em crítico/falha automáticos */
+  hitChance: z.number().min(0).max(1).optional(),
   /** Resultado especial dos dados de ataque (2d6 / 3d6dl) */
   rollOutcome: z.enum(['crit_threat', 'fumble_threat', 'normal']).optional(),
   /** Dano crítico vs normal */
@@ -438,6 +445,8 @@ export const GameStateSchema = z.object({
   schemaVersion: z.string(),
   /** Which campaign this save belongs to (multi-campaign). Legacy saves default to calvario in deserializeState. */
   campaignId: z.string().default('calvario'),
+  /** Identificador único da run (UUID); novo a cada `createInitialState` / `resetRun`. */
+  runId: z.string().uuid(),
   rngSeed: z.number(),
   chapter: z.number().int().min(1),
   sceneId: z.string(),
@@ -469,6 +478,12 @@ export const GameStateSchema = z.object({
   circuloSkillRerollReady: z.boolean().default(false),
   flags: z.record(z.string(), z.boolean()),
   marks: z.array(z.string()),
+  /**
+   * Paths narrativos de decisões grandes (`setStoryPath`).
+   * Chave = id da decisão (ex.: `throne`); valor = ramo (ex.: `slain` | `pact` | `sealed`).
+   * Distinto de `party[].path` (arquétipo de classe).
+   */
+  storyPaths: z.record(z.string(), z.string()).default({}),
   /** Meta-progresso persistente entre runs (não reseta com `resetRun`). */
   legacy: z
     .object({

@@ -8,16 +8,21 @@
     "4": "O Trono",
     "5": "Neve",
     "6": "O Vazio",
-    "7": "Cinzas do Céu"
+    "7": "Cinzas do Céu",
+    "8": "Crisol de Magma"
   },
   "endings": {
     "epilogue_apocalypse": {
-      "title": "Cinzas com nome",
-      "blurb": "O apocalipse ficou mais honesto; seu eco reparte-se entre estrada e silêncio."
+      "title": "Cinzas incompletas",
+      "blurb": "Fuga para o céu — o apocalipse ficou honesto, mas o eixo ainda descia ao magma."
     },
     "epilogue_depths": {
       "title": "Profundezas do eixo",
       "blurb": "Outra dobra de pedra — um estrato mais fundo, silêncio sob outro nome."
+    },
+    "epilogue_true_depths": {
+      "title": "Profundezas verdadeiras",
+      "blurb": "O Senhor do Magma caiu; o fundo do eixo fechou-se sob o seu nome."
     },
     "frost_epilogue": {
       "title": "Epílogo de geada",
@@ -29,7 +34,7 @@
     },
     "passage_graywind_heights": {
       "title": "Passagem ao fundo do eixo",
-      "blurb": "Além do trono, outra camada — dobra de pedra e gelo que ainda pergunta quem manda no silêncio."
+      "blurb": "Além do trono, bifurcação: gelo acima ou magma abaixo — o eixo ainda pergunta quem manda no silêncio."
     }
   },
   "entryScene": "act1/title",

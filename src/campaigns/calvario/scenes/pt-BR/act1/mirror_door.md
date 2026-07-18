@@ -6,12 +6,14 @@ ambientTheme: explore
 choices:
   - text: "Desviar o olhar e voltar aos batentes"
     next: act1/dungeon_door
-  - text: "Mirar o espelho até o reflexo ceder"
+    preview: "Sem combate; volta às runas."
+  - text: "[%] Mirar o espelho até o reflexo ceder"
     condition: { noFlag: act1_mirror_dialogue_done }
+    preview: "Combate de diálogo; vitória marca o espelho."
     effects:
       - op: startCombat
         encounterId: act1_mirror_dialogue
-        onVictory: act1/mirror_descent
+        onVictory: act1/mirror_door_resolved
         onDefeat: shared/game_over
         onFlee: act1/mirror_door
 onEnter: []

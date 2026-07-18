@@ -1,5 +1,4 @@
 import type { Effect } from '../engine/schema/index.ts';
-import { slotReturnRewardDateKey } from './gameAppSaveSlots.ts';
 import { t } from '../i18n/index.ts';
 
 /** Ciclo fixo de recompensas: dia 1..7; ao completar, recomeça no dia 1. */
@@ -114,26 +113,30 @@ export function registerDailyLogin(
   return result;
 }
 
-/** Slot já recebeu o bônus diário hoje? (reaproveita a chave de retorno por slot). */
-export function hasSlotDailyBonusToday(
+export function runDailyBonusDateKey(campaignId: string, runId: string): string {
+  return `${campaignId}_run_daily_bonus_v1_${runId}`;
+}
+
+/** Run já recebeu o bônus diário hoje? */
+export function hasRunDailyBonusToday(
   campaignId: string,
-  slot: number,
+  runId: string,
   today: string = todayDateKey()
 ): boolean {
   try {
-    return localStorage.getItem(slotReturnRewardDateKey(campaignId, slot)) === today;
+    return localStorage.getItem(runDailyBonusDateKey(campaignId, runId)) === today;
   } catch {
     return false;
   }
 }
 
-export function markSlotDailyBonusClaimed(
+export function markRunDailyBonusClaimed(
   campaignId: string,
-  slot: number,
+  runId: string,
   today: string = todayDateKey()
 ): void {
   try {
-    localStorage.setItem(slotReturnRewardDateKey(campaignId, slot), today);
+    localStorage.setItem(runDailyBonusDateKey(campaignId, runId), today);
   } catch {
     /* noop */
   }

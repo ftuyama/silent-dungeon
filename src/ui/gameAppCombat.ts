@@ -65,6 +65,19 @@ type PendingEnemyFloatingDamage = {
 
 let pendingEnemyFloatingDamage: PendingEnemyFloatingDamage[] = [];
 
+type PendingPartyFloatingDamage = {
+  encId: string;
+  amount: number;
+  kind: 'crit' | 'normal';
+  startMs: number;
+  anchorLeftPct: number;
+  anchorTopPct: number;
+};
+
+let pendingPartyFloatingDamage: PendingPartyFloatingDamage[] = [];
+let pendingPartyHitFlashEncId: string | null = null;
+let pendingPartyHitFlashStartMs = 0;
+
 const HEADSHOT_IMPACT_FX_CLASS = 'combat-fx-spell-headshot--crit';
 const HEADSHOT_AIM_FX_CLASS = 'combat-fx-spell-headshot--aim';
 
@@ -276,6 +289,9 @@ function spellCombatHoverText(sp: SpellDef): string {
     return t('combat.spellHoverHeadshot');
   }
   if (sp.spellKind === 'damage_all_enemies') {
+    if (sp.classId === 'mage') {
+      return t('combat.spellHoverMageAoE', { dice: String(sp.dice), base: String(sp.base) });
+    }
     return t('combat.spellHoverArrowRain');
   }
   return t('combat.spellHoverBuffArmor');
@@ -486,6 +502,9 @@ function appendCombatLogMergedHitMeta(
   const meta = document.createElement('div');
   meta.className = 'combat-log-meta combat-log-meta--attack-roll';
   let line = `${attack.final} vs ${t('engine.ac')} ${attack.vsDefense}`;
+  if (attack.hitChance !== undefined) {
+    line += ` ${t('combat.logMetaHitChance', { pct: Math.round(attack.hitChance * 100) })}`;
+  }
   if (attack.modifier !== undefined) {
     line += ` ${t('combat.logMetaBonus', { mod: fmtSignedMod(attack.modifier) })}`;
   }
@@ -504,6 +523,9 @@ function appendCombatLogMeta(wrap: HTMLElement, entry: CombatLogEntry): void {
     const meta = document.createElement('div');
     meta.className = 'combat-log-meta combat-log-meta--attack-roll';
     let line = `${entry.final} vs ${t('engine.ac')} ${entry.vsDefense}`;
+    if (entry.hitChance !== undefined) {
+      line += ` ${t('combat.logMetaHitChance', { pct: Math.round(entry.hitChance * 100) })}`;
+    }
     if (entry.modifier !== undefined) {
       line += ` ${t('combat.logMetaBonus', { mod: fmtSignedMod(entry.modifier) })}`;
     }
@@ -838,12 +860,22 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   pendingEnemyFloatingDamage = pendingEnemyFloatingDamage.filter(
     (p) => p.encId === encId && floatNow - p.startMs < floatDurMs
   );
+  pendingPartyFloatingDamage = pendingPartyFloatingDamage.filter(
+    (p) => p.encId === encId && floatNow - p.startMs < floatDurMs
+  );
+  if (
+    pendingPartyHitFlashEncId != null &&
+    (pendingPartyHitFlashEncId !== encId || floatNow - pendingPartyHitFlashStartMs > 600)
+  ) {
+    pendingPartyHitFlashEncId = null;
+  }
   pendingEnemyHeadshotFx = pendingEnemyHeadshotFx.filter(
     (p) => p.encId === encId && floatNow - p.startMs < headshotDurMs
   );
   const reducedMotionFloat =
     typeof document !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const partyNameSet = new Set(ctx.state.party.map((m) => m.name));
   for (const logEntry of newLogEntries) {
     if (
       logEntry.kind === 'attack' &&
@@ -868,6 +900,24 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
         anchorLeftPct: anchor.leftPct,
         anchorTopPct: anchor.topPct,
       });
+    }
+    if (
+      logEntry.kind === 'damage' &&
+      logEntry.target != null &&
+      partyNameSet.has(logEntry.target) &&
+      logEntry.final != null
+    ) {
+      const anchor = rollFloatingDmgAnchor(reducedMotionFloat);
+      pendingPartyFloatingDamage.push({
+        encId,
+        amount: logEntry.final,
+        kind: logEntry.damageKind === 'crit' ? 'crit' : 'normal',
+        startMs: floatNow,
+        anchorLeftPct: anchor.leftPct,
+        anchorTopPct: anchor.topPct,
+      });
+      pendingPartyHitFlashEncId = encId;
+      pendingPartyHitFlashStartMs = floatNow;
     }
   }
 
@@ -1025,6 +1075,9 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
 
   const actionsPanel = document.createElement('div');
   actionsPanel.className = 'combat-actions-panel';
+  if (pendingPartyHitFlashEncId === encId && floatNow - pendingPartyHitFlashStartMs < 600) {
+    actionsPanel.classList.add('combat-actions-panel--hit-flash');
+  }
   if (combatFx.columnPulse === 'heal_spell') {
     actionsPanel.classList.add('combat-actions-panel--fx-heal-spell');
   } else if (combatFx.columnPulse === 'heal_potion') {
@@ -1039,6 +1092,21 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   } else if (combatFx.columnPulse === 'buff') {
     actionsPanel.classList.add('combat-actions-panel--fx-buff');
   }
+  const partyDmgFloatRoot = document.createElement('div');
+  partyDmgFloatRoot.className = 'combat-party-dmg-float-root';
+  for (const p of pendingPartyFloatingDamage) {
+    if (p.encId !== encId) continue;
+    const elapsed = floatNow - p.startMs;
+    if (elapsed >= floatDurMs) continue;
+    appendEnemyFloatingDamage(
+      partyDmgFloatRoot,
+      p.amount,
+      p.kind,
+      elapsed,
+      { leftPct: p.anchorLeftPct, topPct: p.anchorTopPct }
+    );
+  }
+  actionsPanel.appendChild(partyDmgFloatRoot);
   const actionsHdr = document.createElement('div');
   actionsHdr.className = 'combat-actions-panel-hdr';
   actionsHdr.textContent = t('combat.actions');

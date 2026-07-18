@@ -1,13 +1,17 @@
 ---
 id: act2/catacomb_observe
-title: Tecto
+title: Teto
 chapter: 2
 ambientTheme: act2
-choices:
-  - text: "Voltar ao cruzeiro"
-    next: act2/catacomb_entry
+luckCheck:
+  id: catacomb_ceiling_luck
+  tn: 9
+  successNext: act2/hub_observe
+  failNext: act2/rats_choice
+  label: "Ler o teto sem perder o pé no cruzeiro"
+choices: []
 onEnter: []
 ---
 **Goteiras** desenham fios no ar. Entre as pedras, **raízes** finas buscam o que já não há de sol.
 
-No tecto, uma **runa** foi raspada e substituída por um **X** — alguém quis apagar a direcção certa.
+No teto, uma **runa** foi raspada e substituída por um **X** — alguém quis apagar a direção certa.

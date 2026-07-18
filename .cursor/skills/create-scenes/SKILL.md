@@ -39,9 +39,32 @@ Gerar cenas `.md` prontas para `src/campaigns/calvario/scenes/...`, válidas no 
 - **Base:** `id`, `title`, `chapter`, `type`, `ambientTheme`
 - **Entrada:** `onEnter`, `repeatOnEnter`
 - **Checks:** `skillCheck`, `dualAttrSkillCheck`, `luckCheck`
-- **Ramo/gate:** `randomBranch`, `chapterGate`
+- **Ramo/gate:** `randomBranch`, `chapterGate`, `storyPathGate`
 - **Arte/UI:** `art`, `artKey`, `highlight`, `artHighlightFrames`, `highlightHoldMs`, `campCombatHint`
 - **Combate:** `encounterId`, `onVictory`, `onFlee`, `onDefeat`, `interleaveAfterCombat`
+
+### Paths narrativos (`storyPaths`)
+
+Decisões **grandes** (ex.: desfecho do trono) gravam um path no jogador — distinto do arquétipo de classe (`setPath` / `party[].path`).
+
+- **Efeito:** `{ op: setStoryPath, id: throne, value: slain }` (junto com `addMark` se a conquista no diário ainda fizer sentido).
+- **Condições:** `{ storyPath: { id: throne, eq: pact } }` ou `{ hasStoryPath: throne }`.
+- **Catálogo:** `data/storyPaths.ts` + overlay em `entities.json` (nome/descrição da decisão e de cada valor).
+- **Cenas variantes:** ficheiros separados; convenção de ID = sufixo do valor (`frost_hub`, `frost_hub_pact`, `frost_hub_sealed`).
+- **Gate no ID estável** (callers continuam a apontar para o hub base):
+
+```yaml
+storyPathGate:
+  id: throne
+  branches:
+    slain: act5/frost_hub
+    pact: act5/frost_hub_pact
+    sealed: act5/frost_hub_sealed
+```
+
+Corpo da base = ramo default (ex. `slain`); variantes `_pact` / `_sealed` sem `storyPathGate` (evita loops). Prosa/choices/efeitos devem divergir de verdade — não só um inject.
+- **i18n:** cada variante = entrada própria no overlay en-US.
+- **Quando NÃO usar path:** one-shots locais (`flag`), flavor curto, checks `_ok`/`_fail` — preferir `flag`/`mark`/`condition` na mesma cena.
 
 ### Overlay `highlight` com animação (ASCII)
 
@@ -54,15 +77,20 @@ Gerar cenas `.md` prontas para `src/campaigns/calvario/scenes/...`, válidas no 
 ## Campos de `choices`
 
 - `text`, `next`, `condition`, `effects`
-- `preview`, `uiSection`
+- `preview`, `uiSection`, `uiSectionIcon` (opcional: `talk` \| `shop` \| `consumable` \| `rest` \| `leave` \| `camp` — ícone no título do grupo; não vai ao overlay en-US)
 - `timedMs`, `fallbackNext`, `fallbackEffects`
-- `showWhenLocked`, `lockedHint`
+- `showWhenLocked`, `lockedHint`, `visibleWhen`
 
 ## Requirements e hints
 
 - Não há `requirements` no schema: use `condition`.
 - Para mostrar opção bloqueada: `condition` + `showWhenLocked: true` + `lockedHint`.
 - `preview` explica consequência; `lockedHint` explica bloqueio.
+- **Quando usar teaser (`showWhenLocked`):** progresso narrativo (próxima missão, boss, porta de fé/rep), custo de recurso visível (ouro/suprimento na loja ou descanso), descoberta de mercador.
+- **Sempre** usar `showWhenLocked: true` + `lockedHint` quando a `condition` incluir requisito de **nível** (`level: { gte: N }`). O jogador precisa ver o que falta subir.
+- **One-shot + nível:** `visibleWhen: { noFlag: … }` (some após feito) + `condition: { level: … }` + `showWhenLocked`. Não meter o `noFlag` no mesmo `all` que o nível — senão o teaser continua após concluir.
+- **Quando omitir (só `condition`):** inventário vazio (`hasItem` poção), sem companheiro (`companionCount`), opções “já fizeste” sem teaser de nível, e outros “não tens X” que só poluem o menu do iniciante.
+- A UI colapsa automaticamente secções com **≥ 4** linhas bloqueadas (ex.: loja densa); hubs com 1–3 teasers ficam inline.
 
 ### Exemplo (bloqueada com hint)
 
@@ -75,12 +103,27 @@ choices:
     next: act3/relicario_aberto
 ```
 
+### Exemplo (omitir quando bloqueada — inventário)
+
+```yaml
+choices:
+  - text: "Usar consumível"
+    condition:
+      any:
+        - { hasItem: potion_hp }
+        - { hasItem: potion_mana }
+    next: act2/camp/use_consumable
+    # sem showWhenLocked — some do menu se não houver poção
+```
+
 ### Exemplos rápidos de `condition`
 
 ```yaml
 condition: { resource: supply, gte: 2 }
 condition: { class: cleric }
 condition: { rep: { faction: vigilia, gte: 1 } }
+condition: { hasStoryPath: throne }
+condition: { storyPath: { id: throne, eq: pact } }
 condition:
   all:
     - { flag: vigilia_oath }
@@ -182,3 +225,23 @@ Termos proibidos (usar coluna pt-BR):
 **Nota:** *portátil* no sentido transportável (ex.: altar portátil) é válido em pt-BR.
 
 Validar com `npm run check:pt-br` antes de entregar cenas novas.
+
+## Sync en-US (obrigatório)
+
+Cenas canônicas ficam em `scenes/pt-BR/`. Texto inglês vive em `locales/en-US/scenes/*.json` (overlay), **não** em `.md` duplicado.
+
+Ao criar ou editar uma cena nesta skill, **na mesma entrega** atualize o overlay en-US:
+
+- `title`, `body`, `choices[].text|preview|lockedHint|uiSection`
+- `diaryTexts` / `onEnterDiaryTexts` se houver `addDiary`
+- `skillCheckLabel` / `luckCheckLabel` / `dualAttrSkillCheckLabel` se houver label no check
+- Novo `addMark` → `data/journeyMarks.ts` + `locales/{pt-BR,en-US}/entities.json`
+
+Antes de concluir:
+
+```bash
+npm run validate:scenes -- --campaign calvario
+npm run check:pt-br
+npm run validate:i18n
+npm run validate:i18n:translations
+```

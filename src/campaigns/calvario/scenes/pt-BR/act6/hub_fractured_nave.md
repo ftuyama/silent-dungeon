@@ -18,30 +18,32 @@ choices:
   - text: "Seguir o corredor dos espelhos partidos (Prova da Realidade)"
     uiSection: "Provas"
     next: act6/reality_trial
-    condition:
-      all:
-        - { noFlag: act6_reality_done }
-        - { level: { gte: 25 } }
+    visibleWhen: { noFlag: act6_reality_done }
+    condition: { level: { gte: 26 } }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 25 para o primeiro cordão; uma vez concluída a prova, o corredor deixa de abrir por aqui."
+    lockedHint: "Precisas de nível 26 para o primeiro cordão; uma vez concluída a prova, o corredor deixa de abrir por aqui."
     preview: "Primeiro cordão: realidade; marca permanente conforme o desfecho."
   - text: "Descer ao poço de memórias sem fundo (Prova da Memória)"
     uiSection: "Provas"
     next: act6/memory_trial
+    visibleWhen: { noFlag: act6_memory_done }
     condition:
       all:
         - { flag: act6_reality_done }
-        - { noFlag: act6_memory_done }
-        - { level: { gte: 25 } }
+        - { level: { gte: 26 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 26+ e concluir primeiro a Prova da Realidade."
     preview: "Só depois do real: memória; eco deixa marca."
   - text: "Subir ao altar da vontade nua (Prova da Vontade)"
     uiSection: "Provas"
     next: act6/encounters/will_trial
+    visibleWhen: { noFlag: act6_will_done }
     condition:
       all:
         - { flag: act6_memory_done }
-        - { noFlag: act6_will_done }
-        - { level: { gte: 25 } }
+        - { level: { gte: 26 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 26+ e concluir a Prova da Memória antes."
     preview: "Última prova antes do espelho; vontade medida ou partida."
   - text: "Atravessar o Portão do Espelho Interior"
     uiSection: "Provas"
@@ -51,8 +53,10 @@ choices:
         - { flag: act6_reality_done }
         - { flag: act6_memory_done }
         - { flag: act6_will_done }
-        - { level: { gte: 30 } }
+        - { level: { gte: 31 } }
         - { flag: act6_explore_goal_reached }
+    showWhenLocked: true
+    lockedHint: "Três provas, meta do mapa e nível 31 — o espelho não abre cedo."
     preview: "Três provas feitas; o espelho final abre."
   - text: "Acender a fogueira de cinzas espelhadas (acampamento)"
     uiSection: "Refúgio e troca"
@@ -73,12 +77,14 @@ choices:
   - text: "Ouvir o sussurro sob as colunas (rota de corrupção)"
     uiSection: "Vazio"
     next: act6/void_secret_entry
+    visibleWhen: { noFlag: act6_void_pact }
     condition:
       all:
         - { flag: act6_reality_done }
         - { resource: { corruption: { gte: 4 } } }
-        - { noFlag: act6_void_pact }
-        - { level: { gte: 30 } }
+        - { level: { gte: 31 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 31+, corrupção 4+ e a Prova da Realidade concluída."
     preview: "Pacto no vazio; exige corrupção alta e nível."
 onEnter:
   - { op: addXp, amount: 16 }

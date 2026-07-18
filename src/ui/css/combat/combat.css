@@ -3,7 +3,7 @@
  * Variáveis em tokens/theme-tokens.css (importada antes em styles.css).
  *
  * Melhorias opcionais (follow-up): prefers-reduced-motion nas animações de combate;
- * flash no painel quando o líder leva dano; columnFlash fraco para arcana/prata.
+ * columnFlash fraco para arcana/prata.
  */
 
 /** Área principal: log ao lado do campo */
@@ -592,6 +592,36 @@ button.combat-flee-btn:hover {
     0 0 12px var(--bg, #0a0a0c),
     0 0 22px var(--bg, #0a0a0c),
     0 2px 4px rgba(0, 0, 0, 0.95);
+}
+
+.combat-party-dmg-float-root {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.combat-actions-panel--hit-flash {
+  animation: combatPartyHitFlash 0.55s ease-out;
+}
+
+@keyframes combatPartyHitFlash {
+  0% {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--danger) 70%, transparent),
+      inset 0 0 24px color-mix(in srgb, var(--danger) 35%, transparent);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .combat-actions-panel--hit-flash {
+    animation: none;
+    outline: 1px solid color-mix(in srgb, var(--danger) 55%, transparent);
+  }
 }
 
 .combat-floating-dmg--reduced {

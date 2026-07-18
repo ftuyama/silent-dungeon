@@ -1,6 +1,6 @@
 /**
- * Paleta semântica + temas por ato (default / neve escura / vazio / cinzas).
- * Todos os temas são escuros; neve = frio/azulado; cinzas = fim do mundo (quente/carvão).
+ * Paleta semântica + temas por ato (default / osso / neve / vazio / cinzas / lava).
+ * Todos os temas são escuros; osso = ato 4 (musgo mais fundo); neve = frio; cinzas = fim do mundo.
  * `html[data-theme]` é definido em GameApp (capítulo + prefixo da cena).
  */
 
@@ -9,7 +9,7 @@
   --bg: #0a0c0b;
   --fg: #c9b89a;
   --text: var(--fg);
-  --muted: #7a7970;
+  --muted: #9a9688;
   --accent: #6e8f6a;
   --danger: #8b3a3a;
   --magic: #5a8f7b;
@@ -119,15 +119,127 @@
   --map-char-goal: #e2c16a;
   --map-char-player: #7ad7d0;
   /** Banners de história (status / diário / item): espelhar `STORY_BANNER_*_MS` em `GameApp.ts`. */
-  --story-banner-fade-duration: 1s;
+  --story-banner-fade-duration: 650ms;
   /** Deslize + fade: curva suave (evita “travões” de ease-in-out em keyframes densos). */
   --story-banner-fade-easing: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/** Act4 — trono de ossos: mesma família musgo/pedra do default, mais escura e profunda. */
+html[data-theme='bone'] {
+  --bg: #050706;
+  --fg: #b8a888;
+  --muted: #7a7870;
+  --accent: #4e6a4c;
+  --danger: #7a3030;
+  --magic: #3e6e5e;
+  --corrupt: #2e4a2e;
+  --border: #2a2822;
+  --glow: rgba(60, 100, 80, 0.12);
+  --ui-grid-line: rgba(50, 80, 60, 0.1);
+  --surface-raised: #0c0e0c;
+  --surface-drawer: #080a08;
+  --surface-inset: #0a0c0a;
+  --text-section: #8a8680;
+  --surface-hover: #101210;
+  --surface-hover-alt: #0e120e;
+  --text-strong: #d0c8b8;
+  --text-emphasis: #c8bc9e;
+  --sidebar-buff: #8a7a48;
+  --log-hit-party: #b84848;
+  --log-hit-party-bright: #f0b8b8;
+  --log-hit-party-soft: #e09898;
+  --log-hit-enemy: #429058;
+  --log-hit-enemy-bright: #a0d8b0;
+  --log-hit-enemy-soft: #90c8a0;
+  --log-crit: var(--crit-highlight);
+  --log-miss: #8a9088;
+  --log-magic: var(--magic);
+  --log-system: var(--combat-actions-hdr);
+  --enemy-hp-fill: linear-gradient(90deg, #5a1212 0%, #982018 55%, #c83838 100%);
+  --enemy-hp-track-bg: linear-gradient(180deg, #2a0c0c 0%, #180808 100%);
+  --enemy-hp-track-border: #4a2222;
+  --enemy-hp-label: #e0b0b0;
+  --log-hit-enemy-msg: #b0e0c0;
+  --log-crit-bullet: #b09020;
+  --log-crit-msg: #d4b000;
+  --log-crit-meta: #c8b050;
+  --log-magic-msg: #78a890;
+  --log-heal: #68b088;
+  --log-neutral: #7a7a6a;
+  --log-meta: #8a9088;
+  --log-turn-banner: #a8c8a8;
+  --log-enemy-phase: #b08868;
+  --log-enemy-phase-dot: #984840;
+  --log-stress: #a08090;
+  --log-armor-break: #b09868;
+  --log-attack-roll-party: #98d8b0;
+  --log-attack-roll-enemy: #e8a0a0;
+  --log-fallback-damage: #c08080;
+  --backdrop-scrim: rgba(0, 0, 0, 0.68);
+  --shadow-menu: -8px 0 24px rgba(0, 0, 0, 0.62);
+  --menu-section-bg: rgba(0, 0, 0, 0.32);
+  --panel-overlay: rgba(0, 0, 0, 0.32);
+  --panel-overlay-strong: rgba(0, 0, 0, 0.4);
+  --sidebar-collapse-bg: rgba(0, 0, 0, 0.3);
+  --panel-overlay-15: rgba(0, 0, 0, 0.22);
+  --panel-overlay-28: rgba(0, 0, 0, 0.38);
+  --panel-overlay-32: rgba(0, 0, 0, 0.42);
+  --panel-overlay-35: rgba(0, 0, 0, 0.48);
+  --panel-overlay-45: rgba(0, 0, 0, 0.58);
+  --sidebar-gradient: linear-gradient(165deg, #0a0c0a 0%, #040504 100%);
+  --shell-gradient: linear-gradient(180deg, #080a08 0%, #040504 100%);
+  --shell-inset-glow: rgba(20, 40, 30, 0.4);
+  --scene-art-color: #6a7a62;
+  --companion-border: #2a2824;
+  --companion-name: #c8c0b0;
+  --stat-build-bonus: #5a7a52;
+  --faction-rep-track-bg: #0c0e10;
+  --faction-rep-track-border: #222018;
+  --sidebar-lore: #8a8078;
+  --sidebar-spell: #8898a0;
+  --sidebar-equip: #889888;
+  --sidebar-equip-stats: #6a7a68;
+  --sidebar-attr: #6e6b5f;
+  --sidebar-attr-underline: rgba(100, 110, 95, 0.75);
+  --hp-bar-track-bg: #121410;
+  --hp-bar-track-border: #222018;
+  --mana-bar-track-bg: #0c1018;
+  --mana-bar-track-border: #1e2838;
+  --stress-bar-track-bg: #12100a;
+  --stress-bar-track-border: #2e2818;
+  --camp-equip-hint: #4a5548;
+  --camp-equip-unequip-border: #3a3530;
+  --camp-equip-unequip-hover: #5a5348;
+  --combat-border: #3a5a42;
+  --combat-log-bg: linear-gradient(165deg, #060a08 0%, #020302 55%, #060806 100%);
+  --combat-actions-border: #3a4c42;
+  --combat-actions-bg: rgba(4, 8, 6, 0.65);
+  --combat-actions-hdr: #7a8a7a;
+  --combat-actions-hdr-border: rgba(50, 70, 55, 0.5);
+  --combat-flee-bg: #101618;
+  --combat-flee-fg: #98c8a8;
+  --combat-flee-border: #3a5a48;
+  --combat-flee-hover: #48a870;
+  --crit-highlight: #c49818;
+  --crit-highlight-glow: rgba(200, 160, 0, 0.45);
+  --dice-panel-border: #222018;
+  --dice-panel-bg: linear-gradient(180deg, #030503 0%, #010201 100%);
+  --scrollbar-track: #050706;
+  --scrollbar-thumb: #2a3a2a;
+  --scrollbar-thumb-hover: #3a4a3a;
+  --combat-log-entry-border: #222018;
+  --combat-log-msg: #a89e88;
+  --map-char-wall: #1a2024;
+  --map-char-floor: #7a8086;
+  --map-char-mark: #a87840;
+  --map-char-goal: #c8a850;
+  --map-char-player: #5ab8b0;
 }
 
 html[data-theme='snow'] {
   --bg: #0a1016;
   --fg: #b8c8d4;
-  --muted: #6a7a88;
+  --muted: #8a9aa8;
   --accent: #5a8aaa;
   --danger: #a84850;
   --magic: #4a8a9a;
@@ -350,7 +462,7 @@ html[data-theme='void'] {
 html[data-theme='ash'] {
   --bg: #100c0a;
   --fg: #c8b0a0;
-  --muted: #8a7870;
+  --muted: #a09088;
   --accent: #b07050;
   --danger: #b04038;
   --magic: #8a7068;
@@ -456,4 +568,116 @@ html[data-theme='ash'] {
   --map-char-mark: #d39763;
   --map-char-goal: #f0c06a;
   --map-char-player: #8bcac2;
+}
+
+/** Act8 — crisol de magma: vermelho/carvão/laranja, calor sob a pedra. */
+html[data-theme='lava'] {
+  --bg: #120606;
+  --fg: #e0b090;
+  --muted: #a07060;
+  --accent: #d04028;
+  --danger: #ff5030;
+  --magic: #c06040;
+  --corrupt: #902820;
+  --border: #5a2818;
+  --glow: rgba(255, 80, 30, 0.16);
+  --ui-grid-line: rgba(200, 60, 30, 0.14);
+  --surface-raised: #1c0c08;
+  --surface-drawer: #140808;
+  --surface-inset: #180a06;
+  --text-section: #c09078;
+  --surface-hover: #281008;
+  --surface-hover-alt: #220e08;
+  --text-strong: #f0d0b0;
+  --text-emphasis: #f0b888;
+  --sidebar-buff: #d09050;
+  --log-hit-party: #e05038;
+  --log-hit-party-bright: #ffc0a0;
+  --log-hit-party-soft: #f08870;
+  --log-hit-enemy: #90a050;
+  --log-hit-enemy-bright: #d8e890;
+  --log-hit-enemy-soft: #c0d080;
+  --log-crit: var(--crit-highlight);
+  --log-miss: #a89080;
+  --log-magic: var(--magic);
+  --log-system: var(--combat-actions-hdr);
+  --enemy-hp-fill: linear-gradient(90deg, #5a1008 0%, #c02810 55%, #f05020 100%);
+  --enemy-hp-track-bg: linear-gradient(180deg, #2a0c08 0%, #180604 100%);
+  --enemy-hp-track-border: #6a2818;
+  --enemy-hp-label: #f0c0a0;
+  --log-hit-enemy-msg: #d8e8b0;
+  --log-crit-bullet: #f08020;
+  --log-crit-msg: #f0a030;
+  --log-crit-meta: #e8b050;
+  --log-magic-msg: #c09070;
+  --log-heal: #a0c880;
+  --log-neutral: #a89080;
+  --log-meta: #a89080;
+  --log-turn-banner: #e8d0b0;
+  --log-enemy-phase: #e09060;
+  --log-enemy-phase-dot: #d06030;
+  --log-stress: #d0a090;
+  --log-armor-break: #d4a878;
+  --log-attack-roll-party: #d8e8a0;
+  --log-attack-roll-enemy: #ffb090;
+  --log-fallback-damage: #e09070;
+  --backdrop-scrim: rgba(30, 4, 0, 0.68);
+  --shadow-menu: -8px 0 24px rgba(50, 8, 0, 0.55);
+  --menu-section-bg: rgba(40, 10, 4, 0.42);
+  --panel-overlay: rgba(35, 8, 4, 0.48);
+  --panel-overlay-strong: rgba(35, 8, 4, 0.58);
+  --sidebar-collapse-bg: rgba(45, 12, 6, 0.48);
+  --panel-overlay-15: rgba(40, 10, 4, 0.3);
+  --panel-overlay-28: rgba(35, 8, 4, 0.48);
+  --panel-overlay-32: rgba(35, 8, 4, 0.55);
+  --panel-overlay-35: rgba(35, 8, 4, 0.6);
+  --panel-overlay-45: rgba(35, 8, 4, 0.68);
+  --sidebar-gradient: linear-gradient(165deg, #1c0a06 0%, #0c0402 100%);
+  --shell-gradient: linear-gradient(180deg, #180806 0%, #0a0402 100%);
+  --shell-inset-glow: rgba(200, 40, 10, 0.32);
+  --scene-art-color: #c07050;
+  --companion-border: #5a2818;
+  --companion-name: #f0d0b8;
+  --stat-build-bonus: #a09050;
+  --faction-rep-track-bg: #1a0c08;
+  --faction-rep-track-border: #4a2818;
+  --sidebar-lore: #b89880;
+  --sidebar-spell: #c0a088;
+  --sidebar-equip: #b89870;
+  --sidebar-equip-stats: #988060;
+  --sidebar-attr: #988070;
+  --sidebar-attr-underline: rgba(220, 100, 50, 0.75);
+  --hp-bar-track-bg: #1e0c08;
+  --hp-bar-track-border: #4a2818;
+  --mana-bar-track-bg: #1a100c;
+  --mana-bar-track-border: #483028;
+  --stress-bar-track-bg: #1e100c;
+  --stress-bar-track-border: #4a3020;
+  --camp-equip-hint: #706058;
+  --camp-equip-unequip-border: #4a3028;
+  --camp-equip-unequip-hover: #7a5040;
+  --combat-border: #7a3820;
+  --combat-log-bg: linear-gradient(165deg, #140806 0%, #080402 55%, #120606 100%);
+  --combat-actions-border: #6a3020;
+  --combat-actions-bg: rgba(30, 8, 4, 0.62);
+  --combat-actions-hdr: #d0a088;
+  --combat-actions-hdr-border: rgba(180, 60, 30, 0.5);
+  --combat-flee-bg: #1e0c08;
+  --combat-flee-fg: #f0c8a8;
+  --combat-flee-border: #7a3820;
+  --combat-flee-hover: #e06030;
+  --crit-highlight: #f08020;
+  --crit-highlight-glow: rgba(255, 100, 20, 0.5);
+  --dice-panel-border: #4a2818;
+  --dice-panel-bg: linear-gradient(180deg, #100604 0%, #060302 100%);
+  --scrollbar-track: #120606;
+  --scrollbar-thumb: #5a2818;
+  --scrollbar-thumb-hover: #7a3820;
+  --combat-log-entry-border: #4a2818;
+  --combat-log-msg: #e0b090;
+  --map-char-wall: #4a2010;
+  --map-char-floor: #c09070;
+  --map-char-mark: #e07040;
+  --map-char-goal: #f0a040;
+  --map-char-player: #70c0b8;
 }

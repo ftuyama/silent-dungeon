@@ -2,7 +2,7 @@
 id: act4/throne/throne_sweep_hidden_treasure
 title: Tesouro enterrado no osso
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 artKey: throne_sweep
 choices:
   - text: "Guardar o fragmento e voltar ao salão"

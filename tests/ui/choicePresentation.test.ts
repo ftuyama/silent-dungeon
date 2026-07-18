@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Choice, Effect } from '../../src/engine/schema/index.ts';
 import {
+  inferChapterGateFromEffects,
   inferChoiceToneFromEffects,
   parseChoiceLeadBadge,
   resolveChoicePresentation,
@@ -167,5 +168,77 @@ describe('resolveChoicePresentation', () => {
     );
     expect(r.badge).toEqual({ label: '[>]', modifier: 'gt' });
     expect(r.toneClass).toBe('choice--tone-explore');
+  });
+
+  it('setChapter avanço → tom chapter-advance e badge [↓]', () => {
+    const r = resolveChoicePresentation(ch('Rumo ao trono', [{ op: 'setChapter', chapter: 4 }]), {
+      currentChapter: 3,
+    });
+    expect(r.toneClass).toBe('choice--tone-chapter-advance');
+    expect(r.badge).toEqual({ label: '[↓]', modifier: 'chapterDown' });
+  });
+
+  it('setChapter regresso → só badge [↑], sem tom', () => {
+    const r = resolveChoicePresentation(ch('Voltar ao Cruzeiro', [{ op: 'setChapter', chapter: 2 }]), {
+      currentChapter: 3,
+    });
+    expect(r.toneClass).toBeNull();
+    expect(r.badge).toEqual({ label: '[↑]', modifier: 'chapterUp' });
+  });
+
+  it('setChapter igual ao actual → sem sinal', () => {
+    const r = resolveChoicePresentation(ch('Ficar', [{ op: 'setChapter', chapter: 3 }]), {
+      currentChapter: 3,
+    });
+    expect(r.toneClass).toBeNull();
+    expect(r.badge).toBeNull();
+  });
+
+  it('setChapter sem currentChapter → sem sinal (retrocompat)', () => {
+    const r = resolveChoicePresentation(ch('Descer', [{ op: 'setChapter', chapter: 3 }]));
+    expect(r.toneClass).toBeNull();
+    expect(r.badge).toBeNull();
+  });
+
+  it('setChapter avanço + startCombat → combat ganha', () => {
+    const r = resolveChoicePresentation(
+      ch('Assaltar o trono', [
+        { op: 'setChapter', chapter: 4 },
+        { op: 'startCombat', encounterId: 'x' },
+      ]),
+      { currentChapter: 3 }
+    );
+    expect(r.toneClass).toBe('choice--tone-combat');
+    expect(r.badge).toEqual({ label: '[%]', modifier: 'pct' });
+  });
+
+  it('setChapter avanço + setExploration → chapterAdvance vence explore', () => {
+    const r = resolveChoicePresentation(
+      ch('Descer mais fundo', [
+        { op: 'setExploration', graphId: 'g', nodeId: 'n' },
+        { op: 'setChapter', chapter: 3 },
+      ]),
+      { currentChapter: 2 }
+    );
+    expect(r.toneClass).toBe('choice--tone-chapter-advance');
+    expect(r.badge).toEqual({ label: '[↓]', modifier: 'chapterDown' });
+  });
+
+  it('[!] + setChapter avanço → risk ganha e mantém [!]', () => {
+    const r = resolveChoicePresentation(
+      ch('[!] Avançar no abismo', [{ op: 'setChapter', chapter: 4 }]),
+      { currentChapter: 3 }
+    );
+    expect(r.toneClass).toBe('choice--tone-risk');
+    expect(r.badge).toEqual({ label: '[!]', modifier: 'bang' });
+  });
+});
+
+describe('inferChapterGateFromEffects', () => {
+  it('advance / regress / igual / sem capítulo', () => {
+    expect(inferChapterGateFromEffects([{ op: 'setChapter', chapter: 4 }], 3)).toBe('advance');
+    expect(inferChapterGateFromEffects([{ op: 'setChapter', chapter: 2 }], 3)).toBe('regress');
+    expect(inferChapterGateFromEffects([{ op: 'setChapter', chapter: 3 }], 3)).toBeNull();
+    expect(inferChapterGateFromEffects([{ op: 'setChapter', chapter: 4 }], undefined)).toBeNull();
   });
 });

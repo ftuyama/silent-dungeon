@@ -497,7 +497,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       h_winter_edge: {
         line:
-          'Chegas ao mesmo sítio quente por caminhos diferentes: o bronze aperta onde a pele ainda acredita que pode fingir que não sente. Aqui, hostilidade e vergonha trocam de lugar — e o corredor pede que escolha como sai da borda, não como entras no mito.',
+          'Chegas ao mesmo lugar quente por caminhos diferentes: o bronze aperta onde a pele ainda acredita que pode fingir que não sente. Aqui, hostilidade e vergonha trocam de lugar — e o corredor pede que escolha como sai da borda, não como entras no mito.',
         choices: [
           {
             text:
@@ -1224,7 +1224,7 @@ export const act1_mirror_twin: DialogueEnemyDef = {
       },
       c_bl_c_bad: {
         line:
-          'O corpo avança e o espelho devolve o avanço como escárnio sincronizado. Por um instante, são dois a tropeçar no mesmo sítio.',
+          'O corpo avança e o espelho devolve o avanço como escárnio sincronizado. Por um instante, são dois a tropeçar no mesmo lugar.',
         choices: [
           {
             text: 'Aceitar o embate e sair com dentes cerrados.',

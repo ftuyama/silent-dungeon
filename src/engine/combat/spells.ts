@@ -6,6 +6,7 @@ import { effectiveLeadAttr } from '../progression/leadStats.ts';
 import type { EventBus } from '../core/eventBus.ts';
 import { finishCombat } from './resolution.ts';
 import { advanceToEnemyTurn } from './turn.ts';
+import { maybeApplyStatusToEnemy } from './statusConditions.ts';
 import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 export function getEffectiveSpellManaCost(
@@ -106,7 +107,6 @@ function resolveDamageAllEnemies(
     spellId: sp.id,
   });
 
-  const agiMod = statMod(effectiveLeadAttr(state, lead, 'agi'));
   const diceRolls: number[] = [];
   let sum = 0;
   for (let i = 0; i < sp.dice; i++) {
@@ -114,7 +114,15 @@ function resolveDamageAllEnemies(
     diceRolls.push(d);
     sum += d;
   }
-  const perTargetDmg = Math.max(1, Math.floor((sp.base + sum + agiMod) / 2));
+
+  let perTargetDmg: number;
+  if (sp.classId === 'mage') {
+    const mindMod = statMod(getTotalMind(data, lead, state));
+    perTargetDmg = Math.max(0, sp.base + sum + mindMod);
+  } else {
+    const agiMod = statMod(effectiveLeadAttr(state, lead, 'agi'));
+    perTargetDmg = Math.max(1, Math.floor((sp.base + sum + agiMod) / 2));
+  }
 
   let newEnemies = [...c.enemies];
   for (let enemyIndex = 0; enemyIndex < newEnemies.length; enemyIndex++) {
@@ -141,7 +149,10 @@ function resolveDamageAllEnemies(
     newEnemies[enemyIndex] = { ...chipTarget, hp: nh };
     log.push({
       kind: 'damage',
-      message: combatLog.logArrowRainDamage(def.name, perTargetDmg),
+      message:
+        sp.classId === 'mage'
+          ? combatLog.logMagicDamage(def.name, perTargetDmg)
+          : combatLog.logArrowRainDamage(def.name, perTargetDmg),
       dice: diceRolls,
       final: perTargetDmg,
       target: def.name,
@@ -196,7 +207,7 @@ function applyMagicDamageToEnemy(
     });
   } else {
     const nh = Math.max(0, chipTarget.hp - dmg);
-    newEnemies[enemyIndex] = { ...chipTarget, hp: nh };
+    let updatedInst: typeof chipTarget = { ...chipTarget, hp: nh };
     logOut.push({
       kind: 'damage',
       message: combatLog.logMagicDamage(def.name, dmg),
@@ -208,6 +219,23 @@ function applyMagicDamageToEnemy(
       lethal: nh <= 0,
       spellId,
     });
+    if (sp.applyStatus && nh > 0) {
+      const statusRes = maybeApplyStatusToEnemy(updatedInst, sp.applyStatus, rng);
+      updatedInst = statusRes.inst;
+      if (statusRes.applied) {
+        logOut.push({
+          kind: 'info',
+          message: combatLog.logStatusApplied(
+            def.name,
+            sp.applyStatus.kind,
+            sp.applyStatus.rounds
+          ),
+          target: def.name,
+          enemyIndex,
+        });
+      }
+    }
+    newEnemies[enemyIndex] = updatedInst;
   }
 
   return { enemies: newEnemies, log: logOut };

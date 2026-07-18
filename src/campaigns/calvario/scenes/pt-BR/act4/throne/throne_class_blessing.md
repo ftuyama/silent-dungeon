@@ -2,7 +2,7 @@
 id: act4/throne/throne_class_blessing
 title: Ofício no salão
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Traçar um sinal breve no ar — bênção contida"
     next: act4/throne/throne_gate
@@ -17,7 +17,7 @@ choices:
     effects:
       - { op: grantTemporaryBuff, attr: str, delta: 1, remainingScenes: 3 }
       - { op: addXp, amount: 10 }
-      - { op: addDiary, text: "O chão pediu peso; dei-lhe disciplina, não teatro." }
+      - { op: addDiary, text: "O chão pediu peso; dei a ele disciplina, não teatro." }
   - text: "Contar o eco como fórmula incompleta"
     next: act4/throne/throne_gate
     condition: { class: mage }

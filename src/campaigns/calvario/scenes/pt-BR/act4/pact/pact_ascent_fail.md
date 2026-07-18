@@ -2,7 +2,7 @@
 id: act4/pact/pact_ascent_fail
 title: Eco Fraturado
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Falhar em silêncio e encarar Morvayn"
     next: act4/encounters/fight_morvayn

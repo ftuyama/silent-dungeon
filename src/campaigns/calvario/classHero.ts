@@ -83,7 +83,7 @@ const PATH_UNLOCK_BONUS: Partial<Record<string, PathUnlockBonus>> = {
   },
   'archer:marksman': {
     stats: { luck: 1 },
-    backstoryPt: `Medir distância ensinou-lhe paciência que nenhuma facção vende. O arco não pede testemunhas — só o instante em que o alvo acredita que ainda há tempo.`,
+    backstoryPt: `Medir distância ensinou a ele paciência que nenhuma facção vende. O arco não pede testemunhas — só o instante em que o alvo acredita que ainda há tempo.`,
   },
 };
 

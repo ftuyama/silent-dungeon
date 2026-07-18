@@ -7,6 +7,7 @@ artKey: crawl
 choices:
   - text: "Afastar o ouvido e voltar às inscrições"
     next: act1/title_examine
+    preview: "Volta às linhas cinzeladas."
 onEnter:
   - { op: setFlag, key: act1_surface_whisper_done, value: true }
   - { op: addResource, resource: corruption, delta: 1 }

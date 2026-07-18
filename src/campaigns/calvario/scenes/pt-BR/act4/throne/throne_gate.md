@@ -1,7 +1,7 @@
 ---
 id: act4/throne/throne_gate
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 artKey: throne
 highlight: true
 title: Ante-sala do trono
@@ -43,6 +43,12 @@ choices:
     next: act4/throne/throne_class_blessing
     condition: { noFlag: throne_acted_class_blessing }
     preview: "Sua classe abre um caminho ritual."
+  - text: "Voltar ao Núcleo das Profundezas"
+    uiSection: "Regresso"
+    next: act3/hub_depths
+    preview: "Ainda dá para adiar o trono; o núcleo espera."
+    effects:
+      - { op: setChapter, chapter: 3 }
 ---
 O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — **sombra**, depois sorriso **sem lábios** certos.
 

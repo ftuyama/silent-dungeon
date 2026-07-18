@@ -221,6 +221,27 @@
     inset 0 1px 0 color-mix(in srgb, var(--fg) 22%, transparent);
 }
 
+.diary-path-badge {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--warn, #c9a227) 32%, transparent) 0%,
+    color-mix(in srgb, var(--surface-drawer) 88%, var(--warn, #c9a227) 12%) 38%,
+    color-mix(in srgb, var(--bg) 92%, var(--warn, #c9a227) 8%) 100%
+  );
+}
+
+.diary-path-badge::before {
+  border-color: color-mix(in srgb, var(--warn, #c9a227) 32%, transparent);
+}
+
+.diary-path-badge-decision {
+  margin: 0 0 0.15rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 85%, var(--warn, #c9a227) 15%);
+}
+
 .diary-mark-badge-rim {
   position: relative;
   z-index: 1;

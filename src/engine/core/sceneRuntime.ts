@@ -7,7 +7,7 @@ import {
   type GameState,
   type SceneFrontmatter,
 } from '../schema/index.ts';
-import { evaluateCondition } from './conditions.ts';
+import { evaluateCondition, leadOwnsItem } from './conditions.ts';
 import { applyEffects, tickActiveBuffs } from './effects.ts';
 import { injectText } from './template.ts';
 import type { EventBus } from './eventBus.ts';
@@ -49,6 +49,32 @@ export function enterScene(
   let s: GameState = { ...state, sceneId: scene.id, mode: 'story' };
   const fm = scene.frontmatter;
 
+  if (scene.id.startsWith('act8/') && !leadOwnsItem(s, 'magma_ward_amulet')) {
+    s = applyEffects(s, [{ op: 'adjustLeadHp', delta: -2 }], {
+      sceneId: scene.id,
+      data,
+      bus,
+    });
+    if (!s.flags.act8_heat_warned) {
+      s = applyEffects(
+        s,
+        [
+          { op: 'setFlag', key: 'act8_heat_warned', value: true },
+          {
+            op: 'addDiary',
+            text: 'O calor das profundezas morde a carne a cada passo. Sem o amuleto das provas do Vazio, cada cena cobra sangue.',
+          },
+        ],
+        { sceneId: scene.id, data, bus },
+      );
+    }
+    const leadHp = s.party[0]?.hp ?? 0;
+    if (leadHp <= 0) {
+      s = { ...s, sceneId: 'shared/game_over' };
+      return tickActiveBuffs(s);
+    }
+  }
+
   if (fm.chapterGate) {
     const g = fm.chapterGate;
     let pass = true;
@@ -63,6 +89,28 @@ export function enterScene(
     const nextId = pass ? g.passNext : g.failNext;
     s = { ...s, sceneId: nextId };
     if (nextId !== scene.id) {
+      return tickActiveBuffs(s);
+    }
+  }
+
+  if (fm.storyPathGate) {
+    const g = fm.storyPathGate;
+    const value = s.storyPaths?.[g.id];
+    let nextId = scene.id;
+    if (typeof value === 'string' && value.length > 0) {
+      const branch = g.branches[value];
+      if (branch) nextId = branch;
+      else if (g.fallback) nextId = g.fallback;
+    } else if (g.fallback) {
+      nextId = g.fallback;
+    }
+    if (nextId !== scene.id) {
+      s = {
+        ...s,
+        sceneId: nextId,
+        /** Marca o ID estável para missões / hubs que checam `visitedScenes[base]`. */
+        visitedScenes: { ...s.visitedScenes, [scene.id]: true },
+      };
       return tickActiveBuffs(s);
     }
   }
@@ -108,6 +156,9 @@ export type StoryChoiceRow =
 export function buildStoryChoiceRows(choices: Choice[], state: GameState): StoryChoiceRow[] {
   const rows: StoryChoiceRow[] = [];
   for (const ch of choices) {
+    if (ch.visibleWhen !== undefined && !evaluateCondition(ch.visibleWhen, state)) {
+      continue;
+    }
     if (ch.condition === undefined || evaluateCondition(ch.condition, state)) {
       rows.push({ kind: 'enabled', choice: ch });
       continue;

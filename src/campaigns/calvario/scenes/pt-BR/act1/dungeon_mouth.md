@@ -14,24 +14,28 @@ artHighlightFrames:
   - dungeon_mouth_hl4
 highlightHoldMs: 4000
 choices:
-  - text: "Braseiro rachado — arrancar o selo (risco/recompensa)"
+  - text: "[!] Braseiro rachado — arrancar o selo (risco/recompensa)"
     next: act1/encounters/risk_brazier
     condition: { noFlag: act2_risk_brazier_done }
     preview: "Pode render recurso raro, mas drena convicção."
-  - text: "Sino cego — prometer sangue ao eco (risco/recompensa)"
+  - text: "[!] Sino cego — prometer sangue ao eco (risco/recompensa)"
     next: act1/encounters/risk_bell
     condition: { noFlag: act2_risk_bell_done }
     preview: "Ganho imediato em poder, com custo visível."
   - text: "Entrar na catacumba"
     next: act2/catacomb_entry
+    preview: "−1 suprimento; capítulo 2."
     effects:
       - { op: setChapter, chapter: 2 }
       - { op: addResource, resource: supply, delta: -1 }
   - text: "Inspeccionar os batentes da porta"
     next: act1/dungeon_door
+    preview: "Runas e bronze; espelho opcional."
   - text: "Um eco duplo pulsa em você — fé e sombra reconhecem-se"
     next: act1/dungeon_mouth
     condition: { legacyUpgrade: legacy_combo_faith_corruption }
+    showWhenLocked: true
+    lockedHint: "Legado de fé e corrupção ainda fechado."
     preview: "Legado desbloqueado: dualidade preservada."
     effects:
       - { op: addResource, resource: faith, delta: 1 }

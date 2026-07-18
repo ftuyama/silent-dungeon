@@ -6,6 +6,7 @@ ambientTheme: merchant
 choices:
   - text: "Aceitar o mapa (−1 ouro)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act2/hub_catacomb
     condition:
       all:
@@ -16,6 +17,7 @@ choices:
       - { op: addResource, resource: gold, delta: -1 }
   - text: "Comprar adaga de ferro (−3 ouro)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act2/hub_catacomb
     condition:
       all:
@@ -27,6 +29,7 @@ choices:
     preview: "Arma · para o inventário"
   - text: "Recusar e voltar ao hub"
     uiSection: "Conversa"
+    uiSectionIcon: talk
     next: act2/hub_catacomb
 onEnter: []
 ---

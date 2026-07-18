@@ -3,7 +3,7 @@
 
 .scene-art {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 0.53rem;
+  font-size: 0.62rem;
   line-height: 1.15;
   white-space: pre;
   color: var(--scene-art-color);
@@ -16,7 +16,7 @@
 
 @media (max-width: 720px) {
   .scene-art {
-    font-size: clamp(0.45rem, 2.8vw, 0.65rem);
+    font-size: clamp(0.55rem, 2.8vw, 0.7rem);
   }
 }
 
@@ -42,7 +42,7 @@
 
 .scene-art-highlight-pre {
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: clamp(0.35rem, 1.1vw, 0.65rem);
+  font-size: clamp(0.5rem, 1.1vw, 0.72rem);
   line-height: 1.12;
   white-space: pre;
   color: var(--scene-art-color);
@@ -146,12 +146,24 @@ h1 {
 }
 
 .choices-section__title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 0.4rem;
+}
+
+.choices-section__title--with-icon > .ui-icon-wrap {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.choices-section__title-text {
+  min-width: 0;
 }
 
 button.choice {
@@ -216,6 +228,38 @@ button.choice.choice--locked .choice-locked-hint {
   font-style: italic;
 }
 
+.choices-locked {
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+.choices-locked__summary {
+  cursor: pointer;
+  font-size: 0.78rem;
+  color: var(--text-section, var(--muted));
+  list-style: none;
+  margin-bottom: 0.35rem;
+}
+
+.choices-locked__summary::-webkit-details-marker {
+  display: none;
+}
+
+.choices-locked__summary::before {
+  content: '▸ ';
+  color: var(--muted);
+}
+
+.choices-locked[open] > .choices-locked__summary::before {
+  content: '▾ ';
+}
+
+.choices-locked__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
 /* Marcador inicial `[#]` … `[%]` — só o glifo; classes não pintam o botão inteiro. */
 button.choice .choice-badge {
   font-weight: 600;
@@ -258,6 +302,14 @@ button.choice .choice-badge--pct {
   color: color-mix(in srgb, var(--combat-actions-hdr) 85%, var(--combat-border));
 }
 
+button.choice .choice-badge--chapter-down {
+  color: color-mix(in srgb, var(--magic) 72%, var(--muted));
+}
+
+button.choice .choice-badge--chapter-up {
+  color: color-mix(in srgb, var(--muted) 75%, var(--fg));
+}
+
 /* Tom do botão: listra + fundo suave (não combinar com excesso de marcadores de classe). */
 button.choice.choice--tone-risk {
   background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised));
@@ -279,14 +331,30 @@ button.choice.choice--tone-camp {
   box-shadow: inset 3px 0 0 0 var(--camp-equip-hint);
 }
 
+button.choice.choice--tone-chapter-advance {
+  background: color-mix(in srgb, var(--magic) 9%, var(--bg));
+  border-color: color-mix(in srgb, var(--magic) 24%, var(--border));
+  box-shadow:
+    inset 3px 0 0 0 color-mix(in srgb, var(--magic) 42%, var(--border)),
+    inset 0 0 56px rgba(0, 0, 0, 0.48);
+}
+
 button.choice.choice--tone-explore {
   background: color-mix(in srgb, var(--magic) 12%, var(--surface-raised));
   box-shadow: inset 3px 0 0 0 color-mix(in srgb, var(--magic) 70%, var(--border));
 }
 
-button.choice[class*='choice--tone-']:hover {
+button.choice[class*='choice--tone-']:not(.choice--tone-chapter-advance):hover {
   background: color-mix(in srgb, var(--surface-hover-alt) 92%, var(--surface-raised));
   border-color: var(--accent);
+}
+
+button.choice.choice--tone-chapter-advance:hover {
+  background: color-mix(in srgb, var(--magic) 12%, var(--bg));
+  border-color: color-mix(in srgb, var(--magic) 30%, var(--border));
+  box-shadow:
+    inset 3px 0 0 0 color-mix(in srgb, var(--magic) 48%, var(--border)),
+    inset 0 0 48px rgba(0, 0, 0, 0.42);
 }
 
 button.choice.choice--tone-risk:hover {

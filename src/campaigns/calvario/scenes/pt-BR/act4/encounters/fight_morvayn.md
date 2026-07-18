@@ -2,7 +2,7 @@
 id: act4/encounters/fight_morvayn
 title: Confronto com Morvayn
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Primeira fase — confronto!"
     condition: { noMark: soul_scarred_by_seal }

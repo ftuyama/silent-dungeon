@@ -9,6 +9,7 @@ artHighlightSfx: class_knight
 choices:
   - text: "Avançar para a boca da masmorra"
     next: act1/dungeon_mouth
+    preview: "Classe Cavaleiro; +reputação Vigília."
     effects:
       - { op: initClass, class: knight }
       - { op: addRep, faction: vigilia, delta: 1, directGain: true }

@@ -39,22 +39,22 @@ describe('getMainMission (calvario)', () => {
     expect(getMainMission(state)).toBe('Explorar a catacumba');
   });
 
-  it('com meta act2 completa e nível < 5 pede subir de nível', () => {
-    const state = stateWith({
-      chapter: 2,
-      sceneId: 'act2/hub_catacomb',
-      level: 4,
-      visitedScenes: { 'act2/hub_catacomb': true },
-      flags: { act2_explore_goal_reached: true },
-    });
-    expect(getMainMission(state)).toBe('Alcançar nível 5 para descer');
-  });
-
-  it('com meta act2 completa e nível 5 pede descer', () => {
+  it('com meta act2 completa e nível < 6 pede subir de nível', () => {
     const state = stateWith({
       chapter: 2,
       sceneId: 'act2/hub_catacomb',
       level: 5,
+      visitedScenes: { 'act2/hub_catacomb': true },
+      flags: { act2_explore_goal_reached: true },
+    });
+    expect(getMainMission(state)).toBe('Alcançar nível 6 para descer');
+  });
+
+  it('com meta act2 completa e nível 6 pede descer', () => {
+    const state = stateWith({
+      chapter: 2,
+      sceneId: 'act2/hub_catacomb',
+      level: 6,
       visitedScenes: { 'act2/hub_catacomb': true },
       flags: { act2_explore_goal_reached: true },
     });
@@ -71,22 +71,22 @@ describe('getMainMission (calvario)', () => {
     expect(getMainMission(state)).toBe('Explorar as profundezas');
   });
 
-  it('com act3 pronto e nível < 10 pede subir de nível', () => {
-    const state = stateWith({
-      chapter: 3,
-      sceneId: 'act3/hub_depths',
-      level: 9,
-      visitedScenes: { 'act3/hub_depths': true },
-      flags: { stone_guard_defeated: true, act3_explore_goal_reached: true },
-    });
-    expect(getMainMission(state)).toBe('Alcançar nível 10 para o trono');
-  });
-
-  it('com act3 pronto e nível 10 pede caminho ao trono', () => {
+  it('com act3 pronto e nível < 11 pede subir de nível', () => {
     const state = stateWith({
       chapter: 3,
       sceneId: 'act3/hub_depths',
       level: 10,
+      visitedScenes: { 'act3/hub_depths': true },
+      flags: { stone_guard_defeated: true, act3_explore_goal_reached: true },
+    });
+    expect(getMainMission(state)).toBe('Alcançar nível 11 para o trono');
+  });
+
+  it('com act3 pronto e nível 11 pede caminho ao trono', () => {
+    const state = stateWith({
+      chapter: 3,
+      sceneId: 'act3/hub_depths',
+      level: 11,
       visitedScenes: { 'act3/hub_depths': true },
       flags: { stone_guard_defeated: true, act3_explore_goal_reached: true },
     });

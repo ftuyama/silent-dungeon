@@ -64,6 +64,13 @@ export function evaluateCondition(cond: Condition | undefined, state: GameState)
     const lead = state.party[0];
     return lead?.path === cond.path;
   }
+  if ('storyPath' in cond) {
+    return (state.storyPaths?.[cond.storyPath.id] ?? null) === cond.storyPath.eq;
+  }
+  if ('hasStoryPath' in cond) {
+    const v = state.storyPaths?.[cond.hasStoryPath];
+    return typeof v === 'string' && v.length > 0;
+  }
   if ('chapter' in cond) {
     if (cond.chapter.gte !== undefined && state.chapter < cond.chapter.gte) return false;
     if (cond.chapter.lte !== undefined && state.chapter > cond.chapter.lte) return false;

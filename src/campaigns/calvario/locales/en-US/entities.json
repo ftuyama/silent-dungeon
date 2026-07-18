@@ -51,6 +51,9 @@
     "fallen_god_amulet": {
       "name": "Broken Pantheon Amulet"
     },
+    "magma_ward_amulet": {
+      "name": "Magma Ward Amulet"
+    },
     "act6_fracture_iron": {
       "name": "Fracture Iron"
     },
@@ -68,6 +71,30 @@
     },
     "morvayn_heart_shard": {
       "name": "Morvayn Throne Shard"
+    },
+    "ash_veil": {
+      "name": "Ash Veil"
+    },
+    "cult_sickle": {
+      "name": "Cult Sickle"
+    },
+    "wind_step_charm": {
+      "name": "Wind-Step Charm"
+    },
+    "frost_needle": {
+      "name": "Frost Needle"
+    },
+    "rime_cloak": {
+      "name": "Rime Cloak"
+    },
+    "void_glass_shard": {
+      "name": "Void Glass Shard"
+    },
+    "slag_cleaver": {
+      "name": "Slag Cleaver"
+    },
+    "ember_ring": {
+      "name": "Ember Ring"
     },
     "potion_hp": {
       "name": "Red Potion"
@@ -409,6 +436,71 @@
           "linePt": "The preacher reads aloud — and the stain on you answers the call."
         }
       }
+    },
+    "act8_lava_golem": {
+      "name": "Lava Golem",
+      "abilities": {
+        "magma_fist": {
+          "name": "Magma Fist",
+          "linePt": "The fist falls like melted stone — the floor answers first."
+        },
+        "slag_skin": {
+          "name": "Slag Skin",
+          "linePt": "The slag hardens; the golem grows harder to crack."
+        }
+      }
+    },
+    "act8_ember_hound": {
+      "name": "Ember Hound",
+      "abilities": {
+        "cinder_bite": {
+          "name": "Cinder Bite",
+          "linePt": "The teeth leave charcoal in the flesh."
+        }
+      }
+    },
+    "act8_slag_wraith": {
+      "name": "Slag Wraith",
+      "abilities": {
+        "sulfur_veil": {
+          "name": "Sulfur Veil",
+          "linePt": "The air yellows — the lungs learn the price."
+        },
+        "ash_drift": {
+          "name": "Ash Drift",
+          "linePt": "The wraith thins; the next blow comes from the side."
+        }
+      }
+    },
+    "act8_forge_colossus": {
+      "name": "Forge Colossus",
+      "abilities": {
+        "anvil_slam": {
+          "name": "Anvil Slam",
+          "linePt": "The anvil falls with him — the whole hall feels it."
+        },
+        "temper_rage": {
+          "name": "Tempered Rage",
+          "linePt": "The metal in him sings louder."
+        }
+      }
+    },
+    "act8_magma_lord": {
+      "name": "Magma Lord",
+      "abilities": {
+        "crucible_breath": {
+          "name": "Crucible Breath",
+          "linePt": "The lord breathes — the room becomes a furnace."
+        },
+        "lava_crown": {
+          "name": "Lava Crown",
+          "linePt": "The crown descends on you like a verdict."
+        },
+        "stone_throne": {
+          "name": "Stone Throne",
+          "linePt": "He settles into the heat — and the heat obeys."
+        }
+      }
     }
   },
   "companions": {
@@ -601,9 +693,65 @@
       "name": "Vetrnax Slain",
       "description": "The ice lost its titan; the range remembers who closed the name in snow with blade or ritual."
     },
+    "magma_lord_slain": {
+      "name": "Magma Lord Slain",
+      "description": "The floor of the axis lost its lord; the crucible still burns, but without will — silence finally has a floor."
+    },
     "wound_mire_leg": {
       "name": "Mire Bite",
       "description": "Luck failed in the mire; the leg remembers teeth that are not yours — rudder that lags a second when danger demands two."
+    },
+    "act1_wall_memory": {
+      "name": "Wall memory",
+      "description": "You touched stone that felt like fossilized flesh; your arm remembers the shiver — the dungeon touches back."
+    },
+    "act1_mirror_shard": {
+      "name": "Shard on the step",
+      "description": "You saw yourself in a mirror shard: a stranger with your name. The reflection does not absolve the next step."
+    },
+    "act1_entrance_mirror": {
+      "name": "Broken niche",
+      "description": "Half your face, half the tunnel — the same cut. The glass demanded a choice before silence chose for you."
+    },
+    "act1_hand_mirror": {
+      "name": "Hand mirror",
+      "description": "You held the mirror without the water lying; only you and your promises — no cheap absolution."
+    },
+    "act1_door_runes": {
+      "name": "Doorframe runes",
+      "description": "You read re-scored runes and the crude Third Bell; the wood damp inside still breathes."
+    },
+    "act2_rats_listen": {
+      "name": "Counted squeaks",
+      "description": "You heard the swarm in pattern — almost language. You counted steps before advancing."
+    },
+    "act2_rats_smell": {
+      "name": "Nest stench",
+      "description": "Mold, iron, and hot copper: old blood that never fully dried. Your nose paid the price."
+    },
+    "act2_cruzeiro_marks": {
+      "name": "Crossroads marks",
+      "description": "Three furrows, footprints turning back, Morvayn and a driven bell — the floor as a map of those who quit halfway."
+    }
+  },
+  "storyPaths": {
+    "throne": {
+      "name": "Morvayn's Throne",
+      "description": "What you did at the throne sets the tone of the ice — and of what descends after.",
+      "values": {
+        "slain": {
+          "name": "Iron on the Throne",
+          "description": "Morvayn fell to steel. The axis stays open; victory is thin and the cold does not absolve."
+        },
+        "pact": {
+          "name": "Bell Pact",
+          "description": "The Third Bell wrote itself into your skin. Corruption is the interest; the world learns to hush when you breathe."
+        },
+        "sealed": {
+          "name": "Calvary Seal",
+          "description": "You sealed the hole in faith. The underworld goes quiet because you carried the weight — scars on the soul, fragile peace in stone."
+        }
+      }
     }
   },
   "passives": {

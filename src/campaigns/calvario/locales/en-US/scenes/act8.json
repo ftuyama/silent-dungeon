@@ -1,0 +1,299 @@
+{
+  "act8/opening_magma_throat": {
+    "title": "Magma Throat",
+    "body": "The stone **opens** like a jaw. It is not a door — it is an ancient **wound** that never scarred. The air smells of sulfur and debt.\n\nBelow, something **pulses** red. It asks no name. It charges **presence**.",
+    "choices": [
+      {
+        "text": "Descend through the cracked crust",
+        "preview": "The heat rises. Without the amulet of the trials, each step takes flesh."
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Beyond the throne, the axis does not rise — it descends. The throat of the earth swallows light and returns only heat."
+    ]
+  },
+  "act8/descent_crust": {
+    "title": "Cracked Crust",
+    "body": "The crust **groans** under the weight. Veins of lava flash between the cracks — not as a map, as a **threat**.\n\nEvery breath arrives **too hot**. Those who descend without magma ward feel the skin learn the price before the name.",
+    "choices": [
+      {
+        "text": "Cross the black stone bridge",
+        "preview": "The heat tightens; the bridge does not promise an easy return."
+      }
+    ]
+  },
+  "act8/brimstone_crossing": {
+    "title": "Brimstone Crossing",
+    "body": "Sulfur **paints** the air a sickly yellow. Across the rift, a hall opens over a sea of lava: the **Crucible**.\n\nHere the axis **chooses** who continues. The rest becomes ash with a name.",
+    "choices": [
+      {
+        "text": "Enter the Magma Crucible",
+        "preview": "Hub of the deeps — exploration, forge, and the lord of heat."
+      }
+    ]
+  },
+  "act8/hub_magma_crucible": {
+    "title": "Magma Crucible",
+    "body": "The **Crucible** is not a room — it is a **furnace** with a name. Black stone bridges cross a sea of lava; the air burns like a verdict.\n\nHere you descend to **end** the axis — or climb back to the surface, if you still have courage to pretend cold.",
+    "choices": [
+      {
+        "text": "Patrol the lava veins (explore map)",
+        "preview": "Move among black stone bridges; stress rises and the heat answers.",
+        "uiSection": "Explore"
+      },
+      {
+        "text": "Follow the lava river (quest)",
+        "preview": "Red current; golems and a toll of flesh.",
+        "lockedHint": "Requires level 29; the river only accepts those who can stand the heat.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Descend to the golem forge (quest)",
+        "preview": "Where stone learns to hate.",
+        "lockedHint": "Requires level 31+ and completing the lava river first.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Kneel at the sulfur altar (quest)",
+        "preview": "Last oath before the crucible's lord.",
+        "lockedHint": "Requires level 33+ and completing the golem forge first.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Challenge the Magma Lord",
+        "preview": "Boss of the deeps. True finale.",
+        "lockedHint": "Three quests, map goal, and level 35 — the crucible does not open early.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Light the camp on the crucible rim",
+        "preview": "Short rest; the heat never truly sleeps.",
+        "uiSection": "Refuge and trade"
+      },
+      {
+        "text": "Bargain with the ember merchant",
+        "preview": "Prices in gold and scorched skin.",
+        "lockedHint": "You have not found the stall in the lava veins yet — patrol the map.",
+        "uiSection": "Refuge and trade"
+      },
+      {
+        "text": "Climb toward the surface — Graywind Heights",
+        "preview": "Return to the ice — the axis still links both sides.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Climb toward the surface — first snow after the throne",
+        "preview": "Open the peaks path if you have not camped on the ice yet.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Head for the ashes of the sky (act7)",
+        "preview": "The incomplete ending still waits for those who flee the heat.",
+        "uiSection": "Axis"
+      }
+    ]
+  },
+  "act8/magma_merchant": {
+    "title": "Ember Stall",
+    "body": "A merchant with **cracked skin** opens a stall on stone still hot. He does not smile. He charges in **gold** what the heat would take in flesh.",
+    "choices": [
+      {
+        "text": "Buy Red Potion (6 gold) (×2)",
+        "preview": "Consumable · heal",
+        "lockedHint": "Requires 6 gold.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Red Potion (6 gold) (×1)",
+        "preview": "Consumable · heal",
+        "lockedHint": "Requires 6 gold and the first purchase done.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Blue Tonic (8 gold) (×1)",
+        "preview": "Consumable · mana",
+        "lockedHint": "Requires 8 gold.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Mead (7 gold) (×1)",
+        "preview": "Consumable · reduce stress",
+        "lockedHint": "Requires 7 gold.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (6 gold) (×2)",
+        "preview": "Resource · rest",
+        "lockedHint": "Requires 6 gold.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Supply (6 gold) (×1)",
+        "preview": "Resource · rest",
+        "lockedHint": "Requires 6 gold and the first purchase done.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Ember Ring (−10 gold)",
+        "preview": "Relic · luck",
+        "lockedHint": "Requires 10 gold.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Return to the Crucible",
+        "preview": "Take what gold remains — and the smell of ember.",
+        "uiSection": "Leave"
+      }
+    ]
+  },
+  "act8/camp/magma_camp": {
+    "title": "Camp on the Rim",
+    "body": "The campfire **competes** with the sea of lava. It does not warm — it **reminds** that there is still a choice between rest and ash.",
+    "choices": [
+      {
+        "text": "Feed the fire with supply (−1 supply)",
+        "lockedHint": "You need at least 1 supply to feed the fire.",
+        "uiSection": "Recover"
+      },
+      {
+        "text": "Use a consumable",
+        "preview": "Choose which potion to use.",
+        "uiSection": "Recover"
+      },
+      { "text": "Equip / manage load", "uiSection": "Prepare" },
+      { "text": "Return to the Crucible", "uiSection": "Leave" }
+    ]
+  },
+  "act8/camp/manage_equip": {
+    "title": "Arm against the heat",
+    "body": "The ember **flickers**; each buckle seems to **bargain** with the heat. You reorganize what still calls itself **yours**: **weapon**, **armor**, **relics** — small promises that the next step will not be ash.",
+    "choices": [{ "text": "Return to camp" }]
+  },
+  "act8/camp/use_consumable": {
+    "title": "Potions at hand",
+    "body": "Heat **threatens** the glass. Each sip is a moment of choice between the fire outside and what still remains in the inventory.",
+    "choices": [
+      { "text": "Drink red potion (you)", "uiSection": "Consumables" },
+      { "text": "Give red potion to companion", "uiSection": "Consumables" },
+      { "text": "Drink blue tonic (mana)", "uiSection": "Consumables" },
+      { "text": "Drink serene infusion (stress)", "uiSection": "Consumables" },
+      { "text": "Return to camp", "uiSection": "Back" }
+    ]
+  },
+  "act8/lava_river": {
+    "title": "Lava River",
+    "body": "The river does **not** run — it **licks** the stone. Slow waves of magma mark the path like a hot finger.\n\nAcross, silhouettes of stone **breathe** fire.",
+    "choices": [
+      {
+        "text": "Cross by the narrow bank",
+        "preview": "Lava golems guard the passage."
+      },
+      { "text": "Return to the Crucible" }
+    ]
+  },
+  "act8/encounters/lava_river_fight": {
+    "title": "River Guard",
+    "body": "Two lava golems **rise** from the bank. Their heat is not ambience — it is **intent**.",
+    "choices": [{ "text": "Face the lava golems" }]
+  },
+  "act8/lava_river_after": {
+    "title": "Bank Claimed",
+    "body": "The bank **smokes**. The path to the golem forge opens between cracked stones — still hot, still hostile, **yours**.",
+    "choices": [{ "text": "Return to the Crucible" }],
+    "onEnterDiaryTexts": [
+      "The lava river took its toll. The golems fell; the bank still burns underfoot."
+    ]
+  },
+  "act8/golem_forge": {
+    "title": "Golem Forge",
+    "body": "Hammers **without hands** strike basalt anvils. The forge does not make tools — it makes **hatred** with form.",
+    "choices": [
+      {
+        "text": "Enter the forge",
+        "preview": "The forge colossus does not ask permission."
+      },
+      { "text": "Return to the Crucible" }
+    ]
+  },
+  "act8/encounters/forge_colossus_fight": {
+    "title": "Forge Colossus",
+    "body": "The colossus **rises** from the anvil. Each step spills slag. It is not a guard — it is the forge's final **product**.",
+    "choices": [{ "text": "Challenge the colossus" }]
+  },
+  "act8/golem_forge_after": {
+    "title": "Forge Silenced",
+    "body": "The forge **cools** one degree. Not enough to live — enough to **advance** to the sulfur altar.",
+    "choices": [{ "text": "Return to the Crucible" }],
+    "onEnterDiaryTexts": [
+      "The forge colossus fell. The hammers stopped — hatred lost its anvil."
+    ]
+  },
+  "act8/sulfur_altar": {
+    "title": "Sulfur Altar",
+    "body": "The altar **smells** of rotten egg and oath. Sickly yellow covers the stone. Those who kneel pay; those who fight **also**.",
+    "choices": [
+      {
+        "text": "Offer faith to the altar (−1 faith)",
+        "preview": "−1 faith · the altar cleans a thread of corruption",
+        "lockedHint": "The altar charges faith — you need at least 1."
+      },
+      {
+        "text": "Challenge the spectral guardian",
+        "preview": "Combat; the altar opens in violence."
+      },
+      { "text": "Return to the Crucible" }
+    ]
+  },
+  "act8/encounters/sulfur_wraith_fight": {
+    "title": "Slag Wraith",
+    "body": "A **slag** wraith rises from the altar — heat without body, hatred without skin.",
+    "choices": [{ "text": "Face the wraith" }]
+  },
+  "act8/sulfur_altar_after": {
+    "title": "Altar Marked",
+    "body": "The yellow **recedes**. At the bottom of the crucible, something large **moves** the lava as if it were a cape.",
+    "choices": [{ "text": "Return to the Crucible — the lord waits" }],
+    "onEnterDiaryTexts": [
+      "The sulfur altar accepted the price. An ember ring stayed on my finger — and the path to the Magma Lord is open, if the crucible map is too."
+    ]
+  },
+  "act8/encounters/magma_lord_intro": {
+    "title": "Magma Lord",
+    "body": "The lava **rises** in a column. Inside it, a trunk of stone and hatred: the **Magma Lord**. Eyes like furnaces. Voice like a crack.\n\nThis is the **floor** of the axis. There is no further step — only victory or ash.",
+    "choices": [{ "text": "Challenge the Magma Lord" }],
+    "onEnterDiaryTexts": [
+      "At the bottom of the crucible, the Magma Lord rises. He is not a king — he is heat with will."
+    ]
+  },
+  "act8/victory_crucible": {
+    "title": "Crucible Silenced",
+    "body": "The lord **collapses** into black stone. The lava drops a handspan — enough to breathe without asking the hell's leave.\n\nThe axis **closes** the last name. The epilogue remains.",
+    "choices": [{ "text": "Descend into the last silence — the true end" }],
+    "onEnterDiaryTexts": [
+      "The Magma Lord fell. The crucible still burns, but without will — the axis finally has a floor."
+    ]
+  },
+  "act8/epilogue_true_depths": {
+    "title": "Epilogue — True Depths",
+    "body": "There is no sky here — only **stone** and the certainty that the dungeon **ends**. Silence is not flight: it is **victory** that smells of sulfur.\n\nYou carry the floor of the axis in your bones. *(You can **save** from the menu or **start over**.)*",
+    "choices": [{ "text": "Close the diary — the floor of the axis" }],
+    "onEnterDiaryTexts": [
+      "I descended to where the earth still has a name. The heat charged; the amulet guarded; the lord fell. The silence, this time, is mine."
+    ]
+  },
+  "act8/encounters/wild_lava_golem": {
+    "title": "Lava Golem",
+    "body": "A lava golem **blocks** the bridge. Living stone, fire for blood.",
+    "choices": [{ "text": "Face the golem" }]
+  },
+  "act8/encounters/wild_ember_hound": {
+    "title": "Ember Hound",
+    "body": "An **ember** hound barks without sound — only sparks. The eyes are living coal.",
+    "choices": [{ "text": "Face the ember hound" }]
+  },
+  "act8/encounters/wild_slag_wraith": {
+    "title": "Slag Wraith",
+    "body": "Slag **rises** in human form. No skin — only heat and grudge.",
+    "choices": [{ "text": "Face the wraith" }]
+  }
+}

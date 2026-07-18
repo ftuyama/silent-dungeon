@@ -75,6 +75,14 @@ function edgesFromFm(fromId: string, fm: any): Array<{ from: string; to: string 
     out.push({ from: fromId, to: fm.chapterGate.passNext });
     out.push({ from: fromId, to: fm.chapterGate.failNext });
   }
+  if (fm.storyPathGate?.branches) {
+    for (const to of Object.values(fm.storyPathGate.branches)) {
+      if (typeof to === 'string' && to) out.push({ from: fromId, to });
+    }
+    if (typeof fm.storyPathGate.fallback === 'string' && fm.storyPathGate.fallback) {
+      out.push({ from: fromId, to: fm.storyPathGate.fallback });
+    }
+  }
   if (fm.onVictory) out.push({ from: fromId, to: fm.onVictory });
   if (fm.onFlee) out.push({ from: fromId, to: fm.onFlee });
   if (fm.onDefeat) out.push({ from: fromId, to: fm.onDefeat });

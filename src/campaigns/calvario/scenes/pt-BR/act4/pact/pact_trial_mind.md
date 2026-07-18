@@ -2,7 +2,7 @@
 id: act4/pact/pact_trial_mind
 title: Prova da Mente
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 skillCheck:
   id: pact_hold
   attr: mind

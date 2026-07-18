@@ -37,6 +37,7 @@ import {
   spellEmoji,
   spellSidebarMechanicsLine,
   statBonusParen,
+  storyPathBadgeIconSvg,
   stressBarMarkup,
 } from './gameAppUtils.ts';
 import { formatItemEquipmentStatParts } from './formatItemEquipment.ts';
@@ -77,6 +78,12 @@ type SidebarBuilderParams = {
   dailyTasks?: DailyTasksState | null;
   /** Painel colapsável no mobile; desktop ignora e mantém sempre visível. */
   mobileDetailsOpen?: boolean;
+  /** Chaves de recurso a pulsar (`gold` / `supply` / `faith` / `corruption`). */
+  resourcePulseKeys?: ReadonlySet<string>;
+  /** Itens adquiridos desde a última abertura do inventário. */
+  inventoryNewCount?: number;
+  /** Chamado quando o jogador abre o colapso do inventário (limpa o badge). */
+  onInventoryOpened?: () => void;
 };
 
 type SidebarDisclosure = {
@@ -264,6 +271,12 @@ function openDiaryModal({ state, diary: entries, marks, registry }: DiaryModalOp
   else if (entries.length > 1) subParts.push(t('sidebar.diaryRegisteredMany', { count: entries.length }));
   if (marks.length === 1) subParts.push(t('sidebar.markOne'));
   else if (marks.length > 1) subParts.push(t('sidebar.marksCount', { count: marks.length }));
+  const storyPathEntries = Object.entries(state.storyPaths ?? {}).filter(
+    ([, v]) => typeof v === 'string' && v.length > 0
+  );
+  if (storyPathEntries.length === 1) subParts.push(t('sidebar.storyPathOne'));
+  else if (storyPathEntries.length > 1)
+    subParts.push(t('sidebar.storyPathsCount', { count: storyPathEntries.length }));
 
   const { layer, scroll, dismiss, wireClose } = createSheetModalShell({
     layerClass: 'sheet-modal-layer',
@@ -329,6 +342,71 @@ function openDiaryModal({ state, diary: entries, marks, registry }: DiaryModalOp
   secMarks.appendChild(hMarks);
   secMarks.appendChild(marksBody);
 
+  const secPaths = document.createElement('section');
+  secPaths.className = 'diary-modal-section diary-modal-section--badges';
+  const hPaths = document.createElement('h3');
+  hPaths.className = 'diary-modal-section-title';
+  hPaths.textContent = t('sidebar.storyPaths');
+  const pathsBody = document.createElement('div');
+  if (storyPathEntries.length === 0) {
+    pathsBody.className = 'diary-modal-section-body';
+    const empty = document.createElement('p');
+    empty.className = 'diary-modal-empty';
+    empty.textContent = t('sidebar.noStoryPaths');
+    pathsBody.appendChild(empty);
+  } else {
+    pathsBody.className = 'diary-modal-section-body diary-modal-badges-grid';
+    for (const [pathId, value] of storyPathEntries) {
+      const pathDef = registry.data.storyPaths[pathId];
+      const valueDef = pathDef?.values[value];
+      const decisionName = pathDef?.name ?? pathId;
+      const displayTitle = valueDef?.name ?? value;
+      const displayDesc = valueDef?.description ?? pathDef?.description ?? '';
+
+      const badge = document.createElement('article');
+      badge.className = 'diary-mark-badge diary-path-badge';
+      badge.setAttribute('aria-label', `${decisionName}: ${displayTitle}`);
+
+      const rim = document.createElement('div');
+      rim.className = 'diary-mark-badge-rim';
+
+      const iconCell = document.createElement('div');
+      iconCell.className = 'diary-mark-badge-icon';
+      iconCell.innerHTML = iconWrap(
+        storyPathBadgeIconSvg(pathId, value),
+        'ui-icon-wrap diary-mark-badge-icon-wrap'
+      );
+      iconCell.setAttribute('aria-hidden', 'true');
+
+      const textBlock = document.createElement('div');
+      textBlock.className = 'diary-mark-badge-text';
+
+      const decisionEl = document.createElement('p');
+      decisionEl.className = 'diary-path-badge-decision';
+      decisionEl.textContent = decisionName;
+
+      const titleEl = document.createElement('p');
+      titleEl.className = 'diary-mark-badge-title';
+      titleEl.textContent = displayTitle;
+
+      textBlock.appendChild(decisionEl);
+      textBlock.appendChild(titleEl);
+      if (displayDesc) {
+        const descEl = document.createElement('p');
+        descEl.className = 'diary-mark-badge-desc';
+        descEl.textContent = displayDesc;
+        textBlock.appendChild(descEl);
+      }
+
+      rim.appendChild(iconCell);
+      rim.appendChild(textBlock);
+      badge.appendChild(rim);
+      pathsBody.appendChild(badge);
+    }
+  }
+  secPaths.appendChild(hPaths);
+  secPaths.appendChild(pathsBody);
+
   const secDiary = document.createElement('section');
   secDiary.className = 'diary-modal-section';
   const hDiary = document.createElement('h3');
@@ -366,6 +444,7 @@ function openDiaryModal({ state, diary: entries, marks, registry }: DiaryModalOp
 
   scroll.appendChild(buildDiaryProgressSection(state, registry));
   scroll.appendChild(secMarks);
+  scroll.appendChild(secPaths);
   scroll.appendChild(secDiary);
 
   document.body.appendChild(layer);
@@ -1601,7 +1680,8 @@ function factionPerkBulletMarkup(
 function wireSidebarDetails(
   hud: HTMLElement,
   sidebarSections: Record<string, boolean>,
-  onSectionToggle: (key: string, open: boolean) => void
+  onSectionToggle: (key: string, open: boolean) => void,
+  onInventoryOpened?: () => void
 ): void {
   hud.querySelectorAll('details[data-section]').forEach((el) => {
     const d = el as HTMLDetailsElement;
@@ -1612,6 +1692,9 @@ function wireSidebarDetails(
     }
     d.addEventListener('toggle', () => {
       onSectionToggle(key, d.open);
+      if (key === 'inventario' && d.open) {
+        onInventoryOpened?.();
+      }
     });
   });
 }
@@ -1625,6 +1708,9 @@ export function buildGameSidebar({
   dailyBonus,
   dailyTasks,
   mobileDetailsOpen = true,
+  resourcePulseKeys,
+  inventoryNewCount = 0,
+  onInventoryOpened,
 }: SidebarBuilderParams): HTMLElement {
   const hud = document.createElement('div');
   hud.className = 'sidebar-inner';
@@ -1731,18 +1817,22 @@ export function buildGameSidebar({
       <details class="sidebar-collapse"${openRec} data-section="recursos">
         <summary class="sidebar-collapse-trigger">${collapseTriggerStart(icons.resources, t('sidebar.resources'))}</summary>
         <div class="sidebar-collapse-body">
-          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('gold'))}">${iconWrap(icons.gold)}<span>${escHtml(t('sidebar.gold'))} <strong>${gold}</strong></span></div>
-          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('supply'))}">${iconWrap(icons.supply)}<span>${escHtml(t('sidebar.supply'))} <strong>${r.supply}</strong></span></div>
-          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('faith'))}">${iconWrap(icons.faith)}<span>${escHtml(t('sidebar.faith'))} <strong>${r.faith}</strong></span></div>
+          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint${resourcePulseKeys?.has('gold') ? ' sidebar-line--resource-pulse' : ''}" data-resource="gold" title="${escHtml(resourceHover('gold'))}">${iconWrap(icons.gold)}<span>${escHtml(t('sidebar.gold'))} <strong>${gold}</strong></span></div>
+          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint${resourcePulseKeys?.has('supply') ? ' sidebar-line--resource-pulse' : ''}" data-resource="supply" title="${escHtml(resourceHover('supply'))}">${iconWrap(icons.supply)}<span>${escHtml(t('sidebar.supply'))} <strong>${r.supply}</strong></span></div>
+          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint${resourcePulseKeys?.has('faith') ? ' sidebar-line--resource-pulse' : ''}" data-resource="faith" title="${escHtml(resourceHover('faith'))}">${iconWrap(icons.faith)}<span>${escHtml(t('sidebar.faith'))} <strong>${r.faith}</strong></span></div>
           ${state.extraLifeReady ? `<div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('extraLife'))}">${iconWrap(icons.heart)}<span>${escHtml(t('sidebar.extraLife'))} <strong>${escHtml(t('sidebar.extraLifeReady'))}</strong> <span class="sidebar-resource-hint">${escHtml(t('sidebar.extraLifeCost'))}</span></span></div>` : ''}
-          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('corruption'))}">${iconWrap(icons.corruption)}<span>${escHtml(t('sidebar.corruption'))} <strong>${r.corruption}</strong></span></div>
+          <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint${resourcePulseKeys?.has('corruption') ? ' sidebar-line--resource-pulse' : ''}" data-resource="corruption" title="${escHtml(resourceHover('corruption'))}">${iconWrap(icons.corruption)}<span>${escHtml(t('sidebar.corruption'))} <strong>${r.corruption}</strong></span></div>
           <div class="sidebar-line sidebar-line--with-icon sidebar-line--hint" title="${escHtml(resourceHover('echoes'))}">${iconWrap(icons.memories)}<span>${escHtml(t('sidebar.echoes'))} <strong>${state.legacy.echoes}</strong></span></div>
         </div>
       </details>
       ${
         hasInventory && disclosure.unlockInventory
           ? `<details class="sidebar-collapse"${openInv} data-section="inventario">
-        <summary class="sidebar-collapse-trigger">${collapseTriggerStart(icons.inventory, t('sidebar.inventory'))}</summary>
+        <summary class="sidebar-collapse-trigger">${collapseTriggerStart(icons.inventory, t('sidebar.inventory'))}${
+            inventoryNewCount > 0
+              ? `<span class="sidebar-inventory-new-badge" title="${escHtml(t('sidebar.inventoryNew', { count: inventoryNewCount }))}">${inventoryNewCount > 9 ? '9+' : String(inventoryNewCount)}</span>`
+              : ''
+          }</summary>
         <div class="sidebar-collapse-body sidebar-inventory">
           ${inventoryMarkup(state, registry)}
         </div>
@@ -1828,7 +1918,7 @@ export function buildGameSidebar({
     hud.appendChild(bonusCard);
   }
 
-  wireSidebarDetails(hud, sidebarSections, onSectionToggle);
+  wireSidebarDetails(hud, sidebarSections, onSectionToggle, onInventoryOpened);
 
   const heroSheetBtn = hud.querySelector<HTMLButtonElement>('[data-open-hero-sheet]');
   if (heroSheetBtn && p) {

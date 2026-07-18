@@ -2,7 +2,7 @@
 id: act4/pact/pact_ascent
 title: Ascensão do Pacto
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 skillCheck:
   id: pact_ascent_resonance
   attr: mind

@@ -9,6 +9,14 @@ export { beginEncounter, refreshCombatLogInitiativeLabels } from './encounter.ts
 export { getCurrentDialogueContext, resolveDialogueChoice } from './dialogueCombatResolve.ts';
 export { getCharacterArmorClass, getEquippedArmorPoints, sumEquippedItemBonuses } from './combatStats.ts';
 export {
+  HIT_CHANCE_BASE,
+  HIT_CHANCE_MAX,
+  HIT_CHANCE_MIN,
+  HIT_CHANCE_PER_POINT,
+  resolveHitChance,
+  rollHitAgainstDefense,
+} from './hitChance.ts';
+export {
   canCastSpell,
   executeSpellTurn,
   getEffectiveSpellManaCost,

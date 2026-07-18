@@ -1,12 +1,15 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import {
   advanceDailyStreak,
   cycleDayForStreak,
   dailyBonusRewardEffects,
   DAILY_BONUS_CYCLE_LENGTH,
   DAILY_BONUS_REWARDS,
+  hasRunDailyBonusToday,
+  markRunDailyBonusClaimed,
   previousDateKey,
   rewardForCycleDay,
+  runDailyBonusDateKey,
 } from '../../src/ui/gameAppDailyBonus.ts';
 
 describe('previousDateKey', () => {
@@ -78,5 +81,44 @@ describe('rewards', () => {
       { op: 'addResource', resource: 'gold', delta: 5 },
       { op: 'addResource', resource: 'faith', delta: 1 },
     ]);
+  });
+});
+
+describe('per-run daily bonus tracking', () => {
+  const store = new Map<string, string>();
+  const runId = 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11';
+
+  beforeEach(() => {
+    store.clear();
+    (globalThis as { localStorage?: unknown }).localStorage = {
+      getItem: (k: string) => store.get(k) ?? null,
+      setItem: (k: string, v: string) => {
+        store.set(k, v);
+      },
+    };
+  });
+
+  afterEach(() => {
+    delete (globalThis as { localStorage?: unknown }).localStorage;
+  });
+
+  it('is unclaimed by default and claimed after marking', () => {
+    expect(hasRunDailyBonusToday('calvario', runId, '2026-07-08')).toBe(false);
+    markRunDailyBonusClaimed('calvario', runId, '2026-07-08');
+    expect(hasRunDailyBonusToday('calvario', runId, '2026-07-08')).toBe(true);
+  });
+
+  it('resets on the next day and tracks runs independently', () => {
+    markRunDailyBonusClaimed('calvario', runId, '2026-07-08');
+    expect(hasRunDailyBonusToday('calvario', runId, '2026-07-09')).toBe(false);
+    expect(
+      hasRunDailyBonusToday('calvario', 'b1eebc99-9c0b-4ef8-bb6d-6bb9bd380a22', '2026-07-08')
+    ).toBe(false);
+  });
+
+  it('uses a key scoped to the run UUID', () => {
+    expect(runDailyBonusDateKey('calvario', runId)).toBe(
+      `calvario_run_daily_bonus_v1_${runId}`
+    );
   });
 });

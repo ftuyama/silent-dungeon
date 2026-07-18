@@ -9,24 +9,12 @@
         "uiSection": "Recover"
       },
       {
-        "text": "Drink Red Potion (self)",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Give Red Potion to companion",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Drink Blue Tonic (mana)",
-        "uiSection": "Recover"
-      },
-      {
-        "text": "Drink Mead (stress)",
+        "text": "Use a consumable",
+        "preview": "Choose which potion to use.",
         "uiSection": "Recover"
       },
       {
         "text": "Exchange a few words with the group",
-        "lockedHint": "Without a companion, there is no group to talk to.",
         "uiSection": "Talk"
       },
       {
@@ -100,6 +88,10 @@
         "uiSection": "You and them"
       },
       {
+        "text": "Mira: \"Hunter on the ice — do you track the fire or the escape?\"",
+        "uiSection": "You and them"
+      },
+      {
         "text": "Tomás: \"The ice favors those who already carry guilt in their steel\"",
         "uiSection": "You and them"
       },
@@ -109,6 +101,10 @@
       },
       {
         "text": "Tomás: \"If the Vigil heard you now, would it approve the silence?\"",
+        "uiSection": "You and them"
+      },
+      {
+        "text": "Tomás: \"Arrow in the cutting wind — miss once and the cold reminds you\"",
         "uiSection": "You and them"
       },
       {
@@ -201,6 +197,32 @@
     "choices": [
       {
         "text": "Return to the camp on the ice"
+      }
+    ]
+  },
+  "act5/camp/use_consumable": {
+    "title": "Potions at hand",
+    "body": "Cold **thickens** the glass. You choose the flask that still answers — and leave the wind outside the sip.",
+    "choices": [
+      {
+        "text": "Drink Red Potion (self)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Give Red Potion to companion",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Drink Blue Tonic (mana)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Drink Mead (stress)",
+        "uiSection": "Consumables"
+      },
+      {
+        "text": "Return to camp",
+        "uiSection": "Back"
       }
     ]
   },
@@ -335,7 +357,7 @@
   },
   "act5/frost_hub": {
     "title": "Pass — Improvised Camp",
-    "body": "**Tents** creak like old teeth; the fire **threatens** more than it warms. **Same** weight of silence, **larger** stage: snow, **human** tracks, **bestial** tracks, and a third with no name.\n\nThe map here is **decision** — rumor, **exchange** of warmth, or letting the snow **choose**. The pass only **covers**.",
+    "body": "**Tents** creak like old teeth; the fire **threatens** more than it warms. **Same** weight of silence, **larger** stage: snow, **human** tracks, **bestial** tracks, and a third with no name.\n\nThe map here is **decision** — rumor, **exchange** of warmth, or letting the snow **choose**. The pass only **covers**. Below the ice, the axis still **descends**.\n\nThe throne stayed behind in **iron**: Morvayn fell, but the **axis** did not. Each breath in the ice remembers that victory was **thin**.",
     "choices": [
       {
         "text": "Patrol the pass (explore map)",
@@ -345,12 +367,13 @@
       {
         "text": "Follow the claw trail in the snow (quest)",
         "preview": "Trail, ambush, or hunt — the snow does not judge.",
-        "lockedHint": "You need level 18 and must first reach the temple trail on the pass map (patrol from camp).",
+        "lockedHint": "You need level 21 and must first reach the temple trail on the pass map (patrol from camp).",
         "uiSection": "Quests"
       },
       {
         "text": "Squire's rumor — rope and ritual on the ice",
         "preview": "Tomás's story; rope and ice — but the rumor cools after day 15.",
+        "lockedHint": "Requires level 16+ and arriving by day 15 — afterward the rumor cools.",
         "uiSection": "Quests"
       },
       {
@@ -371,13 +394,144 @@
       {
         "text": "Snow mountains — rumor of a monk in the cave",
         "preview": "Cave and the monk's trials; peace or banishment.",
+        "lockedHint": "Requires level 19+ to find the monk's cave in the ice.",
         "uiSection": "Summit and cave"
       },
       {
         "text": "Toward the summit — black stone temple (dangerous path)",
         "preview": "Dangerous ascent to the temple and what sleeps on the summit.",
-        "lockedHint": "The summit requires level 22 and finding the temple trail on the map first.",
+        "lockedHint": "The summit requires level 23 and finding the temple trail on the map first.",
         "uiSection": "Summit and cave"
+      },
+      {
+        "text": "Descend into the magma deeps — the floor of the axis",
+        "preview": "Return to the Crucible — the heat still waits.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Descend into the magma deeps — first throat",
+        "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
+        "uiSection": "Axis"
+      }
+    ]
+  },
+  "act5/frost_hub_pact": {
+    "title": "Pass — Camp under the Bell",
+    "body": "**Tents** creak; the fire **hesitates** as if it heard a toll that is not the wind. The **ring** on your finger does not chime — but the pass **hushes** a second too soon when you speak.\n\nThe map here is **decision** under interest: rumor, **trade**, or letting the snow **choose**. Below the ice, the axis **descends** — and the Third Bell already **counts** your steps.",
+    "choices": [
+      {
+        "text": "Patrol the pass (explore map)",
+        "preview": "Walk the ice with risk of encounter and rising stress.",
+        "uiSection": "Explore"
+      },
+      {
+        "text": "Follow the claw trail in the snow (quest)",
+        "preview": "Trail, ambush, or hunt — the snow does not judge.",
+        "lockedHint": "You need level 21 and must first reach the temple trail on the pass map (patrol from camp).",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Squire's rumor — rope and ritual on the ice",
+        "preview": "Tomás's story; rope and ice — but the rumor cools after day 15.",
+        "lockedHint": "Requires level 16+ and arriving by day 15 — afterward the rumor cools.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Squire's rumor — only echo and empty rope on the ice",
+        "preview": "Too late; the pass has already learned another name for justice.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Live the camp on the ice",
+        "preview": "Rest, supply, and talk by the fire.",
+        "uiSection": "Fire and trade"
+      },
+      {
+        "text": "Thunder-blue tent merchant",
+        "preview": "Gold and item trade; the price of cold.",
+        "uiSection": "Fire and trade"
+      },
+      {
+        "text": "Snow mountains — rumor of a monk in the cave",
+        "preview": "Cave and the monk's trials; peace or banishment.",
+        "lockedHint": "Requires level 19+ to find the monk's cave in the ice.",
+        "uiSection": "Summit and cave"
+      },
+      {
+        "text": "Toward the summit — black stone temple (dangerous path)",
+        "preview": "Dangerous ascent to the temple and what sleeps on the summit.",
+        "lockedHint": "The summit requires level 23 and finding the temple trail on the map first.",
+        "uiSection": "Summit and cave"
+      },
+      {
+        "text": "Descend into the magma deeps — the floor of the axis",
+        "preview": "Return to the Crucible — the heat still waits.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Descend into the magma deeps — first throat",
+        "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
+        "uiSection": "Axis"
+      }
+    ]
+  },
+  "act5/frost_hub_sealed": {
+    "title": "Pass — Camp under the Seal",
+    "body": "**Tents** creak like old teeth; the fire warms **less** than it should — as if heat respected a **seal** it cannot see. Snow covers tracks, but the chest still **carries** what you closed below.\n\nThe map here is **decision** in fragile silence: rumor, **trade**, or letting the wind **choose**. Below the ice, the axis **descends** — and the faith you spent at the throne still **charges** interest in the cold.",
+    "choices": [
+      {
+        "text": "Patrol the pass (explore map)",
+        "preview": "Walk the ice with risk of encounter and rising stress.",
+        "uiSection": "Explore"
+      },
+      {
+        "text": "Follow the claw trail in the snow (quest)",
+        "preview": "Trail, ambush, or hunt — the snow does not judge.",
+        "lockedHint": "You need level 21 and must first reach the temple trail on the pass map (patrol from camp).",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Squire's rumor — rope and ritual on the ice",
+        "preview": "Tomás's story; rope and ice — but the rumor cools after day 15.",
+        "lockedHint": "Requires level 16+ and arriving by day 15 — afterward the rumor cools.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Squire's rumor — only echo and empty rope on the ice",
+        "preview": "Too late; the pass has already learned another name for justice.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Live the camp on the ice",
+        "preview": "Rest, supply, and talk by the fire.",
+        "uiSection": "Fire and trade"
+      },
+      {
+        "text": "Thunder-blue tent merchant",
+        "preview": "Gold and item trade; the price of cold.",
+        "uiSection": "Fire and trade"
+      },
+      {
+        "text": "Snow mountains — rumor of a monk in the cave",
+        "preview": "Cave and the monk's trials; peace or banishment.",
+        "lockedHint": "Requires level 19+ to find the monk's cave in the ice.",
+        "uiSection": "Summit and cave"
+      },
+      {
+        "text": "Toward the summit — black stone temple (dangerous path)",
+        "preview": "Dangerous ascent to the temple and what sleeps on the summit.",
+        "lockedHint": "The summit requires level 23 and finding the temple trail on the map first.",
+        "uiSection": "Summit and cave"
+      },
+      {
+        "text": "Descend into the magma deeps — the floor of the axis",
+        "preview": "Return to the Crucible — the heat still waits.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Descend into the magma deeps — first throat",
+        "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
+        "uiSection": "Axis"
       }
     ]
   },
@@ -430,10 +584,24 @@
       },
       {
         "text": "Buy Supply (10 gold) (×1)",
+        "lockedHint": "Requires 10 gold, level 22+, and prior stock already bought.",
         "uiSection": "For sale"
       },
       {
         "text": "Buy Last Supply (15 gold) (×1)",
+        "lockedHint": "Requires 15 gold, level 26+, and the three prior supplies.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Frost Needle (−9 gold)",
+        "preview": "Weapon · damage and agility",
+        "lockedHint": "Requires 9 gold.",
+        "uiSection": "For sale"
+      },
+      {
+        "text": "Buy Rime Cloak (−8 gold)",
+        "preview": "Armor · light, with mind",
+        "lockedHint": "Requires 8 gold.",
         "uiSection": "For sale"
       },
       {
@@ -488,7 +656,31 @@
   },
   "act5/frost_opening": {
     "title": "Graywind Heights",
-    "body": "The map is **shadows** on snow — here the wind cuts those who speak loud. **Same** silence, **another** ceiling; rumor of **Vetrnax** on the horizon.\n\n{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\nThe throne stayed behind. Each breath pays **interest** to the cold.",
+    "body": "The map is **shadows** on snow — the wind cuts those who speak loud. Rumor of **Vetrnax** on the horizon.\n\n**Iron** on the throne: Morvayn ended, but the **axis** still runs down. Victory arrived thin; the cold does not absolve.\n\nThe throne stayed behind. Each breath pays **interest** to the cold.",
+    "choices": [
+      {
+        "text": "Find shelter and plan on the snow"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "After the throne: ice corridors, dungeon air, lying sky. Rumor of a dragon in the Heights — only the sky hesitates."
+    ]
+  },
+  "act5/frost_opening_pact": {
+    "title": "Graywind Heights — under the Bell",
+    "body": "The map is **shadows** on snow — the wind cuts those who speak loud. Rumor of **Vetrnax** on the horizon.\n\nThe **Third Bell** wrote itself into your skin; the **corruption** that rises is the interest. The pass **hushes** when you breathe too hard.\n\nThe throne stayed behind. Each breath pays **interest** to the cold — and to the Bell.",
+    "choices": [
+      {
+        "text": "Find shelter and plan on the snow"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "After the throne: ice corridors, dungeon air, lying sky. Rumor of a dragon in the Heights — only the sky hesitates."
+    ]
+  },
+  "act5/frost_opening_sealed": {
+    "title": "Graywind Heights — under the Seal",
+    "body": "The map is **shadows** on snow — the wind cuts those who speak loud. Rumor of **Vetrnax** on the horizon.\n\nYou sealed the hole in **faith** — the underworld goes quiet because you carried the **weight**. Scars on the soul; fragile peace under a lying sky.\n\nThe throne stayed behind. Each breath pays **interest** to the cold — and to what you sealed.",
     "choices": [
       {
         "text": "Find shelter and plan on the snow"

@@ -16,7 +16,8 @@ import type {
 } from '../schema/index.ts';
 import type { GameData } from '../data/gameData.ts';
 import { effectiveLeadAttr } from '../progression/leadStats.ts';
-import { getArmorValue, statMod } from './combatStats.ts';
+import { agiToArmorClassMod, getArmorValue, statMod } from './combatStats.ts';
+import { resolveHitChance, rollHitAgainstDefense } from './hitChance.ts';
 import { pickEnemyMeleeTarget, toRollOutcome } from './constants.ts';
 import { maybeApplyStatus, statusDefensePenalty } from './statusConditions.ts';
 import * as combatLog from '../../i18n/combatLogMessages.ts';
@@ -36,7 +37,7 @@ export function computePartyDefenseScore(
   const panicPenalty = targetIndex === 0 && target.stress >= 4 ? 2 : 0;
   return (
     7 +
-    statMod(effectiveLeadAttr(state, target, 'agi')) +
+    agiToArmorClassMod(effectiveLeadAttr(state, target, 'agi')) +
     getArmorValue(data, target) +
     (c.defenseStanceForEnemyTurn === 'defensive' ? 2 : 0) -
     panicPenalty -
@@ -222,9 +223,13 @@ export function resolveEnemyAbility(opts: {
   const defScore = computePartyDefenseScore(state, c, party, targetIndex, data);
 
   let hit: boolean;
+  let hitChance: number | undefined;
   if (roll.special === 'fumble') hit = false;
   else if (roll.special === 'crit') hit = true;
-  else hit = roll.total >= defScore;
+  else {
+    hitChance = resolveHitChance(roll.total, defScore);
+    hit = rollHitAgainstDefense(rng, roll.total, defScore);
+  }
 
   log.push({
     kind: 'attack',
@@ -238,6 +243,7 @@ export function resolveEnemyAbility(opts: {
     target: target.name,
     outcome: hit ? 'hit' : 'miss',
     vsDefense: defScore,
+    hitChance,
     rollOutcome: toRollOutcome(roll.special),
     enemyIndex,
   });

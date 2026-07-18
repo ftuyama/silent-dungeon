@@ -1,7 +1,27 @@
 {
   "endings/epilogue_depths": {
     "title": "Depths of the axis",
-    "body": "The stone **drops**: you didn't close the dungeon — you **changed** **strata**. Here silence **weighs** like a lower ceiling; the air is **old** before it reaches your lungs.\n\n*(You can **save** from the menu or **start over** whenever you like.)*"
+    "body": "The stone **drops**: you didn't close the dungeon — you **changed** **strata**. Here silence **weighs** like a lower ceiling; the air is **old** before it reaches your lungs.\n\nVictory **carved** more **Echoes** into your legacy. Invest them in the shop or **start over** when the abyss calls again.",
+    "choices": [
+      {
+        "text": "Echo Shop"
+      },
+      {
+        "text": "Start over"
+      }
+    ]
+  },
+  "endings/epilogue_true_depths": {
+    "title": "True depths",
+    "body": "The stone **stops** descending. You closed the axis at the **floor** — not in the ash sky, not in flight. Here silence **weighs** like hot victory.\n\nVictory **carved** Echoes into your legacy. Invest them in the shop or **start over** when the abyss calls again.",
+    "choices": [
+      {
+        "text": "Echo Shop"
+      },
+      {
+        "text": "Start over"
+      }
+    ]
   },
   "shared/explore_nav_act2": {
     "title": "Perimeter of the tunnels",
@@ -63,6 +83,7 @@
       {
         "text": "Follow the sound of the hammer without forge",
         "preview": "A side route; the echo strikes bone.",
+        "lockedHint": "Requires level 28+ and the Trial of Reality completed.",
         "uiSection": "On the perimeter"
       },
       {
@@ -72,10 +93,29 @@
       }
     ]
   },
+  "shared/explore_nav_act8": {
+    "title": "Lava veins",
+    "body": "The lava veins **pulse** under the stone. To walk here is to choose which crack will charge first.",
+    "choices": [
+      {
+        "text": "Wander the black bridges (random encounter)",
+        "preview": "Without moving on the map — the heat chooses the next step.",
+        "uiSection": "On the perimeter"
+      },
+      {
+        "text": "Retreat to the Magma Crucible",
+        "preview": "Leave the perimeter and keep current stress.",
+        "uiSection": "On the perimeter"
+      }
+    ]
+  },
   "shared/game_over": {
     "title": "Journey's End",
-    "body": "Something in you **gives** without a crash — emptiness that leaves no echo. The **Dungeon of Silence** **opens** and **closes** like a wound; your name becomes a whisper in the damp.\n\nIf there is thread, descend again: the abyss does not fill — **silence** does, and notes.",
+    "body": "Something in you **gives** without a crash — emptiness that leaves no echo. The **Dungeon of Silence** **opens** and **closes** like a wound; your name becomes a whisper in the damp.\n\n**Silence** noted what you reached. The **Echoes** keep that weight between runs — you can **invest** them or **start over** whenever you like.",
     "choices": [
+      {
+        "text": "Echo Shop"
+      },
       {
         "text": "Start over"
       }

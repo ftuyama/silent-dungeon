@@ -35,6 +35,7 @@ export { tickActiveBuffs };
 import {
   ATTR_LABEL,
   displayTitleForMark,
+  displayTitleForStoryPath,
   humanizeMarkId,
   RESOURCE_LABEL,
   RESOURCE_MAX,
@@ -273,6 +274,45 @@ function applyOne(
       if (!next) return state;
       return { ...state, inventory: next };
     }
+    case 'sellItem': {
+      const def = ctx.data.items[e.itemId];
+      const price = def?.sellPrice;
+      if (!def || price == null || price < 1) return state;
+
+      let party = state.party;
+      let inv = [...state.inventory];
+      for (let i = 0; i < party.length; i++) {
+        const member = party[i];
+        if (!member) continue;
+        for (const key of ['weaponId', 'armorId', 'relicId'] as const) {
+          if (member[key] !== e.itemId) continue;
+          if (!inv.includes(e.itemId)) inv = [...inv, e.itemId];
+          party = party.map((p, idx) => (idx === i ? { ...p, [key]: null } : p));
+        }
+      }
+
+      const nextInv = removeOneInventoryItem(inv, e.itemId);
+      if (!nextInv) return state;
+
+      const beforeGold = state.resources.gold ?? 0;
+      const gold = Math.max(0, Math.min(RESOURCE_MAX.gold, beforeGold + price));
+      const actual = gold - beforeGold;
+      bus.emit({ type: 'item.sold', itemId: e.itemId, gold: actual });
+      if (actual > 0) {
+        bus.emit({
+          type: 'statusHighlight',
+          variant: 'good',
+          title: `${RESOURCE_LABEL.gold} +${actual}`,
+          subtitle: resourceGainSubtitle('gold'),
+        });
+      }
+      return {
+        ...state,
+        party,
+        inventory: nextInv,
+        resources: { ...state.resources, gold },
+      };
+    }
     case 'equipItem': {
       const idx = e.partyIndex ?? 0;
       const target = state.party[idx];
@@ -441,6 +481,7 @@ function applyOne(
       const knownSpells = initialKnownSpellIds(pc, ctx.data);
       return {
         ...state,
+        flags: { ...state.flags, act1_class_chosen: true },
         party: [pc],
         playerName: heroName,
         level: 1,
@@ -515,6 +556,22 @@ function applyOne(
       }
       return s;
     }
+    case 'setStoryPath': {
+      const prev = state.storyPaths?.[e.id];
+      if (prev === e.value) return state;
+      const pathDef = ctx.data.storyPaths[e.id];
+      const decisionLabel = pathDef?.name ?? humanizeMarkId(e.id);
+      bus.emit({
+        type: 'statusHighlight',
+        variant: 'neutral',
+        title: displayTitleForStoryPath(e.id, e.value, ctx.data),
+        subtitle: t('engineNotify.storyPathSet', { decision: decisionLabel }),
+      });
+      return {
+        ...state,
+        storyPaths: { ...(state.storyPaths ?? {}), [e.id]: e.value },
+      };
+    }
     case 'adjustLeadStat': {
       const lead = state.party[0];
       if (!lead) return state;
@@ -560,6 +617,32 @@ function applyOne(
         party: state.party.map((p, i) =>
           i === 0 ? { ...p, maxHp: newMaxHp, hp: newHp } : p,
         ),
+      };
+    }
+    case 'adjustLeadHp': {
+      const lead = state.party[0];
+      if (!lead) return state;
+      const nextHp = Math.min(lead.maxHp, Math.max(0, lead.hp + e.delta));
+      if (nextHp === lead.hp) return state;
+      const lost = lead.hp - nextHp;
+      if (lost > 0) {
+        bus.emit({
+          type: 'statusHighlight',
+          variant: 'bad',
+          title: t('engineNotify.hpLoss', { amount: String(lost) }),
+          subtitle: t('engineNotify.hpLossHint'),
+        });
+      } else {
+        bus.emit({
+          type: 'statusHighlight',
+          variant: 'good',
+          title: t('engineNotify.hpGain', { amount: String(nextHp - lead.hp) }),
+          subtitle: t('engineNotify.hpGainHint'),
+        });
+      }
+      return {
+        ...state,
+        party: state.party.map((p, i) => (i === 0 ? { ...p, hp: nextHp } : p)),
       };
     }
     case 'grantTemporaryBuff': {

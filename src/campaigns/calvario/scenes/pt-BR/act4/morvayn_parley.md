@@ -2,7 +2,7 @@
 id: act4/morvayn_parley
 title: Parlamento com Morvayn
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 artKey: morvayn
 highlight: true
 choices:

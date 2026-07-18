@@ -107,6 +107,7 @@ function beginBattleEncounter(
       maxHp: def.maxHp,
       armorChipsRemaining: def.armorChips,
       stress: 0,
+      statusConditions: [],
     });
     log.push({
       kind: 'info',

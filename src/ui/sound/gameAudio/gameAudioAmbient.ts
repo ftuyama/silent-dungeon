@@ -1,6 +1,9 @@
 import {
   ACT3_DEPTH_MELODY,
+  ACT4_PEACE_MELODY,
+  ACT4_THRONE_MELODY,
   ACT5_ICE_MELODY,
+  ACT8_MAGMA_MELODY,
   ASH_SKY_MELODY,
   DIALOGUE_COMBAT_MELODY,
   ANCIENT_MACABRE_MELODY,
@@ -72,6 +75,12 @@ export class GameAmbientPlayer {
       case 'act3':
         this.playAmbientAct3Depths();
         break;
+      case 'act4':
+        this.playAmbientAct4Throne();
+        break;
+      case 'act4_peace':
+        this.playAmbientAct4Peace();
+        break;
       case 'act5':
         this.playAmbientAct5Ice();
         break;
@@ -89,6 +98,9 @@ export class GameAmbientPlayer {
         break;
       case 'ash_sky':
         this.playAmbientAshSky();
+        break;
+      case 'act8':
+        this.playAmbientAct8Magma();
         break;
     }
   }
@@ -835,6 +847,200 @@ export class GameAmbientPlayer {
   }
 
   /**
+   * Ato 4 (trono): parede grave e carregada — sub + saw dissonante, marcha pesada,
+   * melodia no registro baixo. Pré-boss opressivo, sem reutilizar o kit de `boss`.
+   */
+  private playAmbientAct4Throne(): void {
+    if (this.bgCleanup) return;
+    const ctx = this.host.ensureContext();
+    const master = ctx.createGain();
+    master.gain.value = this.host.gain(0.24);
+
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -22;
+    comp.knee.value = 8;
+    comp.ratio.value = 5.5;
+    comp.attack.value = 0.003;
+    comp.release.value = 0.32;
+    master.connect(comp);
+    comp.connect(ctx.destination);
+
+    const layers: { freq: number; level: number; type: OscillatorType }[] = [
+      { freq: 36.71, level: 0.28, type: 'sine' }, // D1 — sub
+      { freq: 55.0, level: 0.22, type: 'sawtooth' }, // A1
+      { freq: 73.42, level: 0.18, type: 'triangle' }, // D2
+      { freq: 77.78, level: 0.14, type: 'sawtooth' }, // D#2 — 2ª menor, peso
+      { freq: 92.5, level: 0.1, type: 'triangle' }, // F#2
+      { freq: 110.0, level: 0.07, type: 'sine' }, // A2
+    ];
+
+    const oscillators: OscillatorNode[] = [];
+    for (const { freq, level, type } of layers) {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = type;
+      o.frequency.value = freq;
+      o.detune.value = (Math.random() - 0.5) * 18;
+      g.gain.value = level;
+      o.connect(g);
+      g.connect(master);
+      o.start();
+      oscillators.push(o);
+    }
+
+    let t = 0;
+    this.bgPulseTimer = setInterval(() => {
+      const ac = this.host.getAudioContext();
+      if (!ac) return;
+      t += 0.03;
+      const breathe = 0.22 + Math.sin(t * 0.15) * 0.07 + Math.sin(t * 0.05) * 0.04;
+      try {
+        master.gain.setTargetAtTime(this.host.gain(breathe), ac.currentTime, 0.55);
+      } catch {
+        /* noop */
+      }
+    }, 300);
+
+    let step = 0;
+    const march = 340;
+    this.bgRhythmTimer = setInterval(() => {
+      const ac = this.host.getAudioContext();
+      if (!ac) return;
+      const when = ac.currentTime + 0.02;
+      const s = step % 8;
+
+      if (s === 0 || s === 3 || s === 5) {
+        triggerKick(ctx, master, when, this.host.gain(s === 0 ? 0.26 : 0.18));
+      }
+      if (s === 4) {
+        triggerSnare(ctx, master, when, this.host.gain(0.14));
+      }
+      if (s === 2 || s === 6) {
+        triggerHat(ctx, master, when, this.host.gain(0.04));
+      }
+
+      const note = ACT4_THRONE_MELODY[step % ACT4_THRONE_MELODY.length]!;
+      triggerPluck(ctx, master, when, note, this.host.gain(0.24), 'sawtooth', 1.9);
+      triggerPluck(ctx, master, when + 0.04, note * 0.5, this.host.gain(0.2), 'sine', 2.4);
+      triggerPluck(ctx, master, when + 0.08, note * 0.25, this.host.gain(0.14), 'sine', 2.8);
+      if (s === 0 || s === 4) {
+        triggerPluck(ctx, master, when + 0.12, note * 1.5, this.host.gain(0.07), 'triangle', 1.1);
+      }
+      step++;
+    }, march);
+
+    this.bgCleanup = () => {
+      if (this.bgPulseTimer) {
+        clearInterval(this.bgPulseTimer);
+        this.bgPulseTimer = null;
+      }
+      if (this.bgRhythmTimer) {
+        clearInterval(this.bgRhythmTimer);
+        this.bgRhythmTimer = null;
+      }
+      for (const o of oscillators) {
+        try {
+          o.stop();
+        } catch {
+          /* noop */
+        }
+      }
+      try {
+        master.disconnect();
+        comp.disconnect();
+      } catch {
+        /* noop */
+      }
+    };
+  }
+
+  /** Pós-vitória no trono: drones graves sem bateria, melodia lenta e baixa. */
+  private playAmbientAct4Peace(): void {
+    if (this.bgCleanup) return;
+    const ctx = this.host.ensureContext();
+    const master = ctx.createGain();
+    master.gain.value = this.host.gain(0.16);
+
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -32;
+    comp.knee.value = 14;
+    comp.ratio.value = 3;
+    comp.attack.value = 0.004;
+    comp.release.value = 0.45;
+    master.connect(comp);
+    comp.connect(ctx.destination);
+
+    const layers: { freq: number; level: number; type: OscillatorType }[] = [
+      { freq: 36.71, level: 0.18, type: 'sine' }, // D1
+      { freq: 55.0, level: 0.12, type: 'sine' }, // A1
+      { freq: 73.42, level: 0.1, type: 'triangle' }, // D2
+      { freq: 110.0, level: 0.06, type: 'sine' }, // A2
+    ];
+
+    const oscillators: OscillatorNode[] = [];
+    for (const { freq, level, type } of layers) {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = type;
+      o.frequency.value = freq;
+      o.detune.value = (Math.random() - 0.5) * 10;
+      g.gain.value = level;
+      o.connect(g);
+      g.connect(master);
+      o.start();
+      oscillators.push(o);
+    }
+
+    let t = 0;
+    this.bgPulseTimer = setInterval(() => {
+      const ac = this.host.getAudioContext();
+      if (!ac) return;
+      t += 0.025;
+      const breathe = 0.14 + Math.sin(t * 0.12) * 0.04 + Math.sin(t * 0.04) * 0.025;
+      try {
+        master.gain.setTargetAtTime(this.host.gain(breathe), ac.currentTime, 0.75);
+      } catch {
+        /* noop */
+      }
+    }, 400);
+
+    let melodyStep = 0;
+    this.bgRhythmTimer = setInterval(() => {
+      const ac = this.host.getAudioContext();
+      if (!ac) return;
+      const note = ACT4_PEACE_MELODY[melodyStep % ACT4_PEACE_MELODY.length]!;
+      melodyStep++;
+      const when = ac.currentTime + 0.02;
+      triggerPluck(ctx, master, when, note, this.host.gain(0.11), 'sine', 2.6);
+      triggerPluck(ctx, master, when + 0.06, note * 0.5, this.host.gain(0.07), 'sine', 3.2);
+    }, 2100);
+
+    this.bgCleanup = () => {
+      if (this.bgPulseTimer) {
+        clearInterval(this.bgPulseTimer);
+        this.bgPulseTimer = null;
+      }
+      if (this.bgRhythmTimer) {
+        clearInterval(this.bgRhythmTimer);
+        this.bgRhythmTimer = null;
+      }
+      for (const o of oscillators) {
+        try {
+          o.stop();
+        } catch {
+          /* noop */
+        }
+      }
+      try {
+        master.disconnect();
+        comp.disconnect();
+      } catch {
+        /* noop */
+      }
+    };
+  }
+
+  /**
    * Ato 5: camada fria e espaçada, com lead cristalino.
    */
   private playAmbientAct5Ice(): void {
@@ -1367,6 +1573,95 @@ export class GameAmbientPlayer {
       try {
         droneBus.disconnect();
         melodyBus.disconnect();
+        comp.disconnect();
+      } catch {
+        /* noop */
+      }
+    };
+  }
+
+  /**
+   * Act8 magma: drones graves e quentes + melodia lenta com trítonos — calor que respira sob a pedra.
+   */
+  private playAmbientAct8Magma(): void {
+    if (this.bgCleanup) return;
+    const ctx = this.host.ensureContext();
+    const master = ctx.createGain();
+    master.gain.value = this.host.gain(0.22);
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -26;
+    comp.knee.value = 10;
+    comp.ratio.value = 3.6;
+    comp.attack.value = 0.004;
+    comp.release.value = 0.3;
+    master.connect(comp);
+    comp.connect(ctx.destination);
+
+    const layers: { freq: number; level: number; type: OscillatorType }[] = [
+      { freq: 41.2, level: 0.22, type: 'sine' },
+      { freq: 55.0, level: 0.18, type: 'triangle' },
+      { freq: 82.41, level: 0.14, type: 'sine' },
+      { freq: 103.83, level: 0.1, type: 'sawtooth' },
+      { freq: 123.47, level: 0.08, type: 'triangle' },
+    ];
+
+    const oscillators: OscillatorNode[] = [];
+    for (const { freq, level, type } of layers) {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = type;
+      o.frequency.value = freq;
+      o.detune.value = (Math.random() - 0.5) * 28;
+      g.gain.value = level * 0.5;
+      o.connect(g);
+      g.connect(master);
+      o.start();
+      oscillators.push(o);
+    }
+
+    let t = 0;
+    this.bgPulseTimer = setInterval(() => {
+      const ac = this.host.getAudioContext();
+      if (!ac) return;
+      t += 0.034;
+      const breathe = 0.18 + Math.sin(t * 0.27) * 0.12 + Math.sin(t * 0.07) * 0.06;
+      try {
+        master.gain.setTargetAtTime(this.host.gain(breathe), ac.currentTime, 0.5);
+      } catch {
+        /* noop */
+      }
+    }, 320);
+
+    let melodyStep = 0;
+    this.bgRhythmTimer = setInterval(() => {
+      const ac = this.host.getAudioContext();
+      if (!ac) return;
+      const note = ACT8_MAGMA_MELODY[melodyStep % ACT8_MAGMA_MELODY.length];
+      melodyStep++;
+      const when = ac.currentTime + 0.02;
+      triggerPluck(ctx, master, when, note, this.host.gain(0.2), 'sawtooth', 2.6);
+      triggerPluck(ctx, master, when + 0.14, note * 0.5, this.host.gain(0.13), 'triangle', 2.2);
+      triggerHat(ctx, master, when + 0.4, this.host.gain(melodyStep % 4 === 0 ? 0.05 : 0.03));
+    }, 1180);
+
+    this.bgCleanup = () => {
+      if (this.bgPulseTimer) {
+        clearInterval(this.bgPulseTimer);
+        this.bgPulseTimer = null;
+      }
+      if (this.bgRhythmTimer) {
+        clearInterval(this.bgRhythmTimer);
+        this.bgRhythmTimer = null;
+      }
+      for (const o of oscillators) {
+        try {
+          o.stop();
+        } catch {
+          /* noop */
+        }
+      }
+      try {
+        master.disconnect();
         comp.disconnect();
       } catch {
         /* noop */

@@ -438,7 +438,7 @@ describe('extractLethalGhosts', () => {
 
   it('returns ghost info for lethal damage with enemy index', () => {
     const c = combatStub({
-      enemies: [{ defId: 'gob', hp: 0, maxHp: 10, armorChipsRemaining: 0, stress: 0 }],
+      enemies: [{ defId: 'gob', hp: 0, maxHp: 10, armorChipsRemaining: 0, stress: 0, statusConditions: [] }],
     });
     const entries: CombatLogEntry[] = [
       {

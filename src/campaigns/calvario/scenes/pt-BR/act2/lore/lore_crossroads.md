@@ -7,17 +7,29 @@ choices:
   - text: "Aceitar o nome de Cavaleiro caído (cavaleiro)"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
-    condition: { class: knight }
+    condition:
+      all:
+        - { class: knight }
+        - not:
+            path: fallen
     preview: "Provação · anjo caído; título só se venceres"
   - text: "Aceitar o título de Mago das trevas (arcanista)"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
-    condition: { class: mage }
+    condition:
+      all:
+        - { class: mage }
+        - not:
+            path: dark
     preview: "Provação · anjo caído; título só se venceres"
   - text: "Aceitar o nome de Atirador (arqueiro)"
     uiSection: "Juramento"
     next: act2/encounters/trial_fallen_angel_gate
-    condition: { class: archer }
+    condition:
+      all:
+        - { class: archer }
+        - not:
+            path: marksman
     preview: "Provação · anjo caído; título só se venceres"
   - text: "Voltar-se ao Clérigo penitente"
     uiSection: "Juramento"

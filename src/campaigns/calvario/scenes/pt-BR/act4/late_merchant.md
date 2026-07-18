@@ -7,6 +7,7 @@ title: Mercador do trono
 choices:
   - text: "Comprar Poção Rubra (14 ouro) (x2)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act4/late_merchant
     condition:
       all:
@@ -18,6 +19,7 @@ choices:
       - { op: setFlag, key: act4_merch_hp_1, value: true }
   - text: "Comprar Poção Rubra (14 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act4/late_merchant
     condition:
       all:
@@ -30,6 +32,7 @@ choices:
       - { op: setFlag, key: act4_merch_hp_2, value: true }
   - text: "Comprar Tônico Azul (18 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act4/late_merchant
     condition:
       all:
@@ -41,6 +44,7 @@ choices:
       - { op: setFlag, key: act4_merch_mana_1, value: true }
   - text: "Comprar Hidromel (12 ouro) (x1)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act4/late_merchant
     condition:
       all:
@@ -50,8 +54,25 @@ choices:
       - { op: addResource, resource: gold, delta: -12 }
       - { op: grantItem, itemId: potion_stress }
       - { op: setFlag, key: act4_merch_stress_1, value: true }
+  - text: "Comprar Amuleto do Passo do Vento (−8 ouro)"
+    uiSection: "À venda"
+    uiSectionIcon: shop
+    next: act4/late_merchant
+    visibleWhen:
+      all:
+        - { noItem: wind_step_charm }
+        - { noFlag: act4_merch_wind_step }
+    condition: { resource: { gold: { gte: 8 } } }
+    showWhenLocked: true
+    lockedHint: "Requer 8 ouro."
+    preview: "Relíquia · AGI e sorte"
+    effects:
+      - { op: addResource, resource: gold, delta: -8 }
+      - { op: grantItem, itemId: wind_step_charm }
+      - { op: setFlag, key: act4_merch_wind_step, value: true }
   - text: "Kit de campo da Vigília (−7 ouro)"
     uiSection: "À venda"
+    uiSectionIcon: shop
     next: act4/late_merchant
     condition:
       all:
@@ -66,6 +87,7 @@ choices:
     preview: "Suprimento · selo da Vigília (uma vez nesta banca)"
   - text: "Afastar-me do mercador"
     uiSection: "Conversa"
+    uiSectionIcon: talk
     next: act4/throne/throne_gate
 onEnter: []
 ---

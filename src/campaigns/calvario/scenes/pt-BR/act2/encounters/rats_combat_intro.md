@@ -5,7 +5,8 @@ ambientTheme: act2
 artKey: rats
 title: Antes do salto
 choices:
-  - text: "Lutar!"
+  - text: "[%] Lutar!"
+    preview: "Dados e garras — vitória abre o hub."
     effects:
       - op: startCombat
         encounterId: rats_cellar
@@ -16,4 +17,4 @@ onEnter: []
 ---
 O chão **vibra** — **garras** a escavar pedra mole. Os ratos **não fogem**; avançam em arco, como se alguém os ensinara **formação**.
 
-Aperta os dentes. Os **dados** vão contar o que a carne não quer admitir.
+Aperta os dentes. Os **dados** vão contar o que a carne não quer admitir. Se cheirou o ar, já sabe quantos dentes o esperam; se escutou, o passo deles já é seu.

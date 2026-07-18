@@ -150,7 +150,7 @@ export const act4_morvayn_parley: DialogueEnemyDef = {
           },
           {
             text:
-              'Engolir seco e refazer o tom: baixar volume, pedir direcção, admitir que não sabes o custo inteiro.',
+              'Engolir seco e refazer o tom: baixar volume, pedir direção, admitir que não sabes o custo inteiro.',
             resolution: {
               kind: 'skill',
               attr: 'mind',

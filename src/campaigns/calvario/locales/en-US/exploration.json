@@ -177,5 +177,34 @@
     "d6_gate_to_altar": {
       "text": "Return to the will altar"
     }
+  },
+  "act8_magma": {
+    "d8_rim_to_slag": {
+      "text": "Follow the slag shelf"
+    },
+    "d8_rim_to_merchant": {
+      "text": "Descend to the ember niche"
+    },
+    "d8_slag_to_rim": {
+      "text": "Return to the crucible rim"
+    },
+    "d8_slag_to_bridge": {
+      "text": "Cross the black stone bridge"
+    },
+    "d8_merchant_to_rim": {
+      "text": "Climb back to the rim"
+    },
+    "d8_merchant_to_bridge": {
+      "text": "Follow the smell of hot metal"
+    },
+    "d8_bridge_to_slag": {
+      "text": "Withdraw to the slag shelf"
+    },
+    "d8_bridge_to_heart": {
+      "text": "Advance to the crucible heart"
+    },
+    "d8_heart_to_bridge": {
+      "text": "Withdraw across the bridge"
+    }
   }
 }

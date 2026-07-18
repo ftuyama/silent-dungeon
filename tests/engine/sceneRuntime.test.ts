@@ -103,6 +103,39 @@ describe('buildStoryChoiceRows', () => {
       'E2',
     ]);
   });
+
+  it('omits when visibleWhen fails even with showWhenLocked', () => {
+    const choices: Choice[] = [
+      {
+        text: 'Shrine',
+        next: 'shrine',
+        visibleWhen: { noFlag: 'act3_shrine_done' },
+        condition: { level: { gte: 8 } },
+        showWhenLocked: true,
+        lockedHint: 'Precisas de nível 8.',
+        effects: [],
+      },
+    ];
+    const done = { ...baseState(10), flags: { act3_shrine_done: true } };
+    expect(buildStoryChoiceRows(choices, done)).toHaveLength(0);
+  });
+
+  it('teases level lock when visibleWhen passes and condition fails', () => {
+    const choices: Choice[] = [
+      {
+        text: 'Shrine',
+        next: 'shrine',
+        visibleWhen: { noFlag: 'act3_shrine_done' },
+        condition: { level: { gte: 8 } },
+        showWhenLocked: true,
+        lockedHint: 'Precisas de nível 8.',
+        effects: [],
+      },
+    ];
+    const rows = buildStoryChoiceRows(choices, baseState(3));
+    expect(rows).toHaveLength(1);
+    expect(rows[0]?.kind).toBe('locked');
+  });
 });
 
 describe('filterChoices', () => {

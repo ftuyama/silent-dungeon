@@ -15,11 +15,6 @@ export function slotStorageKey(campaignId: string, slot: number): string {
   return `${campaignId}_save_v1_s${slot}`;
 }
 
-/** localStorage: último dia (YYYY-MM-DD) em que o bônus de retorno foi aplicado neste slot. */
-export function slotReturnRewardDateKey(campaignId: string, slot: number): string {
-  return `${campaignId}_return_reward_date_v2_s${slot}`;
-}
-
 export function readRawSlot(campaignId: string, slot: number): string | null {
   if (slot < 1 || slot > SAVE_SLOT_COUNT_DEV) return null;
   try {
@@ -56,7 +51,7 @@ function previewTitle(slot: number, p: SlotPreview): string {
     case 'wrongCampaign':
       return `${t('save.slotTitle', { slot: String(slot) })} — ${t('save.wrongCampaign')}`;
     case 'ok':
-      return `${t('save.slotTitle', { slot: String(slot) })} — ${p.playerName} · ${t('save.chapter', { chapter: String(p.chapter) })} · ${t('save.level', { level: String(p.level) })}`;
+      return `${t('save.slotTitle', { slot: String(slot) })} — ${p.playerName} · ${t('save.level', { level: String(p.level) })} · ${t('save.chapter', { chapter: String(p.chapter) })}`;
   }
 }
 
@@ -93,14 +88,14 @@ export function buildMenuSaveSlot(
     nameEl.textContent = preview.playerName;
     const stats = document.createElement('div');
     stats.className = 'menu-save-slot-stats';
-    const cap = document.createElement('span');
-    cap.textContent = t('save.chapter', { chapter: String(preview.chapter) });
+    const lv = document.createElement('span');
+    lv.textContent = t('save.level', { level: String(preview.level) });
     const sep = document.createElement('span');
     sep.className = 'menu-save-slot-stats-sep';
     sep.textContent = '·';
-    const lv = document.createElement('span');
-    lv.textContent = t('save.level', { level: String(preview.level) });
-    stats.append(cap, sep, lv);
+    const cap = document.createElement('span');
+    cap.textContent = t('save.chapter', { chapter: String(preview.chapter) });
+    stats.append(lv, sep, cap);
     details.append(nameEl, stats);
   } else {
     const msg = document.createElement('div');

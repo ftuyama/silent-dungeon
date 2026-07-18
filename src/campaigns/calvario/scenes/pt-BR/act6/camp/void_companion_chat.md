@@ -44,7 +44,7 @@ choices:
     uiSection: "Você e eles"
     next: act6/camp/void_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: mage } ] }
-  - text: "Tomás: «Fé em sítio sem eco — é coragem ou hábito?»"
+  - text: "Tomás: «Fé em lugar sem eco — é coragem ou hábito?»"
     uiSection: "Você e eles"
     next: act6/camp/void_tomas_fireside
     condition: { all: [ { companionInParty: squire_tomas }, { class: cleric } ] }

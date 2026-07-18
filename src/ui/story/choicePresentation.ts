@@ -12,7 +12,9 @@ export type ChoiceBadgeModifier =
   | 'at'
   | 'gt'
   | 'tilde'
-  | 'pct';
+  | 'pct'
+  | 'chapterDown'
+  | 'chapterUp';
 
 const BADGE_CHAR_TO_MODIFIER: Record<string, ChoiceBadgeModifier> = {
   '#': 'hash',
@@ -31,6 +33,7 @@ export type ChoiceToneClass =
   | 'choice--tone-combat'
   | 'choice--tone-rest'
   | 'choice--tone-camp'
+  | 'choice--tone-chapter-advance'
   | 'choice--tone-explore';
 
 export type ChoicePresentation = {
@@ -42,9 +45,18 @@ export type ChoicePresentation = {
   toneClass: ChoiceToneClass | null;
 };
 
+export type ChoicePresentationOpts = {
+  syntheticExplore?: boolean;
+  /** Capítulo actual do estado; necessário para inferir avanço/regresso via `setChapter`. */
+  currentChapter?: number;
+};
+
+export type ChapterGate = 'advance' | 'regress';
+
 /**
  * Precedência do tom do botão (um único `choice--tone-*`):
- * risk (!) > combat (startCombat ou [%]) > rest (campRest ou [~]) > camp ([@]) > explore ([>] ou setExploration ou movimento sintético).
+ * risk (!) > combat (startCombat ou [%]) > rest (campRest ou [~]) > camp ([@]) >
+ * chapterAdvance (setChapter > current) > explore ([>] ou setExploration ou movimento sintético).
  */
 export function parseChoiceLeadBadge(text: string): {
   badgeChar: string | null;
@@ -78,9 +90,24 @@ export function inferChoiceToneFromEffects(effects: Effect[]): 'combat' | 'rest'
   return found;
 }
 
-function toneClassFromKind(
-  kind: 'risk' | 'combat' | 'rest' | 'camp' | 'explore'
-): ChoiceToneClass {
+/** Primeiro `setChapter` vs capítulo actual; sem `currentChapter` → null. */
+export function inferChapterGateFromEffects(
+  effects: Effect[],
+  currentChapter: number | undefined
+): ChapterGate | null {
+  if (currentChapter === undefined) return null;
+  for (const e of effects) {
+    if (e.op !== 'setChapter') continue;
+    if (e.chapter > currentChapter) return 'advance';
+    if (e.chapter < currentChapter) return 'regress';
+    return null;
+  }
+  return null;
+}
+
+type ToneKind = 'risk' | 'combat' | 'rest' | 'camp' | 'chapterAdvance' | 'explore';
+
+function toneClassFromKind(kind: ToneKind): ChoiceToneClass {
   switch (kind) {
     case 'risk':
       return 'choice--tone-risk';
@@ -90,6 +117,8 @@ function toneClassFromKind(
       return 'choice--tone-rest';
     case 'camp':
       return 'choice--tone-camp';
+    case 'chapterAdvance':
+      return 'choice--tone-chapter-advance';
     case 'explore':
       return 'choice--tone-explore';
   }
@@ -97,7 +126,7 @@ function toneClassFromKind(
 
 export function resolveChoicePresentation(
   choice: Choice,
-  opts?: { syntheticExplore?: boolean }
+  opts?: ChoicePresentationOpts
 ): ChoicePresentation {
   const { badgeChar, rawBadge, rest } = parseChoiceLeadBadge(choice.text);
   const bodyText = rawBadge !== null ? rest : choice.text;
@@ -110,8 +139,9 @@ export function resolveChoicePresentation(
 
   const effectTone = inferChoiceToneFromEffects(choice.effects);
   const exploreFromEffect = effectTone === 'explore' || opts?.syntheticExplore === true;
+  const chapterGate = inferChapterGateFromEffects(choice.effects, opts?.currentChapter);
 
-  let toneKind: 'risk' | 'combat' | 'rest' | 'camp' | 'explore' | null = null;
+  let toneKind: ToneKind | null = null;
 
   if (badgeChar === '!') {
     toneKind = 'risk';
@@ -121,6 +151,8 @@ export function resolveChoicePresentation(
     toneKind = 'rest';
   } else if (badgeChar === '@') {
     toneKind = 'camp';
+  } else if (chapterGate === 'advance') {
+    toneKind = 'chapterAdvance';
   } else if (badgeChar === '>' || exploreFromEffect) {
     toneKind = 'explore';
   }
@@ -138,10 +170,18 @@ export function resolveChoicePresentation(
     if (weakCombatBadge) {
       outBadge = { label: '[%]', modifier: 'pct' };
     }
+  } else if (toneKind === 'chapterAdvance') {
+    const weakChapterBadge =
+      badge === null || badge.modifier === 'tilde' || badge.modifier === 'gt';
+    if (weakChapterBadge) {
+      outBadge = { label: '[↓]', modifier: 'chapterDown' };
+    }
   } else if (badge === null && toneKind === 'rest') {
     outBadge = { label: '[~]', modifier: 'tilde' };
   } else if (badge === null && toneKind === 'explore') {
     outBadge = { label: '[>]', modifier: 'gt' };
+  } else if (chapterGate === 'regress' && toneKind === null && badge === null) {
+    outBadge = { label: '[↑]', modifier: 'chapterUp' };
   }
 
   return { bodyText, badge: outBadge, toneClass };
@@ -152,7 +192,7 @@ export function applyChoiceButtonLabel(
   btn: HTMLButtonElement,
   navNum: number,
   choice: Choice,
-  opts?: { syntheticExplore?: boolean }
+  opts?: ChoicePresentationOpts
 ): void {
   const { bodyText, badge, toneClass } = resolveChoicePresentation(choice, opts);
   if (toneClass) {

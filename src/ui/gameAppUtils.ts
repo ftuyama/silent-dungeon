@@ -99,6 +99,14 @@ export function markBadgeIconSvg(markId: string): string {
   const byMark: Partial<Record<string, IconId>> = {
     act1_surface_whisper_intel: 'scroll',
     act1_surface_whisper_taint: 'corruption',
+    act1_wall_memory: 'scroll',
+    act1_door_runes: 'scroll',
+    act1_mirror_shard: 'relic',
+    act1_entrance_mirror: 'relic',
+    act1_hand_mirror: 'relic',
+    act2_rats_listen: 'person',
+    act2_rats_smell: 'corruption',
+    act2_cruzeiro_marks: 'scroll',
     act3_cult_flight: 'map',
     act3_well_truth: 'scroll',
     act3_well_snare: 'corruption',
@@ -141,10 +149,21 @@ export function markBadgeIconSvg(markId: string): string {
     tomas_camp_oath: 'person',
     tomas_void_duty: 'person',
     vetrnax_slain: 'weapon',
+    magma_lord_slain: 'weapon',
     wound_mire_leg: 'corruption',
   };
   const id = byMark[markId] ?? 'tier';
   return icons[id];
+}
+
+/** Ícone para badge de path narrativo no diário. */
+export function storyPathBadgeIconSvg(pathId: string, value: string): string {
+  if (pathId === 'throne') {
+    if (value === 'sealed') return icons.faith;
+    if (value === 'pact') return icons.corruption;
+    if (value === 'slain') return icons.weapon;
+  }
+  return icons.scroll;
 }
 
 /** One mechanical description line for the sidebar. */
@@ -166,6 +185,11 @@ export function spellSidebarMechanicsLine(sp: SpellDef): string {
     return t('sidebar.spellMechanicsHeadshot');
   }
   if (sp.spellKind === 'damage_all_enemies') {
+    if (sp.classId === 'mage') {
+      return sp.base > 0
+        ? t('sidebar.spellMechanicsMageAoE', { base: String(sp.base), dice: String(sp.dice) })
+        : t('sidebar.spellMechanicsMageAoENoBase', { dice: String(sp.dice) });
+    }
     return t('sidebar.spellMechanicsArrowRain', { dice: String(sp.dice) });
   }
   if (sp.spellKind === 'buff_armor_class') {

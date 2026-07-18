@@ -2,7 +2,7 @@
 id: act4/throne/throne_observe_mind_ok
 title: Silêncio lido
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Continuar a observar o trono"
     next: act4/throne/throne_observe

@@ -2,7 +2,7 @@
 id: shared/kaelsworn_post_act4
 title: Ferro no limiar
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4_peace
 repeatOnEnter:
   - { op: setFlag, key: kr_won_act4, value: true }
 onEnter:

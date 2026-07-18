@@ -1286,6 +1286,148 @@ export class GameSfxPlayer {
     airSrc.stop(t0 + airDur + 0.02);
   }
 
+  /**
+   * Transição para capítulo mais profundo — drone descendente, passos graves e ar filtrado (~2,4s).
+   * Disparado em choices com `setChapter` > capítulo actual.
+   */
+  playChapterDescent(): void {
+    const ctx = this.host.ensureContext();
+    const g = this.host.gain(0.56);
+    if (g <= 0) return;
+    const t0 = ctx.currentTime;
+    const end = t0 + 2.45;
+
+    const impact = ctx.createOscillator();
+    const gImpact = ctx.createGain();
+    impact.type = 'triangle';
+    impact.frequency.setValueAtTime(110, t0);
+    impact.frequency.exponentialRampToValueAtTime(52, t0 + 0.55);
+    gImpact.gain.setValueAtTime(g * 0.55, t0);
+    gImpact.gain.exponentialRampToValueAtTime(0.001, t0 + 0.62);
+    impact.connect(gImpact);
+    gImpact.connect(ctx.destination);
+    impact.start(t0);
+    impact.stop(t0 + 0.65);
+
+    const hum = ctx.createOscillator();
+    const gHum = ctx.createGain();
+    hum.type = 'sine';
+    hum.frequency.setValueAtTime(58, t0);
+    hum.frequency.exponentialRampToValueAtTime(36, t0 + 1.35);
+    hum.frequency.exponentialRampToValueAtTime(31, end - 0.2);
+    gHum.gain.setValueAtTime(0.001, t0);
+    gHum.gain.exponentialRampToValueAtTime(g * 0.42, t0 + 0.38);
+    gHum.gain.linearRampToValueAtTime(g * 0.48, t0 + 1.1);
+    gHum.gain.exponentialRampToValueAtTime(0.001, end);
+    hum.connect(gHum);
+    gHum.connect(ctx.destination);
+    hum.start(t0);
+    hum.stop(end + 0.04);
+
+    const humBeat = ctx.createOscillator();
+    const gBeat = ctx.createGain();
+    humBeat.type = 'sine';
+    humBeat.frequency.setValueAtTime(59.2, t0);
+    humBeat.frequency.exponentialRampToValueAtTime(37.1, t0 + 1.35);
+    humBeat.frequency.exponentialRampToValueAtTime(32.2, end - 0.2);
+    gBeat.gain.setValueAtTime(0.001, t0);
+    gBeat.gain.exponentialRampToValueAtTime(g * 0.24, t0 + 0.42);
+    gBeat.gain.exponentialRampToValueAtTime(0.001, end);
+    humBeat.connect(gBeat);
+    gBeat.connect(ctx.destination);
+    humBeat.start(t0);
+    humBeat.stop(end + 0.04);
+
+    const sub = ctx.createOscillator();
+    const gSub = ctx.createGain();
+    sub.type = 'sine';
+    sub.frequency.setValueAtTime(29, t0 + 0.08);
+    sub.frequency.exponentialRampToValueAtTime(18, t0 + 1.55);
+    sub.frequency.exponentialRampToValueAtTime(16.5, end - 0.25);
+    gSub.gain.setValueAtTime(0.001, t0 + 0.08);
+    gSub.gain.exponentialRampToValueAtTime(g * 0.34, t0 + 0.45);
+    gSub.gain.exponentialRampToValueAtTime(0.001, end);
+    sub.connect(gSub);
+    gSub.connect(ctx.destination);
+    sub.start(t0 + 0.08);
+    sub.stop(end + 0.04);
+
+    const steps = [0.22, 0.78, 1.34];
+    for (let i = 0; i < steps.length; i++) {
+      const st = t0 + steps[i]!;
+      const o = ctx.createOscillator();
+      const gn = ctx.createGain();
+      o.type = 'triangle';
+      o.frequency.setValueAtTime(92 - i * 8, st);
+      o.frequency.exponentialRampToValueAtTime(42 - i * 4, st + 0.28);
+      gn.gain.setValueAtTime(0.001, st);
+      gn.gain.exponentialRampToValueAtTime(g * (0.22 - i * 0.04), st + 0.04);
+      gn.gain.exponentialRampToValueAtTime(0.001, st + 0.42);
+      o.connect(gn);
+      gn.connect(ctx.destination);
+      o.start(st);
+      o.stop(st + 0.45);
+    }
+
+    const tensionNotes: { f: number; at: number; dur: number; w: number }[] = [
+      { f: 293.66, at: 0.12, dur: 0.72, w: 0.09 },
+      { f: 277.18, at: 0.52, dur: 0.78, w: 0.1 },
+      { f: 246.94, at: 0.95, dur: 0.82, w: 0.11 },
+      { f: 220.0, at: 1.42, dur: 0.9, w: 0.12 },
+    ];
+    for (const { f, at, dur, w } of tensionNotes) {
+      const o = ctx.createOscillator();
+      const gn = ctx.createGain();
+      o.type = 'triangle';
+      o.frequency.value = f;
+      const s = t0 + at;
+      gn.gain.setValueAtTime(0.001, s);
+      gn.gain.exponentialRampToValueAtTime(g * w, s + 0.05);
+      gn.gain.exponentialRampToValueAtTime(g * w * 0.55, s + dur * 0.55);
+      gn.gain.exponentialRampToValueAtTime(0.001, s + dur);
+      o.connect(gn);
+      gn.connect(ctx.destination);
+      o.start(s);
+      o.stop(s + dur + 0.04);
+    }
+
+    const wrong = ctx.createOscillator();
+    const gWrong = ctx.createGain();
+    wrong.type = 'sine';
+    wrong.frequency.setValueAtTime(311.13, t0 + 0.65);
+    wrong.frequency.exponentialRampToValueAtTime(233.08, t0 + 1.75);
+    gWrong.gain.setValueAtTime(0.001, t0 + 0.65);
+    gWrong.gain.exponentialRampToValueAtTime(g * 0.07, t0 + 0.82);
+    gWrong.gain.exponentialRampToValueAtTime(0.001, t0 + 1.85);
+    wrong.connect(gWrong);
+    gWrong.connect(ctx.destination);
+    wrong.start(t0 + 0.65);
+    wrong.stop(t0 + 1.9);
+
+    const airDur = 1.85;
+    const airLen = Math.ceil(ctx.sampleRate * airDur);
+    const airBuf = ctx.createBuffer(1, airLen, ctx.sampleRate);
+    const air = airBuf.getChannelData(0);
+    for (let i = 0; i < airLen; i++) air[i] = Math.random() * 2 - 1;
+    const airSrc = ctx.createBufferSource();
+    airSrc.buffer = airBuf;
+    const bp = ctx.createBiquadFilter();
+    bp.type = 'bandpass';
+    bp.Q.value = 0.95;
+    bp.frequency.setValueAtTime(520, t0 + 0.15);
+    bp.frequency.exponentialRampToValueAtTime(160, t0 + airDur);
+    const gAir = ctx.createGain();
+    gAir.gain.setValueAtTime(0.001, t0 + 0.15);
+    gAir.gain.linearRampToValueAtTime(g * 0.11, t0 + 0.45);
+    gAir.gain.linearRampToValueAtTime(g * 0.14, t0 + 1.05);
+    gAir.gain.exponentialRampToValueAtTime(0.001, t0 + airDur);
+    airSrc.connect(bp);
+    bp.connect(gAir);
+    gAir.connect(ctx.destination);
+    airSrc.start(t0 + 0.15);
+    airSrc.stop(t0 + airDur + 0.02);
+  }
+
   /** Twist de boss — abertura “sino” inharmónico (senos, sensação errada) + três acordes dissonantes. */
   playBossTwistRevelation(): void {
     const ctx = this.host.ensureContext();

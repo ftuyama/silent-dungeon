@@ -31,9 +31,13 @@ import { applyChoiceButtonLabel } from './story/choicePresentation.ts';
 import {
   groupStoryChoiceRowsByUiSection,
   normalizeChoiceUiSection,
+  partitionChoiceRowsForDisplay,
   shouldUseChoiceSectionLayout,
+  UI_SECTION_ICON_SVG,
 } from './story/choiceSections.ts';
+import { iconWrap } from './icons/index.ts';
 import { DAILY_COMBAT_CHOICE_ID, dailyCombatCopyForChapter } from './gameAppDailyCombat.ts';
+import { buildMerchantSellRows } from './story/merchantSell.ts';
 
 export { isCampEquipmentScene } from './story/storyCampEquipmentPanel.ts';
 export {
@@ -714,9 +718,14 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       ? buildExplorationMovementRows(ctx.state, ctx.registry)
       : [];
   const explorationMoveCount = explorationMoves.length;
+  const merchantSells =
+    ctx.scene.frontmatter.ambientTheme === 'merchant'
+      ? buildMerchantSellRows(ctx.state, ctx.registry.data, ctx.scene.id)
+      : [];
   let choiceRows = [
     ...explorationMoves,
     ...buildStoryChoiceRows(ctx.scene.frontmatter.choices, ctx.state),
+    ...merchantSells,
   ];
   if (ctx.dailyCombat) {
     const copy = dailyCombatCopyForChapter(ctx.dailyCombat.chapter);
@@ -756,7 +765,10 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       btn.disabled = true;
       btn.classList.add('choice--locked');
       btn.title = row.hint;
-      applyChoiceButtonLabel(btn, navNum, row.choice, { syntheticExplore });
+      applyChoiceButtonLabel(btn, navNum, row.choice, {
+        syntheticExplore,
+        currentChapter: ctx.state.chapter,
+      });
       const chLocked = row.choice;
       if (chLocked.preview) {
         const prev = document.createElement('span');
@@ -775,7 +787,10 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     const ch = row.choice;
     const runChoice = (): void => ctx.navigation.applyChoice(ch);
     if (navNum < 10) btn.title = storyQuickKeyHint(navNum);
-    applyChoiceButtonLabel(btn, navNum, ch, { syntheticExplore });
+    applyChoiceButtonLabel(btn, navNum, ch, {
+      syntheticExplore,
+      currentChapter: ctx.state.chapter,
+    });
     if (ch.preview) {
       const span = document.createElement('span');
       span.className = 'preview';
@@ -786,6 +801,33 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     parent.appendChild(btn);
   };
 
+  const appendPartitionedRows = (parent: HTMLElement, rows: StoryChoiceRow[]): void => {
+    const { enabled, locked, collapseLocked } = partitionChoiceRowsForDisplay(rows);
+    for (const row of enabled) {
+      appendStoryChoiceButton(parent, row);
+    }
+    if (locked.length === 0) return;
+    if (!collapseLocked) {
+      for (const row of locked) {
+        appendStoryChoiceButton(parent, row);
+      }
+      return;
+    }
+    const details = document.createElement('details');
+    details.className = 'choices-locked';
+    const summary = document.createElement('summary');
+    summary.className = 'choices-locked__summary';
+    summary.textContent = t('story.lockedChoicesSummary', { count: locked.length });
+    details.appendChild(summary);
+    const lockedWrap = document.createElement('div');
+    lockedWrap.className = 'choices-locked__list';
+    for (const row of locked) {
+      appendStoryChoiceButton(lockedWrap, row);
+    }
+    details.appendChild(lockedWrap);
+    parent.appendChild(details);
+  };
+
   if (useChoiceSections) {
     chWrap.classList.add('choices--sectioned');
     for (const sec of choiceSections) {
@@ -794,18 +836,21 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       if (sec.label !== undefined) {
         const titleEl = document.createElement('div');
         titleEl.className = 'choices-section__title';
-        titleEl.textContent = sec.label;
+        if (sec.icon !== undefined) {
+          titleEl.classList.add('choices-section__title--with-icon');
+          titleEl.innerHTML = `${iconWrap(UI_SECTION_ICON_SVG[sec.icon], 'ui-icon-wrap ui-icon-wrap--sm')}<span class="choices-section__title-text"></span>`;
+          const textEl = titleEl.querySelector('.choices-section__title-text');
+          if (textEl) textEl.textContent = sec.label;
+        } else {
+          titleEl.textContent = sec.label;
+        }
         secEl.appendChild(titleEl);
       }
-      for (const row of sec.rows) {
-        appendStoryChoiceButton(secEl, row);
-      }
+      appendPartitionedRows(secEl, sec.rows);
       chWrap.appendChild(secEl);
     }
   } else {
-    for (const row of choiceRows) {
-      appendStoryChoiceButton(chWrap, row);
-    }
+    appendPartitionedRows(chWrap, choiceRows);
   }
   inner.appendChild(chWrap);
 

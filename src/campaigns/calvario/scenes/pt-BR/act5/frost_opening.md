@@ -5,6 +5,12 @@ chapter: 5
 ambientTheme: act5
 artKey: frost_peaks
 highlight: true
+storyPathGate:
+  id: throne
+  branches:
+    slain: act5/frost_opening
+    pact: act5/frost_opening_pact
+    sealed: act5/frost_opening_sealed
 choices:
   - text: "Encontrar abrigo e traçar plano na neve"
     next: act5/frost_hub
@@ -15,8 +21,6 @@ onEnter:
 ---
 O mapa é **sombras** sobre neve — o vento corta quem fala alto. Rumor de **Vetrnax** no horizonte.
 
-{{throneOutcomeLine}}
-
-{{factionThroneEcho}}
+**Ferro** no trono: Morvayn findou, mas o **eixo** segue para baixo. A vitória chegou magra; o frio não absolve.
 
 O trono ficou atrás. Cada respiração paga **juros** ao frio.

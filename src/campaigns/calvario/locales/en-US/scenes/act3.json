@@ -13,7 +13,10 @@
       },
       {
         "text": "Turn your back — pretend the green does not exist",
-        "preview": "Nothing changes on the map; maybe something changes in you."
+        "preview": "Nothing changes now; the next rest may cost faith.",
+        "diaryTexts": [
+          "I turned my back on the crystal. The pulse did not forgive — it only postponed."
+        ]
       }
     ]
   },
@@ -29,6 +32,13 @@
         ]
       },
       {
+        "text": "Trust the well's mirror — cross without touching the niche",
+        "preview": "Well truth · clean passage and XP (once).",
+        "diaryTexts": [
+          "The shortcut matched what the well showed — the niche stayed behind, untouched."
+        ]
+      },
+      {
         "text": "Take the shortcut without profaning the niche",
         "preview": "Leave the foreign rite where it lies — the map already lied for you."
       },
@@ -38,6 +48,10 @@
         "diaryTexts": [
           "I stole the Third Bell shard from the niche — the order's silence will cost dear."
         ]
+      },
+      {
+        "text": "The false map still pulls — listen to the bell in the niche",
+        "preview": "Well's deceit · the cult already waits (combat)."
       }
     ]
   },
@@ -52,12 +66,12 @@
       {
         "text": "Force the torn-map shortcut",
         "preview": "Ink traces and fear — a path honest maps erase.",
-        "lockedHint": "You need the rumor-map in inventory and level 6 to force that shortcut."
+        "lockedHint": "You need the rumor-map in inventory and level 7 to force that shortcut."
       },
       {
         "text": "Go meet what corruption promises",
         "preview": "Something pulls beneath the skin; playing deaf costs more each time.",
-        "lockedHint": "At level 6 corruption stops being rumor — it becomes encounter."
+        "lockedHint": "At level 7 corruption stops being rumor — it becomes encounter."
       },
       {
         "text": "Write this in the diary",
@@ -141,7 +155,7 @@
       {
         "text": "Toward the bone throne",
         "preview": "Chapter 4 — confrontation with Morvayn; the throne waits.",
-        "lockedHint": "You need level 10, to defeat the stone guardian, and to reach the gate in the depths.",
+        "lockedHint": "You need level 11, to defeat the stone guardian, and to reach the gate in the depths.",
         "uiSection": "Throne and stone",
         "diaryTexts": [
           "The throne calls."
@@ -160,23 +174,30 @@
       {
         "text": "Follow ash and rope — interrupted messenger",
         "preview": "Stealth or force; Vigil or Circle charge for the dispatch.",
+        "lockedHint": "Requires level 9+; the trail only reads when you already weigh in the depths.",
         "uiSection": "Rumors"
       },
       {
         "text": "Listen to pipes beneath the stone",
         "preview": "Luck; success gives a clue, failure costs supply.",
+        "lockedHint": "Requires level 8+ to hear what the pipes whisper.",
         "uiSection": "Rumors"
       },
       {
         "text": "Descend to the forgotten shrine (stone seal)",
         "preview": "Ancient seal; class defines how it opens.",
-        "lockedHint": "You need level 7 to locate the cracked stone veil — before that, the shrine remains rumor only.",
+        "lockedHint": "You need level 8 to locate the cracked stone veil — before that, the shrine remains rumor only.",
         "uiSection": "Rumors"
       },
       {
         "text": "Speak with the cultist crossing the corridor",
         "preview": "Pact, refusal, or steel; reputation shifts either way.",
-        "lockedHint": "The cultist only approaches those heavy enough in the depths — level 9.",
+        "lockedHint": "The cultist only approaches those heavy enough in the depths — level 10.",
+        "uiSection": "Rumors"
+      },
+      {
+        "text": "The green you ignored summons a messenger",
+        "preview": "Ignoring the crystal collected an encounter — the cult noticed the deafness.",
         "uiSection": "Rumors"
       },
       {
@@ -354,10 +375,10 @@
     "choices": [
       {
         "text": "Touch the central rune — remember silence before the name",
-        "preview": "Faith answers faith; the seal opens slowly.",
+        "preview": "Faith answers faith; the seal opens and leaves a light veil.",
         "uiSection": "Seal",
         "diaryTexts": [
-          "The shrine accepted me — not as heroic visit, but as someone who closed the door before leaving."
+          "The shrine accepted me — not as heroic visit, but as someone who closed the door before leaving. The ash veil stayed in my hands."
         ]
       },
       {
@@ -374,6 +395,14 @@
         "uiSection": "Seal",
         "diaryTexts": [
           "I broke what asked for patience; the echo closed over me like a collar."
+        ]
+      },
+      {
+        "text": "[*] Aim at the rune joint — open without touching the center",
+        "preview": "Distance and precision; light stress, XP.",
+        "uiSection": "Seal",
+        "diaryTexts": [
+          "I did not force the seal — I hit the joint. The shrine opened as one who respects those who do not come too close."
         ]
       },
       {
@@ -403,6 +432,13 @@
       },
       {
         "text": "Search the votive niche"
+      },
+      {
+        "text": "Follow the path the well showed (left)",
+        "preview": "The mirror's memory avoids the niche trap — once.",
+        "diaryTexts": [
+          "The well mirror did not lie: left avoids the stone tooth."
+        ]
       },
       {
         "text": "Return to the heart of the depths"

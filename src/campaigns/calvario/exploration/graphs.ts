@@ -3,12 +3,14 @@ import { ACT2_CATACOMB_GRAPH } from './act2.ts';
 import { ACT3_DEPTHS_GRAPH } from './act3.ts';
 import { ACT5_FROST_GRAPH } from './act5.ts';
 import { ACT6_FRACTURED_NAVE_GRAPH } from './act6.ts';
+import { ACT8_MAGMA_GRAPH } from './act8.ts';
 
 export const EXPLORATION_GRAPHS: Record<string, ExplorationGraph> = {
   act2_catacomb: ACT2_CATACOMB_GRAPH,
   act3_depths: ACT3_DEPTHS_GRAPH,
   act5_frost: ACT5_FROST_GRAPH,
   act6_fractured_nave: ACT6_FRACTURED_NAVE_GRAPH,
+  act8_magma: ACT8_MAGMA_GRAPH,
 };
 
 /**

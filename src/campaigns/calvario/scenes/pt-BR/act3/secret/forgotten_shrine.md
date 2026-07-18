@@ -12,11 +12,12 @@ choices:
       all:
         - { resource: { faith: { gte: 2 } } }
         - { noFlag: act3_shrine_done }
-    preview: "Fé responde à fé; o selo abre devagar."
+    preview: "Fé responde à fé; o selo abre e deixa um véu leve."
     effects:
       - { op: setFlag, key: act3_shrine_done, value: true }
       - { op: addXp, amount: 25 }
-      - { op: addDiary, text: "O santuário aceitou-me — não como heróica visita, mas como quem fechou a porta antes de partir." }
+      - { op: grantItem, itemId: ash_veil }
+      - { op: addDiary, text: "O santuário aceitou-me — não como heróica visita, mas como quem fechou a porta antes de partir. O véu de cinzas ficou nas mãos." }
   - text: "[*] Sussurrar a fórmula contida — escutar o que o selo guarda"
     uiSection: "Selo"
     next: act3/hub_depths
@@ -43,6 +44,19 @@ choices:
       - { op: addResource, resource: corruption, delta: 1 }
       - { op: addResource, resource: gold, delta: 3 }
       - { op: addDiary, text: "Quebrei o que pedia paciência; o eco fechou-se sobre mim como gola." }
+  - text: "[*] Mirar a junta da runa — abrir sem tocar no centro"
+    uiSection: "Selo"
+    next: act3/hub_depths
+    condition:
+      all:
+        - { class: archer }
+        - { noFlag: act3_shrine_done }
+    preview: "Distância e precisão; stress leve, XP."
+    effects:
+      - { op: setFlag, key: act3_shrine_done, value: true }
+      - { op: adjustLeadStress, delta: 1 }
+      - { op: addXp, amount: 28 }
+      - { op: addDiary, text: "Não forcei o selo — acertei a junta. O santuário abriu-se como quem respeita quem não se aproxima demais." }
   - text: "Recuar do santuário sem tocar"
     uiSection: "Partir"
     next: act3/hub_depths

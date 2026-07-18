@@ -27,6 +27,7 @@ import {
 } from '../progression/companionFriendship.ts';
 import type { EventBus } from '../core/eventBus.ts';
 import { getArmorValue, getWeaponDamage, statMod } from '../combat/combatStats.ts';
+import { resolveHitChance, rollHitAgainstDefense } from './hitChance.ts';
 import { getEffectiveLuck } from '../progression/luck.ts';
 import {
   DEFAULT_ENEMY_COMBAT_LINE_CHANCE,
@@ -45,15 +46,21 @@ import { applyBossTwistsAfterEnemyPhase, finishCombatIfAllEnemiesDead } from './
 import { chooseEnemyAction } from './enemyAi.ts';
 import { computePartyDefenseScore, resolveEnemyAbility } from './enemyActions.ts';
 import {
+  expireEnemyStatusesAfterEnemyPhase,
   expireStatusesAtEnemyPhaseStart,
   rollParalysisSkip,
   statusAttackPenalty,
+  tickBurnAtEnemyPhaseStart,
   tickPoisonAtRoundStart,
 } from './statusConditions.ts';
 import * as combatLog from '../../i18n/combatLogMessages.ts';
 
 function getLead(state: GameState): Character {
   return state.party[0]!;
+}
+
+function enemyDisplayNames(enemies: EnemyInstance[], data: GameData): string[] {
+  return enemies.map((e) => data.enemies[e.defId]?.name ?? e.defId);
 }
 
 function applyStartOfPlayerTurnPassive(
@@ -283,12 +290,14 @@ function physicalAttackForCharacter(
   }
 
   let hit = false;
+  let hitChance: number | undefined;
   if (special === 'fumble') {
     hit = false;
   } else if (special === 'crit') {
     hit = true;
   } else {
-    hit = rollTotal >= defense;
+    hitChance = resolveHitChance(rollTotal, defense);
+    hit = rollHitAgainstDefense(rng, rollTotal, defense);
   }
 
   const rollOutcome = toRollOutcome(special);
@@ -315,6 +324,7 @@ function physicalAttackForCharacter(
     target: def.name,
     outcome: hit ? 'hit' : 'miss',
     vsDefense: defense,
+    hitChance,
     rollOutcome,
     enemyIndex,
     ...(attackOpts?.spellId ? { spellId: attackOpts.spellId } : {}),
@@ -567,6 +577,23 @@ export function advanceToEnemyTurn(
   party = statusExpiry.party;
   log = statusExpiry.log;
 
+  const enemyNames = enemyDisplayNames(enemies, data);
+  const burnTick = tickBurnAtEnemyPhaseStart(enemies, enemyNames, log);
+  enemies = burnTick.enemies;
+  log = burnTick.log;
+
+  const victoryAfterBurn = finishCombatIfAllEnemiesDead(
+    carryState,
+    c,
+    party,
+    enemies,
+    log,
+    {},
+    data,
+    bus
+  );
+  if (victoryAfterBurn) return victoryAfterBurn;
+
   const handleCompanionKnockout = (idx: number): void => {
     const pid = party[idx]!.id;
     const bondBefore = getCompanionFriendshipScore(carryState, pid);
@@ -648,6 +675,7 @@ export function advanceToEnemyTurn(
     const critConfirm = def.critConfirm ?? DEFAULT_ENEMY_CRIT_CONFIRM;
     let enemyHit = false;
     let enemyCritDmg = false;
+    let hitChance: number | undefined;
     if (special === 'fumble') {
       enemyHit = false;
     } else if (special === 'crit') {
@@ -655,10 +683,12 @@ export function advanceToEnemyTurn(
         enemyHit = true;
         enemyCritDmg = true;
       } else {
-        enemyHit = atk >= defScore;
+        hitChance = resolveHitChance(atk, defScore);
+        enemyHit = rollHitAgainstDefense(rng, atk, defScore);
       }
     } else {
-      enemyHit = atk >= defScore;
+      hitChance = resolveHitChance(atk, defScore);
+      enemyHit = rollHitAgainstDefense(rng, atk, defScore);
     }
 
     let dodged = false;
@@ -698,6 +728,7 @@ export function advanceToEnemyTurn(
       target: target.name,
       outcome: enemyHit ? 'hit' : 'miss',
       vsDefense: defScore,
+      hitChance,
       rollOutcome,
       enemyIndex: i,
     });
@@ -757,6 +788,10 @@ export function advanceToEnemyTurn(
   const poisonTick = tickPoisonAtRoundStart(party, log);
   party = poisonTick.party;
   log = poisonTick.log;
+
+  const enemyStatusExpiry = expireEnemyStatusesAfterEnemyPhase(enemies, enemyNames, log);
+  enemies = enemyStatusExpiry.enemies;
+  log = enemyStatusExpiry.log;
 
   const nextRound = c.round + 1;
   const roundPrep = applyStartOfPlayerTurnPassive(state, party, log);

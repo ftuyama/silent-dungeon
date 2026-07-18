@@ -13,15 +13,15 @@ choices:
     condition:
       all:
         - { hasItem: rumor_map }
-        - { level: { gte: 6 } }
+        - { level: { gte: 7 } }
     showWhenLocked: true
-    lockedHint: "Precisas do mapa-rumor no inventário e de nível 6 para forçar esse atalho."
+    lockedHint: "Precisas do mapa-rumor no inventário e de nível 7 para forçar esse atalho."
   - text: "Ir ao encontro do que a corrupção promete"
     preview: "Algo puxa por baixo da pele; fingir surdez custa cada vez mais caro."
     next: act3/corruption_event
-    condition: { level: { gte: 6 } }
+    condition: { level: { gte: 7 } }
     showWhenLocked: true
-    lockedHint: "Com nível 6 a corrupção deixa de ser só rumor — torna-se encontro."
+    lockedHint: "Com nível 7 a corrupção deixa de ser só rumor — torna-se encontro."
   - text: "Anotar isto no diário"
     preview: "Fixar o cheiro antes que o silêncio o devore."
     next: act3/diary_trigger

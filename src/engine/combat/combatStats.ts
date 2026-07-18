@@ -6,6 +6,16 @@ export function statMod(attr: number): number {
   return Math.floor((attr - 6) / 2);
 }
 
+/**
+ * Contribuição de AGI à CA: mod integral até +4; acima disso, retorno decrescente
+ * (+1 CA por cada +2 de mod). Iniciativa / testes / fuga continuam a usar `statMod`.
+ */
+export function agiToArmorClassMod(agi: number): number {
+  const m = statMod(agi);
+  if (m <= 4) return m;
+  return 4 + Math.floor((m - 4) / 2);
+}
+
 export function getWeaponDamage(data: GameData, c: Character): number {
   let bonus = 0;
   if (c.weaponId && data.items[c.weaponId]) {
@@ -55,10 +65,10 @@ export function getEquippedArmorPoints(data: GameData, c: Character): number {
   return getArmorValue(data, c);
 }
 
-/** CA base (ataques inimigos: 7 + mod AGI + bónus de armadura; postura defensiva +2 em combate). */
+/** CA base (ataques inimigos: 7 + agiToArmorClassMod(AGI) + bónus de armadura; postura defensiva +2 em combate). */
 export function getCharacterArmorClass(data: GameData, c: Character, state?: GameState): number {
   const agi = state ? effectiveLeadAttr(state, c, 'agi') : c.agi;
-  return 7 + statMod(agi) + getArmorValue(data, c);
+  return 7 + agiToArmorClassMod(agi) + getArmorValue(data, c);
 }
 
 export function getTotalMind(data: GameData, c: Character, state?: GameState): number {

@@ -26,6 +26,18 @@ export function displayTitleForMark(mark: string, data: import('../../data/gameD
   return data.journeyMarks[mark]?.name ?? humanizeMarkId(mark);
 }
 
+/** Título do valor de um path narrativo para toast / diário. */
+export function displayTitleForStoryPath(
+  pathId: string,
+  value: string,
+  data: import('../../data/gameData.ts').GameData
+): string {
+  const def = data.storyPaths[pathId];
+  const valueDef = def?.values[value];
+  if (valueDef?.name) return valueDef.name;
+  return humanizeMarkId(value);
+}
+
 export function resourceLabel(resource: 'gold' | 'supply' | 'faith' | 'corruption'): string {
   switch (resource) {
     case 'gold':

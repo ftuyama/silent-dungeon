@@ -47,6 +47,33 @@ choices:
             - { rep: { faction: culto, gte: 2 } }
             - { rep: { faction: culto, lte: -2 } }
     preview: "Devoção ou ruptura com o Terceiro Sino. Uma vez só."
+  - text: "Depósito selado — caminho que o farol mostrou"
+    uiSection: "Facções"
+    next: act2/faction/vigilia_cache
+    condition:
+      all:
+        - { flag: act2_faction_envoy_vigilia_done }
+        - { rep: { faction: vigilia, gte: 2 } }
+        - { noFlag: act2_vigilia_cache_looted }
+    preview: "Topologia da Vigília · mantimentos atrás da grade."
+  - text: "Recanto de cinza — dobra que o Círculo empresta"
+    uiSection: "Facções"
+    next: act2/faction/circulo_ash_nook
+    condition:
+      all:
+        - { flag: act2_faction_envoy_circulo_done }
+        - { rep: { faction: circulo, gte: 2 } }
+        - { noFlag: act2_circulo_ash_nook_done }
+    preview: "Topologia do Círculo · forma emprestada."
+  - text: "Alcove do sino — porta que o culto confessou"
+    uiSection: "Facções"
+    next: act2/faction/culto_bell_alcove
+    condition:
+      all:
+        - { flag: act2_faction_envoy_culto_done }
+        - { rep: { faction: culto, gte: 2 } }
+        - { noFlag: act2_culto_bell_alcove_done }
+    preview: "Topologia do Culto · fé e sombra."
   - text: "Ouvir proposta de Mira"
     uiSection: "Convites e ritos"
     next: act2/recruit_offer
@@ -55,11 +82,13 @@ choices:
   - text: "Ritual do Círculo (evento)"
     uiSection: "Convites e ritos"
     next: act2/circle_ritual/circle_ritual
+    visibleWhen: { noFlag: act2_circle_ritual_tribute_done }
     condition:
       all:
         - { level: { gte: 4 } }
         - { dayMod: { mod: 5, eq: 0 } }
-        - { noFlag: act2_circle_ritual_tribute_done }
+    showWhenLocked: true
+    lockedHint: "Requer nível 4+ e um dia múltiplo de 5; o Círculo só cobra uma vez."
     preview: "O Círculo cobra presença; a corrupção anota."
   - text: "Acampamento da Vigília"
     uiSection: "Fogo e patrulha"
@@ -75,11 +104,25 @@ choices:
   - text: "Passagem marcada — eco de juramentos"
     uiSection: "Ecos do cruzeiro"
     next: act2/lore/lore_crossroads
-    condition:
+    visibleWhen: { day: { lte: 10 } }
+    condition: { level: { gte: 7 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 7+ e chegar até o dia 10 — depois o eco esfria."
+    preview: "Memória antiga; perícia e sorte pesam — o eco enfraquece se demorares demais."
+  - text: "Rasto frio — eco que quase se foi"
+    uiSection: "Ecos do cruzeiro"
+    next: act2/lore/lore_crossroads
+    visibleWhen:
       all:
-        - { level: { gte: 7 } }
-        - { day: { lte: 6 } }
-    preview: "Memória antiga; perícia e sorte pesam — mas o eco some se demorares demais."
+        - { day: { gte: 11 } }
+        - { noFlag: act2_lore_crossroads_late }
+    condition: { level: { gte: 7 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 7+ e dia 11+; uma última vez antes da pedra esquecer."
+    preview: "Ainda há um fio; mais fraco, mas presente (uma vez)."
+    effects:
+      - { op: setFlag, key: act2_lore_crossroads_late, value: true }
+      - { op: addDiary, text: "O eco de juramentos quase tinha sumido — toquei o rasto frio antes que a pedra esquecesse." }
   - text: "Observar o cruzeiro: marcas no chão"
     uiSection: "Ecos do cruzeiro"
     next: act2/hub_observe
@@ -95,12 +138,10 @@ choices:
   - text: "Escutar um eco que sussurra o dia"
     uiSection: "Ecos do cruzeiro"
     next: act2/hub_catacomb
-    condition:
-      all:
-        - { level: { gte: 6 } }
-        - { day: { lte: 5 } }
-    showWhenLocked: false
-    lockedHint: "Precisas de nível 6 e de ouvir isto antes do dia 6 — depois o eco cala-se."
+    visibleWhen: { day: { lte: 5 } }
+    condition: { level: { gte: 6 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 6+ e ainda estar nos primeiros cinco dias."
     preview: "Voz seca no cruzeiro; registro no diário."
     effects:
       - { op: addDiary, text: "Uma voz presa ao teto: \"Já vai no dia {{day}}.\"" }
@@ -113,15 +154,15 @@ choices:
     next: act3/descent
     condition:
       all:
-        - { level: { gte: 5 } }
+        - { level: { gte: 6 } }
         - { flag: act2_explore_goal_reached }
     showWhenLocked: true
-    lockedHint: "Precisas de nível 5 e de encontrar o limiar no mapa do perímetro (exploração a partir do cruzeiro)."
+    lockedHint: "Requer nível 6+ e alcançar a meta no mapa do cruzeiro (patrulha)."
     preview: "Capítulo 3 — a masmorra aperta o silêncio."
     effects:
       - { op: setChapter, chapter: 3 }
 onEnter:
-  - { op: addXp, amount: 8 }
+  - { op: addXp, amount: 6 }
 ---
 Velas e **cera** prendem o passo no cruzeiro; *hoje é **dia {{day}}** no subsolo.*
 

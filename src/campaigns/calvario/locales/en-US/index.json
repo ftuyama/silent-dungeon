@@ -7,16 +7,21 @@
     "4": "The Throne",
     "5": "Snow",
     "6": "The Void",
-    "7": "Ashes of the Sky"
+    "7": "Ashes of the Sky",
+    "8": "Magma Crucible"
   },
   "endings": {
     "epilogue_apocalypse": {
-      "title": "Ashes with a name",
-      "blurb": "The apocalypse grew more honest; your echo splits between road and silence."
+      "title": "Incomplete ashes",
+      "blurb": "Flight to the sky — the apocalypse grew honest, but the axis still descended into magma."
     },
     "epilogue_depths": {
       "title": "Depths of the axis",
       "blurb": "Another fold of stone — a deeper stratum, silence under a different name."
+    },
+    "epilogue_true_depths": {
+      "title": "True depths",
+      "blurb": "The Magma Lord fell; the floor of the axis closed under your name."
     },
     "frost_epilogue": {
       "title": "Frost epilogue",
@@ -28,7 +33,7 @@
     },
     "passage_graywind_heights": {
       "title": "Passage to the axis floor",
-      "blurb": "Beyond the throne, another layer — a fold of stone and ice that still asks who rules the silence."
+      "blurb": "Beyond the throne, a fork: ice above or magma below — the axis still asks who rules the silence."
     }
   }
 }

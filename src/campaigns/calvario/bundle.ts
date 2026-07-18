@@ -20,6 +20,7 @@ import encounters from './data/encounters.json';
 import companions from './data/companions.json';
 import { spells as spellsTs } from './data/spells.ts';
 import { journeyMarks as journeyMarksTs } from './data/journeyMarks.ts';
+import { storyPaths as storyPathsTs } from './data/storyPaths.ts';
 import { leadStoryPassives as leadStoryPassivesTs, passives as passivesTs } from './data/passives.ts';
 import { legacyUpgrades as legacyUpgradesTs } from './data/legacyUpgrades.ts';
 import { calvarioHeroNarrative } from './heroNarrative.ts';
@@ -81,6 +82,7 @@ export function loadCalvarioContent(locale: Locale) {
   data.spells = structuredClone(spellsTs) as Record<string, SpellDef>;
   data.passives = structuredClone(passivesTs);
   data.journeyMarks = structuredClone(journeyMarksTs);
+  data.storyPaths = structuredClone(storyPathsTs);
   data.leadStoryPassives = structuredClone(leadStoryPassivesTs);
   data.legacyUpgrades = structuredClone(legacyUpgradesTs);
   applyEntityLocaleOverlay(data, locale);

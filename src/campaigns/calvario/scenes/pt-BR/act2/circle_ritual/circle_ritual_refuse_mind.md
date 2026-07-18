@@ -15,4 +15,4 @@ onEnter: []
 ---
 Recusas o **círculo** — mas o padrão no chão **puxa** o olhar, como se os traços quisessem **continuar** dentro de você.
 
-Para sair **inteiro**, precisas de **clareza**: uma linha recta na cabeça que não seja dele.
+Para sair **inteiro**, precisas de **clareza**: uma linha reta na cabeça que não seja dele.

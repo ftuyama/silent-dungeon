@@ -10,6 +10,7 @@ function hasFlag(state: GameState, key: string): boolean {
 }
 
 type MissionKey =
+  | 'magmaCrucible'
   | 'terminalFate'
   | 'voidTrials'
   | 'enterVoid'
@@ -20,11 +21,11 @@ type MissionKey =
   | 'stoneGuardian'
   | 'exploreDepths'
   | 'thronePath'
+  | 'reachLevel10'
   | 'reachDepthsHub'
   | 'descendToAct3'
   | 'reachLevel5'
   | 'exploreCatacombs'
-  | 'reachLevel10'
   | 'reachHub'
   | 'enterCatacomb'
   | 'reachMouth'
@@ -35,6 +36,7 @@ function resolveMissionKey(state: GameState): MissionKey {
   const { chapter, sceneId, level, marks, party } = state;
   const leadClass = party[0]?.class;
 
+  if (chapter >= 8 || sceneId.startsWith('act8/')) return 'magmaCrucible';
   if (chapter >= 7) return 'terminalFate';
   if (chapter >= 6 && visited(state, 'act6/hub_fractured_nave')) return 'voidTrials';
   if (chapter >= 6) return 'enterVoid';
@@ -53,7 +55,7 @@ function resolveMissionKey(state: GameState): MissionKey {
     visited(state, 'act3/hub_depths') &&
     hasFlag(state, 'stone_guard_defeated') &&
     hasFlag(state, 'act3_explore_goal_reached') &&
-    level >= 10
+    level >= 11
   ) {
     return 'thronePath';
   }
@@ -70,7 +72,7 @@ function resolveMissionKey(state: GameState): MissionKey {
     chapter >= 2 &&
     visited(state, 'act2/hub_catacomb') &&
     hasFlag(state, 'act2_explore_goal_reached') &&
-    level >= 5
+    level >= 6
   ) {
     return 'descendToAct3';
   }

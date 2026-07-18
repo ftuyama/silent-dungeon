@@ -1,7 +1,7 @@
 ---
 id: act4/morvayn_interlude
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 title: Trégua mentirosa
 choices:
   - text: "Fazer uma última varredura ao salão"

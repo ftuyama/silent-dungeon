@@ -2,7 +2,11 @@ import type { GameState } from '../../engine/schema/index.ts';
 import type { ContentRegistry } from '../../content/registry.ts';
 import { t } from '../../i18n/index.ts';
 
-const SETTLEMENT_SCENES = new Set(['shared/game_over', 'endings/epilogue_depths']);
+const SETTLEMENT_SCENES = new Set([
+  'shared/game_over',
+  'endings/epilogue_depths',
+  'endings/epilogue_true_depths',
+]);
 
 export function shouldShowEchoSettlementBanner(state: GameState): boolean {
   if (!SETTLEMENT_SCENES.has(state.sceneId)) return false;

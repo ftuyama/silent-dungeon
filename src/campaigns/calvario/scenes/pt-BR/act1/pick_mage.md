@@ -9,6 +9,7 @@ artHighlightSfx: class_mage
 choices:
   - text: "Avançar para a boca da masmorra"
     next: act1/dungeon_mouth
+    preview: "Classe Mago; +reputação Círculo."
     effects:
       - { op: initClass, class: mage }
       - { op: addRep, faction: circulo, delta: 1, directGain: true }

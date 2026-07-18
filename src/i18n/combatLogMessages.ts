@@ -280,6 +280,7 @@ export function logFleeFailure(
 function statusLabel(kind: StatusConditionKind): string {
   if (kind === 'paralysis') return t('combatLog.statusParalysis');
   if (kind === 'poison') return t('combatLog.statusPoison');
+  if (kind === 'burn') return t('combatLog.statusBurn');
   return t('combatLog.statusFreeze');
 }
 
@@ -313,4 +314,8 @@ export function logParalysisSkip(name: string): string {
 
 export function logPoisonTick(name: string, amount: number): string {
   return t('combatLog.poisonTick', { name, amount });
+}
+
+export function logBurnTick(name: string, amount: number): string {
+  return t('combatLog.burnTick', { name, amount });
 }

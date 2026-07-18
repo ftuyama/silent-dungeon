@@ -15,28 +15,38 @@
   },
   "act7/before_final_horizon": {
     "title": "Before the last horizon",
-    "body": "The horizon **reveals** the final line: not a border — a **receipt**. Here, *to offer* is not virtue; it is **contract** with what comes after the end pretends not to look back.\n\nThe wind **stops** again. This time it is not courtesy — it is **expectation**.",
+    "body": "The horizon **reveals** the final line: not a border — a **receipt** of flight. Closing here is **incomplete**: the axis still descends into magma.\n\nThe wind **stops** again. This time it is not courtesy — it is **expectation** from those who choose sky over floor.",
     "choices": [
       {
+        "text": "Descend into the magma deeps — refuse the incomplete ending",
+        "preview": "The crucible still waits — the sky is not victory.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Descend into the magma deeps — refuse the incomplete ending",
+        "preview": "Descend now, before closing the diary under a lying sky.",
+        "uiSection": "Axis"
+      },
+      {
         "text": "Offer faith as coin — buy silence from the sky for an instant",
-        "preview": "−2 faith · mark of bought truce",
+        "preview": "−2 faith · incomplete ending — flight to the sky",
         "lockedHint": "The sky charges faith that still exists — you need at least 1 to open this contract.",
         "diaryTexts": [
-          "I paid the sky with what vertical I had left. Body remained — excuse did not."
+          "I paid the sky with what vertical I had left. Body remained — excuse did not. The axis, below, stayed unclosed."
         ]
       },
       {
         "text": "Give what remains of human to the rumor — let the skin learn the price",
-        "preview": "+1 corruption · −1 supply · mark",
+        "preview": "+1 corruption · −1 supply · incomplete ending",
         "diaryTexts": [
-          "I did not bargain with God — I bargained with fire. The result is the same: less skin, more truth."
+          "I did not bargain with God — I bargained with fire. The result is the same: less skin, more truth — and the floor of the axis still to visit."
         ]
       },
       {
         "text": "Press on without offering — bare step only",
-        "preview": "Mark of refusal — no resource change",
+        "preview": "Mark of refusal — incomplete ending",
         "diaryTexts": [
-          "I left no offering on the altar of the end — only footprints. If the world charges later, it will know where to find me."
+          "I left no offering on the altar of the end — only footprints. If the world charges later, it will know where to find me: still above the true floor."
         ]
       }
     ]
@@ -66,15 +76,15 @@
     ]
   },
   "act7/epilogue_apocalypse": {
-    "title": "Epilogue — ash with a name",
-    "body": "The world **continues** without you; your **echo** divides among **road**, **mark**, and **silence** bought or refused.\n\n**Testimony** remains — what is left when even the sky learns to **whisper**. *(You can **save** from the menu or **start over**.)*",
+    "title": "Epilogue — incomplete ashes",
+    "body": "The world **continues** without you; your **echo** divides among **road**, **mark**, and **silence** bought or refused.\n\nThis is **not** complete victory — it is **flight** to the sky. The floor of the axis stayed below, burning. *(You can **save** from the menu or **start over**.)*",
     "choices": [
       {
-        "text": "Close the diary — the end grows tired too"
+        "text": "Close the diary — flight to the sky"
       }
     ],
     "onEnterDiaryTexts": [
-      "The apocalypse did not end — it only grew honest: ash with a name, wind with a ledger, and me in the middle learning to breathe without asking the sky's permission."
+      "The apocalypse did not end — it only grew honest: ash with a name, wind with a ledger, and me pretending the sky was the floor. The axis still descended."
     ]
   },
   "act7/event_ash_sermon": {
@@ -193,10 +203,27 @@
   },
   "act7/wasteland_antechamber": {
     "title": "Antechamber of ash",
-    "body": "The road does **not** turn back — it only **branches** into lesser evils. Before the last horizon, the wasteland imposes **one** event that asks no apology: sermon, blade, or **bell** without clapper.\n\nBreathe. The apocalypse has **routine** too.",
+    "body": "The road does **not** turn back — it only **branches** into lesser evils. Before the last horizon, the wasteland imposes **one** event that asks no apology: sermon, blade, or **bell** without clapper.\n\nThis is **not** the floor of the axis — it is flight to the sky. The true close still **burns** below.",
     "choices": [
       {
-        "text": "Let the wind decide the next sacrifice"
+        "text": "Let the wind decide the next sacrifice",
+        "preview": "Wasteland event — sermon, blade, or bell.",
+        "uiSection": "Ashes"
+      },
+      {
+        "text": "Descend into the magma deeps — the true floor",
+        "preview": "Abandon the incomplete ending and return to the Crucible.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Descend into the magma deeps — first throat",
+        "preview": "The axis still descends; the ash sky is not the floor.",
+        "uiSection": "Axis"
+      },
+      {
+        "text": "Return to Graywind Heights",
+        "preview": "Return to the ice — the axis links surface and deeps.",
+        "uiSection": "Axis"
       }
     ]
   },

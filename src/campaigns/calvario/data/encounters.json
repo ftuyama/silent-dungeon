@@ -762,5 +762,54 @@
     "id": "kael_rival_act6_dialogue",
     "dialogueEnemyId": "kael_rival_act6_verbal",
     "xpReward": 35
+  },
+  "act8_lava_golem_pair": {
+    "id": "act8_lava_golem_pair",
+    "enemies": ["act8_lava_golem", "act8_lava_golem"],
+    "playerAdvantage": false,
+    "enemyAdvantage": false,
+    "fleeRate": 0.4
+  },
+  "act8_forge_colossus": {
+    "id": "act8_forge_colossus",
+    "enemies": ["act8_forge_colossus"],
+    "playerAdvantage": false,
+    "enemyAdvantage": true,
+    "fleeRate": 0.35
+  },
+  "act8_slag_wraith_solo": {
+    "id": "act8_slag_wraith_solo",
+    "enemies": ["act8_slag_wraith"],
+    "playerAdvantage": false,
+    "enemyAdvantage": false,
+    "fleeRate": 0.45
+  },
+  "act8_magma_lord": {
+    "id": "act8_magma_lord",
+    "enemies": ["act8_magma_lord"],
+    "playerAdvantage": false,
+    "enemyAdvantage": true,
+    "fleeRate": 0.2
+  },
+  "act8_wild_lava_golem": {
+    "id": "act8_wild_lava_golem",
+    "enemies": ["act8_lava_golem"],
+    "playerAdvantage": false,
+    "enemyAdvantage": false,
+    "fleeRate": 0.45
+  },
+  "act8_wild_ember_hound": {
+    "id": "act8_wild_ember_hound",
+    "enemies": ["act8_ember_hound", "act8_ember_hound"],
+    "playerAdvantage": false,
+    "enemyAdvantage": false,
+    "fleeRate": 0.5
+  },
+  "act8_wild_slag_wraith": {
+    "id": "act8_wild_slag_wraith",
+    "enemies": ["act8_slag_wraith"],
+    "playerAdvantage": false,
+    "enemyAdvantage": true,
+    "fleeRate": 0.4
   }
 }

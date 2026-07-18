@@ -119,6 +119,25 @@ describe('spell targeting', () => {
     expect(afterHeal.party[0]?.mana).toBe(6);
   });
 
+  it('silver bolt hits all living enemies without targeting', () => {
+    const { state, data } = dualEnemyCombat(55, 'mage', 'Ysara');
+    const withSilver = {
+      ...state,
+      level: 8,
+      knownSpells: [...state.knownSpells, 'silver_bolt'],
+      party: [{ ...state.party[0]!, mana: 20 }],
+    };
+    const after = executeSpellTurn(withSilver, 'silver_bolt', data);
+    expect(after.combat?.phase).not.toBe('choose_target');
+    const hits = after.combat?.log.filter(
+      (e) => e.kind === 'damage' && e.spellId === 'silver_bolt'
+    );
+    expect(hits?.length).toBe(2);
+    expect(after.combat?.enemies[0]?.hp).toBeLessThan(20);
+    expect(after.combat?.enemies[1]?.hp).toBeLessThan(20);
+    expect(after.party[0]?.mana).toBe(11);
+  });
+
   it('headshot regression: choose_target then crit on playerAttack', () => {
     const { state, data } = dualEnemyCombat(42, 'archer', 'Veyr');
     const withMana = {
@@ -132,5 +151,40 @@ describe('spell targeting', () => {
     const dmg = afterShot.combat?.log.find((e) => e.kind === 'damage' && e.target === 'Alvo B');
     expect(dmg?.damageKind).toBe('crit');
     expect(afterShot.party[0]?.mana).toBe(4);
+  });
+
+  it('ember spark can apply burn and tick damage on enemy phase', () => {
+    const { state, data } = dualEnemyCombat(42, 'mage', 'Ysara');
+    data.spells = {
+      ...data.spells,
+      ember_spark: {
+        ...data.spells.ember_spark!,
+        applyStatus: { kind: 'burn', chance: 1, rounds: 2, intensity: 1 },
+      },
+    };
+    const withMana = {
+      ...state,
+      party: [{ ...state.party[0]!, mana: 10 }],
+    };
+    const afterAim = executeSpellTurn(withMana, 'ember_spark', data);
+    const afterCast = playerSpellOnEnemy(afterAim, 0, data);
+    expect(
+      afterCast.combat?.log.some(
+        (e) => e.kind === 'info' && e.message.includes('queimadura')
+      )
+    ).toBe(true);
+
+    const burn = afterCast.combat?.enemies[0]?.statusConditions.find((s) => s.kind === 'burn');
+    expect(burn).toBeDefined();
+    expect(burn!.remainingRounds).toBe(1);
+
+    const spellDmg = afterCast.combat?.log.find(
+      (e) => e.kind === 'damage' && e.spellId === 'ember_spark'
+    )!.final!;
+    const burnTick = afterCast.combat?.log.find(
+      (e) => e.kind === 'damage' && e.message.includes('queimadura')
+    );
+    expect(burnTick).toBeDefined();
+    expect(afterCast.combat?.enemies[0]?.hp).toBe(20 - spellDmg - burnTick!.final!);
   });
 });

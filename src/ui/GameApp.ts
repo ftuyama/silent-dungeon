@@ -42,8 +42,8 @@ import {
   dailyBonusRewardEffects,
   dailyBonusRewardLabel,
   DAILY_BONUS_CYCLE_LENGTH,
-  hasSlotDailyBonusToday,
-  markSlotDailyBonusClaimed,
+  hasRunDailyBonusToday,
+  markRunDailyBonusClaimed,
   registerDailyLogin,
   rewardForCycleDay,
   todayDateKey,
@@ -110,9 +110,11 @@ import gameVersionRaw from '../../VERSION?raw';
 const GAME_VERSION = gameVersionRaw.trim() || '?';
 
 /** Atraso em cascata entre o início do fade+slide de cada cartão (1.º imediato). */
-const STORY_BANNER_BETWEEN_DISMISS_MS = 350;
+const STORY_BANNER_BETWEEN_DISMISS_MS = 220;
 /** Duração do fade-out (animação CSS). Espelha `--story-banner-fade-duration` em `theme-tokens.css`. */
-const STORY_BANNER_FADE_MS = 1000;
+const STORY_BANNER_FADE_MS = 650;
+/** Auto-dismiss de banners `good` / `neutral` (debuff/bad ficam manuais com `autoDismissMs: 0`). */
+const STATUS_HIGHLIGHT_GOOD_AUTO_DISMISS_MS = 2800;
 
 export class GameApp {
   private readonly campaignId: string;
@@ -174,6 +176,12 @@ export class GameApp {
   private diaryBannerExiting = false;
   private itemBannerFadeTimer: ReturnType<typeof setTimeout> | null = null;
   private itemAcquireBannerExiting = false;
+  /** Timers de auto-dismiss por banner `good`/`neutral`. */
+  private statusHighlightAutoDismissTimers = new Map<symbol, ReturnType<typeof setTimeout>>();
+  /** Recursos a pulsar na sidebar após `statusHighlight` de recurso. */
+  private pendingSidebarResourcePulse = new Set<string>();
+  /** Contagem de itens novos desde a última abertura do inventário. */
+  private inventoryNewCount = 0;
   /** Índice até onde som do log do confronto verbal já foi consumido. */
   private dialogueCombatLogCursor: { encounterId: string; index: number } = {
     encounterId: '',
@@ -299,6 +307,7 @@ export class GameApp {
         },
         onItemAcquired: (itemId) => {
           this.itemAcquireQueue.push(itemId);
+          this.inventoryNewCount += 1;
           this.unlockAudio();
           this.audio.playItemAcquire();
         },
@@ -417,16 +426,17 @@ export class GameApp {
     this.dailyBonus = meta;
   }
 
-  /** Bônus diário no save: primeira carga de cada slot no dia recebe o prêmio do ciclo. */
-  private applyDailyBonusIfNeededForLoadedSlot(slot: number): void {
+  /** Bônus diário: primeira carga ou gravação do dia por run (UUID) recebe o prêmio do ciclo. */
+  private applyDailyBonusIfNeededForRun(): void {
     const today = todayDateKey();
-    if (hasSlotDailyBonusToday(this.campaignId, slot, today)) return;
+    const runId = this.state.runId;
+    if (!runId || hasRunDailyBonusToday(this.campaignId, runId, today)) return;
     const cycleDay = cycleDayForStreak(this.dailyBonus.streak);
     const reward = rewardForCycleDay(cycleDay);
     this.state = this.stabilize(
       applyEffects(this.state, dailyBonusRewardEffects(reward), this.ctx())
     );
-    markSlotDailyBonusClaimed(this.campaignId, slot, today);
+    markRunDailyBonusClaimed(this.campaignId, runId, today);
     this.enqueueStatusHighlight({
       type: 'statusHighlight',
       variant: 'good',
@@ -860,11 +870,13 @@ export class GameApp {
     this.audio.setAmbientTheme(this.resolveAmbientTheme());
   }
 
-  /** Paleta CSS (`html[data-theme]`) — ato 5 neve / ato 6 vazio / ato 7 cinzas. */
-  private resolveVisualTheme(): 'snow' | 'void' | 'ash' | null {
+  /** Paleta CSS (`html[data-theme]`) — ato 4 osso / 5 neve / 6 vazio / 7 cinzas / 8 lava. */
+  private resolveVisualTheme(): 'bone' | 'snow' | 'void' | 'ash' | 'lava' | null {
+    if (this.state.chapter === 8 || this.state.sceneId.startsWith('act8/')) return 'lava';
     if (this.state.chapter === 6 || this.state.sceneId.startsWith('act6/')) return 'void';
     if (this.state.chapter === 7 || this.state.sceneId.startsWith('act7/')) return 'ash';
     if (this.state.chapter === 5 || this.state.sceneId.startsWith('act5/')) return 'snow';
+    if (this.state.chapter === 4 || this.state.sceneId.startsWith('act4/')) return 'bone';
     return null;
   }
 
@@ -886,6 +898,7 @@ export class GameApp {
       clearTimeout(this.statusHighlightDismissEndTimer);
       this.statusHighlightDismissEndTimer = null;
     }
+    this.clearStatusHighlightAutoDismissTimers();
     for (const h of this.statusHighlightQueue) {
       if (h.exiting) delete h.exiting;
     }
@@ -906,6 +919,7 @@ export class GameApp {
     ) {
       return;
     }
+    this.clearStatusHighlightAutoDismissTimers();
     const n = this.statusHighlightQueue.length;
     this.statusHighlightDismissChainActive = true;
     for (const h of this.statusHighlightQueue) {
@@ -918,15 +932,78 @@ export class GameApp {
       if (!this.statusHighlightDismissChainActive) return;
       this.statusHighlightQueue = [];
       this.statusHighlightDismissChainActive = false;
+      this.pendingSidebarResourcePulse.clear();
       this.render();
     }, totalMs);
   }
 
   /**
-   * Fila manual: `autoDismissMs` no evento não agenda timers (só mudança de cena / botão Continuar).
+   * Enfileira banner de status. Banners `good`/`neutral` auto-fecham após
+   * `autoDismissMs` (default 2800); `bad`/`debuff` ou `autoDismissMs: 0` ficam manuais.
    */
   private enqueueStatusHighlight(event: Extract<GameEvent, { type: 'statusHighlight' }>): void {
-    this.statusHighlightQueue.push({ ...event });
+    const row: StoryStatusHighlightRow = { ...event };
+    this.statusHighlightQueue.push(row);
+    this.queueSidebarResourcePulseFromHighlight(event);
+    const manual =
+      event.variant === 'bad' ||
+      event.variant === 'debuff' ||
+      event.autoDismissMs === 0;
+    if (manual) return;
+    const delay =
+      event.autoDismissMs != null && event.autoDismissMs > 0
+        ? event.autoDismissMs
+        : STATUS_HIGHLIGHT_GOOD_AUTO_DISMISS_MS;
+    const token = Symbol('statusHighlight');
+    (row as StoryStatusHighlightRow & { _autoToken?: symbol })._autoToken = token;
+    const timer = setTimeout(() => {
+      this.statusHighlightAutoDismissTimers.delete(token);
+      if (this.statusHighlightQueue.length === 0) return;
+      if (
+        this.statusHighlightDismissChainActive ||
+        this.statusHighlightDismissEndTimer != null ||
+        this.statusHighlightQueue.some((h) => h.exiting)
+      ) {
+        return;
+      }
+      this.beginStatusHighlightStackDismiss();
+    }, delay);
+    this.statusHighlightAutoDismissTimers.set(token, timer);
+  }
+
+  private queueSidebarResourcePulseFromHighlight(
+    event: Extract<GameEvent, { type: 'statusHighlight' }>
+  ): void {
+    const title = event.title;
+    const pairs: Array<[string, string]> = [
+      [t('engine.resourceGold'), 'gold'],
+      [t('engine.resourceSupply'), 'supply'],
+      [t('engine.resourceFaith'), 'faith'],
+      [t('engine.resourceCorruption'), 'corruption'],
+      [t('sidebar.gold'), 'gold'],
+      [t('sidebar.supply'), 'supply'],
+      [t('sidebar.faith'), 'faith'],
+      [t('sidebar.corruption'), 'corruption'],
+    ];
+    let matched = false;
+    for (const [label, key] of pairs) {
+      if (label && title.includes(label)) {
+        this.pendingSidebarResourcePulse.add(key);
+        matched = true;
+      }
+    }
+    if (matched) {
+      window.setTimeout(() => {
+        this.pendingSidebarResourcePulse.clear();
+      }, 900);
+    }
+  }
+
+  private clearStatusHighlightAutoDismissTimers(): void {
+    for (const t of this.statusHighlightAutoDismissTimers.values()) {
+      clearTimeout(t);
+    }
+    this.statusHighlightAutoDismissTimers.clear();
   }
 
   private cancelDiaryBannerPipeline(): void {
@@ -1065,6 +1142,13 @@ export class GameApp {
         value: true,
       });
     }
+    if (toNode.visitFlag) {
+      effs.push({
+        op: 'setFlag',
+        key: toNode.visitFlag,
+        value: true,
+      });
+    }
     let s = applyEffects(this.state, effs, this.ctx());
     s = { ...s, timedChoiceDeadline: null };
     const roll = shouldTriggerEncounter(s, edge.encounterChance);
@@ -1075,6 +1159,7 @@ export class GameApp {
         act3_depths: t('toast.exploreGoalAct3'),
         act5_frost: t('toast.exploreGoalAct5'),
         act6_fractured_nave: t('toast.exploreGoalAct6'),
+        act8_magma: t('toast.exploreGoalAct8'),
       };
       this.enqueueStatusHighlight({
         type: 'statusHighlight',
@@ -1114,10 +1199,9 @@ export class GameApp {
 
   private applyChoice(choice: Choice): void {
     this.unlockAudio();
-    if (choice.commitSfx === 'horrific_sacrifice') {
+    const horrific = choice.commitSfx === 'horrific_sacrifice';
+    if (horrific) {
       this.audio.playHorrificSacrificeCommit();
-    } else {
-      this.audio.playUiClick();
     }
     if (this.timedTimer) {
       clearTimeout(this.timedTimer);
@@ -1125,16 +1209,19 @@ export class GameApp {
     }
     const id = choice.id;
     if (id?.startsWith('explore_move_')) {
+      if (!horrific) this.audio.playUiClick();
       this.applyExplorationMove(id.slice('explore_move_'.length));
       return;
     }
     if (id === DAILY_COMBAT_CHOICE_ID) {
+      if (!horrific) this.audio.playUiClick();
       this.startDailyHubCombat();
       return;
     }
     const wantsEchoShop = choice.effects.some((e) => e.op === 'openEchoShop');
     const engineEffects = choice.effects.filter((e) => e.op !== 'openEchoShop');
     const prevScene = this.state.sceneId;
+    const prevChapter = this.state.chapter;
     const prevDiaryQueueLen = this.diaryEntryQueue.length;
     const prevStatusQueueLen = this.statusHighlightQueue.length;
     const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
@@ -1148,6 +1235,13 @@ export class GameApp {
       s = tickActiveBuffs(s);
     }
     this.state = this.stabilize(s);
+    if (!horrific) {
+      if (this.state.chapter > prevChapter) {
+        this.audio.playChapterDescent();
+      } else {
+        this.audio.playUiClick();
+      }
+    }
     this.trimOverlayQueuesIfSceneChanged(
       prevScene,
       prevDiaryQueueLen,
@@ -1163,7 +1257,11 @@ export class GameApp {
 
   private isSettlementScene(): boolean {
     const sid = this.state.sceneId;
-    return sid === 'shared/game_over' || sid === 'endings/epilogue_depths';
+    return (
+      sid === 'shared/game_over' ||
+      sid === 'endings/epilogue_depths' ||
+      sid === 'endings/epilogue_true_depths'
+    );
   }
 
   private openLegacyModal(showRestart = false): void {
@@ -1361,9 +1459,10 @@ export class GameApp {
 
   private saveToSlot(slot: number): void {
     this.unlockAudio();
+    this.applyDailyBonusIfNeededForRun();
     saveStateToSlot(this.campaignId, slot, this.state, this.devMode);
     this.activateDailyTasksForSlot(slot);
-    this.applyDailyBonusIfNeededForLoadedSlot(slot);
+    this.applyDailyBonusIfNeededForRun();
     this.closeMenu();
     this.render();
   }
@@ -1391,7 +1490,7 @@ export class GameApp {
       }
       this.state = parsed;
       this.state = this.stabilize(this.state);
-      this.applyDailyBonusIfNeededForLoadedSlot(slot);
+      this.applyDailyBonusIfNeededForRun();
       this.activateDailyTasksForSlot(slot);
       this.render();
     } catch {
@@ -1866,6 +1965,13 @@ export class GameApp {
         saveSidebarSections(this.storageKeys.sidebarKey, this.sidebarSections);
       },
       playUiClick: () => this.audio.playUiClick(),
+      resourcePulseKeys: this.pendingSidebarResourcePulse,
+      inventoryNewCount: this.inventoryNewCount,
+      onInventoryOpened: () => {
+        if (this.inventoryNewCount === 0) return;
+        this.inventoryNewCount = 0;
+        this.render();
+      },
       fillMain: (main: HTMLElement) => {
         if (this.state.mode === 'combat') {
           main.classList.add('main--combat');

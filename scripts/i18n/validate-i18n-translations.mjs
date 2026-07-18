@@ -11,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { parse as parseYaml } from 'yaml';
 import { walkMd, extractSceneIdLine, campaignPaths } from '../lib/campaignFs.mjs';
 import { flattenStringLeaves } from './lib/validateHelpers.mjs';
 import { buildDialoguePtOverlays } from './lib/dialogueExtract.mjs';
@@ -104,37 +105,50 @@ function checkUntranslated(label, enValue, ptValue) {
 function splitFrontmatter(raw) {
   const text = raw.replace(/^\uFEFF/, '');
   const lines = text.split(/\r?\n/);
-  if (lines[0]?.trim() !== '---') return { yaml: '', content: text.trimEnd() };
+  if (lines[0]?.trim() !== '---') return { data: {}, content: text.trimEnd() };
   const yamlLines = [];
   let i = 1;
   while (i < lines.length) {
     if (lines[i]?.trim() === '---') {
-      return { yaml: yamlLines.join('\n'), content: lines.slice(i + 1).join('\n').trimEnd() };
+      return {
+        data: parseYaml(yamlLines.join('\n')) ?? {},
+        content: lines.slice(i + 1).join('\n').trimEnd(),
+      };
     }
     yamlLines.push(lines[i] ?? '');
     i++;
   }
-  return { yaml: '', content: text.trimEnd() };
+  return { data: {}, content: text.trimEnd() };
+}
+
+function diaryTextsFromEffects(effects) {
+  if (!Array.isArray(effects)) return [];
+  return effects.filter((e) => e?.op === 'addDiary' && typeof e.text === 'string').map((e) => e.text);
 }
 
 function parseSceneFromMd(raw) {
-  const { yaml, content } = splitFrontmatter(raw);
-  const titleM = yaml.match(/^title:\s*['"]?([^'"\n]+?)['"]?\s*$/m);
-  const title = titleM?.[1]?.trim();
-  /** @type {Array<{ text?: string; preview?: string; lockedHint?: string }>} */
-  const choices = [];
-  const choiceBlocks = yaml.split(/\n\s*-\s+id:/).slice(1);
-  for (const block of choiceBlocks) {
-    const textM = block.match(/^\s*text:\s*['"]([^'"]+)['"]/m);
-    const previewM = block.match(/^\s*preview:\s*['"]([^'"]+)['"]/m);
-    const hintM = block.match(/^\s*lockedHint:\s*['"]([^'"]+)['"]/m);
-    choices.push({
-      text: textM?.[1],
-      preview: previewM?.[1],
-      lockedHint: hintM?.[1],
-    });
-  }
-  return { title, body: content.trim(), choices };
+  const { data, content } = splitFrontmatter(raw);
+  const choices = Array.isArray(data.choices)
+    ? data.choices.map((ch) => ({
+        text: typeof ch?.text === 'string' ? ch.text : undefined,
+        preview: typeof ch?.preview === 'string' ? ch.preview : undefined,
+        lockedHint: typeof ch?.lockedHint === 'string' ? ch.lockedHint : undefined,
+        uiSection: typeof ch?.uiSection === 'string' ? ch.uiSection : undefined,
+        diaryTexts: diaryTextsFromEffects(ch?.effects),
+      }))
+    : [];
+  return {
+    title: typeof data.title === 'string' ? data.title : undefined,
+    body: content.trim(),
+    choices,
+    skillCheckLabel:
+      typeof data.skillCheck?.label === 'string' ? data.skillCheck.label : undefined,
+    dualAttrSkillCheckLabel:
+      typeof data.dualAttrSkillCheck?.label === 'string' ? data.dualAttrSkillCheck.label : undefined,
+    luckCheckLabel: typeof data.luckCheck?.label === 'string' ? data.luckCheck.label : undefined,
+    onEnterDiaryTexts: diaryTextsFromEffects(data.onEnter),
+    repeatOnEnterDiaryTexts: diaryTextsFromEffects(data.repeatOnEnter),
+  };
 }
 
 function sceneOverlayById() {
@@ -232,6 +246,17 @@ function checkExploration() {
   }
 }
 
+function checkDiaryArray(label, ptTexts, enTexts) {
+  if (!ptTexts.length) return;
+  if (!Array.isArray(enTexts) || enTexts.length !== ptTexts.length) {
+    error(`[${label}] diary count mismatch pt=${ptTexts.length} en=${enTexts?.length ?? 0}`);
+    return;
+  }
+  ptTexts.forEach((pt, i) => {
+    checkUntranslated(`${label}[${i}]`, enTexts[i], pt);
+  });
+}
+
 function checkScenes() {
   const overlays = sceneOverlayById();
   const { scenesDir } = campaignPaths(repoRoot, 'calvario', 'pt-BR');
@@ -240,38 +265,63 @@ function checkScenes() {
     const raw = fs.readFileSync(file, 'utf8');
     const id = extractSceneIdLine(raw);
     if (!id) continue;
-    const { title: ptTitle, body: ptBody, choices: ptChoices } = parseSceneFromMd(raw);
+    const pt = parseSceneFromMd(raw);
     const ov = overlays[id];
     if (!ov || typeof ov !== 'object') {
       error(`[scene.${id}] missing overlay object`);
       continue;
     }
-    const enTitle = ov.title;
-    const enBody = ov.body;
 
-    if (ptTitle) checkUntranslated(`scene.${id}.title`, enTitle, ptTitle);
-    if (ptBody) {
-      if (!enBody?.trim()) error(`[scene.${id}.body] missing en-US body`);
-      else checkUntranslated(`scene.${id}.body`, enBody, ptBody);
+    if (pt.title) checkUntranslated(`scene.${id}.title`, ov.title, pt.title);
+    if (pt.body) {
+      if (!ov.body?.trim()) error(`[scene.${id}.body] missing en-US body`);
+      else checkUntranslated(`scene.${id}.body`, ov.body, pt.body);
     }
 
-    const enChoices = Array.isArray(ov.choices) ? ov.choices : [];
-    if (ptChoices.length && enChoices.length !== ptChoices.length) {
-      error(
-        `[scene.${id}.choices] count mismatch pt=${ptChoices.length} en=${enChoices.length}`
+    if (pt.skillCheckLabel) {
+      checkUntranslated(`scene.${id}.skillCheckLabel`, ov.skillCheckLabel, pt.skillCheckLabel);
+    }
+    if (pt.dualAttrSkillCheckLabel) {
+      checkUntranslated(
+        `scene.${id}.dualAttrSkillCheckLabel`,
+        ov.dualAttrSkillCheckLabel,
+        pt.dualAttrSkillCheckLabel
       );
     }
-    ptChoices.forEach((ch, i) => {
+    if (pt.luckCheckLabel) {
+      checkUntranslated(`scene.${id}.luckCheckLabel`, ov.luckCheckLabel, pt.luckCheckLabel);
+    }
+
+    checkDiaryArray(`scene.${id}.onEnterDiaryTexts`, pt.onEnterDiaryTexts, ov.onEnterDiaryTexts);
+    checkDiaryArray(
+      `scene.${id}.repeatOnEnterDiaryTexts`,
+      pt.repeatOnEnterDiaryTexts,
+      ov.repeatOnEnterDiaryTexts
+    );
+
+    const enChoices = Array.isArray(ov.choices) ? ov.choices : [];
+    if (pt.choices.length && enChoices.length !== pt.choices.length) {
+      error(
+        `[scene.${id}.choices] count mismatch pt=${pt.choices.length} en=${enChoices.length}`
+      );
+    }
+    pt.choices.forEach((ch, i) => {
       const eco = enChoices[i];
       if (!eco) {
         error(`[scene.${id}.choices[${i}]] missing overlay choice`);
         return;
       }
       if (ch.text) checkUntranslated(`scene.${id}.choices[${i}].text`, eco.text, ch.text);
-      if (ch.preview) checkUntranslated(`scene.${id}.choices[${i}].preview`, eco.preview, ch.preview);
+      if (ch.preview) {
+        checkUntranslated(`scene.${id}.choices[${i}].preview`, eco.preview, ch.preview);
+      }
       if (ch.lockedHint) {
         checkUntranslated(`scene.${id}.choices[${i}].lockedHint`, eco.lockedHint, ch.lockedHint);
       }
+      if (ch.uiSection) {
+        checkUntranslated(`scene.${id}.choices[${i}].uiSection`, eco.uiSection, ch.uiSection);
+      }
+      checkDiaryArray(`scene.${id}.choices[${i}].diaryTexts`, ch.diaryTexts, eco.diaryTexts);
     });
   }
 }

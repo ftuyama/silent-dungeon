@@ -11,7 +11,7 @@ onEnter:
   - { op: addMark, mark: act7_cinder_burned }
   - { op: addResource, resource: supply, delta: -1 }
   - { op: addResource, resource: corruption, delta: 1 }
-  - { op: addDiary, text: "A cinza estava viva — ou eu é que estava morto o suficiente para confundir. Perdi tempo e pele no mesmo sítio." }
+  - { op: addDiary, text: "A cinza estava viva — ou eu é que estava morto o suficiente para confundir. Perdi tempo e pele no mesmo lugar." }
 ---
 A pilha **acende** sem chama: calor que **rouba** suor e **paciência**. Quando recuas, trazes **corrupção** na garganta — não possessão; **resíduo** de ter tocado o que não era seu.
 

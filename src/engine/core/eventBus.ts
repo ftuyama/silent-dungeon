@@ -12,6 +12,7 @@ export type GameEvent =
   /** Passagem de tempo ao entrar num acampamento (dia narrativo). */
   | { type: 'time.dayAdvanced'; day: number }
   | { type: 'item.acquired'; itemId: string }
+  | { type: 'item.sold'; itemId: string; gold: number }
   /** Entrada nova no diário do jogador (`addDiary`) — texto já com templates resolvidos. */
   | { type: 'diary.entryAdded'; text: string }
   | { type: 'camp.rest' }
@@ -20,7 +21,7 @@ export type GameEvent =
       variant: 'good' | 'bad' | 'neutral' | 'debuff';
       title: string;
       subtitle?: string;
-      /** Metadado do motor; a UI não usa para timers (fecho manual + mudança de cena). */
+      /** Metadado do motor; `0` = fecho manual; omitido/`>0` = UI agenda auto-dismiss para good/neutral. */
       autoDismissMs?: number;
     };
 

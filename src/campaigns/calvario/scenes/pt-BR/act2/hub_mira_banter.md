@@ -12,6 +12,6 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 3, onceFlag: ff_cf_act2_hub_mira_banter }
 onEnter: []
 ---
-**Mira** encosta a espada ao ombro como quem segura um segredo barato: "Este sítio **cobra** cada passo. Eu já deixei aqui um nome — não vou deixar seu **grátis**."
+**Mira** encosta a espada ao ombro como quem segura um segredo barato: "Este lugar **cobra** cada passo. Eu já deixei aqui um nome — não vou deixar seu **grátis**."
 
 O eco concorda, mas não diz a quem pertence.

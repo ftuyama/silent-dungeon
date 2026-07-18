@@ -63,6 +63,12 @@ export type MountAppChromeOptions = {
   onDailyBonus: () => void;
   /** Som de clique na UI (ex.: abrir/fechar diário). */
   playUiClick?: () => void;
+  /** Recursos a pulsar na sidebar. */
+  resourcePulseKeys?: ReadonlySet<string>;
+  /** Badge de itens novos no inventário. */
+  inventoryNewCount?: number;
+  /** Limpa o badge ao abrir o inventário. */
+  onInventoryOpened?: () => void;
   /** Preenche o `<main class="story-shell">` (combate ou narrativa). */
   fillMain: (main: HTMLElement) => void;
 };
@@ -460,6 +466,9 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
       playUiClick: opts.playUiClick,
       dailyBonus: opts.dailyBonus,
       dailyTasks: opts.dailyTasks,
+      resourcePulseKeys: opts.resourcePulseKeys,
+      inventoryNewCount: opts.inventoryNewCount,
+      onInventoryOpened: opts.onInventoryOpened,
     })
   );
 
@@ -555,6 +564,9 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
       dailyBonus: opts.dailyBonus,
       dailyTasks: opts.dailyTasks,
       mobileDetailsOpen: prevMobileDetailsOpen,
+      resourcePulseKeys: opts.resourcePulseKeys,
+      inventoryNewCount: opts.inventoryNewCount,
+      onInventoryOpened: opts.onInventoryOpened,
     })
   );
   refs.sidebarEl.scrollTop = prevSidebarScroll;

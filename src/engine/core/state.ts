@@ -6,6 +6,18 @@ const defaultRep = { vigilia: 0, circulo: 0, culto: 0 } as GameState['reputation
 export const PASSIVE_UNLOCK_ITEM_ID = 'morvayn_heart_shard';
 const KNIGHT_PASSIVE_CRIT_RATIO_BONUS = 0.03;
 
+/** UUID v4 para identificar uma run (persistido na gravação). */
+export function createRunId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 /** Vida extra automática: fé >= 5 (sem acúmulo além da disponibilidade). */
 export function extraLifeReadyFromFaith(faith: number): boolean {
   return faith >= 5;
@@ -16,6 +28,7 @@ export function createInitialState(campaign: CampaignIndex, seed?: number): Game
   return {
     schemaVersion: SCHEMA_VERSION,
     campaignId: campaign.id,
+    runId: createRunId(),
     rngSeed,
     chapter: 1,
     sceneId: campaign.entryScene,
@@ -31,6 +44,7 @@ export function createInitialState(campaign: CampaignIndex, seed?: number): Game
     circuloSkillRerollReady: false,
     flags: {},
     marks: [],
+    storyPaths: {},
     legacy: { echoes: 0, titles: [], discoveredEndings: [], lastRunSummary: '', lastRunEchoGain: 0, unlockedUpgrades: [], lastRunStats: null, lastEndSceneId: '' },
     leadStoryPassives: [],
     resources: { supply: 5, faith: 3, corruption: 0, gold: 8 },
@@ -192,6 +206,26 @@ export function serializeState(state: GameState): string {
   return JSON.stringify(rest);
 }
 
+/** Saves antigos podiam ter classe no líder sem `act1_class_chosen` (flag só passou a ser gravada em `initClass`). */
+export function migrateAct1ClassChosen(state: GameState): GameState {
+  const lead = state.party[0];
+  if (lead?.class && !state.flags.act1_class_chosen) {
+    return { ...state, flags: { ...state.flags, act1_class_chosen: true } };
+  }
+  return state;
+}
+
+/** Preenche `storyPaths.throne` a partir de marks legados se ainda não existir. */
+export function migrateStoryPathsFromMarks(state: GameState): GameState {
+  const paths = { ...(state.storyPaths ?? {}) };
+  if (!paths.throne) {
+    if (state.marks.includes('calvario_sealed')) paths.throne = 'sealed';
+    else if (state.marks.includes('pact_bound')) paths.throne = 'pact';
+    else if (state.marks.includes('morvayn_slain')) paths.throne = 'slain';
+  }
+  return { ...state, storyPaths: paths };
+}
+
 export function deserializeState(json: string): GameState {
   const raw = JSON.parse(json) as unknown;
   if (typeof raw !== 'object' || raw === null) throw new Error('Save inválido');
@@ -220,6 +254,15 @@ export function deserializeState(json: string): GameState {
   };
 
   const marks = Array.isArray((o as GameState).marks) ? [...(o as GameState).marks] : [];
+  const rawStoryPaths = (o as Partial<GameState>).storyPaths;
+  const storyPaths: GameState['storyPaths'] =
+    rawStoryPaths && typeof rawStoryPaths === 'object' && !Array.isArray(rawStoryPaths)
+      ? Object.fromEntries(
+          Object.entries(rawStoryPaths as Record<string, unknown>).filter(
+            ([, v]) => typeof v === 'string' && v.length > 0
+          ) as [string, string][]
+        )
+      : {};
   const leadStoryPassives = Array.isArray((o as GameState).leadStoryPassives)
     ? [...(o as GameState).leadStoryPassives]
     : [];
@@ -313,9 +356,14 @@ export function deserializeState(json: string): GameState {
     culto: clampReputation(typeof rawRep?.culto === 'number' ? rawRep.culto : 0),
   };
 
+  const rawRunId = (o as Partial<GameState>).runId;
+  const runId =
+    typeof rawRunId === 'string' && rawRunId.length > 0 ? rawRunId : createRunId();
+
   const merged: GameState = {
     ...(o as GameState),
     campaignId,
+    runId,
     rngSeed: randomSeed(),
     factionGainPending,
     reputation,
@@ -325,6 +373,7 @@ export function deserializeState(json: string): GameState {
         : false,
     resources,
     marks,
+    storyPaths,
     leadStoryPassives,
     flags,
     legacy,
@@ -359,5 +408,5 @@ export function deserializeState(json: string): GameState {
       };
     }),
   };
-  return syncLeadPassiveStats(merged);
+  return syncLeadPassiveStats(migrateAct1ClassChosen(migrateStoryPathsFromMarks(merged)));
 }

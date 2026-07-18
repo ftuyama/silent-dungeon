@@ -16,6 +16,8 @@ export type ExplorationNode = {
   /** Ao entrar neste nó, define a flag (típico do nó objetivo). */
   isGoal?: boolean;
   goalFlag?: string;
+  /** Ao entrar neste nó, define a flag (ex.: mercador encontrado). */
+  visitFlag?: string;
   /** Célula no grid ASCII do `mapId` do grafo (0-based). */
   mapCell?: { x: number; y: number };
   edges: ExplorationEdge[];
@@ -142,6 +144,24 @@ const ACT6_WILD_BRANCHES: ExplorationWildBranch[] = [
   }
 ];
 
+const ACT8_WILD_BRANCHES: ExplorationWildBranch[] = [
+  {
+    weight: 1,
+    encounterId: 'act8_wild_lava_golem',
+    staticSceneId: 'act8/encounters/wild_lava_golem',
+  },
+  {
+    weight: 1,
+    encounterId: 'act8_wild_ember_hound',
+    staticSceneId: 'act8/encounters/wild_ember_hound',
+  },
+  {
+    weight: 0.8,
+    encounterId: 'act8_wild_slag_wraith',
+    staticSceneId: 'act8/encounters/wild_slag_wraith',
+  },
+];
+
 export const EXPLORATION_WILD_BRANCHES_BY_GRAPH: Record<string, ExplorationWildBranch[]> = {
   act2_catacomb: ACT2_WILD_BRANCHES,
   act3_depths: ACT3_WILD_BRANCHES,
@@ -149,6 +169,7 @@ export const EXPLORATION_WILD_BRANCHES_BY_GRAPH: Record<string, ExplorationWildB
   act6_fractured_nave: ACT6_WILD_BRANCHES,
   /** Não é grafo de mapa; só `startWildEncounterFromGraph` na prova da vontade. */
   act6_will_trial: ACT6_WILL_TRIAL_BRANCHES,
+  act8_magma: ACT8_WILD_BRANCHES,
 };
 
 function wildBranchesForGraph(graphId?: string): ExplorationWildBranch[] {

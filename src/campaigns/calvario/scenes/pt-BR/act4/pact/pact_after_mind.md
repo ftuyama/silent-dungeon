@@ -2,7 +2,7 @@
 id: act4/pact/pact_after_mind
 title: Eco Domesticado
 chapter: 4
-ambientTheme: explore
+ambientTheme: act4
 choices:
   - text: "Atravessar a praça sem vacilar"
     next: act4/encounters/pact_vigil_skirmish

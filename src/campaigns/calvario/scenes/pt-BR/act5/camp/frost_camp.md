@@ -8,6 +8,7 @@ campCombatHint: true
 choices:
   - text: "Descansar junto ao fogareiro (−1 suprimento)"
     uiSection: "Recuperar"
+    uiSectionIcon: rest
     next: act5/frost_hub
     condition: { resource: { supply: { gte: 1 } } }
     showWhenLocked: true
@@ -15,44 +16,28 @@ choices:
     effects:
       - { op: campRest }
       - { op: advanceDay }
-  - text: "Beber poção rubra (você)"
+  - text: "Usar consumível"
     uiSection: "Recuperar"
-    next: act5/camp/frost_camp
-    condition: { hasItem: potion_hp }
-    effects:
-      - { op: useConsumable, itemId: potion_hp, targetIndex: 0 }
-  - text: "Dar poção rubra ao companheiro"
-    uiSection: "Recuperar"
-    next: act5/camp/frost_camp
-    condition: { all: [{ hasItem: potion_hp }, { companionCount: { gte: 1 } }] }
-    effects:
-      - { op: useConsumable, itemId: potion_hp, targetIndex: 1 }
-  - text: "Beber tônico azul (mana)"
-    uiSection: "Recuperar"
-    next: act5/camp/frost_camp
+    uiSectionIcon: rest
+    next: act5/camp/use_consumable
     condition:
-      all:
+      any:
+        - { hasItem: potion_hp }
         - { hasItem: potion_mana }
-        - { any: [{ class: mage }, { class: cleric }] }
-    effects:
-      - { op: useConsumable, itemId: potion_mana, targetIndex: 0 }
-  - text: "Beber infusão serena (stress)"
-    uiSection: "Recuperar"
-    next: act5/camp/frost_camp
-    condition: { hasItem: potion_stress }
-    effects:
-      - { op: useConsumable, itemId: potion_stress, targetIndex: 0 }
+        - { hasItem: potion_stress }
+    preview: "Escolher qual poção usar."
   - text: "Trocar duas palavras com o grupo"
     uiSection: "Conversa"
+    uiSectionIcon: talk
     next: act5/camp/frost_companion_chat
     condition: { companionCount: { gte: 1 } }
-    showWhenLocked: true
-    lockedHint: "Sem companheiro, não há grupo com quem trocar palavra."
   - text: "Manusear equipamento no acampamento"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act5/camp/manage_equip
   - text: "Partilhar uma prece com devotos do Terceiro Sino"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     condition:
       all:
         - { rep: { faction: culto, gte: 2 } }
@@ -66,6 +51,7 @@ choices:
     preview: "+1 fé, +1 corrupção (uma vez)"
   - text: "Pedir escolta de pensamento à Vigília (contra o Culto)"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     condition:
       all:
         - { rep: { faction: vigilia, gte: 2 } }
@@ -80,6 +66,7 @@ choices:
     preview: "Culto cai; Vigília sobe (lento) (uma vez)"
   - text: "Consagrar neve derretida como água benta (clérigo)"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     condition:
       all:
         - { class: cleric }
@@ -94,6 +81,7 @@ choices:
     preview: "−1 suprimento · +2 fé (uma vez)"
   - text: "Enterrar duas moedas no gelo para o Terceiro Sino"
     uiSection: "Acampamento"
+    uiSectionIcon: camp
     condition:
       all:
         - { rep: { faction: culto, gte: 1 } }
@@ -109,6 +97,7 @@ choices:
     preview: "−2 ouro · culto +1 · +1 corrupção (uma vez)"
   - text: "Continuar"
     uiSection: "Partir"
+    uiSectionIcon: leave
     next: act5/frost_hub
     effects:
       - { op: advanceDay }

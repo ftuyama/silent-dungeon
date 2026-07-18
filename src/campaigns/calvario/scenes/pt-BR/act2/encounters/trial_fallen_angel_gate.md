@@ -5,7 +5,11 @@ ambientTheme: act2
 title: Provação do véu
 choices:
   - text: "Enfrentar o anjo com o aço (cavaleiro)"
-    condition: { class: knight }
+    condition:
+      all:
+        - { class: knight }
+        - not:
+            path: fallen
     effects:
       - op: startCombat
         encounterId: boss_fallen_angel_trial
@@ -14,7 +18,11 @@ choices:
         onFlee: act2/lore/lore_crossroads
     preview: "Combate · vantagem do inimigo"
   - text: "Enfrentar o anjo com o arcano (mago)"
-    condition: { class: mage }
+    condition:
+      all:
+        - { class: mage }
+        - not:
+            path: dark
     effects:
       - op: startCombat
         encounterId: boss_fallen_angel_trial
@@ -36,7 +44,11 @@ choices:
         onFlee: act2/lore/lore_crossroads
     preview: "Combate · vantagem do inimigo"
   - text: "Enfrentar o anjo com a flecha (arqueiro)"
-    condition: { class: archer }
+    condition:
+      all:
+        - { class: archer }
+        - not:
+            path: marksman
     effects:
       - op: startCombat
         encounterId: boss_fallen_angel_trial
