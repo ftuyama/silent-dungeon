@@ -2,11 +2,102 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A Masmorra do Silêncio</title>
+
+    <meta
+      name="description"
+      content="A Masmorra do Silêncio (The Silent Dungeon): jogo de texto e fantasia sombria no navegador, com narrativa ramificada, combate por turnos, arte ASCII Braille e campanha em atos. Jogue grátis, em português ou inglês."
+    />
+    <meta
+      name="keywords"
+      content="A Masmorra do Silêncio, The Silent Dungeon, jogo de texto, interactive fiction, fantasia sombria, dungeon crawler, RPG narrativo, ASCII, browser game, jogo no navegador"
+    />
+    <meta name="author" content="Felipe Tuyama" />
+    <meta name="application-name" content="A Masmorra do Silêncio" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0a0c0b" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="canonical" href="https://ftuyama.github.io/silent-dungeon/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://ftuyama.github.io/silent-dungeon/" />
+    <link rel="alternate" hreflang="en" href="https://ftuyama.github.io/silent-dungeon/" />
+    <link rel="alternate" hreflang="x-default" href="https://ftuyama.github.io/silent-dungeon/" />
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="llms-txt" href="./llms.txt" title="LLM discovery" />
+    <link rel="alternate" type="text/plain" href="./llms-full.txt" title="Extended summary for LLMs" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="A Masmorra do Silêncio" />
+    <meta property="og:title" content="A Masmorra do Silêncio — The Silent Dungeon" />
+    <meta
+      property="og:description"
+      content="Fantasia sombria interativa no navegador: escolhas com peso, combate por turnos e arte ASCII. Campanha em capítulos — o fim depende de você."
+    />
+    <meta property="og:url" content="https://ftuyama.github.io/silent-dungeon/" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="https://ftuyama.github.io/silent-dungeon/og-image.png" />
+    <meta property="og:image:alt" content="Cena de A Masmorra do Silêncio com narrativa ASCII e opções de escolha" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="A Masmorra do Silêncio — The Silent Dungeon" />
+    <meta
+      name="twitter:description"
+      content="Jogo de texto e fantasia sombria no navegador. Descer é só o primeiro passo."
+    />
+    <meta name="twitter:image" content="https://ftuyama.github.io/silent-dungeon/og-image.png" />
+    <meta name="twitter:image:alt" content="Cena de A Masmorra do Silêncio com narrativa ASCII e opções de escolha" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["VideoGame", "WebApplication"],
+        "name": "A Masmorra do Silêncio",
+        "alternateName": "The Silent Dungeon",
+        "description": "Text-based dark fantasy interactive fiction with branching narrative, turn-based combat, Braille ASCII art, and a multi-act campaign. Play free in the browser in Brazilian Portuguese or English.",
+        "url": "https://ftuyama.github.io/silent-dungeon/",
+        "inLanguage": ["pt-BR", "en-US"],
+        "genre": ["Dark fantasy", "Interactive fiction", "Dungeon crawler"],
+        "gamePlatform": "Web browser",
+        "applicationCategory": "Game",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "author": {
+          "@type": "Person",
+          "name": "Felipe Tuyama"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "image": "https://ftuyama.github.io/silent-dungeon/og-image.png"
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <main>
+        <h1>A Masmorra do Silêncio</h1>
+        <p>
+          <strong>The Silent Dungeon</strong> — jogo de texto e fantasia sombria no navegador, com
+          narrativa ramificada, combate por turnos e arte ASCII Braille.
+        </p>
+        <p>
+          O pulso verde sobe pela garganta da cidade. Por baixo, a masmorra abre a boca: pedra úmida,
+          ferro oxidado e um silêncio que aprende seu nome antes de você o dizer em voz alta.
+        </p>
+        <p>Este jogo requer JavaScript. Ative JavaScript no navegador para jogar.</p>
+        <p>
+          <a href="https://ftuyama.github.io/silent-dungeon/">Jogar A Masmorra do Silêncio</a>
+        </p>
+      </main>
+    </noscript>
     <div id="app"></div>
     <script type="module" src="./src/main.ts"></script>
   </body>

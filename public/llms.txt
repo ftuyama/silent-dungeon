@@ -1,0 +1,29 @@
+# A Masmorra do Silêncio / The Silent Dungeon
+
+> Browser-based dark fantasy text game with branching narrative, turn-based combat, Braille ASCII art, and a multi-act campaign. Free to play; Brazilian Portuguese and English UI.
+
+## Play
+
+- [Play in browser](https://ftuyama.github.io/silent-dungeon/): Official web version — no install required.
+
+## About the game
+
+- Genre: interactive fiction, dungeon crawler, dark fantasy RPG
+- Platform: web browser (JavaScript required)
+- Languages: Brazilian Portuguese (primary narrative), English (UI overlay)
+- Tone: catacombs, cults, silence, moral choices; content warnings for death, cult themes, implied violence
+- Mechanics: choices with consequences, turn-based combat, exploration hubs, factions (Vigília, Círculo, Culto), resources (supply, faith, corruption, gold)
+
+## Documentation for humans and models
+
+- [Full project summary (llms-full.txt)](https://ftuyama.github.io/silent-dungeon/llms-full.txt): Extended description, features, and links.
+- [README (English)](https://github.com/ftuyama/you-decide/blob/main/README.md): Screenshots and how to play.
+- [LEIAME (Português)](https://github.com/ftuyama/you-decide/blob/main/LEIAME.md): Versão em português do README.
+
+## Author
+
+- Felipe Tuyama — creator of A Masmorra do Silêncio / The Silent Dungeon.
+
+## Optional
+
+- [Support on Ko-fi](https://ko-fi.com/lelouchiee): Voluntary tip jar for the creator.

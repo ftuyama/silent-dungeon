@@ -1,0 +1,61 @@
+# A Masmorra do Silêncio / The Silent Dungeon — full summary
+
+> A text game where every click cuts like a blade. Play free at https://ftuyama.github.io/silent-dungeon/
+
+## Elevator pitch
+
+Beneath the city, the **green pulse** never stops. The **Silent Dungeon** (*A Masmorra do Silêncio*) opens its mouth: damp stone, rusted iron, and a **silence** that learns your name before you speak it. Whether for honor, greed, or despair, the first step is always the same: **descend**.
+
+This is a browser-based interactive fiction game with turn-based combat, Braille ASCII scene art, inventory, factions, and a chaptered campaign whose ending depends on your choices.
+
+## How to play
+
+- Open https://ftuyama.github.io/silent-dungeon/ in a modern web browser.
+- No installation or account required.
+- JavaScript must be enabled.
+- In-game language can be switched between Brazilian Portuguese and English.
+
+## What players get
+
+| Feature | Description |
+| --- | --- |
+| Branching choices | Decisions open paths and close others. |
+| Dungeon atmosphere | Catacombs, rituals, stone mouths, things in the corners. |
+| Turn-based combat | Initiative, physical attacks, spells, stress, flee vs victory. |
+| Chaptered campaign | Story unfolds in acts; multiple endings. |
+| ASCII art | Braille-pattern scene illustrations and enemy sprites. |
+| Companions & factions | Reputation with Vigília, Círculo, Culto; companion arcs. |
+
+## Content note
+
+Dark fantasy. Sensitive themes include death, cults, and implied violence. Discretion advised.
+
+## Survival tips (from the author)
+
+- Read everything — clues hide in long descriptions.
+- Do not rush — the game rewards imagining the space before clicking.
+- Death is a consequence, not a bug — try another angle.
+
+## Technical context (for developers and crawlers)
+
+- Engine: You Decide (TypeScript, Vite)
+- Campaign id: `calvario`
+- Source repository: https://github.com/ftuyama/you-decide
+- Published build: GitHub Pages at `/silent-dungeon/`
+
+## Alternate names
+
+- Portuguese: A Masmorra do Silêncio
+- English: The Silent Dungeon
+- Repository/package: silent-dungeon
+
+## Author
+
+Felipe Tuyama
+
+## Links
+
+- Play: https://ftuyama.github.io/silent-dungeon/
+- README (EN): https://github.com/ftuyama/you-decide/blob/main/README.md
+- LEIAME (PT): https://github.com/ftuyama/you-decide/blob/main/LEIAME.md
+- Ko-fi: https://ko-fi.com/lelouchiee

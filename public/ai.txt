@@ -1,0 +1,4 @@
+# AI / LLM discovery — see llms.txt
+# https://llmstxt.org/
+
+/llms.txt
