@@ -4,6 +4,7 @@ chapter: 2
 ambientTheme: act2
 title: Mordida do poço
 onEnter:
+  - { op: setFlag, key: act2_luck_mire_done, value: true }
   - { op: adjustLeadStat, attr: agi, delta: -1 }
   - { op: addMark, mark: wound_mire_leg }
   - { op: addDiary, text: "O lodo mordeu-me a perna. O calor não volta igual." }

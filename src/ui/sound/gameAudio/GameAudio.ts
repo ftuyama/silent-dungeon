@@ -1,4 +1,5 @@
 import { GameAmbientPlayer } from './gameAudioAmbient.ts';
+import { GameLowHpPlayer } from './gameAudioLowHp.ts';
 import type { GameAudioHost } from './gameAudioHost.ts';
 import { GameSfxPlayer } from './gameAudioSfx.ts';
 import type { AmbientTheme } from '../types.ts';
@@ -13,6 +14,7 @@ export class GameAudio {
   /** 0–1, aplicado a todos os ganhos (música ambiente + efeitos). */
   private volume = 1;
   private readonly ambient: GameAmbientPlayer;
+  private readonly lowHp: GameLowHpPlayer;
   private readonly sfx: GameSfxPlayer;
 
   constructor(campaignId: string) {
@@ -35,6 +37,7 @@ export class GameAudio {
       getAudioContext: () => this.ctx,
     };
     this.ambient = new GameAmbientPlayer(host);
+    this.lowHp = new GameLowHpPlayer(host);
     this.sfx = new GameSfxPlayer(host);
   }
 
@@ -90,6 +93,23 @@ export class GameAudio {
 
   stopAmbient(): void {
     this.ambient.stop();
+  }
+
+  /** Liga ou desliga o pulso contínuo de perigo conforme PV do herói (≤30%). */
+  syncLowHp(hp: number, maxHp: number): void {
+    this.runSfxWhenRunning(() => this.lowHp.sync(hp, maxHp));
+  }
+
+  /** Pré-escuta na aba Música — reinicia o ciclo (gesto do utilizador). */
+  previewLowHp(): void {
+    this.runSfxWhenRunning(() => {
+      this.lowHp.stop();
+      this.lowHp.sync(3, 10);
+    });
+  }
+
+  stopLowHp(): void {
+    this.lowHp.stop();
   }
 
   playUiClick(): void {

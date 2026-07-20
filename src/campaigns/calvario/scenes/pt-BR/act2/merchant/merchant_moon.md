@@ -124,10 +124,12 @@ choices:
     uiSection: "Conversa"
     uiSectionIcon: talk
     next: act2/hub_catacomb
+    visibleWhen: { noFlag: act2_merchant_vigilia_mention_done }
     condition: { rep: { faction: vigilia, gte: 2 } }
     showWhenLocked: true
     lockedHint: "A Vigília só te dá esse gancho quando a reputação com você é forte (≥2)."
     effects:
+      - { op: setFlag, key: act2_merchant_vigilia_mention_done, value: true }
       - { op: addDiary, text: "O mercador hesitou quando falei da Vigília — interesse compra silêncio." }
     preview: "Diário · rumor de respeito"
   - text: "Mostrar o fedor dos ratos — ele reconhece a ninhada"

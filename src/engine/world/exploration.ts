@@ -288,6 +288,17 @@ export function explorationMoveEffects(args: {
   return { ok: true, edge, toNode };
 }
 
+/** Flag do nó objetivo do grafo, se existir. */
+export function explorationGoalFlag(graph: ExplorationGraph): string | null {
+  return graph.nodes.find((n) => n.isGoal)?.goalFlag ?? null;
+}
+
+/** True quando a flag do nó objetivo do grafo já está setada no estado. */
+export function isExplorationGoalReached(state: GameState, graph: ExplorationGraph): boolean {
+  const flag = explorationGoalFlag(graph);
+  return flag != null && state.flags[flag] === true;
+}
+
 export function shouldTriggerEncounter(
   state: GameState,
   chance: number

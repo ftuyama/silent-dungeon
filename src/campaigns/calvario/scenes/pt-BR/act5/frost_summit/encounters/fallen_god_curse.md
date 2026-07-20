@@ -8,6 +8,7 @@ choices:
   - text: "Arrastar-me para fora do templo — vivo, mas oco"
     next: act5/frost_summit/temple_gate
 onEnter:
+  - { op: setFlag, key: frost_summit_ritual_cursed, value: true }
   - { op: grantTemporaryBuff, attr: str, delta: -4, remainingScenes: 14 }
   - { op: grantTemporaryBuff, attr: agi, delta: -4, remainingScenes: 14 }
   - { op: grantTemporaryBuff, attr: mind, delta: -4, remainingScenes: 14 }

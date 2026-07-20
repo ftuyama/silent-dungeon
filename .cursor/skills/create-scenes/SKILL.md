@@ -98,6 +98,7 @@ Corpo da base = ramo default (ex. `slain`); variantes `_pact` / `_sealed` sem `s
 - **Quando usar teaser (`showWhenLocked`):** progresso narrativo (próxima missão, boss, porta de fé/rep), custo de recurso visível (ouro/suprimento na loja ou descanso), descoberta de mercador.
 - **Sempre** usar `showWhenLocked: true` + `lockedHint` quando a `condition` incluir requisito de **nível** (`level: { gte: N }`). O jogador precisa ver o que falta subir.
 - **One-shot + nível:** `visibleWhen: { noFlag: … }` (some após feito) + `condition: { level: … }` + `showWhenLocked`. Não meter o `noFlag` no mesmo `all` que o nível — senão o teaser continua após concluir.
+- **Teaser gradual por nível (hubs):** `visibleWhen` controla *quando o teaser entra no menu*; `condition` controla *quando fica clicável*. Convenção: teaser aparece **2 níveis antes** do unlock (`visibleWhen: { level: { gte: unlock − 2 } }`, mínimo 1). Em cadeias (provas / missões sequenciais), incluir também a flag do elo anterior no `visibleWhen` para não teasar o próximo passo cedo demais.
 - **Quando omitir (só `condition`):** inventário vazio (`hasItem` poção), sem companheiro (`companionCount`), opções “já fizeste” sem teaser de nível, e outros “não tens X” que só poluem o menu do iniciante.
 - A UI colapsa automaticamente secções com **≥ 4** linhas bloqueadas (ex.: loja densa); hubs com 1–3 teasers ficam inline.
 
@@ -110,6 +111,21 @@ choices:
     showWhenLocked: true
     lockedHint: "Requer Fé 3+."
     next: act3/relicario_aberto
+```
+
+### Exemplo (teaser gradual por nível — hub)
+
+```yaml
+choices:
+  - text: "Descer mais fundo"
+    visibleWhen: { level: { gte: 4 } }   # teaser entra cedo
+    condition:
+      all:
+        - { level: { gte: 6 } }          # clicável mais tarde
+        - { flag: act2_explore_goal_reached }
+    showWhenLocked: true
+    lockedHint: "Requer nível 6+ e alcançar a meta no mapa."
+    next: act3/descent
 ```
 
 ### Exemplo (omitir quando bloqueada — inventário)

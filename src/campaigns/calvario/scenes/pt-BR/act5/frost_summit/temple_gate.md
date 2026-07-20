@@ -11,8 +11,14 @@ choices:
     next: act5/frost_hub
   - text: "Apenas contemplar o silêncio entre os pilares"
     next: act5/frost_summit/temple_quiet
+    visibleWhen: { noFlag: frost_summit_quiet_done }
   - text: "Aproximar do coração do templo — onde o silêncio pesa como laje"
     next: act5/frost_summit/ritual_altar
+    visibleWhen:
+      all:
+        - { noFlag: frost_summit_ritual_done }
+        - { noMark: title_fallen_god }
+        - { noFlag: frost_summit_ritual_cursed }
     condition:
       all:
         - { resource: { corruption: { gte: 7 } } }

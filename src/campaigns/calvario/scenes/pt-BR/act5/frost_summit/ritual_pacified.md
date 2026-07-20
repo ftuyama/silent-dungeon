@@ -8,6 +8,7 @@ choices:
   - text: "Aceitar o recuo dos deuses — e sair dali"
     next: act5/frost_summit/temple_gate
 onEnter:
+  - { op: setFlag, key: frost_summit_ritual_done, value: true }
   - { op: addResource, resource: corruption, delta: -2 }
   - { op: addDiary, text: "Os selos fecharam a tempo. Senti o vazio recuar — não como vitória, como trégua." }
 ---

@@ -14,6 +14,10 @@ choices:
     preview: "O primeiro passo firme — ou hesitar e olhar antes."
   - text: "Examinar os símbolos na entrada (antes de descer)"
     next: act1/title_examine
+    visibleWhen:
+      any:
+        - { noFlag: act1_entrance_mirror_done }
+        - { noFlag: act1_surface_whisper_done }
     preview: "Lore e um rumor da superfície (sorte)."
   - text: "Respirar fundo e ajustar o equipamento"
     next: act1/title_breath

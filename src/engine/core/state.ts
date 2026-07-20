@@ -57,6 +57,7 @@ export function createInitialState(campaign: CampaignIndex, seed?: number): Game
     knownSpells: [],
     visitedScenes: {},
     sceneArtHighlightShown: {},
+    sectionTitlesShown: {},
     asciiMap: null,
     exploration: null,
     pendingInterleave: null,
@@ -330,6 +331,12 @@ export function deserializeState(json: string): GameState {
       ? { ...(rawHighlight as Record<string, boolean>) }
       : {};
 
+  const rawSectionTitles = (o as Partial<GameState>).sectionTitlesShown;
+  const sectionTitlesShown: GameState['sectionTitlesShown'] =
+    rawSectionTitles && typeof rawSectionTitles === 'object' && !Array.isArray(rawSectionTitles)
+      ? { ...(rawSectionTitles as Record<string, boolean>) }
+      : {};
+
   const rawCf = (o as Partial<GameState>).companionFriendship;
   const companionFriendship: GameState['companionFriendship'] =
     rawCf && typeof rawCf === 'object' && !Array.isArray(rawCf)
@@ -378,6 +385,7 @@ export function deserializeState(json: string): GameState {
     flags,
     legacy,
     sceneArtHighlightShown,
+    sectionTitlesShown,
     companionFriendship,
     exploration,
     extraLifeReady: extraLifeReadyFromFaith(resources.faith),

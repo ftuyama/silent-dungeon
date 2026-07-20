@@ -10,7 +10,8 @@ luckCheck:
   failNext: act2/rats_choice
   label: "Ler o teto sem perder o pé no cruzeiro"
 choices: []
-onEnter: []
+onEnter:
+  - { op: setFlag, key: act2_catacomb_ceiling_done, value: true }
 ---
 **Goteiras** desenham fios no ar. Entre as pedras, **raízes** finas buscam um sol que não chega.
 

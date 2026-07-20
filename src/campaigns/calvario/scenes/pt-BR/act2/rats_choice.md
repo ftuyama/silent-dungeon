@@ -10,12 +10,14 @@ choices:
     preview: "Combate: roedores famintos."
   - text: "Ouvir o som antes de avançar"
     next: act2/rats_listen
+    visibleWhen: { noMark: act2_rats_listen }
     preview: "Intel; buff leve de AGI se lutares a seguir."
     effects:
       - { op: setFlag, key: rats_listened, value: true }
       - { op: addMark, mark: act2_rats_listen }
   - text: "Cheirar o ar: sangue ou mofo?"
     next: act2/rats_smell
+    visibleWhen: { noMark: act2_rats_smell }
     preview: "+1 stress; intel do enxame e buff leve de SOR se lutares a seguir."
     effects:
       - { op: setFlag, key: rats_smelled, value: true }

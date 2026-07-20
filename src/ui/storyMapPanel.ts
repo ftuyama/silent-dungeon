@@ -1,5 +1,6 @@
 import type { GameState, SceneFrontmatter } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
+import { isExplorationGoalReached } from '../engine/world/index.ts';
 import { iconWrap, icons } from './icons/index.ts';
 
 function partyOwnsItem(state: GameState, itemId: string): boolean {
@@ -76,6 +77,12 @@ export function appendStoryMapPanel(
 ): void {
   const { state, frontmatter, registry } = args;
   if (!state.asciiMap) return;
+
+  const getG = registry.ui.getExplorationGraph;
+  if (state.exploration && getG) {
+    const graph = getG(state.exploration.graphId);
+    if (graph && isExplorationGoalReached(state, graph)) return;
+  }
 
   const mapId = state.asciiMap.mapId;
   const lock = asciiMapLocked(state, mapId);

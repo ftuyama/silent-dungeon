@@ -8,83 +8,84 @@ artKey: depths
 highlight: true
 artHighlightSfx: mysterious
 choices:
-  - text: "Patrulhar as profundezas (explorar mapa)"
+  - text: "Patrulhar as profundezas"
     uiSection: "Explorar"
     next: shared/explore_nav_act3
-    preview: "Você se move pelos corredores; stress sobe e encontros podem acontecer."
+    preview: "Mapa — stress e encontros possíveis."
     effects:
       - { op: setExploration, graphId: act3_depths, nodeId: depths_drowned_gallery }
       - { op: setAsciiMap, mapId: act3_depths }
+  - text: "Corredor do guardião de pedra"
+    uiSection: "Avançar"
+    next: act3/stone_corridor
+    preview: "Runas, golem e prova antes do trono."
   - text: "Rumo ao trono de ossos"
-    uiSection: "Trono e pedra"
+    uiSection: "Avançar"
     next: act4/throne/throne_gate
+    visibleWhen: { level: { gte: 9 } }
     condition:
       all:
         - { level: { gte: 11 } }
         - { flag: stone_guard_defeated }
         - { flag: act3_explore_goal_reached }
     showWhenLocked: true
-    lockedHint: "Você precisa de nível 11, de derrotar o guardião de pedra e de alcançar o portão nas profundezas."
-    preview: "Capítulo 4 — o trono de Morvayn."
+    lockedHint: "Nível 11, guardião derrotado e meta no mapa."
+    preview: "Capítulo 4 — Morvayn."
     effects:
       - { op: setChapter, chapter: 4 }
       - { op: addDiary, text: "O trono chama." }
-  - text: "Lado do guardião"
-    uiSection: "Trono e pedra"
-    next: act3/stone_corridor
-    condition: { noFlag: stone_guard_defeated }
-    preview: "Runas, golem e provas antes do trono."
-  - text: "Rever o corredor de pedra (eco do guardião)"
-    uiSection: "Trono e pedra"
-    next: act3/stone_corridor
-    condition: { flag: stone_guard_defeated }
-    preview: "Runas e nicho, sem o golem."
-  - text: "Seguir rasto de cinza e corda — mensageiro interrompido"
-    uiSection: "Rumores"
-    next: act3/messenger_cold_trail
-    visibleWhen: { noFlag: act3_messenger_done }
-    condition: { level: { gte: 9 } }
-    showWhenLocked: true
-    lockedHint: "Requer nível 9+; o rasto só se lê quando você já pesa nas profundezas."
-    preview: "Furtividade ou força; Vigília ou Círculo cobram o despacho."
   - text: "Ouvir os canos sob a pedra"
-    uiSection: "Rumores"
+    uiSection: "Missões"
     next: act3/pipes_whisper
     visibleWhen: { noFlag: act3_pipes_done }
     condition: { level: { gte: 8 } }
     showWhenLocked: true
-    lockedHint: "Requer nível 8+ para ouvir o que os canos sussurram."
+    lockedHint: "Requer nível 8."
     preview: "Sorte; sucesso dá pista, falha gasta suprimento."
-  - text: "Descer ao santuário esquecido (selo de pedra)"
-    uiSection: "Rumores"
-    next: act3/secret/forgotten_shrine
-    visibleWhen: { noFlag: act3_shrine_done }
-    condition: { level: { gte: 8 } }
-    showWhenLocked: true
-    lockedHint: "Você precisa de nível 8 para localizar o véu de pedra rachada — antes disso, o santuário continua só rumor."
-    preview: "Selo antigo; classe define o caminho de abertura."
-  - text: "Falar com o cultista que atravessa o corredor"
-    uiSection: "Rumores"
+  - text: "Falar com o cultista no corredor"
+    uiSection: "Missões"
     next: act3/lore/cult_negotiate
     visibleWhen: { noFlag: act3_negotiate_done }
     condition: { level: { gte: 10 } }
     showWhenLocked: true
-    lockedHint: "O cultista só aborda quem pesa o suficiente nas profundezas — nível 10."
-    preview: "Pacto, recusa ou ferro; reputação muda em qualquer caso."
-  - text: "O verde que você ignorou chama um mensageiro"
-    uiSection: "Rumores"
+    lockedHint: "Requer nível 10."
+    preview: "Pacto, recusa ou ferro; reputação muda."
+  - text: "Rasto de cinza — mensageiro interrompido"
+    uiSection: "Missões"
+    next: act3/messenger_cold_trail
+    visibleWhen:
+      all:
+        - { noFlag: act3_messenger_done }
+        - { level: { gte: 7 } }
+    condition: { level: { gte: 9 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 9."
+    preview: "Furtividade ou combate; reputação muda."
+  - text: "Santuário esquecido"
+    uiSection: "Missões"
+    next: act3/secret/forgotten_shrine
+    visibleWhen:
+      all:
+        - { noFlag: act3_shrine_done }
+        - { level: { gte: 6 } }
+    condition: { level: { gte: 8 } }
+    showWhenLocked: true
+    lockedHint: "Requer nível 8."
+    preview: "Selo antigo; classe define a abertura."
+  - text: "O verde ignorado chama um mensageiro"
+    uiSection: "Missões"
     next: act3/encounters/cult_patrol_scene
     condition:
       all:
         - { flag: act3_corruption_ignored }
         - { noFlag: act3_corruption_ignore_patrol_done }
-    preview: "Ignorar o cristal cobrou encontro — o culto notou a surdez."
+    preview: "Consequência de ter ignorado o cristal."
     effects:
       - { op: setFlag, key: act3_corruption_ignore_patrol_done, value: true }
-  - text: "Voltar ao Cruzeiro — hub"
+  - text: "Voltar ao Cruzeiro"
     uiSection: "Voltar"
     next: act2/hub_catacomb
-    preview: "Sobe ao cruzeiro; capítulo 2."
+    preview: "Sobe ao cruzeiro."
     effects:
       - { op: setChapter, chapter: 2 }
 onEnter:

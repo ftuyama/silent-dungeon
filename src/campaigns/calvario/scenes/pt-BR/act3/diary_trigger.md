@@ -7,6 +7,7 @@ choices:
   - text: "Voltar"
     next: act3/hub_depths
 onEnter:
+  - { op: setFlag, key: act3_descent_diary_done, value: true }
   - { op: addDiary, text: "O ar cheira a cobre podre." }
 ---
 Uma sensação **grava** no diário. Você sente o peso da tinta antes de ver as palavras.

@@ -28,7 +28,7 @@ import { renderMap } from './maps.ts';
 import { SCENE_ART } from './ascii/art.ts';
 import { getHeroClassLabel, getHeroLore, getHeroStoryProgress } from './classHero.ts';
 import { getCompanionLore, getCompanionStoryProgress } from './classCompanion.ts';
-import { getMainMission } from './mainMission.ts';
+import { getMainMission, getMainMissionView } from './mainMission.ts';
 import { EXPLORATION_GRAPHS } from './exploration/graphs.ts';
 
 import { pickSceneFilesFromGlob } from '../sceneLocale.ts';
@@ -53,6 +53,7 @@ export const calvarioUI: CampaignUIAdapter = {
   getCompanionStoryProgress,
   getExplorationGraph: (id: string) => EXPLORATION_GRAPHS[id] ?? null,
   getMainMission,
+  getMainMissionView,
 };
 
 export function loadCalvarioContent(locale: Locale) {

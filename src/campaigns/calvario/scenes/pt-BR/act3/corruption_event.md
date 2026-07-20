@@ -20,10 +20,12 @@ choices:
   - text: "Ignorar de costas voltadas — fingir que o verde não existe"
     preview: "Nada muda agora; o próximo descanso pode cobrar fé."
     next: act3/hub_depths
+    visibleWhen: { noFlag: act3_corruption_ignored }
     effects:
       - { op: setFlag, key: act3_corruption_ignored, value: true }
       - { op: addDiary, text: "Virei as costas ao cristal. O pulso não perdoou — só adiou." }
-onEnter: []
+onEnter:
+  - { op: setFlag, key: act3_corruption_event_done, value: true }
 ---
 Um **cristal** verde pulsa. O eco da masmorra responde — um pulso que não pede permissão.
 

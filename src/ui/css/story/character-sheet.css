@@ -104,6 +104,17 @@
   color: var(--muted);
 }
 
+.character-sheet-equip-hint {
+  margin: 0.55rem 0 0;
+  padding: 0.45rem 0.55rem;
+  border-radius: 6px;
+  border: 1px dashed color-mix(in srgb, var(--border) 78%, var(--accent) 18%);
+  background: color-mix(in srgb, var(--surface-inset) 88%, var(--accent) 8%);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
 .character-sheet-passives-body {
   display: flex;
   flex-direction: column;

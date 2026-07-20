@@ -211,6 +211,14 @@
         "uiSection": "Recover"
       },
       {
+        "text": "Rest — the ignored green collects its due (−1 faith)",
+        "preview": "The crystal you pretended not to see still throbs under the skin.",
+        "uiSection": "Recover",
+        "diaryTexts": [
+          "On resting, the green pulse collected what I ignored — faith came out thinner."
+        ]
+      },
+      {
         "text": "Exchange a few words with the group",
         "uiSection": "Talk"
       },
@@ -225,11 +233,20 @@
         "uiSection": "Talk"
       },
       {
-        "text": "Scratch the day into damp earth",
-        "preview": "An entry in the diary.",
-        "uiSection": "Camp",
+        "text": "The officer notices the wax scar on your wrist",
+        "preview": "Cracked brazier · Vigil respect (once).",
+        "uiSection": "Talk",
         "diaryTexts": [
-          "I scratched day {{day}} into the damp earth. The clock above no longer rules."
+          "The officer touched the wax scar: «Whoever pulls a hot seal does not flee the fire — the order remembers.»"
+        ]
+      },
+      {
+        "text": "The sentries remember your pair of echoes",
+        "preview": "Legacy: faction and companion in resonance.",
+        "lockedHint": "Faction-and-companion legacy still locked.",
+        "uiSection": "Talk",
+        "diaryTexts": [
+          "An officer murmurs that he has seen you beside the right pair — the camp opens a thread of trust."
         ]
       },
       {
@@ -244,31 +261,6 @@
         "uiSection": "Camp",
         "diaryTexts": [
           "I spoke too loudly about the Third Bell — the officer noted it as a small victory."
-        ]
-      },
-      {
-        "text": "The officer notices the wax scar on your wrist",
-        "preview": "Cracked brazier · Vigil respect (once).",
-        "uiSection": "Talk",
-        "diaryTexts": [
-          "The officer touched the wax scar: «Whoever pulls a hot seal does not flee the fire — the order remembers.»"
-        ]
-      },
-      {
-        "text": "Rest — the ignored green collects its due (−1 faith)",
-        "preview": "The crystal you pretended not to see still throbs under the skin.",
-        "uiSection": "Recover",
-        "diaryTexts": [
-          "On resting, the green pulse collected what I ignored — faith came out thinner."
-        ]
-      },
-      {
-        "text": "The sentries remember your pair of echoes",
-        "preview": "Legacy: faction and companion in resonance.",
-        "lockedHint": "Faction-and-companion legacy still locked.",
-        "uiSection": "Talk",
-        "diaryTexts": [
-          "An officer murmurs that he has seen you beside the right pair — the camp opens a thread of trust."
         ]
       },
       {
@@ -708,7 +700,7 @@
         ]
       },
       {
-        "text": "Climb to the last corridor — dungeon mouth",
+        "text": "[↑] Climb to the last corridor — dungeon mouth",
         "preview": "Brazier, bell, and doorframe; the air outside still listens.",
         "uiSection": "Return and advance"
       },

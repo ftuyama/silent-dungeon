@@ -448,6 +448,11 @@ export type StoryPathGate = z.infer<typeof StoryPathGateSchema>;
 export const SceneFrontmatterSchema = z.object({
   id: z.string(),
   title: z.string().optional(),
+  /**
+   * Nome exibido no overlay de transição de seção (hubs).
+   * Se omitido, a UI usa `title`.
+   */
+  sectionTitle: z.string().optional(),
   chapter: z.number().int().min(1).default(1),
   type: z.enum(['story', 'hub', 'combat_intro', 'exploration']).default('story'),
   /** Tema ambiente da cena (música/ambiente no UI). */

@@ -6,7 +6,10 @@ ambientTheme: act2
 choices:
   - text: "Conversar com Mira sobre o cruzeiro"
     next: act2/hub_mira_banter
-    condition: { flag: mira_recruited }
+    condition:
+      all:
+        - { flag: mira_recruited }
+        - { noMark: mira_cruzeiro_confidencia }
     preview: "Ela já conhece o preço deste chão."
   - text: "Voltar ao hub"
     next: act2/hub_catacomb

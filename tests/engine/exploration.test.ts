@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
+  explorationGoalFlag,
   explorationMoveEffects,
+  isExplorationGoalReached,
   pickWildOutcome,
   startExplorationCombatEffects,
   shouldTriggerEncounter,
@@ -77,6 +79,44 @@ describe('explorationMoveEffects', () => {
       edgeId: 'nope',
     });
     expect(r.ok).toBe(false);
+  });
+});
+
+const goalGraph: ExplorationGraph = {
+  id: 'goal_test',
+  mapId: 'demo5',
+  startNodeId: 'a',
+  nodes: [
+    {
+      id: 'a',
+      edges: [{ id: 'e1', text: 'go', to: 'goal', encounterChance: 0 }],
+    },
+    {
+      id: 'goal',
+      isGoal: true,
+      goalFlag: 'test_explore_goal_reached',
+      edges: [],
+    },
+  ],
+};
+
+describe('explorationGoalFlag / isExplorationGoalReached', () => {
+  it('returns null when graph has no goal node', () => {
+    expect(explorationGoalFlag(miniGraph)).toBeNull();
+    expect(isExplorationGoalReached(wildPickState(1), miniGraph)).toBe(false);
+  });
+
+  it('returns goalFlag from isGoal node', () => {
+    expect(explorationGoalFlag(goalGraph)).toBe('test_explore_goal_reached');
+  });
+
+  it('is false until flag is set', () => {
+    expect(isExplorationGoalReached(wildPickState(1), goalGraph)).toBe(false);
+  });
+
+  it('is true when goal flag is set on state', () => {
+    const st = wildPickState(1, { flags: { test_explore_goal_reached: true } });
+    expect(isExplorationGoalReached(st, goalGraph)).toBe(true);
   });
 });
 

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CombatLogEntry, Effect } from '../../src/engine/schema/index.ts';
 import {
   hpBarMarkup,
+  isHpCritical,
   parseCombatLogRounds,
   parseTurnBannerMessage,
   preserveExplorationNodeForChoiceEffects,
@@ -48,6 +49,17 @@ describe('parseCombatLogRounds', () => {
     expect(rounds[0]!.sections[1]!.kind).toBe('enemy');
     expect(rounds[1]!.round).toBe(2);
     expect(rounds[1]!.sections[0]!.body.map((e) => e.message)).toEqual(['Vitória!']);
+  });
+});
+
+describe('isHpCritical', () => {
+  it('usa o limiar de 30% com PV acima de zero', () => {
+    expect(isHpCritical(3, 10)).toBe(true);
+    expect(isHpCritical(4, 10)).toBe(false);
+    expect(isHpCritical(6, 20)).toBe(true);
+    expect(isHpCritical(7, 20)).toBe(false);
+    expect(isHpCritical(0, 10)).toBe(false);
+    expect(isHpCritical(5, 0)).toBe(false);
   });
 });
 

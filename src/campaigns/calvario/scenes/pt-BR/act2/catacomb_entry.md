@@ -18,6 +18,7 @@ choices:
     preview: "Hub: camp, facções, exploração."
   - text: "Observar o teto: goteiras, raízes, runas?"
     next: act2/catacomb_observe
+    visibleWhen: { noFlag: act2_catacomb_ceiling_done }
     preview: "Teste de sorte; sucesso lê as marcas do chão."
 onEnter: []
 ---

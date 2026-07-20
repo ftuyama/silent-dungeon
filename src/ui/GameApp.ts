@@ -15,6 +15,7 @@ import {
 } from '../engine/core/index.ts';
 import {
   explorationMoveEffects,
+  isExplorationGoalReached,
   pickWildOutcome,
   shouldTriggerEncounter,
   startExplorationCombatEffects,
@@ -77,10 +78,15 @@ import {
   resolveSceneArtHighlightFrames,
   sceneArtHighlightDedupeKey,
   SCENE_ART_HIGHLIGHT_HOLD_MS_DEFAULT,
+  resolveSectionTitleReveal,
+  snapshotForSectionTitle,
+  type SectionTitleReveal,
+  type SectionTitlePrevSnapshot,
   type StoryDiceBannerHost,
   type StoryRenderContext,
   type StoryStatusHighlightRow,
 } from './gameAppStory.ts';
+import { mountSectionTitleOverlay } from './story/sectionTitleOverlay.ts';
 import { formatCampaignHeaderTitle } from './campaignHeaderTitle.ts';
 import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
@@ -92,13 +98,17 @@ import {
   loadDevMode,
   loadFontStep,
   loadOnboardingPrimerVisible,
+  loadHubLoopPrimerVisible,
   loadSceneArtHighlightEnabled,
+  loadSectionTitleEnabled,
   loadSidebarSections,
   loadTimedChoiceMode,
   saveDevMode,
   saveFontStep,
   saveOnboardingPrimerVisible,
+  saveHubLoopPrimerVisible,
   saveSceneArtHighlightEnabled,
+  saveSectionTitleEnabled,
   saveSidebarSections,
   saveTimedChoiceMode,
   type GameAppStorageKeys,
@@ -140,8 +150,12 @@ export class GameApp {
   private timedChoiceMode = false;
   /** Overlay em ecrã inteiro da arte na primeira visita (`highlight: true`). */
   private sceneArtHighlightEnabled = true;
+  /** Overlay de título de seção (ato / hub / exploração). */
+  private sectionTitleEnabled = true;
   /** Dica de primeiros passos (mostrada uma vez por campanha). */
   private onboardingPrimerVisible = false;
+  /** Aviso do loop do hub (acampamento + patrulha) — uma vez por browser. */
+  private hubLoopPrimerVisible = false;
   /** Meta da sessão aparece apenas até a primeira mudança de cena. */
   private sessionObjectiveVisible = true;
   private readonly choiceHotkeyHandler: (e: KeyboardEvent) => void;
@@ -211,6 +225,12 @@ export class GameApp {
   private activeSceneArtHighlight: string | null = null;
   /** Incrementado a cada `render()` para cancelar timeouts do overlay de arte. */
   private sceneArtHighlightGen = 0;
+  /** Reveal pendente (detetado após escolha / combate / exploração). */
+  private pendingSectionTitle: SectionTitleReveal | null = null;
+  /** Chave ativa do título de seção (interrupt / flush). */
+  private activeSectionTitleKey: string | null = null;
+  /** Incrementado a cada `render()` para cancelar timeouts do overlay de título. */
+  private sectionTitleGen = 0;
 
   constructor(root: HTMLElement, campaignId: string) {
     this.root = root;
@@ -223,8 +243,10 @@ export class GameApp {
     this.fontStep = loadFontStep(this.storageKeys.fontKey);
     this.timedChoiceMode = loadTimedChoiceMode(this.storageKeys.timedChoiceKey);
     this.sceneArtHighlightEnabled = loadSceneArtHighlightEnabled(this.storageKeys.sceneArtHighlightKey);
+    this.sectionTitleEnabled = loadSectionTitleEnabled(this.storageKeys.sectionTitleKey);
     this.devMode = loadDevMode(this.storageKeys.devModeKey);
     this.onboardingPrimerVisible = loadOnboardingPrimerVisible(this.storageKeys.onboardingPrimerKey);
+    this.hubLoopPrimerVisible = loadHubLoopPrimerVisible(this.storageKeys.hubLoopPrimerKey);
     this.choiceHotkeyHandler = (e: KeyboardEvent): void => {
       const el = e.target;
       if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement) {
@@ -739,6 +761,7 @@ export class GameApp {
   private unlockAudio(): void {
     this.audio.startAmbientWhenReady();
     this.syncAmbientTheme();
+    this.syncLowHpAudio();
   }
 
   private removeBossTwistOverlayListeners(): void {
@@ -874,6 +897,15 @@ export class GameApp {
     this.audio.setAmbientTheme(this.resolveAmbientTheme());
   }
 
+  private syncLowHpAudio(): void {
+    const lead = this.state.party[0];
+    if (!lead) {
+      this.audio.syncLowHp(0, 1);
+      return;
+    }
+    this.audio.syncLowHp(lead.hp, lead.maxHp);
+  }
+
   /** Paleta CSS (`html[data-theme]`) — ato 4 osso / 5 neve / 6 vazio / 7 cinzas / 8 lava. */
   private resolveVisualTheme(): 'bone' | 'snow' | 'void' | 'ash' | 'lava' | null {
     if (this.state.chapter === 8 || this.state.sceneId.startsWith('act8/')) return 'lava';
@@ -916,6 +948,13 @@ export class GameApp {
    */
   private beginStatusHighlightStackDismiss(): void {
     if (this.statusHighlightQueue.length === 0) return;
+    // Sob overlays cinemáticos (arte / título de seção), um `render()` mataria a animação.
+    if (this.activeSceneArtHighlight != null || this.activeSectionTitleKey != null) {
+      this.clearStatusHighlightAutoDismissTimers();
+      this.statusHighlightQueue = [];
+      this.statusHighlightDismissChainActive = false;
+      return;
+    }
     if (
       this.statusHighlightDismissChainActive ||
       this.statusHighlightDismissEndTimer != null ||
@@ -1020,6 +1059,11 @@ export class GameApp {
 
   private beginDiaryBannerDismiss(): void {
     if (this.diaryEntryQueue.length === 0) return;
+    if (this.activeSceneArtHighlight != null || this.activeSectionTitleKey != null) {
+      this.cancelDiaryBannerPipeline();
+      this.diaryEntryQueue = [];
+      return;
+    }
     if (this.diaryBannerFadeTimer != null || this.diaryBannerExiting) return;
     this.diaryBannerExiting = true;
     this.render();
@@ -1041,6 +1085,11 @@ export class GameApp {
 
   private beginItemAcquireBannerDismiss(): void {
     if (this.itemAcquireQueue.length === 0) return;
+    if (this.activeSceneArtHighlight != null || this.activeSectionTitleKey != null) {
+      this.cancelItemBannerPipeline();
+      this.itemAcquireQueue = [];
+      return;
+    }
     if (this.itemBannerFadeTimer != null || this.itemAcquireBannerExiting) return;
     this.itemAcquireBannerExiting = true;
     this.render();
@@ -1060,6 +1109,7 @@ export class GameApp {
 
   /** `stabilize` runs here once; combat UI must not pre-stabilize or onEnter overlays are trimmed away. */
   private commitCombatState(s: GameState): void {
+    const prevSnapshot = snapshotForSectionTitle(this.state);
     const prevScene = this.state.sceneId;
     const prevDiaryQueueLen = this.diaryEntryQueue.length;
     const prevStatusQueueLen = this.statusHighlightQueue.length;
@@ -1085,6 +1135,7 @@ export class GameApp {
         this.unlockAudio();
       }
     }
+    this.queueSectionTitleFromTransition(prevSnapshot);
     this.render();
   }
 
@@ -1125,8 +1176,10 @@ export class GameApp {
     if (!ex || !getG) return;
     const graph = getG(ex.graphId);
     if (!graph) return;
+    if (isExplorationGoalReached(this.state, graph)) return;
     const lead = this.state.party[0];
     if (lead !== undefined && lead.stress >= 4) return;
+    const prevSnapshot = snapshotForSectionTitle(this.state);
     const resolved = explorationMoveEffects({
       graph,
       fromNodeId: ex.nodeId,
@@ -1171,12 +1224,14 @@ export class GameApp {
         variant: 'good',
         title: t('toast.exploreGoalTitle'),
         subtitle: exploreGoalSubtitle[ex.graphId] ?? t('toast.exploreGoalDefault'),
+        autoDismissMs: 0,
       });
       this.unlockAudio();
       this.audio.playCheckSuccess();
     }
     if (!roll.trigger) {
       this.state = this.stabilize(s);
+      this.queueSectionTitleFromTransition(prevSnapshot);
       this.pendingStoryMainScrollTop = true;
       this.render();
       return;
@@ -1187,6 +1242,7 @@ export class GameApp {
       s = { ...s, sceneId: pick.sceneId };
       s = tickActiveBuffs(s);
       this.state = this.stabilize(s);
+      this.queueSectionTitleFromTransition(prevSnapshot);
       this.pendingStoryMainScrollTop = true;
       this.render();
       return;
@@ -1198,6 +1254,7 @@ export class GameApp {
       this.ctx()
     );
     this.state = this.stabilize(s);
+    this.queueSectionTitleFromTransition(prevSnapshot);
     this.pendingStoryMainScrollTop = true;
     this.render();
   }
@@ -1227,6 +1284,7 @@ export class GameApp {
     const engineEffects = choice.effects.filter((e) => e.op !== 'openEchoShop');
     const prevScene = this.state.sceneId;
     const prevChapter = this.state.chapter;
+    const prevSnapshot = snapshotForSectionTitle(this.state);
     const prevDiaryQueueLen = this.diaryEntryQueue.length;
     const prevStatusQueueLen = this.statusHighlightQueue.length;
     const prevItemAcquireQueueLen = this.itemAcquireQueue.length;
@@ -1253,6 +1311,7 @@ export class GameApp {
       prevStatusQueueLen,
       prevItemAcquireQueueLen
     );
+    this.queueSectionTitleFromTransition(prevSnapshot);
     this.pendingStoryMainScrollTop = true;
     this.render();
     if (wantsEchoShop) {
@@ -1708,6 +1767,98 @@ export class GameApp {
     };
   }
 
+  private flushSectionTitleIfInterrupted(): void {
+    const key = this.activeSectionTitleKey;
+    if (key == null) return;
+    this.activeSectionTitleKey = null;
+    // Keep `pendingSectionTitle` only if we never started the overlay; once active, clear it.
+    this.pendingSectionTitle = null;
+    if (this.state.sectionTitlesShown[key]) return;
+    this.state = {
+      ...this.state,
+      sectionTitlesShown: { ...this.state.sectionTitlesShown, [key]: true },
+    };
+  }
+
+  private queueSectionTitleFromTransition(prev: SectionTitlePrevSnapshot): void {
+    const scene = this.registry.getScene(this.state.sceneId);
+    if (!scene) {
+      this.pendingSectionTitle = null;
+      return;
+    }
+    this.pendingSectionTitle = resolveSectionTitleReveal(
+      prev,
+      this.state,
+      scene,
+      this.registry.data.campaign,
+      this.state.sectionTitlesShown
+    );
+  }
+
+  private sectionTitleKicker(reveal: SectionTitleReveal): string {
+    if (reveal.kind === 'chapter' && reveal.chapter != null) {
+      return t('story.sectionKickerAct', { n: String(reveal.chapter) });
+    }
+    if (reveal.kind === 'explore') return t('story.sectionKickerExplore');
+    return t('story.sectionKickerHub');
+  }
+
+  private buildSectionTitlePayload(
+    deferForArtHighlight: boolean
+  ): StoryRenderContext['sectionTitle'] {
+    const pending = this.pendingSectionTitle;
+    if (!pending) return null;
+    if (this.state.sectionTitlesShown[pending.dedupeKey]) {
+      this.pendingSectionTitle = null;
+      return null;
+    }
+    if (!this.sectionTitleEnabled) {
+      this.state = {
+        ...this.state,
+        sectionTitlesShown: { ...this.state.sectionTitlesShown, [pending.dedupeKey]: true },
+      };
+      this.pendingSectionTitle = null;
+      return null;
+    }
+    // Art highlight first; title monta no `onEnd` da arte (sem segundo `render`).
+    if (deferForArtHighlight) return null;
+
+    const gen = this.sectionTitleGen;
+    const key = pending.dedupeKey;
+    return {
+      kicker: this.sectionTitleKicker(pending),
+      title: pending.title,
+      onSfx:
+        pending.kind === 'chapter'
+          ? undefined
+          : () => {
+              this.unlockAudio();
+              this.audio.playMysteriousHighlight();
+            },
+      onBegin: () => {
+        this.activeSectionTitleKey = key;
+      },
+      onEnd: () => {
+        this.activeSectionTitleKey = null;
+        this.pendingSectionTitle = null;
+        this.state = {
+          ...this.state,
+          sectionTitlesShown: { ...this.state.sectionTitlesShown, [key]: true },
+        };
+        this.render();
+      },
+      isCurrentGeneration: () => this.sectionTitleGen === gen,
+    };
+  }
+
+  /** Monta o título de seção após o highlight ASCII, sem `render()` intermédio. */
+  private mountPendingSectionTitleAfterArt(): boolean {
+    const payload = this.buildSectionTitlePayload(false);
+    if (!payload) return false;
+    mountSectionTitleOverlay(document.body, payload);
+    return true;
+  }
+
   private buildSceneArtHighlightPayload(scene: LoadedScene): StoryRenderContext['sceneArtHighlight'] {
     const fm = scene.frontmatter;
     if (fm.highlight !== true) return null;
@@ -1769,7 +1920,10 @@ export class GameApp {
           ...this.state,
           sceneArtHighlightShown: { ...this.state.sceneArtHighlightShown, [hlKey]: true },
         };
-        this.render();
+        // Encadeia título de seção sem `render()` — evita matar o highlight / saltar a arte.
+        if (!this.mountPendingSectionTitleAfterArt()) {
+          this.render();
+        }
       },
       isCurrentGeneration: () => this.sceneArtHighlightGen === gen,
     };
@@ -1777,6 +1931,7 @@ export class GameApp {
 
   private buildStoryRenderContext(scene: LoadedScene): StoryRenderContext {
     const sceneArtHighlight = this.buildSceneArtHighlightPayload(scene);
+    const sectionTitle = this.buildSectionTitlePayload(sceneArtHighlight != null);
     return {
       campaignId: this.campaignId,
       devMode: this.devMode,
@@ -1785,6 +1940,7 @@ export class GameApp {
       registry: this.registry,
       scene,
       sceneArtHighlight,
+      sectionTitle,
       sessionObjective: this.sessionObjectiveVisible ? this.buildSessionObjective() : null,
       dailyCombat: this.dailyCombatAvailable(scene) ? { chapter: this.state.chapter } : null,
       onboardingPrimer:
@@ -1793,6 +1949,15 @@ export class GameApp {
               onDismiss: () => {
                 this.onboardingPrimerVisible = false;
                 saveOnboardingPrimerVisible(this.storageKeys.onboardingPrimerKey, this.onboardingPrimerVisible);
+              },
+            }
+          : null,
+      hubLoopPrimer:
+        this.hubLoopPrimerVisible && this.state.sceneId === 'act2/hub_catacomb'
+          ? {
+              onDismiss: () => {
+                this.hubLoopPrimerVisible = false;
+                saveHubLoopPrimerVisible(this.storageKeys.hubLoopPrimerKey, this.hubLoopPrimerVisible);
               },
             }
           : null,
@@ -1866,7 +2031,9 @@ export class GameApp {
     this.progressDailyTasks(null);
     this.flushDailyTaskRewards();
     this.flushSceneArtHighlightIfInterrupted();
+    this.flushSectionTitleIfInterrupted();
     this.sceneArtHighlightGen += 1;
+    this.sectionTitleGen += 1;
     if (this.state.mode === 'combat' || this.state.mode === 'dialogue_combat' || !this.timedChoiceMode) {
       if (this.state.timedChoiceDeadline != null) {
         this.state = { ...this.state, timedChoiceDeadline: null };
@@ -1899,6 +2066,7 @@ export class GameApp {
       devMode: this.devMode,
       timedChoiceEnabled: this.timedChoiceMode,
       sceneArtHighlightEnabled: this.sceneArtHighlightEnabled,
+      sectionTitleEnabled: this.sectionTitleEnabled,
       state: this.state,
       registry: this.registry,
       sidebarSections: this.sidebarSections,
@@ -1927,6 +2095,12 @@ export class GameApp {
       onSceneArtHighlightChange: (v: boolean) => {
         this.sceneArtHighlightEnabled = v;
         saveSceneArtHighlightEnabled(this.storageKeys.sceneArtHighlightKey, this.sceneArtHighlightEnabled);
+        this.closeMenu();
+        this.render();
+      },
+      onSectionTitleChange: (v: boolean) => {
+        this.sectionTitleEnabled = v;
+        saveSectionTitleEnabled(this.storageKeys.sectionTitleKey, this.sectionTitleEnabled);
         this.closeMenu();
         this.render();
       },
@@ -2065,6 +2239,7 @@ export class GameApp {
       };
     }
     this.syncAmbientTheme();
+    this.syncLowHpAudio();
     this.syncAppFullscreenLayout();
     this.syncFullscreenUi();
     this.syncVisualTheme();

@@ -30,6 +30,8 @@ export type MountAppChromeOptions = {
   timedChoiceEnabled: boolean;
   /** Overlay em ecrã inteiro da arte ASCII na primeira visita (`highlight: true` na cena). */
   sceneArtHighlightEnabled: boolean;
+  /** Overlay de título de seção (ato / hub / exploração). */
+  sectionTitleEnabled: boolean;
   state: GameState;
   registry: ContentRegistry;
   sidebarSections: Record<string, boolean>;
@@ -39,6 +41,7 @@ export type MountAppChromeOptions = {
   onDevModeChange: (v: boolean) => void;
   onTimedChoiceChange: (v: boolean) => void;
   onSceneArtHighlightChange: (v: boolean) => void;
+  onSectionTitleChange: (v: boolean) => void;
   onCycleFont: () => void;
   fullscreenSupported: boolean;
   onExportSave: () => void;
@@ -89,6 +92,7 @@ export type AppChromeRefs = {
   devCb: HTMLInputElement;
   timedChoiceCb: HTMLInputElement;
   sceneArtHighlightCb: HTMLInputElement;
+  sectionTitleCb: HTMLInputElement;
   fontBtn: HTMLButtonElement;
   devSaveExtrasEl: HTMLElement;
   devSettingsExtrasEl: HTMLElement;
@@ -339,6 +343,17 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     document.createTextNode(` ${t('menu.sceneArtHighlight')}`)
   );
 
+  const sectionTitleRow = document.createElement('label');
+  sectionTitleRow.className = 'menu-item menu-sound';
+  const sectionTitleCb = document.createElement('input');
+  sectionTitleCb.type = 'checkbox';
+  sectionTitleCb.checked = opts.sectionTitleEnabled;
+  sectionTitleCb.addEventListener('change', () => {
+    opts.onSectionTitleChange(sectionTitleCb.checked);
+  });
+  sectionTitleRow.appendChild(sectionTitleCb);
+  sectionTitleRow.appendChild(document.createTextNode(` ${t('menu.sectionTitle')}`));
+
   const exportBtn = document.createElement('button');
   exportBtn.type = 'button';
   exportBtn.className = 'menu-item';
@@ -413,6 +428,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   settingsSection.appendChild(languageRow);
   settingsSection.appendChild(fontBtn);
   settingsSection.appendChild(sceneArtHighlightRow);
+  settingsSection.appendChild(sectionTitleRow);
   settingsSection.appendChild(timedChoiceRow);
 
   if (opts.showDevModeToggle || opts.showGraphInSettings) {
@@ -464,8 +480,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
       sidebarSections: opts.sidebarSections,
       onSectionToggle: opts.onSidebarSectionToggle,
       playUiClick: opts.playUiClick,
-      dailyBonus: opts.dailyBonus,
-      dailyTasks: opts.dailyTasks,
+      missionSubsOpen: opts.sidebarSections['missao'] !== false,
       resourcePulseKeys: opts.resourcePulseKeys,
       inventoryNewCount: opts.inventoryNewCount,
       onInventoryOpened: opts.onInventoryOpened,
@@ -497,6 +512,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     devCb,
     timedChoiceCb,
     sceneArtHighlightCb,
+    sectionTitleCb,
     fontBtn,
     devSaveExtrasEl,
     devSettingsExtrasEl,
@@ -532,6 +548,7 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
   refs.devCb.checked = opts.devMode;
   refs.timedChoiceCb.checked = opts.timedChoiceEnabled;
   refs.sceneArtHighlightCb.checked = opts.sceneArtHighlightEnabled;
+  refs.sectionTitleCb.checked = opts.sectionTitleEnabled;
   refs.fontBtn.textContent = t('menu.fontSize', { percent: String(100 + opts.fontStep * 10) });
   refs.languageSelect.setAttribute('aria-label', t('menu.language'));
   refs.languageSelect.value = getLocale();
@@ -554,6 +571,11 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
     'details.sidebar-mobile-details'
   ) as HTMLDetailsElement | null;
   const prevMobileDetailsOpen = prevMobileDetails?.open ?? true;
+  const prevMissionSubs = refs.sidebarEl.querySelector(
+    'details.sidebar-mission-subs'
+  ) as HTMLDetailsElement | null;
+  const prevMissionSubsOpen =
+    prevMissionSubs?.open ?? opts.sidebarSections['missao'] !== false;
   refs.sidebarEl.appendChild(
     buildGameSidebar({
       state: opts.state,
@@ -561,9 +583,8 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
       sidebarSections: opts.sidebarSections,
       onSectionToggle: opts.onSidebarSectionToggle,
       playUiClick: opts.playUiClick,
-      dailyBonus: opts.dailyBonus,
-      dailyTasks: opts.dailyTasks,
       mobileDetailsOpen: prevMobileDetailsOpen,
+      missionSubsOpen: prevMissionSubsOpen,
       resourcePulseKeys: opts.resourcePulseKeys,
       inventoryNewCount: opts.inventoryNewCount,
       onInventoryOpened: opts.onInventoryOpened,

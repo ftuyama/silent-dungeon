@@ -51,8 +51,6 @@ import {
 import {
   dailyTaskLabel,
   dailyTaskRewardLabel,
-  dailyTasksCompletedCount,
-  DAILY_TASKS_PER_DAY,
   type DailyTasksState,
 } from './gameAppDailyTasks.ts';
 import { collapseTriggerStart, iconWrap, icons } from './icons/index.ts';
@@ -72,12 +70,10 @@ type SidebarBuilderParams = {
   sidebarSections: Record<string, boolean>;
   onSectionToggle: (key: string, open: boolean) => void;
   playUiClick?: () => void;
-  /** Sequência de logins diários; mostra o cartão "Bônus de login" quando definida. */
-  dailyBonus?: DailyBonusMeta;
-  /** Tarefas do dia da gravação ativa; acrescenta "{feitas}/{total}" ao cartão do bônus. */
-  dailyTasks?: DailyTasksState | null;
   /** Painel colapsável no mobile; desktop ignora e mantém sempre visível. */
   mobileDetailsOpen?: boolean;
+  /** Checklist de submissões; aberto por defeito até o jogador colapsar. */
+  missionSubsOpen?: boolean;
   /** Chaves de recurso a pulsar (`gold` / `supply` / `faith` / `corruption`). */
   resourcePulseKeys?: ReadonlySet<string>;
   /** Itens adquiridos desde a última abertura do inventário. */
@@ -1068,8 +1064,13 @@ function appendCharacterSheetEquipSection(
     grid.appendChild(card);
   }
 
+  const hint = document.createElement('p');
+  hint.className = 'character-sheet-equip-hint';
+  hint.textContent = t('sidebar.equipmentChangeHint');
+
   sec.appendChild(h);
   sec.appendChild(grid);
+  sec.appendChild(hint);
   scroll.appendChild(sec);
 }
 
@@ -1705,9 +1706,8 @@ export function buildGameSidebar({
   sidebarSections,
   onSectionToggle,
   playUiClick,
-  dailyBonus,
-  dailyTasks,
   mobileDetailsOpen = true,
+  missionSubsOpen = true,
   resourcePulseKeys,
   inventoryNewCount = 0,
   onInventoryOpened,
@@ -1719,13 +1719,41 @@ export function buildGameSidebar({
   const p = state.party[0];
   const rep = state.reputation;
   const disclosure = buildSidebarDisclosure(state);
-  const mainMissionText = registry.ui.getMainMission?.(state)?.trim() ?? '';
+  const missionView = registry.ui.getMainMissionView?.(state);
+  const mainMissionText =
+    missionView?.title.trim() || registry.ui.getMainMission?.(state)?.trim() || '';
+  const hasPendingSubs = !!missionView?.steps.some((s) => s.status === 'pending');
+  const missionHeader = `<div class="sidebar-mission-card__label">${iconWrap(icons.scroll)}<span>${escHtml(t('sidebar.mainMission'))}</span></div>
+          <p class="sidebar-mission-card__text">${escHtml(mainMissionText)}</p>`;
+  const missionSubsOpenAttr = missionSubsOpen ? ' open' : '';
+  const missionStepsHtml =
+    missionView && hasPendingSubs
+      ? `<details class="sidebar-mission-subs"${missionSubsOpenAttr} data-section="missao">
+          <summary class="sidebar-mission-subs__label">${escHtml(t('sidebar.subMissions'))}</summary>
+          <ul class="sidebar-mission-checklist">
+          ${missionView.steps
+            .map((step) => {
+              const mark =
+                step.status === 'done' ? '✓' : step.status === 'failed' ? '✕' : '☐';
+              const hint =
+                step.hint && step.hint.trim().length > 0
+                  ? `<span class="sidebar-mission-step__hint">${escHtml(step.hint)}</span>`
+                  : '';
+              return `<li class="sidebar-mission-step sidebar-mission-step--${step.status}">
+                <span class="sidebar-mission-step__mark" aria-hidden="true">${mark}</span>
+                <span class="sidebar-mission-step__body">
+                  <span class="sidebar-mission-step__label">${escHtml(step.label)}</span>
+                  ${hint}
+                </span>
+              </li>`;
+            })
+            .join('')}
+          </ul>
+        </details>`
+      : '';
   const mainMissionBlock =
     mainMissionText.length > 0
-      ? `<div class="sidebar-mission-card" title="${escHtml(mainMissionText)}">
-          <div class="sidebar-mission-card__label">${iconWrap(icons.scroll)}<span>${escHtml(t('sidebar.mainMission'))}</span></div>
-          <p class="sidebar-mission-card__text">${escHtml(mainMissionText)}</p>
-        </div>`
+      ? `<div class="sidebar-mission-card">${missionHeader}${missionStepsHtml}</div>`
       : '';
 
   const openRec = sidebarSections['recursos'] ? ' open' : '';
@@ -1888,34 +1916,6 @@ export function buildGameSidebar({
     );
     diaryCard.appendChild(btn);
     hud.appendChild(diaryCard);
-  }
-
-  if (dailyBonus) {
-    const streak = Math.max(1, dailyBonus.streak);
-    const cycleDay = cycleDayForStreak(streak);
-    const bonusCard = document.createElement('div');
-    bonusCard.className = 'sidebar-collapse diary-sidebar-card daily-bonus-sidebar-card';
-    let metaLabel = t('dailyBonus.sidebarMeta', {
-      day: String(cycleDay),
-      total: String(DAILY_BONUS_CYCLE_LENGTH),
-    });
-    if (dailyTasks) {
-      metaLabel += ` · ${t('dailyTasks.sidebarMeta', {
-        done: String(dailyTasksCompletedCount(dailyTasks)),
-        total: String(DAILY_TASKS_PER_DAY),
-      })}`;
-    }
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'sidebar-collapse-trigger diary-sidebar-open-btn';
-    btn.setAttribute('aria-haspopup', 'dialog');
-    btn.innerHTML = `${collapseTriggerStart(icons.gold, t('dailyBonus.sidebarLabel'))}<span class="diary-sidebar-open-meta">${escHtml(metaLabel)}<span class="diary-sidebar-open-hint" aria-hidden="true">›</span></span>`;
-    btn.title = t('dailyBonus.sidebarHint');
-    btn.addEventListener('click', () =>
-      openDailyHubModal({ meta: dailyBonus, tasks: dailyTasks, playUiClick })
-    );
-    bonusCard.appendChild(btn);
-    hud.appendChild(bonusCard);
   }
 
   wireSidebarDetails(hud, sidebarSections, onSectionToggle, onInventoryOpened);

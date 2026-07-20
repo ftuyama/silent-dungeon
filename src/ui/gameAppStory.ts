@@ -9,6 +9,7 @@ import type { Choice, GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
 import { formatLevelUpDeltaLine, randomCampCombatHint } from './gameAppUtils.ts';
 import { pickExplorationEdgeText } from '../campaigns/calvario/overlayPick.ts';
+import { isExplorationGoalReached } from '../engine/world/index.ts';
 import { appendStoryMapPanel } from './storyMapPanel.ts';
 import { t } from '../i18n/index.ts';
 import {
@@ -39,6 +40,10 @@ import {
 import { iconWrap } from './icons/index.ts';
 import { DAILY_COMBAT_CHOICE_ID, dailyCombatCopyForChapter } from './gameAppDailyCombat.ts';
 import { buildMerchantSellRows, isMerchantSellSection } from './story/merchantSell.ts';
+import {
+  mountSectionTitleOverlay,
+  type SectionTitleOverlayPayload,
+} from './story/sectionTitleOverlay.ts';
 
 export { isCampEquipmentScene } from './story/storyCampEquipmentPanel.ts';
 export {
@@ -49,6 +54,14 @@ export {
   collectHighlightHoldMsByAnimatedHighlightBase,
   sceneArtHighlightDedupeKey,
 } from './story/storyArt.ts';
+export type { SectionTitleOverlayPayload } from './story/sectionTitleOverlay.ts';
+export {
+  resolveSectionTitleReveal,
+  snapshotForSectionTitle,
+  formatSectionTitleCase,
+  type SectionTitleReveal,
+  type SectionTitlePrevSnapshot,
+} from './story/sectionTitleReveal.ts';
 
 function buildExplorationMovementRows(
   state: GameState,
@@ -59,6 +72,21 @@ function buildExplorationMovementRows(
   if (!ex || !getG) return [];
   const graph = getG(ex.graphId);
   if (!graph) return [];
+  if (isExplorationGoalReached(state, graph)) {
+    return [
+      {
+        kind: 'locked',
+        choice: {
+          id: 'explore_nav_goal_complete',
+          text: t('story.exploreGoalNavLocked'),
+          preview: t('story.exploreGoalNavLockedPreview'),
+          effects: [],
+          uiSection: t('story.navigation'),
+        },
+        hint: t('story.exploreGoalNavLockedHint'),
+      },
+    ];
+  }
   const node = graph.nodes.find((n) => n.id === ex.nodeId);
   if (!node) return [];
   const lead = state.party[0];
@@ -166,12 +194,19 @@ export type StoryRenderContext = {
   scene: LoadedScene;
   /** Primeira visita + `highlight` no frontmatter + arte resolvida (overlay; opcional ciclo `artHighlightFrames`). */
   sceneArtHighlight: SceneArtHighlightPayload | null;
+  /**
+   * Título de seção (ato / hub / exploração). Se `sceneArtHighlight` também estiver ativo,
+   * a UI adia o título até o highlight terminar (próximo `render`).
+   */
+  sectionTitle: SectionTitleOverlayPayload | null;
   /** Meta curta para orientar a sessão atual. */
   sessionObjective: string | null;
   /** Desafio de combate diário nos hubs (1 vitória por dia por gravação); null quando indisponível. */
   dailyCombat: { chapter: number } | null;
   /** Bloco de primeiros passos mostrado apenas na primeira sessão. */
   onboardingPrimer: { onDismiss: () => void } | null;
+  /** Aviso único do loop do hub (acampamento + patrulha) no primeiro cruzeiro. */
+  hubLoopPrimer: { onDismiss: () => void } | null;
   overlay: StoryOverlayState;
   audio: {
     unlockAudio: () => void;
@@ -361,6 +396,12 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
         kicker.className = 'status-highlight-debuff-kicker';
         kicker.textContent = t('story.penalty');
         block.appendChild(kicker);
+      } else if (h.variant === 'good' && h.title === t('toast.exploreGoalTitle')) {
+        block.classList.add('status-highlight-banner--explore-goal');
+        const kicker = document.createElement('div');
+        kicker.className = 'status-highlight-good-kicker';
+        kicker.textContent = t('story.exploreGoalKicker');
+        block.appendChild(kicker);
       }
       const titleEl = document.createElement('div');
       titleEl.className = 'status-highlight-title';
@@ -499,6 +540,30 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     dismiss.textContent = t('story.gotIt');
     dismiss.addEventListener('click', () => {
       ctx.onboardingPrimer?.onDismiss();
+      ctx.audio.playUiClick();
+      ctx.render();
+    });
+    primer.appendChild(dismiss);
+    inner.appendChild(primer);
+  }
+
+  if (ctx.hubLoopPrimer) {
+    const primer = document.createElement('section');
+    primer.className = 'session-primer session-primer--hub-loop';
+    const title = document.createElement('div');
+    title.className = 'session-primer-title';
+    title.textContent = t('story.hubLoopTitle');
+    primer.appendChild(title);
+    const body = document.createElement('p');
+    body.className = 'session-primer-body';
+    body.textContent = t('story.hubLoopBody');
+    primer.appendChild(body);
+    const dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.className = 'session-primer-dismiss';
+    dismiss.textContent = t('story.gotIt');
+    dismiss.addEventListener('click', () => {
+      ctx.hubLoopPrimer?.onDismiss();
       ctx.audio.playUiClick();
       ctx.render();
     });
@@ -732,7 +797,6 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     ctx.scene.frontmatter.type === 'exploration'
       ? buildExplorationMovementRows(ctx.state, ctx.registry)
       : [];
-  const explorationMoveCount = explorationMoves.length;
   const merchantSells =
     ctx.scene.frontmatter.ambientTheme === 'merchant'
       ? buildMerchantSellRows(ctx.state, ctx.registry.data, ctx.scene.id)
@@ -774,7 +838,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     btn.type = 'button';
     btn.className = 'choice';
     const navNum = storyNavIndex + i + 1;
-    const syntheticExplore = i < explorationMoveCount;
+    const syntheticExplore = Boolean(row.choice.id?.startsWith('explore_move_'));
 
     if (row.kind === 'locked') {
       btn.disabled = true;
@@ -902,6 +966,8 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
 
   if (ctx.sceneArtHighlight) {
     mountSceneArtHighlight(shell, ctx.sceneArtHighlight);
+  } else if (ctx.sectionTitle) {
+    mountSectionTitleOverlay(shell, ctx.sectionTitle);
   }
 }
 

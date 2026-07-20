@@ -25,4 +25,14 @@ export type CampaignUIAdapter = {
   getExplorationGraph?: ExplorationGraphProvider;
   /** Objetivo narrativo principal exibido no bloco Progresso da sidebar. */
   getMainMission?: (state: GameState) => string;
+  /** Checklist de submissões do ato (sidebar expansível). */
+  getMainMissionView?: (state: GameState) => {
+    title: string;
+    steps: Array<{
+      id: string;
+      label: string;
+      status: 'pending' | 'done' | 'failed';
+      hint?: string;
+    }>;
+  };
 };

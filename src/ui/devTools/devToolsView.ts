@@ -210,7 +210,12 @@ function aggregateAmbientCounts(scenes: Map<string, LoadedScene>): Map<AmbientTh
   return m;
 }
 
-type DevToolsSfxPreviewRow = { label: string; play: (audio: GameAudio) => void };
+type DevToolsSfxPreviewRow = {
+  label: string;
+  play: (audio: GameAudio) => void;
+  /** Camada contínua — mostra botão Parar na aba Música. */
+  stop?: (audio: GameAudio) => void;
+};
 
 type DevToolsSfxCategory = {
   category: string;
@@ -272,6 +277,11 @@ const DEV_TOOLS_SFX_BY_CATEGORY: readonly DevToolsSfxCategory[] = [
     rows: [
       { label: 'Dano recebido', play: (a) => a.playDamageTaken() },
       { label: 'Stress', play: (a) => a.playStressSting() },
+      {
+        label: 'PV críticos (≤30%) — pulso contínuo',
+        play: (a) => a.previewLowHp(),
+        stop: (a) => a.stopLowHp(),
+      },
     ],
   },
   {
@@ -336,6 +346,16 @@ function appendDevToolsSfxPreviewTable(
         row.play(audio);
       });
       tdPlay.appendChild(playSfx);
+      if (row.stop) {
+        const stopSfx = document.createElement('button');
+        stopSfx.type = 'button';
+        stopSfx.className = 'dev-tools-btn';
+        stopSfx.textContent = 'Parar';
+        stopSfx.addEventListener('click', () => {
+          row.stop!(audio);
+        });
+        tdPlay.appendChild(stopSfx);
+      }
       tr.appendChild(tdLabel);
       tr.appendChild(tdPlay);
       sfxTbody.appendChild(tr);
@@ -536,7 +556,7 @@ function mountMusicPanel(
   const sfxNote = document.createElement('p');
   sfxNote.className = 'dev-tools-note';
   sfxNote.textContent =
-    'Tons curtos por síntese (Web Audio), mesmos métodos do jogo. Cada botão toca uma vez; o volume segue a preferência guardada da campanha. O highlight do overlay de arte está na secção abaixo.';
+    'Tons por síntese (Web Audio), mesmos métodos do jogo. Efeitos curtos: Ouvir toca uma vez; camadas contínuas (ex.: PV críticos) têm Parar. O volume segue a preferência guardada da campanha. O highlight do overlay de arte está na secção abaixo.';
   parent.appendChild(sfxNote);
 
   const hlHdr = document.createElement('div');

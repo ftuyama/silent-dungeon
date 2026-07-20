@@ -30,14 +30,17 @@ choices:
       - { op: addResource, resource: supply, delta: -1 }
   - text: "Inspecionar os batentes da porta"
     next: act1/dungeon_door
+    visibleWhen: { noMark: act1_door_runes }
     preview: "Runas e bronze; espelho opcional."
   - text: "Um eco duplo pulsa em você — fé e sombra reconhecem-se"
     next: act1/dungeon_mouth
+    visibleWhen: { noFlag: act1_legacy_combo_echo_done }
     condition: { legacyUpgrade: legacy_combo_faith_corruption }
     showWhenLocked: true
     lockedHint: "Legado de fé e corrupção ainda fechado."
     preview: "Legado desbloqueado: dualidade preservada."
     effects:
+      - { op: setFlag, key: act1_legacy_combo_echo_done, value: true }
       - { op: addResource, resource: faith, delta: 1 }
       - { op: addDiary, text: "Na boca da masmorra, fé e corrupção coexistem sem te partir — o eco duplo abriu um fio de calma." }
 onEnter:

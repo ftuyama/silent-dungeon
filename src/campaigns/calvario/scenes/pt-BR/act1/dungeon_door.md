@@ -21,6 +21,7 @@ choices:
       - { op: addResource, resource: supply, delta: -1 }
   - text: "Inclinar-se para o brilho do bronze nos batentes — ver-te"
     next: act1/mirror_door
+    visibleWhen: { noFlag: act1_mirror_dialogue_done }
     preview: "Espelho nos batentes; combate possível."
   - text: "Voltar ao último corredor (narrativa)"
     next: act1/dungeon_mouth

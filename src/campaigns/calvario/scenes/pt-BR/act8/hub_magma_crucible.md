@@ -17,7 +17,10 @@ choices:
   - text: "Seguir o rio de lava (missão)"
     uiSection: "Missões"
     next: act8/lava_river
-    visibleWhen: { noFlag: act8_lava_river_done }
+    visibleWhen:
+      all:
+        - { noFlag: act8_lava_river_done }
+        - { level: { gte: 27 } }
     condition: { level: { gte: 29 } }
     showWhenLocked: true
     lockedHint: "Requer nível 29; o rio só aceita quem já aguenta o calor."
@@ -25,7 +28,11 @@ choices:
   - text: "Descer à forja dos golems (missão)"
     uiSection: "Missões"
     next: act8/golem_forge
-    visibleWhen: { noFlag: act8_golem_forge_done }
+    visibleWhen:
+      all:
+        - { noFlag: act8_golem_forge_done }
+        - { flag: act8_lava_river_done }
+        - { level: { gte: 29 } }
     condition:
       all:
         - { flag: act8_lava_river_done }
@@ -36,7 +43,11 @@ choices:
   - text: "Ajoelhar no altar de enxofre (missão)"
     uiSection: "Missões"
     next: act8/sulfur_altar
-    visibleWhen: { noFlag: act8_sulfur_altar_done }
+    visibleWhen:
+      all:
+        - { noFlag: act8_sulfur_altar_done }
+        - { flag: act8_golem_forge_done }
+        - { level: { gte: 31 } }
     condition:
       all:
         - { flag: act8_golem_forge_done }
@@ -47,7 +58,11 @@ choices:
   - text: "Desafiar o Senhor do Magma"
     uiSection: "Missões"
     next: act8/encounters/magma_lord_intro
-    visibleWhen: { noMark: magma_lord_slain }
+    visibleWhen:
+      all:
+        - { noMark: magma_lord_slain }
+        - { flag: act8_sulfur_altar_done }
+        - { level: { gte: 33 } }
     condition:
       all:
         - { flag: act8_sulfur_altar_done }

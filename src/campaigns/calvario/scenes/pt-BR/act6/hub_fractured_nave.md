@@ -18,7 +18,10 @@ choices:
   - text: "Seguir o corredor dos espelhos partidos (Prova da Realidade)"
     uiSection: "Provas"
     next: act6/reality_trial
-    visibleWhen: { noFlag: act6_reality_done }
+    visibleWhen:
+      all:
+        - { noFlag: act6_reality_done }
+        - { level: { gte: 24 } }
     condition: { level: { gte: 26 } }
     showWhenLocked: true
     lockedHint: "Você precisa de nível 26 para o primeiro cordão; uma vez concluída a prova, o corredor deixa de abrir por aqui."
@@ -26,7 +29,11 @@ choices:
   - text: "Descer ao poço de memórias sem fundo (Prova da Memória)"
     uiSection: "Provas"
     next: act6/memory_trial
-    visibleWhen: { noFlag: act6_memory_done }
+    visibleWhen:
+      all:
+        - { noFlag: act6_memory_done }
+        - { flag: act6_reality_done }
+        - { level: { gte: 24 } }
     condition:
       all:
         - { flag: act6_reality_done }
@@ -37,7 +44,11 @@ choices:
   - text: "Subir ao altar da vontade nua (Prova da Vontade)"
     uiSection: "Provas"
     next: act6/encounters/will_trial
-    visibleWhen: { noFlag: act6_will_done }
+    visibleWhen:
+      all:
+        - { noFlag: act6_will_done }
+        - { flag: act6_memory_done }
+        - { level: { gte: 24 } }
     condition:
       all:
         - { flag: act6_memory_done }
@@ -48,6 +59,11 @@ choices:
   - text: "Atravessar o Portão do Espelho Interior"
     uiSection: "Provas"
     next: act6/mirror_gate
+    visibleWhen:
+      all:
+        - { flag: act6_will_done }
+        - { level: { gte: 29 } }
+        - { noMark: act6_shadow_faced }
     condition:
       all:
         - { flag: act6_reality_done }
@@ -77,7 +93,11 @@ choices:
   - text: "Ouvir o sussurro sob as colunas (rota de corrupção)"
     uiSection: "Vazio"
     next: act6/void_secret_entry
-    visibleWhen: { noFlag: act6_void_pact }
+    visibleWhen:
+      all:
+        - { noFlag: act6_void_pact }
+        - { flag: act6_reality_done }
+        - { level: { gte: 29 } }
     condition:
       all:
         - { flag: act6_reality_done }

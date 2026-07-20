@@ -49,7 +49,10 @@ choices:
   - text: "Um espelho de mão na parede — segurá-lo e ver você sem a água"
     uiSection: "Exploração"
     next: act1/mirror_round
-    condition: { noFlag: act1_class_chosen }
+    condition:
+      all:
+        - { noFlag: act1_class_chosen }
+        - { noMark: act1_hand_mirror }
     preview: "Só olhar; marca e diário."
   - text: "Seguir até a boca da masmorra"
     next: act1/dungeon_mouth

@@ -23,10 +23,19 @@ choices:
   - text: "Voltar aos ecos no gelo — marcas e rumor no desfiladeiro"
     uiSection: "Explorar"
     next: act5/frost_heights_rumors
+    visibleWhen:
+      any:
+        - { noFlag: frost_heights_clues_done }
+        - { noFlag: frost_heights_listen_done }
+        - { noFlag: frost_heights_cultist_done }
     preview: "Trecho acima do acampamento; testes e combate introdutório que ficaram para trás."
   - text: "Seguir o rasto de garras na neve (missão)"
     uiSection: "Missões"
     next: act5/frost_ridgeline
+    visibleWhen:
+      all:
+        - { level: { gte: 19 } }
+        - { noMark: vetrnax_slain }
     condition:
       all:
         - { level: { gte: 21 } }
@@ -42,6 +51,7 @@ choices:
         - { noFlag: tomas_rescued }
         - { noFlag: tomas_rescue_missed }
         - { day: { lte: 15 } }
+        - { level: { gte: 14 } }
     condition: { level: { gte: 16 } }
     showWhenLocked: true
     lockedHint: "Requer nível 16+ e chegar até o dia 15 — depois o rumor esfria."
@@ -70,6 +80,7 @@ choices:
       all:
         - { noFlag: monk_cave_banished }
         - { noFlag: frost_monk_blessing_done }
+        - { level: { gte: 17 } }
     condition: { level: { gte: 19 } }
     showWhenLocked: true
     lockedHint: "Requer nível 19+ para achar a gruta do monge no gelo."
@@ -77,6 +88,12 @@ choices:
   - text: "Rumo ao cume — templo de pedra negra (caminho perigoso)"
     uiSection: "Cume e gruta"
     next: act5/frost_summit/ascend
+    visibleWhen:
+      all:
+        - { level: { gte: 21 } }
+        - { noFlag: frost_summit_ritual_done }
+        - { noMark: title_fallen_god }
+        - { noFlag: frost_summit_ritual_cursed }
     condition:
       all:
         - { level: { gte: 23 } }

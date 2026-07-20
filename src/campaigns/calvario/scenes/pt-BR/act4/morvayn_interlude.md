@@ -8,17 +8,23 @@ choices:
     next: act4/throne/throne_sweep
   - text: "Enterrar o medo na mente (+Mente, 3 cenas)"
     next: act4/throne/throne_sweep
+    visibleWhen: { noFlag: act4_interlude_mind_done }
     effects:
+      - { op: setFlag, key: act4_interlude_mind_done, value: true }
       - { op: grantTemporaryBuff, attr: mind, delta: 1, remainingScenes: 3 }
       - { op: addDiary, text: "Antes da segunda fase, cerrei o eco como armadura invisível e li o salão com calma." }
   - text: "Endurecer o corpo (+FOR, 3 cenas)"
     next: act4/throne/throne_sweep
+    visibleWhen: { noFlag: act4_interlude_str_done }
     effects:
+      - { op: setFlag, key: act4_interlude_str_done, value: true }
       - { op: grantTemporaryBuff, attr: str, delta: 1, remainingScenes: 3 }
       - { op: addDiary, text: "O trono treme — eu também, mas por escolha. Cada passo mede o próximo golpe." }
   - text: "Aceitar o custo do selo e respirar fundo (-Mente, +foco cruel)"
     next: act4/throne/throne_sweep
+    visibleWhen: { noFlag: act4_interlude_accept_done }
     effects:
+      - { op: setFlag, key: act4_interlude_accept_done, value: true }
       - { op: grantTemporaryBuff, attr: mind, delta: -1, remainingScenes: 3 }
       - { op: addDiary, text: "Em vez de correr, aceitei o tremor. A clareza veio com dor." }
   - text: "Forçar a segunda fase agora (atalho sem explorar)"

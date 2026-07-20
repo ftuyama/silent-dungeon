@@ -39,9 +39,11 @@ choices:
   - text: "O trilho gravado ressoa no fogo — arquétipo e facção alinhados"
     uiSection: "Você e eles"
     next: act2/camp/camp_companion_chat
+    visibleWhen: { noFlag: act2_camp_legacy_path_faction_done }
     condition: { legacyUpgrade: legacy_combo_path_faction }
     preview: "Legado: trilho e facção em harmonia."
     effects:
+      - { op: setFlag, key: act2_camp_legacy_path_faction_done, value: true }
       - { op: addDiary, text: "Ao pé do fogo, o eco do seu arquétipo encaixa na muralha de reputação — o grupo ouve você com outro peso." }
   - text: "Voltar ao acampamento"
     uiSection: "Voltar"

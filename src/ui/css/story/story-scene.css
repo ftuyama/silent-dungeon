@@ -557,6 +557,13 @@ button.choice.choice--locked[class*='choice--tone-']:hover {
   font-size: 0.84rem;
 }
 
+.session-primer-body {
+  margin: 0;
+  color: var(--fg);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
 .session-primer-dismiss {
   margin-top: 0.6rem;
   padding: 0.38rem 0.52rem;
@@ -770,7 +777,7 @@ button.camp-equip-candidate {
 }
 
 .ascii-map {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.15;
   white-space: pre;
   background: #050605;
@@ -851,7 +858,6 @@ button.camp-equip-candidate {
 .ascii-map-legend code {
   display: inline-block;
   min-width: 1.1rem;
-  color: var(--text);
 }
 
 .timed-bar {

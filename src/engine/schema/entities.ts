@@ -552,6 +552,11 @@ export const GameStateSchema = z.object({
    * Com `artKey` na cena: chave `art:<artKey>` (partilhado entre cenas); sem `artKey`: id da cena (legado).
    */
   sceneArtHighlightShown: z.record(z.string(), z.boolean()).default({}),
+  /**
+   * Overlay de título de seção (ato / hub / exploração) já mostrado (persiste na gravação).
+   * Chaves: `chapter:N`, `hub:<sceneId>`, `explore:<graphId>`.
+   */
+  sectionTitlesShown: z.record(z.string(), z.boolean()).default({}),
   /** Mapa ASCII ativo; posição do jogador vem do grafo de exploração + `mapCell` do nó. */
   asciiMap: z
     .object({

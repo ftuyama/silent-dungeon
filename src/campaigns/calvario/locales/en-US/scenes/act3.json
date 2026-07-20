@@ -25,33 +25,19 @@
     "body": "The torn map points where to fold — in a niche, **bones** bound with copper wire and a **bell shard** driven like a nail. The narrow passage smells of burned tallow.",
     "choices": [
       {
-        "text": "Leave a coin in the niche — ask passage from the Bell's ear",
-        "preview": "Gold and learning · cult trust mark (once).",
+        "text": "Cross the shortcut",
+        "preview": "Leave the niche untouched."
+      },
+      {
+        "text": "Leave a coin — cult favor",
+        "preview": "Gold and XP; cult recognition (once).",
         "diaryTexts": [
           "The copper licked the coin and the air grew heavier — as if the tunnel had closed its ledger."
         ]
       },
       {
-        "text": "Trust the well's mirror — cross without touching the niche",
-        "preview": "Well truth · clean passage and XP (once).",
-        "diaryTexts": [
-          "The shortcut matched what the well showed — the niche stayed behind, untouched."
-        ]
-      },
-      {
-        "text": "Take the shortcut without profaning the niche",
-        "preview": "Leave the foreign rite where it lies — the map already lied for you."
-      },
-      {
-        "text": "Rip out the shard and wire — the cult notices, the Vigil too",
-        "preview": "Symbol and proof in your pocket; haste and enmity.",
-        "diaryTexts": [
-          "I stole the Third Bell shard from the niche — the order's silence will cost dear."
-        ]
-      },
-      {
-        "text": "The false map still pulls — listen to the bell in the niche",
-        "preview": "Well's deceit · the cult already waits (combat)."
+        "text": "The false map pulls toward ambush",
+        "preview": "The cult already waits."
       }
     ]
   },
@@ -60,18 +46,22 @@
     "body": "The stair **sinks**. A green pulse beats with your heart — each flight steals noise until only wet stone remains. **No fire** is shelter here.\n\nWith the **Torn Map**, a shortcut opens that the common map hides.",
     "choices": [
       {
-        "text": "Descend to the well",
-        "preview": "Down there, the water whispers promises no one confirms."
+        "text": "Continue to the heart of the depths",
+        "preview": "Drowned gallery and throne corridor."
+      },
+      {
+        "text": "Investigate the lying well",
+        "preview": "False map — skill check or ambush."
       },
       {
         "text": "Force the torn-map shortcut",
-        "preview": "Ink traces and fear — a path honest maps erase.",
-        "lockedHint": "You need the rumor-map in inventory and level 7 to force that shortcut."
+        "preview": "Hidden path; needs rumor-map and level 7.",
+        "lockedHint": "Rumor-map in inventory and level 7."
       },
       {
-        "text": "Go meet what corruption promises",
-        "preview": "Something pulls beneath the skin; playing deaf costs more each time.",
-        "lockedHint": "At level 7 corruption stops being rumor — it becomes encounter."
+        "text": "Corruption encounter",
+        "preview": "Green crystal; touch, retreat, or ignore.",
+        "lockedHint": "Requires level 7."
       },
       {
         "text": "Write this in the diary",
@@ -148,61 +138,56 @@
     "body": "The **core** is a drowned gallery: wet stone, bronze grates, and a corridor that drops toward the throne. **Morvayn** does not appear — but the air already carries his smell.\n\nThere is no campfire here. Only your breath and the slow drip of the walls.",
     "choices": [
       {
-        "text": "Patrol the depths (explore map)",
-        "preview": "You move through the corridors; stress rises and encounters may happen.",
+        "text": "Patrol the depths",
+        "preview": "Map — stress and possible encounters.",
         "uiSection": "Explore"
       },
       {
+        "text": "Stone guardian corridor",
+        "preview": "Runes, golem, and proof before the throne.",
+        "uiSection": "Advance"
+      },
+      {
         "text": "Toward the bone throne",
-        "preview": "Chapter 4 — confrontation with Morvayn; the throne waits.",
-        "lockedHint": "You need level 11, to defeat the stone guardian, and to reach the gate in the depths.",
-        "uiSection": "Throne and stone",
+        "preview": "Chapter 4 — Morvayn.",
+        "lockedHint": "Level 11, guardian defeated, and map goal reached.",
+        "uiSection": "Advance",
         "diaryTexts": [
           "The throne calls."
         ]
       },
       {
-        "text": "Guardian's side",
-        "preview": "Runes, golem, and proof before the throne.",
-        "uiSection": "Throne and stone"
-      },
-      {
-        "text": "Revisit the stone corridor (guardian echo)",
-        "preview": "Runes and niche, no golem.",
-        "uiSection": "Throne and stone"
-      },
-      {
-        "text": "Follow ash and rope — interrupted messenger",
-        "preview": "Stealth or force; Vigil or Circle charge for the dispatch.",
-        "lockedHint": "Requires level 9+; the trail only reads when you already weigh in the depths.",
-        "uiSection": "Rumors"
-      },
-      {
         "text": "Listen to the pipes under the stone",
         "preview": "Luck; success gives a clue, failure costs supply.",
-        "lockedHint": "Requires level 8+ to hear what the pipes whisper.",
-        "uiSection": "Rumors"
-      },
-      {
-        "text": "Descend to the forgotten shrine (stone seal)",
-        "preview": "Ancient seal; class defines how it opens.",
-        "lockedHint": "You need level 8 to locate the cracked stone veil — before that, the shrine remains rumor only.",
-        "uiSection": "Rumors"
+        "lockedHint": "Requires level 8.",
+        "uiSection": "Missions"
       },
       {
         "text": "Speak with the cultist crossing the corridor",
         "preview": "Pact, refusal, or steel; reputation shifts either way.",
-        "lockedHint": "The cultist only approaches those heavy enough in the depths — level 10.",
-        "uiSection": "Rumors"
+        "lockedHint": "Requires level 10.",
+        "uiSection": "Missions"
+      },
+      {
+        "text": "Ash trail — interrupted messenger",
+        "preview": "Stealth or combat; reputation shifts.",
+        "lockedHint": "Requires level 9.",
+        "uiSection": "Missions"
+      },
+      {
+        "text": "Forgotten shrine",
+        "preview": "Ancient seal; class defines how it opens.",
+        "lockedHint": "Requires level 8.",
+        "uiSection": "Missions"
       },
       {
         "text": "The green you ignored calls a messenger",
-        "preview": "Ignoring the crystal collected an encounter — the cult noticed the deafness.",
-        "uiSection": "Rumors"
+        "preview": "Consequence of ignoring the crystal.",
+        "uiSection": "Missions"
       },
       {
-        "text": "Return to the Crossroads — hub",
-        "preview": "Climb to the crossroads; chapter 2.",
+        "text": "Return to the Crossroads",
+        "preview": "Climb to the crossroads.",
         "uiSection": "Return"
       }
     ]
@@ -434,14 +419,14 @@
         "text": "Search the votive niche"
       },
       {
-        "text": "Follow the path the well showed (left)",
-        "preview": "The mirror's memory avoids the niche trap — once.",
+        "text": "Follow the well's path (left)",
+        "preview": "Mirror truth avoids the trap — once.",
         "diaryTexts": [
           "The well mirror did not lie: left avoids the stone tooth."
         ]
       },
       {
-        "text": "Return to the heart of the depths"
+        "text": "Return to the core"
       }
     ]
   },

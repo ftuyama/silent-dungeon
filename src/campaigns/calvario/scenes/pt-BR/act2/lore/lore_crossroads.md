@@ -43,29 +43,45 @@ choices:
   - text: "Mergulhar o braço no lodo que sussurra"
     uiSection: "Sorte"
     next: act2/luck_mire
+    visibleWhen: { noFlag: act2_luck_mire_done }
     preview: Sorte — 2d6 + SOR · sem decidir, você volta ao cruzeiro.
   - text: "Recordar o cavaleiro caído (eco do path)"
     uiSection: "Memória"
     next: act2/hub_catacomb
-    condition: { path: fallen }
+    condition:
+      all:
+        - { path: fallen }
+        - { noFlag: act2_lore_recall_fallen_done }
     effects:
+      - { op: setFlag, key: act2_lore_recall_fallen_done, value: true }
       - { op: addDiary, text: "O cruzeiro me lembrou o nome que aceitei: caído, mas ainda de pé." }
   - text: "Recordar o arcano sombrio (eco do path)"
     uiSection: "Memória"
     next: act2/hub_catacomb
-    condition: { path: dark }
+    condition:
+      all:
+        - { path: dark }
+        - { noFlag: act2_lore_recall_dark_done }
     effects:
+      - { op: setFlag, key: act2_lore_recall_dark_done, value: true }
       - { op: addDiary, text: "Sombras não pedem permissão — eu dei mesmo assim." }
   - text: "Recordar o penitente (eco do path)"
     uiSection: "Memória"
     next: act2/lore/lore_penitent_recall_mind
-    condition: { path: penitent }
+    condition:
+      all:
+        - { path: penitent }
+        - { noFlag: act2_lore_penitent_recall_done }
     preview: "Mente — sustentar a memória (TN 8)"
   - text: "Recordar o atirador (eco do path)"
     uiSection: "Memória"
     next: act2/hub_catacomb
-    condition: { path: marksman }
+    condition:
+      all:
+        - { path: marksman }
+        - { noFlag: act2_lore_recall_marksman_done }
     effects:
+      - { op: setFlag, key: act2_lore_recall_marksman_done, value: true }
       - { op: addDiary, text: "O cruzeiro me lembrou a distância que escolhi: não fuga — mira." }
   - text: "Voltar ao cruzeiro"
     uiSection: "Partir"

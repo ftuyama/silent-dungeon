@@ -82,7 +82,10 @@ choices:
   - text: "Ritual do Círculo (evento)"
     uiSection: "Convites e ritos"
     next: act2/circle_ritual/circle_ritual
-    visibleWhen: { noFlag: act2_circle_ritual_tribute_done }
+    visibleWhen:
+      all:
+        - { noFlag: act2_circle_ritual_tribute_done }
+        - { level: { gte: 2 } }
     condition:
       all:
         - { level: { gte: 4 } }
@@ -104,7 +107,10 @@ choices:
   - text: "Passagem marcada — eco de juramentos"
     uiSection: "Ecos do cruzeiro"
     next: act2/lore/lore_crossroads
-    visibleWhen: { day: { lte: 10 } }
+    visibleWhen:
+      all:
+        - { day: { lte: 10 } }
+        - { level: { gte: 5 } }
     condition: { level: { gte: 7 } }
     showWhenLocked: true
     lockedHint: "Requer nível 7+ e chegar até o dia 10 — depois o eco esfria."
@@ -116,6 +122,7 @@ choices:
       all:
         - { day: { gte: 11 } }
         - { noFlag: act2_lore_crossroads_late }
+        - { level: { gte: 5 } }
     condition: { level: { gte: 7 } }
     showWhenLocked: true
     lockedHint: "Requer nível 7+ e dia 11+; uma última vez antes da pedra esquecer."
@@ -126,6 +133,12 @@ choices:
   - text: "Observar o cruzeiro: marcas no chão"
     uiSection: "Ecos do cruzeiro"
     next: act2/hub_observe
+    visibleWhen:
+      any:
+        - { noMark: act2_cruzeiro_marks }
+        - all:
+            - { flag: mira_recruited }
+            - { noMark: mira_cruzeiro_confidencia }
     preview: "Ler o chão: quem passou antes."
   - text: "Mexer na cera das velas — moeda presa (uma vez)"
     uiSection: "Ecos do cruzeiro"
@@ -138,20 +151,26 @@ choices:
   - text: "Escutar um eco que sussurra o dia"
     uiSection: "Ecos do cruzeiro"
     next: act2/hub_catacomb
-    visibleWhen: { day: { lte: 5 } }
+    visibleWhen:
+      all:
+        - { day: { lte: 5 } }
+        - { level: { gte: 4 } }
+        - { noFlag: act2_cruzeiro_day_echo_done }
     condition: { level: { gte: 6 } }
     showWhenLocked: true
     lockedHint: "Requer nível 6+ e ainda estar nos primeiros cinco dias."
     preview: "Voz seca no cruzeiro; registro no diário."
     effects:
+      - { op: setFlag, key: act2_cruzeiro_day_echo_done, value: true }
       - { op: addDiary, text: "Uma voz presa ao teto: \"Já vai no dia {{day}}.\"" }
-  - text: "Subir ao último corredor — boca da masmorra"
+  - text: "[↑] Subir ao último corredor — boca da masmorra"
     uiSection: "Voltar e avançar"
     next: act1/dungeon_mouth
     preview: "Braseiro, sino e batentes; o ar lá fora ainda ouve."
   - text: "Descer mais fundo"
     uiSection: "Voltar e avançar"
     next: act3/descent
+    visibleWhen: { level: { gte: 4 } }
     condition:
       all:
         - { level: { gte: 6 } }

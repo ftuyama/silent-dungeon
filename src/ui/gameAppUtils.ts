@@ -340,14 +340,20 @@ function resourceBarAria(label: string, current: number, max: number): string {
   return t('sidebar.resourceBar', { label, current: String(current), max: String(max) });
 }
 
+/** Limiar de PV críticos (barra vermelha + áudio de perigo). */
+export const HP_CRITICAL_RATIO = 0.3;
+
+export function isHpCritical(cur: number, max: number): boolean {
+  return max > 0 && cur > 0 && cur / max <= HP_CRITICAL_RATIO;
+}
+
 export function hpBarMarkup(
   cur: number,
   max: number,
   trackClass?: string,
   fill: 'xp' | 'hp' = 'xp'
 ): string {
-  const stateCls =
-    fill === 'hp' && max > 0 && cur > 0 && cur / max <= 0.3 ? ' hp-bar-track--critical' : '';
+  const stateCls = fill === 'hp' && isHpCritical(cur, max) ? ' hp-bar-track--critical' : '';
   const trackCls = trackClass
     ? `hp-bar-track ${trackClass}${stateCls}`
     : `hp-bar-track${stateCls}`;

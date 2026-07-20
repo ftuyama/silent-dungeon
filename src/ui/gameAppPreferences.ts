@@ -3,8 +3,10 @@ export type GameAppStorageKeys = {
   fontKey: string;
   timedChoiceKey: string;
   sceneArtHighlightKey: string;
+  sectionTitleKey: string;
   devModeKey: string;
   onboardingPrimerKey: string;
+  hubLoopPrimerKey: string;
   legacyBriefingKey: string;
 };
 
@@ -14,8 +16,10 @@ export function buildGameAppStorageKeys(campaignId: string): GameAppStorageKeys 
     fontKey: `${campaignId}_font_step_v1`,
     timedChoiceKey: `${campaignId}_timed_choice_v1`,
     sceneArtHighlightKey: `${campaignId}_scene_art_highlight_v1`,
+    sectionTitleKey: `${campaignId}_section_title_v1`,
     devModeKey: `${campaignId}_dev_mode`,
     onboardingPrimerKey: `${campaignId}_onboarding_primer_v1`,
+    hubLoopPrimerKey: `${campaignId}_hub_loop_primer_v1`,
     legacyBriefingKey: `${campaignId}_legacy_briefing_v1`,
   };
 }
@@ -87,6 +91,22 @@ export function saveSceneArtHighlightEnabled(sceneArtHighlightKey: string, enabl
   }
 }
 
+export function loadSectionTitleEnabled(sectionTitleKey: string): boolean {
+  try {
+    return localStorage.getItem(sectionTitleKey) !== '0';
+  } catch {
+    return true;
+  }
+}
+
+export function saveSectionTitleEnabled(sectionTitleKey: string, enabled: boolean): void {
+  try {
+    localStorage.setItem(sectionTitleKey, enabled ? '1' : '0');
+  } catch {
+    /* noop */
+  }
+}
+
 export function loadOnboardingPrimerVisible(onboardingPrimerKey: string): boolean {
   try {
     return localStorage.getItem(onboardingPrimerKey) !== '0';
@@ -103,8 +123,25 @@ export function saveOnboardingPrimerVisible(onboardingPrimerKey: string, visible
   }
 }
 
+/** true = ainda não dispensado (mostrar aviso do hub). */
+export function loadHubLoopPrimerVisible(hubLoopPrimerKey: string): boolean {
+  try {
+    return localStorage.getItem(hubLoopPrimerKey) !== '0';
+  } catch {
+    return true;
+  }
+}
+
+export function saveHubLoopPrimerVisible(hubLoopPrimerKey: string, visible: boolean): void {
+  try {
+    localStorage.setItem(hubLoopPrimerKey, visible ? '1' : '0');
+  } catch {
+    /* noop */
+  }
+}
+
 export function loadSidebarSections(sidebarKey: string): Record<string, boolean> {
-  const defaults: Record<string, boolean> = { recursos: true };
+  const defaults: Record<string, boolean> = { recursos: true, missao: true };
   try {
     const raw = sessionStorage.getItem(sidebarKey);
     if (!raw) return { ...defaults };

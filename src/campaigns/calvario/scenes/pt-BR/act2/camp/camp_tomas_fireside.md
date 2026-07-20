@@ -9,6 +9,7 @@ choices:
     next: act2/camp/camp_tomas_topic_shield
   - text: "Falar da ordem que deixou de existir"
     next: act2/camp/camp_tomas_topic_oath
+    visibleWhen: { noMark: tomas_camp_oath }
     effects:
       - { op: addMark, mark: tomas_camp_oath }
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act2_camp_tomas_fireside_oath }

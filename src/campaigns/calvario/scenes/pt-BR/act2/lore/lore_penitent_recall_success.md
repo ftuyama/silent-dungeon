@@ -7,6 +7,7 @@ choices:
   - text: "Voltar ao cruzeiro"
     next: act2/hub_catacomb
 onEnter:
+  - { op: setFlag, key: act2_lore_penitent_recall_done, value: true }
   - { op: addResource, resource: faith, delta: 1 }
   - { op: addXp, amount: 10 }
   - { op: addDiary, text: "Cada pedra aqui confessa melhor do que eu." }

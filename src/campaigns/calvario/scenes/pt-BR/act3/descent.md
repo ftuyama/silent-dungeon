@@ -5,27 +5,36 @@ chapter: 3
 ambientTheme: act3
 artKey: silence_descent
 choices:
-  - text: "Descer até o poço"
-    preview: "Lá em baixo, a água sussurra promessas que ninguém confirma."
+  - text: "Seguir até o núcleo das profundezas"
+    preview: "Galeria afogada e corredor do trono."
+    next: act3/hub_depths
+  - text: "Investigar o poço mentiroso"
+    preview: "Mapa falso — perícia ou emboscada."
     next: act3/well_lies
+    visibleWhen:
+      all:
+        - { noFlag: well_truth }
+        - { noFlag: false_map }
   - text: "Forçar o atalho do mapa rasgado"
-    preview: "Traços de tinta e medo — um caminho que os mapas honestos apagam."
+    preview: "Atalho oculto; exige mapa-rumor e nível 7."
     next: act3/cult_passage
     condition:
       all:
         - { hasItem: rumor_map }
         - { level: { gte: 7 } }
     showWhenLocked: true
-    lockedHint: "Você precisa do mapa-rumor no inventário e de nível 7 para forçar esse atalho."
-  - text: "Ir ao encontro do que a corrupção promete"
-    preview: "Algo puxa por baixo da pele; fingir surdez custa cada vez mais caro."
+    lockedHint: "Mapa-rumor no inventário e nível 7."
+  - text: "Encontro com a corrupção"
+    preview: "Cristal verde; tocar, recuar ou ignorar."
     next: act3/corruption_event
+    visibleWhen: { noFlag: act3_corruption_event_done }
     condition: { level: { gte: 7 } }
     showWhenLocked: true
-    lockedHint: "Com nível 7 a corrupção deixa de ser só rumor — torna-se encontro."
+    lockedHint: "Requer nível 7."
   - text: "Anotar isto no diário"
     preview: "Fixar o cheiro antes que o silêncio o devore."
     next: act3/diary_trigger
+    visibleWhen: { noFlag: act3_descent_diary_done }
   - text: "Ouvir o que Mira diz do cheiro e do silêncio"
     preview: "Uma voz que já assinou com o subsolo."
     next: act3/mira_descent_whisper
