@@ -70,6 +70,6 @@ Definido em `data/storyPaths.ts`. Ramifica textos e hubs em act5 (`frost_hub`, `
 
 ## Notas para novas cenas
 
-- Variantes por `storyPath` = ficheiros separados (`_pact`, `_sealed`), não só inject no corpo
+- Variantes por `storyPath` = arquivos separados (`_pact`, `_sealed`), não só inject no corpo
 - `registerEnding` em passagens finais quando aplicável
 - Prosa pós-trono deve ecoar facções (`{{factionThroneEcho}}` em passagem)

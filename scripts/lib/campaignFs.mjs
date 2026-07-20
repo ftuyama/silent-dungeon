@@ -20,14 +20,20 @@ export function campaignPaths(repoRoot, campaignId, locale = 'pt-BR') {
   };
 }
 
-/** Recursively list all `.md` files under `dir`. */
+/** Co-located design docs for agents — not playable scene markdown. */
+export function isSceneMarkdownFile(name) {
+  const base = path.basename(name);
+  return base.endsWith('.md') && base !== 'README.md';
+}
+
+/** Recursively list playable scene `.md` files under `dir`. */
 export function walkMd(dir) {
   const out = [];
   if (!fs.existsSync(dir)) return out;
   for (const name of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, name.name);
     if (name.isDirectory()) walkMd(p).forEach((x) => out.push(x));
-    else if (name.name.endsWith('.md')) out.push(p);
+    else if (isSceneMarkdownFile(name.name)) out.push(p);
   }
   return out;
 }
