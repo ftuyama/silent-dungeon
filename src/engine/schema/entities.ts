@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SupporterStateSchema } from './supporter.ts';
 import {
   AppModeSchema,
   ClassIdSchema,
@@ -513,6 +514,16 @@ export const GameStateSchema = z.object({
         .default(null),
       /** Cena onde a run terminou por derrota (preenchida em `finishCombat`). */
       lastEndSceneId: z.string().default(''),
+      /** Perks de apoiador (Ko-fi); persistem entre runs. */
+      supporter: SupporterStateSchema.default({
+        unlockedPerks: [],
+        activeTheme: null,
+        activeFrame: null,
+        supporterName: null,
+        mercyUsedThisRun: false,
+        redeemedCodeIds: [],
+        purchasedEchoesTotal: 0,
+      }),
     })
     .default({
       echoes: 0,
@@ -523,6 +534,15 @@ export const GameStateSchema = z.object({
       unlockedUpgrades: [],
       lastRunStats: null,
       lastEndSceneId: '',
+      supporter: {
+        unlockedPerks: [],
+        activeTheme: null,
+        activeFrame: null,
+        supporterName: null,
+        mercyUsedThisRun: false,
+        redeemedCodeIds: [],
+        purchasedEchoesTotal: 0,
+      },
     }),
   /** Passivos de história do líder (ids em `GameData.leadStoryPassives`), ex. bênção do monge. */
   leadStoryPassives: z.array(z.string()).default([]),

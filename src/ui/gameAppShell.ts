@@ -47,6 +47,7 @@ export type MountAppChromeOptions = {
   onExportSave: () => void;
   onImportSave: () => void;
   onCredits: () => void;
+  onSupporter: () => void;
   /** Legado unificado (crônica + loja de ecos). */
   onLegacy: () => void;
   onDevTools: () => void;
@@ -131,11 +132,12 @@ function fillMenuSaveSlots(
   wrap: HTMLElement,
   campaignId: string,
   devMode: boolean,
+  state: GameState,
   onSaveSlot: (slot: number) => void,
   onLoadSlot: (slot: number) => void
 ): void {
   wrap.replaceChildren();
-  for (let s = 1; s <= saveSlotLimit(devMode); s++) {
+  for (let s = 1; s <= saveSlotLimit(devMode, state); s++) {
     wrap.appendChild(
       buildMenuSaveSlot(s, campaignId, {
         onSave: onSaveSlot,
@@ -418,7 +420,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   const saveSection = createMenuSection(t('menu.sectionGame'), 'menu-drawer-heading');
   const saveSlotsWrap = document.createElement('div');
   saveSlotsWrap.className = 'menu-save-slots';
-  fillMenuSaveSlots(saveSlotsWrap, opts.campaignId, opts.devMode, opts.onSaveSlot, opts.onLoadSlot);
+  fillMenuSaveSlots(saveSlotsWrap, opts.campaignId, opts.devMode, opts.state, opts.onSaveSlot, opts.onLoadSlot);
   saveSection.appendChild(saveSlotsWrap);
   saveSection.appendChild(dailyBonusBtn);
   saveSection.appendChild(devSaveExtrasEl);
@@ -439,8 +441,16 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     devSection.appendChild(devSettingsExtrasEl);
   }
 
+  const supporterBtn = document.createElement('button');
+  supporterBtn.type = 'button';
+  supporterBtn.className = 'menu-item menu-item--supporter';
+  supporterBtn.textContent = t('menu.supporter');
+  supporterBtn.title = t('menu.supporterTitle');
+  supporterBtn.addEventListener('click', () => opts.onSupporter());
+
   const aboutSection = createMenuSection(t('menu.sectionAbout'));
   aboutSection.appendChild(legacyBtn);
+  aboutSection.appendChild(supporterBtn);
   aboutSection.appendChild(creditsBtn);
 
   const feedbackLink = document.createElement('a');
@@ -596,5 +606,5 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
   refs.mainEl.replaceChildren();
   opts.fillMain(refs.mainEl);
 
-  fillMenuSaveSlots(refs.saveSlotsWrap, opts.campaignId, opts.devMode, opts.onSaveSlot, opts.onLoadSlot);
+  fillMenuSaveSlots(refs.saveSlotsWrap, opts.campaignId, opts.devMode, opts.state, opts.onSaveSlot, opts.onLoadSlot);
 }

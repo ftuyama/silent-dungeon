@@ -1,5 +1,6 @@
 import { deserializeState, serializeState } from '../engine/core/index.ts';
 import type { GameState } from '../engine/schema/index.ts';
+import { saveSlotCountBonus } from '../engine/progression/index.ts';
 import { t } from '../i18n/index.ts';
 
 /** Slots visíveis e graváveis fora do modo desenvolvedor. */
@@ -7,8 +8,10 @@ export const SAVE_SLOT_COUNT_PLAYER = 3;
 /** Limite de slots com modo desenvolvedor (e teto de `localStorage`). */
 export const SAVE_SLOT_COUNT_DEV = 10;
 
-export function saveSlotLimit(devMode: boolean): number {
-  return devMode ? SAVE_SLOT_COUNT_DEV : SAVE_SLOT_COUNT_PLAYER;
+export function saveSlotLimit(devMode: boolean, state?: GameState): number {
+  const bonus = state ? saveSlotCountBonus(state) : 0;
+  if (devMode) return SAVE_SLOT_COUNT_DEV;
+  return SAVE_SLOT_COUNT_PLAYER + bonus;
 }
 
 export function slotStorageKey(campaignId: string, slot: number): string {
@@ -157,7 +160,7 @@ export function saveStateToSlot(
   state: GameState,
   devMode: boolean
 ): void {
-  if (slot < 1 || slot > saveSlotLimit(devMode)) return;
+  if (slot < 1 || slot > saveSlotLimit(devMode, state)) return;
   try {
     localStorage.setItem(slotStorageKey(campaignId, slot), serializeState(state));
   } catch {

@@ -681,3 +681,54 @@ html[data-theme='lava'] {
   --map-char-goal: #f0a040;
   --map-char-player: #70c0b8;
 }
+
+/** Apoiador — Brasa Antiga (override cosmético). */
+html[data-theme='ember'] {
+  --bg: #100a06;
+  --fg: #e8c898;
+  --muted: #a88868;
+  --accent: #c87830;
+  --danger: #a04028;
+  --magic: #b88850;
+  --border: #4a3420;
+  --glow: rgba(200, 120, 48, 0.18);
+  --surface-raised: #181008;
+  --surface-drawer: #120c08;
+  --text-strong: #f0dcb0;
+  --text-emphasis: #f0c878;
+  --accent-dim: #8a5820;
+}
+
+/** Apoiador — Lua de Prata. */
+html[data-theme='moonlit'] {
+  --bg: #080a10;
+  --fg: #c8d0e0;
+  --muted: #8890a8;
+  --accent: #6888b8;
+  --danger: #884858;
+  --magic: #7090c0;
+  --border: #303848;
+  --glow: rgba(104, 136, 184, 0.16);
+  --surface-raised: #101420;
+  --surface-drawer: #0c0e14;
+  --text-strong: #e0e8f0;
+  --text-emphasis: #b8c8e8;
+  --accent-dim: #486890;
+}
+
+/** Apoiador — Vigília Escarlate. */
+html[data-theme='blood_vigil'] {
+  --bg: #0c0608;
+  --fg: #d8b0b0;
+  --muted: #987878;
+  --accent: #a83838;
+  --danger: #c03030;
+  --magic: #906060;
+  --border: #402028;
+  --glow: rgba(168, 56, 56, 0.16);
+  --surface-raised: #160c10;
+  --surface-drawer: #10080a;
+  --text-strong: #f0d0d0;
+  --text-emphasis: #e89898;
+  --accent-dim: #782828;
+}

@@ -451,6 +451,102 @@
   line-height: 1.45;
 }
 
+.supporter-modal-layer .sheet-modal-panel {
+  width: min(34rem, 100%);
+}
+
+.supporter-modal-balance {
+  margin: 0 0 0.65rem;
+  font-size: 0.88rem;
+}
+
+.supporter-modal-note {
+  margin: 0 0 0.85rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.supporter-modal-status {
+  margin: 0 0 0.65rem;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.82rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface-inset));
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.supporter-modal-status--error {
+  background: color-mix(in srgb, var(--danger) 20%, var(--surface-inset));
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--border));
+}
+
+.supporter-redeem-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.supporter-code-input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--fg);
+  background: var(--surface-inset);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.supporter-redeem-btn {
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0;
+}
+
+.supporter-shop-link {
+  display: inline-block;
+  margin: 0.35rem 0 0.85rem;
+}
+
+.supporter-perks-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.supporter-perks-empty {
+  list-style: none;
+  margin-left: -1.1rem;
+  color: var(--muted);
+}
+
+.supporter-pref-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.35rem 0;
+}
+
+.supporter-theme-select {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--fg);
+  background: var(--surface-inset);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.25rem 0.4rem;
+}
+
+.credits-modal-supporter {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  color: var(--accent);
+}
+
 /* Bônus de login (sidebar → modal) — ciclo de 7 dias */
 .daily-bonus-progress-meter {
   height: 8px;

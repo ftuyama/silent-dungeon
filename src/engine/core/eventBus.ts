@@ -6,6 +6,8 @@ export type GameEvent =
   | { type: 'combat.end'; victory: boolean; fled?: boolean }
   /** Combate terminou por milagre de fé: herói salvo, sem game over. */
   | { type: 'faith.miracle' }
+  /** Combate terminou por perk Misericórdia do Apoiador (1×/run). */
+  | { type: 'supporter.mercy' }
   | { type: 'effect.applied'; op: string }
   | { type: 'xp.gained'; amount: number }
   | { type: 'level.up'; level: number }

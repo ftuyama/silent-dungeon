@@ -42,7 +42,52 @@
     "scenesGraphTitle": "Grafo por act (?view=scenes-graph). Disponível com modo desenvolvedor.",
     "kofi": "Apoiar no Ko-fi",
     "kofiTitle": "Abre a página de apoio no Ko-fi (nova aba)",
+    "supporter": "Loja do Apoiador",
+    "supporterTitle": "Resgatar códigos Ko-fi, perks e Ecos comprados",
     "version": "Silent Dungeon v{version} · {author}"
+  },
+  "supporter": {
+    "title": "Loja do Apoiador",
+    "subtitle": "Códigos do Ko-fi Shop",
+    "close": "Fechar",
+    "note": "A campanha continua grátis. Ecos comprados entram no mesmo saldo da Loja de Ecos entre runs.",
+    "echoBalance": "Saldo de Ecos:",
+    "echoPurchased": "{count} comprados",
+    "redeemHeading": "Resgatar código",
+    "codePlaceholder": "SD-…",
+    "redeemBtn": "Resgatar",
+    "shopLink": "Comprar no Ko-fi Shop",
+    "perksHeading": "Perks desbloqueados",
+    "noPerks": "Nenhum perk ainda — compra um pacote no Ko-fi e resgata o código aqui.",
+    "prefsHeading": "Preferências",
+    "themeLabel": "Tema visual",
+    "themeDefault": "Por capítulo (padrão)",
+    "theme": {
+      "ember": "Brasa Antiga",
+      "moonlit": "Lua de Prata",
+      "blood_vigil": "Vigília Escarlate"
+    },
+    "frameToggle": "Moldura do Silêncio (retrato)",
+    "redeemSuccess": "Código resgatado com sucesso.",
+    "error": {
+      "empty": "Cola um código antes de resgatar.",
+      "invalid_format": "Formato inválido. O código começa com SD-.",
+      "invalid_signature": "Código inválido ou expirado.",
+      "already_redeemed": "Este código já foi resgatado neste navegador.",
+      "empty_grants": "Código sem recompensas."
+    },
+    "perk": {
+      "theme_ember": { "name": "Tema Brasa Antiga", "description": "Paleta âmbar sobreposta ao ato." },
+      "theme_moonlit": { "name": "Tema Lua de Prata", "description": "Paleta azul-acinzentada." },
+      "theme_blood_vigil": { "name": "Tema Vigília Escarlate", "description": "Paleta vermelho escuro." },
+      "frame_supporter": { "name": "Moldura do Silêncio", "description": "Borda decorativa no retrato." },
+      "title_supporter": { "name": "Título Apoiador", "description": "Entrada na Crônica." },
+      "credits_badge": { "name": "Badge nos Créditos", "description": "Linha de apoio no modal Créditos." },
+      "save_slot_plus2": { "name": "Dois slots extra", "description": "Cinco gravações em vez de três." },
+      "save_export": { "name": "Exportar jornada", "description": "Importar/exportar JSON no menu Partida." },
+      "mercy_once": { "name": "Misericórdia do Silêncio", "description": "Evita derrota no combate 1× por run (HP 25%)." },
+      "starter_supply": { "name": "Bolsa do Peregrino", "description": "+1 suprimento no início de cada run." }
+    }
   },
   "mobileNotice": {
     "title": "Melhor em um computador",
@@ -209,7 +254,9 @@
     "diaryRegisteredMany": "{count} entradas registradas",
     "creditsTitle": "Créditos",
     "closeCredits": "Fechar créditos",
-    "kofiHint": "Se quiser apoiar o projeto, usa «Apoiar no Ko-fi» no menu Sobre, abaixo de Créditos.",
+    "kofiHint": "Se quiser apoiar o projeto, usa «Apoiar no Ko-fi» ou «Loja do Apoiador» no menu Sobre.",
+    "creditsSupporter": "Apoiador do projeto — obrigado pelo apoio.",
+    "creditsSupporterNamed": "Apoiador: {name} — obrigado pelo apoio.",
     "aboutP1": "Silent Dungeon é um motor de narrativa interativa: escolhas moldam a história, com estado persistente, combate por turnos e progressão.",
     "aboutP2Start": "A campanha atual — ",
     "aboutP2End": " — é escrita em Markdown com frontmatter; o motor é TypeScript; o build, Vite.",

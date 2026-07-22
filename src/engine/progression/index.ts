@@ -6,3 +6,5 @@ export * from './luck.ts';
 export * from './progression.ts';
 export * from './reputation.ts';
 export * from './spellsKnown.ts';
+export * from './supporterPerkIds.ts';
+export * from './supporterPerks.ts';

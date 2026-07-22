@@ -10,6 +10,45 @@ import { tickActiveBuffs } from '../progression/leadStats.ts';
 import { addXp, computeCombatXp } from '../progression/progression.ts';
 import type { EventBus } from '../core/eventBus.ts';
 
+/** Milagre de apoiador: 1×/run, HP a 25% do máximo; combate termina em narrativa em returnScene. */
+export function finishCombatSupporterMercy(
+  state: GameState,
+  c: CombatState,
+  data: GameData,
+  bus?: EventBus
+): GameState {
+  const lead = state.party[0];
+  if (!lead) {
+    return finishCombat(state, c, false, data, bus);
+  }
+  const newHp = Math.max(1, Math.ceil(lead.maxHp * 0.25));
+  const party = state.party.map((p, i) => (i === 0 ? { ...p, hp: newHp } : p));
+  bus?.emit({ type: 'supporter.mercy' });
+  let s: GameState = {
+    ...state,
+    party,
+    legacy: {
+      ...state.legacy,
+      supporter: {
+        ...state.legacy.supporter,
+        mercyUsedThisRun: true,
+      },
+    },
+    lastCombatXpGain: null,
+    lastCombatLevelUps: null,
+    lastCombatLootLines: null,
+  };
+  s = reducePartyStressAfterCombat(s);
+  s = tickActiveBuffs({
+    ...s,
+    mode: 'story',
+    combat: null,
+    dialogueCombat: null,
+    sceneId: c.returnScene,
+  });
+  return s;
+}
+
 /** Milagre: −5 fé, HP a metade do máximo, combate termina em narrativa em returnScene (sem vitória nem derrota). */
 export function finishCombatFaithRescue(
   state: GameState,

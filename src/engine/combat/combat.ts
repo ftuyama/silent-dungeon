@@ -37,6 +37,7 @@ export {
 export {
   finishCombat,
   finishCombatFaithRescue,
+  finishCombatSupporterMercy,
   finishDialogueCombat,
   reducePartyStressAfterCombat,
 } from './resolution.ts';

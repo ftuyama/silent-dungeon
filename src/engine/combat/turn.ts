@@ -40,8 +40,10 @@ import {
 import {
   finishCombat,
   finishCombatFaithRescue,
+  finishCombatSupporterMercy,
   reducePartyStressAfterCombat,
 } from './resolution.ts';
+import { canUseSupporterMercy } from '../progression/supporterPerks.ts';
 import { applyBossTwistsAfterEnemyPhase, finishCombatIfAllEnemiesDead } from './bossTwists.ts';
 import { chooseEnemyAction } from './enemyAi.ts';
 import { computePartyDefenseScore, resolveEnemyAbility } from './enemyActions.ts';
@@ -775,6 +777,14 @@ export function advanceToEnemyTurn(
     const sWithParty = { ...carryState, party };
     if (sWithParty.resources.faith >= 5) {
       return finishCombatFaithRescue(
+        sWithParty,
+        { ...cLive, enemies, log, phase: 'ended' },
+        data,
+        bus
+      );
+    }
+    if (canUseSupporterMercy(sWithParty)) {
+      return finishCombatSupporterMercy(
         sWithParty,
         { ...cLive, enemies, log, phase: 'ended' },
         data,

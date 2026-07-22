@@ -58,6 +58,7 @@ import {
   legacyUpgradeCatalogFromData,
   purchaseLegacyUpgradeState,
 } from '../progression/legacyUpgrades.ts';
+import { applySupporterPerksOnResetRun } from '../progression/supporterPerks.ts';
 
 export { displayTitleForMark };
 
@@ -814,6 +815,7 @@ function applyOne(
         ],
       };
       next = applyLegacyUpgradesToRunState(next, catalog);
+      next = applySupporterPerksOnResetRun(next);
       return next;
     }
     default:

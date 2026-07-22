@@ -24,12 +24,14 @@ import {
 import {
   CIRCULO_SKILL_REROLL_REP_COST,
   hasFactionPerkUnlocked,
+  hasSupporterPerk,
   syncCompanionPartyWithFriendship,
   tickActiveBuffs,
 } from '../engine/progression/index.ts';
 import { refreshCombatLogInitiativeLabels } from '../engine/combat/index.ts';
 import type { Choice, Effect, GameState } from '../engine/schema/index.ts';
 import { isDialogueEncounter } from '../engine/schema/index.ts';
+import { isSupporterThemeId, type SupporterThemeId } from '../engine/schema/supporter.ts';
 import { GameAudio, type AmbientTheme } from './sound/index.ts';
 import { buildDevToolsHref, buildScenesGraphHref } from './campaignUrl.ts';
 import { escHtml, preserveExplorationNodeForChoiceEffects } from './gameAppUtils.ts';
@@ -92,6 +94,15 @@ import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
 import { mountAppChrome, syncAppChrome, fullscreenEdgeBtnGlyph, syncLanguageEdgeButton, syncVolumeEdgeButton, type AppChromeRefs } from './gameAppShell.ts';
 import { openCreditsModal, openDailyHubModal, openLegacyModal as openLegacyModalUi } from './gameAppSidebar.ts';
+import { openSupporterModal } from './gameAppSupporter.ts';
+import {
+  ensureSupporterState,
+  loadSupporterMeta,
+  metaFromState,
+  saveSupporterMeta,
+  canExportSave,
+} from '../engine/supporter/supporterMeta.ts';
+import { mergeSupporterMetaIntoState } from '../engine/supporter/redeemCode.ts';
 import { dayAdvanceSubtitle, handleGameEvent } from './gameAppEvents.ts';
 import {
   buildGameAppStorageKeys,
@@ -379,7 +390,7 @@ export class GameApp {
         },
       });
     });
-    this.state = createInitialState(this.registry.data.campaign);
+    this.state = this.mergeSupporterFromStorage(createInitialState(this.registry.data.campaign));
     this.state = this.stabilize(this.state);
     this.applyLegacyBriefingIfNeeded();
     this.processDailyLoginBonus();
@@ -692,7 +703,8 @@ export class GameApp {
         );
         return;
       }
-      this.state = this.stabilize(parsed);
+      this.state = this.mergeSupporterFromStorage(parsed);
+      this.state = this.stabilize(this.state);
       this.render();
       this.closeMenu();
     };
@@ -728,6 +740,7 @@ export class GameApp {
     openCreditsModal({
       campaignName: this.registry.data.campaign.name,
       gameVersion: GAME_VERSION,
+      state: this.state,
       playUiClick: () => this.audio.playUiClick(),
     });
     this.closeMenu();
@@ -906,8 +919,11 @@ export class GameApp {
     this.audio.syncLowHp(lead.hp, lead.maxHp);
   }
 
-  /** Paleta CSS (`html[data-theme]`) — ato 4 osso / 5 neve / 6 vazio / 7 cinzas / 8 lava. */
-  private resolveVisualTheme(): 'bone' | 'snow' | 'void' | 'ash' | 'lava' | null {
+  private resolveVisualTheme(): SupporterThemeId | 'bone' | 'snow' | 'void' | 'ash' | 'lava' | null {
+    const supporterTheme = this.state.legacy.supporter?.activeTheme;
+    if (isSupporterThemeId(supporterTheme)) {
+      return supporterTheme;
+    }
     if (this.state.chapter === 8 || this.state.sceneId.startsWith('act8/')) return 'lava';
     if (this.state.chapter === 6 || this.state.sceneId.startsWith('act6/')) return 'void';
     if (this.state.chapter === 7 || this.state.sceneId.startsWith('act7/')) return 'ash';
@@ -922,6 +938,18 @@ export class GameApp {
       document.documentElement.removeAttribute('data-theme');
     } else {
       document.documentElement.setAttribute('data-theme', t);
+    }
+    this.syncSupporterFrame();
+  }
+
+  private syncSupporterFrame(): void {
+    const show =
+      this.state.legacy.supporter?.activeFrame === 'supporter' &&
+      hasSupporterPerk(this.state, 'frame_supporter');
+    if (show) {
+      document.documentElement.setAttribute('data-supporter-frame', 'true');
+    } else {
+      document.documentElement.removeAttribute('data-supporter-frame');
     }
   }
 
@@ -1153,6 +1181,15 @@ export class GameApp {
     this.diaryEntryQueue = this.diaryEntryQueue.slice(prevDiaryLen);
     this.statusHighlightQueue = this.statusHighlightQueue.slice(prevStatusLen);
     this.itemAcquireQueue = this.itemAcquireQueue.slice(prevItemAcquireLen);
+  }
+
+  private mergeSupporterFromStorage(state: GameState): GameState {
+    const meta = loadSupporterMeta(this.campaignId);
+    return mergeSupporterMetaIntoState(ensureSupporterState(state), meta);
+  }
+
+  private persistSupporterMeta(): void {
+    saveSupporterMeta(this.campaignId, metaFromState(this.state));
   }
 
   /** Não reentrar em cenas narrativas enquanto o combate está ativo (evita sobrescrever mode). */
@@ -1533,7 +1570,7 @@ export class GameApp {
 
   private loadFromSlot(slot: number): void {
     this.unlockAudio();
-    if (slot < 1 || slot > saveSlotLimit(this.devMode)) return;
+    if (slot < 1 || slot > saveSlotLimit(this.devMode, this.state)) return;
     try {
       const raw = readSaveSlotRaw(this.campaignId, slot);
       if (!raw?.trim()) {
@@ -1552,7 +1589,7 @@ export class GameApp {
         this.closeMenu();
         return;
       }
-      this.state = parsed;
+      this.state = this.mergeSupporterFromStorage(parsed);
       this.state = this.stabilize(this.state);
       this.applyDailyBonusIfNeededForRun();
       this.activateDailyTasksForSlot(slot);
@@ -2109,6 +2146,22 @@ export class GameApp {
       onExportSave: () => this.exportSaveToClipboard(),
       onImportSave: () => this.importSaveFromClipboard(),
       onCredits: () => this.showCredits(),
+      onSupporter: () => {
+        this.unlockAudio();
+        openSupporterModal({
+          campaignId: this.campaignId,
+          state: this.state,
+          playUiClick: () => this.audio.playUiClick(),
+          onStateChange: (s, meta) => {
+            this.state = s;
+            saveSupporterMeta(this.campaignId, meta);
+            this.syncVisualTheme();
+            this.persistSupporterMeta();
+            this.render();
+          },
+        });
+        this.closeMenu();
+      },
       onLegacy: () => {
         this.unlockAudio();
         this.openLegacyModal(this.isSettlementScene());
@@ -2120,7 +2173,7 @@ export class GameApp {
       onScenesGraph: () => {
         window.location.href = buildScenesGraphHref(this.campaignId);
       },
-      showImportInPartida: this.devMode,
+      showImportInPartida: this.devMode || canExportSave(this.state, this.devMode),
       showGraphInSettings: this.devMode,
       showDevModeToggle: this.isLocalhostHost(),
       onSaveSlot: (slot: number) => this.saveToSlot(slot),

@@ -42,7 +42,52 @@
     "scenesGraphTitle": "Graph by act (?view=scenes-graph). Available with developer mode.",
     "kofi": "Support on Ko-fi",
     "kofiTitle": "Opens the Ko-fi support page (new tab)",
+    "supporter": "Supporter Shop",
+    "supporterTitle": "Redeem Ko-fi codes, perks, and purchased Echoes",
     "version": "Silent Dungeon v{version} · {author}"
+  },
+  "supporter": {
+    "title": "Supporter Shop",
+    "subtitle": "Ko-fi Shop codes",
+    "close": "Close",
+    "note": "The campaign stays free. Purchased Echoes use the same balance as the Echo Shop between runs.",
+    "echoBalance": "Echo balance:",
+    "echoPurchased": "{count} purchased",
+    "redeemHeading": "Redeem code",
+    "codePlaceholder": "SD-…",
+    "redeemBtn": "Redeem",
+    "shopLink": "Buy on Ko-fi Shop",
+    "perksHeading": "Unlocked perks",
+    "noPerks": "No perks yet — buy a pack on Ko-fi and redeem the code here.",
+    "prefsHeading": "Preferences",
+    "themeLabel": "Visual theme",
+    "themeDefault": "By chapter (default)",
+    "theme": {
+      "ember": "Ancient Ember",
+      "moonlit": "Moonlit Silver",
+      "blood_vigil": "Scarlet Vigil"
+    },
+    "frameToggle": "Silence Frame (portrait)",
+    "redeemSuccess": "Code redeemed successfully.",
+    "error": {
+      "empty": "Paste a code before redeeming.",
+      "invalid_format": "Invalid format. Codes start with SD-.",
+      "invalid_signature": "Invalid or expired code.",
+      "already_redeemed": "This code was already redeemed in this browser.",
+      "empty_grants": "Code has no rewards."
+    },
+    "perk": {
+      "theme_ember": { "name": "Ancient Ember theme", "description": "Amber palette overlay." },
+      "theme_moonlit": { "name": "Moonlit Silver theme", "description": "Blue-gray palette." },
+      "theme_blood_vigil": { "name": "Scarlet Vigil theme", "description": "Dark red palette." },
+      "frame_supporter": { "name": "Silence Frame", "description": "Decorative portrait border." },
+      "title_supporter": { "name": "Supporter title", "description": "Chronicle entry." },
+      "credits_badge": { "name": "Credits badge", "description": "Support line in Credits modal." },
+      "save_slot_plus2": { "name": "Two extra slots", "description": "Five saves instead of three." },
+      "save_export": { "name": "Export journey", "description": "Import/export JSON in Game menu." },
+      "mercy_once": { "name": "Silence Mercy", "description": "Avoid combat defeat once per run (25% HP)." },
+      "starter_supply": { "name": "Pilgrim's Pouch", "description": "+1 supply at the start of each run." }
+    }
   },
   "mobileNotice": {
     "title": "Best on desktop",
@@ -209,7 +254,9 @@
     "diaryRegisteredMany": "{count} entries recorded",
     "creditsTitle": "Credits",
     "closeCredits": "Close credits",
-    "kofiHint": "To support the project, use \"Support on Ko-fi\" in the About menu, below Credits.",
+    "kofiHint": "To support the project, use \"Support on Ko-fi\" or \"Supporter Shop\" in the About menu.",
+    "creditsSupporter": "Project supporter — thank you for your support.",
+    "creditsSupporterNamed": "Supporter: {name} — thank you for your support.",
     "aboutP1": "Silent Dungeon is an interactive narrative engine: choices shape the story, with persistent state, turn-based combat, and progression.",
     "aboutP2Start": "The current campaign — ",
     "aboutP2End": " — is written in Markdown with frontmatter; the engine is TypeScript; the build is Vite.",

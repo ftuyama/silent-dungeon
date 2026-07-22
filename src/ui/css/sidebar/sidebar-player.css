@@ -402,6 +402,51 @@
   font-size: 0.82rem;
 }
 
+.sidebar-static.sidebar-static--supporter-frame {
+  position: relative;
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 28%, transparent),
+    0 0 16px color-mix(in srgb, var(--accent) 22%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.sidebar-static.sidebar-static--supporter-frame::before,
+.sidebar-static.sidebar-static--supporter-frame::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 70%, var(--border));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sidebar-static.sidebar-static--supporter-frame::before {
+  top: 3px;
+  left: 3px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.sidebar-static.sidebar-static--supporter-frame::after {
+  bottom: 3px;
+  right: 3px;
+  border-left: none;
+  border-top: none;
+}
+
+.sidebar-static.sidebar-static--supporter-frame .sidebar-static-title {
+  border-bottom-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface-inset));
+  color: color-mix(in srgb, var(--accent) 75%, var(--text-section));
+}
+
+.sidebar-static.sidebar-static--supporter-frame .sidebar-static-body {
+  padding: 0.5rem 0.6rem 0.7rem;
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
 .hp-bar-track {
   height: 6px;
   margin: 0.35rem 0 0.5rem;

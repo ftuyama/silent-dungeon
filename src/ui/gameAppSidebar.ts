@@ -14,6 +14,7 @@ import {
   getCompanionFriendshipScore,
   getEffectiveLuck,
   hasFactionPerkUnlocked,
+  hasSupporterPerk,
   MAX_LEVEL,
   REPUTATION_MAX,
   REPUTATION_MIN,
@@ -472,6 +473,7 @@ export const CREATOR_NAME = 'Felipe Tuyama';
 export type OpenCreditsModalOpts = {
   campaignName: string;
   gameVersion: string;
+  state?: GameState;
   playUiClick?: () => void;
 };
 
@@ -479,6 +481,7 @@ export type OpenCreditsModalOpts = {
 export function openCreditsModal({
   campaignName,
   gameVersion,
+  state,
   playUiClick,
 }: OpenCreditsModalOpts): void {
   closeOverlayModal();
@@ -543,6 +546,19 @@ export function openCreditsModal({
   pThanks.textContent = t('sidebar.thanksBody');
   secThanks.appendChild(hThanks);
   secThanks.appendChild(pThanks);
+
+  if (
+    state &&
+    state.legacy.supporter.unlockedPerks.includes('credits_badge')
+  ) {
+    const pSupporter = document.createElement('p');
+    pSupporter.className = 'diary-modal-section-body credits-modal-supporter';
+    const name = state.legacy.supporter.supporterName?.trim();
+    pSupporter.textContent = name
+      ? t('sidebar.creditsSupporterNamed', { name })
+      : t('sidebar.creditsSupporter');
+    secThanks.appendChild(pSupporter);
+  }
 
   scroll.appendChild(kofiHint);
   scroll.appendChild(secAbout);
@@ -1807,6 +1823,11 @@ export function buildGameSidebar({
     ? `${escHtml(t('sidebar.hp'))} <strong>${p.hp}/${p.maxHp}</strong> · ${escHtml(t('sidebar.stress'))} <strong>${p.stress}/4</strong> · ${escHtml(t('sidebar.gold'))} <strong>${gold}</strong>`
     : escHtml(t('sidebar.pickClassInStory'));
 
+  const characterFrameClass =
+    state.legacy.supporter?.activeFrame === 'supporter' && hasSupporterPerk(state, 'frame_supporter')
+      ? ' sidebar-static--supporter-frame'
+      : '';
+
   hud.innerHTML = `
       <h2 class="sidebar-title">${escHtml(t('sidebar.title'))}</h2>
       ${mainMissionBlock}
@@ -1816,7 +1837,7 @@ export function buildGameSidebar({
           <span class="sidebar-mobile-summary__stats">${mobileSummaryStats}</span>
         </summary>
         <div class="sidebar-mobile-body">
-      <div class="sidebar-static">
+      <div class="sidebar-static${characterFrameClass}">
         <div class="sidebar-static-title sidebar-static-title--with-icon">${iconWrap(icons.person)}<span>${escHtml(t('sidebar.character'))}</span></div>
         <div class="sidebar-static-body sidebar-stats">
           ${personagemBlock}
