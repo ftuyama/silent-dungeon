@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   isMerchantSellSection,
   MERCHANT_SELL_CHOICE_PREFIX,
+  shouldStayOnMerchantSceneAfterChoice,
 } from '../../src/ui/story/merchantSell.ts';
 import type { StoryChoiceRow } from '../../src/engine/core/index.ts';
 
@@ -40,5 +41,35 @@ describe('isMerchantSellSection', () => {
         ],
       })
     ).toBe(false);
+  });
+});
+
+describe('shouldStayOnMerchantSceneAfterChoice', () => {
+  it('true para compra/venda com uiSectionIcon shop em cena merchant', () => {
+    expect(
+      shouldStayOnMerchantSceneAfterChoice('merchant', {
+        uiSectionIcon: 'shop',
+        id: 'buy_potion',
+      })
+    ).toBe(true);
+    expect(
+      shouldStayOnMerchantSceneAfterChoice('merchant', {
+        uiSectionIcon: 'shop',
+        id: `${MERCHANT_SELL_CHOICE_PREFIX}dagger`,
+      })
+    ).toBe(true);
+  });
+
+  it('false fora de merchant ou secções que saem da banca', () => {
+    expect(shouldStayOnMerchantSceneAfterChoice('merchant', { uiSectionIcon: 'talk' })).toBe(
+      false
+    );
+    expect(shouldStayOnMerchantSceneAfterChoice('merchant', { uiSectionIcon: 'leave' })).toBe(
+      false
+    );
+    expect(shouldStayOnMerchantSceneAfterChoice('camp', { uiSectionIcon: 'shop' })).toBe(false);
+    expect(shouldStayOnMerchantSceneAfterChoice(undefined, { uiSectionIcon: 'shop' })).toBe(
+      false
+    );
   });
 });

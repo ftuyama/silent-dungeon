@@ -1738,16 +1738,18 @@ export function buildGameSidebar({
   const missionView = registry.ui.getMainMissionView?.(state);
   const mainMissionText =
     missionView?.title.trim() || registry.ui.getMainMission?.(state)?.trim() || '';
-  const hasPendingSubs = !!missionView?.steps.some((s) => s.status === 'pending');
+  const visibleSubMissions =
+    missionView?.steps.filter((s) => s.status !== 'done') ?? [];
+  const hasVisibleSubMissions = visibleSubMissions.length > 0;
   const missionHeader = `<div class="sidebar-mission-card__label">${iconWrap(icons.scroll)}<span>${escHtml(t('sidebar.mainMission'))}</span></div>
           <p class="sidebar-mission-card__text">${escHtml(mainMissionText)}</p>`;
   const missionSubsOpenAttr = missionSubsOpen ? ' open' : '';
   const missionStepsHtml =
-    missionView && hasPendingSubs
+    missionView && hasVisibleSubMissions
       ? `<details class="sidebar-mission-subs"${missionSubsOpenAttr} data-section="missao">
           <summary class="sidebar-mission-subs__label">${escHtml(t('sidebar.subMissions'))}</summary>
           <ul class="sidebar-mission-checklist">
-          ${missionView.steps
+          ${visibleSubMissions
             .map((step) => {
               const mark =
                 step.status === 'done' ? '✓' : step.status === 'failed' ? '✕' : '☐';

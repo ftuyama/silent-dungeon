@@ -53,6 +53,7 @@ choices:
     condition: { all: [ { companionInParty: squire_tomas }, { class: archer } ] }
   - text: "Voltar ao acampamento gelado"
     uiSection: "Voltar"
+    uiSectionIcon: camp
     next: act5/camp/frost_camp
 onEnter: []
 ---

@@ -38,6 +38,7 @@ choices:
   - text: "Ouvir o que Mira diz do cheiro e do silêncio"
     preview: "Uma voz que já assinou com o subsolo."
     next: act3/mira_descent_whisper
+    visibleWhen: { noFlag: ff_act3_mira_depths_whisper }
     condition: { companionInParty: rogue_mira }
 onEnter: []
 ---

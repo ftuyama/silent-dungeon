@@ -47,6 +47,7 @@ choices:
       - { op: addDiary, text: "Ao pé do fogo, o eco do seu arquétipo encaixa na muralha de reputação — o grupo ouve você com outro peso." }
   - text: "Voltar ao acampamento"
     uiSection: "Voltar"
+    uiSectionIcon: camp
     next: act2/camp/vigilia_camp
 onEnter: []
 ---

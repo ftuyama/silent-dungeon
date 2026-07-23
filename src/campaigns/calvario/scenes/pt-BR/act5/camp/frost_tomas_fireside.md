@@ -7,8 +7,10 @@ artKey: frost_camp
 choices:
   - text: "Perguntar se a corda ainda dói na palma"
     next: act5/camp/frost_tomas_topic_rope
+    visibleWhen: { noFlag: ff_cf_act5_frost_tomas_topic_rope }
   - text: "Falar do templo como de um campo de batalha"
     next: act5/camp/frost_tomas_topic_temple
+    visibleWhen: { noFlag: ff_cf_act5_frost_tomas_topic_temple }
   - text: "Voltar à roda da fogueira"
     next: act5/camp/frost_companion_chat
     effects:

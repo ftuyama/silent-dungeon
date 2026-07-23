@@ -31,6 +31,7 @@ import { setupTimedChoices } from './story/storyTimedChoices.ts';
 import { applyChoiceButtonLabel } from './story/choicePresentation.ts';
 import {
   groupStoryChoiceRowsByUiSection,
+  MERCHANT_LOCKED_CHOICES_COLLAPSE_THRESHOLD,
   normalizeChoiceUiSection,
   partitionChoiceRowsForDisplay,
   shouldUseChoiceSectionLayout,
@@ -44,6 +45,7 @@ import {
   mountSectionTitleOverlay,
   type SectionTitleOverlayPayload,
 } from './story/sectionTitleOverlay.ts';
+import { appendSessionPrimer, type SessionPrimerPayload } from './story/sessionPrimer.ts';
 
 export { isCampEquipmentScene } from './story/storyCampEquipmentPanel.ts';
 export {
@@ -205,8 +207,8 @@ export type StoryRenderContext = {
   dailyCombat: { chapter: number } | null;
   /** Bloco de primeiros passos mostrado apenas na primeira sessão. */
   onboardingPrimer: { onDismiss: () => void } | null;
-  /** Aviso único do loop do hub (acampamento + patrulha) no primeiro cruzeiro. */
-  hubLoopPrimer: { onDismiss: () => void } | null;
+  /** Aviso contextual único (hub, acampamento ou exploração). */
+  contextPrimer: SessionPrimerPayload | null;
   overlay: StoryOverlayState;
   audio: {
     unlockAudio: () => void;
@@ -515,60 +517,31 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
   }
 
   if (ctx.onboardingPrimer) {
-    const primer = document.createElement('section');
-    primer.className = 'session-primer';
-    const title = document.createElement('div');
-    title.className = 'session-primer-title';
-    title.textContent = t('story.firstSteps');
-    primer.appendChild(title);
-    const list = document.createElement('ul');
-    list.className = 'session-primer-list';
-    const tips = [
-      t('story.onboardingTipChoices'),
-      t('story.onboardingTipSpace'),
-      t('story.onboardingTipMenu'),
-    ];
-    for (const tip of tips) {
-      const li = document.createElement('li');
-      li.textContent = tip;
-      list.appendChild(li);
-    }
-    primer.appendChild(list);
-    const dismiss = document.createElement('button');
-    dismiss.type = 'button';
-    dismiss.className = 'session-primer-dismiss';
-    dismiss.textContent = t('story.gotIt');
-    dismiss.addEventListener('click', () => {
-      ctx.onboardingPrimer?.onDismiss();
-      ctx.audio.playUiClick();
-      ctx.render();
-    });
-    primer.appendChild(dismiss);
-    inner.appendChild(primer);
+    appendSessionPrimer(
+      inner,
+      {
+        title: t('story.firstSteps'),
+        tips: [
+          t('story.onboardingTipChoices'),
+          t('story.onboardingTipSpace'),
+          t('story.onboardingTipMenu'),
+        ],
+        onDismiss: ctx.onboardingPrimer.onDismiss,
+      },
+      () => {
+        ctx.onboardingPrimer?.onDismiss();
+        ctx.audio.playUiClick();
+        ctx.render();
+      }
+    );
   }
 
-  if (ctx.hubLoopPrimer) {
-    const primer = document.createElement('section');
-    primer.className = 'session-primer session-primer--hub-loop';
-    const title = document.createElement('div');
-    title.className = 'session-primer-title';
-    title.textContent = t('story.hubLoopTitle');
-    primer.appendChild(title);
-    const body = document.createElement('p');
-    body.className = 'session-primer-body';
-    body.textContent = t('story.hubLoopBody');
-    primer.appendChild(body);
-    const dismiss = document.createElement('button');
-    dismiss.type = 'button';
-    dismiss.className = 'session-primer-dismiss';
-    dismiss.textContent = t('story.gotIt');
-    dismiss.addEventListener('click', () => {
-      ctx.hubLoopPrimer?.onDismiss();
+  if (ctx.contextPrimer) {
+    appendSessionPrimer(inner, ctx.contextPrimer, () => {
+      ctx.contextPrimer?.onDismiss();
       ctx.audio.playUiClick();
       ctx.render();
     });
-    primer.appendChild(dismiss);
-    inner.appendChild(primer);
   }
 
   if (ctx.sessionObjective) {
@@ -829,6 +802,10 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
 
   const choiceSections = groupStoryChoiceRowsByUiSection(choiceRows);
   const useChoiceSections = shouldUseChoiceSectionLayout(choiceSections);
+  const isMerchantScene = ctx.scene.frontmatter.ambientTheme === 'merchant';
+  const lockedChoicePartitionOptions = isMerchantScene
+    ? { collapseThreshold: MERCHANT_LOCKED_CHOICES_COLLAPSE_THRESHOLD }
+    : undefined;
 
   let choiceRowIndex = 0;
   const appendStoryChoiceButton = (parent: HTMLElement, row: StoryChoiceRow): void => {
@@ -881,7 +858,10 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
   };
 
   const appendPartitionedRows = (parent: HTMLElement, rows: StoryChoiceRow[]): void => {
-    const { enabled, locked, collapseLocked } = partitionChoiceRowsForDisplay(rows);
+    const { enabled, locked, collapseLocked } = partitionChoiceRowsForDisplay(
+      rows,
+      lockedChoicePartitionOptions
+    );
     for (const row of enabled) {
       appendStoryChoiceButton(parent, row);
     }
@@ -918,7 +898,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     if (asSummary) titleEl.classList.add('choices-section__title--summary');
     if (icon !== undefined) {
       titleEl.classList.add('choices-section__title--with-icon');
-      titleEl.innerHTML = `${iconWrap(UI_SECTION_ICON_SVG[icon], 'ui-icon-wrap ui-icon-wrap--sm')}<span class="choices-section__title-text"></span>`;
+      titleEl.innerHTML = `${iconWrap(UI_SECTION_ICON_SVG[icon], 'ui-icon-wrap ui-icon-wrap--section')}<span class="choices-section__title-text"></span>`;
       const textEl = titleEl.querySelector('.choices-section__title-text');
       if (textEl) textEl.textContent = label;
     } else {
@@ -933,7 +913,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
       const collapsibleSell = isMerchantSellSection(sec) && sec.label !== undefined;
       const secEl = document.createElement(collapsibleSell ? 'details' : 'div');
       secEl.className = collapsibleSell
-        ? 'choices-section choices-section--collapsible'
+        ? 'choices-section choices-section--collapsible choices-section--collapsible-leading'
         : 'choices-section';
       if (sec.label !== undefined) {
         appendChoiceSectionTitle(secEl, sec.label, sec.icon, collapsibleSell);

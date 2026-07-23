@@ -6,7 +6,9 @@ ambientTheme: void
 artKey: act6_epilogue_crossing
 highlight: true
 choices:
-  - text: "[↑] Levantar os olhos — o céu já não pede desculpa"
+  - text: "Levantar os olhos — o céu já não pede desculpa"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act7/opening_terminal_glow
     effects:
       - { op: setChapter, chapter: 7 }

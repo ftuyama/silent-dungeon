@@ -33,6 +33,7 @@ choices:
         encounterId: boss_ice_dragon_2
         onVictory: act5/frost_epilogue
         onDefeat: shared/game_over
+        onFlee: act5/frost_lair_approach
 onEnter: []
 ---
 O dragão **rasga** o próprio rugido e deixa entrar um silêncio pior que o barulho. No peito dele algo pulsa — não sangue, uma **nota** presa, como sino engasgado.

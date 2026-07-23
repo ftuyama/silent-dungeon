@@ -199,14 +199,14 @@
         "preview": "Verbal confrontation with Kael (draft); failure leads to steel."
       },
       {
-        "text": "[↑] Climb to the surface — see how the village and the Heights fared",
+        "text": "Climb to the surface — see how the village and the Heights fared",
         "preview": "Chapter 5. Surface and cold; check whether anything changed.",
-        "uiSection": "Axis"
+        "uiSection": "Ascend"
       },
       {
-        "text": "[↓] Descend deeper — magma throat at the floor of the axis",
+        "text": "Descend deeper — magma throat at the floor of the axis",
         "preview": "Chapter 8. Hostile heat; go to the root.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       }
     ]
   },

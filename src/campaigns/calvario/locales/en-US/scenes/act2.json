@@ -605,14 +605,9 @@
     "body": "Four corridors open on the **crossroads**. Spent candles drip **wax** on the floor; *today is **day {{day}}** below.*\n\nA bell echo rises from below and dies before the surface. In the air, wet stone and cold metal — the name **Morvayn** sticks to the tongue.",
     "choices": [
       {
-        "text": "Return to the rat corridor",
-        "preview": "Still squeaking and smelling of nest.",
-        "uiSection": "Corridor and trade"
-      },
-      {
         "text": "Go to the ghost merchant",
         "preview": "Strange trade; price in gold or secret — rarely appears on the first day.",
-        "uiSection": "Corridor and trade"
+        "uiSection": "Merchant"
       },
       {
         "text": "Beacon — Vigil voice at the crossroads",
@@ -658,7 +653,7 @@
       {
         "text": "Vigil Camp",
         "preview": "Fire, prayer, and a breath of supply.",
-        "uiSection": "Fire and patrol"
+        "uiSection": "Camp"
       },
       {
         "text": "Perimeter patrol (explore map)",
@@ -700,15 +695,15 @@
         ]
       },
       {
-        "text": "[↑] Climb to the last corridor — dungeon mouth",
+        "text": "Climb to the last corridor — dungeon mouth",
         "preview": "Brazier, bell, and doorframe; the air outside still listens.",
-        "uiSection": "Return and advance"
+        "uiSection": "Ascend"
       },
       {
         "text": "Descend deeper",
         "preview": "Chapter 3 — the dungeon tightens.",
         "lockedHint": "Requires level 6+ and reaching the crossroads map goal (patrol).",
-        "uiSection": "Return and advance"
+        "uiSection": "Descend"
       }
     ]
   },

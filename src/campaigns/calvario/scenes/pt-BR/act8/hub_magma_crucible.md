@@ -72,7 +72,8 @@ choices:
     lockedHint: "Três missões, meta do mapa e nível 35 — o crisol não abre cedo."
     preview: "Boss final das profundezas. Finale verdadeiro."
   - text: "Acender o acampamento na borda do crisol"
-    uiSection: "Refúgio e troca"
+    uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act8/camp/magma_camp
     preview: "Descanso curto; o calor não dorme de verdade."
   - text: "Negociar com o mercador de brasas"
@@ -83,7 +84,8 @@ choices:
     lockedHint: "Você ainda não encontrou a banca nas veias de lava — patrulhe o mapa."
     preview: "Preços em ouro e em pele queimada."
   - text: "Subir rumo à superfície — Cimeiras do Vento Cinzento"
-    uiSection: "Eixo"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act5/frost_hub
     condition:
       all:
@@ -93,7 +95,8 @@ choices:
       - { op: setChapter, chapter: 5 }
     preview: "Voltar ao gelo — o eixo ainda liga os dois lados."
   - text: "Subir rumo à superfície — primeira neve após o trono"
-    uiSection: "Eixo"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act5/frost_opening
     condition:
       all:
@@ -103,7 +106,7 @@ choices:
       - { op: setChapter, chapter: 5 }
     preview: "Abrir o caminho das cimeiras se você ainda não acampou no gelo."
   - text: "Seguir para as cinzas do céu (act7)"
-    uiSection: "Eixo"
+    uiSection: "Cinzas"
     next: act7/wasteland_antechamber
     condition:
       all:

@@ -36,6 +36,7 @@ import { GameAudio, type AmbientTheme } from './sound/index.ts';
 import { buildDevToolsHref, buildScenesGraphHref } from './campaignUrl.ts';
 import { escHtml, preserveExplorationNodeForChoiceEffects } from './gameAppUtils.ts';
 import {
+  findFirstEmptySaveSlot,
   saveSlotLimit,
   saveStateToSlot,
   readRawSlot as readSaveSlotRaw,
@@ -89,6 +90,12 @@ import {
   type StoryStatusHighlightRow,
 } from './gameAppStory.ts';
 import { mountSectionTitleOverlay } from './story/sectionTitleOverlay.ts';
+import { shouldStayOnMerchantSceneAfterChoice } from './story/merchantSell.ts';
+import {
+  buildContextPrimerPayload,
+  resolveContextPrimerId,
+  type ContextPrimerId,
+} from './story/sessionPrimer.ts';
 import { formatCampaignHeaderTitle } from './campaignHeaderTitle.ts';
 import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
@@ -110,16 +117,22 @@ import {
   loadFontStep,
   loadOnboardingPrimerVisible,
   loadHubLoopPrimerVisible,
+  loadCampPrimerVisible,
+  loadExplorationPrimerVisible,
   loadSceneArtHighlightEnabled,
   loadSectionTitleEnabled,
+  loadCampAutoSaveEnabled,
   loadSidebarSections,
   loadTimedChoiceMode,
   saveDevMode,
   saveFontStep,
   saveOnboardingPrimerVisible,
   saveHubLoopPrimerVisible,
+  saveCampPrimerVisible,
+  saveExplorationPrimerVisible,
   saveSceneArtHighlightEnabled,
   saveSectionTitleEnabled,
+  saveCampAutoSaveEnabled,
   saveSidebarSections,
   saveTimedChoiceMode,
   type GameAppStorageKeys,
@@ -163,10 +176,16 @@ export class GameApp {
   private sceneArtHighlightEnabled = true;
   /** Overlay de título de seção (ato / hub / exploração). */
   private sectionTitleEnabled = true;
+  /** Auto-save ao descansar no acampamento. */
+  private campAutoSaveEnabled = true;
   /** Dica de primeiros passos (mostrada uma vez por campanha). */
   private onboardingPrimerVisible = false;
   /** Aviso do loop do hub (acampamento + patrulha) — uma vez por browser. */
   private hubLoopPrimerVisible = false;
+  /** Aviso do acampamento (descanso, consumíveis) — uma vez por browser. */
+  private campPrimerVisible = false;
+  /** Aviso da patrulha / mapa — uma vez por browser. */
+  private explorationPrimerVisible = false;
   /** Meta da sessão aparece apenas até a primeira mudança de cena. */
   private sessionObjectiveVisible = true;
   private readonly choiceHotkeyHandler: (e: KeyboardEvent) => void;
@@ -255,9 +274,12 @@ export class GameApp {
     this.timedChoiceMode = loadTimedChoiceMode(this.storageKeys.timedChoiceKey);
     this.sceneArtHighlightEnabled = loadSceneArtHighlightEnabled(this.storageKeys.sceneArtHighlightKey);
     this.sectionTitleEnabled = loadSectionTitleEnabled(this.storageKeys.sectionTitleKey);
+    this.campAutoSaveEnabled = loadCampAutoSaveEnabled(this.storageKeys.campAutoSaveKey);
     this.devMode = loadDevMode(this.storageKeys.devModeKey);
     this.onboardingPrimerVisible = loadOnboardingPrimerVisible(this.storageKeys.onboardingPrimerKey);
     this.hubLoopPrimerVisible = loadHubLoopPrimerVisible(this.storageKeys.hubLoopPrimerKey);
+    this.campPrimerVisible = loadCampPrimerVisible(this.storageKeys.campPrimerKey);
+    this.explorationPrimerVisible = loadExplorationPrimerVisible(this.storageKeys.explorationPrimerKey);
     this.choiceHotkeyHandler = (e: KeyboardEvent): void => {
       const el = e.target;
       if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement) {
@@ -1321,6 +1343,7 @@ export class GameApp {
     const engineEffects = choice.effects.filter((e) => e.op !== 'openEchoShop');
     const prevScene = this.state.sceneId;
     const prevChapter = this.state.chapter;
+    const prevSupply = this.state.resources.supply;
     const prevSnapshot = snapshotForSectionTitle(this.state);
     const prevDiaryQueueLen = this.diaryEntryQueue.length;
     const prevStatusQueueLen = this.statusHighlightQueue.length;
@@ -1329,7 +1352,14 @@ export class GameApp {
     let s = applyEffects(this.state, effects, this.ctx());
     s = { ...s, timedChoiceDeadline: null };
     if (choice.next && s.mode === 'story') {
-      s = { ...s, sceneId: choice.next };
+      const currentScene = this.registry.getScene(prevScene);
+      const stayOnMerchant = shouldStayOnMerchantSceneAfterChoice(
+        currentScene?.frontmatter.ambientTheme,
+        choice
+      );
+      if (!stayOnMerchant) {
+        s = { ...s, sceneId: choice.next };
+      }
     }
     if (s.sceneId !== prevScene) {
       s = tickActiveBuffs(s);
@@ -1350,6 +1380,10 @@ export class GameApp {
     );
     this.queueSectionTitleFromTransition(prevSnapshot);
     this.pendingStoryMainScrollTop = true;
+    const campRestRequested = engineEffects.some((e) => e.op === 'campRest');
+    if (campRestRequested && prevSupply >= 1) {
+      this.autoSaveAfterCampRest();
+    }
     this.render();
     if (wantsEchoShop) {
       this.openLegacyModal(this.isSettlementScene());
@@ -1566,6 +1600,43 @@ export class GameApp {
     this.applyDailyBonusIfNeededForRun();
     this.closeMenu();
     this.render();
+  }
+
+  /** Após descanso de acampamento: atualiza o slot ativo ou escolhe o primeiro vazio. */
+  private autoSaveAfterCampRest(): void {
+    if (!this.campAutoSaveEnabled) return;
+    const limit = saveSlotLimit(this.devMode, this.state);
+    if (this.activeSlot == null) {
+      const slot = findFirstEmptySaveSlot(this.campaignId, limit);
+      if (slot == null) {
+        this.enqueueStatusHighlight({
+          type: 'statusHighlight',
+          variant: 'bad',
+          title: t('toast.autoSaveFailedTitle'),
+          subtitle: t('toast.autoSaveFailedSlotsFullSubtitle'),
+        });
+        return;
+      }
+      this.activateDailyTasksForSlot(slot);
+    }
+    this.applyDailyBonusIfNeededForRun();
+    const slot = this.activeSlot!;
+    const ok = saveStateToSlot(this.campaignId, slot, this.state, this.devMode);
+    if (ok) {
+      this.enqueueStatusHighlight({
+        type: 'statusHighlight',
+        variant: 'good',
+        title: t('toast.autoSaveSuccessTitle'),
+        subtitle: t('toast.autoSaveSuccessSubtitle', { slot: String(slot) }),
+      });
+    } else {
+      this.enqueueStatusHighlight({
+        type: 'statusHighlight',
+        variant: 'bad',
+        title: t('toast.autoSaveFailedTitle'),
+        subtitle: t('toast.autoSaveFailedWriteSubtitle'),
+      });
+    }
   }
 
   private loadFromSlot(slot: number): void {
@@ -1966,6 +2037,32 @@ export class GameApp {
     };
   }
 
+  private buildContextPrimer(scene: LoadedScene): StoryRenderContext['contextPrimer'] {
+    const dismissed: Record<ContextPrimerId, boolean> = {
+      hub_loop: !this.hubLoopPrimerVisible,
+      camp: !this.campPrimerVisible,
+      exploration: !this.explorationPrimerVisible,
+    };
+    const id = resolveContextPrimerId(scene, dismissed);
+    if (id == null) return null;
+    return buildContextPrimerPayload(id, () => {
+      switch (id) {
+        case 'hub_loop':
+          this.hubLoopPrimerVisible = false;
+          saveHubLoopPrimerVisible(this.storageKeys.hubLoopPrimerKey, this.hubLoopPrimerVisible);
+          break;
+        case 'camp':
+          this.campPrimerVisible = false;
+          saveCampPrimerVisible(this.storageKeys.campPrimerKey, this.campPrimerVisible);
+          break;
+        case 'exploration':
+          this.explorationPrimerVisible = false;
+          saveExplorationPrimerVisible(this.storageKeys.explorationPrimerKey, this.explorationPrimerVisible);
+          break;
+      }
+    });
+  }
+
   private buildStoryRenderContext(scene: LoadedScene): StoryRenderContext {
     const sceneArtHighlight = this.buildSceneArtHighlightPayload(scene);
     const sectionTitle = this.buildSectionTitlePayload(sceneArtHighlight != null);
@@ -1989,15 +2086,7 @@ export class GameApp {
               },
             }
           : null,
-      hubLoopPrimer:
-        this.hubLoopPrimerVisible && this.state.sceneId === 'act2/hub_catacomb'
-          ? {
-              onDismiss: () => {
-                this.hubLoopPrimerVisible = false;
-                saveHubLoopPrimerVisible(this.storageKeys.hubLoopPrimerKey, this.hubLoopPrimerVisible);
-              },
-            }
-          : null,
+      contextPrimer: this.buildContextPrimer(scene),
       overlay: {
         pendingStoryDiceRoll: this.pendingStoryDiceRoll,
         storyDiceHost: this.storyDiceHostBinding(),
@@ -2104,6 +2193,7 @@ export class GameApp {
       timedChoiceEnabled: this.timedChoiceMode,
       sceneArtHighlightEnabled: this.sceneArtHighlightEnabled,
       sectionTitleEnabled: this.sectionTitleEnabled,
+      campAutoSaveEnabled: this.campAutoSaveEnabled,
       state: this.state,
       registry: this.registry,
       sidebarSections: this.sidebarSections,
@@ -2138,6 +2228,12 @@ export class GameApp {
       onSectionTitleChange: (v: boolean) => {
         this.sectionTitleEnabled = v;
         saveSectionTitleEnabled(this.storageKeys.sectionTitleKey, this.sectionTitleEnabled);
+        this.closeMenu();
+        this.render();
+      },
+      onCampAutoSaveChange: (v: boolean) => {
+        this.campAutoSaveEnabled = v;
+        saveCampAutoSaveEnabled(this.storageKeys.campAutoSaveKey, this.campAutoSaveEnabled);
         this.closeMenu();
         this.render();
       },

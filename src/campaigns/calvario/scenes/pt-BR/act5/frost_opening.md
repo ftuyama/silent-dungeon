@@ -13,6 +13,8 @@ storyPathGate:
     sealed: act5/frost_opening_sealed
 choices:
   - text: "Descer do vão — ver como ficou Cimeria"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act5/frost_cimeria_snow
 onEnter:
   - { op: setChapter, chapter: 5 }

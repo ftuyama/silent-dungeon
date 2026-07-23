@@ -9,6 +9,7 @@
     "compactControls": "Compact controls",
     "sectionGame": "Game",
     "sectionSettings": "Settings",
+    "sectionUi": "UI",
     "sectionDev": "Development",
     "sectionAbout": "About",
     "volume": "Volume",
@@ -20,6 +21,7 @@
     "sceneArtHighlight": "Highlight art on first visit",
     "sectionTitle": "Section titles when changing areas",
     "timedChoice": "Timed choices",
+    "campAutoSave": "Auto-save when resting at camp",
     "devMode": "Developer mode",
     "exportSave": "Export save (JSON)",
     "importSave": "Import save (clipboard)",
@@ -43,23 +45,35 @@
     "kofi": "Support on Ko-fi",
     "kofiTitle": "Opens the Ko-fi support page (new tab)",
     "supporter": "Supporter Shop",
-    "supporterTitle": "Redeem Ko-fi codes, perks, and purchased Echoes",
+    "supporterTitle": "Redeem your Ko-fi purchase code, perks, and Echoes",
     "version": "Silent Dungeon v{version} · {author}"
   },
   "supporter": {
     "title": "Supporter Shop",
-    "subtitle": "Ko-fi Shop codes",
+    "subtitle": "Ko-fi Shop — code in your purchase PDF",
     "close": "Close",
-    "note": "The campaign stays free. Purchased Echoes use the same balance as the Echo Shop between runs.",
     "echoBalance": "Echo balance:",
     "echoPurchased": "{count} purchased",
-    "redeemHeading": "Redeem code",
+    "redeemToggle": "Redeem code",
+    "redeemConfirm": "Confirm redemption",
     "codePlaceholder": "SD-…",
-    "redeemBtn": "Redeem",
-    "shopLink": "Buy on Ko-fi Shop",
-    "perksHeading": "Unlocked perks",
-    "noPerks": "No perks yet — buy a pack on Ko-fi and redeem the code here.",
-    "prefsHeading": "Preferences",
+    "shopBuyLink": "Buy on Ko-fi",
+    "acquiredLabel": "Owned",
+    "prefsToggle": "Preferences",
+    "shopGroups": {
+      "bundles": {
+        "title": "Supporter bundles",
+        "subtitle": "Everything in one code — best value to support the project."
+      },
+      "packs": {
+        "title": "Packs",
+        "subtitle": "Visual, convenience, or gameplay — pick what fits you."
+      },
+      "echoes": {
+        "title": "Echoes",
+        "subtitle": "Permanent balance for the Echo Shop between runs."
+      }
+    },
     "themeLabel": "Visual theme",
     "themeDefault": "By chapter (default)",
     "theme": {
@@ -69,6 +83,40 @@
     },
     "frameToggle": "Silence Frame (portrait)",
     "redeemSuccess": "Code redeemed successfully.",
+    "products": {
+      "echo_5": {
+        "name": "5 Echoes",
+        "summary": "+5 Echoes for the Echo Shop between runs."
+      },
+      "echo_15": {
+        "name": "15 Echoes",
+        "summary": "+15 Echoes for the Echo Shop between runs."
+      },
+      "echo_35": {
+        "name": "35 Echoes",
+        "summary": "+35 Echoes — best value per echo."
+      },
+      "bundle_convenience": {
+        "name": "Convenience Pack",
+        "summary": "Extra save slots and journey export."
+      },
+      "bundle_gameplay": {
+        "name": "Gameplay Pack",
+        "summary": "Combat mercy and extra supply per run."
+      },
+      "bundle_cosmetic": {
+        "name": "Cosmetic Pack",
+        "summary": "Visual themes, frame, title, and supporter badge."
+      },
+      "bundle_supporter": {
+        "name": "Supporter Pack",
+        "summary": "Cosmetic, convenience, and gameplay in one code."
+      },
+      "bundle_supporter_echo15": {
+        "name": "Supporter Pack + 15 Echoes",
+        "summary": "All supporter perks plus 15 permanent Echoes."
+      }
+    },
     "error": {
       "empty": "Paste a code before redeeming.",
       "invalid_format": "Invalid format. Codes start with SD-.",
@@ -296,6 +344,10 @@
     "gotIt": "Got it",
     "hubLoopTitle": "The crossroads is your base",
     "hubLoopBody": "Use the camp to rest and recover supply, and patrol to explore the map — that is how you level up and unlock the next chapter.",
+    "campPrimerTitle": "Fire, rest, and preparation",
+    "campPrimerBody": "Resting costs 1 supply and advances the day, but restores HP and lowers stress. Use consumables, adjust equipment, and talk to whoever shares the shelter before heading back to patrol.",
+    "explorationPrimerTitle": "Patrol and map",
+    "explorationPrimerBody": "Move between rooms on the map — each step can trigger encounters and raises stress. Reach the area goal to unlock the next chapter; at stress 4 you cannot advance.",
     "newArchetype": "New archetype",
     "sectionKickerAct": "Act {n}",
     "sectionKickerExplore": "Exploration",
@@ -472,6 +524,11 @@
     "wrongCampaign": "This save is for campaign \"{saveCampaign}\". Active campaign: \"{activeCampaign}\".",
     "slotEmpty": "This slot is empty.",
     "loadFailed": "Could not load this save.",
+    "autoSaveSuccessTitle": "Game saved automatically",
+    "autoSaveSuccessSubtitle": "Slot {slot}",
+    "autoSaveFailedTitle": "Could not save",
+    "autoSaveFailedSlotsFullSubtitle": "All save slots are full. Free one in the menu.",
+    "autoSaveFailedWriteSubtitle": "Save failed. Try saving manually from the menu.",
     "xpReceived": "Experience received",
     "xpGainedTitle": "+{amount} XP",
     "dayTitle": "Day {day}",

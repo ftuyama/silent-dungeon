@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true">
+  <path fill="var(--muted)" d="M2.5 11.85h11v1.1H2.5z"/>
+  <path fill="var(--nav-merchant-icon)" opacity="0.35" d="M8 2.35v8.35"/>
+  <path fill="var(--nav-merchant-icon)" d="M8 2.85v7.35"/>
+  <path fill="var(--nav-merchant-icon)" opacity="0.55" d="M4.15 4.35h7.7v.85H4.15z"/>
+  <path fill="var(--nav-merchant-icon)" d="M3.35 5.45 4.85 8.35h1.35L4.15 5.45H3.35zm9.3 0L11.15 8.35H9.8l1.05-2.9h1.4z"/>
+  <ellipse cx="4.85" cy="8.95" rx="1.55" ry=".75" fill="var(--nav-merchant-icon)"/>
+  <ellipse cx="11.15" cy="8.95" rx="1.55" ry=".75" fill="var(--nav-merchant-icon)"/>
+</svg>

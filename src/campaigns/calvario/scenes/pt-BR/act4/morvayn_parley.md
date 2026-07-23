@@ -20,6 +20,7 @@ choices:
         encounterId: act4_morvayn_parley_dialogue
         onVictory: act4/pact/pact_ascent
         onDefeat: act4/encounters/fight_morvayn
+        onFlee: act4/morvayn_parley
   - text: "Tentar selar a masmorra (sacrifício)"
     next: act4/seal_ending
     condition: { resource: { faith: { gte: 2 } } }

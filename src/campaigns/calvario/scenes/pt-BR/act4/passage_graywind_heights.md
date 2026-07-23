@@ -17,14 +17,16 @@ choices:
         onVictory: shared/kaelsworn_post_act4
         onDefeat: shared/kael_act4_blades
         onFlee: act4/passage_graywind_heights
-  - text: "[↑] Subir ao mundo — ver como ficou o vilarejo e as Cimeiras"
-    uiSection: "Eixo"
+  - text: "Subir ao mundo — ver como ficou o vilarejo e as Cimeiras"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act5/frost_opening
     effects:
       - { op: setChapter, chapter: 5 }
     preview: "Capítulo 5. Superfície e frio; conferir se algo mudou."
-  - text: "[↓] Descer mais fundo — garganta de magma no fundo do eixo"
-    uiSection: "Eixo"
+  - text: "Descer mais fundo — garganta de magma no fundo do eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/opening_magma_throat
     effects:
       - { op: setChapter, chapter: 8 }

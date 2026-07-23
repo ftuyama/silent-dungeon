@@ -328,7 +328,7 @@ export const ChoiceSchema = z
      * não derivar do texto do rótulo. Conjunto pequeno: mercador / acamp / consumíveis.
      */
     uiSectionIcon: z
-      .enum(['talk', 'shop', 'consumable', 'rest', 'leave', 'camp'])
+      .enum(['talk', 'shop', 'consumable', 'rest', 'leave', 'camp', 'ascend', 'descend'])
       .optional(),
     /** Se definido, toca este efeito em vez do clique de UI ao confirmar a escolha. */
     commitSfx: ChoiceCommitSfxSchema.optional(),

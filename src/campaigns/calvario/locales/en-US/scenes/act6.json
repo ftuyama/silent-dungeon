@@ -468,7 +468,8 @@
     "body": "You carry the fractured nave in your eyes — a **shard** of mirror that still cuts the palm.\n\nStreets turn to hypothesis. The green **pulse** on the horizon did not change; how you count it did. One step at a time.",
     "choices": [
       {
-        "text": "[↑] Lift your eyes — the sky no longer apologizes"
+        "text": "Lift your eyes — the sky no longer apologizes",
+        "uiSection": "Ascend"
       },
       {
         "text": "Close the journal for now"
@@ -559,7 +560,7 @@
       {
         "text": "Light the fire of mirrored ash (camp)",
         "preview": "A breath of supply and broken silence.",
-        "uiSection": "Refuge and trade"
+        "uiSection": "Camp"
       },
       {
         "text": "Trade with the forgotten stall merchant",

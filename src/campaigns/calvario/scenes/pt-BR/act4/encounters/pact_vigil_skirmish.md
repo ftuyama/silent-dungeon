@@ -10,6 +10,7 @@ choices:
         encounterId: vigil_hunter_fight
         onVictory: act4/pact/pact_coda
         onDefeat: shared/game_over
+        onFlee: act4/pact/pact_after_mind
 onEnter:
   - { op: addRep, faction: vigilia, delta: -1 }
   - { op: addDiary, text: "Um caçador da Vigília reconheceu meu passo, não meu rosto. Para quem jura pela luz, o pacto cheira a traição." }

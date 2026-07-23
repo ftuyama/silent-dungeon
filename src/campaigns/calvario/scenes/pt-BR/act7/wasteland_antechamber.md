@@ -13,7 +13,8 @@ choices:
     next: act7/wasteland_router
     preview: "Evento do descampo — sermão, lâmina ou sino."
   - text: "Descer às profundezas de magma — o fundo verdadeiro"
-    uiSection: "Eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/hub_magma_crucible
     condition:
       all:
@@ -23,7 +24,8 @@ choices:
       - { op: setChapter, chapter: 8 }
     preview: "Abandonar o final incompleto e voltar ao Crisol."
   - text: "Descer às profundezas de magma — primeira garganta"
-    uiSection: "Eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/opening_magma_throat
     condition:
       all:
@@ -33,7 +35,8 @@ choices:
       - { op: setChapter, chapter: 8 }
     preview: "O eixo ainda desce; o céu de cinza não é o fundo."
   - text: "Voltar às Cimeiras do Vento Cinzento"
-    uiSection: "Eixo"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act5/frost_hub
     condition:
       all:
@@ -43,7 +46,8 @@ choices:
       - { op: setChapter, chapter: 5 }
     preview: "Voltar ao gelo — o eixo liga superfície e profundezas."
   - text: "Subir rumo às Cimeiras — primeira neve no gelo"
-    uiSection: "Eixo"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act5/frost_opening
     condition:
       all:

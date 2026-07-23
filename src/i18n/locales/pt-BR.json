@@ -9,6 +9,7 @@
     "compactControls": "Controles compactos",
     "sectionGame": "Partida",
     "sectionSettings": "Configurações",
+    "sectionUi": "UI",
     "sectionDev": "Desenvolvimento",
     "sectionAbout": "Sobre",
     "volume": "Volume",
@@ -20,6 +21,7 @@
     "sceneArtHighlight": "Destaque da arte na primeira visita",
     "sectionTitle": "Títulos de seção ao mudar de área",
     "timedChoice": "Limite de tempo nas escolhas",
+    "campAutoSave": "Salvar automaticamente ao descansar",
     "devMode": "Modo desenvolvedor",
     "exportSave": "Exportar gravação (JSON)",
     "importSave": "Importar gravação (clipboard)",
@@ -43,23 +45,35 @@
     "kofi": "Apoiar no Ko-fi",
     "kofiTitle": "Abre a página de apoio no Ko-fi (nova aba)",
     "supporter": "Loja do Apoiador",
-    "supporterTitle": "Resgatar códigos Ko-fi, perks e Ecos comprados",
+    "supporterTitle": "Resgatar código da compra no Ko-fi, perks e Ecos",
     "version": "Silent Dungeon v{version} · {author}"
   },
   "supporter": {
     "title": "Loja do Apoiador",
-    "subtitle": "Códigos do Ko-fi Shop",
+    "subtitle": "Ko-fi Shop — código no PDF da compra",
     "close": "Fechar",
-    "note": "A campanha continua grátis. Ecos comprados entram no mesmo saldo da Loja de Ecos entre runs.",
     "echoBalance": "Saldo de Ecos:",
     "echoPurchased": "{count} comprados",
-    "redeemHeading": "Resgatar código",
+    "redeemToggle": "Resgatar código",
+    "redeemConfirm": "Confirmar resgate",
     "codePlaceholder": "SD-…",
-    "redeemBtn": "Resgatar",
-    "shopLink": "Comprar no Ko-fi Shop",
-    "perksHeading": "Perks desbloqueados",
-    "noPerks": "Nenhum perk ainda — compra um pacote no Ko-fi e resgata o código aqui.",
-    "prefsHeading": "Preferências",
+    "shopBuyLink": "Comprar no Ko-fi",
+    "acquiredLabel": "Adquirido",
+    "prefsToggle": "Preferências",
+    "shopGroups": {
+      "bundles": {
+        "title": "Combos Apoiador",
+        "subtitle": "Tudo num código — melhor custo para apoiar de verdade."
+      },
+      "packs": {
+        "title": "Pacotes",
+        "subtitle": "Visual, conveniência ou jogabilidade — escolhe o que combina contigo."
+      },
+      "echoes": {
+        "title": "Ecos",
+        "subtitle": "Saldo permanente para a Loja de Ecos entre runs."
+      }
+    },
     "themeLabel": "Tema visual",
     "themeDefault": "Por capítulo (padrão)",
     "theme": {
@@ -69,6 +83,40 @@
     },
     "frameToggle": "Moldura do Silêncio (retrato)",
     "redeemSuccess": "Código resgatado com sucesso.",
+    "products": {
+      "echo_5": {
+        "name": "5 Ecos",
+        "summary": "+5 Ecos para a Loja de Ecos entre runs."
+      },
+      "echo_15": {
+        "name": "15 Ecos",
+        "summary": "+15 Ecos para a Loja de Ecos entre runs."
+      },
+      "echo_35": {
+        "name": "35 Ecos",
+        "summary": "+35 Ecos — melhor valor por eco."
+      },
+      "bundle_convenience": {
+        "name": "Pacote Conveniência",
+        "summary": "Mais slots de save e exportação de gravação."
+      },
+      "bundle_gameplay": {
+        "name": "Pacote Jogabilidade",
+        "summary": "Misericórdia no combate e suprimento extra por run."
+      },
+      "bundle_cosmetic": {
+        "name": "Pacote Cosmético",
+        "summary": "Temas visuais, moldura, título e badge de apoiador."
+      },
+      "bundle_supporter": {
+        "name": "Pacote Apoiador",
+        "summary": "Cosmético, conveniência e jogabilidade num só código."
+      },
+      "bundle_supporter_echo15": {
+        "name": "Pacote Apoiador + 15 Ecos",
+        "summary": "Todos os perks de apoiador mais 15 Ecos permanentes."
+      }
+    },
     "error": {
       "empty": "Cola um código antes de resgatar.",
       "invalid_format": "Formato inválido. O código começa com SD-.",
@@ -296,6 +344,10 @@
     "gotIt": "Entendi",
     "hubLoopTitle": "O cruzeiro é a sua base",
     "hubLoopBody": "Use o acampamento para descansar e recuperar suprimento, e a patrulha para explorar o mapa — é assim que você avança de nível e desbloqueia o próximo capítulo.",
+    "campPrimerTitle": "Fogo, descanso e preparo",
+    "campPrimerBody": "Descansar gasta 1 suprimento e avança o dia, mas recupera vida e baixa o stress. Use consumíveis, ajuste equipamento e converse com quem divide o abrigo antes de voltar à patrulha.",
+    "explorationPrimerTitle": "Patrulha e mapa",
+    "explorationPrimerBody": "Mova-se entre salas no mapa — cada passo pode gerar encontros e aumenta o stress. Alcance a meta da área para desbloquear o próximo capítulo; com stress 4 você não consegue avançar.",
     "newArchetype": "Novo arquétipo",
     "sectionKickerAct": "Ato {n}",
     "sectionKickerExplore": "Exploração",
@@ -513,6 +565,11 @@
     "wrongCampaign": "Esta gravação é da campanha \"{saveCampaign}\". Campanha ativa: \"{activeCampaign}\".",
     "slotEmpty": "Este slot está vazio.",
     "loadFailed": "Não foi possível carregar esta gravação.",
+    "autoSaveSuccessTitle": "Jogo salvo automaticamente",
+    "autoSaveSuccessSubtitle": "Slot {slot}",
+    "autoSaveFailedTitle": "Não foi possível salvar",
+    "autoSaveFailedSlotsFullSubtitle": "Todos os slots estão ocupados. Liberte um no menu.",
+    "autoSaveFailedWriteSubtitle": "Erro ao gravar. Tente salvar manualmente no menu.",
     "xpReceived": "Experiência recebida",
     "xpGainedTitle": "+{amount} XP",
     "dayTitle": "Dia {day}",

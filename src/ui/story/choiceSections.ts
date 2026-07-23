@@ -5,16 +5,21 @@ import { icons } from '../icons/index.ts';
 /** Colapsa teasers bloqueados quando a secção fica densa demais para o primeiro olhar. */
 export const LOCKED_CHOICES_COLLAPSE_THRESHOLD = 4;
 
+/** Mercador: colapsa qualquer teaser bloqueado para não inundar quem acabou de entrar. */
+export const MERCHANT_LOCKED_CHOICES_COLLAPSE_THRESHOLD = 1;
+
 export type UiSectionIconId = NonNullable<Choice['uiSectionIcon']>;
 
 /** Mapa estável: valor de schema → SVG já registado em `icons`. */
 export const UI_SECTION_ICON_SVG: Record<UiSectionIconId, string> = {
   talk: icons.talk,
-  shop: icons.gold,
+  shop: icons.merchant,
   consumable: icons.supply,
   rest: icons.heart,
   leave: icons.map,
-  camp: icons.supply,
+  camp: icons.camp,
+  ascend: icons.ascend,
+  descend: icons.descend,
 };
 
 export type StoryChoiceSection = {
@@ -27,15 +32,23 @@ export type StoryChoiceSection = {
 export type PartitionedChoiceRows = {
   enabled: StoryChoiceRow[];
   locked: StoryChoiceRow[];
-  /** true quando `locked.length >= LOCKED_CHOICES_COLLAPSE_THRESHOLD` */
+  /** true quando `locked.length >= collapseThreshold` */
   collapseLocked: boolean;
+};
+
+export type PartitionChoiceRowsOptions = {
+  collapseThreshold?: number;
 };
 
 /**
  * Separar ativas e bloqueadas (ordem relativa preservada em cada conjunto).
  * Enabled primeiro no render; locked colapsam se ≥ limiar.
  */
-export function partitionChoiceRowsForDisplay(rows: StoryChoiceRow[]): PartitionedChoiceRows {
+export function partitionChoiceRowsForDisplay(
+  rows: StoryChoiceRow[],
+  options?: PartitionChoiceRowsOptions
+): PartitionedChoiceRows {
+  const threshold = options?.collapseThreshold ?? LOCKED_CHOICES_COLLAPSE_THRESHOLD;
   const enabled: StoryChoiceRow[] = [];
   const locked: StoryChoiceRow[] = [];
   for (const row of rows) {
@@ -45,7 +58,7 @@ export function partitionChoiceRowsForDisplay(rows: StoryChoiceRow[]): Partition
   return {
     enabled,
     locked,
-    collapseLocked: locked.length >= LOCKED_CHOICES_COLLAPSE_THRESHOLD,
+    collapseLocked: locked.length >= threshold,
   };
 }
 

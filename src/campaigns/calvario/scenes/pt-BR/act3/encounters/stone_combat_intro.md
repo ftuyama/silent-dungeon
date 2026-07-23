@@ -10,6 +10,7 @@ choices:
         encounterId: stone_guard_fight
         onVictory: act3/stone_guard_victory
         onDefeat: shared/game_over
+        onFlee: act3/flee_stone_guard
 onEnter: []
 ---
 Pedra **contra** carne. O golem fecha o passo — três camadas de armadura antes da ferida real.

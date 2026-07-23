@@ -66,7 +66,8 @@ choices:
         - { day: { gte: 16 } }
     preview: "Tarde demais: poste, corda vazia, eco."
   - text: "Viver o acampamento no gelo"
-    uiSection: "Fogo e troca"
+    uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act5/camp/frost_camp
     preview: "Descanso, suprimento e conversa ao fogo."
   - text: "Mercador de tenda azul-trovão"
@@ -102,7 +103,8 @@ choices:
     lockedHint: "O cume exige nível 23 e encontrar primeiro a trilha do templo no mapa."
     preview: "Ascensão perigosa ao templo e ao que dorme no cume."
   - text: "Descer às profundezas de magma — o fundo do eixo"
-    uiSection: "Eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/hub_magma_crucible
     condition:
       all:
@@ -112,7 +114,8 @@ choices:
       - { op: setChapter, chapter: 8 }
     preview: "Voltar ao Crisol — o calor ainda espera."
   - text: "Descer às profundezas de magma — primeira garganta"
-    uiSection: "Eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/opening_magma_throat
     condition:
       all:

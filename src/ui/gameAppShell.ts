@@ -32,6 +32,8 @@ export type MountAppChromeOptions = {
   sceneArtHighlightEnabled: boolean;
   /** Overlay de título de seção (ato / hub / exploração). */
   sectionTitleEnabled: boolean;
+  /** Auto-save ao descansar no acampamento. */
+  campAutoSaveEnabled: boolean;
   state: GameState;
   registry: ContentRegistry;
   sidebarSections: Record<string, boolean>;
@@ -42,6 +44,7 @@ export type MountAppChromeOptions = {
   onTimedChoiceChange: (v: boolean) => void;
   onSceneArtHighlightChange: (v: boolean) => void;
   onSectionTitleChange: (v: boolean) => void;
+  onCampAutoSaveChange: (v: boolean) => void;
   onCycleFont: () => void;
   fullscreenSupported: boolean;
   onExportSave: () => void;
@@ -94,6 +97,7 @@ export type AppChromeRefs = {
   timedChoiceCb: HTMLInputElement;
   sceneArtHighlightCb: HTMLInputElement;
   sectionTitleCb: HTMLInputElement;
+  campAutoSaveCb: HTMLInputElement;
   fontBtn: HTMLButtonElement;
   devSaveExtrasEl: HTMLElement;
   devSettingsExtrasEl: HTMLElement;
@@ -261,6 +265,13 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     return body;
   };
 
+  const createMenuSubsectionTitle = (titleText: string): HTMLHeadingElement => {
+    const el = document.createElement('h4');
+    el.className = 'menu-section-subtitle';
+    el.textContent = titleText;
+    return el;
+  };
+
   const volumeRow = document.createElement('div');
   volumeRow.className = 'menu-item menu-volume';
   const volumeLabelRow = document.createElement('div');
@@ -356,6 +367,17 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   sectionTitleRow.appendChild(sectionTitleCb);
   sectionTitleRow.appendChild(document.createTextNode(` ${t('menu.sectionTitle')}`));
 
+  const campAutoSaveRow = document.createElement('label');
+  campAutoSaveRow.className = 'menu-item menu-sound';
+  const campAutoSaveCb = document.createElement('input');
+  campAutoSaveCb.type = 'checkbox';
+  campAutoSaveCb.checked = opts.campAutoSaveEnabled;
+  campAutoSaveCb.addEventListener('change', () => {
+    opts.onCampAutoSaveChange(campAutoSaveCb.checked);
+  });
+  campAutoSaveRow.appendChild(campAutoSaveCb);
+  campAutoSaveRow.appendChild(document.createTextNode(` ${t('menu.campAutoSave')}`));
+
   const exportBtn = document.createElement('button');
   exportBtn.type = 'button';
   exportBtn.className = 'menu-item';
@@ -429,8 +451,10 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   settingsSection.appendChild(volumeRow);
   settingsSection.appendChild(languageRow);
   settingsSection.appendChild(fontBtn);
+  settingsSection.appendChild(createMenuSubsectionTitle(t('menu.sectionUi')));
   settingsSection.appendChild(sceneArtHighlightRow);
   settingsSection.appendChild(sectionTitleRow);
+  settingsSection.appendChild(campAutoSaveRow);
   settingsSection.appendChild(timedChoiceRow);
 
   if (opts.showDevModeToggle || opts.showGraphInSettings) {
@@ -523,6 +547,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     timedChoiceCb,
     sceneArtHighlightCb,
     sectionTitleCb,
+    campAutoSaveCb,
     fontBtn,
     devSaveExtrasEl,
     devSettingsExtrasEl,
@@ -559,6 +584,7 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
   refs.timedChoiceCb.checked = opts.timedChoiceEnabled;
   refs.sceneArtHighlightCb.checked = opts.sceneArtHighlightEnabled;
   refs.sectionTitleCb.checked = opts.sectionTitleEnabled;
+  refs.campAutoSaveCb.checked = opts.campAutoSaveEnabled;
   refs.fontBtn.textContent = t('menu.fontSize', { percent: String(100 + opts.fontStep * 10) });
   refs.languageSelect.setAttribute('aria-label', t('menu.language'));
   refs.languageSelect.value = getLocale();

@@ -159,7 +159,18 @@ h1 {
 
 .choices-section__title--with-icon > .ui-icon-wrap {
   flex-shrink: 0;
-  opacity: 0.9;
+  opacity: 0.95;
+}
+
+.choices-section__title--with-icon > .ui-icon-wrap--section {
+  width: 16px;
+  height: 16px;
+  margin-top: 0;
+}
+
+.choices-section__title--with-icon > .ui-icon-wrap--section svg {
+  width: 16px;
+  height: 16px;
 }
 
 .choices-section__title-text {
@@ -195,6 +206,20 @@ h1 {
 
 .choices-section--collapsible[open] > .choices-section__title--summary::after {
   content: '▾';
+}
+
+.choices-section--collapsible-leading > .choices-section__title--summary::after {
+  content: none;
+}
+
+.choices-section--collapsible-leading > .choices-section__title--summary::before {
+  content: '▸ ';
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.choices-section--collapsible-leading[open] > .choices-section__title--summary::before {
+  content: '▾ ';
 }
 
 .choices > button.choice,
@@ -364,6 +389,22 @@ button.choice .choice-badge--chapter-up {
   color: color-mix(in srgb, var(--muted) 75%, var(--fg));
 }
 
+button.choice .choice-badge--coin {
+  color: var(--nav-merchant-icon);
+}
+
+button.choice .choice-badge--supplyMark {
+  color: color-mix(in srgb, var(--sidebar-buff) 82%, var(--fg));
+}
+
+button.choice .choice-badge--back {
+  color: color-mix(in srgb, var(--muted) 70%, var(--fg));
+}
+
+button.choice .choice-badge--query {
+  color: color-mix(in srgb, var(--magic) 78%, var(--muted));
+}
+
 /* Tom do botão: listra + fundo suave (não combinar com excesso de marcadores de classe). */
 button.choice.choice--tone-risk {
   background: color-mix(in srgb, var(--danger) 12%, var(--surface-raised));
@@ -383,6 +424,16 @@ button.choice.choice--tone-rest {
 button.choice.choice--tone-camp {
   background: color-mix(in srgb, var(--camp-equip-hint) 14%, var(--surface-raised));
   box-shadow: inset 3px 0 0 0 var(--camp-equip-hint);
+}
+
+button.choice.choice--tone-shop {
+  background: color-mix(in srgb, var(--nav-merchant-icon) 12%, var(--surface-raised));
+  box-shadow: inset 3px 0 0 0 var(--nav-merchant-icon);
+}
+
+button.choice.choice--tone-consumable {
+  background: color-mix(in srgb, var(--sidebar-buff) 12%, var(--surface-raised));
+  box-shadow: inset 3px 0 0 0 color-mix(in srgb, var(--sidebar-buff) 70%, var(--border));
 }
 
 button.choice.choice--tone-chapter-advance {
@@ -430,6 +481,14 @@ button.choice.choice--tone-rest:hover {
 
 button.choice.choice--tone-camp:hover {
   background: color-mix(in srgb, var(--camp-equip-hint) 16%, var(--surface-hover-alt));
+}
+
+button.choice.choice--tone-shop:hover {
+  background: color-mix(in srgb, var(--nav-merchant-icon) 16%, var(--surface-hover-alt));
+}
+
+button.choice.choice--tone-consumable:hover {
+  background: color-mix(in srgb, var(--sidebar-buff) 16%, var(--surface-hover-alt));
 }
 
 button.choice.choice--tone-explore:hover {

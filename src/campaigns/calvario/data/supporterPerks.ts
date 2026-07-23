@@ -70,7 +70,7 @@ export const supporterPerkCatalog: Record<string, SupporterPerkUiDef> = {
   },
 };
 
-export const KOFI_SHOP_URL = 'https://ko-fi.com/lelouchiee/shop';
+export { KOFI_SHOP_URL } from './kofiShopCatalog.ts';
 
 export function describeGrant(grant: SupporterGrant): string {
   if (grant.type === 'echo') return `+${grant.amount} Ecos`;

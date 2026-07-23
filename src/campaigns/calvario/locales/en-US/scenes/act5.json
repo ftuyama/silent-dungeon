@@ -392,7 +392,7 @@
       {
         "text": "Live the camp on the ice",
         "preview": "Rest, supply, and talk by the fire.",
-        "uiSection": "Fire and trade"
+        "uiSection": "Camp"
       },
       {
         "text": "Thunder-blue tent merchant",
@@ -414,12 +414,12 @@
       {
         "text": "Descend into the magma deeps — the floor of the axis",
         "preview": "Return to the Crucible — the heat still waits.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Descend into the magma deeps — first throat",
         "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       }
     ]
   },
@@ -457,7 +457,7 @@
       {
         "text": "Live the camp on the ice",
         "preview": "Rest, supply, and talk by the fire.",
-        "uiSection": "Fire and trade"
+        "uiSection": "Camp"
       },
       {
         "text": "Thunder-blue tent merchant",
@@ -479,12 +479,12 @@
       {
         "text": "Descend into the magma deeps — the floor of the axis",
         "preview": "Return to the Crucible — the heat still waits.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Descend into the magma deeps — first throat",
         "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       }
     ]
   },
@@ -522,7 +522,7 @@
       {
         "text": "Live the camp on the ice",
         "preview": "Rest, supply, and talk by the fire.",
-        "uiSection": "Fire and trade"
+        "uiSection": "Camp"
       },
       {
         "text": "Thunder-blue tent merchant",
@@ -544,12 +544,12 @@
       {
         "text": "Descend into the magma deeps — the floor of the axis",
         "preview": "Return to the Crucible — the heat still waits.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Descend into the magma deeps — first throat",
         "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       }
     ]
   },
@@ -677,7 +677,8 @@
     "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline, roads vanished under ice. The **cold** enters the chest and locks your breath.\n\nOn the **Graywind Heights**, the wind cuts the mouth. From shelter to shelter, rumor of **Vetrnax**: dragon on the summit, breath that freezes the cry before sound.\n\nMorvayn fell to iron. The **axis** still descends. Thin victory; ice without mercy.",
     "choices": [
       {
-        "text": "Climb down from the gap — see how Cimeria fared"
+        "text": "Climb down from the gap — see how Cimeria fared",
+        "uiSection": "Descend"
       }
     ],
     "onEnterDiaryTexts": [
@@ -689,7 +690,8 @@
     "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline. The **cold** enters the chest; the **Third Bell** throbs under the skin and warms nothing.\n\nOn the **Heights**, the wind cuts the mouth. Rumor of **Vetrnax** runs from shelter to shelter — dragon on the summit, breath that freezes the cry before sound.\n\n**Corruption** climbs with every step. The pass goes quiet when you breathe too loud.",
     "choices": [
       {
-        "text": "Climb down from the gap — see how Cimeria fared"
+        "text": "Climb down from the gap — see how Cimeria fared",
+        "uiSection": "Descend"
       }
     ],
     "onEnterDiaryTexts": [
@@ -701,7 +703,8 @@
     "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline. The **cold** enters the chest and reminds you of the **weight** of the seal you carry.\n\nOn the **Heights**, the wind cuts the mouth. Rumor of **Vetrnax** runs from shelter to shelter — dragon on the summit, breath that freezes the cry before sound.\n\nYou sealed the hole with **faith**. The undercroft is quiet; peace under the sky is fragile as thin ice.",
     "choices": [
       {
-        "text": "Climb down from the gap — see how Cimeria fared"
+        "text": "Climb down from the gap — see how Cimeria fared",
+        "uiSection": "Descend"
       }
     ],
     "onEnterDiaryTexts": [

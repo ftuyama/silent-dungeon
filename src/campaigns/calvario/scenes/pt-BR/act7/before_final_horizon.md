@@ -8,7 +8,8 @@ highlight: true
 artHighlightSfx: mysterious
 choices:
   - text: "Descer às profundezas de magma — recusar o final incompleto"
-    uiSection: "Eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/hub_magma_crucible
     condition:
       all:
@@ -18,7 +19,8 @@ choices:
       - { op: setChapter, chapter: 8 }
     preview: "O crisol ainda espera — o céu não é vitória."
   - text: "Descer às profundezas de magma — recusar o final incompleto"
-    uiSection: "Eixo"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/opening_magma_throat
     condition:
       all:

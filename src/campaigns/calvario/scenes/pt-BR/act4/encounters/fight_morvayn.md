@@ -11,6 +11,7 @@ choices:
         encounterId: boss_morvayn_1
         onVictory: act4/morvayn_interlude
         onDefeat: shared/game_over
+        onFlee: act4/throne/throne_gate
   - text: "Primeira fase — confronto!"
     condition: { mark: soul_scarred_by_seal }
     effects:
@@ -18,6 +19,7 @@ choices:
         encounterId: boss_morvayn_1_disadv
         onVictory: act4/morvayn_interlude
         onDefeat: shared/game_over
+        onFlee: act4/throne/throne_gate
 onEnter: []
 ---
 **Morvayn** levanta o cajado. O salão aperta o peito — agora é aço.

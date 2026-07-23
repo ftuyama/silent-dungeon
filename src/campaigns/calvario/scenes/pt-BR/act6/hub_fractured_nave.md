@@ -75,7 +75,8 @@ choices:
     lockedHint: "Três provas, meta do mapa e nível 31 — o espelho não abre cedo."
     preview: "Três provas feitas; o espelho final abre."
   - text: "Acender a fogueira de cinzas espelhadas (acampamento)"
-    uiSection: "Refúgio e troca"
+    uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act6/camp/void_camp
     preview: "Um sopro de suprimento e silêncio partido."
   - text: "Negociar com o mercador da banca esquecida"

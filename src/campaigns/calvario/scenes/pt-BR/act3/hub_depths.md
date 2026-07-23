@@ -83,7 +83,8 @@ choices:
     effects:
       - { op: setFlag, key: act3_corruption_ignore_patrol_done, value: true }
   - text: "Voltar ao Cruzeiro"
-    uiSection: "Voltar"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act2/hub_catacomb
     preview: "Sobe ao cruzeiro."
     effects:

@@ -6,15 +6,20 @@ ambientTheme: explore
 artKey: title_breath
 choices:
   - text: "Repassar o que aconteceu no vilarejo — por que você desce"
+    uiSection: "Entrada"
     visibleWhen: { noFlag: shared_world_lore_done }
     preview: "Memória da superfície; uma vez."
     effects:
       - { op: setFlag, key: shared_world_lore_from_camp, value: false }
     next: shared/lore/world_wound_surface
   - text: "Está pronto. Descer."
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act1/crawl_entrada
     preview: "Segue para o primeiro degrau."
   - text: "Voltar à entrada"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act1/title
     preview: "Sem custo; hesitar ainda é opção."
 onEnter:

@@ -7,6 +7,7 @@ artKey: vigilia_camp
 choices:
   - text: "Perguntar se o escudo ainda pesa"
     next: act2/camp/camp_tomas_topic_shield
+    visibleWhen: { noFlag: ff_cf_act2_camp_tomas_topic_shield }
   - text: "Falar da ordem que deixou de existir"
     next: act2/camp/camp_tomas_topic_oath
     visibleWhen: { noMark: tomas_camp_oath }

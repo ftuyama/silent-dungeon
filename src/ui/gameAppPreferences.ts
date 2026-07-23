@@ -4,9 +4,12 @@ export type GameAppStorageKeys = {
   timedChoiceKey: string;
   sceneArtHighlightKey: string;
   sectionTitleKey: string;
+  campAutoSaveKey: string;
   devModeKey: string;
   onboardingPrimerKey: string;
   hubLoopPrimerKey: string;
+  campPrimerKey: string;
+  explorationPrimerKey: string;
   legacyBriefingKey: string;
 };
 
@@ -17,9 +20,12 @@ export function buildGameAppStorageKeys(campaignId: string): GameAppStorageKeys 
     timedChoiceKey: `${campaignId}_timed_choice_v1`,
     sceneArtHighlightKey: `${campaignId}_scene_art_highlight_v1`,
     sectionTitleKey: `${campaignId}_section_title_v1`,
+    campAutoSaveKey: `${campaignId}_camp_auto_save_v1`,
     devModeKey: `${campaignId}_dev_mode`,
     onboardingPrimerKey: `${campaignId}_onboarding_primer_v1`,
     hubLoopPrimerKey: `${campaignId}_hub_loop_primer_v1`,
+    campPrimerKey: `${campaignId}_camp_primer_v1`,
+    explorationPrimerKey: `${campaignId}_exploration_primer_v1`,
     legacyBriefingKey: `${campaignId}_legacy_briefing_v1`,
   };
 }
@@ -107,6 +113,23 @@ export function saveSectionTitleEnabled(sectionTitleKey: string, enabled: boolea
   }
 }
 
+/** Auto-save ao descansar no acampamento (ligado por omissão). */
+export function loadCampAutoSaveEnabled(campAutoSaveKey: string): boolean {
+  try {
+    return localStorage.getItem(campAutoSaveKey) !== '0';
+  } catch {
+    return true;
+  }
+}
+
+export function saveCampAutoSaveEnabled(campAutoSaveKey: string, enabled: boolean): void {
+  try {
+    localStorage.setItem(campAutoSaveKey, enabled ? '1' : '0');
+  } catch {
+    /* noop */
+  }
+}
+
 export function loadOnboardingPrimerVisible(onboardingPrimerKey: string): boolean {
   try {
     return localStorage.getItem(onboardingPrimerKey) !== '0';
@@ -135,6 +158,40 @@ export function loadHubLoopPrimerVisible(hubLoopPrimerKey: string): boolean {
 export function saveHubLoopPrimerVisible(hubLoopPrimerKey: string, visible: boolean): void {
   try {
     localStorage.setItem(hubLoopPrimerKey, visible ? '1' : '0');
+  } catch {
+    /* noop */
+  }
+}
+
+/** true = ainda não dispensado (mostrar aviso do acampamento). */
+export function loadCampPrimerVisible(campPrimerKey: string): boolean {
+  try {
+    return localStorage.getItem(campPrimerKey) !== '0';
+  } catch {
+    return true;
+  }
+}
+
+export function saveCampPrimerVisible(campPrimerKey: string, visible: boolean): void {
+  try {
+    localStorage.setItem(campPrimerKey, visible ? '1' : '0');
+  } catch {
+    /* noop */
+  }
+}
+
+/** true = ainda não dispensado (mostrar aviso de exploração). */
+export function loadExplorationPrimerVisible(explorationPrimerKey: string): boolean {
+  try {
+    return localStorage.getItem(explorationPrimerKey) !== '0';
+  } catch {
+    return true;
+  }
+}
+
+export function saveExplorationPrimerVisible(explorationPrimerKey: string, visible: boolean): void {
+  try {
+    localStorage.setItem(explorationPrimerKey, visible ? '1' : '0');
   } catch {
     /* noop */
   }

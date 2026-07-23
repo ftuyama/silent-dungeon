@@ -1,7 +1,7 @@
 import type { Choice, Effect } from '../../engine/schema/index.ts';
 
-/** Um carácter dentro de `[]` no início do texto: classe, risco, camp, exploração, descanso, combate, eixo. */
-const CHOICE_LEAD_BADGE_RE = /^\[([#*+\-!@>~%↓↑])\]\s*/;
+/** Um carácter dentro de `[]` no início do texto: classe, risco, camp, exploração, descanso, combate, eixo, loja. */
+const CHOICE_LEAD_BADGE_RE = /^\[([#*+\-!@>~%↓↑$=←?])\]\s*/;
 
 export type ChoiceBadgeModifier =
   | 'hash'
@@ -14,7 +14,11 @@ export type ChoiceBadgeModifier =
   | 'tilde'
   | 'pct'
   | 'chapterDown'
-  | 'chapterUp';
+  | 'chapterUp'
+  | 'coin'
+  | 'supplyMark'
+  | 'back'
+  | 'query';
 
 const BADGE_CHAR_TO_MODIFIER: Record<string, ChoiceBadgeModifier> = {
   '#': 'hash',
@@ -28,6 +32,10 @@ const BADGE_CHAR_TO_MODIFIER: Record<string, ChoiceBadgeModifier> = {
   '%': 'pct',
   '↓': 'chapterDown',
   '↑': 'chapterUp',
+  $: 'coin',
+  '=': 'supplyMark',
+  '←': 'back',
+  '?': 'query',
 };
 
 export type ChoiceToneClass =
@@ -36,7 +44,9 @@ export type ChoiceToneClass =
   | 'choice--tone-rest'
   | 'choice--tone-camp'
   | 'choice--tone-chapter-advance'
-  | 'choice--tone-explore';
+  | 'choice--tone-explore'
+  | 'choice--tone-shop'
+  | 'choice--tone-consumable';
 
 export type ChoicePresentation = {
   /** Texto da escolha sem o prefixo `[x] ` quando há badge. */
@@ -107,7 +117,15 @@ export function inferChapterGateFromEffects(
   return null;
 }
 
-type ToneKind = 'risk' | 'combat' | 'rest' | 'camp' | 'chapterAdvance' | 'explore';
+type ToneKind =
+  | 'risk'
+  | 'combat'
+  | 'rest'
+  | 'camp'
+  | 'chapterAdvance'
+  | 'explore'
+  | 'shop'
+  | 'consumable';
 
 function toneClassFromKind(kind: ToneKind): ChoiceToneClass {
   switch (kind) {
@@ -123,6 +141,55 @@ function toneClassFromKind(kind: ToneKind): ChoiceToneClass {
       return 'choice--tone-chapter-advance';
     case 'explore':
       return 'choice--tone-explore';
+    case 'shop':
+      return 'choice--tone-shop';
+    case 'consumable':
+      return 'choice--tone-consumable';
+  }
+}
+
+type UiSectionBadgeHint = { label: string; modifier: ChoiceBadgeModifier };
+
+const UI_SECTION_ICON_BADGES: Partial<
+  Record<NonNullable<Choice['uiSectionIcon']>, UiSectionBadgeHint>
+> = {
+  talk: { label: '[?]', modifier: 'query' },
+  shop: { label: '[$]', modifier: 'coin' },
+  consumable: { label: '[=]', modifier: 'supplyMark' },
+  rest: { label: '[~]', modifier: 'tilde' },
+  leave: { label: '[←]', modifier: 'back' },
+  camp: { label: '[@]', modifier: 'at' },
+  ascend: { label: '[↑]', modifier: 'chapterUp' },
+  descend: { label: '[↓]', modifier: 'chapterDown' },
+};
+
+function isWeakActionBadge(badge: { modifier: ChoiceBadgeModifier } | null): boolean {
+  return badge === null || badge.modifier === 'tilde' || badge.modifier === 'gt';
+}
+
+function applyUiSectionIconPresentation(
+  icon: Choice['uiSectionIcon'],
+  toneKind: ToneKind | null
+): ToneKind | null {
+  if (icon === undefined) return toneKind;
+  if (toneKind === 'risk' || toneKind === 'combat') return toneKind;
+
+  switch (icon) {
+    case 'rest':
+      return toneKind ?? 'rest';
+    case 'camp':
+      return toneKind === 'rest' ? toneKind : (toneKind ?? 'camp');
+    case 'shop':
+      return toneKind ?? 'shop';
+    case 'consumable':
+      return toneKind ?? 'consumable';
+    case 'descend':
+      if (toneKind === 'rest' || toneKind === 'camp') return toneKind;
+      return 'chapterAdvance';
+    case 'talk':
+    case 'leave':
+    case 'ascend':
+      return toneKind;
   }
 }
 
@@ -153,6 +220,10 @@ export function resolveChoicePresentation(
     toneKind = 'rest';
   } else if (badgeChar === '@') {
     toneKind = 'camp';
+  } else if (modifier === 'coin') {
+    toneKind = 'shop';
+  } else if (modifier === 'supplyMark') {
+    toneKind = 'consumable';
   } else if (modifier === 'chapterDown') {
     toneKind = 'chapterAdvance';
   } else if (chapterGate === 'advance' && modifier !== 'chapterUp') {
@@ -161,7 +232,7 @@ export function resolveChoicePresentation(
     toneKind = 'explore';
   }
 
-  const toneClass = toneKind !== null ? toneClassFromKind(toneKind) : null;
+  toneKind = applyUiSectionIconPresentation(choice.uiSectionIcon, toneKind);
 
   /**
    * Glifo `[…]` alinhado ao tom: injetado quando só os efeitos definem o tom, ou `[%]` quando
@@ -175,18 +246,36 @@ export function resolveChoicePresentation(
       outBadge = { label: '[%]', modifier: 'pct' };
     }
   } else if (toneKind === 'chapterAdvance') {
-    const weakChapterBadge =
-      badge === null || badge.modifier === 'tilde' || badge.modifier === 'gt';
+    const weakChapterBadge = isWeakActionBadge(outBadge);
     if (weakChapterBadge) {
       outBadge = { label: '[↓]', modifier: 'chapterDown' };
     }
+  } else if (toneKind === 'shop') {
+    if (isWeakActionBadge(outBadge)) {
+      outBadge = { label: '[$]', modifier: 'coin' };
+    }
+  } else if (toneKind === 'consumable') {
+    if (isWeakActionBadge(outBadge)) {
+      outBadge = { label: '[=]', modifier: 'supplyMark' };
+    }
   } else if (badge === null && toneKind === 'rest') {
     outBadge = { label: '[~]', modifier: 'tilde' };
+  } else if (badge === null && toneKind === 'camp') {
+    outBadge = { label: '[@]', modifier: 'at' };
   } else if (badge === null && toneKind === 'explore') {
     outBadge = { label: '[>]', modifier: 'gt' };
   } else if (chapterGate === 'regress' && toneKind === null && badge === null) {
     outBadge = { label: '[↑]', modifier: 'chapterUp' };
   }
+
+  const iconBadge = choice.uiSectionIcon
+    ? UI_SECTION_ICON_BADGES[choice.uiSectionIcon]
+    : undefined;
+  if (iconBadge && isWeakActionBadge(outBadge)) {
+    outBadge = iconBadge;
+  }
+
+  const toneClass = toneKind !== null ? toneClassFromKind(toneKind) : null;
 
   return { bodyText, badge: outBadge, toneClass };
 }

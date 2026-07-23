@@ -342,16 +342,19 @@
     "body": "The **green pulse** climbs the city's throat. Below, the **dungeon** opens a mute mouth: damp stone, old iron, **silence** that pushes you in.\n\nAbove they pretend routine. Someone has to cut this at the root — *{{playerName}}*, the first step is to **descend**.",
     "choices": [
       {
-        "text": "Descend the steps toward the text carved in stone",
-        "preview": "The first firm step — or hesitate and look first."
-      },
-      {
         "text": "Examine the symbols at the entrance (before descending)",
+        "uiSection": "Entrance",
         "preview": "Lore and a surface rumor (luck)."
       },
       {
         "text": "Breathe deep and adjust your equipment",
+        "uiSection": "Entrance",
         "preview": "A moment of calm; diary."
+      },
+      {
+        "text": "Descend the steps toward the text carved in stone",
+        "uiSection": "Descend",
+        "preview": "The first firm step — or hesitate and look first."
       }
     ]
   },
@@ -361,14 +364,17 @@
     "choices": [
       {
         "text": "Go back over what happened in the village — why you descend",
+        "uiSection": "Entrance",
         "preview": "Surface memory; once."
       },
       {
         "text": "Ready. Descend.",
+        "uiSection": "Descend",
         "preview": "On to the first step."
       },
       {
         "text": "Return to the entrance",
+        "uiSection": "Ascend",
         "preview": "No cost; hesitation is still an option."
       }
     ],
@@ -382,14 +388,17 @@
     "choices": [
       {
         "text": "Notice a broken mirror in a niche — face the reflection",
+        "uiSection": "Entrance",
         "preview": "Just looking; the abyss returns your face."
       },
       {
         "text": "[%] Listen to voices descending from the city (luck)",
+        "uiSection": "Entrance",
         "preview": "Gold or corruption — rumor from the surface."
       },
       {
         "text": "Return to the entrance",
+        "uiSection": "Ascend",
         "preview": "No risk; back to the threshold."
       }
     ]

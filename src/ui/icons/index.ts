@@ -1,5 +1,8 @@
 import armor from './armor.svg?raw';
+import ascend from './ascend.svg?raw';
+import camp from './camp.svg?raw';
 import companions from './companions.svg?raw';
+import descend from './descend.svg?raw';
 import corruption from './corruption.svg?raw';
 import diary from './diary.svg?raw';
 import equipment from './equipment.svg?raw';
@@ -11,6 +14,7 @@ import inventory from './inventory.svg?raw';
 import item from './item.svg?raw';
 import map from './map.svg?raw';
 import memories from './memories.svg?raw';
+import merchant from './merchant.svg?raw';
 import person from './person.svg?raw';
 import progress from './progress.svg?raw';
 import relic from './relic.svg?raw';
@@ -25,7 +29,10 @@ import weapon from './weapon.svg?raw';
 /** Ícones SVG inline (ficheiros em `src/ui/icons/`). */
 export const icons = {
   armor,
+  ascend,
+  camp,
   companions,
+  descend,
   corruption,
   diary,
   equipment,
@@ -37,6 +44,7 @@ export const icons = {
   item,
   map,
   memories,
+  merchant,
   person,
   progress,
   relic,

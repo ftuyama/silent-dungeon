@@ -7,6 +7,8 @@ artKey: frost_peaks_pact
 highlight: true
 choices:
   - text: "Descer do vão — ver como ficou Cimeria"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act5/frost_cimeria_snow
 onEnter:
   - { op: setChapter, chapter: 5 }

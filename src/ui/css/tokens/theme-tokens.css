@@ -61,6 +61,10 @@
   --mana-bar-track-border: #2a3548;
   --stress-bar-track-bg: #1a1810;
   --stress-bar-track-border: #3d3520;
+  --nav-camp-icon: #c48848;
+  --nav-merchant-icon: #c4a050;
+  --nav-ascend-icon: var(--accent);
+  --nav-descend-icon: var(--magic);
   --camp-equip-hint: #6a7568;
   --camp-equip-unequip-border: #4a4540;
   --camp-equip-unequip-hover: #6a6358;

@@ -5,7 +5,8 @@
     "choices": [
       {
         "text": "Descend through the cracked crust",
-        "preview": "The heat rises. Without the amulet of the trials, each step takes flesh."
+        "preview": "The heat rises. Without the amulet of the trials, each step takes flesh.",
+        "uiSection": "Descend"
       }
     ],
     "onEnterDiaryTexts": [
@@ -68,7 +69,7 @@
       {
         "text": "Light the camp on the crucible rim",
         "preview": "Short rest; the heat never truly sleeps.",
-        "uiSection": "Refuge and trade"
+        "uiSection": "Camp"
       },
       {
         "text": "Bargain with the ember merchant",
@@ -79,17 +80,17 @@
       {
         "text": "Climb toward the surface — Graywind Heights",
         "preview": "Return to the ice — the axis still links both sides.",
-        "uiSection": "Axis"
+        "uiSection": "Ascend"
       },
       {
         "text": "Climb toward the surface — first snow after the throne",
         "preview": "Open the peaks path if you have not camped on the ice yet.",
-        "uiSection": "Axis"
+        "uiSection": "Ascend"
       },
       {
         "text": "Head for the ashes of the sky (act7)",
         "preview": "The incomplete ending still waits for those who flee the heat.",
-        "uiSection": "Axis"
+        "uiSection": "Ashes"
       }
     ]
   },

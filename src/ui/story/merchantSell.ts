@@ -5,6 +5,16 @@ import { t } from '../../i18n/index.ts';
 
 export const MERCHANT_SELL_CHOICE_PREFIX = 'merchant_sell_';
 
+/** Compra/venda na banca: aplica efeitos mas não muda de cena (atualiza a lista). */
+export function shouldStayOnMerchantSceneAfterChoice(
+  ambientTheme: string | undefined,
+  choice: { uiSectionIcon?: string; id?: string }
+): boolean {
+  if (ambientTheme !== 'merchant') return false;
+  if (choice.uiSectionIcon !== 'shop') return false;
+  return true;
+}
+
 export function isMerchantSellSection(sec: { rows: StoryChoiceRow[] }): boolean {
   return (
     sec.rows.length > 0 &&

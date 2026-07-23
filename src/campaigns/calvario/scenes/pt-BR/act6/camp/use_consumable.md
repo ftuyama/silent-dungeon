@@ -38,7 +38,7 @@ choices:
       - { op: useConsumable, itemId: potion_stress, targetIndex: 0 }
   - text: "Voltar ao acampamento"
     uiSection: "Voltar"
-    uiSectionIcon: leave
+    uiSectionIcon: camp
     next: act6/camp/void_camp
 onEnter: []
 ---

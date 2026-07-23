@@ -121,6 +121,18 @@
       }
     ]
   },
+  "act3/flee_stone_guard": {
+    "title": "Flight — runes that tremble",
+    "body": "The golem **does not run**. It advances joint by joint, and each step shakes dust from the hall.\n\nYou retreat before the corridor becomes a tomb.",
+    "choices": [
+      {
+        "text": "Fall back to the corridor"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I retreated from the golem. The containment runes still tremble — stone does not forget who passed."
+    ]
+  },
   "act3/flee_cult": {
     "title": "Flight — hoods that laugh",
     "body": "The **hoods** do not run — they glide. You run with lungs still human.\n\nA blade cuts air too near the ear; another scrapes pride without touching skin.",
@@ -188,7 +200,7 @@
       {
         "text": "Return to the Crossroads",
         "preview": "Climb to the crossroads.",
-        "uiSection": "Return"
+        "uiSection": "Ascend"
       }
     ]
   },

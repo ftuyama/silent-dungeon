@@ -11,7 +11,7 @@ import type { StoryChoiceRow } from '../../src/engine/core/index.ts';
 function enabled(
   text: string,
   uiSection?: string,
-  uiSectionIcon?: 'talk' | 'shop' | 'consumable' | 'rest' | 'leave' | 'camp'
+  uiSectionIcon?: 'talk' | 'shop' | 'consumable' | 'rest' | 'leave' | 'camp' | 'ascend' | 'descend'
 ): StoryChoiceRow {
   return {
     kind: 'enabled',
@@ -108,5 +108,13 @@ describe('partitionChoiceRowsForDisplay', () => {
     expect(p.collapseLocked).toBe(true);
     expect(p.enabled).toHaveLength(1);
     expect(p.locked).toHaveLength(LOCKED_CHOICES_COLLAPSE_THRESHOLD);
+  });
+
+  it('permite limiar customizado (mercador colapsa com 1 bloqueada)', () => {
+    const rows = [enabled('comprar'), locked('caro')];
+    expect(partitionChoiceRowsForDisplay(rows).collapseLocked).toBe(false);
+    expect(
+      partitionChoiceRowsForDisplay(rows, { collapseThreshold: 1 }).collapseLocked
+    ).toBe(true);
   });
 });

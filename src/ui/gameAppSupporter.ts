@@ -13,9 +13,14 @@ import {
   type SupporterMeta,
 } from '../engine/supporter/supporterMeta.ts';
 import {
-  KOFI_SHOP_URL,
-  supporterPerkCatalog,
-} from '../campaigns/calvario/data/supporterPerks.ts';
+  formatKofiPrice,
+  hasSupporterCosmeticPrefs,
+  isKofiProductAcquired,
+  kofiProductUrl,
+  kofiShopGroups,
+  kofiShopProducts,
+  type KofiShopProduct,
+} from '../campaigns/calvario/data/kofiShopCatalog.ts';
 import { t } from '../i18n/index.ts';
 
 export type OpenSupporterModalOpts = {
@@ -35,6 +40,64 @@ function escHtml(s: string): string {
 
 function closeSupporterLayer(): void {
   document.querySelector('.supporter-modal-layer')?.remove();
+}
+
+function scrollModalTo(el: HTMLElement): void {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+}
+
+function buildShopCard(product: KofiShopProduct, acquired: boolean): HTMLElement {
+  const card = document.createElement(acquired ? 'div' : 'a');
+  card.className = 'supporter-shop-card';
+  if (acquired) {
+    card.classList.add('supporter-shop-card--owned');
+  } else {
+    const link = card as HTMLAnchorElement;
+    link.href = kofiProductUrl(product);
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.title = t('supporter.shopBuyLink');
+  }
+
+  const badge = document.createElement('span');
+  badge.className = 'supporter-shop-card-badge';
+  badge.textContent = '✓';
+  badge.setAttribute('aria-hidden', 'true');
+
+  const thumb = document.createElement('img');
+  thumb.className = 'supporter-shop-card-thumb';
+  thumb.src = product.previewUrl;
+  thumb.alt = '';
+  thumb.loading = 'lazy';
+  thumb.width = 120;
+  thumb.height = 120;
+
+  const body = document.createElement('div');
+  body.className = 'supporter-shop-card-body';
+  const nameEl = document.createElement('span');
+  nameEl.className = 'supporter-shop-card-name';
+  nameEl.textContent = t(product.nameKey);
+  const summaryEl = document.createElement('span');
+  summaryEl.className = 'supporter-shop-card-summary';
+  summaryEl.textContent = t(product.summaryKey);
+  const priceEl = document.createElement('span');
+  priceEl.className = acquired
+    ? 'supporter-shop-card-price supporter-shop-card-price--owned'
+    : 'supporter-shop-card-price';
+  priceEl.textContent = acquired ? t('supporter.acquiredLabel') : formatKofiPrice(product.priceUsd);
+  body.append(nameEl, summaryEl, priceEl);
+
+  if (acquired) {
+    card.append(badge, thumb, body);
+    card.setAttribute('aria-label', `${t(product.nameKey)} — ${t('supporter.acquiredLabel')}`);
+  } else {
+    card.append(thumb, body);
+  }
+  return card;
 }
 
 export function openSupporterModal(opts: OpenSupporterModalOpts): void {
@@ -57,24 +120,16 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
 
   const header = document.createElement('div');
   header.className = 'sheet-modal-header';
-  const kicker = document.createElement('div');
-  kicker.className = 'diary-entry-kicker';
-  kicker.textContent = 'Silent Dungeon';
   const title = document.createElement('h2');
   title.id = 'supporter-modal-title';
   title.className = 'sheet-modal-title';
   title.textContent = t('supporter.title');
-  const sub = document.createElement('div');
-  sub.className = 'diary-entry-subkicker';
-  sub.textContent = t('supporter.subtitle');
-  header.append(kicker, title, sub);
-
   const closeBtn = document.createElement('button');
   closeBtn.type = 'button';
   closeBtn.className = 'sheet-modal-close';
   closeBtn.setAttribute('aria-label', t('supporter.close'));
   closeBtn.innerHTML = '&times;';
-  header.appendChild(closeBtn);
+  header.append(title, closeBtn);
 
   const scroll = document.createElement('div');
   scroll.className = 'sheet-modal-scroll';
@@ -101,22 +156,27 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
   let localState = opts.state;
   let localMeta = loadSupporterMeta(opts.campaignId);
 
-  const statusEl = document.createElement('p');
-  statusEl.className = 'supporter-modal-status';
-  statusEl.hidden = true;
-
   const balanceEl = document.createElement('p');
   balanceEl.className = 'supporter-modal-balance';
 
-  const noteEl = document.createElement('p');
-  noteEl.className = 'supporter-modal-note';
-  noteEl.textContent = t('supporter.note');
+  const shopSec = document.createElement('section');
+  shopSec.className = 'supporter-shop-section';
 
-  const redeemSec = document.createElement('section');
-  redeemSec.className = 'diary-modal-section';
-  const redeemH = document.createElement('h3');
-  redeemH.className = 'diary-modal-section-title';
-  redeemH.textContent = t('supporter.redeemHeading');
+  const redeemWrap = document.createElement('div');
+  redeemWrap.className = 'supporter-redeem-wrap';
+
+  const redeemToggle = document.createElement('button');
+  redeemToggle.type = 'button';
+  redeemToggle.className = 'diary-entry-dismiss supporter-redeem-toggle';
+  redeemToggle.textContent = t('supporter.redeemToggle');
+  redeemToggle.setAttribute('aria-expanded', 'false');
+  redeemToggle.setAttribute('aria-controls', 'supporter-redeem-panel');
+
+  const redeemPanel = document.createElement('div');
+  redeemPanel.id = 'supporter-redeem-panel';
+  redeemPanel.className = 'supporter-redeem-panel';
+  redeemPanel.hidden = true;
+
   const redeemRow = document.createElement('div');
   redeemRow.className = 'supporter-redeem-row';
   const codeInput = document.createElement('input');
@@ -128,32 +188,38 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
   const redeemBtn = document.createElement('button');
   redeemBtn.type = 'button';
   redeemBtn.className = 'diary-entry-dismiss supporter-redeem-btn';
-  redeemBtn.textContent = t('supporter.redeemBtn');
+  redeemBtn.textContent = t('supporter.redeemConfirm');
   redeemRow.append(codeInput, redeemBtn);
-  redeemSec.append(redeemH, redeemRow);
+  const redeemStatusEl = document.createElement('p');
+  redeemStatusEl.className = 'supporter-modal-status supporter-redeem-status';
+  redeemStatusEl.hidden = true;
+  redeemPanel.append(redeemRow, redeemStatusEl);
+  redeemWrap.append(redeemToggle, redeemPanel);
 
-  const shopLink = document.createElement('a');
-  shopLink.href = KOFI_SHOP_URL;
-  shopLink.target = '_blank';
-  shopLink.rel = 'noopener noreferrer';
-  shopLink.className = 'menu-item supporter-shop-link';
-  shopLink.textContent = t('supporter.shopLink');
+  redeemToggle.addEventListener('click', () => {
+    const open = redeemPanel.hidden;
+    redeemPanel.hidden = !open;
+    redeemToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      codeInput.focus();
+    }
+  });
 
-  const perksSec = document.createElement('section');
-  perksSec.className = 'diary-modal-section';
-  const perksH = document.createElement('h3');
-  perksH.className = 'diary-modal-section-title';
-  perksH.textContent = t('supporter.perksHeading');
-  const perksList = document.createElement('ul');
-  perksList.className = 'supporter-perks-list';
-  perksSec.append(perksH, perksList);
+  const prefsWrap = document.createElement('div');
+  prefsWrap.className = 'supporter-prefs-wrap';
+  prefsWrap.hidden = true;
 
-  const prefsSec = document.createElement('section');
-  prefsSec.className = 'diary-modal-section';
-  const prefsH = document.createElement('h3');
-  prefsH.className = 'diary-modal-section-title';
-  prefsH.textContent = t('supporter.prefsHeading');
-  prefsSec.appendChild(prefsH);
+  const prefsToggle = document.createElement('button');
+  prefsToggle.type = 'button';
+  prefsToggle.className = 'diary-entry-dismiss supporter-prefs-toggle';
+  prefsToggle.textContent = t('supporter.prefsToggle');
+  prefsToggle.setAttribute('aria-expanded', 'false');
+  prefsToggle.setAttribute('aria-controls', 'supporter-prefs-panel');
+
+  const prefsPanel = document.createElement('div');
+  prefsPanel.id = 'supporter-prefs-panel';
+  prefsPanel.className = 'supporter-prefs-panel';
+  prefsPanel.hidden = true;
 
   const themeRow = document.createElement('label');
   themeRow.className = 'menu-item menu-sound supporter-pref-row';
@@ -184,14 +250,63 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
   frameCb.type = 'checkbox';
   frameRow.append(frameCb, document.createTextNode(` ${t('supporter.frameToggle')}`));
 
-  prefsSec.append(themeRow, frameRow);
+  prefsPanel.append(themeRow, frameRow);
+  prefsWrap.append(prefsToggle, prefsPanel);
 
-  scroll.append(statusEl, balanceEl, noteEl, redeemSec, shopLink, perksSec, prefsSec);
+  prefsToggle.addEventListener('click', () => {
+    const open = prefsPanel.hidden;
+    prefsPanel.hidden = !open;
+    prefsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      scrollModalTo(prefsWrap);
+    }
+  });
 
-  function showStatus(msg: string, isError = false): void {
-    statusEl.textContent = msg;
-    statusEl.hidden = false;
-    statusEl.classList.toggle('supporter-modal-status--error', isError);
+  scroll.append(balanceEl, shopSec, redeemWrap, prefsWrap);
+
+  function showRedeemStatus(msg: string, isError = false): void {
+    redeemStatusEl.textContent = msg;
+    redeemStatusEl.hidden = false;
+    redeemStatusEl.classList.toggle('supporter-modal-status--error', isError);
+    if (redeemPanel.hidden) {
+      redeemPanel.hidden = false;
+      redeemToggle.setAttribute('aria-expanded', 'true');
+    }
+    scrollModalTo(redeemStatusEl);
+  }
+
+  function renderShopGrid(): void {
+    shopSec.replaceChildren();
+    for (const group of kofiShopGroups) {
+      const groupEl = document.createElement('section');
+      groupEl.className = 'supporter-shop-group';
+      if (group.featured) {
+        groupEl.classList.add('supporter-shop-group--featured');
+      }
+
+      const heading = document.createElement('h3');
+      heading.className = 'supporter-shop-group-title';
+      heading.textContent = t(group.titleKey);
+
+      const subtitle = document.createElement('p');
+      subtitle.className = 'supporter-shop-group-subtitle';
+      subtitle.textContent = t(group.subtitleKey);
+
+      const grid = document.createElement('div');
+      grid.className = 'supporter-shop-grid';
+      if (group.singleColumn) {
+        grid.classList.add('supporter-shop-grid--single');
+      }
+
+      for (const productId of group.productIds) {
+        const product = kofiShopProducts[productId];
+        const acquired = isKofiProductAcquired(localState, productId);
+        grid.appendChild(buildShopCard(product, acquired));
+      }
+
+      groupEl.append(heading, subtitle, grid);
+      shopSec.appendChild(groupEl);
+    }
   }
 
   function refreshUi(): void {
@@ -199,24 +314,19 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
     if (localState.legacy.supporter.purchasedEchoesTotal > 0) {
       balanceEl.innerHTML += ` · ${escHtml(t('supporter.echoPurchased', { count: String(localState.legacy.supporter.purchasedEchoesTotal) }))}`;
     }
-    perksList.replaceChildren();
-    const unlocked = localState.legacy.supporter.unlockedPerks;
-    if (unlocked.length === 0) {
-      const li = document.createElement('li');
-      li.className = 'supporter-perks-empty';
-      li.textContent = t('supporter.noPerks');
-      perksList.appendChild(li);
-    } else {
-      for (const id of unlocked) {
-        const def = supporterPerkCatalog[id];
-        const li = document.createElement('li');
-        li.textContent = def ? t(def.nameKey) : id;
-        perksList.appendChild(li);
-      }
+    renderShopGrid();
+
+    const showPrefs = hasSupporterCosmeticPrefs(localState);
+    prefsWrap.hidden = !showPrefs;
+    if (!showPrefs) {
+      prefsPanel.hidden = true;
+      prefsToggle.setAttribute('aria-expanded', 'false');
     }
-    const themeUnlocked = unlocked.some((id) => id.startsWith('theme_'));
+
+    const themeUnlocked = localState.legacy.supporter.unlockedPerks.some((id) => id.startsWith('theme_'));
+    const hasFrame = hasSupporterPerk(localState, 'frame_supporter');
     themeRow.hidden = !themeUnlocked;
-    frameRow.hidden = !hasSupporterPerk(localState, 'frame_supporter');
+    frameRow.hidden = !hasFrame;
     rebuildThemeOptions();
     const active = localState.legacy.supporter.activeTheme;
     themeSelect.value =
@@ -228,15 +338,15 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
     void (async () => {
       const code = codeInput.value.trim();
       if (!code) {
-        showStatus(t('supporter.error.empty'), true);
+        showRedeemStatus(t('supporter.error.empty'), true);
         return;
       }
       redeemBtn.disabled = true;
+      redeemStatusEl.hidden = true;
       const result = await redeemSupporterCode(code, localState, localMeta, opts.campaignId);
       redeemBtn.disabled = false;
       if (!result.ok) {
-        const key = `supporter.error.${result.error}` as const;
-        showStatus(t(key), true);
+        showRedeemStatus(t(`supporter.error.${result.error}`), true);
         return;
       }
       localState = result.state;
@@ -244,9 +354,16 @@ export function openSupporterModal(opts: OpenSupporterModalOpts): void {
       saveSupporterMeta(opts.campaignId, localMeta);
       opts.onStateChange(localState, localMeta);
       codeInput.value = '';
-      showStatus(t('supporter.redeemSuccess'));
+      showRedeemStatus(t('supporter.redeemSuccess'));
       refreshUi();
     })();
+  });
+
+  codeInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      redeemBtn.click();
+    }
   });
 
   themeSelect.addEventListener('change', () => {

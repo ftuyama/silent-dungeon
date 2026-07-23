@@ -7,13 +7,9 @@ artKey: hub
 highlight: true
 title: Cruzeiro — hub
 choices:
-  - text: "Voltar ao corredor dos ratos"
-    uiSection: "Corredor e troca"
-    next: act2/rats_choice
-    condition: { noFlag: rats_cleared }
-    preview: "Ainda há rangido e fedor a ninho."
   - text: "Ir ao mercador fantasma"
-    uiSection: "Corredor e troca"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
     next: act2/merchant/merchant_moon
     condition: { day: { gte: 2 } }
     preview: "Comércio estranho; preço em ouro ou em segredo — raramente aparece no primeiro dia."
@@ -77,7 +73,10 @@ choices:
   - text: "Ouvir proposta de Mira"
     uiSection: "Convites e ritos"
     next: act2/recruit_offer
-    condition: { noFlag: mira_recruited }
+    condition:
+      all:
+        - { noFlag: mira_recruited }
+        - { noFlag: ff_cf_act2_recruit_offer_decline }
     preview: "Uma voz na sombra oferece companhia."
   - text: "Ritual do Círculo (evento)"
     uiSection: "Convites e ritos"
@@ -94,7 +93,8 @@ choices:
     lockedHint: "Requer nível 4+ e um dia múltiplo de 5; o Círculo só cobra uma vez."
     preview: "O Círculo cobra presença; a corrupção anota."
   - text: "Acampamento da Vigília"
-    uiSection: "Fogo e patrulha"
+    uiSection: "Acampamento"
+    uiSectionIcon: camp
     next: act2/camp/vigilia_camp
     preview: "Fogo, reza e um sopro de suprimento."
   - text: "Patrulha do perímetro (explorar mapa)"
@@ -163,12 +163,14 @@ choices:
     effects:
       - { op: setFlag, key: act2_cruzeiro_day_echo_done, value: true }
       - { op: addDiary, text: "Uma voz presa ao teto: \"Já vai no dia {{day}}.\"" }
-  - text: "[↑] Subir ao último corredor — boca da masmorra"
-    uiSection: "Voltar e avançar"
+  - text: "Subir ao último corredor — boca da masmorra"
+    uiSection: "Subir"
+    uiSectionIcon: ascend
     next: act1/dungeon_mouth
     preview: "Braseiro, sino e batentes; o ar lá fora ainda ouve."
   - text: "Descer mais fundo"
-    uiSection: "Voltar e avançar"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act3/descent
     visibleWhen: { level: { gte: 4 } }
     condition:

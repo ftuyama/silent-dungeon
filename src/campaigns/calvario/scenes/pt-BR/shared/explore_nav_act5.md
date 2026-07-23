@@ -15,7 +15,8 @@ choices:
   - id: explore_leave
     text: "Voltar ao acampamento no gelo"
     next: act5/camp/frost_camp
-    uiSection: "No perímetro"
+    uiSection: "Acampamento"
+    uiSectionIcon: camp
     effects:
       - { op: clearAsciiMap }
     preview: "Recuar para o fogo e manter o stress atual."

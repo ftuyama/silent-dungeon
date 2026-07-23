@@ -10,6 +10,7 @@ choices:
         encounterId: frost_whelps
         onVictory: act5/frost_lair_approach
         onDefeat: shared/game_over
+        onFlee: act5/frost_ridgeline
 onEnter: []
 ---
 Duas **crias** rodeiam você com fome de calor vivo. Os olhos delas são buracos onde o luar congelou — e onde seu reflexo hesita um segundo a mais.

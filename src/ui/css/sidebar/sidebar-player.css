@@ -254,12 +254,6 @@
   color: var(--muted);
 }
 
-.sidebar-mission-step--done {
-  color: var(--text-section);
-  text-decoration: line-through;
-  text-decoration-color: color-mix(in srgb, var(--text-section) 45%, transparent);
-}
-
 .sidebar-mission-step--pending {
   color: var(--text-strong);
   font-weight: 600;

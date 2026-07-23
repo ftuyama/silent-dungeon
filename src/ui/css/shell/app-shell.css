@@ -271,6 +271,17 @@ button.app-edge-rail-fullscreen:disabled {
   padding: 0.5rem;
 }
 
+.menu-section-subtitle {
+  margin: 0.35rem 0 0;
+  padding: 0.35rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-section);
+  border-top: 1px dashed var(--border);
+}
+
 /** Agrupa os cartões de slot (substituídos em `syncAppChrome`); mantém o mesmo espaçamento que antes. */
 .menu-save-slots {
   display: flex;

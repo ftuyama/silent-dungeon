@@ -54,6 +54,7 @@ choices:
     condition: { all: [ { companionInParty: squire_tomas }, { class: archer } ] }
   - text: "Voltar à fogueira"
     uiSection: "Voltar"
+    uiSectionIcon: camp
     next: act6/camp/void_camp
 onEnter: []
 ---

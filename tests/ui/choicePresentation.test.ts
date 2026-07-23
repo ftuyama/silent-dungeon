@@ -249,6 +249,77 @@ describe('resolveChoicePresentation', () => {
     expect(r.toneClass).toBeNull();
     expect(r.badge).toEqual({ label: '[↑]', modifier: 'chapterUp' });
   });
+
+  it('uiSectionIcon descend → badge [↓] e tom chapter-advance sem prefixo no texto', () => {
+    const r = resolveChoicePresentation({
+      text: 'Descer os degraus rumo ao texto gravado na pedra',
+      effects: [],
+      uiSectionIcon: 'descend',
+    });
+    expect(r.bodyText).toBe('Descer os degraus rumo ao texto gravado na pedra');
+    expect(r.toneClass).toBe('choice--tone-chapter-advance');
+    expect(r.badge).toEqual({ label: '[↓]', modifier: 'chapterDown' });
+  });
+
+  it('uiSectionIcon ascend → badge [↑] sem prefixo no texto', () => {
+    const r = resolveChoicePresentation({
+      text: 'Voltar à entrada',
+      effects: [],
+      uiSectionIcon: 'ascend',
+    });
+    expect(r.badge).toEqual({ label: '[↑]', modifier: 'chapterUp' });
+    expect(r.toneClass).toBeNull();
+  });
+
+  it('uiSectionIcon descend não sobrepõe combate', () => {
+    const r = resolveChoicePresentation({
+      text: 'Descer na emboscada',
+      effects: [{ op: 'startCombat', encounterId: 'x' }],
+      uiSectionIcon: 'descend',
+    });
+    expect(r.toneClass).toBe('choice--tone-combat');
+    expect(r.badge).toEqual({ label: '[%]', modifier: 'pct' });
+  });
+
+  it('uiSectionIcon camp → badge [@] e tom camp', () => {
+    const r = resolveChoicePresentation({
+      text: 'Manusear equipamento no acampamento',
+      effects: [],
+      uiSectionIcon: 'camp',
+    });
+    expect(r.toneClass).toBe('choice--tone-camp');
+    expect(r.badge).toEqual({ label: '[@]', modifier: 'at' });
+  });
+
+  it('uiSectionIcon shop → badge [$] e tom shop', () => {
+    const r = resolveChoicePresentation({
+      text: 'Comprar adaga de ferro (−3 ouro)',
+      effects: [],
+      uiSectionIcon: 'shop',
+    });
+    expect(r.toneClass).toBe('choice--tone-shop');
+    expect(r.badge).toEqual({ label: '[$]', modifier: 'coin' });
+  });
+
+  it('uiSectionIcon rest → badge [~] e tom rest', () => {
+    const r = resolveChoicePresentation({
+      text: 'Descansar no acampamento',
+      effects: [],
+      uiSectionIcon: 'rest',
+    });
+    expect(r.toneClass).toBe('choice--tone-rest');
+    expect(r.badge).toEqual({ label: '[~]', modifier: 'tilde' });
+  });
+
+  it('uiSectionIcon talk → badge [?] sem tom', () => {
+    const r = resolveChoicePresentation({
+      text: 'Recusar educadamente',
+      effects: [],
+      uiSectionIcon: 'talk',
+    });
+    expect(r.toneClass).toBeNull();
+    expect(r.badge).toEqual({ label: '[?]', modifier: 'query' });
+  });
 });
 
 describe('inferChapterGateFromEffects', () => {

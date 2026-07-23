@@ -3,7 +3,7 @@ export type SupporterGrant =
   | { type: 'perk'; id: string }
   | { type: 'echo'; amount: number };
 
-/** Bundles vendidos no Ko-fi Shop (slug → perks/echo). */
+/** Bundles vendidos no Ko-fi Shop (slug → perks/echo; um .txt estático por produto). */
 export const SUPPORTER_BUNDLES: Record<string, SupporterGrant[]> = {
   bundle_cosmetic: [
     { type: 'perk', id: 'theme_ember' },

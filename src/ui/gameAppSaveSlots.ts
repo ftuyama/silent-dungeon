@@ -45,6 +45,15 @@ export function getSlotPreview(campaignId: string, slot: number): SlotPreview {
   }
 }
 
+/** Menor slot vazio em `1..limit`, ou `null` se nenhum estiver livre. */
+export function findFirstEmptySaveSlot(campaignId: string, limit: number): number | null {
+  const max = Math.min(limit, SAVE_SLOT_COUNT_DEV);
+  for (let slot = 1; slot <= max; slot++) {
+    if (getSlotPreview(campaignId, slot).kind === 'empty') return slot;
+  }
+  return null;
+}
+
 function previewTitle(slot: number, p: SlotPreview): string {
   switch (p.kind) {
     case 'empty':
@@ -159,11 +168,12 @@ export function saveStateToSlot(
   slot: number,
   state: GameState,
   devMode: boolean
-): void {
-  if (slot < 1 || slot > saveSlotLimit(devMode, state)) return;
+): boolean {
+  if (slot < 1 || slot > saveSlotLimit(devMode, state)) return false;
   try {
     localStorage.setItem(slotStorageKey(campaignId, slot), serializeState(state));
+    return true;
   } catch {
-    /* noop */
+    return false;
   }
 }

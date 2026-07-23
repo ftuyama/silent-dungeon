@@ -7,6 +7,8 @@ artKey: magma_throat
 highlight: true
 choices:
   - text: "Descer pela crosta rachada"
+    uiSection: "Descer"
+    uiSectionIcon: descend
     next: act8/descent_crust
     preview: "O calor sobe. Sem o amuleto das provas, cada passo cobra carne."
 onEnter:

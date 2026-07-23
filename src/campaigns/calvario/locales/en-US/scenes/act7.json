@@ -20,12 +20,12 @@
       {
         "text": "Descend into the magma deeps — refuse the incomplete ending",
         "preview": "The crucible still waits — the sky is not victory.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Descend into the magma deeps — refuse the incomplete ending",
         "preview": "Descend now, before closing the diary under a lying sky.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Offer faith as coin — buy silence from the sky for an instant",
@@ -213,22 +213,22 @@
       {
         "text": "Descend into the magma deeps — the true floor",
         "preview": "Abandon the incomplete ending and return to the Crucible.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Descend into the magma deeps — first throat",
         "preview": "The axis still descends; the ash sky is not the floor.",
-        "uiSection": "Axis"
+        "uiSection": "Descend"
       },
       {
         "text": "Return to Graywind Heights",
         "preview": "Return to the ice — the axis links surface and deeps.",
-        "uiSection": "Axis"
+        "uiSection": "Ascend"
       },
       {
         "text": "Climb toward Graywind Heights — first snow on the ice",
         "preview": "Open the ice path if you skipped the surface.",
-        "uiSection": "Axis"
+        "uiSection": "Ascend"
       }
     ]
   },
