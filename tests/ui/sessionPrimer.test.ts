@@ -3,17 +3,20 @@ import type { LoadedScene } from '../../src/engine/core/index.ts';
 import { resolveContextPrimerId } from '../../src/ui/story/sessionPrimer.ts';
 
 function sceneStub(partial: Partial<LoadedScene['frontmatter']> & { id: string }): LoadedScene {
+  const { id, ...rest } = partial;
   return {
-    id: partial.id,
-    body: '',
+    id,
+    bodyRaw: '',
     frontmatter: {
-      id: partial.id,
+      id,
       chapter: 2,
+      type: 'story',
       choices: [],
       onEnter: [],
-      ...partial,
-    },
-  } as LoadedScene;
+      repeatOnEnter: [],
+      ...rest,
+    } satisfies LoadedScene['frontmatter'],
+  };
 }
 
 const noneDismissed = { hub_loop: false, camp: false, exploration: false };
