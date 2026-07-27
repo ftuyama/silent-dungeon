@@ -80,7 +80,8 @@ choices:
     next: act6/camp/void_camp
     preview: "Um sopro de suprimento e silêncio partido."
   - text: "Negociar com o mercador da banca esquecida"
-    uiSection: "Refúgio e troca"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
     next: act6/fractured_merchant
     preview: "Remédios e preços em ouro ou em promessa."
   - text: "Buscar o Ferreiro Dimensional"

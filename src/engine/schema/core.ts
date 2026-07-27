@@ -228,6 +228,7 @@ export const EffectSchema: z.ZodType<Effect> = z.discriminatedUnion('op', [
   z.object({ op: z.literal('settleRun'), outcome: z.enum(['defeat', 'victory']) }),
   z.object({ op: z.literal('purchaseLegacyUpgrade'), upgradeId: z.string() }),
   z.object({ op: z.literal('openEchoShop') }),
+  z.object({ op: z.literal('openSupporterShop') }),
   z.object({ op: z.literal('resetRun') }),
 ]);
 
@@ -286,6 +287,7 @@ export type Effect =
   | { op: 'settleRun'; outcome: 'defeat' | 'victory' }
   | { op: 'purchaseLegacyUpgrade'; upgradeId: string }
   | { op: 'openEchoShop' }
+  | { op: 'openSupporterShop' }
   | { op: 'resetRun' };
 
 /** Som ao confirmar escolha (`commitSfx` no YAML). Alinhar a `GameAudio` / UI. */

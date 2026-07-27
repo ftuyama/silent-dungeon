@@ -1340,7 +1340,10 @@ export class GameApp {
       return;
     }
     const wantsEchoShop = choice.effects.some((e) => e.op === 'openEchoShop');
-    const engineEffects = choice.effects.filter((e) => e.op !== 'openEchoShop');
+    const wantsSupporterShop = choice.effects.some((e) => e.op === 'openSupporterShop');
+    const engineEffects = choice.effects.filter(
+      (e) => e.op !== 'openEchoShop' && e.op !== 'openSupporterShop'
+    );
     const prevScene = this.state.sceneId;
     const prevChapter = this.state.chapter;
     const prevSupply = this.state.resources.supply;
@@ -1388,6 +1391,9 @@ export class GameApp {
     if (wantsEchoShop) {
       this.openLegacyModal(this.isSettlementScene());
     }
+    if (wantsSupporterShop) {
+      this.openSupporterShopModal();
+    }
   }
 
   private isSettlementScene(): boolean {
@@ -1397,6 +1403,22 @@ export class GameApp {
       sid === 'endings/epilogue_depths' ||
       sid === 'endings/epilogue_true_depths'
     );
+  }
+
+  private openSupporterShopModal(): void {
+    this.unlockAudio();
+    openSupporterModal({
+      campaignId: this.campaignId,
+      state: this.state,
+      playUiClick: () => this.audio.playUiClick(),
+      onStateChange: (s, meta) => {
+        this.state = s;
+        saveSupporterMeta(this.campaignId, meta);
+        this.syncVisualTheme();
+        this.persistSupporterMeta();
+        this.render();
+      },
+    });
   }
 
   private openLegacyModal(showRestart = false): void {

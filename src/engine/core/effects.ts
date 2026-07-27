@@ -767,6 +767,7 @@ function applyOne(
       return next;
     }
     case 'openEchoShop':
+    case 'openSupporterShop':
       return state;
     case 'resetRun': {
       const catalog = legacyUpgradeCatalogFromData(ctx.data);

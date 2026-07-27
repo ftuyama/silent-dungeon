@@ -9,6 +9,9 @@ choices:
   - text: "Loja de Ecos"
     effects:
       - { op: openEchoShop }
+  - text: "Loja do Apoiador"
+    effects:
+      - { op: openSupporterShop }
   - text: "Recomeçar"
     effects:
       - { op: resetRun }

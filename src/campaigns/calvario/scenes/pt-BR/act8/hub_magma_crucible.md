@@ -77,7 +77,8 @@ choices:
     next: act8/camp/magma_camp
     preview: "Descanso curto; o calor não dorme de verdade."
   - text: "Negociar com o mercador de brasas"
-    uiSection: "Refúgio e troca"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
     next: act8/magma_merchant
     condition: { flag: act8_merchant_found }
     showWhenLocked: true

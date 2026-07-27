@@ -20,7 +20,8 @@ choices:
     condition: { noFlag: throne_acted_observe }
     preview: "Informação e risco de ser visto demais."
   - text: "Negociar com o mercador à sombra das correntes"
-    uiSection: "Troca"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
     next: act4/late_merchant
     preview: "Ouro, itens e silêncio em frascos."
   - text: "Inspeção arcana — ler runas sem ceder ao trono"

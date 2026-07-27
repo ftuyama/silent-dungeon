@@ -65,7 +65,8 @@ choices:
     next: act5/camp/frost_camp
     preview: "Descanso, suprimento e conversa ao fogo."
   - text: "Mercador de tenda azul-trovão"
-    uiSection: "Fogo e troca"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
     next: act5/frost_merchant
     preview: "Troca de ouro e itens; preço do frio."
   - text: "Montanhas de neve — rumor de um monge na gruta"
