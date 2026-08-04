@@ -157,6 +157,15 @@
     "frost_cultist": {
       "name": "Cultista da Geada"
     },
+    "contrawind_cultist": {
+      "name": "Cultista do Contravento",
+      "abilities": {
+        "contrawind_pressure": {
+          "name": "Pressão do Contravento",
+          "linePt": "O vento muda de lado — a pressão procura o medo atrás dos seus olhos."
+        }
+      }
+    },
     "stone_guard": {
       "name": "Guardião de Pedra"
     },

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   beginEncounter,
+  executePlayerTurn,
   fleeCombat,
   fleeDifficultyTn,
   finishCombat,
@@ -133,6 +134,114 @@ describe('finishCombat XP', () => {
     expect(after.sceneId).toBe('won');
     expect(after.xp).toBe(22);
     expect(after.lastCombatXpGain).toBe(22);
+  });
+});
+
+describe('universal combat buffs', () => {
+  it('affects leader strength and critical chance without changing a companion', () => {
+    const data = combatTestData();
+    const enc: Encounter = { combatType: 'battle', id: 'x', enemies: ['dummy'] };
+    let state = createInitialState(testCampaign, 17);
+    const lead = { ...createPlayerCharacter('Líder', 'mage'), str: 6, critRatio: 0, mana: 12 };
+    const companion = { ...createPlayerCharacter('Companheira', 'cleric'), str: 6, critRatio: 0 };
+    state = beginEncounter(
+      { ...state, party: [lead, companion] },
+      enc,
+      data,
+      { returnScene: 'hub' }
+    );
+
+    const buffed = {
+      ...state,
+      combat: {
+        ...state.combat!,
+        buffStrength: 2,
+        buffCritRatio: 1,
+      },
+    };
+    const afterAttack = executePlayerTurn(buffed, 'defensive', data, false, false);
+    const attacks = afterAttack.combat!.log.filter((entry) => entry.kind === 'attack');
+    const leaderAttack = attacks.find((entry) => entry.actor === 'Líder');
+    const companionAttack = attacks.find((entry) => entry.actor === 'Companheira');
+    const leaderDamage = afterAttack.combat!.log.find(
+      (entry) => entry.kind === 'damage' && entry.target === 'Boneco'
+    );
+
+    expect(leaderAttack?.modifier).toBe(0);
+    expect(companionAttack?.modifier).toBe(-1);
+    expect(leaderDamage?.damageKind).toBe('crit');
+    expect(afterAttack.party[0]?.str).toBe(6);
+    expect(afterAttack.party[0]?.critRatio).toBe(0);
+    expect(afterAttack.party[1]?.str).toBe(6);
+    expect(afterAttack.party[1]?.critRatio).toBe(0);
+  });
+
+  it('applies mind only to the leader focus stance', () => {
+    const data = combatTestData();
+    const enc: Encounter = { combatType: 'battle', id: 'x', enemies: ['dummy'] };
+    let state = createInitialState(testCampaign, 19);
+    const lead = {
+      ...createPlayerCharacter('Líder', 'mage'),
+      mind: 6,
+      weaponId: null,
+      armorId: null,
+      relicId: null,
+    };
+    const companion = {
+      ...createPlayerCharacter('Companheira', 'cleric'),
+      mind: 6,
+      weaponId: null,
+      armorId: null,
+      relicId: null,
+    };
+    state = beginEncounter(
+      { ...state, party: [lead, companion] },
+      enc,
+      data,
+      { returnScene: 'hub' }
+    );
+
+    const afterAttack = executePlayerTurn(
+      { ...state, combat: { ...state.combat!, buffMind: 2 } },
+      'focus',
+      data,
+      false,
+      false
+    );
+    const attacks = afterAttack.combat!.log.filter((entry) => entry.kind === 'attack');
+
+    expect(attacks.find((entry) => entry.actor === 'Líder')?.modifier).toBe(2);
+    expect(attacks.find((entry) => entry.actor === 'Companheira')?.modifier).toBe(1);
+  });
+
+  it('starts the encounter after combat with all universal buffs reset', () => {
+    const data = combatTestData();
+    const enc: Encounter = { combatType: 'battle', id: 'x', enemies: ['dummy'] };
+    let state = createInitialState(testCampaign, 77);
+    state = beginEncounter(
+      { ...state, party: [createPlayerCharacter('Hero', 'knight')] },
+      enc,
+      data,
+      { returnScene: 'hub', onVictory: 'won' }
+    );
+    const finished = finishCombat(
+      state,
+      {
+        ...state.combat!,
+        buffStrength: 2,
+        buffMind: 2,
+        buffCritRatio: 0.1,
+        enemies: state.combat!.enemies.map((enemy) => ({ ...enemy, hp: 0 })),
+        phase: 'ended',
+      },
+      true,
+      data
+    );
+    const next = beginEncounter(finished, enc, data, { returnScene: 'hub' });
+
+    expect(next.combat?.buffStrength).toBe(0);
+    expect(next.combat?.buffMind).toBe(0);
+    expect(next.combat?.buffCritRatio).toBe(0);
   });
 });
 

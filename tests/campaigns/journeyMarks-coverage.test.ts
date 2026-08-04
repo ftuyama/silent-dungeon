@@ -60,4 +60,12 @@ describe('journeyMarks coverage (calvario)', () => {
       expect(markBadgeIconSvg(id)).not.toEqual(icons.tier);
     }
   });
+
+  it('registra o aluno do Contravento com badge de grimório', () => {
+    expect(journeyMarks.contrawind_student).toMatchObject({
+      name: expect.any(String),
+      description: expect.any(String),
+    });
+    expect(markBadgeIconSvg('contrawind_student')).toEqual(icons.spellbook);
+  });
 });

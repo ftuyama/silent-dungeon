@@ -107,6 +107,18 @@ export function logBuffArmor(name: string): string {
   return t('combatLog.buffArmor', { name });
 }
 
+export function logBuffStrength(name: string): string {
+  return t('combatLog.buffStrength', { name });
+}
+
+export function logBuffMind(name: string): string {
+  return t('combatLog.buffMind', { name });
+}
+
+export function logBuffCritRatio(name: string): string {
+  return t('combatLog.buffCritRatio', { name });
+}
+
 export function logEnemyAppears(name: string): string {
   return t('combatLog.enemyAppears', { name });
 }

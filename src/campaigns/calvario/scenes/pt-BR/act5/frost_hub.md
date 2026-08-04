@@ -65,6 +65,40 @@ choices:
         - { noFlag: tomas_rescue_missed }
         - { day: { gte: 16 } }
     preview: "Tarde demais: poste, corda vazia, eco."
+  - text: "O Mago do Contravento — quatro vozes contra a neve"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/intro
+    visibleWhen:
+      all:
+        - { noFlag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    condition:
+      all:
+        - { level: { gte: 18 } }
+        - { noFlag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    showWhenLocked: true
+    lockedHint: "Requer nível 18+ para seguir as pegadas contra o vento."
+    preview: "Uma capela soterrada, quatro cultistas e um mago cercado."
+  - text: "Voltar à capela — a horda caiu, Edras ainda espera"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/horde_victory
+    visibleWhen:
+      all:
+        - { flag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    preview: "O cerco terminou. Falta responder à medida do mago."
+  - text: "Abrir o grimório com Edras do Contravento"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
+    next: act5/frost_contrawind/merchant
+    visibleWhen: { flag: contrawind_merchant_unlocked }
+    preview: "Três lições universais por doze moedas cada — e conversa depois do estoque."
+  - text: "Falar com Edras depois da recusa"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/rejected
+    visibleWhen: { flag: contrawind_parley_failed }
+    preview: "A capela permanece; a medida não será repetida."
   - text: "Viver o acampamento no gelo"
     uiSection: "Acampamento"
     uiSectionIcon: camp

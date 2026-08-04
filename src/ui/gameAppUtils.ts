@@ -75,6 +75,9 @@ export function spellEmoji(spellId: string, spellDef: SpellDef): string {
     heal_self: '💚',
     buff_attack_roll: '⚔️',
     buff_armor_class: '🛡️',
+    buff_strength: '⬆️',
+    buff_mind: '⬆️',
+    buff_crit_ratio: '⬆️',
     targeted_crit_attack: '🎯',
     damage_all_enemies: '🏹',
   };
@@ -143,6 +146,7 @@ export function markBadgeIconSvg(markId: string): string {
     mira_frost_pact: 'person',
     mira_void_endtalk: 'person',
     monk_inner_peace: 'faith',
+    contrawind_student: 'spellbook',
     morvayn_slain: 'weapon',
     pact_bound: 'corruption',
     soul_scarred_by_seal: 'corruption',
@@ -195,6 +199,15 @@ export function spellSidebarMechanicsLine(sp: SpellDef): string {
   }
   if (sp.spellKind === 'buff_armor_class') {
     return t('sidebar.spellMechanicsBuffArmor');
+  }
+  if (sp.spellKind === 'buff_strength') {
+    return t('sidebar.spellMechanicsBuffStrength');
+  }
+  if (sp.spellKind === 'buff_mind') {
+    return t('sidebar.spellMechanicsBuffMind');
+  }
+  if (sp.spellKind === 'buff_crit_ratio') {
+    return t('sidebar.spellMechanicsBuffCritRatio');
   }
   return t('sidebar.spellMechanicsBuffArmor');
 }

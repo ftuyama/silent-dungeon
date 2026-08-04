@@ -27,6 +27,7 @@ export function evaluateCondition(cond: Condition | undefined, state: GameState)
   if ('noLeadStoryPassive' in cond) return !state.leadStoryPassives.includes(cond.noLeadStoryPassive);
   if ('hasItem' in cond) return leadOwnsItem(state, cond.hasItem);
   if ('noItem' in cond) return !leadOwnsItem(state, cond.noItem);
+  if ('noKnownSpell' in cond) return !state.knownSpells.includes(cond.noKnownSpell);
   if ('resource' in cond) {
     const r = cond.resource;
     if (r.supply) {

@@ -247,7 +247,10 @@ function finishSpellTurn(
   party: Character[],
   enemies: CombatState['enemies'],
   log: CombatState['log'],
-  combatBuffs: Pick<CombatState, 'buffAttackRoll' | 'buffArmorClass'>,
+  combatBuffs: Pick<
+    CombatState,
+    'buffAttackRoll' | 'buffArmorClass' | 'buffStrength' | 'buffMind' | 'buffCritRatio'
+  >,
   data: GameData,
   bus?: EventBus
 ): GameState {
@@ -317,9 +320,15 @@ export function playerSpellOnEnemy(
     spellId: pendingSpellId,
   });
 
-  const combatBuffs: Pick<CombatState, 'buffAttackRoll' | 'buffArmorClass'> = {
+  const combatBuffs: Pick<
+    CombatState,
+    'buffAttackRoll' | 'buffArmorClass' | 'buffStrength' | 'buffMind' | 'buffCritRatio'
+  > = {
     buffAttackRoll: c.buffAttackRoll ?? 0,
     buffArmorClass: c.buffArmorClass ?? 0,
+    buffStrength: c.buffStrength ?? 0,
+    buffMind: c.buffMind ?? 0,
+    buffCritRatio: c.buffCritRatio ?? 0,
   };
 
   const resolved = applyMagicDamageToEnemy(
@@ -414,9 +423,15 @@ export function playerSpellOnAlly(
     return p;
   });
 
-  const combatBuffs: Pick<CombatState, 'buffAttackRoll' | 'buffArmorClass'> = {
+  const combatBuffs: Pick<
+    CombatState,
+    'buffAttackRoll' | 'buffArmorClass' | 'buffStrength' | 'buffMind' | 'buffCritRatio'
+  > = {
     buffAttackRoll: c.buffAttackRoll ?? 0,
     buffArmorClass: c.buffArmorClass ?? 0,
+    buffStrength: c.buffStrength ?? 0,
+    buffMind: c.buffMind ?? 0,
+    buffCritRatio: c.buffCritRatio ?? 0,
   };
 
   return finishSpellTurn(state, c, party, c.enemies, log, combatBuffs, data, bus);
@@ -450,9 +465,15 @@ export function castSpell(
   });
 
   let newEnemies = [...c.enemies];
-  let combatBuffs: Pick<CombatState, 'buffAttackRoll' | 'buffArmorClass'> = {
+  let combatBuffs: Pick<
+    CombatState,
+    'buffAttackRoll' | 'buffArmorClass' | 'buffStrength' | 'buffMind' | 'buffCritRatio'
+  > = {
     buffAttackRoll: c.buffAttackRoll ?? 0,
     buffArmorClass: c.buffArmorClass ?? 0,
+    buffStrength: c.buffStrength ?? 0,
+    buffMind: c.buffMind ?? 0,
+    buffCritRatio: c.buffCritRatio ?? 0,
   };
 
   if (sp.spellKind === 'damage_all_enemies') {
@@ -468,11 +489,35 @@ export function castSpell(
       actor: lead.name,
       spellId,
     });
-  } else {
+  } else if (sp.spellKind === 'buff_armor_class') {
     combatBuffs = { ...combatBuffs, buffArmorClass: 1 };
     log.push({
       kind: 'info',
       message: combatLog.logBuffArmor(lead.name),
+      actor: lead.name,
+      spellId,
+    });
+  } else if (sp.spellKind === 'buff_strength') {
+    combatBuffs = { ...combatBuffs, buffStrength: 2 };
+    log.push({
+      kind: 'info',
+      message: combatLog.logBuffStrength(lead.name),
+      actor: lead.name,
+      spellId,
+    });
+  } else if (sp.spellKind === 'buff_mind') {
+    combatBuffs = { ...combatBuffs, buffMind: 2 };
+    log.push({
+      kind: 'info',
+      message: combatLog.logBuffMind(lead.name),
+      actor: lead.name,
+      spellId,
+    });
+  } else if (sp.spellKind === 'buff_crit_ratio') {
+    combatBuffs = { ...combatBuffs, buffCritRatio: 0.1 };
+    log.push({
+      kind: 'info',
+      message: combatLog.logBuffCritRatio(lead.name),
       actor: lead.name,
       spellId,
     });

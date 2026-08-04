@@ -1171,5 +1171,101 @@
         "line": "\"…Count,\" says Kael at last, stepping back half a pace. \"It wasn't victory. It was measure. When the number closes, iron speaks.\""
       }
     }
+  },
+  "act5_edras_contrawind": {
+    "name": "Edras of the Contrawind",
+    "nodes": {
+      "root": {
+        "line": "Edras's circle hisses beneath the snow. \"Show me that your power knows how to stop before taking what it protects.\"",
+        "choices": [
+          {
+            "text": "Plant your feet and hold a gust between your hands without letting it touch the circle."
+          },
+          {
+            "text": "Explain that strength without limits destroys what it promised to guard."
+          },
+          {
+            "text": "Step into the wind and trust that you will know how to leave before it closes."
+          },
+          {
+            "text": "Press your palm against the circle's edge and pay for passage with blood."
+          }
+        ]
+      },
+      "stage2_clear": {
+        "line": "Edras relaxes one finger, but the wind still cuts your face. \"Knowledge is not possession. Tell me why I should open my books.\"",
+        "choices": [
+          {
+            "text": "Lower your weapon and show that your strength can remain unused before an answer."
+          },
+          {
+            "text": "Say that learning creates an obligation; it does not turn the lesson into property."
+          },
+          {
+            "text": "Give Edras the name of the spell you most fear desiring."
+          },
+          {
+            "text": "Let the frozen seal burn your wrist and accept knowledge as a debt."
+          }
+        ]
+      },
+      "stage2_frayed": {
+        "line": "Your first answer unravels into white air. \"One fracture,\" says Edras; the circle tightens around your ankles.",
+        "choices": [
+          {
+            "text": "Set your shoulders and hold all strength still while Edras measures your guard."
+          },
+          {
+            "text": "Correct the answer: knowledge received creates duty, never ownership."
+          },
+          {
+            "text": "Reveal the spell you fear desiring and let Edras judge the risk."
+          },
+          {
+            "text": "Press your wrist to the seal and pay the debt before knowing the lesson."
+          }
+        ]
+      },
+      "stage3_clear": {
+        "line": "The snowflakes stop between you, caught in the contrawind. \"Every lesson changes the one who carries it. Show me that you accept the mark.\"",
+        "choices": [
+          {
+            "text": "Take the gust head-on and release it without striking back."
+          },
+          {
+            "text": "Name the change the lesson will make in you and accept its price."
+          },
+          {
+            "text": "Breathe in the circle's wind and accept that it will choose where to leave its mark."
+          },
+          {
+            "text": "Let the seal cut your skin and carry the scar as part of the lesson."
+          }
+        ]
+      },
+      "stage3_frayed": {
+        "line": "The wind finds the fracture and tears warmth from your chest. \"Final measure,\" says Edras. \"Control, understanding, or risk; choose without lying.\"",
+        "choices": [
+          {
+            "text": "Hold the gust in your trembling arms and release it away from the circle."
+          },
+          {
+            "text": "State precisely how the lesson will change you and what boundary you will not cross."
+          },
+          {
+            "text": "Open your guard to the contrawind and accept whatever mark comes."
+          },
+          {
+            "text": "Offer your palm to the seal and let the pain confirm your answer."
+          }
+        ]
+      },
+      "accepted": {
+        "line": "Edras closes his hand, and the wind falls like a sheathed blade. \"You can learn without calling the lesson yours.\""
+      },
+      "rejected": {
+        "line": "Edras cuts the air with two fingers; the circle closes and casts you into the snow. \"Your power still mistakes hunger for right.\""
+      }
+    }
   }
 }

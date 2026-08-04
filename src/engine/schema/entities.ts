@@ -270,6 +270,9 @@ export const SpellDefSchema = z.object({
     'heal_self',
     'buff_attack_roll',
     'buff_armor_class',
+    'buff_strength',
+    'buff_mind',
+    'buff_crit_ratio',
     'targeted_crit_attack',
     'damage_all_enemies',
   ]),
@@ -396,6 +399,12 @@ export const CombatStateSchema = z.object({
   buffAttackRoll: z.number().int().min(0).default(0),
   /** Bónus de magia do líder: somado à CA vs inimigos (resto do combate). */
   buffArmorClass: z.number().int().min(0).default(0),
+  /** Bónus de magia do líder: somado à STR apenas durante este combate. */
+  buffStrength: z.number().int().min(0).default(0),
+  /** Bónus de magia do líder: somado à MEN apenas durante este combate. */
+  buffMind: z.number().int().min(0).default(0),
+  /** Bónus de magia do líder: somado à chance de crítico passivo neste combate. */
+  buffCritRatio: z.number().min(0).max(1).default(0),
   /** Bónus de twist de boss: somado à CA dos inimigos vs ataques físicos do grupo (resto do combate). */
   enemyBuffArmorClass: z.number().int().min(0).default(0),
   /** Bónus de twist de boss: somado ao ataque de cada inimigo (resto do combate). */

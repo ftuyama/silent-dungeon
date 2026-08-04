@@ -73,6 +73,9 @@ export function getCharacterArmorClass(data: GameData, c: Character, state?: Gam
 
 export function getTotalMind(data: GameData, c: Character, state?: GameState): number {
   let mind = state ? effectiveLeadAttr(state, c, 'mind') : c.mind;
+  if (state?.combat && state.party[0]?.id === c.id) {
+    mind += state.combat.buffMind ?? 0;
+  }
   for (const slot of [c.weaponId, c.armorId, c.relicId] as const) {
     if (slot && data.items[slot]) {
       mind += data.items[slot]!.bonusMind;

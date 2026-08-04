@@ -113,7 +113,13 @@ function mergeFx(
 export function isBuffInfoEntry(e: CombatLogEntry, data: GameData): boolean {
   if (e.kind !== 'info' || !e.spellId) return false;
   const sp = data.spells[e.spellId];
-  return sp?.spellKind === 'buff_attack_roll' || sp?.spellKind === 'buff_armor_class';
+  return (
+    sp?.spellKind === 'buff_attack_roll' ||
+    sp?.spellKind === 'buff_armor_class' ||
+    sp?.spellKind === 'buff_strength' ||
+    sp?.spellKind === 'buff_mind' ||
+    sp?.spellKind === 'buff_crit_ratio'
+  );
 }
 
 export function logSliceHasBuffCast(entries: CombatLogEntry[], data: GameData): boolean {

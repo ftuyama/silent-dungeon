@@ -200,6 +200,93 @@ describe('dialogue combat', () => {
     expect(leaves.length).toBe(2);
   });
 
+  it('calvario Edras dialogue allows one failed roll but rejects the second', () => {
+    const def = dialogueEnemies.act5_edras_contrawind;
+    DialogueEnemyDefSchema.parse(def);
+    expect(def.tensionMax).toBe(18);
+
+    const terminals = Object.entries(def.graph.nodes).filter(([, node]) => node.terminal);
+    expect(terminals.map(([id]) => id)).toEqual(['accepted', 'rejected']);
+    expect(terminals.map(([, node]) => node.terminal)).toEqual(['victory', 'defeat']);
+
+    for (const nodeId of [
+      'root',
+      'stage2_clear',
+      'stage2_frayed',
+      'stage3_clear',
+      'stage3_frayed',
+    ]) {
+      const choices = def.graph.nodes[nodeId]?.choices ?? [];
+      expect(
+        choices.map((choice) =>
+          choice.resolution.kind === 'skill'
+            ? `${choice.resolution.kind}:${choice.resolution.attr}`
+            : choice.resolution.kind
+        ),
+        nodeId
+      ).toEqual(['skill:str', 'skill:mind', 'luck', 'fixed']);
+
+      for (const choice of choices) {
+        if (choice.resolution.kind === 'fixed') {
+          expect(choice.effects, `${nodeId}:fixed`).toEqual({
+            enemyHpDelta: -3,
+            playerHpLossPercent: 5,
+          });
+          continue;
+        }
+        expect(choice.resolution.tn, `${nodeId}:${choice.resolution.kind}`).toBe(10);
+        expect(choice.effectsOnSuccess, `${nodeId}:success`).toEqual({ enemyHpDelta: -4 });
+        expect(choice.effectsOnFailure, `${nodeId}:failure`).toEqual({
+          enemyHpDelta: 3,
+          playerHpLossPercent: 5,
+        });
+      }
+    }
+
+    const failedTargets = (nodeId: string) =>
+      (def.graph.nodes[nodeId]?.choices ?? [])
+        .filter((choice) => choice.resolution.kind !== 'fixed')
+        .map((choice) =>
+          choice.resolution.kind === 'fixed' ? '' : choice.resolution.failNodeId
+        );
+    const coherentTargets = (nodeId: string) =>
+      (def.graph.nodes[nodeId]?.choices ?? []).map((choice) =>
+        choice.resolution.kind === 'fixed'
+          ? choice.resolution.nextNodeId
+          : choice.resolution.successNodeId
+      );
+
+    expect(failedTargets('root')).toEqual([
+      'stage2_frayed',
+      'stage2_frayed',
+      'stage2_frayed',
+    ]);
+    expect(failedTargets('stage2_clear')).toEqual([
+      'stage3_frayed',
+      'stage3_frayed',
+      'stage3_frayed',
+    ]);
+    expect(failedTargets('stage2_frayed')).toEqual(['rejected', 'rejected', 'rejected']);
+    expect(failedTargets('stage3_clear')).toEqual([
+      'stage3_frayed',
+      'stage3_frayed',
+      'stage3_frayed',
+    ]);
+    expect(failedTargets('stage3_frayed')).toEqual(['rejected', 'rejected', 'rejected']);
+    expect(coherentTargets('stage3_clear')).toEqual([
+      'accepted',
+      'accepted',
+      'accepted',
+      'accepted',
+    ]);
+    expect(coherentTargets('stage3_frayed')).toEqual([
+      'accepted',
+      'accepted',
+      'accepted',
+      'accepted',
+    ]);
+  });
+
   it('calvario high-priority dialogue enemies parse', () => {
     for (const id of [
       'act3_cult_negotiate_verbal',

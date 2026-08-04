@@ -235,6 +235,11 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
     description:
       'Na neve acima da tempestade, um monge sem rosto deixou-te um silêncio que não pede nome — encerramento, não promessa; o peito aprendeu a respirar sem truque.',
   },
+  contrawind_student: {
+    name: 'Aluno do Contravento',
+    description:
+      'Edras abriu o grimório depois de medir suas intenções; o vento já não sopra só contra você — também corrige sua postura.',
+  },
   morvayn_slain: {
     name: 'Morvayn findado',
     description:

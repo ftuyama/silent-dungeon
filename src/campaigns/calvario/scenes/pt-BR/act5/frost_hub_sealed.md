@@ -59,6 +59,40 @@ choices:
         - { noFlag: tomas_rescue_missed }
         - { day: { gte: 16 } }
     preview: "Tarde demais: poste, corda vazia, eco."
+  - text: "O Mago do Contravento — quatro vozes além do selo"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/intro
+    visibleWhen:
+      all:
+        - { noFlag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    condition:
+      all:
+        - { level: { gte: 18 } }
+        - { noFlag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    showWhenLocked: true
+    lockedHint: "Requer nível 18+ para seguir as pegadas contra o vento."
+    preview: "Uma capela soterrada, quatro cultistas e um mago fora da costura do selo."
+  - text: "Voltar à capela — o selo não encerrou a conversa"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/horde_victory
+    visibleWhen:
+      all:
+        - { flag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    preview: "A horda caiu. Edras quer uma resposta que a fé gasta não pode dar."
+  - text: "Abrir o grimório com Edras do Contravento"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
+    next: act5/frost_contrawind/merchant
+    visibleWhen: { flag: contrawind_merchant_unlocked }
+    preview: "Três lições universais por doze moedas cada — fórmulas que não tocam o selo."
+  - text: "Falar com Edras depois da recusa"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/rejected
+    visibleWhen: { flag: contrawind_parley_failed }
+    preview: "A capela permanece; a fé gasta não abre de novo o grimório."
   - text: "Viver o acampamento no gelo"
     uiSection: "Acampamento"
     uiSectionIcon: camp

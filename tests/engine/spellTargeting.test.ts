@@ -11,6 +11,7 @@ import { initialKnownSpellIds } from '../../src/engine/progression/index.ts';
 import type { EnemyDef, Encounter } from '../../src/engine/schema/index.ts';
 import { createTestData, testCampaign } from '../helpers/engineTestData.ts';
 import { spells as calvarioSpells } from '../../src/campaigns/calvario/data/spells.ts';
+import { spellEmoji } from '../../src/ui/gameAppUtils.ts';
 
 const dummyA: EnemyDef = {
   id: 'dummy_a',
@@ -55,7 +56,105 @@ function dualEnemyCombat(
   return { state, data };
 }
 
+function withUniversalBuffSpells<T extends ReturnType<typeof dualEnemyCombat>>(combat: T): T {
+  combat.data.spells = {
+    ...combat.data.spells,
+    test_strength: {
+      id: 'test_strength',
+      name: 'Força de Teste',
+      manaCost: 3,
+      minLevel: 1,
+      classId: 'any',
+      spellKind: 'buff_strength',
+      dice: 1,
+      base: 0,
+    },
+    test_mind: {
+      id: 'test_mind',
+      name: 'Mente de Teste',
+      manaCost: 3,
+      minLevel: 1,
+      classId: 'any',
+      spellKind: 'buff_mind',
+      dice: 1,
+      base: 0,
+    },
+    test_crit: {
+      id: 'test_crit',
+      name: 'Crítico de Teste',
+      manaCost: 3,
+      minLevel: 1,
+      classId: 'any',
+      spellKind: 'buff_crit_ratio',
+      dice: 1,
+      base: 0,
+    },
+  };
+  return combat;
+}
+
 describe('spell targeting', () => {
+  it('defines Contravento spell lessons as universal level 18 buffs', () => {
+    expect(calvarioSpells.colossus_pulse).toMatchObject({
+      id: 'colossus_pulse',
+      classId: 'any',
+      learnOnly: true,
+      minLevel: 18,
+      manaCost: 8,
+      spellKind: 'buff_strength',
+    });
+    expect(calvarioSpells.inner_lumen).toMatchObject({
+      id: 'inner_lumen',
+      classId: 'any',
+      learnOnly: true,
+      minLevel: 18,
+      manaCost: 8,
+      spellKind: 'buff_mind',
+    });
+    expect(calvarioSpells.apex_eye).toMatchObject({
+      id: 'apex_eye',
+      classId: 'any',
+      learnOnly: true,
+      minLevel: 18,
+      manaCost: 8,
+      spellKind: 'buff_crit_ratio',
+    });
+    expect(spellEmoji('colossus_pulse', calvarioSpells.colossus_pulse!)).toBe('⬆️');
+    expect(spellEmoji('inner_lumen', calvarioSpells.inner_lumen!)).toBe('⬆️');
+    expect(spellEmoji('apex_eye', calvarioSpells.apex_eye!)).toBe('⬆️');
+  });
+
+  it('casts universal buffs at fixed values without stacking', () => {
+    const strength = withUniversalBuffSpells(dualEnemyCombat(42, 'mage', 'Ysara'));
+    const strengthState = {
+      ...strength.state,
+      knownSpells: [...strength.state.knownSpells, 'test_strength'],
+      party: [{ ...strength.state.party[0]!, mana: 15 }],
+    };
+    const afterStrength = executeSpellTurn(strengthState, 'test_strength', strength.data);
+    expect(afterStrength.combat?.buffStrength).toBe(2);
+    expect(afterStrength.party[0]?.mana).toBe(12);
+
+    const afterRepeat = executeSpellTurn(afterStrength, 'test_strength', strength.data);
+    expect(afterRepeat.combat?.buffStrength).toBe(2);
+
+    const mind = withUniversalBuffSpells(dualEnemyCombat(43, 'mage', 'Ysara'));
+    const afterMind = executeSpellTurn(
+      { ...mind.state, knownSpells: [...mind.state.knownSpells, 'test_mind'] },
+      'test_mind',
+      mind.data
+    );
+    expect(afterMind.combat?.buffMind).toBe(2);
+
+    const crit = withUniversalBuffSpells(dualEnemyCombat(44, 'mage', 'Ysara'));
+    const afterCrit = executeSpellTurn(
+      { ...crit.state, knownSpells: [...crit.state.knownSpells, 'test_crit'] },
+      'test_crit',
+      crit.data
+    );
+    expect(afterCrit.combat?.buffCritRatio).toBeCloseTo(0.1);
+  });
+
   it('mage damage spell enters choose_target then hits chosen enemy', () => {
     const { state, data } = dualEnemyCombat(42, 'mage', 'Ysara');
     const withMana = {
@@ -76,6 +175,38 @@ describe('spell targeting', () => {
     expect(afterCast.combat?.enemies[1]?.hp).toBeLessThan(20);
     expect(afterCast.combat?.enemies[0]?.hp).toBe(20);
     expect(afterCast.party[0]?.mana).toBe(7);
+  });
+
+  it('uses the mind buff for leader magic damage', () => {
+    const { state, data } = dualEnemyCombat(42, 'mage', 'Ysara');
+    const lead = {
+      ...state.party[0]!,
+      mind: 6,
+      mana: 10,
+      weaponId: null,
+      armorId: null,
+      relicId: null,
+    };
+    const unbuffed = { ...state, party: [lead] };
+    const buffed = {
+      ...unbuffed,
+      combat: { ...unbuffed.combat!, buffMind: 2 },
+    };
+
+    const unbuffedCast = playerSpellOnEnemy(
+      executeSpellTurn(unbuffed, 'ember_spark', data),
+      0,
+      data
+    );
+    const buffedCast = playerSpellOnEnemy(executeSpellTurn(buffed, 'ember_spark', data), 0, data);
+    const unbuffedDamage = unbuffedCast.combat?.log.find(
+      (entry) => entry.kind === 'damage' && entry.spellId === 'ember_spark'
+    )?.final;
+    const buffedDamage = buffedCast.combat?.log.find(
+      (entry) => entry.kind === 'damage' && entry.spellId === 'ember_spark'
+    )?.final;
+
+    expect(buffedDamage).toBe(unbuffedDamage! + 1);
   });
 
   it('cleric heal targets a wounded companion', () => {
