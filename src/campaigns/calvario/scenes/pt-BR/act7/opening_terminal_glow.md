@@ -13,6 +13,4 @@ onEnter:
   - { op: setChapter, chapter: 7 }
   - { op: addDiary, text: "Saí da nave e o mundo não era continuação — era cobrança. O horizonte puxou uma linha vermelha como quem fecha conta." }
 ---
-O ar cheira a papel queimado e ferro frio demais. Nuvens ameaçam sem chover.
-
-A estrada parte: **coser** o céu até calar, ou deixar rasgar e dançar na cinza. Um passo já escolhe lado.
+O ar cheira a papel queimado e ferro frio demais. Nuvens ameaçam sem chover. A estrada parte: **coser** o céu até calar, ou deixar rasgar e dançar na cinza.

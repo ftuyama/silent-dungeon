@@ -14,6 +14,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Sombra sem rosto, só hábito quieto — *diga uma verdade que você **odeia** saber.*
-
-A gruta não castiga quem falha: **fecha**. Role o teste de perícia quando estiver pronto.
+Sombra sem rosto, só hábito quieto — *diga uma verdade que você **odeia** saber. A gruta não castiga quem falha: **fecha**.

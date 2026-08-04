@@ -11,6 +11,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act5_frost_tomas_topic_temple }
 onEnter: []
 ---
-> *"Pedra negra não é moral. É **peso**. Eu entro primeiro quando o chão for duvidoso — não por bravura, por **medida**."*
-
-{{companionLine}}
+> *"Pedra negra não é moral. É **peso**.

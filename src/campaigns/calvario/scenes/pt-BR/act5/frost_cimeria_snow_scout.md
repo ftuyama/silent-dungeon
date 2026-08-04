@@ -14,4 +14,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-Você para no **salto** de neve. Lá embaixo, telhado, poço, muro — tudo igual e tudo diferente. O **frio** embaca a visão; você precisa decidir o que ainda é forma e o que já é silêncio.
+Você para no **salto** de neve. Lá embaixo, telhado, poço, muro — tudo igual e tudo diferente.

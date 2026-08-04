@@ -12,6 +12,4 @@ onEnter:
   - { op: registerEnding, endingId: epilogue_true_depths }
   - { op: addDiary, text: "Desci até onde a terra ainda tem nome. O calor cobrou; o amuleto guardou; o senhor caiu. O silêncio, desta vez, é meu." }
 ---
-Não há céu aqui — só pedra e a certeza de que a masmorra **acaba**. O silêncio não é fuga: é vitória com cheiro de enxofre.
-
-Você leva o fundo do eixo nos ossos. *(Você pode **salvar** no menu ou **recomeçar**.)*
+Não há céu aqui — só pedra e a certeza de que a masmorra **acaba**. O silêncio não é fuga: é vitória com cheiro de enxofre. Você leva o fundo do eixo nos ossos.

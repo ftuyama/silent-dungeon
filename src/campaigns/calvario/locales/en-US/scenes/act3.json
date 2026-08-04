@@ -1,7 +1,7 @@
 {
   "act3/corruption_event": {
     "title": "Pulse of Corruption",
-    "body": "A green **crystal** pulses. The dungeon's echo answers — a pulse that does not ask permission.\n\nFor a moment **Morvayn** sounds like a count, not a name: someone below is measuring hearts.",
+    "body": "A green **crystal** pulses. The dungeon's echo answers — a pulse that does not ask permission. For a moment **Morvayn** sounds like a count, not a name: someone below is measuring hearts.",
     "choices": [
       {
         "text": "Touch the crystal",
@@ -43,7 +43,7 @@
   },
   "act3/descent": {
     "title": "Descent into Deep Silence",
-    "body": "The stair **sinks**. A green pulse beats with your heart — each flight steals noise until only wet stone remains. **No fire** is shelter here.\n\nWith the **Torn Map**, a shortcut opens that the common map hides.",
+    "body": "The stair **sinks**. A green pulse beats with your heart — each flight steals noise until only wet stone remains.",
     "choices": [
       {
         "text": "Continue to the heart of the depths",
@@ -123,7 +123,7 @@
   },
   "act3/flee_stone_guard": {
     "title": "Flight — runes that tremble",
-    "body": "The golem **does not run**. It advances joint by joint, and each step shakes dust from the hall.\n\nYou retreat before the corridor becomes a tomb.",
+    "body": "The golem **does not run**. It advances joint by joint, and each step shakes dust from the hall.",
     "choices": [
       {
         "text": "Fall back to the corridor"
@@ -135,7 +135,7 @@
   },
   "act3/flee_cult": {
     "title": "Flight — hoods that laugh",
-    "body": "The **hoods** do not run — they glide. You run with lungs still human.\n\nA blade cuts air too near the ear; another scrapes pride without touching skin.",
+    "body": "The **hoods** do not run — they glide. You run with lungs still human.",
     "choices": [
       {
         "text": "Regroup in the depths"
@@ -147,7 +147,7 @@
   },
   "act3/hub_depths": {
     "title": "Heart of the Depths",
-    "body": "The **core** is a drowned gallery: wet stone, bronze grates, and a corridor that drops toward the throne. **Morvayn** does not appear — but the air already carries his smell.\n\nThere is no campfire here. Only your breath and the slow drip of the walls.",
+    "body": "The **core** is a drowned gallery: wet stone, bronze grates, and a corridor that drops toward the throne. **Morvayn** does not appear — but the air already carries his smell. There is no campfire here.",
     "choices": [
       {
         "text": "Patrol the depths",
@@ -206,7 +206,7 @@
   },
   "act3/lore/cult_negotiate": {
     "title": "Pact Without Altar",
-    "body": "**Low voice**: *\"Simple contract — you go down, we write the right name in the pipes. In exchange, **silence** outside the tunnel.\"*\n\nThe **cultist** holds an old coin — handler, not fanatic. Behind him, two others wait for the order.",
+    "body": "**Low voice**: *\"Simple contract — you go down, we write the right name in the pipes. In exchange, **silence** outside the tunnel.\" The **cultist** holds an old coin — handler, not fanatic.",
     "choices": [
       {
         "text": "Show the Third Bell signet — ask favor at the margin of the contract",
@@ -269,7 +269,7 @@
   },
   "act3/lore/cult_negotiate_verbal_win": {
     "title": "Pact Without Altar (word)",
-    "body": "The handler steps half back. The coin vanishes into the sleeve. The contract was spoken — the tunnel still wants proof, but not in this fold.",
+    "body": "The handler steps half back. The coin vanishes into the sleeve.",
     "choices": [
       {
         "text": "Descend with the contract in your head"
@@ -281,7 +281,7 @@
   },
   "act3/messenger_cold_trail": {
     "title": "Messenger Trail",
-    "body": "Fresh **ash** under your boots and rope cut in haste: someone dragged a body here, then fought the tunnel.\n\nAt the end, two **cultists** count coins over an empty holster — Vigil crest still visible.",
+    "body": "Fresh **ash** under your boots and rope cut in haste: someone dragged a body here, then fought the tunnel. At the end, two **cultists** count coins over an empty holster — Vigil crest still visible.",
     "choices": [
       {
         "text": "Approach in silence (AGI test)",
@@ -329,7 +329,7 @@
   },
   "act3/mira_descent_whisper": {
     "title": "Whisper on the Descent",
-    "body": "**Mira** tips her head without looking at you: \"Here silence is not peace. It is a **truce** between who rules the ceiling and who rules the floor. If you hear your name in the dark, do not be the first to answer.\"",
+    "body": "**Mira** tips her head without looking at you: \"Here silence is not peace. It is a **truce** between who rules the ceiling and who rules the floor.",
     "choices": [
       {
         "text": "Continue the descent",
@@ -368,7 +368,7 @@
   },
   "act3/secret/forgotten_shrine": {
     "title": "Forgotten Shrine",
-    "body": "Behind a cracked stone **veil** opens an antechamber missing from the map — low slabs, runes sealed in lead, still water that mirrors without reflecting.\n\nIn the center, a larger **rune**. No altar. Only the weight of whoever sealed this.",
+    "body": "Behind a cracked stone **veil** opens an antechamber missing from the map — low slabs, runes sealed in lead, still water that mirrors without reflecting. In the center, a larger **rune**.",
     "choices": [
       {
         "text": "Touch the central rune — remember silence before the name",
@@ -419,7 +419,7 @@
   },
   "act3/stone_corridor": {
     "title": "Rune Corridor",
-    "body": "Runes light. A funerary **golem** blocks the path to the throne. Cold stone, joint by joint.",
+    "body": "Runes light. A funerary **golem** blocks the path to the throne.",
     "choices": [
       {
         "text": "Wake the guardian"
@@ -444,7 +444,7 @@
   },
   "act3/stone_guard_victory": {
     "title": "The Guardian Yields",
-    "body": "The stone **cracks** with a dry snap. The corridor goes quiet. The tomb accepts the passage.",
+    "body": "The stone **cracks** with a dry snap. The corridor goes quiet.",
     "choices": [
       {
         "text": "Return to the heart"

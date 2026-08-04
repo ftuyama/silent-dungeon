@@ -18,6 +18,4 @@ choices:
     next: act6/encounters/reality_trial_shatter
 onEnter: []
 ---
-Os espelhos mostram você com escolhas mais fáceis — nunca entrou na Masmorra, ou foi amado por todos e esquecido por todos.
-
-O arauto inclina a cabeça: *real é o que **insiste***. O chão liquefaz. Você só fica de pé se escolher qual dor chama de verdade.
+Os espelhos mostram você com escolhas mais fáceis — nunca entrou na Masmorra, ou foi amado por todos e esquecido por todos. O arauto inclina a cabeça: *real é o que **insiste***.

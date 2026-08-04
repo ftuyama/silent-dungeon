@@ -13,4 +13,4 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-Alguém empilhou cinzas como altar portátil. No topo: um **dente** humano, limpo demais. Um cartaz sem tinta pergunta se você ainda acredita em sorte.
+Alguém empilhou cinzas como altar portátil. No topo: um **dente** humano, limpo demais.

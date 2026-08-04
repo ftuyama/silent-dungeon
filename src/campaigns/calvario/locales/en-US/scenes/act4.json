@@ -25,7 +25,7 @@
   },
   "act4/encounters/pact_vigil_skirmish": {
     "title": "Vigil Skirmish",
-    "body": "From the **shadow** of a fountain, a **Vigil** archer cuts your path. No sermon — only **certainty**.\n\n\"**Servant** is not citizen,\" he says. \"It is an open **wound** in the city.\"",
+    "body": "From the **shadow** of a fountain, a **Vigil** archer cuts your path. No sermon — only **certainty**.",
     "choices": [
       {
         "text": "Answer the Vigil's steel"
@@ -37,7 +37,7 @@
   },
   "act4/late_merchant": {
     "title": "Throne Merchant",
-    "body": "Among **chains** that do not bind, someone unfolds a cloth. Flasks tremble in the hall's cold. The merchant measures you by smell: someone climbing without cutting the shadow at the root.\n\n> Stock **limited**. The throne eats memory — **gold** still buys silence.",
+    "body": "Among **chains** that do not bind, someone unfolds a cloth. Flasks tremble in the hall's cold.",
     "choices": [
       {
         "text": "Buy Red Potion (14 gold) (x2)",
@@ -74,7 +74,7 @@
   },
   "act4/morvayn_interlude": {
     "title": "False Truce",
-    "body": "Morvayn **wavers** — theater, not weakness. The throne breathes through him; the air turns dense, too sweet, like cathedral sickness.\n\nYou have one **instant** to decide *how* to carry the next assault: in the **head**, in the **bone**, or in blind haste.",
+    "body": "Morvayn **wavers** — theater, not weakness. The throne breathes through him; the air turns dense, too sweet, like cathedral sickness.",
     "choices": [
       {
         "text": "Make one last sweep of the hall"
@@ -122,7 +122,7 @@
   },
   "act4/pact/pact_after_mind": {
     "title": "Domesticated Echo",
-    "body": "The echo **settles**. It does not vanish — it keeps your name and goes quiet for a while.\n\nFor a moment the world turns clean: each step answers because you **allowed** it.",
+    "body": "The echo **settles**. It does not vanish — it keeps your name and goes quiet for a while.",
     "choices": [
       {
         "text": "Cross the square without faltering"
@@ -131,7 +131,7 @@
   },
   "act4/pact/pact_after_mind_fail": {
     "title": "Echo's Bite",
-    "body": "The echo **bites**. A spark crosses your thoughts like iron on the tongue.\n\nYou still serve — but the price sticks to the roof of your mouth, sweet and wrong.",
+    "body": "The echo **bites**. A spark crosses your thoughts like iron on the tongue.",
     "choices": [
       {
         "text": "Cross anyway — by force"
@@ -143,7 +143,7 @@
   },
   "act4/pact/pact_ascent": {
     "title": "Pact Ascent",
-    "body": "The **dungeon** stays on your back — damp, stuck to the skin. Underneath, something still **pulls** downward.\n\nA **bell** does not ring. Even so your pulse tries to follow what does not exist.",
+    "body": "The **dungeon** stays on your back — damp, stuck to the skin. Underneath, something still **pulls** downward.",
     "onEnterDiaryTexts": [
       "I accepted the Third Bell. Each step upward sounds like a peal only I hear."
     ],
@@ -151,7 +151,7 @@
   },
   "act4/pact/pact_ascent_fail": {
     "title": "Fractured Echo",
-    "body": "The **Third Bell** hits inside like a hammer on glass.\n\nFor a moment you climb with someone else's knees — short breath, mind sparking. The street opens ahead; Morvayn already waits, as if the failure were the invitation.",
+    "body": "The **Third Bell** hits inside like a hammer on glass. For a moment you climb with someone else's knees — short breath, mind sparking.",
     "choices": [
       {
         "text": "Fail in silence and face Morvayn"
@@ -163,7 +163,7 @@
   },
   "act4/pact/pact_coda": {
     "title": "Pact Coda",
-    "body": "The hunter falls or flees; the city pretends to sleep. You serve the **Third Bell** as a conduit — the **ring** on your finger is mute to others, deafening to you.\n\nCold climbs the city's skin. You hear the fourth **promised** strike, never cast.",
+    "body": "The hunter falls or flees; the city pretends to sleep. You serve the **Third Bell** as a conduit — the **ring** on your finger is mute to others, deafening to you.",
     "choices": [
       {
         "text": "Accept what was written in you"
@@ -175,12 +175,12 @@
   },
   "act4/pact/pact_trial_mind": {
     "title": "Trial of Mind",
-    "body": "The market noise folds over itself. You see symbols where you should not — or they were always there, and only now you can read.\n\nTo keep from splitting in half, one thing: keep your head as a **chamber** for the sound, not as the bell.",
+    "body": "The market noise folds over itself. You see symbols where you should not — or they were always there, and only now you can read.",
     "skillCheckLabel": "Sustain the Third Bell's echo in your mind"
   },
   "act4/pact/pact_whispers": {
     "title": "Pact Whispers",
-    "body": "Among **watchmen** who pretend not to see, a voice — not yours — describes what you will do before you think. *\"**Serve**.\"* Not a request. An order.\n\nThe **Third Bell** needs no metal; it needs someone who can carry the echo without breaking.",
+    "body": "Among **watchmen** who pretend not to see, a voice — not yours — describes what you will do before you think. *\"**Serve**.\"",
     "choices": [
       {
         "text": "Let the whisper finish"
@@ -192,7 +192,7 @@
   },
   "act4/passage_graywind_heights": {
     "title": "Passage",
-    "body": "{{throneOutcomeLine}}\n\n{{factionThroneEcho}}\n\nThe wound does **not seem** resolved. The throne opened a fork in the **axis**: above, air of strange harvest and ice on the **Heights**; below, hot stone where the earth still has a name.\n\nYou can **climb** and see how the world fared up there — or **descend** deeper. Both sides collect.",
+    "body": "{{throneOutcomeLine}} {{factionThroneEcho}} The wound does **not seem** resolved.",
     "choices": [
       {
         "text": "Stop at the threshold — gray armor that did not come from the throne",
@@ -212,12 +212,12 @@
   },
   "act4/seal_ending": {
     "title": "Seal Ending",
-    "body": "You seal the **Dungeon of Silence** at a price. Scars on the soul; fragile peace in the stones.\n\nThe seal asks for two pulses in a row — first the **mind** enduring the bell bursting inside, then the **body** when the weight falls like stone.",
+    "body": "You seal the **Dungeon of Silence** at a price. Scars on the soul; fragile peace in the stones.",
     "dualAttrSkillCheckLabel": "Two beats of the seal — mind and iron"
   },
   "act4/seal_ending_fail": {
     "title": "Peace Ruptured",
-    "body": "Peace **fails** for an instant that is enough. Stones shake, the seal cracks open, and you carry in your chest the scar of what you could not contain.\n\n**Morvayn** smiles like one who already knew: now the fight begins with the world against you.",
+    "body": "Peace **fails** for an instant that is enough. Stones shake, the seal cracks open, and you carry in your chest the scar of what you could not contain.",
     "choices": [
       {
         "text": "The seal breaks. Fight Morvayn"
@@ -246,7 +246,7 @@
   },
   "act4/throne/throne_arcane_ok": {
     "title": "Pattern Contained",
-    "body": "For a moment the symbol **clicks**. Not loose power — grammar. The throne stops being only fear and becomes a sentence you can refuse out loud.",
+    "body": "For a moment the symbol **clicks**. Not loose power — grammar.",
     "choices": [
       {
         "text": "Keep the mental map and return to the antechamber",
@@ -261,7 +261,7 @@
   },
   "act4/throne/throne_chains": {
     "title": "Living Chains",
-    "body": "The chains **want** fingers. They do not only hold the throne — they rehearse your name like a new chain.\n\nAmong them, stuck in black resin: a **finger** with a cracked bell-ring and human tooth marks — someone bit the hand that swore.",
+    "body": "The chains **want** fingers. They do not only hold the throne — they rehearse your name like a new chain.",
     "choices": [
       {
         "text": "Take a fragment caught in the metal (−1 supply, +2 gold)",
@@ -321,7 +321,7 @@
   },
   "act4/throne/throne_gate": {
     "title": "Throne Antechamber",
-    "body": "The **Throne of Bones** rises in interlaced ribs; **chains** creak without wind. **Morvayn** stands before the chair — shadow, then a smile without proper lips.\n\nEach trial in the hall spends itself on bone. You can still bargain with the merchant or let steel wait.",
+    "body": "The **Throne of Bones** rises in interlaced ribs; **chains** creak without wind. **Morvayn** stands before the chair — shadow, then a smile without proper lips. Each trial in the hall spends itself on bone.",
     "choices": [
       {
         "text": "Hear the necromancer before crossing steel",
@@ -405,7 +405,7 @@
   },
   "act4/throne/throne_observe": {
     "title": "The Throne",
-    "body": "Each bone of the throne has **a name** scraped in — you cannot read them all. One is your **first fear** in small letters.\n\nThe chains drip memory too dense. If you stare too long, the throne learns the shape of your fear.",
+    "body": "Each bone of the throne has **a name** scraped in — you cannot read them all. One is your **first fear** in small letters. The chains drip memory too dense.",
     "choices": [
       {
         "text": "Try to read one full name (Mind test)"
@@ -540,7 +540,7 @@
   },
   "act4/throne/throne_sweep_hidden_treasure": {
     "title": "Treasure Buried in Bone",
-    "body": "Among petrified ribs, you find a **black nodule** locked in old iron. Touch it and the hall changes weight; something in you learns a new rhythm.\n\nIt is not gold. It is a **fragment of will** torn from the throne.",
+    "body": "Among petrified ribs, you find a **black nodule** locked in old iron. Touch it and the hall changes weight; something in you learns a new rhythm.",
     "choices": [
       {
         "text": "Keep the fragment and return to the hall"
@@ -587,7 +587,7 @@
   },
   "act4/victory_peace": {
     "title": "Victory in Silence",
-    "body": "The **crack** under the crown sounds like a close, not a crowning — a door that yields when no one left is pushing from the other side.\n\nThe green pulse melts into silence; the throne, for an instant furniture, then stone again. Thin **victory**: you stayed on your feet.",
+    "body": "The **crack** under the crown sounds like a close, not a crowning — a door that yields when no one left is pushing from the other side. The green pulse melts into silence; the throne, for an instant furniture, then stone again.",
     "choices": [
       {
         "text": "Gather what remains — listen to the throne"

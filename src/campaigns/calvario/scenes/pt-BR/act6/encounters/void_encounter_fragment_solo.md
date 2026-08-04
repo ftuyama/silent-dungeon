@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 Do chão sobe uma silhueta sem rosto estável. Não veio de fora — escapou de você há anos e aprendeu a andar sozinha.
-
-Não pede perdão. Pede continuidade.

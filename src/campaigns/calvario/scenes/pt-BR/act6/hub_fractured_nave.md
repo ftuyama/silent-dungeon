@@ -111,6 +111,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 16 }
 ---
-Três corredores partem da **nave**: realidade, memória, vontade. O **Vazio** só abre um de cada vez.
-
-No teto, rachaduras cortam o escuro. Entre as colunas, uma **fogueira** e uma **banca** sem dono — o pouco que ainda parece humano.
+Três corredores partem da **nave**: realidade, memória, vontade. O **Vazio** só abre um de cada vez. No teto, rachaduras cortam o escuro.

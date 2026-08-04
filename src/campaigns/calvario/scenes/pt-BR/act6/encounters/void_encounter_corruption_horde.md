@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 A **corrupção** que você carrega vibra na pedra. Ela chama lascas — e um pregador que já tinha seu nome na língua.
-
-Onde há mancha, há predador.

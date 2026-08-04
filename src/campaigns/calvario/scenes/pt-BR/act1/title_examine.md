@@ -22,6 +22,4 @@ choices:
     preview: "Sem risco; volta ao limiar."
 onEnter: []
 ---
-Alguém cinzelou **três linhas** antes que a ferrugem comesse a pedra:
-
-> *"Aqui não há perdão — há eco."* Por cima, uma **espiral** riscada aponta para baixo.
+Alguém cinzelou **três linhas** antes que a ferrugem comesse a pedra: > *"Aqui não há perdão — há eco."

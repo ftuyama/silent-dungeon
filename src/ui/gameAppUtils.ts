@@ -147,6 +147,7 @@ export function markBadgeIconSvg(markId: string): string {
     mira_void_endtalk: 'person',
     monk_inner_peace: 'faith',
     contrawind_student: 'spellbook',
+    contrawind_duelist: 'weapon',
     morvayn_slain: 'weapon',
     pact_bound: 'corruption',
     soul_scarred_by_seal: 'corruption',

@@ -17,8 +17,4 @@ choices:
   - text: "Adiar a resposta e voltar ao desfiladeiro"
     next: act5/frost_hub
 ---
-Edras não agradece. Desenha três linhas entre vocês: **força**, **mente**, **risco**. O vento contorna cada palavra como se também esperasse uma resposta.
-
-> *“Quem pede poder costuma explicar o preço depois. Você explicará antes. Uma vez.”*
-
-O cajado permanece baixo. A ameaça está nas perguntas.
+Edras não agradece. Desenha três linhas entre vocês: **força**, **mente**, **risco**.

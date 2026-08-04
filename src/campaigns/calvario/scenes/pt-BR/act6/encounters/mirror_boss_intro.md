@@ -24,6 +24,4 @@ choices:
         onFlee: act6/hub_fractured_nave
 onEnter: []
 ---
-Do espelho sai alguém com seu rosto e sua postura, sem hesitação. Ele sorri como quem já ganhou a discussão.
-
-> *"Eu sou você sem medo. Você é eu sem coragem."* Se ele vencer, você continua vivo — só deixa de **ser**.
+Do espelho sai alguém com seu rosto e sua postura, sem hesitação. Ele sorri como quem já ganhou a discussão. > *"Eu sou você sem medo.

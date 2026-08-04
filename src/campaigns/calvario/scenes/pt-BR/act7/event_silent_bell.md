@@ -22,5 +22,3 @@ choices:
 onEnter: []
 ---
 No meio do descampo, um **sino** pendurado em nada — língua arrancada, badalo mudo. Ainda assim, o ar vibra.
-
-Tocar ou não tocar: o preço não está escrito. Está na mão.

@@ -13,6 +13,4 @@ onEnter:
   - { op: addXp, amount: 18 }
   - { op: addDiary, text: "Vi o céu como diagrama — por um instante, obedeceu. Paguei com suor frio, não com mentira." }
 ---
-O horizonte estremece e recua meio tom. Não é milagre de praça — é trégua. Você sente **fé** como músculo que aguentou o peso.
-
-A costura fica como linha fina na visão. Mente também cansa.
+O horizonte estremece e recua meio tom. Não é milagre de praça — é trégua.

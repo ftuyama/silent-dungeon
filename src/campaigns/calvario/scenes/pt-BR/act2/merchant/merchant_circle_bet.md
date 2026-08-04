@@ -15,5 +15,3 @@ onEnter: []
 choices: []
 ---
 O capuz inclina-se por **aposta**. Você sussurra símbolos e o ar agarra o padrão — alguém invisível segura os dados.
-
-*O Círculo empresta sorte; quem erra o timing paga outra moeda.* **Role sorte** (−1 na falha).

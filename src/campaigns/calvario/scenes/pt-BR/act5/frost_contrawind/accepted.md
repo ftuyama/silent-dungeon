@@ -16,7 +16,3 @@ onEnter:
   - { op: addDiary, text: "Edras aceitou medir minhas intenções e abriu o grimório do Contravento. As lições não são presentes: cada uma custa doze moedas e uma escolha de combate." }
 ---
 Edras fecha os olhos. Quando torna a abri-los, a suspeita perdeu o fio, não o peso.
-
-> *“Você não confundiu conhecimento com posse. Isso basta para começar.”*
-
-O grimório abre contra o vento. Três fórmulas permanecem imóveis nas páginas: força, lúmen, ápice.

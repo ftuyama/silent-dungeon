@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Ouvi moradores murmurarem Vetrnax — dragão no cume, hálito que congela antes do grito. Ninguém pronunciou; todos souberam." }
 ---
 Você pega **uma frase** inteira antes do vento cortar: *"… o hálito congela o grito…"* — não é poema. É aviso sobre **Vetrnax**.
-
-O **frio** na nuca confirma. Cimeria inteira parece escutar o mesmo nome.

@@ -60,6 +60,4 @@ onEnter:
   - { op: addXp, amount: 20 }
   - { op: setFlag, key: act7_hub_reached, value: true }
 ---
-A estrada **não** volta atrás. Antes do último horizonte, o descampo cobra **um** evento: sermão, lâmina ou **sino** sem badalo.
-
-Isto não é o fundo do eixo — é fuga para o céu. O verdadeiro fecho ainda **arde** abaixo.
+A estrada **não** volta atrás. Antes do último horizonte, o descampo cobra **um** evento: sermão, lâmina ou **sino** sem badalo. Isto não é o fundo do eixo — é fuga para o céu.

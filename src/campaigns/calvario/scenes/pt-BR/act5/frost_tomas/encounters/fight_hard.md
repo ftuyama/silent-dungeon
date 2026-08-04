@@ -13,4 +13,4 @@ choices:
         onFlee: act5/frost_hub
 onEnter: []
 ---
-**Estalido** debaixo da bota — cedo demais. O **cultista** ergue o rosto; o **whelp** sibila; **Tomás** puxa o escudo preso, ainda vivo. Só luz errada entre você e o aço.
+**Estalido** debaixo da bota — cedo demais. O **cultista** ergue o rosto; o **whelp** sibila; **Tomás** puxa o escudo preso, ainda vivo.

@@ -19,5 +19,3 @@ onEnter:
   - { op: addDiary, text: "Lembrei o vilarejo antes do verde — e por que *{{playerName}}* desce: achar a raiz do que drena." }
 ---
 Alguém tinha de descer. Não por glória — porque em cima só restava mentira doce e poço amargo. *{{playerName}}* fechou a mão no equipamento e escolheu a **masmorra**.
-
-A raiz do mal não está na praça. Está embaixo, onde o **silêncio** engole o resto.

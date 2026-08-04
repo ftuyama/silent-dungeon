@@ -14,5 +14,3 @@ choices: []
 onEnter: []
 ---
 O ruído do mercado dobra sobre si. Você vê símbolos onde não deveria — ou sempre estiveram, e só agora consegue ler.
-
-Para não partir ao meio, uma só coisa: manter a cabeça como **câmara** do som, não como o sino.

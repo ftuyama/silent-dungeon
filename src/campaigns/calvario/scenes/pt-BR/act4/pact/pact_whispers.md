@@ -10,6 +10,4 @@ onEnter:
   - { op: addXp, amount: 14 }
   - { op: addDiary, text: "Na cidade, as janelas fecham cedo. O silêncio aqui não é paz; é fila." }
 ---
-Entre **vigias** que fingem não ver, uma voz — não a sua — descreve o que você vai fazer antes de pensar. *"**Serve**."* Não é pedido. É ordem.
-
-O **Terceiro Sino** não precisa de metal; precisa de alguém que carregue o eco sem partir.
+Entre **vigias** que fingem não ver, uma voz — não a sua — descreve o que você vai fazer antes de pensar. *"**Serve**."

@@ -35,10 +35,4 @@ onEnter:
   - { op: registerEnding, endingId: passage_graywind_heights }
   - { op: addXp, amount: 16 }
 ---
-{{throneOutcomeLine}}
-
-{{factionThroneEcho}}
-
-A ferida **não parece** resolvida. O trono abriu uma bifurcação no **eixo**: acima, ar de colheita estranha e gelo nas **Cimeiras**; abaixo, pedra quente onde a terra ainda tem nome.
-
-Pode **subir** e ver como o mundo ficou lá em cima — ou **descer** mais fundo. Os dois lados cobram.
+{{throneOutcomeLine}} {{factionThroneEcho}}

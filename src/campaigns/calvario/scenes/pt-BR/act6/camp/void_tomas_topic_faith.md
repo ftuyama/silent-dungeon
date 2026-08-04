@@ -11,6 +11,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act6_void_tomas_topic_faith }
 onEnter: []
 ---
-> *"A fé não muda de som — muda de **eco**. Se Deus calar, eu continuo a levantar o **escudo**."*
-
-{{companionLine}}
+> *"A fé não muda de som — muda de **eco**. Se Deus calar, eu continuo a levantar o **escudo**."

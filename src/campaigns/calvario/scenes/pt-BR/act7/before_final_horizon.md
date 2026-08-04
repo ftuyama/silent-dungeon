@@ -58,6 +58,4 @@ choices:
     preview: "Marca de recusa — final incompleto"
 onEnter: []
 ---
-O horizonte mostra a última linha. Fechar aqui é **incompleto**: o eixo ainda desce para o magma.
-
-O vento para outra vez. Desta vez não é cortesia — é expectativa de quem escolhe céu em vez de fundo.
+O horizonte mostra a última linha. Fechar aqui é **incompleto**: o eixo ainda desce para o magma. O vento para outra vez.

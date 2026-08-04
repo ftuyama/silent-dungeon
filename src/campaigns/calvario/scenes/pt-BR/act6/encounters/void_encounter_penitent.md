@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 Metal range onde não deveria haver ferreiro — só vontade temperada a frio. A armadura não protege o corpo; silencia a hesitação.
-
-Cada passo dele é sentença em voz baixa.

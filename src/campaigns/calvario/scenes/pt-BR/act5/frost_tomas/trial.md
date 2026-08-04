@@ -13,6 +13,4 @@ skillCheck:
   label: "Aproximar sem que o vento te venda"
 onEnter: []
 ---
-A **neve** esconde o som, não o rasto — perna e juízo, ou o **cultista** vira a cabeça e o **whelp** acorda com fome de pânico.
-
-**Tomás** morde a corda e espera seu passo.
+A **neve** esconde o som, não o rasto — perna e juízo, ou o **cultista** vira a cabeça e o **whelp** acorda com fome de pânico. **Tomás** morde a corda e espera seu passo.

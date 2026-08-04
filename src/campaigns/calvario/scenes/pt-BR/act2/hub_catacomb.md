@@ -185,6 +185,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 6 }
 ---
-Quatro corredores abrem no **cruzeiro**. Velas gastas pingam **cera** no chão; *hoje é **dia {{day}}** no subsolo.*
-
-Um eco de sino sobe de baixo e some antes da superfície. No ar, cheiro de pedra molhada e metal frio — o nome **Morvayn** cola na língua.
+Quatro corredores abrem no **cruzeiro**. Velas gastas pingam **cera** no chão; *hoje é **dia {{day}}** no subsolo. Um eco de sino sobe de baixo e some antes da superfície.

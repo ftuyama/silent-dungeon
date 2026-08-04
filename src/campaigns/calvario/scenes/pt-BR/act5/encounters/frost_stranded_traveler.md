@@ -25,4 +25,4 @@ choices:
 onEnter:
   - { op: setFlag, key: frost_stranded_traveler_done, value: true }
 ---
-Uma **mula** presa ao gelo — patas à mercê da crevasse, olho branco de pânico. O dono morde o lábio: *"Só preciso de corda e de alguém que ainda acredite em caminho."*
+Uma **mula** presa ao gelo — patas à mercê da crevasse, olho branco de pânico. O dono morde o lábio: *"Só preciso de corda e de alguém que ainda acredite em caminho."

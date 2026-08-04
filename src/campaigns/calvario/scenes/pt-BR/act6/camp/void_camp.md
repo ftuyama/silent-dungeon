@@ -51,5 +51,3 @@ choices:
 onEnter: []
 ---
 Não há **lenha** de verdade — só restos queimados. A fogueira imita calor; seu corpo aceita porque precisa.
-
-*Mesmo aqui, o número segue: **dia {{day}}**.*

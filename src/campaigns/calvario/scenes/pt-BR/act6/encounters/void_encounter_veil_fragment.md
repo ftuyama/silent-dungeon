@@ -13,6 +13,4 @@ choices:
         onFlee: shared/explore_nav_act6
 onEnter: []
 ---
-O **Escrivão** traça; a **lasca** obedece — não como servo, como nota viva ao seu medo.
-
-Juntos, fecham um círculo que não pede permissão.
+O **Escrivão** traça; a **lasca** obedece — não como servo, como nota viva ao seu medo. Juntos, fecham um círculo que não pede permissão.

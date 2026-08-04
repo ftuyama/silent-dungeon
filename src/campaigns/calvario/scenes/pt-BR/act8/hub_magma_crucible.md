@@ -120,6 +120,4 @@ onEnter:
   - { op: addXp, amount: 12 }
   - { op: setFlag, key: act8_hub_reached, value: true }
 ---
-O **Crisol** é fornalha com nome. Pontes de pedra negra cruzam um mar de lava; o ar arde na garganta.
-
-Aqui você desce para **acabar** o eixo — ou sobe de volta à superfície, se ainda aguenta fingir frio.
+O **Crisol** é fornalha com nome. Pontes de pedra negra cruzam um mar de lava; o ar arde na garganta. Aqui você desce para **acabar** o eixo — ou sobe de volta à superfície, se ainda aguenta fingir frio.

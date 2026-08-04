@@ -13,5 +13,3 @@ choices:
 onEnter: []
 ---
 **Mira** e **Tomás** medem o fogo; ninguém quer morrer sozinho aqui. Você, {{leadName}}, fica no meio.
-
-{{companionLine}}

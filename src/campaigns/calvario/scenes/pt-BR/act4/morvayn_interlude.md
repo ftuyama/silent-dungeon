@@ -32,5 +32,3 @@ choices:
 onEnter: []
 ---
 Morvayn **vacila** — teatro, não fraqueza. O trono respira por ele; o ar fica denso, doce demais, como doença de catedral.
-
-Você tem um **instante** para decidir *como* carregar o próximo assalto: na **cabeça**, no **osso**, ou na pressa cega.

@@ -14,5 +14,3 @@ onEnter:
   - { op: addDiary, text: "Não cosi o céu — alimentei o que já ardia. O calor não perdoa, mas cobre o frio como cobertor sujo." }
 ---
 Você abre a garganta e o calor responde. É acordo com o que já queimava em você.
-
-O fogo come suprimento e deixa **corrupção** como marca: você não vira santo — vira chaminé.

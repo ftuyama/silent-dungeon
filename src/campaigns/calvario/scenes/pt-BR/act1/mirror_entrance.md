@@ -13,6 +13,4 @@ onEnter:
   - { op: addMark, mark: act1_entrance_mirror }
   - { op: addDiary, text: "No nicho, metade do meu rosto e metade do túnel — o mesmo corte." }
 ---
-No nicho, um **espelho oval** partido: metade do seu rosto, metade do túnel.
-
-O vidro devolve *{{playerName}}* escolhendo a cidade em silêncio — antes que o silêncio escolha por você.
+No nicho, um **espelho oval** partido: metade do seu rosto, metade do túnel. O vidro devolve *{{playerName}}* escolhendo a cidade em silêncio — antes que o silêncio escolha por você.

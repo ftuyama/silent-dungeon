@@ -28,5 +28,3 @@ choices:
     next: act5/frost_lair_approach
 ---
 Vapor rói o aço. **Kael** ri baixo — som de pedra molhada.
-
-> *"O frio testa a junta. Você passou. Falta saber se aceita o que a junta exige."*

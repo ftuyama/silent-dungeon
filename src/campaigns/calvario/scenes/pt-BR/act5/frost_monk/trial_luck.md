@@ -13,6 +13,4 @@ luckCheck:
 choices: []
 onEnter: []
 ---
-Um **riso** baixo, geada a estalar: *agora não é ideia — é **queda** e **sorte**.*
-
-A gruta inclina; o próximo passo pode ser seu ou de quem acreditou demais.
+Um **riso** baixo, geada a estalar: *agora não é ideia — é **queda** e **sorte**. A gruta inclina; o próximo passo pode ser seu ou de quem acreditou demais.

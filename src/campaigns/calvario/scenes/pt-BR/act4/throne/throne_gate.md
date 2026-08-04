@@ -51,6 +51,4 @@ choices:
     effects:
       - { op: setChapter, chapter: 3 }
 ---
-O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — sombra, depois sorriso sem lábios certos.
-
-Cada ensaio no salão gasta no osso. Ainda dá para negociar com o mercador ou deixar o aço esperar.
+O **Trono de Ossos** sobe em costelas entrelaçadas; **correntes** rangem sem vento. **Morvayn** antecede a cadeira — sombra, depois sorriso sem lábios certos. Cada ensaio no salão gasta no osso.

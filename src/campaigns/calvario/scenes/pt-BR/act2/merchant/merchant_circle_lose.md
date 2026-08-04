@@ -13,5 +13,3 @@ choices:
       - { op: addDiary, text: "Os símbolos exigiram mais do que sussurrei — duas moedas saíram, e ficou um frio que não é de ouro." }
 ---
 O padrão **escorrega** um símbolo tarde demais. Algo puxa do bolso — não é mão humana.
-
-Quando você enxerga de novo, faltam **duas moedas**. Sobrou eco de riso molhado sob o capuz.

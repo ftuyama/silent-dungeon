@@ -15,4 +15,4 @@ choices:
     next: act5/frost_hub
 onEnter: []
 ---
-**Vetrnax** desenrola o pescoço como corda de trovão. O primeiro assalto não é dente — é **frio** que rouba o som da língua. O ar vibra antes do golpe.
+**Vetrnax** desenrola o pescoço como corda de trovão. O primeiro assalto não é dente — é **frio** que rouba o som da língua.

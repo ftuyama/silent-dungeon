@@ -1,7 +1,7 @@
 {
   "act7/apocalypse_fork": {
     "title": "Where the end picks a mouth",
-    "body": "There is no neutral third option. The apocalypse demands a verb: **hold** the world like an open wound, or **serve** as kindling and call it light.\n\nThe wind stops for a moment — not to spare you. To hear which mouth opens.",
+    "body": "There is no neutral third option. The apocalypse demands a verb: **hold** the world like an open wound, or **serve** as kindling and call it light. The wind stops for a moment — not to spare you.",
     "choices": [
       {
         "text": "Try to stitch the firmament with thought and prayer — one thread at a time",
@@ -15,7 +15,7 @@
   },
   "act7/before_final_horizon": {
     "title": "Before the last horizon",
-    "body": "The horizon shows the last line. Closing here is **incomplete**: the axis still descends into magma.\n\nThe wind stops again. This time it is not courtesy — it is the expectation of someone who chooses sky over depth.",
+    "body": "The horizon shows the last line. Closing here is **incomplete**: the axis still descends into magma. The wind stops again.",
     "choices": [
       {
         "text": "Descend into the magma deeps — refuse the incomplete ending",
@@ -77,7 +77,7 @@
   },
   "act7/epilogue_apocalypse": {
     "title": "Epilogue — incomplete ashes",
-    "body": "The world goes on without you. Your echo splits among road, mark, and silence.\n\nThis is not a complete victory — it is flight into the sky. The bottom of the axis stayed below, burning. *(You can **save** from the menu or **restart**.)*",
+    "body": "The world goes on without you. Your echo splits among road, mark, and silence. This is not a complete victory — it is flight into the sky.",
     "choices": [
       {
         "text": "Close the diary — flight to the sky"
@@ -89,7 +89,7 @@
   },
   "act7/event_ash_sermon": {
     "title": "Sermon in the ash",
-    "body": "A gray **preacher** gestures at a rift where the sky should be — empty seats, the gesture of an official end.\n\nYou laugh, or pay so the laugh does not turn to guilt: today, **coin** and standing with those who fake order.",
+    "body": "A gray **preacher** gestures at a rift where the sky should be — empty seats, the gesture of an official end. You laugh, or pay so the laugh does not turn to guilt: today, **coin** and standing with those who fake order.",
     "choices": [
       {
         "text": "Toss a coin into the plate and move on — charity grows tired too"
@@ -101,12 +101,12 @@
   },
   "act7/event_cinder_tithe": {
     "title": "Ash tithe",
-    "body": "Someone piled ash into a portable altar. On top: a human **tooth**, too clean. A sign without ink asks if you still believe in luck.",
+    "body": "Someone piled ash into a portable altar. On top: a human **tooth**, too clean.",
     "luckCheckLabel": "Guess which ash mound still hides a tooth"
   },
   "act7/event_last_train": {
     "title": "Last train of dust",
-    "body": "An open **car**, full of dust that used to be people. The engineer is a stopped clock — he smiles like someone who knows delay and ending are the same word.\n\n**Three coins** buy a seat on the edge — not to flee: to remember that fleeing costs too.",
+    "body": "An open **car**, full of dust that used to be people. The engineer is a stopped clock — he smiles like someone who knows delay and ending are the same word.",
     "choices": [
       {
         "text": "Climb into the car and let the wind steal what remains"
@@ -118,7 +118,7 @@
   },
   "act7/event_silent_bell": {
     "title": "Bell without a tongue",
-    "body": "In the middle of the waste, a **bell** hangs from nothing — tongue torn out, clapper mute. Even so, the air vibrates.\n\nTouch it or not: the price is not written. It is in the hand.",
+    "body": "In the middle of the waste, a **bell** hangs from nothing — tongue torn out, clapper mute. Even so, the air vibrates.",
     "choices": [
       {
         "text": "Hold the clapper with a gloved hand — pay in faith what has no price in gold",
@@ -150,7 +150,7 @@
   },
   "act7/opening_terminal_glow": {
     "title": "Terminal glow",
-    "body": "The air smells of burned paper and iron gone too cold. Clouds threaten without rain.\n\nThe road splits: **stitch** the sky until it stills, or let it tear and dance in the ash. One step already picks a side.",
+    "body": "The air smells of burned paper and iron gone too cold. Clouds threaten without rain. The road splits: **stitch** the sky until it stills, or let it tear and dance in the ash.",
     "choices": [
       {
         "text": "Walk until the sky stops pretending color"
@@ -162,7 +162,7 @@
   },
   "act7/path_ember_devour": {
     "title": "Living kindling",
-    "body": "You open your throat and the heat answers. It is a deal with what was already burning in you.\n\nThe fire eats supply and leaves **corruption** as a mark: you do not become a saint — you become a chimney.",
+    "body": "You open your throat and the heat answers. It is a deal with what was already burning in you.",
     "choices": [
       {
         "text": "Cool your chest in the ash and move on — fire is also a path"
@@ -174,12 +174,12 @@
   },
   "act7/path_stitch_sky": {
     "title": "Thread in the sky",
-    "body": "You raise your hands with no credentials. The sky is not cloth — it is a still threat — but the mind insists on stitching.\n\nEach second the pattern holds is a second the world does not swallow you whole.",
+    "body": "You raise your hands with no credentials. The sky is not cloth — it is a still threat — but the mind insists on stitching.",
     "skillCheckLabel": "Hold a pattern in the chaos before the retina gives up"
   },
   "act7/stitch_failure": {
     "title": "Broken thread",
-    "body": "The diagram tears. The world returns pure noise — another tongue in the head, asking for no translation, only obedience.\n\nSomething in you yields: less trust in the heights, more pull toward what bites back.",
+    "body": "The diagram tears. The world returns pure noise — another tongue in the head, asking for no translation, only obedience.",
     "choices": [
       {
         "text": "Spit the taste of metal and move on on your knees if you must"
@@ -191,7 +191,7 @@
   },
   "act7/stitch_success": {
     "title": "Stitch that holds",
-    "body": "The horizon shudders and eases half a tone. It is not a plaza miracle — it is a truce. You feel **faith** like a muscle that held the weight.\n\nThe stitch stays as a thin line in vision. The mind tires too.",
+    "body": "The horizon shudders and eases half a tone. It is not a plaza miracle — it is a truce.",
     "choices": [
       {
         "text": "Lower your hands and move on — the wasteland still demands legs"
@@ -203,7 +203,7 @@
   },
   "act7/wasteland_antechamber": {
     "title": "Antechamber of ash",
-    "body": "The road does **not** go back. Before the last horizon, the waste demands **one** event: sermon, blade, or a **bell** without a clapper.\n\nThis is not the bottom of the axis — it is flight into the sky. The true close still **burns** below.",
+    "body": "The road does **not** go back. Before the last horizon, the waste demands **one** event: sermon, blade, or a **bell** without a clapper. This is not the bottom of the axis — it is flight into the sky.",
     "choices": [
       {
         "text": "Let the wind decide the next sacrifice",
@@ -234,6 +234,6 @@
   },
   "act7/wasteland_router": {
     "title": "Wasteland that draws lots",
-    "body": "The wind carries a smell that is neither earth nor city. Something moves in the ash: sometimes a voice; sometimes a shape; sometimes only hunger with footsteps.\n\nWhen you stop trying to control the map, the waste picks the next sin — small, but recorded."
+    "body": "The wind carries a smell that is neither earth nor city. Something moves in the ash: sometimes a voice; sometimes a shape; sometimes only hunger with footsteps."
   }
 }

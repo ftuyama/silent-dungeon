@@ -10,5 +10,3 @@ onEnter:
   - { op: addXp, amount: 10 }
 ---
 O eco **assenta**. Não some — guarda seu nome e cala por um tempo.
-
-Por um instante o mundo gira limpo: cada passo responde porque você **deixou**.

@@ -11,4 +11,4 @@ choices:
   - text: "Voltar ao cruzeiro"
     next: act2/hub_catacomb
 ---
-O **anjo** desfaz-se em cinza que não cai — só se afasta. A flecha não perdoa; você também não. A partir daqui, quem o vê lê **paciência** onde antes lia sombra.
+O **anjo** desfaz-se em cinza que não cai — só se afasta. A flecha não perdoa; você também não.

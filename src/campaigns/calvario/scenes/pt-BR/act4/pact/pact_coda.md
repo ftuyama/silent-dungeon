@@ -14,5 +14,3 @@ onEnter:
   - { op: addDiary, text: "Servi ao Terceiro Sino. O anel no dedo não toca — mas o mundo cala quando eu respiro." }
 ---
 O caçador cai ou foge; a cidade finge dormir. Você serve ao **Terceiro Sino** como conduto — o **anel** no dedo é mudo para os outros, ensurdecedor para você.
-
-O frio sobe à pele da cidade. Você ouve o quarto toque **prometido**, nunca fundido.

@@ -20,6 +20,4 @@ onEnter:
   - { op: addMark, mark: act1_mirror_shard }
   - { op: addDiary, text: "Vi-me num caco de espelho: um estranho com o meu nome." }
 ---
-Na argamassa, um **caco de espelho** devolve *{{playerName}}* cansado, boca mais fechada do que você lembrava.
-
-Medo velho: voltar igual se a sombra ganhar em cima antes de você.
+Na argamassa, um **caco de espelho** devolve *{{playerName}}* cansado, boca mais fechada do que você lembrava. Medo velho: voltar igual se a sombra ganhar em cima antes de você.

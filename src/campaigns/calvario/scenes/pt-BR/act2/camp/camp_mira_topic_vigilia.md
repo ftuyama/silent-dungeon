@@ -10,6 +10,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act2_camp_mira_topic_vigilia }
 onEnter: []
 ---
-> *"A **Vigília** gosta de **ordem** — ordem escrita por quem sobreviveu. Não confie neles. **Use-os**."*
-
-{{companionLine}}
+> *"A **Vigília** gosta de **ordem** — ordem escrita por quem sobreviveu. Não confie neles.

@@ -12,6 +12,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "Ouvi martelo onde não havia oficina; o vazio decidiu fundir alguma coisa em mim." }
 ---
-Uma fenda corta a parede da nave.
-
-Lá dentro: **ferro**, pausa, ferro. Sem brasa. Sem fole.
+Uma fenda corta a parede da nave. Lá dentro: **ferro**, pausa, ferro.

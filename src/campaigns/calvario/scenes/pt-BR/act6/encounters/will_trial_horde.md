@@ -13,4 +13,4 @@ onEnter:
   - { op: addMark, mark: act6_will_scattered }
   - { op: addDiary, text: "A vontade sem freio chamou versoes minhas que so conhecem conquista." }
 ---
-A coroa parte-se em fragmentos. Cada um veste um rosto seu. Não é mais duelo: é tribunal de sombras.
+A coroa parte-se em fragmentos. Cada um veste um rosto seu.

@@ -128,5 +128,3 @@ onEnter:
   - { op: addRep, faction: vigilia, delta: 1 }
 ---
 Soldados da **Vigília** dividem pão seco. A honra aqui tem gosto de cinza.
-
-*Sem sol, alguém ainda conta: **dia {{day}}**.*

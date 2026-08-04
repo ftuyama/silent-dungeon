@@ -12,5 +12,3 @@ onEnter:
   - { op: addXp, amount: 10 }
 ---
 O enxofre pinta o ar de amarelo doentio. Do outro lado da fenda, um salão aberto sobre um mar de lava: o **Crisol**.
-
-Aqui o eixo escolhe quem continua. O resto vira cinza com nome.

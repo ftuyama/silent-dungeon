@@ -19,5 +19,3 @@ choices:
 onEnter: []
 ---
 Antes do **pulso verde**, o vilarejo ainda fingia manhã: pão seco, portas cedo, poços com gosto de ferro. A colheita afinou sem seca — só menos calor nas mãos.
-
-Depois o ar ficou **doce** demais. Alguém fechava a janela e dizia que era vento. Ninguém olhava para baixo.

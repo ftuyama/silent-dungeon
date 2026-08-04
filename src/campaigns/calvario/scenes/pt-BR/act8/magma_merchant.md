@@ -112,4 +112,4 @@ choices:
     preview: "Levar o que restou do ouro — e o cheiro de brasa."
 onEnter: []
 ---
-Um mercador de pele gretada abre uma banca sobre pedra ainda quente. Não sorri. Cobra em **ouro** o que o calor cobraria em carne.
+Um mercador de pele gretada abre uma banca sobre pedra ainda quente. Não sorri.

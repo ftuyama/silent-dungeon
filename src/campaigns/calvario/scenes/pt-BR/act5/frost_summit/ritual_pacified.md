@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Os selos fecharam a tempo. Senti o vazio recuar — não como vitória, como trégua." }
 ---
 Por um **instante** — longo o bastante para doer — o templo fica quieto de verdade. Não é paz; é acordo imposto a algo que preferia fome.
-
-A corrupção recua um passo. O frio continua.

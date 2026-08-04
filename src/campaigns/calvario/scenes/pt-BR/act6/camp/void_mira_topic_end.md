@@ -12,6 +12,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 3, onceFlag: ff_cf_act6_void_mira_topic_end }
 onEnter: []
 ---
-> *"Porta fecha; poço engole. Prefiro porta — becos eu conheço."*
-
-{{companionLine}}
+> *"Porta fecha; poço engole. Prefiro porta — becos eu conheço."

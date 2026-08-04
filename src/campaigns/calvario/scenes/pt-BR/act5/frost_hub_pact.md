@@ -28,6 +28,7 @@ choices:
     next: act5/frost_ridgeline
     visibleWhen:
       all:
+        - { flag: frost_camp_rested }
         - { level: { gte: 19 } }
         - { noMark: vetrnax_slain }
     condition:
@@ -42,6 +43,7 @@ choices:
     next: act5/frost_tomas/intro
     visibleWhen:
       all:
+        - { flag: frost_camp_rested }
         - { noFlag: tomas_rescued }
         - { noFlag: tomas_rescue_missed }
         - { day: { lte: 15 } }
@@ -53,6 +55,7 @@ choices:
   - text: "Rumor do escudeiro — só eco e corda vazia no gelo"
     uiSection: "Missões"
     next: act5/frost_tomas/missed
+    visibleWhen: { flag: frost_camp_rested }
     condition:
       all:
         - { noFlag: tomas_rescued }
@@ -64,6 +67,7 @@ choices:
     next: act5/frost_contrawind/intro
     visibleWhen:
       all:
+        - { flag: frost_camp_rested }
         - { noFlag: contrawind_horde_defeated }
         - { noFlag: contrawind_parley_attempted }
     condition:
@@ -79,6 +83,7 @@ choices:
     next: act5/frost_contrawind/horde_victory
     visibleWhen:
       all:
+        - { flag: frost_camp_rested }
         - { flag: contrawind_horde_defeated }
         - { noFlag: contrawind_parley_attempted }
     preview: "A horda caiu. Edras quer ouvir sua intenção, não o pacto."
@@ -86,12 +91,18 @@ choices:
     uiSection: "Mercador"
     uiSectionIcon: shop
     next: act5/frost_contrawind/merchant
-    visibleWhen: { flag: contrawind_merchant_unlocked }
+    visibleWhen:
+      all:
+        - { flag: frost_camp_rested }
+        - { flag: contrawind_merchant_unlocked }
     preview: "Três lições universais por doze moedas cada — nenhuma pertence ao Sino."
   - text: "Falar com Edras depois da recusa"
     uiSection: "Missões"
     next: act5/frost_contrawind/rejected
-    visibleWhen: { flag: contrawind_parley_failed }
+    visibleWhen:
+      all:
+        - { flag: frost_camp_rested }
+        - { flag: contrawind_parley_failed }
     preview: "A capela permanece; nem o pacto compra uma segunda medida."
   - text: "Viver o acampamento no gelo"
     uiSection: "Acampamento"
@@ -102,6 +113,7 @@ choices:
     uiSection: "Mercador"
     uiSectionIcon: shop
     next: act5/frost_merchant
+    visibleWhen: { flag: frost_camp_rested }
     preview: "Troca de ouro e itens; preço do frio."
   - text: "Montanhas de neve — rumor de um monge na gruta"
     uiSection: "Cume e gruta"
@@ -117,6 +129,7 @@ choices:
     preview: "Gruta e provas do monge; paz ou banimento."
   - text: "Rumo ao cume — templo de pedra negra (caminho perigoso)"
     uiSection: "Cume e gruta"
+    uiSectionIcon: ascend
     next: act5/frost_summit/ascend
     visibleWhen:
       all:
@@ -158,5 +171,3 @@ onEnter:
   - { op: setFlag, key: act5_hub_reached, value: true }
 ---
 As **tendas** rangem. O fogo estala baixo demais, como se esperasse um toque que não vem do vento. O **anel** no dedo fica mudo, mas o desfiladeiro cala um segundo cedo demais quando você fala alto.
-
-Aqui ainda há caminhos: patrulha, troca, cume. Embaixo o eixo desce. O **Terceiro Sino** já conta seus passos no gelo.

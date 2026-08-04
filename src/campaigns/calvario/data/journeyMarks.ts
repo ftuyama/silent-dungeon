@@ -240,6 +240,11 @@ export const journeyMarks: Record<string, JourneyMarkDef> = {
     description:
       'Edras abriu o grimório depois de medir suas intenções; o vento já não sopra só contra você — também corrige sua postura.',
   },
+  contrawind_duelist: {
+    name: 'Desafiante do Contravento',
+    description:
+      'Você quebrou o escudo de Edras sem quebrar a capela; o grimório abriu por concessão, não por confiança.',
+  },
   morvayn_slain: {
     name: 'Morvayn findado',
     description:

@@ -14,4 +14,4 @@ onEnter:
   - { op: addResource, resource: gold, delta: 2 }
   - { op: addDiary, text: "O encarregado fechou o tom sem altar — barganha em voz mínima; o cano adiou o dente." }
 ---
-O encarregado recua meio passo. A moeda some na manga. O contrato ficou dito — o túnel ainda pede prova, mas não nesta dobra.
+O encarregado recua meio passo. A moeda some na manga.

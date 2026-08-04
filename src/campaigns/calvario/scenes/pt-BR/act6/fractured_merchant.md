@@ -129,5 +129,3 @@ choices:
 onEnter: []
 ---
 Sobre um pano que não reflete nada, frascos alinham-se. Quem vende não mostra as mãos — só preços que sobem quando você hesita.
-
-> Estoque **limitado**. O vazio cobra em ouro — e em lembranças que você preferia deixar para trás.

@@ -22,5 +22,3 @@ choices:
 onEnter: []
 ---
 O **silêncio** aqui não é falta de som — é peso da pedra. Cada passo pergunta se você volta ao fogo da Vigília ou fica com o eco.
-
-Com o **mapa rasgado**, você vê onde o corredor mente menos; sem ele, só restam pele e pressa.

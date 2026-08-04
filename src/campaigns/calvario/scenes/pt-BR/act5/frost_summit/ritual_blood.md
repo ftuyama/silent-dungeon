@@ -14,6 +14,4 @@ dualAttrSkillCheck:
   label: "Três selos — vontade e ferro"
 onEnter: []
 ---
-Sangue **escurece** a neve; o ar cheira a ferro e juramento partido — no templo, algo acorda por contrato, não por bênção.
-
-**Três selos** — Mente, corpo, nome. O resto é sangue.
+Sangue **escurece** a neve; o ar cheira a ferro e juramento partido — no templo, algo acorda por contrato, não por bênção. **Três selos** — Mente, corpo, nome.

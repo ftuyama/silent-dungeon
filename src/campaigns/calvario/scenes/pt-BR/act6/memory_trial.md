@@ -18,5 +18,3 @@ choices:
 onEnter: []
 ---
 No poço, você vê cenas da própria vida em camadas. Quando tenta tocar uma lembrança, outra acorda por baixo.
-
-> *"**Recordar** é escolher o que matar."*

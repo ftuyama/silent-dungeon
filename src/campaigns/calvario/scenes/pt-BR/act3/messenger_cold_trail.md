@@ -12,6 +12,4 @@ choices:
     preview: "Cultistas na toca; ferro fala primeiro."
 onEnter: []
 ---
-**Cinza** nova sob as botas e corda cortada com pressa: alguém arrastou um corpo até aqui e depois brigou com o túnel.
-
-No fundo, dois **cultistas** contam moedas sobre um coldre vazio — brasão da **Vigília** ainda visível.
+**Cinza** nova sob as botas e corda cortada com pressa: alguém arrastou um corpo até aqui e depois brigou com o túnel. No fundo, dois **cultistas** contam moedas sobre um coldre vazio — brasão da **Vigília** ainda visível.

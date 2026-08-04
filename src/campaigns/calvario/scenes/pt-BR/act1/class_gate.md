@@ -61,5 +61,3 @@ choices:
 onEnter: []
 ---
 Três **juramentos** ecoam na câmara redonda. Um quarto sussurro de caça, sem bandeira. No centro, **água negra** parada — e seu reflexo demora um instante a acompanhar, como se escolhesse entre **espada**, **arco** e **símbolo sagrado**.
-
-O ar cheira a **incenso queimado** e ferro.

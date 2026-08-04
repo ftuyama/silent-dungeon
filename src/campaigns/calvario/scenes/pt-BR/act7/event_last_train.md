@@ -14,5 +14,3 @@ onEnter:
   - { op: addDiary, text: "Vi um trem sem trilhos — só caixotes e pó. Paguei passagem com ouro que já não comprava nada em lugar nenhum; ganhei um instante de fé como quem ganha soneca antes do teto cair." }
 ---
 Um **vagão** aberto, cheio de pó que já foi gente. O maquinista é um relógio parado — sorri como quem sabe que atraso e fim são a mesma coisa.
-
-**Três moedas** compram um lugar na beira — não para fugir: para lembrar que fugir também custa.

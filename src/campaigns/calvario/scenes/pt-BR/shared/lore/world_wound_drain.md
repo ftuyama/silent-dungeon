@@ -18,6 +18,4 @@ choices:
     preview: "A memória fica pela metade."
 onEnter: []
 ---
-Não veio exército. Algo **puxa**: calor da lareira, nomes na língua, o som que sobra entre duas frases. A rotina vira máscara — mercado aberto, olhos baixos.
-
-À noite, um eco de **sino** sobe sem bater bronze. O **Terceiro Sino**, diz quem ainda fala baixo. O resto chama de vento e fecha a porta.
+Não veio exército. Algo **puxa**: calor da lareira, nomes na língua, o som que sobra entre duas frases.

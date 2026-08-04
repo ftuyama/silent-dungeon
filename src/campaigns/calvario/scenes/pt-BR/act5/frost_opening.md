@@ -21,8 +21,4 @@ onEnter:
   - { op: addResource, resource: supply, delta: -1 }
   - { op: addDiary, text: "Depois do trono: Cimeria inteira em neve, ar de masmorra. Rumor de Vetrnax nas Cimeiras." }
 ---
-Cimeria **inteira** parece coberta de neve — telhados brancos, campos sem contorno, estradas que sumiram debaixo do gelo. O **frio** entra pelo peito e prende a respiração.
-
-Nas **Cimeiras do Vento Cinzento**, o vento corta a boca. De abrigo em abrigo, rumor de **Vetrnax**: dragão no cume, hálito que congela o grito antes do som.
-
-Morvayn caiu no ferro. O **eixo** ainda desce. Vitória magra; gelo sem perdão.
+Cimeria **inteira** parece coberta de neve — telhados brancos, campos sem contorno, estradas que sumiram debaixo do gelo. O **frio** entra pelo peito e prende a respiração. Nas **Cimeiras do Vento Cinzento**, o vento corta a boca.

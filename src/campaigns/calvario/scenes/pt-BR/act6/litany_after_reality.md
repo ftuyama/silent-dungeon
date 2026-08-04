@@ -9,4 +9,4 @@ choices:
     next: act6/hub_fractured_nave
 onEnter: []
 ---
-As colunas repetem seu passo um tom abaixo. O real já mordeu. O que vem a seguir não pergunta se você gosta do próprio nome — só se aguenta dizê-lo.
+As colunas repetem seu passo um tom abaixo. O real já mordeu.

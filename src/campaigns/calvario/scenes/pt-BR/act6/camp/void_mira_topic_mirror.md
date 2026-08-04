@@ -11,6 +11,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act6_void_mira_topic_mirror }
 onEnter: []
 ---
-> *"Sombras aqui têm **dentes**. Se me vir hesitar, não chame piedade — chame **tempo**."*
-
-{{companionLine}}
+> *"Sombras aqui têm **dentes**. Se me vir hesitar, não chame piedade — chame **tempo**."

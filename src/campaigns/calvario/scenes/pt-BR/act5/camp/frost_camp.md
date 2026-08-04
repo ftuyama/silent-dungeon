@@ -15,6 +15,7 @@ choices:
     lockedHint: "Você precisa de pelo menos 1 suprimento para pagar o descanso."
     effects:
       - { op: campRest }
+      - { op: setFlag, key: frost_camp_rested, value: true }
       - { op: advanceDay }
   - text: "Usar consumível"
     uiSection: "Recuperar"
@@ -105,5 +106,3 @@ onEnter:
   - { op: addRep, faction: culto, delta: 1 }
 ---
 Peregrinos **compartilham** calor em pedaços; o fogo consome. Ninguém sobe inteiro.
-
-*Sem calendário na tempestade: **dia {{day}}**.* Se o vento permitir, ainda dá para falar.

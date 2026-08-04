@@ -12,6 +12,4 @@ choices:
     next: act5/frost_hub
 onEnter: []
 ---
-Entre as rochas, **Tomás** está amarrado ao poste de gelo; dois **cultistas** do frio medem o tempo com lâmina e oração.
-
-Não é romance. É dívida de corda — e o tempo corre.
+Entre as rochas, **Tomás** está amarrado ao poste de gelo; dois **cultistas** do frio medem o tempo com lâmina e oração. Não é romance.

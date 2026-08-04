@@ -16,5 +16,3 @@ choices:
 onEnter: []
 ---
 O chão **vibra** — garras escavando pedra mole. Os ratos **não fogem**; avançam em arco, como se alguém os tivesse ensinado formação.
-
-Aperte os dentes. O combate começa agora.

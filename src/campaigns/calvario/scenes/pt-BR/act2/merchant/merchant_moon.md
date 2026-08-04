@@ -184,5 +184,3 @@ choices:
 onEnter: []
 ---
 Um capuz **sem rosto** estende um mapa com margens roídas. Os dedos por baixo do tecido são longos demais para serem só humanos.
-
-*"Rumores mudam **pesos**"* — se alguém o reconhece nas facções, o preço muda.

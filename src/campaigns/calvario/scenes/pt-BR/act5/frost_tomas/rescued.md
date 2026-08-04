@@ -13,8 +13,4 @@ onEnter:
   - { op: grantItem, itemId: frost_pass_map }
   - { op: addDiary, text: "Arranquei Tomás da corda e do ritual. O escudo dele ainda treme — mas jurou-se a seguir quem não fugir de primeiro." }
 ---
-A corda **parte**; **Tomás** cai de joelhos na neve e levanta o escudo antes do rosto — não para esconder, para **jurar**.
-
-> *"Ordena levantar, levanto. Senão, caminho com você."*
-
-O **poste** fica vazio. Pela primeira vez desde as **Cimeiras**, alguém escolhe ficar **ao seu lado**.
+A corda **parte**; **Tomás** cai de joelhos na neve e levanta o escudo antes do rosto — não para esconder, para **jurar**. > *"Ordena levantar, levanto.

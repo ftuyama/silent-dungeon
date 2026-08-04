@@ -15,6 +15,4 @@ onEnter:
   - { op: registerEnding, endingId: epilogue_true_depths }
   - { op: settleRun, outcome: victory }
 ---
-A pedra para de descer. Você fechou o eixo no **fundo** — não no céu de cinza. Aqui o silêncio pesa como vitória quente.
-
-A vitória gravou **Ecos** no legado. Invista-os na loja ou recomece quando o abismo chamar.
+A pedra para de descer. Você fechou o eixo no **fundo** — não no céu de cinza.

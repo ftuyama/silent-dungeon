@@ -13,5 +13,3 @@ choices:
 onEnter: []
 ---
 O rio não corre — lambe a pedra. Ondas lentas de magma marcam o caminho.
-
-Do outro lado, silhuetas de pedra respiram fogo.

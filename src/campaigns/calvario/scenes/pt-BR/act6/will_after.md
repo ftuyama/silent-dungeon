@@ -14,5 +14,3 @@ onEnter:
   - { op: addDiary, text: "Vontade não é força para vencer todos. É disciplina para não obedecer o pior em mim. O amuleto das provas lateja — guarda contra o calor que ainda não vi." }
 ---
 O penitente cai de joelhos, mas não sangra. Espalha um pó negro que escreve um círculo ao redor dos seus pés.
-
-Dentro dele, uma certeza nova: você não é puro — mas ainda é **seu**.

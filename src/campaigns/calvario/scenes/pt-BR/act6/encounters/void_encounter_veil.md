@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 Uma figura alta atravessa a penumbra. Não há sangue — há certeza escorrendo dos cantos do véu; tinta onde deveria haver pele.
-
-A voz não pergunta se você está pronto. Trata prontidão como defeito de criança.

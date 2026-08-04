@@ -9,6 +9,4 @@ choices:
     next: act5/frost_monk/trial_mind
 onEnter: []
 ---
-A boca **absorve**; dentro, ar morno que faz o gelo mentir sobre a temperatura.
-
-Um eco pergunta: *quem traz barulho para um lugar que só quer quietude?*
+A boca **absorve**; dentro, ar morno que faz o gelo mentir sobre a temperatura. Um eco pergunta: *quem traz barulho para um lugar que só quer quietude?

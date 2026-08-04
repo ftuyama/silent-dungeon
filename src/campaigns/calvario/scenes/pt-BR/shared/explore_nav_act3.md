@@ -22,5 +22,3 @@ choices:
 onEnter: []
 ---
 Nas profundezas, o eco mastiga nomes antes de devolvê-los. O mapa não promete saída — só direção.
-
-Com o **mapa rasgado**, você vê onde a pedra mente menos. Sem ele, só restam ouvido e pressa.

@@ -1,7 +1,7 @@
 {
   "act8/opening_magma_throat": {
     "title": "Magma Throat",
-    "body": "The stone opens like a jaw. It is not a door — it is an old wound. The air smells of sulfur.\n\nBelow, something pulses red. It does not ask a name. It demands presence.",
+    "body": "The stone opens like a jaw. It is not a door — it is an old wound. The air smells of sulfur.",
     "choices": [
       {
         "text": "Descend through the cracked crust",
@@ -15,7 +15,7 @@
   },
   "act8/descent_crust": {
     "title": "Cracked Crust",
-    "body": "The crust groans under the weight. Lava veins flash between the cracks.\n\nEach breath arrives too hot. Without magma ward, the skin feels the price before the name.",
+    "body": "The crust groans under the weight. Lava veins flash between the cracks.",
     "choices": [
       {
         "text": "Cross the black stone bridge",
@@ -25,7 +25,7 @@
   },
   "act8/brimstone_crossing": {
     "title": "Brimstone Crossing",
-    "body": "Sulfur paints the air a sick yellow. Across the rift, a hall opens over a sea of lava: the **Crucible**.\n\nHere the axis chooses who continues. The rest become ash with a name.",
+    "body": "Sulfur paints the air a sick yellow. Across the rift, a hall opens over a sea of lava: the **Crucible**.",
     "choices": [
       {
         "text": "Enter the Magma Crucible",
@@ -35,7 +35,7 @@
   },
   "act8/hub_magma_crucible": {
     "title": "Magma Crucible",
-    "body": "The **Crucible** is a furnace with a name. Black-stone bridges cross a sea of lava; the air burns in the throat.\n\nHere you descend to **finish** the axis — or climb back to the surface, if you can still pretend cold.",
+    "body": "The **Crucible** is a furnace with a name. Black-stone bridges cross a sea of lava; the air burns in the throat. Here you descend to **finish** the axis — or climb back to the surface, if you can still pretend cold.",
     "choices": [
       {
         "text": "Patrol the lava veins (explore map)",
@@ -96,7 +96,7 @@
   },
   "act8/magma_merchant": {
     "title": "Ember Stall",
-    "body": "A merchant with cracked skin opens a stall on stone still hot. He does not smile. He charges in **gold** what the heat would take in flesh.",
+    "body": "A merchant with cracked skin opens a stall on stone still hot. He does not smile.",
     "choices": [
       {
         "text": "Buy Red Potion (6 gold) (×2)",
@@ -208,7 +208,7 @@
   },
   "act8/lava_river": {
     "title": "Lava River",
-    "body": "The river does not run — it licks the stone. Slow magma waves mark the path.\n\nAcross it, stone silhouettes breathe fire.",
+    "body": "The river does not run — it licks the stone. Slow magma waves mark the path.",
     "choices": [
       {
         "text": "Cross by the narrow bank",
@@ -255,7 +255,7 @@
   },
   "act8/encounters/forge_colossus_fight": {
     "title": "Forge Colossus",
-    "body": "The colossus rises from the anvil. Each step spills slag. It is not a guard — it is the forge's final product.",
+    "body": "The colossus rises from the anvil. Each step spills slag.",
     "choices": [
       {
         "text": "Challenge the colossus"
@@ -276,7 +276,7 @@
   },
   "act8/sulfur_altar": {
     "title": "Sulfur Altar",
-    "body": "The altar smells of rotten egg and oath. Sick yellow covers the stone. Kneel and you pay; fight and you pay too.",
+    "body": "The altar smells of rotten egg and oath. Sick yellow covers the stone.",
     "choices": [
       {
         "text": "Offer faith to the altar (−1 faith)",
@@ -315,7 +315,7 @@
   },
   "act8/encounters/magma_lord_intro": {
     "title": "Magma Lord",
-    "body": "Lava rises in a column. Inside it, a trunk of stone and hate: the **Magma Lord**. Furnace eyes. Crack-voice.\n\nThis is the **bottom** of the axis. No more step — only victory or ash.",
+    "body": "Lava rises in a column. Inside it, a trunk of stone and hate: the **Magma Lord**. Furnace eyes.",
     "choices": [
       {
         "text": "Challenge the Magma Lord"
@@ -327,7 +327,7 @@
   },
   "act8/victory_crucible": {
     "title": "Crucible Silenced",
-    "body": "The lord collapses into black stone. The lava drops a handspan — enough to breathe without asking leave.\n\nThe axis closes the last name. The epilogue remains.",
+    "body": "The lord collapses into black stone. The lava drops a handspan — enough to breathe without asking leave. The axis closes the last name.",
     "choices": [
       {
         "text": "Descend into the last silence — the true end"
@@ -339,7 +339,7 @@
   },
   "act8/epilogue_true_depths": {
     "title": "Epilogue — True Depths",
-    "body": "There is no sky here — only stone and the certainty that the dungeon **ends**. Silence is not flight: it is victory that smells of sulfur.\n\nYou carry the bottom of the axis in your bones. *(You can **save** from the menu or **restart**.)*",
+    "body": "There is no sky here — only stone and the certainty that the dungeon **ends**. Silence is not flight: it is victory that smells of sulfur. You carry the bottom of the axis in your bones.",
     "choices": [
       {
         "text": "Close the diary — the floor of the axis"

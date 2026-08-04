@@ -12,4 +12,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 12 }
 ---
-Por um instante o símbolo **encaixa**. Não é poder solto — é gramática. O trono deixa de ser só medo e vira frase que você pode recusar em voz alta.
+Por um instante o símbolo **encaixa**. Não é poder solto — é gramática.

@@ -17,5 +17,3 @@ onEnter:
   - { op: addResource, resource: corruption, delta: 1 }
 ---
 Um espelho opaco sobe do chão e escreve seu nome com sua própria sombra. A oferta é simples: converter dor em força, turno após turno.
-
-Não há testemunha — só custo.

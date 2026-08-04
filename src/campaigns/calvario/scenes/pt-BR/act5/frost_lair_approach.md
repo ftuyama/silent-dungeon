@@ -25,6 +25,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "O covil não cheira a enxofre — cheira a tempestade adiada. Vetrnax dorme acordado." }
 ---
-**Gelo** espelha o rosto em fatias — nenhuma inteira. No fundo, dentes de inverno abrem um sorriso que não é para você.
-
-O ar vira agulhas; o céu baixa demais.
+**Gelo** espelha o rosto em fatias — nenhuma inteira. No fundo, dentes de inverno abrem um sorriso que não é para você. O ar vira agulhas; o céu baixa demais.

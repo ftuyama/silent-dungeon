@@ -72,6 +72,4 @@ choices:
     preview: "O selo lembra você como você lembra dele."
 onEnter: []
 ---
-Atrás de um **véu** de pedra rachada abre-se uma antessala que não estava no mapa — lajes baixas, runas seladas com chumbo, água parada que espelha sem refletir.
-
-No centro, uma **runa** maior. Sem altar. Só o peso de quem selou isto.
+Atrás de um **véu** de pedra rachada abre-se uma antessala que não estava no mapa — lajes baixas, runas seladas com chumbo, água parada que espelha sem refletir. No centro, uma **runa** maior.

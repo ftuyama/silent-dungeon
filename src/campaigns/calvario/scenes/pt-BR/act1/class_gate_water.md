@@ -13,5 +13,3 @@ choices: []
 onEnter: []
 ---
 Por um instante o reflexo não é seu rosto: osso e ondulação. A água fica quieta demais.
-
-*{{playerName}}* se debruça sobre *{{playerName}}*. Ao levantar a cabeça, o pescoço dói de ter **visto** demais.

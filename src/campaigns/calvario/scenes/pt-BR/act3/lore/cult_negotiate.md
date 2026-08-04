@@ -88,6 +88,4 @@ choices:
     preview: "O cultista desapareceu nos canos; o eco do gesto continua."
 onEnter: []
 ---
-**Voz baixa**: *"Trago contrato simples — descem, escrevemos o nome certo nos canos. Em troca, **silêncio** fora do túnel."*
-
-O **cultista** segura uma moeda velha — encarregado, não fanático. Atrás dele, dois outros esperam a ordem.
+**Voz baixa**: *"Trago contrato simples — descem, escrevemos o nome certo nos canos. Em troca, **silêncio** fora do túnel." O **cultista** segura uma moeda velha — encarregado, não fanático.

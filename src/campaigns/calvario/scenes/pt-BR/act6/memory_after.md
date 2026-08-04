@@ -12,5 +12,3 @@ onEnter:
   - { op: addDiary, text: "As minhas memórias não são arquivo. São campo de batalha." }
 ---
 O coro se desfaz em gotas de tinta escura que sobem em vez de cair. Cada gota traz um rosto que você amou e não salvou.
-
-O poço cala quando você diz o próprio nome sem título.

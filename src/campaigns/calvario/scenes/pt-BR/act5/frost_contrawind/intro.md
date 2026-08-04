@@ -17,5 +17,3 @@ choices:
     next: act5/frost_hub
 ---
 O rumor não vem de uma boca. Vem de **pegadas** que avançam contra o vento e de quatro vozes repetindo a mesma oração ao redor de uma capela quebrada.
-
-Dentro do círculo de neve imóvel, alguém sustenta o ar com um cajado. Os cultistas chamam esse homem de **Mago do Contravento** — e fecham o cerco.

@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Aprendi um credo novo: sangrar para ferir melhor." }
 ---
 O espelho toca seu peito por dentro. Fica uma linha escura sobre o esterno, quente como metal recém-forjado.
-
-Quando você fecha a mão, a marca responde.

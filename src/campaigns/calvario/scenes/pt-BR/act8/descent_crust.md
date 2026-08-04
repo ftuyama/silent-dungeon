@@ -12,5 +12,3 @@ onEnter:
   - { op: addXp, amount: 8 }
 ---
 A crosta range sob o peso. Veias de lava piscam entre as fendas.
-
-Cada respiração chega quente demais. Sem guarda magmática, a pele sente o preço antes do nome.

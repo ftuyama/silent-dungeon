@@ -14,5 +14,3 @@ onEnter:
   - { op: addDiary, text: "Fugi da emboscada. O eco do Terceiro Sino ficou-me na nuca como unha suja." }
 ---
 Os **capuzes** não correm — deslizam. Você corre com pulmões ainda humanos.
-
-Uma lâmina corta o ar perto demais da orelha; outra risca o orgulho sem tocar a pele.

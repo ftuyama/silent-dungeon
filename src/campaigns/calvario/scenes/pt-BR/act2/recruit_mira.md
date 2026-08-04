@@ -10,4 +10,4 @@ choices:
 onEnter:
   - { op: setFlag, key: mira_recruited, value: true }
 ---
-Mira aperta a bainha. "Menos conversa. **Mais pé**."
+Mira aperta a bainha. "Menos conversa.

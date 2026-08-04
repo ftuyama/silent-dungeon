@@ -17,5 +17,3 @@ choices:
     next: act5/frost_hub
 ---
 Os quatro **cultistas** abrem a formação. Não guardam a capela — querem quebrar o círculo traçado na neve e alcançar quem respira dentro dele.
-
-O contravento traz o cheiro de ferro antes das lâminas. Por um instante, nenhum deles percebe você.

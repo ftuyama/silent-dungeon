@@ -36,7 +36,7 @@
   },
   "act6/camp/void_camp": {
     "title": "Fire of Mirrored Ash",
-    "body": "There is no real **firewood** — only burned remains. The fire imitates warmth; your body accepts it because it must.\n\n*Even here, the number follows: **day {{day}}**.*",
+    "body": "There is no real **firewood** — only burned remains. The fire imitates warmth; your body accepts it because it must.",
     "choices": [
       {
         "text": "Feed the flame with memory (−1 supply)",
@@ -69,7 +69,7 @@
   },
   "act6/camp/void_companion_chat": {
     "title": "Word by the False Flame",
-    "body": "{{companionLine}}\n\nIf you are alone, silence doubles the voice you already carry. Even the echo sounds tired.",
+    "body": "{{companionLine}} If you are alone, silence doubles the voice you already carry.",
     "choices": [
       {
         "text": "Listen to Mira — voice against the echo",
@@ -123,7 +123,7 @@
   },
   "act6/camp/void_duo_fireside": {
     "title": "Three Voices in the Fractured Nave",
-    "body": "**Mira** and **Tomás** watch the fire; no one wants to die alone here. You, {{leadName}}, stand between them.\n\n{{companionLine}}",
+    "body": "**Mira** and **Tomás** watch the fire; no one wants to die alone here. You, {{leadName}}, stand between them.",
     "choices": [
       {
         "text": "Choose neither — only continue"
@@ -132,7 +132,7 @@
   },
   "act6/camp/void_mira_fireside": {
     "title": "Ash — Confidences with Mira",
-    "body": "> *\"Here the echo lies less than people. That is not comfort — it is a **warning**.\"*\n\n{{companionLine}}",
+    "body": "> *\"Here the echo lies less than people. That is not comfort — it is a **warning**.\"",
     "choices": [
       {
         "text": "Ask if she still recognizes her own shadow"
@@ -147,7 +147,7 @@
   },
   "act6/camp/void_mira_topic_end": {
     "title": "Door or Pit",
-    "body": "> *\"A door closes; a well swallows. I prefer the door — I know alleys.\"*\n\n{{companionLine}}",
+    "body": "> *\"A door closes; a well swallows. I prefer the door — I know alleys.\"",
     "choices": [
       {
         "text": "Return to the unstable light",
@@ -159,7 +159,7 @@
   },
   "act6/camp/void_mira_topic_mirror": {
     "title": "Shadow and Mirror",
-    "body": "> *\"Shadows here have **teeth**. If you see me hesitate, do not call it mercy — call it **time**.\"*\n\n{{companionLine}}",
+    "body": "> *\"Shadows here have **teeth**. If you see me hesitate, do not call it mercy — call it **time**.\"",
     "choices": [
       {
         "text": "Leave this reflection — return to the group"
@@ -168,7 +168,7 @@
   },
   "act6/camp/void_tomas_fireside": {
     "title": "Ash — Word with Tomás",
-    "body": "> *\"This is not a camp — it is a **trial**. A trial does not ask for applause; it asks for a **step**.\"*\n\n{{companionLine}}",
+    "body": "> *\"This is not a camp — it is a **trial**. A trial does not ask for applause; it asks for a **step**.\"",
     "choices": [
       {
         "text": "Ask if his faith sounds different here"
@@ -183,7 +183,7 @@
   },
   "act6/camp/void_tomas_topic_duty": {
     "title": "Duty Without Ground",
-    "body": "> *\"Duty needs no soil — it needs someone you will not lie to. If we fall, we fall **together**.\"*\n\n{{companionLine}}",
+    "body": "> *\"Duty needs no soil — it needs someone you will not lie to. If we fall, we fall **together**.\"",
     "choices": [
       {
         "text": "Return to the group"
@@ -192,7 +192,7 @@
   },
   "act6/camp/void_tomas_topic_faith": {
     "title": "Faith in the Void",
-    "body": "> *\"Faith does not change its sound — it changes its **echo**. If God falls silent, I still raise the **shield**.\"*\n\n{{companionLine}}",
+    "body": "> *\"Faith does not change its sound — it changes its **echo**. If God falls silent, I still raise the **shield**.\"",
     "choices": [
       {
         "text": "Leave the prayer unfinished — and return"
@@ -201,7 +201,7 @@
   },
   "act6/dimensional_smith/entry": {
     "title": "Corridor of the Blind Anvil",
-    "body": "A cleft cuts the nave wall.\n\nInside: **iron**, pause, iron. No ember. No bellows.",
+    "body": "A cleft cuts the nave wall. Inside: **iron**, pause, iron.",
     "choices": [
       {
         "text": "Enter through the wall's cut and follow the sound"
@@ -216,7 +216,7 @@
   },
   "act6/dimensional_smith/forge": {
     "title": "Dimensional Workshop",
-    "body": "The workshop ceiling leans wrong — no visible fire. The smith does not smile; he measures your breath between strikes.\n\n*\"**Iron** lives. **Gold** stays quiet. Want a miracle? Bring leftover from a fight.\"*",
+    "body": "The workshop ceiling leans wrong — no visible fire. The smith does not smile; he measures your breath between strikes.",
     "choices": [
       {
         "text": "Temper Iron Dagger (10 gold)",
@@ -244,7 +244,7 @@
   },
   "act6/dimensional_smith/unlock": {
     "title": "The Forge Between Hinges",
-    "body": "The smith seems more noise than man. He strikes invisible metal and stops without looking at you.\n\n\"**Paid. Trade. Gone.**\" \"If you return, bring metal that has already seen the void.\"",
+    "body": "The smith seems more noise than man. He strikes invisible metal and stops without looking at you.",
     "choices": [
       {
         "text": "Speak. Accept the workshop's mark.",
@@ -259,7 +259,7 @@
   },
   "act6/encounters/memory_trial_bleed": {
     "title": "Hemorrhage of Echoes",
-    "body": "You fall into the well without an axis. Old faces grip your wrists as if collecting a debt.\n\nWhen you breathe again, the Choir is already in front of you.",
+    "body": "You fall into the well without an axis. Old faces grip your wrists as if collecting a debt.",
     "choices": [
       {
         "text": "Fight while memories tear you"
@@ -292,7 +292,7 @@
   },
   "act6/encounters/mirror_boss_intro": {
     "title": "The Other Name",
-    "body": "From the mirror steps someone with your face and stance, without hesitation. He smiles like someone who already won the argument.\n\n> *\"I am you without fear. You are me without courage.\"* If he wins, you stay alive — you just stop **being**.",
+    "body": "From the mirror steps someone with your face and stance, without hesitation. He smiles like someone who already won the argument. > *\"I am you without fear.",
     "choices": [
       {
         "text": "Take words from the reflection before steel (draft)",
@@ -305,7 +305,7 @@
   },
   "act6/encounters/mirror_boss_resolve": {
     "title": "Stitching of Shadow",
-    "body": "The reflection unravels into black threads. They do not attack — they seek shelter along your outline.\n\nThere is no clean triumph. Only a clear pact: walk with the dark on a short leash.",
+    "body": "The reflection unravels into black threads. They do not attack — they seek shelter along your outline. There is no clean triumph.",
     "choices": [
       {
         "text": "Accept the fissure and move on"
@@ -317,7 +317,7 @@
   },
   "act6/encounters/reality_trial_focus": {
     "title": "Coherent Fissure",
-    "body": "You hold a single version of the room for a few seconds. Long enough to tell stone from reflection.\n\nThe Herald smiles without a mouth.",
+    "body": "You hold a single version of the room for a few seconds. Long enough to tell stone from reflection.",
     "choices": [
       {
         "text": "Face the Herald with a fixed mind"
@@ -329,7 +329,7 @@
   },
   "act6/encounters/reality_trial_shatter": {
     "title": "Fissure Without Axis",
-    "body": "The walls switch places. Your body arrives late to every gesture. Stepping on the floor becomes an act of faith.\n\nThe Herald does not advance. He waits for your fall to call it a trial.",
+    "body": "The walls switch places. Your body arrives late to every gesture.",
     "choices": [
       {
         "text": "Fight even with faith failing"
@@ -341,7 +341,7 @@
   },
   "act6/encounters/void_encounter_corruption_horde": {
     "title": "Rust That Dances",
-    "body": "The **corruption** you carry hums in the stone. It calls shards — and a preacher who already had your name on his tongue.\n\nWhere there is a stain, there is a predator.",
+    "body": "The **corruption** you carry hums in the stone. It calls shards — and a preacher who already had your name on his tongue.",
     "choices": [
       {
         "text": "Contain the surge — stain preacher and shard drawn to the wound"
@@ -350,7 +350,7 @@
   },
   "act6/encounters/void_encounter_echo": {
     "title": "Whispers Without Audience",
-    "body": "The air thickens with ownerless voices. They recall wrong names and right dates — and laugh when you correct them.\n\nIt is not music. It is memory on strike.",
+    "body": "The air thickens with ownerless voices. They recall wrong names and right dates — and laugh when you correct them.",
     "choices": [
       {
         "text": "Endure the host until one mouth at a time falls silent"
@@ -368,7 +368,7 @@
   },
   "act6/encounters/void_encounter_fragment_solo": {
     "title": "Decision That Remained",
-    "body": "From the floor rises a silhouette without a stable face. It did not come from outside — it escaped you years ago and learned to walk alone.\n\nIt does not ask forgiveness. It asks for continuity.",
+    "body": "From the floor rises a silhouette without a stable face. It did not come from outside — it escaped you years ago and learned to walk alone.",
     "choices": [
       {
         "text": "Face the wandering shard between the columns"
@@ -386,7 +386,7 @@
   },
   "act6/encounters/void_encounter_penitent": {
     "title": "Penitence Without Confessor",
-    "body": "Metal scrapes where no smith should be — only will tempered cold. The armor does not protect the body; it silences hesitation.\n\nEach of his steps is a sentence spoken low.",
+    "body": "Metal scrapes where no smith should be — only will tempered cold. The armor does not protect the body; it silences hesitation.",
     "choices": [
       {
         "text": "Measure blades with the penitent of links"
@@ -404,7 +404,7 @@
   },
   "act6/encounters/void_encounter_triple_fragments": {
     "title": "Swarm of Falls",
-    "body": "Three shadows rise from the same vice — not copies; versions that took body on different days. Together they take more room than one head can hold.\n\nThe nave tips a little, as if agreeing.",
+    "body": "Three shadows rise from the same vice — not copies; versions that took body on different days. Together they take more room than one head can hold.",
     "choices": [
       {
         "text": "Hold against the shard swarm"
@@ -413,7 +413,7 @@
   },
   "act6/encounters/void_encounter_veil": {
     "title": "Scribe Between Dead Mirrors",
-    "body": "A tall figure crosses the gloom. There is no blood — certainty drips from the veil's edges; ink where skin should be.\n\nThe voice does not ask if you are ready. It treats readiness like a child's flaw.",
+    "body": "A tall figure crosses the gloom. There is no blood — certainty drips from the veil's edges; ink where skin should be.",
     "choices": [
       {
         "text": "Answer the scribe before he stitches sky to your throat"
@@ -422,7 +422,7 @@
   },
   "act6/encounters/void_encounter_veil_fragment": {
     "title": "Veil and Shard",
-    "body": "The **Scribe** traces; the **shard** obeys — not as a servant, as a living footnote to your fear.\n\nTogether they close a circle that does not ask permission.",
+    "body": "The **Scribe** traces; the **shard** obeys — not as a servant, as a living footnote to your fear. Together they close a circle that does not ask permission.",
     "choices": [
       {
         "text": "Break the pair before the fragment becomes dogma"
@@ -431,7 +431,7 @@
   },
   "act6/encounters/will_trial": {
     "title": "Trial of Will",
-    "body": "Atop the altar, a crown of **obsidian** thorns turns. A faceless penitent holds a bladeless edge:\n\n> *\"Do you want **power** to protect, or to never tremble again?\"* To choose is to lose one version of yourself.",
+    "body": "Atop the altar, a crown of **obsidian** thorns turns. A faceless penitent holds a bladeless edge:",
     "choices": [
       {
         "text": "Submit impulse to the altar's chance"
@@ -453,7 +453,7 @@
   },
   "act6/encounters/will_trial_horde": {
     "title": "Crown of Hunger",
-    "body": "The crown splits into fragments. Each one wears one of your faces. It is no longer a duel: it is a tribunal of shadows.",
+    "body": "The crown splits into fragments. Each one wears one of your faces.",
     "choices": [
       {
         "text": "Break the circle of hungry echoes"
@@ -465,7 +465,7 @@
   },
   "act6/epilogue": {
     "title": "Epilogue of the Broken Mirror",
-    "body": "You carry the fractured nave in your eyes — a **shard** of mirror that still cuts the palm.\n\nStreets turn to hypothesis. The green **pulse** on the horizon did not change; how you count it did. One step at a time.",
+    "body": "You carry the fractured nave in your eyes — a **shard** of mirror that still cuts the palm. Streets turn to hypothesis. The green **pulse** on the horizon did not change; how you count it did.",
     "choices": [
       {
         "text": "Lift your eyes — the sky no longer apologizes",
@@ -478,7 +478,7 @@
   },
   "act6/fractured_merchant": {
     "title": "Stall of the Last Price",
-    "body": "On a cloth that reflects nothing, flasks line up. The seller shows no hands — only prices that rise when you hesitate.\n\n> Stock **limited**. The void charges in gold — and in memories you would rather leave behind.",
+    "body": "On a cloth that reflects nothing, flasks line up. The seller shows no hands — only prices that rise when you hesitate.",
     "choices": [
       {
         "text": "Buy nave map (−4 gold)",
@@ -526,7 +526,7 @@
   },
   "act6/hub_fractured_nave": {
     "title": "Fractured Nave",
-    "body": "Three corridors leave the **nave**: reality, memory, will. The **Void** opens only one at a time.\n\nCracks cut the dark overhead. Between the columns, a **fire** and an ownerless **stall** — the little that still feels human.",
+    "body": "Three corridors leave the **nave**: reality, memory, will. The **Void** opens only one at a time. Cracks cut the dark overhead.",
     "choices": [
       {
         "text": "Patrol the fractured nave (explore map)",
@@ -582,7 +582,7 @@
   },
   "act6/litany_after_memory": {
     "title": "Litany of Fleeing Names",
-    "body": "The choir tunes down to a silence that is not peace — it is **waiting**. Memory here is rope, not archive. You feel it stretch toward the third trial: order or hunger.",
+    "body": "The choir tunes down to a silence that is not peace — it is **waiting**. Memory here is rope, not archive.",
     "choices": [
       {
         "text": "Climb without looking back — the pit has eaten enough"
@@ -591,7 +591,7 @@
   },
   "act6/litany_after_reality": {
     "title": "Litany of Cut Reality",
-    "body": "The columns repeat your step a tone lower. The real already bit. What comes next does not ask if you like your own name — only if you can still say it.",
+    "body": "The columns repeat your step a tone lower. The real already bit.",
     "choices": [
       {
         "text": "Accept that the next throat only speaks when this one falls silent"
@@ -600,7 +600,7 @@
   },
   "act6/litany_after_will": {
     "title": "Litany of the Empty Crown",
-    "body": "The circle of dust around your feet closes. Three trials, three bites on the same body. If you still breathe whole, the nave reminds you: whole is also incomplete with pride.",
+    "body": "The circle of dust around your feet closes. Three trials, three bites on the same body.",
     "choices": [
       {
         "text": "Return to the esplanade — the final mirror demands the three marks"
@@ -609,7 +609,7 @@
   },
   "act6/memory_after": {
     "title": "Ballast of Memory",
-    "body": "The choir dissolves into dark ink drops that rise instead of fall. Each drop brings a face you loved and did not save.\n\nThe well goes quiet when you say your own name with no title.",
+    "body": "The choir dissolves into dark ink drops that rise instead of fall. Each drop brings a face you loved and did not save.",
     "choices": [
       {
         "text": "Climb back to the fractured nave"
@@ -621,7 +621,7 @@
   },
   "act6/memory_trial": {
     "title": "Trial of Memory",
-    "body": "In the well, you see scenes of your own life in layers. When you try to touch one memory, another wakes beneath it.\n\n> *\"To **remember** is to choose what to kill.\"*",
+    "body": "In the well, you see scenes of your own life in layers. When you try to touch one memory, another wakes beneath it.",
     "choices": [
       {
         "text": "Hold a name on your tongue before diving",
@@ -634,7 +634,7 @@
   },
   "act6/mirror_gate": {
     "title": "Inner Mirror Gate",
-    "body": "The nave's three marks shine together. The floor opens an arch. Beyond it, a room without doors.\n\nAt the center, a vertical mirror of water. It does not reflect your body: it reflects your **intent**.",
+    "body": "The nave's three marks shine together. The floor opens an arch. Beyond it, a room without doors.",
     "choices": [
       {
         "text": "Enter and face who inhabits me"
@@ -646,7 +646,7 @@
   },
   "act6/nave_summons": {
     "title": "Chorus Before the Queue",
-    "body": "The columns order themselves without moving. You will not choose everything at once — you cross one at a time, and each leaves a scar.\n\nA faceless choir rehearses your name in three tones. The first already asks to enter.",
+    "body": "The columns order themselves without moving. You will not choose everything at once — you cross one at a time, and each leaves a scar. A faceless choir rehearses your name in three tones.",
     "choices": [
       {
         "text": "Climb to the esplanade where only one trial breathes at a time"
@@ -658,7 +658,7 @@
   },
   "act6/opening_void_threshold": {
     "title": "Void Threshold",
-    "body": "The ice **opens** under the Heights. Below, a **nave** without an altar — stone and night, no true door.\n\nEcho returns late, in your voice with another intent. The air smells of cold dust. On the broken columns, someone already rehearsed your name.",
+    "body": "The ice **opens** under the Heights. Below, a **nave** without an altar — stone and night, no true door. Echo returns late, in your voice with another intent.",
     "choices": [
       {
         "text": "Enter the fractured nave and hear what remains of the world"
@@ -670,7 +670,7 @@
   },
   "act6/reality_after": {
     "title": "Scar of the Real",
-    "body": "The herald's mask cracks. Behind it there is no flesh — only void with your breath in it.\n\nYou pick up a shard of black mirror. It does not reflect light; it keeps the **decision** of the first descent.",
+    "body": "The herald's mask cracks. Behind it there is no flesh — only void with your breath in it.",
     "choices": [
       {
         "text": "Let the chorus answer and return to the esplanade"
@@ -682,7 +682,7 @@
   },
   "act6/reality_trial": {
     "title": "Trial of Reality",
-    "body": "The mirrors show you with easier choices — you never entered the Dungeon, or you were loved by all and forgotten by all.\n\nThe herald tilts his head: *real is what **insists***. The floor liquefies. You stay standing only if you choose which pain you call truth.",
+    "body": "The mirrors show you with easier choices — you never entered the Dungeon, or you were loved by all and forgotten by all. The herald tilts his head: *real is what **insists***.",
     "choices": [
       {
         "text": "Try to fix a single world with the mind",
@@ -695,7 +695,7 @@
   },
   "act6/void_secret_claim": {
     "title": "Mark of the Hollow Blade",
-    "body": "The mirror touches your chest from inside. A dark line remains over the sternum, hot as freshly forged metal.\n\nWhen you close your hand, the mark answers.",
+    "body": "The mirror touches your chest from inside. A dark line remains over the sternum, hot as freshly forged metal.",
     "choices": [
       {
         "text": "Return to the fractured nave with the mark active"
@@ -726,7 +726,7 @@
   },
   "act6/void_secret_pact": {
     "title": "Liturgy of the Fissure",
-    "body": "An opaque mirror rises from the floor and writes your name with your own shadow. The offer is simple: turn pain into strength, turn after turn.\n\nThere is no witness — only cost.",
+    "body": "An opaque mirror rises from the floor and writes your name with your own shadow. The offer is simple: turn pain into strength, turn after turn.",
     "choices": [
       {
         "text": "Accept the pact and carve the seal into the body"
@@ -735,7 +735,7 @@
   },
   "act6/will_after": {
     "title": "Oath Without Witnesses",
-    "body": "The penitent falls to his knees, but does not bleed. He spreads black dust that writes a circle around your feet.\n\nInside it, a new certainty: you are not pure — but you are still **yours**.",
+    "body": "The penitent falls to his knees, but does not bleed. He spreads black dust that writes a circle around your feet.",
     "choices": [
       {
         "text": "Descend to the fractured nave"

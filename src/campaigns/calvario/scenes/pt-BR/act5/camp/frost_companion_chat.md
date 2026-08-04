@@ -57,6 +57,4 @@ choices:
     next: act5/camp/frost_camp
 onEnter: []
 ---
-{{companionLine}}
-
-O vento ocupa o lugar do outro quando você cala — e mesmo assim parece resposta. O céu baixo ajuda: ninguém exige bravura quando o frio já cobrou.
+{{companionLine}} O vento ocupa o lugar do outro quando você cala — e mesmo assim parece resposta.

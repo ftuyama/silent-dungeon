@@ -13,5 +13,3 @@ choices:
 onEnter: []
 ---
 **Mira** e **Tomás** medem palavras no fogo — ela quer **nome** ao sair; ele endireita o escudo. Você não é árbitro; é **testemunha**.
-
-{{companionLine}}

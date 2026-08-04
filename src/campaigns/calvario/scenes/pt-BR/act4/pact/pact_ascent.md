@@ -15,5 +15,3 @@ onEnter:
   - { op: addDiary, text: "Aceitei o Terceiro Sino. Cada degrau para cima soa como um badalar que só eu ouço." }
 ---
 A **masmorra** fica nas suas costas — úmida, colada à pele. Por baixo, algo ainda **puxa** para baixo.
-
-Um **sino** não toca. Mesmo assim o pulso tenta acompanhar o que não existe.

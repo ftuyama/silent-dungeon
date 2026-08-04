@@ -13,6 +13,4 @@ skillCheck:
 choices: []
 onEnter: []
 ---
-O eco pede **nome** — não o de batismo, mas o que você escolheu quando a culpa sentou ao seu lado.
-
-Se a lembrança vier ordenada, talvez deixe algo além de cinza.
+O eco pede **nome** — não o de batismo, mas o que você escolheu quando a culpa sentou ao seu lado. Se a lembrança vier ordenada, talvez deixe algo além de cinza.

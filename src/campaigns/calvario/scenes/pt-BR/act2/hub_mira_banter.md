@@ -13,5 +13,3 @@ choices:
 onEnter: []
 ---
 **Mira** encosta a espada ao ombro: "Este lugar **cobra** cada passo. Eu já deixei aqui um nome — não vou deixar o seu de graça."
-
-O eco responde. Não diz a quem.

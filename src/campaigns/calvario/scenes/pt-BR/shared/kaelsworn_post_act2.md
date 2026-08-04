@@ -27,6 +27,4 @@ choices:
   - text: "Afastar-te — há porta e há pressa"
     next: act2/skeleton_room
 ---
-**Kael** inclina o elmo; o metal range baixo.
-
-> *"Não foi vitória — foi **contagem**. Quando o número fechar, o ferro fala."*
+**Kael** inclina o elmo; o metal range baixo. > *"Não foi vitória — foi **contagem**.

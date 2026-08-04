@@ -14,5 +14,3 @@ choices: []
 onEnter: []
 ---
 Você encosta o ouvido na **pedra**. De cima descem vozes cortadas: preço do pão, portas fechadas cedo, medo de olhar para onde a sombra come.
-
-Um fragmento de conversa gruda na garganta da masmorra.

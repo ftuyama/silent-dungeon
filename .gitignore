@@ -18,6 +18,7 @@ images/
 tmp/
 docs/superpowers
 .worktrees/
+graphify-out/
 
 # Editor directories and files
 .vscode/*

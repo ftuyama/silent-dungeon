@@ -14,6 +14,4 @@ onEnter:
   - { op: addMark, mark: act6_veil_broken }
   - { op: addDiary, text: "Quando o real partiu, a sombra entrou primeiro." }
 ---
-As paredes trocam de lugar. Seu corpo chega atrasado a cada gesto. Pisar no chão vira um ato de fé.
-
-O Arauto não avança. Ele espera sua queda para chamar isso de prova.
+As paredes trocam de lugar. Seu corpo chega atrasado a cada gesto.

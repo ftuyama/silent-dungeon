@@ -22,6 +22,4 @@ choices:
     preview: "Teste de sorte; sucesso lê as marcas do chão."
 onEnter: []
 ---
-Um **cruzeiro** de ossos finos aponta três caminhos. Velas derretidas deixaram **rios de cera** negra no chão — alguém passou há pouco.
-
-O eco engana: um passo soa como três.
+Um **cruzeiro** de ossos finos aponta três caminhos. Velas derretidas deixaram **rios de cera** negra no chão — alguém passou há pouco. O eco engana: um passo soa como três.

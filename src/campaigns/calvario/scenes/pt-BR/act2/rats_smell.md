@@ -15,6 +15,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "Cheiro a carne velha e medo: três corpos pequenos, talvez quatro se a sombra maior contar." }
 ---
-**Mofo** primeiro, depois ferro — e por fim um doce falso, como cobre aquecido.
-
-Não é sangue fresco. É sangue antigo que nunca secou por completo. Você conta o enxame pelo fedor: **três**, talvez **quatro**.
+**Mofo** primeiro, depois ferro — e por fim um doce falso, como cobre aquecido. Não é sangue fresco.

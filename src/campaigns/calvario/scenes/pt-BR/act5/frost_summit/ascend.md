@@ -11,6 +11,4 @@ onEnter:
   - { op: addDiary, text: "Subi onde o mapa acaba. O vento aqui não pede desculpa — pede testemunhas." }
   - { op: addXp, amount: 14 }
 ---
-A **cordilheira** afia em dentes de basalto — caminho que o corpo cobra em hálito curto e medo quieto.
-
-No **cume**, dizem quem voltou meio, há pedra negra e um templo que não pede oração.
+A **cordilheira** afia em dentes de basalto — caminho que o corpo cobra em hálito curto e medo quieto. No **cume**, dizem quem voltou meio, há pedra negra e um templo que não pede oração.

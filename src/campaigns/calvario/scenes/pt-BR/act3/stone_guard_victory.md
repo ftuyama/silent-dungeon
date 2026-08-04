@@ -12,4 +12,4 @@ choices:
   - text: "Voltar ao núcleo"
     next: act3/hub_depths
 ---
-A pedra **racha** num estalo seco. O corredor cala. A tumba aceita a passagem.
+A pedra **racha** num estalo seco. O corredor cala.

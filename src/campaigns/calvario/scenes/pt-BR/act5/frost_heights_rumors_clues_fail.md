@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "As marcas na pedra se misturaram com gelo novo; só ficou o medo de errar o caminho." }
 ---
 A geada **repintou** metade das letras. O que resta parece acusação — ou mapa torto.
-
-Rumor de **Vetrnax** continua no ar, sem coordenada. O **frio** gosta quando você hesita.

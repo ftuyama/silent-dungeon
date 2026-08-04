@@ -19,5 +19,3 @@ onEnter:
   - { op: setStoryPath, id: throne, value: sealed }
 ---
 Você sela a **Masmorra do Silêncio** com preço. Cicatrizes na alma; paz frágil nas pedras.
-
-O selo pede dois impulsos seguidos — primeiro a **mente** aguentar o sino a rebentar por dentro, depois o **corpo** quando o peso cai como pedra.

@@ -88,6 +88,4 @@ choices:
     next: act2/hub_catacomb
 onEnter: []
 ---
-Uma **voz** sem dono pergunta o que você foi e o que aceita ser. O ar pesa — úmido, denso. As pedras guardam marcas de juramentos quebrados.
-
-Não há mapa neste lugar. Só a escolha que você leva na carne.
+Uma **voz** sem dono pergunta o que você foi e o que aceita ser. O ar pesa — úmido, denso.

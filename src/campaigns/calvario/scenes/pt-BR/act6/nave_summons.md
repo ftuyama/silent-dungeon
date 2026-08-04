@@ -12,6 +12,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "O Vazio não abre menu — abre fila. Três gargantas, uma de cada vez, como se o tempo aqui fosse cordão e não relógio." }
 ---
-As colunas se ordenam sem se mexer. Você não vai escolher tudo de uma vez — atravessa uma de cada vez, e cada uma deixa cicatriz.
-
-Um coro sem rosto ensaia seu nome em três tons. O primeiro já pede entrada.
+As colunas se ordenam sem se mexer. Você não vai escolher tudo de uma vez — atravessa uma de cada vez, e cada uma deixa cicatriz. Um coro sem rosto ensaia seu nome em três tons.

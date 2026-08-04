@@ -18,5 +18,3 @@ choices:
 onEnter: []
 ---
 No alto do altar, uma coroa de espinhos de **obsidiana** gira. Um penitente sem rosto segura uma lâmina sem metal:
-
-> *"Você quer **poder** para proteger, ou para nunca mais tremer?"* Escolher é perder uma versão sua.

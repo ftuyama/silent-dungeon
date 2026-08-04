@@ -29,6 +29,4 @@ choices:
 onEnter:
   - { op: addMark, mark: act1_door_runes }
 ---
-Runas apagadas foram riscadas de novo por mãos recentes. Entre elas, um **sino** rudimentar — o Terceiro Sino, dizem.
-
-A madeira está úmida por dentro.
+Runas apagadas foram riscadas de novo por mãos recentes. Entre elas, um **sino** rudimentar — o Terceiro Sino, dizem. A madeira está úmida por dentro.

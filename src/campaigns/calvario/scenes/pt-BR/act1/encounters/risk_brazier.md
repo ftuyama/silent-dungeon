@@ -21,5 +21,3 @@ choices:
     preview: "Sem ganho imediato; sem custo."
 ---
 O **braseiro** está rachado de alto a baixo. Um selo de cera prende um saco de provisões no fundo.
-
-O calor não é natural. Se puxar, leva mantimentos — e alguma coisa fica colada na cera.

@@ -20,6 +20,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -2, onceFlag: ff_cf_act2_camp_tomas_fireside_leave }
 onEnter: []
 ---
-> *"Se veio por pena, poupa saliva. Se veio por **palavra**, fala — o fogo não interrompe por educação."*
-
-{{companionLine}}
+> *"Se veio por pena, poupa saliva. Se veio por **palavra**, fala — o fogo não interrompe por educação."

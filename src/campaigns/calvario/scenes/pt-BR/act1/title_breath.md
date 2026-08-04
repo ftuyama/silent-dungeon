@@ -27,4 +27,4 @@ onEnter:
   - { op: addDiary, text: "Respirei antes do abismo." }
   - { op: adjustLeadStress, delta: -1 }
 ---
-O ar da superfície parece **doce** por um segundo. Depois o pulso verde lembra você: o doce é mentira. Só o silêncio de baixo é real.
+O ar da superfície parece **doce** por um segundo. Depois o pulso verde lembra você: o doce é mentira.

@@ -20,6 +20,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: -3, onceFlag: ff_cf_act5_frost_mira_fireside_leave }
 onEnter: []
 ---
-> *"Neve **apaga pegadas**. Escolha o que quer esquecer."*
-
-{{companionLine}}
+> *"Neve **apaga pegadas**. Escolha o que quer esquecer."

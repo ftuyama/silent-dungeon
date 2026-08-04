@@ -13,6 +13,4 @@ onEnter:
   - { op: addXp, amount: 40 }
   - { op: addDiary, text: "O Senhor do Magma caiu. O crisol ainda arde, mas sem vontade — o eixo finalmente tem fundo." }
 ---
-O senhor desaba em pedra negra. A lava baixa um palmo — o bastante para respirar sem pedir licença.
-
-O eixo fecha o último nome. Resta o epílogo.
+O senhor desaba em pedra negra. A lava baixa um palmo — o bastante para respirar sem pedir licença. O eixo fecha o último nome.

@@ -11,6 +11,4 @@ choices:
     preview: "Escolher quem fica do lado de fora da humanidade."
 onEnter: []
 ---
-No umbral o frio parecia clima; aqui é cerca — pedra negra que só abre para quem veio traduzir o silêncio.
-
-O **altar** não pede oração. Pede **preço**.
+No umbral o frio parecia clima; aqui é cerca — pedra negra que só abre para quem veio traduzir o silêncio. O **altar** não pede oração. Pede **preço**.

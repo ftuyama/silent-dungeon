@@ -15,5 +15,3 @@ onEnter:
   - { op: addDiary, text: "As memorias vieram em bando e nenhuma pedia permissao." }
 ---
 Você cai no poço sem eixo. Rostos antigos agarram seus pulsos como se cobrassem dívida.
-
-Quando volta a respirar, o Coro já está à sua frente.

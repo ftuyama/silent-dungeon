@@ -22,5 +22,3 @@ onEnter:
   - { op: addDiary, text: "A parede lembrou-me de carne — e a mão tremeu." }
 ---
 **Úmida**, como pele doente. Sob a crosta de salitre, veios mais macios — quase carne fossilizada.
-
-Um arrepio sobe pelo braço. Não é medo. É **memória** da pedra.

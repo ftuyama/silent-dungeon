@@ -24,8 +24,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "No gelo, vozes cruzadas: escudeiro amarrado, monge numa gruta, garras no cume, tenda azul-trovão. Vetrnax em todo sussurro." }
 ---
-Numa pedra, alguém riscou com prego: *amarraram o escudeiro*. Mais adiante, fumaça fina — **tenda** ou armadilha.
-
-**Pegadas** grandes cruzam a neve rumo ao cume; moradores murmuram **Vetrnax** sem pronunciar. Dizem também um **monge** numa gruta acima da tempestade, e **pedra negra** no topo.
-
-Você não confirma nada. O **frio** carrega as palavras mesmo assim.
+Numa pedra, alguém riscou com prego: *amarraram o escudeiro*. Mais adiante, fumaça fina — **tenda** ou armadilha. **Pegadas** grandes cruzam a neve rumo ao cume; moradores murmuram **Vetrnax** sem pronunciar.

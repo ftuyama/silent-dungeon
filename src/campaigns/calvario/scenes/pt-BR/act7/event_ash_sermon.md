@@ -13,6 +13,4 @@ onEnter:
   - { op: addRep, faction: vigilia, delta: 1, directGain: true }
   - { op: addDiary, text: "Um pregador sem rosto pediu esmola em nome de um deus que já não tem cidade. Paguei para ele calar antes de eu calar." }
 ---
-Um **pregador** cinzento gesticula para uma fenda no lugar do céu — plateia vazia, gesto de fim oficial.
-
-Você ri, ou paga para o riso não virar culpa: hoje, **moeda** e reputação com quem finge ordem.
+Um **pregador** cinzento gesticula para uma fenda no lugar do céu — plateia vazia, gesto de fim oficial. Você ri, ou paga para o riso não virar culpa: hoje, **moeda** e reputação com quem finge ordem.

@@ -2,7 +2,7 @@
  * Narrative voice checks for calvario player-facing Portuguese.
  *
  * Hard fail: residual PT-PT forms (also covered by check-pt-br; duplicated here
- * for a single narrative gate).
+ * for a single narrative gate) and scene bodies that exceed the sentence limit.
  * Soft warn (exit 0 unless --strict-warns): excess bold, dash stacking,
  * "não é X — é Y" spam, meta references.
  *
@@ -69,6 +69,24 @@ function mdBody(text) {
   return text.slice(end + 4);
 }
 
+/** Return playable scene metadata, excluding Markdown documentation such as READMEs. */
+function sceneMetadata(text) {
+  if (!text.startsWith('---')) return null;
+  const end = text.indexOf('\n---', 3);
+  if (end < 0) return null;
+  const frontmatter = text.slice(3, end);
+  if (!/^id:\s*\S+/m.test(frontmatter)) return null;
+  return {
+    body: text.slice(end + 4),
+    highlight: /^highlight:\s*true\s*$/m.test(frontmatter),
+  };
+}
+
+function sentenceCount(text) {
+  return [...new Intl.Segmenter('pt-BR', { granularity: 'sentence' }).segment(text)]
+    .filter(({ segment }) => /[\p{L}\p{N}]/u.test(segment)).length;
+}
+
 /** @type {{ file: string; line: number; label: string; excerpt: string }[]} */
 const hardHits = [];
 /** @type {{ file: string; line: number; label: string; excerpt: string }[]} */
@@ -79,6 +97,7 @@ for (const file of collectFiles()) {
   const raw = readFileSync(file, 'utf8');
   const lines = raw.split('\n');
   const isMd = file.endsWith('.md');
+  const scene = isMd ? sceneMetadata(raw) : null;
   const body = isMd ? mdBody(raw) : raw;
   const bodyLines = isMd ? body.split('\n') : lines;
   const bodyOffset = isMd ? lines.length - bodyLines.length : 0;
@@ -98,8 +117,19 @@ for (const file of collectFiles()) {
     }
   }
 
-  // Soft checks only on markdown scene bodies (avoid false positives in .ts/.json)
-  if (!isMd) continue;
+  // Soft checks only on playable Markdown scene bodies (avoid false positives in docs/.ts/.json)
+  if (!scene) continue;
+
+  const limit = scene.highlight ? 3 : 2;
+  const sentences = sentenceCount(scene.body);
+  if (sentences > limit) {
+    hardHits.push({
+      file: rel,
+      line: bodyOffset + 1,
+      label: `corpo com ${sentences} frases (limite ${limit})`,
+      excerpt: scene.body.trim().replace(/\s+/g, ' ').slice(0, 120),
+    });
+  }
 
   // Soft: per-paragraph dash count + bold density in body
   let para = '';

@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Cultista da geada no desfiladeiro — cantava antes do ferro. Sob a túnica, mapa riscado apontando leste: escudeiro amarrado." }
 ---
 O **cultista** cai; o incenso vira cristal no ar. Na túnica, mapa riscado: seta **leste**, palavra *escudeiro*.
-
-As missões do gelo deixam de ser rumor — começam a ter **endereço**.

@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 Duas **crias** rodeiam você com fome de calor vivo. Os olhos delas são buracos onde o luar congelou — e onde seu reflexo hesita um segundo a mais.
-
-Sem saída limpa: aço ou queda.

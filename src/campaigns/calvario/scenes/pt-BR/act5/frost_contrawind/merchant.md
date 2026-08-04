@@ -76,7 +76,3 @@ choices:
     next: act5/frost_hub
 ---
 Edras mantém o grimório aberto com uma mão. Na outra, pesa cada moeda como se procurasse uma mentira gravada no metal.
-
-> *“A lição muda uma batalha, não quem você é. Se precisar lançá-la para acreditar no contrário, guarde o ouro.”*
-
-Três fórmulas esperam. Depois delas, Edras ainda tem palavras — **não estoque**.

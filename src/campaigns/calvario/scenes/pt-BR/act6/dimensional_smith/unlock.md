@@ -15,5 +15,3 @@ choices:
 onEnter: []
 ---
 O ferreiro parece mais ruído que homem. Bate metal invisível e para sem olhar para você.
-
-"**Pago. Troca. Some.**" "Se voltar, traga metal que já viu o vazio."

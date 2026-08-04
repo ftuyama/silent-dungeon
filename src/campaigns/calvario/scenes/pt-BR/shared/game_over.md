@@ -19,6 +19,4 @@ onEnter:
   - { op: clearAsciiMap }
   - { op: settleRun, outcome: defeat }
 ---
-Algo em você cede sem estrondo. A **Masmorra do Silêncio** abre e fecha como ferida; seu nome vira sussurro na umidade.
-
-O silêncio anotou o que você alcançou. Os **Ecos** guardam esse peso entre runs — você pode investí-los ou recomeçar.
+Algo em você cede sem estrondo. A **Masmorra do Silêncio** abre e fecha como ferida; seu nome vira sussurro na umidade. O silêncio anotou o que você alcançou.

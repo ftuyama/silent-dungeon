@@ -168,5 +168,3 @@ choices:
 onEnter: []
 ---
 Dentro da tenda, frascos **tremem**. O mercador não mostra o rosto — só preços que não congelam.
-
-> Estoque **limitado**. O vento cobra caro de quem barganha demais.

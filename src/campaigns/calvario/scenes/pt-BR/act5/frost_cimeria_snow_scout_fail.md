@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Fiquei tempo demais no salto; o frio começou os dedos antes da vista." }
 ---
 A neve **engole** contorno — vilarejo vira mancha, mancha vira dúvida. Você perde tempo e calor tentando ver o que o gelo não quer mostrar.
-
-O **frio** entra pelas luvas. Rumor de **Vetrnax** continua lá embaixo, sem prova.

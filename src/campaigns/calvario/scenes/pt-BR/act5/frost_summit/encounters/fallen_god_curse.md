@@ -15,5 +15,3 @@ onEnter:
   - { op: addDiary, text: "Perdi para o ecos — e o templo deixou-me uma maldição que não se confessa, só se carrega." }
 ---
 A derrota não vem só em **ferida**. Vem em forma — uma mão no espelho interior que puxa você para baixo em três frentes: corpo, reflexo, vontade.
-
-Leve o peso. O templo não devolve o que comeu.

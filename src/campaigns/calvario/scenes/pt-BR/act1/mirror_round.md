@@ -18,5 +18,3 @@ onEnter:
   - { op: addDiary, text: "No espelho de mão, só eu — sem a água mentindo." }
 ---
 Um **espelho de mão** na corrente enferrujada. Ridículo aqui — mas o vidro treme, e *{{playerName}}* encara *{{playerName}}* sem a água negrmentindo.
-
-É só você, com promessas por cumprir.

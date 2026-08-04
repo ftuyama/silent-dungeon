@@ -416,6 +416,16 @@
     "dialogueEnemyId": "act5_edras_contrawind",
     "xpReward": 0
   },
+  "act5_edras_duel": {
+    "id": "act5_edras_duel",
+    "enemies": [
+      "edras_contrawind_duelist"
+    ],
+    "playerAdvantage": false,
+    "enemyAdvantage": true,
+    "xpReward": 20,
+    "fleeRate": 0.35
+  },
   "boss_ice_dragon_1": {
     "id": "boss_ice_dragon_1",
     "enemies": [

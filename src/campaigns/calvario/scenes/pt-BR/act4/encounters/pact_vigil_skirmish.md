@@ -16,5 +16,3 @@ onEnter:
   - { op: addDiary, text: "Um caçador da Vigília reconheceu meu passo, não meu rosto. Para quem jura pela luz, o pacto cheira a traição." }
 ---
 Do lado da **sombra** de um chafariz, um arqueiro da **Vigília** corta seu caminho. Não traz sermão — traz **certeza**.
-
-"**Servo** não é cidadão", diz. "É **ferida** aberta na cidade."

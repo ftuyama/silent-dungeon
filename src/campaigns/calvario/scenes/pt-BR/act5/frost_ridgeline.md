@@ -11,6 +11,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "A neve não mente: algo grande deslizou aqui. E algo pequeno ainda espreita." }
 ---
-A **cordilheira** não acolhe — ar de lâmina, respiração curta no peito.
-
-**Estalido** longe — gelo a partir sob peso impossível; **pegadas** que não são humanas.
+A **cordilheira** não acolhe — ar de lâmina, respiração curta no peito. **Estalido** longe — gelo a partir sob peso impossível; **pegadas** que não são humanas.

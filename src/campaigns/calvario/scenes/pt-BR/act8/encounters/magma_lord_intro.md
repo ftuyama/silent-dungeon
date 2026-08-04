@@ -16,6 +16,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "No fundo do crisol, o Senhor do Magma ergue-se. Não é rei — é o calor com vontade." }
 ---
-A lava sobe em coluna. Dentro dela, um tronco de pedra e ódio: o **Senhor do Magma**. Olhos de fornalha. Voz de rachadura.
-
-Este é o **fundo** do eixo. Não há mais degrau — só vitória ou cinza.
+A lava sobe em coluna. Dentro dela, um tronco de pedra e ódio: o **Senhor do Magma**. Olhos de fornalha.

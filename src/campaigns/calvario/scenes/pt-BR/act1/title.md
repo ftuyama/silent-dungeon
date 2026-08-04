@@ -29,6 +29,4 @@ choices:
     preview: "O primeiro passo firme — ou hesitar e olhar antes."
 onEnter: []
 ---
-O **pulso verde** sobe pela garganta da cidade. Por baixo, a **masmorra** abre uma boca muda: pedra úmida, ferro velho, **silêncio** que empurra para dentro.
-
-Em cima fingem rotina. Alguém tem de cortar isso na raiz — *{{playerName}}*, o primeiro passo é **descer**.
+O **pulso verde** sobe pela garganta da cidade. Por baixo, a **masmorra** abre uma boca muda: pedra úmida, ferro velho, **silêncio** que empurra para dentro. Em cima fingem rotina.

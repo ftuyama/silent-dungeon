@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "O padrão escapou-me. O céu riu sem som e eu fiquei com a boca cheia de cinza — fé não é garantia; é aposta." }
 ---
 O diagrama rasga. O mundo devolve ruído puro — outra língua na cabeça, que não pede tradução, só obediência.
-
-Algo em você cede: menos confiança no alto, mais puxão do que morde de volta.

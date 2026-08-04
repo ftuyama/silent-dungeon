@@ -139,6 +139,12 @@ function insertDailyCombatAmongChoices(
       break;
     }
   }
+  if (insertAt === rows.length) {
+    const terminalSectionIndex = rows.findIndex(
+      (row) => row.choice.uiSectionIcon === 'ascend' || row.choice.uiSectionIcon === 'descend'
+    );
+    if (terminalSectionIndex >= 0) insertAt = terminalSectionIndex;
+  }
   return [...rows.slice(0, insertAt), dailyRow, ...rows.slice(insertAt)];
 }
 

@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Num corte escondido do trono, encontrei um fragmento vivo — lateja como memória afiada." }
 ---
 Entre costelas petrificadas, você acha um **nódulo negro** preso em ferro antigo. Ao tocá-lo, o salão muda de peso; algo em você aprende um ritmo novo.
-
-Não é ouro. É um **fragmento de vontade** arrancado do trono.

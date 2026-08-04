@@ -12,6 +12,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act2_camp_mira_topic_silence }
 onEnter: []
 ---
-> *"Viu? **Assim** se faz trégua."*
-
-{{companionLine}}
+> *"Viu? **Assim** se faz trégua."

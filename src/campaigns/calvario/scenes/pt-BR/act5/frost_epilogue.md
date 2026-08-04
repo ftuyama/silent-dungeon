@@ -16,5 +16,3 @@ onEnter:
   - { op: addDiary, text: "Vetrnax caiu. O gelo partiu-se como vidro — e por baixo, por um instante, ouvi o Terceiro Sino a aprender um nome novo." }
 ---
 **Vetrnax** vira cascata; o vento deixa de morder. Na mão, uma **escama** que queima a frio — troféu que gosta de virar culpa.
-
-Cada vitória é corda. O eixo ainda desce.

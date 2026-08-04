@@ -14,5 +14,3 @@ onEnter:
   - { op: setFlag, key: act2_catacomb_ceiling_done, value: true }
 ---
 **Goteiras** desenham fios no ar. Entre as pedras, **raízes** finas buscam um sol que não chega.
-
-No teto, uma **runa** foi raspada e marcada com um **X** — alguém apagou a direção certa.

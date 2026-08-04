@@ -23,6 +23,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: -2, onceFlag: ff_cf_act2_camp_mira_fireside_leave }
 onEnter: []
 ---
-> *"Fala depressa. O fogo **ouve** melhor que a pedra — e eu ouço melhor que os dois."*
-
-{{companionLine}}
+> *"Fala depressa. O fogo **ouve** melhor que a pedra — e eu ouço melhor que os dois."

@@ -20,6 +20,4 @@ choices:
     preview: "−1 suprimento · +2 corrupção · marca de testemunha do fogo."
 onEnter: []
 ---
-Não há terceira opção neutra. O apocalipse cobra um verbo: **segurar** o mundo como ferida aberta, ou **servir** de lenha e chamar isso de luz.
-
-O vento para um instante — não para poupar você. Para ouvir qual boca abre.
+Não há terceira opção neutra. O apocalipse cobra um verbo: **segurar** o mundo como ferida aberta, ou **servir** de lenha e chamar isso de luz. O vento para um instante — não para poupar você.

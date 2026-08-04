@@ -10,6 +10,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: rogue_mira, delta: 2, onceFlag: ff_cf_act5_frost_mira_topic_pact }
 onEnter: []
 ---
-> *"O frio não devolve nada. Só **endurece** o que ficou com você. Se for pacto, que seja **curto**."*
-
-{{companionLine}}
+> *"O frio não devolve nada. Só **endurece** o que ficou com você.

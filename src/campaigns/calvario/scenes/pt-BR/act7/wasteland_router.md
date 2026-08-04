@@ -46,5 +46,3 @@ choices: []
 onEnter: []
 ---
 O vento traz um cheiro que não é terra nem cidade. Algo se move na cinza: às vezes voz; outras, forma; outras, só fome com passos.
-
-Quando você para de controlar o mapa, o descampo escolhe o próximo pecado — pequeno, mas gravado.

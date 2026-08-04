@@ -36,5 +36,3 @@ choices:
 onEnter: []
 ---
 Pedra fria sob a palma. A umidade grudou há séculos e nunca secou de todo.
-
-Cada degrau come um pouco de **luz**. Atrás de você, o teto escurece até a tocha parecer memória.

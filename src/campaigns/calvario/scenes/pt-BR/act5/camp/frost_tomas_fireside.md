@@ -17,6 +17,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: -3, onceFlag: ff_cf_act5_frost_tomas_fireside_leave }
 onEnter: []
 ---
-> *"Montanha não é o inimigo. O inimigo é **confundir** cansaço com sinal de Deus."*
-
-{{companionLine}}
+> *"Montanha não é o inimigo. O inimigo é **confundir** cansaço com sinal de Deus."

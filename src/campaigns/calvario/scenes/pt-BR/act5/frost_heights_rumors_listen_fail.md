@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Fiquei ouvindo até o frio comer calor — e o rumor se perdeu no vento cinzento." }
 ---
 O vento **vira parede**. Você perde calor esperando palavras que não voltam.
-
-Rumor de **Vetrnax** fica no estômago, não no ouvido.

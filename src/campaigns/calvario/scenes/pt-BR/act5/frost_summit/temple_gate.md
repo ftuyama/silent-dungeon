@@ -29,5 +29,3 @@ choices:
 onEnter: []
 ---
 No **cume**, o tempo não passa — acumula. Pilares partidos sustentam um teto que já não protege de nada, só testemunha. O frio tem sabor metálico.
-
-Se entrar, entre acordado.

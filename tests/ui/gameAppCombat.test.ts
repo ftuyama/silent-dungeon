@@ -36,7 +36,6 @@ describe('combatPartyCardsMarkup', () => {
   });
 });
 
-import { describe, expect, it } from 'vitest';
 import { spells as calvarioSpells } from '../../src/campaigns/calvario/data/spells.ts';
 import { initI18n, translateKey } from '../../src/i18n/index.ts';
 import { activeCombatBuffTexts } from '../../src/ui/gameAppCombat.ts';

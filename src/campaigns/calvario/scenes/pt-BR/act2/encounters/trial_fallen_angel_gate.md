@@ -58,6 +58,4 @@ choices:
     preview: "Combate · vantagem do inimigo"
 onEnter: []
 ---
-Do **cinza** ergue-se uma silhueta que já foi luz demais para um corpo. Não pede perdão. Pede **prova**.
-
-Quem quiser nome de queda, treva, penitência ou mira certa precisa vencer o que caiu — e ainda corta.
+Do **cinza** ergue-se uma silhueta que já foi luz demais para um corpo. Não pede perdão.

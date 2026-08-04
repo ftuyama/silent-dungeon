@@ -47,5 +47,3 @@ onEnter:
   - { op: addXp, amount: 6 }
 ---
 A **boca de pedra** range. O ar pesa nos pulmões — úmido e frio. Lá dentro, o **silêncio** chega primeiro: você só ouve a própria respiração.
-
-Do interior vem cheiro de **terra**, cinza, e algo doce demais para ser saudável.

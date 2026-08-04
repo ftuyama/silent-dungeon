@@ -11,5 +11,3 @@ onEnter:
   - { op: addDiary, text: "O eco escorreu pela garganta. Algo partiu na atenção — e o Terceiro Sino riu baixo." }
 ---
 O eco **morde**. Uma faísca atravessa seus pensamentos como ferro na língua.
-
-Você ainda serve — mas o preço cola no céu da boca, doce e errado.

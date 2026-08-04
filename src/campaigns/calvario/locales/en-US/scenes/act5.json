@@ -1,7 +1,7 @@
 {
   "act5/camp/frost_camp": {
     "title": "Embers Under the Storm",
-    "body": "Pilgrims **share** warmth in pieces; the fire consumes. No one climbs whole.\n\n*No calendar in the storm: **day {{day}}**.* If the wind allows, there is still time to talk.",
+    "body": "Pilgrims **share** warmth in pieces; the fire consumes. No one climbs whole.",
     "choices": [
       {
         "text": "Rest by the brazier (−1 supply)",
@@ -61,7 +61,7 @@
   },
   "act5/camp/frost_companion_chat": {
     "title": "Word Beside the Fire",
-    "body": "{{companionLine}}\n\nThe wind takes the other's place when you go quiet — and still feels like an answer. The low sky helps: no one demands bravery when the cold has already collected.",
+    "body": "{{companionLine}} The wind takes the other's place when you go quiet — and still feels like an answer.",
     "choices": [
       {
         "text": "Listen to Mira without letting the snow decide for you",
@@ -115,7 +115,7 @@
   },
   "act5/camp/frost_duo_fireside": {
     "title": "Two Blades, One Fire",
-    "body": "**Mira** and **Tomás** measure words by the fire — she wants a **name** when leaving; he straightens the shield. You are not arbiter; you are **witness**.\n\n{{companionLine}}",
+    "body": "**Mira** and **Tomás** measure words by the fire — she wants a **name** when leaving; he straightens the shield. You are not arbiter; you are **witness**.",
     "choices": [
       {
         "text": "Interrupt before the cold enters the conversation"
@@ -124,7 +124,7 @@
   },
   "act5/camp/frost_mira_fireside": {
     "title": "Ice — Confidences with Mira",
-    "body": "> *\"Snow **erases tracks**. Choose what you want to forget.\"*\n\n{{companionLine}}",
+    "body": "> *\"Snow **erases tracks**. Choose what you want to forget.\"",
     "choices": [
       {
         "text": "Ask if the cold returned something she lost"
@@ -139,7 +139,7 @@
   },
   "act5/camp/frost_mira_topic_pact": {
     "title": "Pact with the Cold",
-    "body": "> *\"The cold returns nothing. It only **hardens** what stayed with you. If this is a pact, keep it **short**.\"*\n\n{{companionLine}}",
+    "body": "> *\"The cold returns nothing. It only **hardens** what stayed with you.",
     "choices": [
       {
         "text": "Let the wind close the subject"
@@ -148,7 +148,7 @@
   },
   "act5/camp/frost_mira_topic_summit": {
     "title": "The Summit Ahead",
-    "body": "> *\"The summit is not victory — it is **exposure**. When we climb, do not ask me for heroism. Ask for **clarity**.\"*\n\n{{companionLine}}",
+    "body": "> *\"The summit is not victory — it is **exposure**. When we climb, do not ask me for heroism.",
     "choices": [
       {
         "text": "Return to the group's relative warmth"
@@ -157,7 +157,7 @@
   },
   "act5/camp/frost_tomas_fireside": {
     "title": "Ice — Word with Tomás",
-    "body": "> *\"Mountain is not the enemy. The enemy is **mistaking** fatigue for a sign from God.\"*\n\n{{companionLine}}",
+    "body": "> *\"Mountain is not the enemy. The enemy is **mistaking** fatigue for a sign from God.\"",
     "choices": [
       {
         "text": "Ask if the rope still hurts his palm"
@@ -172,7 +172,7 @@
   },
   "act5/camp/frost_tomas_topic_rope": {
     "title": "The Mark of the Rope",
-    "body": "> *\"The rope remembers when I do not want to. If we climb together, I do not need you to save me — I need you not to invent **victory** early.\"*\n\n{{companionLine}}",
+    "body": "> *\"The rope remembers when I do not want to. If we climb together, I do not need you to save me — I need you not to invent **victory** early.\"",
     "choices": [
       {
         "text": "Let the matter close with the wind"
@@ -181,7 +181,7 @@
   },
   "act5/camp/frost_tomas_topic_temple": {
     "title": "Temple in the Ice",
-    "body": "> *\"Black stone is not morals. It is **weight**. I go in first when the ground is doubtful — not for bravery, for **measure**.\"*\n\n{{companionLine}}",
+    "body": "> *\"Black stone is not morals. It is **weight**.",
     "choices": [
       {
         "text": "Return to the camp's warmth",
@@ -196,7 +196,7 @@
   },
   "act5/camp/manage_equip": {
     "title": "Buckles in the White Wind",
-    "body": "The wind sharpens every gesture. Iced steel, stiff leather straps, numb fingers.\n\nBetween gusts, you rearrange what keeps you whole: **weapon**, **armor**, whatever still answers.",
+    "body": "The wind sharpens every gesture. Iced steel, stiff leather straps, numb fingers.",
     "choices": [
       {
         "text": "Return to the camp on the ice"
@@ -231,7 +231,7 @@
   },
   "act5/encounters/fight_ice_dragon": {
     "title": "Vetrnax Awakens",
-    "body": "**Vetrnax** uncoils his neck like a thunder-rope. The first assault is not tooth — it is **cold** that steals sound from the tongue. The air vibrates before the blow.",
+    "body": "**Vetrnax** uncoils his neck like a thunder-rope. The first assault is not tooth — it is **cold** that steals sound from the tongue.",
     "choices": [
       {
         "text": "First phase — breath freezes the air"
@@ -264,7 +264,7 @@
   },
   "act5/encounters/frost_encounter_cultist": {
     "title": "Stranger on the Ice",
-    "body": "Someone **sings** low — not a prayer, a rhythm that does not match the wind. His eyes already sold the sky to another bell.\n\nNot a duel of ideas. Steel in the cold.",
+    "body": "Someone **sings** low — not a prayer, a rhythm that does not match the wind. His eyes already sold the sky to another bell.",
     "choices": [
       {
         "text": "Answer the cultist lost in the pass"
@@ -318,7 +318,7 @@
   },
   "act5/encounters/frost_stranded_traveler": {
     "title": "Traveler in the Crevasse",
-    "body": "A **mule** stuck to the ice — legs at the crevasse's mercy, white eye of panic. The owner bites his lip: *\"I only need rope and someone who still believes in a path.\"*",
+    "body": "A **mule** stuck to the ice — legs at the crevasse's mercy, white eye of panic. The owner bites his lip: *\"I only need rope and someone who still believes in a path.\"",
     "choices": [
       {
         "text": "Spend rope and warmth — pull the mule to safety",
@@ -339,7 +339,7 @@
   },
   "act5/encounters/frost_whelp_pack": {
     "title": "Den of Frost Whelps",
-    "body": "Two **whelps** circle you hungry for living heat. Their eyes are holes where moonlight froze — and where your reflection hesitates a second longer.\n\nNo clean exit: steel or a fall.",
+    "body": "Two **whelps** circle you hungry for living heat. Their eyes are holes where moonlight froze — and where your reflection hesitates a second longer.",
     "choices": [
       {
         "text": "Fight the frost whelps"
@@ -348,7 +348,7 @@
   },
   "act5/frost_epilogue": {
     "title": "Frost Epilogue",
-    "body": "**Vetrnax** becomes cascade; the wind stops biting. In your hand, a **scale** that burns cold — a trophy that likes to turn into guilt.\n\nEvery victory is rope. The axis still descends.",
+    "body": "**Vetrnax** becomes cascade; the wind stops biting. In your hand, a **scale** that burns cold — a trophy that likes to turn into guilt.",
     "choices": [
       {
         "text": "Follow the echo under the ice — cross the Void Threshold"
@@ -360,7 +360,7 @@
   },
   "act5/frost_hub": {
     "title": "Pass — Improvised Camp",
-    "body": "The **tents** creak in the wind; the fire spits more smoke than heat. In the snow, your tracks, beast tracks — and others the cold has already started to erase.\n\nFrom here the **pass** opens into trails: patrol, rumor, summit. Below, the axis still descends. Morvayn fell at the throne; the cold does not celebrate.",
+    "body": "The **tents** creak in the wind; the fire spits more smoke than heat. In the snow, your tracks, beast tracks — and others the cold has already started to erase. From here the **pass** opens into trails: patrol, rumor, summit.",
     "choices": [
       {
         "text": "Patrol the pass (explore map)",
@@ -446,7 +446,7 @@
   },
   "act5/frost_hub_pact": {
     "title": "Pass — Camp under the Bell",
-    "body": "The **tents** creak. The fire pops too low, as if waiting for a strike that is not the wind. The **ring** on your finger stays mute, but the pass goes quiet a second too early when you speak loud.\n\nPaths remain: patrol, trade, summit. Below the axis descends. The **Third Bell** already counts your steps on the ice.",
+    "body": "The **tents** creak. The fire pops too low, as if waiting for a strike that is not the wind. The **ring** on your finger stays mute, but the pass goes quiet a second too early when you speak loud.",
     "choices": [
       {
         "text": "Patrol the pass (explore map)",
@@ -532,7 +532,7 @@
   },
   "act5/frost_hub_sealed": {
     "title": "Pass — Camp under the Seal",
-    "body": "The **tents** creak; the fire warms less than it should. Snow covers tracks, but your chest still carries the **seal** you closed below.\n\nThe pass stays too quiet — rumor, camp, summit. Below the axis descends. The faith you spent at the throne still weighs in the cold.",
+    "body": "The **tents** creak; the fire warms less than it should. Snow covers tracks, but your chest still carries the **seal** you closed below. The pass stays too quiet — rumor, camp, summit.",
     "choices": [
       {
         "text": "Patrol the pass (explore map)",
@@ -618,7 +618,7 @@
   },
   "act5/frost_contrawind/intro": {
     "title": "The Contrawind Mage",
-    "body": "The rumor does not come from a mouth. It comes from **footprints** advancing against the wind and four voices repeating the same prayer around a broken chapel.\n\nInside the circle of motionless snow, someone holds the air in place with a staff. The cultists call this man the **Contrawind Mage** — and close the siege.",
+    "body": "The rumor does not come from a mouth. It comes from **footprints** advancing against the wind and four voices repeating the same prayer around a broken chapel.",
     "choices": [
       {
         "text": "Follow the marks to the buried chapel",
@@ -635,7 +635,7 @@
   },
   "act5/frost_contrawind/horde": {
     "title": "Four Against the Wind",
-    "body": "The four **cultists** spread their formation. They are not guarding the chapel — they want to break the circle traced in the snow and reach whoever breathes inside it.\n\nThe contrawind carries the smell of iron before the blades. For one moment, none of them notices you.",
+    "body": "The four **cultists** spread their formation. They are not guarding the chapel — they want to break the circle traced in the snow and reach whoever breathes inside it.",
     "choices": [
       {
         "text": "Break the siege before the chapel gives way",
@@ -648,7 +648,7 @@
   },
   "act5/frost_contrawind/horde_victory": {
     "title": "After the Fourth Fall",
-    "body": "The last cultist drops to his knees and the **wind** carries his prayer from his mouth. The circle remains whole; inside it, the mage erases a symbol with the tip of his staff.\n\n> *“Edras. You opened the siege. I still need to know why.”*\n\nThe horde died. Suspicion remained standing.",
+    "body": "The last cultist drops to his knees and the **wind** carries his prayer from his mouth. The circle remains whole; inside it, the mage erases a symbol with the tip of his staff.",
     "choices": [
       {
         "text": "Enter the circle and speak with the mage",
@@ -664,7 +664,7 @@
   },
   "act5/frost_contrawind/parley": {
     "title": "Edras's Measure",
-    "body": "Edras does not thank you. He draws three lines between you: **strength**, **mind**, **risk**. The wind bends around each word as if it too waits for an answer.\n\n> *“Those who ask for power usually explain the price afterward. You will explain it before. Once.”*\n\nThe staff stays low. The threat lies in the questions.",
+    "body": "Edras does not thank you. He draws three lines between you: **strength**, **mind**, **risk**.",
     "choices": [
       {
         "text": "Accept the measure — answer without hiding your intent",
@@ -677,7 +677,7 @@
   },
   "act5/frost_contrawind/accepted": {
     "title": "Student of the Contrawind",
-    "body": "Edras closes his eyes. When he opens them again, suspicion has lost its edge, not its weight.\n\n> *“You did not confuse knowledge with possession. That is enough to begin.”*\n\nThe grimoire opens against the wind. Three formulas remain still on the pages: strength, lumen, apex.",
+    "body": "Edras closes his eyes. When he opens them again, suspicion has lost its edge, not its weight.",
     "choices": [
       {
         "text": "Open Edras's grimoire",
@@ -693,8 +693,12 @@
   },
   "act5/frost_contrawind/rejected": {
     "title": "The Closed Grimoire",
-    "body": "Edras wipes away the three lines with the sole of his boot. The circle lets the wind in, and the grimoire's pages close before you read a single formula.\n\n> *“You defeated the horde. You did not defeat what you would do with the lesson. I will not ask again.”*\n\nThe chapel remains on the ice. The conversation does not.",
+    "body": "Edras wipes away the three lines with the sole of his boot. The circle lets the wind in, and the grimoire's pages close before you read a single formula.",
     "choices": [
+      {
+        "text": "Challenge Edras inside the circle (hard combat)",
+        "preview": "The contrawind shield endures magic, steel, and the refusal of a man who does not want to kill."
+      },
       {
         "text": "Leave Edras and return to the pass"
       }
@@ -703,9 +707,47 @@
       "Edras refused to open the grimoire. The measure was taken once; the chapel remains open, but his answer does not."
     ]
   },
+  "act5/frost_contrawind/duel": {
+    "title": "The Measure by Steel",
+    "body": "Edras does not open the grimoire. Instead, he plants his staff in the snow. The **circle** closes, and a film of ice rises between you like a shield.\n\n> *\"Then show me what your hunger calls a right.\"*\n\nThe contrawind learns your name before it tries to tear it away.",
+    "choices": [
+      {
+        "text": "Enter the circle and demand the measure by force"
+      }
+    ]
+  },
+  "act5/frost_contrawind/duel_defeat": {
+    "title": "The Circle Does Not Yield",
+    "body": "You wake outside the snow line, your chest aching where the wind found your guard.\n\n> *\"Strength without measure only learns when it breathes again.\"*\n\nEdras keeps the grimoire closed. The circle, however, does not close the door.",
+    "choices": [
+      {
+        "text": "Rise and challenge Edras again",
+        "preview": "The circle remains whole; the lesson still demands strength."
+      },
+      {
+        "text": "Leave the chapel and return to the pass"
+      }
+    ]
+  },
+  "act5/frost_contrawind/duel_victory": {
+    "title": "The Granted Grimoire",
+    "body": "The ice shield cracks along two clean lines. Edras lowers the staff before falling; when he rises, suspicion is still there, only no longer enough.\n\n> *\"You won. Do not confuse concession with trust.\"*\n\nHe opens the grimoire to the page of three formulas and sets a price on each.",
+    "choices": [
+      {
+        "text": "Open Edras's grimoire",
+        "preview": "Three lessons, twelve coins per page learned."
+      },
+      {
+        "text": "Return to the pass with the promised grimoire"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Edras yielded the grimoire after measuring me by steel. I am not a student of the Contrawind; I am the exception he agreed to charge in gold."
+    ]
+  },
   "act5/frost_contrawind/merchant": {
     "title": "Lessons of the Contrawind",
-    "body": "Edras keeps the grimoire open with one hand. In the other, he weighs each coin as if searching for a lie struck into the metal.\n\n> *“The lesson changes a battle, not who you are. If you need to cast it to believe otherwise, keep the gold.”*\n\nThree formulas wait. After them, Edras still has words — **not stock**.",
+    "body": "Edras keeps the grimoire open with one hand. In the other, he weighs each coin as if searching for a lie struck into the metal.",
     "choices": [
       {
         "text": "Learn Colossus Pulse (−12 gold)",
@@ -738,7 +780,7 @@
   },
   "act5/frost_lair_approach": {
     "title": "Approach to the Ice Lair",
-    "body": "**Ice** mirrors the face in slices — none whole. Below, winter teeth open a smile that is not for you.\n\nThe air turns to needles; the sky drops too low.",
+    "body": "**Ice** mirrors the face in slices — none whole. Below, winter teeth open a smile that is not for you. The air turns to needles; the sky drops too low.",
     "choices": [
       {
         "text": "Enter the chamber of white breath"
@@ -757,7 +799,7 @@
   },
   "act5/frost_merchant": {
     "title": "Frost Merchant's Tent",
-    "body": "Inside the tent, flasks **tremble**. The merchant shows no face — only prices that do not freeze.\n\n> Stock **limited**. The wind charges hard for those who bargain too long.",
+    "body": "Inside the tent, flasks **tremble**. The merchant shows no face — only prices that do not freeze.",
     "choices": [
       {
         "text": "Buy Red Potion (5 gold) (×2)",
@@ -818,7 +860,7 @@
   },
   "act5/frost_monk/banished": {
     "title": "The Cave Closes",
-    "body": "The cave **refuses** you — narrow air, dry voice: *go back where you can still lie with comfort.*\n\nThe mountain pushes you out. **There is no return** to that mouth.",
+    "body": "The cave **refuses** you — narrow air, dry voice: *go back where you can still lie with comfort. The mountain pushes you out.",
     "choices": [
       {
         "text": "Descend alone — the mountain does not argue"
@@ -830,17 +872,17 @@
   },
   "act5/frost_monk/trial_agi": {
     "title": "Third Question — Body on the Ice of Decision",
-    "body": "Plates under the boots lie about firmness — *do not speak; **take** a step without betraying balance; who stumbles vanishes.*\n\nCourage without precision is haste. The cave does not forgive haste.",
+    "body": "Plates under the boots lie about firmness — *do not speak; **take** a step without betraying balance; who stumbles vanishes. Courage without precision is haste.",
     "skillCheckLabel": "Move without fleeing (Agility)"
   },
   "act5/frost_monk/trial_luck": {
     "title": "Second Question — What Cannot Be Controlled",
-    "body": "A low **laugh**, frost cracking: *now it is not an idea — it is **fall** and **luck**.*\n\nThe cave tilts; the next step may be yours or belonging to whoever believed too much.",
+    "body": "A low **laugh**, frost cracking: *now it is not an idea — it is **fall** and **luck**. The cave tilts; the next step may be yours or belonging to whoever believed too much.",
     "luckCheckLabel": "Accept chance without lying to your body (Luck)"
   },
   "act5/frost_monk/trial_mind": {
     "title": "First Question — The Weight of Thought",
-    "body": "Faceless shadow, only quiet habit — *say a truth you **hate** knowing.*\n\nThe cave does not punish failure: it **closes**. Roll the skill check when ready.",
+    "body": "Faceless shadow, only quiet habit — *say a truth you **hate** knowing. The cave does not punish failure: it **closes**.",
     "skillCheckLabel": "Listen to the end without your mind fleeing (Mind)"
   },
   "act5/frost_monk/triumph": {
@@ -857,7 +899,7 @@
   },
   "act5/frost_opening": {
     "title": "Graywind Heights",
-    "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline, roads vanished under ice. The **cold** enters the chest and locks your breath.\n\nOn the **Graywind Heights**, the wind cuts the mouth. From shelter to shelter, rumor of **Vetrnax**: dragon on the summit, breath that freezes the cry before sound.\n\nMorvayn fell to iron. The **axis** still descends. Thin victory; ice without mercy.",
+    "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline, roads vanished under ice. The **cold** enters the chest and locks your breath. On the **Graywind Heights**, the wind cuts the mouth.",
     "choices": [
       {
         "text": "Climb down from the gap — see how Cimeria fared",
@@ -870,7 +912,7 @@
   },
   "act5/frost_opening_pact": {
     "title": "Graywind Heights — under the Bell",
-    "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline. The **cold** enters the chest; the **Third Bell** throbs under the skin and warms nothing.\n\nOn the **Heights**, the wind cuts the mouth. Rumor of **Vetrnax** runs from shelter to shelter — dragon on the summit, breath that freezes the cry before sound.\n\n**Corruption** climbs with every step. The pass goes quiet when you breathe too loud.",
+    "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline. The **cold** enters the chest; the **Third Bell** throbs under the skin and warms nothing. On the **Heights**, the wind cuts the mouth.",
     "choices": [
       {
         "text": "Climb down from the gap — see how Cimeria fared",
@@ -883,7 +925,7 @@
   },
   "act5/frost_opening_sealed": {
     "title": "Graywind Heights — under the Seal",
-    "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline. The **cold** enters the chest and reminds you of the **weight** of the seal you carry.\n\nOn the **Heights**, the wind cuts the mouth. Rumor of **Vetrnax** runs from shelter to shelter — dragon on the summit, breath that freezes the cry before sound.\n\nYou sealed the hole with **faith**. The undercroft is quiet; peace under the sky is fragile as thin ice.",
+    "body": "All of **Cimeria** seems covered in snow — white rooftops, fields without outline. The **cold** enters the chest and reminds you of the **weight** of the seal you carry. On the **Heights**, the wind cuts the mouth.",
     "choices": [
       {
         "text": "Climb down from the gap — see how Cimeria fared",
@@ -896,7 +938,7 @@
   },
   "act5/frost_cimeria_snow": {
     "title": "Cimeria in White",
-    "body": "You leave the **ice gap**. All of **Cimeria** seems covered in snow now — rooftops without smoke, sealed wells, harvest buried.\n\nThe **cold** enters through the armor seams. Below, the village you remember is a white smudge; above, the pass climbs toward gray wind.",
+    "body": "You leave the **ice gap**. All of **Cimeria** seems covered in snow now — rooftops without smoke, sealed wells, harvest buried. The **cold** enters through the armor seams.",
     "choices": [
       {
         "text": "[>] Scan Cimeria from afar",
@@ -916,12 +958,12 @@
   },
   "act5/frost_cimeria_snow_scout": {
     "title": "A Distant Look",
-    "body": "You stop on the **snow ledge**. Below — roof, well, wall — all the same and all different. The **cold** fogs your sight; you must decide what is still shape and what is already silence.",
+    "body": "You stop on the **snow ledge**. Below — roof, well, wall — all the same and all different.",
     "skillCheckLabel": "Read the white blur — what changed in Cimeria"
   },
   "act5/frost_cimeria_snow_scout_ok": {
     "title": "Frost Map",
-    "body": "You recognize **three** signs: wells capped with ice, rooftops without smoke, the market trail erased. This is not ordinary winter — all of **Cimeria** covered in white, as if someone closed the world's door.\n\nRumor of **Vetrnax** rises from the valley without climbing the slope. The **cold** confirms: the dragon is not just tavern lore.",
+    "body": "You recognize **three** signs: wells capped with ice, rooftops without smoke, the market trail erased. This is not ordinary winter — all of **Cimeria** covered in white, as if someone closed the world's door.",
     "choices": [
       {
         "text": "Keep what you saw and move on"
@@ -933,7 +975,7 @@
   },
   "act5/frost_cimeria_snow_scout_fail": {
     "title": "Snow Without Outline",
-    "body": "The snow **swallows** contour — village becomes smudge, smudge becomes doubt. You lose time and heat trying to see what the ice refuses to show.\n\nThe **cold** enters through the gloves. Rumor of **Vetrnax** remains below, without proof.",
+    "body": "The snow **swallows** contour — village becomes smudge, smudge becomes doubt. You lose time and heat trying to see what the ice refuses to show.",
     "choices": [
       {
         "text": "Look away and move on"
@@ -945,7 +987,7 @@
   },
   "act5/frost_cimeria_snow_whelp": {
     "title": "Whelp on the Slope",
-    "body": "Something **shifts** in fresh snow — not wind, not stone. An ice **whelp** lifts its snout; its breath freezes before it reaches you.\n\nCuriosity or hunger: the result is the same on the pass.",
+    "body": "Something **shifts** in fresh snow — not wind, not stone. An ice **whelp** lifts its snout; its breath freezes before it reaches you.",
     "choices": [
       {
         "text": "Face the curious whelp"
@@ -954,7 +996,7 @@
   },
   "act5/frost_cimeria_snow_whelp_win": {
     "title": "Blood That Freezes Fast",
-    "body": "The **whelp** falls; the ice drinks the fight's heat in an instant. On the ground, small **tracks** cross others — much larger — toward the summit.\n\nThe **cold** warns: this was only the beginning.",
+    "body": "The **whelp** falls; the ice drinks the fight's heat in an instant. On the ground, small **tracks** cross others — much larger — toward the summit.",
     "choices": [
       {
         "text": "Move on — the pass will not wait"
@@ -966,7 +1008,7 @@
   },
   "act5/frost_heights_rumors": {
     "title": "Echoes on the Ice",
-    "body": "On a stone, someone scratched with a nail: *they tied the squire*. Farther on, thin smoke — **tent** or trap.\n\nLarge **tracks** cross the snow toward the summit; locals murmur **Vetrnax** without saying the name. They also speak of a **monk** in a cave above the storm, and **black stone** on the peak.\n\nYou confirm nothing. The **cold** carries the words anyway.",
+    "body": "On a stone, someone scratched with a nail: *they tied the squire*. Farther on, thin smoke — **tent** or trap. Large **tracks** cross the snow toward the summit; locals murmur **Vetrnax** without saying the name.",
     "choices": [
       {
         "text": "[>] Decipher the marks on the stone",
@@ -996,7 +1038,7 @@
   },
   "act5/frost_heights_rumors_clues_ok": {
     "title": "Crossed Clues",
-    "body": "You assemble the **map** in the marks: **Tomás** tied to the east; **monk** in a cave above the storm; **blue-thunder tent** farther on; **black stone** on the summit. Every arrow points to **Vetrnax** without writing the name.\n\nThe clues match what the wind whispered — now you have direction.",
+    "body": "You assemble the **map** in the marks: **Tomás** tied to the east; **monk** in a cave above the storm; **blue-thunder tent** farther on; **black stone** on the summit. Every arrow points to **Vetrnax** without writing the name.",
     "choices": [
       {
         "text": "Note it and keep moving on the ice"
@@ -1008,7 +1050,7 @@
   },
   "act5/frost_heights_rumors_clues_fail": {
     "title": "Frozen Letters",
-    "body": "The frost **repainted** half the letters. What remains looks like accusation — or a crooked map.\n\nRumor of **Vetrnax** stays in the air, without coordinates. The **cold** likes it when you hesitate.",
+    "body": "The frost **repainted** half the letters. What remains looks like accusation — or a crooked map.",
     "choices": [
       {
         "text": "Give up the reading and move on"
@@ -1025,7 +1067,7 @@
   },
   "act5/frost_heights_rumors_listen_ok": {
     "title": "Name Without a Mouth",
-    "body": "You catch **one whole sentence** before the wind cuts it: *\"… the breath freezes the cry…\"* — not poetry. A warning about **Vetrnax**.\n\nThe **cold** at your neck confirms. All of Cimeria seems to hear the same name.",
+    "body": "You catch **one whole sentence** before the wind cuts it: *\"… the breath freezes the cry…\"* — not poetry. A warning about **Vetrnax**.",
     "choices": [
       {
         "text": "Keep the rumor and move on"
@@ -1037,7 +1079,7 @@
   },
   "act5/frost_heights_rumors_listen_fail": {
     "title": "Mute Wind",
-    "body": "The wind **becomes a wall**. You lose heat waiting for words that do not return.\n\nRumor of **Vetrnax** stays in the stomach, not the ear.",
+    "body": "The wind **becomes a wall**. You lose heat waiting for words that do not return.",
     "choices": [
       {
         "text": "Move on before you freeze for good"
@@ -1049,7 +1091,7 @@
   },
   "act5/frost_heights_rumors_cultist": {
     "title": "Singing in the Smoke",
-    "body": "The **smoke** does not come from a hearth — it comes from frozen incense. Someone **sings** low, frost rhythm, eyes sold to another bell.\n\nThis is not a duel of ideas. It is steel in the **cold**.",
+    "body": "The **smoke** does not come from a hearth — it comes from frozen incense. Someone **sings** low, frost rhythm, eyes sold to another bell.",
     "choices": [
       {
         "text": "Confront whoever sings in the thin smoke"
@@ -1058,7 +1100,7 @@
   },
   "act5/frost_heights_rumors_cultist_win": {
     "title": "Incense That Freezes",
-    "body": "The **cultist** falls; the incense turns to crystal in the air. Under the robe, a scratched map: arrow **east**, the word *squire*.\n\nThe ice missions stop being rumor — they start having an **address**.",
+    "body": "The **cultist** falls; the incense turns to crystal in the air. Under the robe, a scratched map: arrow **east**, the word *squire*.",
     "choices": [
       {
         "text": "Head toward camp"
@@ -1070,7 +1112,7 @@
   },
   "act5/frost_ridgeline": {
     "title": "Ridge of the Frozen Range",
-    "body": "The **ridge** does not welcome — blade-air, short breath in the chest.\n\nA distant **crack** — ice splitting under impossible weight; **tracks** that are not human.",
+    "body": "The **ridge** does not welcome — blade-air, short breath in the chest. A distant **crack** — ice splitting under impossible weight; **tracks** that are not human.",
     "choices": [
       {
         "text": "Follow the claw trail in the snow"
@@ -1085,7 +1127,7 @@
   },
   "act5/frost_snow_gruta_approach": {
     "title": "Stone Mouth and Warm Breath",
-    "body": "The mouth **swallows**; inside, warm air that makes the ice lie about temperature.\n\nAn echo asks: *who brings noise to a place that only wants quiet?*",
+    "body": "The mouth **swallows**; inside, warm air that makes the ice lie about temperature. An echo asks: *who brings noise to a place that only wants quiet?",
     "choices": [
       {
         "text": "Enter the cave — accept what inside asks no permission"
@@ -1094,7 +1136,7 @@
   },
   "act5/frost_snow_mountains_enter": {
     "title": "Ascent to the Snow Mountains",
-    "body": "Above the line where the **storm** goes quiet, they say a **cave** breathes — a trail only in whispers and in those who came back **halfway** from there.\n\nSnow underfoot creaks. You decide whether to enter.",
+    "body": "Above the line where the **storm** goes quiet, they say a **cave** breathes — a trail only in whispers and in those who came back **halfway** from there. Snow underfoot creaks.",
     "choices": [
       {
         "text": "Follow the rumor — climb until the wind goes quiet"
@@ -1103,7 +1145,7 @@
   },
   "act5/frost_summit/ascend": {
     "title": "Trail to the Summit",
-    "body": "The **ridge** sharpens into basalt teeth — a path the body collects in short breath and quiet fear.\n\nAt the **summit**, those who returned halfway say, there is black stone and a temple that asks for no prayer.",
+    "body": "The **ridge** sharpens into basalt teeth — a path the body collects in short breath and quiet fear. At the **summit**, those who returned halfway say, there is black stone and a temple that asks for no prayer.",
     "choices": [
       {
         "text": "Follow the line of stone that bites the sky"
@@ -1124,7 +1166,7 @@
   },
   "act5/frost_summit/encounters/fallen_god_curse": {
     "title": "Curse of the Throne",
-    "body": "Defeat does not come only as a **wound**. It comes as shape — a hand on the inner mirror pulling you down on three fronts: body, reflection, will.\n\nCarry the weight. The temple does not return what it ate.",
+    "body": "Defeat does not come only as a **wound**. It comes as shape — a hand on the inner mirror pulling you down on three fronts: body, reflection, will.",
     "choices": [
       {
         "text": "Drag myself out of the temple — alive, but hollow"
@@ -1136,7 +1178,7 @@
   },
   "act5/frost_summit/encounters/fallen_god_reward": {
     "title": "Fallen God",
-    "body": "Silence after the fall is not comfort. It is a contract read low. Something in you keeps the wrong name in the right place: **fallen god** — a title that burns cold.",
+    "body": "Silence after the fall is not comfort. It is a contract read low.",
     "choices": [
       {
         "text": "Leave the summit — with the new weight in your chest"
@@ -1175,7 +1217,7 @@
   },
   "act5/frost_summit/pick_sacrifice": {
     "title": "Who Pays the Price",
-    "body": "The **altar** does not shine; it absorbs. To open what sleeps under the \"**ancient gods**\", someone stops being people — and someone pays in near flesh.\n\nChoose with a cold chest. The temple accepts no excuse.",
+    "body": "The **altar** does not shine; it absorbs. To open what sleeps under the \"**ancient gods**\", someone stops being people — and someone pays in near flesh.",
     "choices": [
       {
         "text": "Offer Mira to the altar — no theater, no return",
@@ -1196,7 +1238,7 @@
   },
   "act5/frost_summit/ritual_altar": {
     "title": "The Altar That Learns Your Name",
-    "body": "At the threshold the cold seemed weather; here it is a fence — black stone that opens only for those who came to translate silence.\n\nThe **altar** does not ask for prayer. It asks for a **price**.",
+    "body": "At the threshold the cold seemed weather; here it is a fence — black stone that opens only for those who came to translate silence. The **altar** does not ask for prayer. It asks for a **price**.",
     "choices": [
       {
         "text": "Proceed — blood in the ritual, without pretending innocence",
@@ -1206,12 +1248,12 @@
   },
   "act5/frost_summit/ritual_blood": {
     "title": "Invocation in Blood",
-    "body": "Blood **darkens** the snow; the air smells of iron and a broken oath — in the temple, something wakes by contract, not blessing.\n\n**Three seals** — Mind, body, name. The rest is blood.",
+    "body": "Blood **darkens** the snow; the air smells of iron and a broken oath — in the temple, something wakes by contract, not blessing. **Three seals** — Mind, body, name.",
     "dualAttrSkillCheckLabel": "Three seals — will and iron"
   },
   "act5/frost_summit/ritual_pacified": {
     "title": "Seals Closed",
-    "body": "For an **instant** — long enough to hurt — the temple goes truly quiet. Not peace; a deal forced on something that preferred hunger.\n\nCorruption steps back once. The cold continues.",
+    "body": "For an **instant** — long enough to hurt — the temple goes truly quiet. Not peace; a deal forced on something that preferred hunger.",
     "choices": [
       {
         "text": "Accept the gods' retreat — and leave"
@@ -1223,7 +1265,7 @@
   },
   "act5/frost_summit/temple_gate": {
     "title": "Threshold of the Black Stone Temple",
-    "body": "At the **summit**, time does not pass — it piles up. Broken pillars hold a roof that no longer protects anything, only witnesses. The cold tastes metallic.\n\nIf you enter, enter awake.",
+    "body": "At the **summit**, time does not pass — it piles up. Broken pillars hold a roof that no longer protects anything, only witnesses. The cold tastes metallic.",
     "choices": [
       {
         "text": "Descend to the pass — the body asks for less altitude"
@@ -1240,7 +1282,7 @@
   },
   "act5/frost_summit/temple_quiet": {
     "title": "Silence of Stone",
-    "body": "Between **pillars**, snow falls straight and slow. No music; only cold stone and the sound of your breath.\n\nComfort does not live here. If you came for **truth**, find the warning before comfort.",
+    "body": "Between **pillars**, snow falls straight and slow. No music; only cold stone and the sound of your breath.",
     "choices": [
       {
         "text": "Return to the threshold"
@@ -1261,7 +1303,7 @@
   },
   "act5/frost_tomas/encounters/fight_hard": {
     "title": "The Ice Does Not Forgive",
-    "body": "A **crack** under the boot — too early. The **cultist** lifts his face; the **whelp** hisses; **Tomás** pulls the stuck shield, still alive. Only wrong light between you and steel.",
+    "body": "A **crack** under the boot — too early. The **cultist** lifts his face; the **whelp** hisses; **Tomás** pulls the stuck shield, still alive.",
     "choices": [
       {
         "text": "Answer the clash even without surprise"
@@ -1270,7 +1312,7 @@
   },
   "act5/frost_tomas/intro": {
     "title": "The Squire in the Snow",
-    "body": "Among the rocks, **Tomás** is tied to an ice post; two frost **cultists** measure time with blade and prayer.\n\nNot romance. A rope debt — and time is running.",
+    "body": "Among the rocks, **Tomás** is tied to an ice post; two frost **cultists** measure time with blade and prayer. Not romance.",
     "choices": [
       {
         "text": "Follow the rumor to the bottom of the clearing",
@@ -1283,7 +1325,7 @@
   },
   "act5/frost_tomas/missed": {
     "title": "Empty Rope",
-    "body": "The rope **hits** the post; no Tomás — only absence and a mark in the snow that is not yours.\n\nAn echo murmurs that those who linger below pay in someone else's flesh.",
+    "body": "The rope **hits** the post; no Tomás — only absence and a mark in the snow that is not yours. An echo murmurs that those who linger below pay in someone else's flesh.",
     "choices": [
       {
         "text": "Return to the pass"
@@ -1295,7 +1337,7 @@
   },
   "act5/frost_tomas/rescued": {
     "title": "The Shield Rises",
-    "body": "The rope **snaps**; **Tomás** drops to his knees in the snow and raises the shield before his face — not to hide, to **swear**.\n\n> *\"Order me to rise, I rise. If not, I walk with you.\"*\n\nThe **stake** stands empty. For the first time since the **Heights**, someone chooses to stay **at your side**.",
+    "body": "The rope **snaps**; **Tomás** drops to his knees in the snow and raises the shield before his face — not to hide, to **swear**. > *\"Order me to rise, I rise.",
     "choices": [
       {
         "text": "Return to the pass"
@@ -1307,7 +1349,7 @@
   },
   "act5/frost_tomas/trial": {
     "title": "Trial of the Trail",
-    "body": "**Snow** hides sound, not the trail — leg and judgment, or the **cultist** turns his head and the **whelp** wakes hungry for panic.\n\n**Tomás** bites the rope and waits for your step.",
+    "body": "**Snow** hides sound, not the trail — leg and judgment, or the **cultist** turns his head and the **whelp** wakes hungry for panic. **Tomás** bites the rope and waits for your step.",
     "skillCheckLabel": "Approach without the wind selling you out"
   }
 }

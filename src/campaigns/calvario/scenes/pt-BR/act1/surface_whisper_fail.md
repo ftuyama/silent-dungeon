@@ -14,4 +14,4 @@ onEnter:
   - { op: addMark, mark: act1_surface_whisper_taint }
   - { op: addDiary, text: "O que subiu não era conversa — era riso partido que entrou na minha boca sem convite." }
 ---
-A pedra devolve um riso que não é seu — úmido, doce, errado. O eco fica na língua como ferro velho. O subsolo experimentou seu gosto.
+A pedra devolve um riso que não é seu — úmido, doce, errado. O eco fica na língua como ferro velho.

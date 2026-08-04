@@ -5,7 +5,7 @@
 Apply to `scenes/**/*.md`, `data/dialogueEnemies/**/*.ts`, and player-facing locale JSON.
 
 - Write dark fantasy in Brazilian Portuguese, second person (`você`, `seu`, `sua`), present tense.
-- Keep beat/combat/transition prose to 1–2 sentences; exploration/lore to 2–4; hubs to 3–5.
+- Keep each scene body to one or two concise sentences. Only scenes with `highlight: true` may use a third sentence; do not add `highlight` merely to bypass this limit.
 - Use bold only for meaningful anchors and at most about one em dash per paragraph.
 - Prefer one concrete sensory detail and a strong opening verb. Choices are player actions, not poems.
 - Avoid repeated “não é X — é Y”, triplets, stacked metaphors, thinking scenery, meta language, rhetorical italic endings, and PT-PT vocabulary.

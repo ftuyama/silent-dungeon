@@ -10,4 +10,4 @@ onEnter:
   - { op: addRep, faction: culto, delta: 1 }
   - { op: addDiary, text: "O rumor recuou — o Sino anotou sem sangrar o corredor." }
 ---
-A sombra inclina a cabeça. Não perdoa. Só reconhece a dívida — e cobra outro silêncio.
+A sombra inclina a cabeça. Não perdoa.

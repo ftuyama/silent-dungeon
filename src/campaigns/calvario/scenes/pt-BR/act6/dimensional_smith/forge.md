@@ -53,5 +53,3 @@ choices:
 onEnter: []
 ---
 O teto da oficina parece torto — sem fogo visível. O ferreiro não sorri; mede sua respiração entre golpes.
-
-*"**Ferro** vive. **Ouro** cala. Quer milagre? Traga sobra de encontro."*

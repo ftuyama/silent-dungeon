@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 Alguém **canta** baixo — não oração, um ritmo que não combina com o vento. Os olhos dele já venderam o céu a outro sino.
-
-Não é duelo de ideias. É ferro no frio.

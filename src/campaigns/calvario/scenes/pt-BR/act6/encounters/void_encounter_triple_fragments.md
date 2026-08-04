@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 Três sombras sobem do mesmo vício — não cópias; versões que ganharam corpo em dias diferentes. Juntas, ocupam mais espaço do que uma cabeça aguenta.
-
-A nave inclina um pouco, como se concordasse.

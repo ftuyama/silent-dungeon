@@ -9,4 +9,4 @@ choices:
     next: act6/hub_fractured_nave
 onEnter: []
 ---
-O círculo de pó ao redor dos pés fecha. Três provas, três mordidas no mesmo corpo. Se ainda respira inteiro, a nave lembra: inteiro também é incompleto com orgulho.
+O círculo de pó ao redor dos pés fecha. Três provas, três mordidas no mesmo corpo.

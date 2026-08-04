@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Primeira cria de gelo no caminho das Cimeiras. O rasto dela apontava para cima — rumo a pegadas maiores." }
 ---
 A **cria** cai; o gelo bebe o calor do combate num instante. No chão, **pegadas** pequenas cruzam outras — muito maiores — rumo ao cume.
-
-O **frio** avisa: isso foi só o começo.

@@ -15,5 +15,3 @@ choices:
 onEnter: []
 ---
 Algo **balança** na neve fresca — não vento, não pedra. Uma **cria** de gelo ergue o focinho; o hálito congela antes de chegar a você.
-
-Curiosidade ou fome: o resultado é o mesmo no desfiladeiro.

@@ -15,5 +15,3 @@ choices:
 onEnter: []
 ---
 A **fumaça** não vem de lareira — vem de incenso congelado. Alguém **canta** baixo, ritmo de geada, olhos vendidos a outro sino.
-
-Não é duelo de ideias. É ferro no **frio**.

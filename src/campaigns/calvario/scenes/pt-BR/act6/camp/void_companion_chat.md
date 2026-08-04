@@ -58,6 +58,4 @@ choices:
     next: act6/camp/void_camp
 onEnter: []
 ---
-{{companionLine}}
-
-Se você estiver só, o silêncio dobra a voz que já carrega. Até o eco parece cansado.
+{{companionLine}} Se você estiver só, o silêncio dobra a voz que já carrega.

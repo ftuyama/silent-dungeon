@@ -29,5 +29,3 @@ onEnter:
   - { op: addDiary, text: "O altar não pede nome. Pede presença. E eu escolhi quem ia ficar ausente." }
 ---
 O **altar** não brilha; absorve. Para abrir o que dorme sob os "**deuses antigos**", alguém deixa de ser gente — e alguém paga em carne próxima.
-
-Escolha com o peito frio. O templo não aceita desculpa.

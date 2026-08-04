@@ -11,5 +11,3 @@ onEnter:
   - { op: addDiary, text: "Recuei do golem. As runas de contenção ainda tremem — pedra não esquece quem passou." }
 ---
 O golem **não corre**. Avança junta a junta, e cada passo arranca poeira do salão.
-
-Você recua antes que o corredor vire tumba.

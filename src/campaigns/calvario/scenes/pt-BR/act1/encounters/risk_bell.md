@@ -23,5 +23,3 @@ choices:
     preview: "Ganho de reputação com a Vigília, sem corrupção."
 ---
 Um **sino sem badalo** balança sozinho, preso por correntes finas. A boca de metal tem brilho de carne fresca.
-
-O eco pede oferta simples: um corte na palma, um voto urgente — atalho para descer mais forte.

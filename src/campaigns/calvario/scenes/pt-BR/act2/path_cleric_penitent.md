@@ -12,4 +12,4 @@ choices:
   - text: "Voltar ao cruzeiro"
     next: act2/hub_catacomb
 ---
-O incenso **queima** mais fino quando a culpa respira com você. Menos salmo. Mais verdade.
+O incenso **queima** mais fino quando a culpa respira com você. Menos salmo.

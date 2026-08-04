@@ -14,7 +14,7 @@ Arcos paralelos:
 - **Tomás** — escudeiro amarrado no gelo; missão até **dia 15** (`tomas_rescued` ou `tomas_rescue_missed`)
 - **Monge** — gruta nas montanhas; bênção ou banimento
 - **Kael** — terceiro encontro (`frost_lair_approach`); recrutamento exige 2 vitórias nos atos anteriores (`kaelsworn_recruited`)
-- **Edras do Contravento** — capela soterrada; horda de quatro cultistas, uma medida verbal sem repetição e grimório de lições (`contrawind_horde_defeated`, `contrawind_parley_attempted`, `contrawind_merchant_unlocked`, `contrawind_parley_failed`)
+- **Edras do Contravento** — capela soterrada; horda de quatro cultistas, uma medida verbal sem repetição, duelo repetível após a recusa e grimório de lições (`contrawind_horde_defeated`, `contrawind_parley_attempted`, `contrawind_merchant_unlocked`, `contrawind_parley_failed`)
 - **Cume** — templo de pedra negra, ascensão perigosa, ritual ou combate contra **Vetrnax** (`vetrnax_slain`, `frost_summit_ritual_done`)
 
 Morvayn caiu; o **eixo ainda desce**. O gelo não celebra. Epílogo (`frost_epilogue`) leva ao Vazio (cap. 6). Quem tem `storyPath: throne` pode também descer ao magma (cap. 8) a partir do hub.
@@ -84,7 +84,7 @@ Hub, opening e prosa devem refletir `slain` | `pact` | `sealed`. Ver `frost_hub_
 ## Edras do Contravento
 
 - O rumor aparece nas três variantes do hub a partir do **nível 18**, sem janela de dia.
-- A horda de quatro cultistas abre a capela. Edras aceita uma única tentativa de diálogo: sucesso desbloqueia o grimório e a marca `contrawind_student`; falha fecha o grimório permanentemente.
+- A horda de quatro cultistas abre a capela. Edras aceita uma única tentativa de diálogo: sucesso desbloqueia o grimório e a marca `contrawind_student`; falha permite um duelo difícil e repetível, cuja vitória desbloqueia o grimório e concede `contrawind_duelist`.
 - O grimório vende três magias universais de combate, cada uma por **12 ouro**: `colossus_pulse`, `inner_lumen` e `apex_eye`. Cada lição pode ser comprada apenas uma vez.
 
 ## Notas para novas cenas

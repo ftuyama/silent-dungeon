@@ -192,6 +192,27 @@
         }
       }
     },
+    "edras_contrawind_duelist": {
+      "name": "Edras of the Contrawind",
+      "abilities": {
+        "contrawind_bulwark": {
+          "name": "Contrawind Bulwark",
+          "linePt": "The circle tightens around Edras; the ice refuses the first blow."
+        },
+        "ice_lance": {
+          "name": "Ice Lance",
+          "linePt": "Edras points two fingers; a needle of winter chooses your breath."
+        },
+        "wind_scourge": {
+          "name": "Wind Scourge",
+          "linePt": "The contrawind bends the whole chapel and passes through everyone like a blade."
+        },
+        "circle_pressure": {
+          "name": "Circle Pressure",
+          "linePt": "Snow rises against the sky; for a second, even fear seems to have weight."
+        }
+      }
+    },
     "stone_guard": {
       "name": "Stone Guardian",
       "abilities": {
@@ -690,6 +711,10 @@
     "contrawind_student": {
       "name": "Contrawind Student",
       "description": "Edras opened the grimoire after weighing your intentions; the wind no longer blows only against you — it also corrects your stance."
+    },
+    "contrawind_duelist": {
+      "name": "Contrawind Challenger",
+      "description": "You broke Edras's shield without breaking the chapel; the grimoire opened by concession, not trust."
     },
     "morvayn_slain": {
       "name": "Morvayn Slain",

@@ -14,4 +14,4 @@ choices:
     preview: "Combate · adepto osso"
 onEnter: []
 ---
-A conversa acabou. A **cinza** morde a pele. O **Círculo** cobra na lâmina o que a voz não conseguiu.
+A conversa acabou. A **cinza** morde a pele.

@@ -12,5 +12,3 @@ onEnter:
   - { op: addDiary, text: "A verdade não me libertou. Só me tirou o direito de mentir para mim." }
 ---
 A máscara do arauto racha. Atrás dela não há carne — só vazio com sua respiração.
-
-Você recolhe um fragmento de espelho negro. Não reflete luz; guarda a **decisão** da primeira descida.

@@ -19,6 +19,4 @@ choices:
 onEnter:
   - { op: addDiary, text: "Subi do trono e Cimeria era outra: neve até onde a vista alcança. O vilarejo sumiu num borrão branco." }
 ---
-Você sai do **vão** de gelo. **Cimeria** inteira parece coberta de neve agora — telhados sem fumaça, poços selados, colheita enterrada.
-
-O **frio** entra pelas frestas da armadura. Lá embaixo, o vilarejo que você lembra virou mancha branca; acima, o desfiladeiro sobe até o vento cinzento.
+Você sai do **vão** de gelo. **Cimeria** inteira parece coberta de neve agora — telhados sem fumaça, poços selados, colheita enterrada. O **frio** entra pelas frestas da armadura.

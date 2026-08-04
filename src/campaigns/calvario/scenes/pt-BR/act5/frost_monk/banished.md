@@ -14,6 +14,4 @@ onEnter:
       text: "Falhei na gruta do monge. O vento me empurrou para fora — e ouvi a pedra fechar por dentro. Não há segunda entrada.",
     }
 ---
-A gruta **recusa** você — ar estreito, voz seca: *volte para onde ainda pode mentir com conforto.*
-
-A montanha empurra você para fora. **Não há retorno** àquela boca.
+A gruta **recusa** você — ar estreito, voz seca: *volte para onde ainda pode mentir com conforto. A montanha empurra você para fora.

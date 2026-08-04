@@ -51,6 +51,4 @@ choices:
     next: act2/camp/vigilia_camp
 onEnter: []
 ---
-{{companionLine}}
-
-*Alguém murmura o número — **dia {{day}}** — como quem confessa a idade.* O fogo estala. Ninguém pede permissão para ouvir.
+{{companionLine}} *Alguém murmura o número — **dia {{day}}** — como quem confessa a idade.

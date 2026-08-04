@@ -15,5 +15,3 @@ choices: []
 onEnter: []
 ---
 Você levanta as mãos sem credencial. O céu não é tecido — é ameaça parada — mas a mente insiste em costura.
-
-Cada segundo em que o desenho segura é um segundo em que o mundo não engole você inteiro.

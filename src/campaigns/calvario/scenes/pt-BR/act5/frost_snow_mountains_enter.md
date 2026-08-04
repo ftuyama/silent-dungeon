@@ -10,6 +10,4 @@ choices:
 onEnter:
   - { op: addXp, amount: 14 }
 ---
-Acima da linha onde a **tempestade** cala, dizem que uma **gruta** respira — rastro só em sussurro e em quem voltou **meio** de lá.
-
-A neve sob os pés range. Você decide se entra.
+Acima da linha onde a **tempestade** cala, dizem que uma **gruta** respira — rastro só em sussurro e em quem voltou **meio** de lá. A neve sob os pés range.

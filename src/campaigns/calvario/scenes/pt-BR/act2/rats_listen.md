@@ -16,5 +16,3 @@ onEnter:
   - { op: addDiary, text: "O chiar dos ratos quase falava — contei passos antes de avançar." }
 ---
 O chiar **quebra** em padrão — quase linguagem. Por um instante parecem sussurros a contar quantos passos faltam.
-
-Algo maior range mais fundo, mas não se move.

@@ -22,6 +22,4 @@ choices:
 onEnter:
   - { op: setFlag, key: throne_acted_observe, value: true }
 ---
-Cada osso do trono tem **um nome** raspado — você não consegue ler todos. Um deles é seu **primeiro medo** em letras pequenas.
-
-As correntes pingam memória densa demais. Se ficar olhando tempo demais, o trono aprende o formato do seu medo.
+Cada osso do trono tem **um nome** raspado — você não consegue ler todos. Um deles é seu **primeiro medo** em letras pequenas. As correntes pingam memória densa demais.

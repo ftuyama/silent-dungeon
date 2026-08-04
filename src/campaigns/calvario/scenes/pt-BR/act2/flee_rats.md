@@ -12,5 +12,3 @@ onEnter:
   - { op: addDiary, text: "Fugi dos ratos. O chão lembrou-se do meu sabor — e eu deixei rasto." }
 ---
 Você escorrega num **lodo** que não perdoa. Mordidas rasgam couro onde a armadura não chega.
-
-O enxame chia em agudos — ou talvez só o seu ouvido quebre primeiro.

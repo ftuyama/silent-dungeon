@@ -18,6 +18,4 @@ onEnter:
   - { op: registerEnding, endingId: epilogue_mirror }
   - { op: addResource, resource: faith, delta: 1 }
 ---
-Você leva a nave fraturada nos olhos — um **caco** de espelho que ainda corta a palma.
-
-Ruas viram hipótese. O **pulso verde** no horizonte não mudou; mudou o jeito de contá-lo. Um passo de cada vez.
+Você leva a nave fraturada nos olhos — um **caco** de espelho que ainda corta a palma. Ruas viram hipótese. O **pulso verde** no horizonte não mudou; mudou o jeito de contá-lo.

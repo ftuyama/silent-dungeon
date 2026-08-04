@@ -15,7 +15,3 @@ onEnter:
   - { op: addDiary, text: "Quebrei o cerco de quatro cultistas na capela soterrada. O homem dentro do círculo disse chamar-se Edras — e ainda não decidiu se me deve gratidão ou suspeita." }
 ---
 O último cultista cai de joelhos e o **vento** leva sua oração pela boca. O círculo continua inteiro; dentro dele, o mago apaga um símbolo com a ponta do cajado.
-
-> *“Edras. Você abriu o cerco. Ainda preciso saber por quê.”*
-
-A horda morreu. A desconfiança ficou de pé.

@@ -19,5 +19,3 @@ choices:
 onEnter: []
 ---
 Na madeira, **bronze polido** devolve seu rosto esverdeado. A armadura parece emprestada.
-
-Por um segundo você não sabe quem empurra quem para dentro — o corredor ou o reflexo.

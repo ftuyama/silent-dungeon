@@ -25,6 +25,4 @@ choices:
 onEnter:
   - { op: setFlag, key: act2_faction_envoy_circulo_done, value: true }
 ---
-**Cinza** sobe do chão como fumaça fria.
-
-*"O Círculo **empresta** forma", diz uma voz. "Quem **rasga** paga em sangue barato."*
+**Cinza** sobe do chão como fumaça fria. *"O Círculo **empresta** forma", diz uma voz.

@@ -10,6 +10,4 @@ choices:
       - { op: adjustCompanionFriendship, companionId: squire_tomas, delta: 2, onceFlag: ff_cf_act2_camp_tomas_topic_oath }
 onEnter: []
 ---
-> *"A ordem não morreu num dia — foi **esquecendo** nomes. Enquanto você levantar antes de eu cair, o **juramento** vale."*
-
-{{companionLine}}
+> *"A ordem não morreu num dia — foi **esquecendo** nomes. Enquanto você levantar antes de eu cair, o **juramento** vale."

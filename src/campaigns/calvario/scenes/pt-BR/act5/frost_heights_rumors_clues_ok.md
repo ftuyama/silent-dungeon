@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Na pedra: escudeiro amarrado a leste, monge acima da tempestade, tenda azul-trovão no desfiladeiro, templo de pedra negra no cume. Vetrnax em cada seta." }
 ---
 Você monta o **mapa** nas marcas: **Tomás** amarrado a leste; **monge** numa gruta acima da tempestade; **tenda azul-trovão** mais adiante; **pedra negra** no cume. Cada seta aponta para **Vetrnax** sem escrever o nome.
-
-As pistas batem com o que o vento sussurrou — agora você tem direção.

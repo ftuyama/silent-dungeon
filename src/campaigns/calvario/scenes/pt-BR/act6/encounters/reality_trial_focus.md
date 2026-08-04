@@ -13,5 +13,3 @@ onEnter:
   - { op: addDiary, text: "Segurei o mundo por um fio de pensamento. Descobri que pensamento tambem corta." }
 ---
 Você segura uma única versão da sala por alguns segundos. O bastante para distinguir pedra de reflexo.
-
-O Arauto sorri sem boca.

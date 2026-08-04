@@ -14,5 +14,3 @@ choices:
 onEnter: []
 ---
 O ar engrossa com vozes sem dono. Elas lembram nomes errados e datas certas — e riem quando você corrige.
-
-Não é música. É memória em greve.

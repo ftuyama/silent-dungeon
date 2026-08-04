@@ -93,6 +93,4 @@ onEnter:
   - { op: addXp, amount: 8 }
   - { op: clearAsciiMap }
 ---
-O **núcleo** é uma galeria afogada: pedra úmida, grelhas de bronze e um corredor que desce até o trono. **Morvayn** não aparece — mas o ar já carrega o cheiro dele.
-
-Aqui não há fogo de acampamento. Só o seu fôlego e o gotejar lento das paredes.
+O **núcleo** é uma galeria afogada: pedra úmida, grelhas de bronze e um corredor que desce até o trono. **Morvayn** não aparece — mas o ar já carrega o cheiro dele. Aqui não há fogo de acampamento.
