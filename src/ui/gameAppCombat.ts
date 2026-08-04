@@ -30,6 +30,8 @@ import {
   buildCombatLogDisplayItems,
   escHtml,
   fmtSignedMod,
+  hpBarMarkup,
+  manaBarMarkup,
   parseCombatLogRounds,
   parseTurnBannerMessage,
   spellEmoji,
@@ -310,6 +312,32 @@ function consumableCombatHover(def: ItemDef): string {
   }
   const summary = bits.length > 0 ? bits.join(', ') : t('combat.consumableHoverDefault');
   return t('combat.consumableHover', { summary });
+}
+
+export function combatPartyCardsMarkup(party: readonly Character[]): string {
+  return party
+    .map((member) => {
+      const cardClass =
+        member.hp === 0 ? 'combat-party-card combat-party-card--downed' : 'combat-party-card';
+      const manaBar =
+        member.maxMana > 0
+          ? manaBarMarkup(member.mana, member.maxMana)
+          : `<div class="mana-bar-track empty" role="img" aria-label="${escHtml(
+              t('sidebar.resourceBar', {
+                label: t('sidebar.mana'),
+                current: String(member.mana),
+                max: String(member.maxMana),
+              })
+            )}"></div>`;
+      return `<div class="${cardClass}">
+        <div class="combat-party-card-name">${escHtml(member.name)}</div>
+        <div class="combat-party-resource"><span>${escHtml(t('sidebar.hp'))}</span><strong>${member.hp}/${member.maxHp}</strong></div>
+        ${hpBarMarkup(member.hp, member.maxHp, 'hp-bar-resource', 'hp')}
+        <div class="combat-party-resource"><span>${escHtml(t('sidebar.mana'))}</span><strong>${member.mana}/${member.maxMana}</strong></div>
+        ${manaBar}
+      </div>`;
+    })
+    .join('');
 }
 
 function playCombatLogSound(
@@ -1426,6 +1454,10 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   fleeBar.appendChild(flee);
   actionsPanel.appendChild(fleeBar);
 
+  const partyPanel = document.createElement('div');
+  partyPanel.className = 'combat-party-panel';
+  partyPanel.innerHTML = combatPartyCardsMarkup(ctx.state.party);
+  left.appendChild(partyPanel);
   left.appendChild(actionsPanel);
   layout.appendChild(left);
 

@@ -240,6 +240,64 @@ main.main--combat {
 }
 
 /** Postura, magias, itens e fugir — grelha visível (mesmo padrão que --ui-grid-*) */
+.combat-party-panel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--panel-overlay-28);
+}
+
+.combat-party-card {
+  min-width: 0;
+  padding: 0.32rem 0.4rem 0.18rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--panel-overlay-35);
+}
+
+.combat-party-card--downed {
+  opacity: 0.58;
+}
+
+.combat-party-card-name {
+  margin-bottom: 0.28rem;
+  color: var(--text-strong);
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.combat-party-resource {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-size: 0.62rem;
+  line-height: 1.2;
+}
+
+.combat-party-resource strong {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.combat-party-card .hp-bar-track,
+.combat-party-card .mana-bar-track {
+  height: 4px;
+  margin: 0.12rem 0 0.24rem;
+}
+
+.combat-party-card .mana-bar-track.empty {
+  opacity: 0.45;
+}
+
 .combat-actions-panel {
   position: relative;
   margin-top: 0.85rem;

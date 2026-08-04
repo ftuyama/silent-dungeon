@@ -16,6 +16,8 @@ release/
 saves/
 images/
 tmp/
+docs/superpowers
+.worktrees/
 
 # Editor directories and files
 .vscode/*
