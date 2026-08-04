@@ -14,6 +14,7 @@ Arcos paralelos:
 - **Tomás** — escudeiro amarrado no gelo; missão até **dia 15** (`tomas_rescued` ou `tomas_rescue_missed`)
 - **Monge** — gruta nas montanhas; bênção ou banimento
 - **Kael** — terceiro encontro (`frost_lair_approach`); recrutamento exige 2 vitórias nos atos anteriores (`kaelsworn_recruited`)
+- **Edras do Contravento** — capela soterrada; horda de quatro cultistas, uma medida verbal sem repetição e grimório de lições (`contrawind_horde_defeated`, `contrawind_parley_attempted`, `contrawind_merchant_unlocked`, `contrawind_parley_failed`)
 - **Cume** — templo de pedra negra, ascensão perigosa, ritual ou combate contra **Vetrnax** (`vetrnax_slain`, `frost_summit_ritual_done`)
 
 Morvayn caiu; o **eixo ainda desce**. O gelo não celebra. Epílogo (`frost_epilogue`) leva ao Vazio (cap. 6). Quem tem `storyPath: throne` pode também descer ao magma (cap. 8) a partir do hub.
@@ -30,6 +31,7 @@ Superfície gelada após claustrofobia subterrânea. Vento, fumaça de fogueira 
 | **Vetrnax** | Dragão / entidade do cume |
 | **Monge do gelo** | Provas AGI/Mind/Luck |
 | **Kael** | `kr_won_act5`; juramento ao grupo |
+| **Edras do Contravento** | Mago cercado na capela; mede as intenções do herói e, se aceitar, abre o grimório |
 | Mira / Tomás | Fireside no `frost_camp` |
 
 ## Arco narrativo (beats)
@@ -54,6 +56,7 @@ Superfície gelada após claustrofobia subterrânea. Vento, fumaça de fogueira 
 |-----------|----------|
 | Nível 16+, dia ≤15 | Resgate Tomás |
 | Nível 19+ | Gruta do monge |
+| Nível 18+, sem limite de dia | Seguir as pegadas até Edras; a medida verbal só pode ser tentada uma vez |
 | Nível 21–23 + meta | Rasto Vetrnax / cume |
 | 2+ `kr_won_act*` | Recrutar Kael |
 | `hasStoryPath: throne` | Descida ao magma (act8) |
@@ -74,8 +77,15 @@ Hub, opening e prosa devem refletir `slain` | `pact` | `sealed`. Ver `frost_hub_
 |----|--------|
 | `act5/frost_hub` | Hub com storyPathGate |
 | `act5/frost_tomas/*` | Arco Tomás |
+| `act5/frost_contrawind/*` | Edras: horda, medida verbal, aceitação/recusa e grimório |
 | `act5/frost_summit/*` | Cume e boss |
 | `act5/frost_epilogue` | Transição act6 |
+
+## Edras do Contravento
+
+- O rumor aparece nas três variantes do hub a partir do **nível 18**, sem janela de dia.
+- A horda de quatro cultistas abre a capela. Edras aceita uma única tentativa de diálogo: sucesso desbloqueia o grimório e a marca `contrawind_student`; falha fecha o grimório permanentemente.
+- O grimório vende três magias universais de combate, cada uma por **12 ouro**: `colossus_pulse`, `inner_lumen` e `apex_eye`. Cada lição pode ser comprada apenas uma vez.
 
 ## Notas para novas cenas
 

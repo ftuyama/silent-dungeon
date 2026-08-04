@@ -142,6 +142,15 @@
     },
     "arrow_rain": {
       "name": "Arrow Rain"
+    },
+    "colossus_pulse": {
+      "name": "Colossus Pulse"
+    },
+    "inner_lumen": {
+      "name": "Inner Lumen"
+    },
+    "apex_eye": {
+      "name": "Apex Eye"
     }
   },
   "enemies": {
@@ -171,6 +180,15 @@
         "frost_lash": {
           "name": "Frost Lash",
           "linePt": "The incense freezes in the air — the frost hunts your blood."
+        }
+      }
+    },
+    "contrawind_cultist": {
+      "name": "Contrawind Cultist",
+      "abilities": {
+        "contrawind_pressure": {
+          "name": "Contrawind Pressure",
+          "linePt": "The wind changes sides — the pressure hunts for fear behind your eyes."
         }
       }
     },
@@ -668,6 +686,10 @@
     "monk_inner_peace": {
       "name": "Inner Peace",
       "description": "In the snow above the storm, a faceless monk left you a silence that asks no name — closure, not promise; the chest learned to breathe without trickery."
+    },
+    "contrawind_student": {
+      "name": "Contrawind Student",
+      "description": "Edras opened the grimoire after weighing your intentions; the wind no longer blows only against you — it also corrects your stance."
     },
     "morvayn_slain": {
       "name": "Morvayn Slain",

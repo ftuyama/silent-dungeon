@@ -7,6 +7,7 @@ import {
 } from './act2_envoy_hostile_verbal.ts';
 import { act3_cult_negotiate_verbal } from './act3_cult_negotiate_verbal.ts';
 import { act4_morvayn_parley } from './act4_morvayn_parley.ts';
+import { act5_edras_contrawind } from './act5_edras_contrawind.ts';
 import { act6_mirror_sovereign_verbal } from './act6_mirror_sovereign_verbal.ts';
 import {
   kael_rival_act2_verbal,
@@ -22,6 +23,7 @@ export const dialogueEnemies: Record<string, DialogueEnemyDef> = {
   act2_culto_envoy_verbal,
   act3_cult_negotiate_verbal,
   act4_morvayn_parley,
+  act5_edras_contrawind,
   act6_mirror_sovereign_verbal,
   kael_rival_act2_verbal,
   kael_rival_act4_verbal,

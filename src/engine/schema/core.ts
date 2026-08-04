@@ -36,6 +36,7 @@ export const ConditionSchema: z.ZodType<Condition> = z.lazy(() =>
     z.object({ noLeadStoryPassive: z.string() }),
     z.object({ hasItem: z.string() }),
     z.object({ noItem: z.string() }),
+    z.object({ noKnownSpell: z.string() }),
     z.object({
       resource: z.object({
         supply: z.object({ gte: z.number().optional(), lte: z.number().optional() }).optional(),
@@ -93,6 +94,7 @@ export type Condition =
   | { noLeadStoryPassive: string }
   | { hasItem: string }
   | { noItem: string }
+  | { noKnownSpell: string }
   | {
       resource: {
         supply?: { gte?: number; lte?: number };

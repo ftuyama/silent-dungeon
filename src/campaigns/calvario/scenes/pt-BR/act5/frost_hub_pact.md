@@ -59,6 +59,40 @@ choices:
         - { noFlag: tomas_rescue_missed }
         - { day: { gte: 16 } }
     preview: "Tarde demais: poste, corda vazia, eco."
+  - text: "O Mago do Contravento — quatro vozes sob o Sino"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/intro
+    visibleWhen:
+      all:
+        - { noFlag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    condition:
+      all:
+        - { level: { gte: 18 } }
+        - { noFlag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    showWhenLocked: true
+    lockedHint: "Requer nível 18+ para seguir as pegadas contra o vento."
+    preview: "Uma capela soterrada, quatro cultistas e um mago que o Sino não nomeou."
+  - text: "Voltar à capela — o Sino não respondeu por você"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/horde_victory
+    visibleWhen:
+      all:
+        - { flag: contrawind_horde_defeated }
+        - { noFlag: contrawind_parley_attempted }
+    preview: "A horda caiu. Edras quer ouvir sua intenção, não o pacto."
+  - text: "Abrir o grimório com Edras do Contravento"
+    uiSection: "Mercador"
+    uiSectionIcon: shop
+    next: act5/frost_contrawind/merchant
+    visibleWhen: { flag: contrawind_merchant_unlocked }
+    preview: "Três lições universais por doze moedas cada — nenhuma pertence ao Sino."
+  - text: "Falar com Edras depois da recusa"
+    uiSection: "Missões"
+    next: act5/frost_contrawind/rejected
+    visibleWhen: { flag: contrawind_parley_failed }
+    preview: "A capela permanece; nem o pacto compra uma segunda medida."
   - text: "Viver o acampamento no gelo"
     uiSection: "Acampamento"
     uiSectionIcon: camp

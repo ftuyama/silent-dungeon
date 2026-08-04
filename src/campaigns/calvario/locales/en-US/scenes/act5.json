@@ -390,6 +390,27 @@
         "uiSection": "Quests"
       },
       {
+        "text": "The Contrawind Mage — four voices against the snow",
+        "preview": "A buried chapel, four cultists, and a mage under siege.",
+        "lockedHint": "Requires level 18+ to follow the tracks against the wind.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Return to the chapel — the horde fell, Edras still waits",
+        "preview": "The siege is over. The mage's measure still needs an answer.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Open the grimoire with Edras of the Contrawind",
+        "preview": "Three universal lessons for twelve coins each — and conversation after the stock is gone.",
+        "uiSection": "Merchant"
+      },
+      {
+        "text": "Speak with Edras after the refusal",
+        "preview": "The chapel remains; the trial will not be repeated.",
+        "uiSection": "Quests"
+      },
+      {
         "text": "Live the camp on the ice",
         "preview": "Rest, supply, and talk by the fire.",
         "uiSection": "Camp"
@@ -452,6 +473,27 @@
       {
         "text": "Squire's rumor — only echo and empty rope on the ice",
         "preview": "Too late: post, empty rope, echo.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "The Contrawind Mage — four voices beneath the Bell",
+        "preview": "A buried chapel, four cultists, and a mage the Bell did not name.",
+        "lockedHint": "Requires level 18+ to follow the tracks against the wind.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Return to the chapel — the Bell did not answer for you",
+        "preview": "The horde fell. Edras wants your intent, not the pact's.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Open the grimoire with Edras of the Contrawind",
+        "preview": "Three universal lessons for twelve coins each — none belongs to the Bell.",
+        "uiSection": "Merchant"
+      },
+      {
+        "text": "Speak with Edras after the refusal",
+        "preview": "The chapel remains; not even the pact buys a second trial.",
         "uiSection": "Quests"
       },
       {
@@ -520,6 +562,27 @@
         "uiSection": "Quests"
       },
       {
+        "text": "The Contrawind Mage — four voices beyond the seal",
+        "preview": "A buried chapel, four cultists, and a mage outside the seal's stitching.",
+        "lockedHint": "Requires level 18+ to follow the tracks against the wind.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Return to the chapel — the seal did not end the conversation",
+        "preview": "The horde fell. Edras wants an answer that spent faith cannot give.",
+        "uiSection": "Quests"
+      },
+      {
+        "text": "Open the grimoire with Edras of the Contrawind",
+        "preview": "Three universal lessons for twelve coins each — formulas that do not touch the seal.",
+        "uiSection": "Merchant"
+      },
+      {
+        "text": "Speak with Edras after the refusal",
+        "preview": "The chapel remains; spent faith will not open the grimoire again.",
+        "uiSection": "Quests"
+      },
+      {
         "text": "Live the camp on the ice",
         "preview": "Rest, supply, and talk by the fire.",
         "uiSection": "Camp"
@@ -550,6 +613,126 @@
         "text": "Descend into the magma deeps — first throat",
         "preview": "Open the hell-path under the stone; without the amulet, each scene costs HP.",
         "uiSection": "Descend"
+      }
+    ]
+  },
+  "act5/frost_contrawind/intro": {
+    "title": "The Contrawind Mage",
+    "body": "The rumor does not come from a mouth. It comes from **footprints** advancing against the wind and four voices repeating the same prayer around a broken chapel.\n\nInside the circle of motionless snow, someone holds the air in place with a staff. The cultists call this man the **Contrawind Mage** — and close the siege.",
+    "choices": [
+      {
+        "text": "Follow the marks to the buried chapel",
+        "preview": "Four shapes surround a ward the wind has not broken yet."
+      },
+      {
+        "text": "Return along the open path to the chapel",
+        "preview": "Snow covers the bodies, not the debt to whoever stayed inside."
+      },
+      {
+        "text": "Return to the pass"
+      }
+    ]
+  },
+  "act5/frost_contrawind/horde": {
+    "title": "Four Against the Wind",
+    "body": "The four **cultists** spread their formation. They are not guarding the chapel — they want to break the circle traced in the snow and reach whoever breathes inside it.\n\nThe contrawind carries the smell of iron before the blades. For one moment, none of them notices you.",
+    "choices": [
+      {
+        "text": "Break the siege before the chapel gives way",
+        "preview": "The horde has numbers; you have the first strike."
+      },
+      {
+        "text": "Retreat while the tracks still lead back to camp"
+      }
+    ]
+  },
+  "act5/frost_contrawind/horde_victory": {
+    "title": "After the Fourth Fall",
+    "body": "The last cultist drops to his knees and the **wind** carries his prayer from his mouth. The circle remains whole; inside it, the mage erases a symbol with the tip of his staff.\n\n> *“Edras. You opened the siege. I still need to know why.”*\n\nThe horde died. Suspicion remained standing.",
+    "choices": [
+      {
+        "text": "Enter the circle and speak with the mage",
+        "preview": "Edras lowered his staff, but not his guard."
+      },
+      {
+        "text": "Return to the pass before the conversation"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "I broke the siege of four cultists at the buried chapel. The man inside the circle called himself Edras — and has not yet decided whether he owes me gratitude or suspicion."
+    ]
+  },
+  "act5/frost_contrawind/parley": {
+    "title": "Edras's Measure",
+    "body": "Edras does not thank you. He draws three lines between you: **strength**, **mind**, **risk**. The wind bends around each word as if it too waits for an answer.\n\n> *“Those who ask for power usually explain the price afterward. You will explain it before. Once.”*\n\nThe staff stays low. The threat lies in the questions.",
+    "choices": [
+      {
+        "text": "Accept the measure — answer without hiding your intent",
+        "preview": "A single conversation will decide whether Edras opens the grimoire."
+      },
+      {
+        "text": "Delay the answer and return to the pass"
+      }
+    ]
+  },
+  "act5/frost_contrawind/accepted": {
+    "title": "Student of the Contrawind",
+    "body": "Edras closes his eyes. When he opens them again, suspicion has lost its edge, not its weight.\n\n> *“You did not confuse knowledge with possession. That is enough to begin.”*\n\nThe grimoire opens against the wind. Three formulas remain still on the pages: strength, lumen, apex.",
+    "choices": [
+      {
+        "text": "Open Edras's grimoire",
+        "preview": "Three lessons, twelve coins per page learned."
+      },
+      {
+        "text": "Return to the pass with the invitation"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Edras accepted the measure of my intentions and opened the Contrawind grimoire. The lessons are not gifts: each costs twelve coins and a choice in battle."
+    ]
+  },
+  "act5/frost_contrawind/rejected": {
+    "title": "The Closed Grimoire",
+    "body": "Edras wipes away the three lines with the sole of his boot. The circle lets the wind in, and the grimoire's pages close before you read a single formula.\n\n> *“You defeated the horde. You did not defeat what you would do with the lesson. I will not ask again.”*\n\nThe chapel remains on the ice. The conversation does not.",
+    "choices": [
+      {
+        "text": "Leave Edras and return to the pass"
+      }
+    ],
+    "onEnterDiaryTexts": [
+      "Edras refused to open the grimoire. The measure was taken once; the chapel remains open, but his answer does not."
+    ]
+  },
+  "act5/frost_contrawind/merchant": {
+    "title": "Lessons of the Contrawind",
+    "body": "Edras keeps the grimoire open with one hand. In the other, he weighs each coin as if searching for a lie struck into the metal.\n\n> *“The lesson changes a battle, not who you are. If you need to cast it to believe otherwise, keep the gold.”*\n\nThree formulas wait. After them, Edras still has words — **not stock**.",
+    "choices": [
+      {
+        "text": "Learn Colossus Pulse (−12 gold)",
+        "preview": "Universal spell · +2 STR until combat ends; does not stack.",
+        "lockedHint": "You need 12 gold.",
+        "uiSection": "Lessons"
+      },
+      {
+        "text": "Learn Inner Lumen (−12 gold)",
+        "preview": "Universal spell · +2 MIND until combat ends; does not stack.",
+        "lockedHint": "You need 12 gold.",
+        "uiSection": "Lessons"
+      },
+      {
+        "text": "Learn Apex Eye (−12 gold)",
+        "preview": "Universal spell · +10% critical chance until combat ends; does not stack.",
+        "lockedHint": "You need 12 gold.",
+        "uiSection": "Lessons"
+      },
+      {
+        "text": "Ask Edras about the wind that teaches",
+        "preview": "The stock ends. The questions do not.",
+        "uiSection": "Conversation"
+      },
+      {
+        "text": "Close the grimoire and return to the pass",
+        "uiSection": "Leave"
       }
     ]
   },

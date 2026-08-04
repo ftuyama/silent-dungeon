@@ -296,7 +296,38 @@ function spellCombatHoverText(sp: SpellDef): string {
     }
     return t('combat.spellHoverArrowRain');
   }
+  if (sp.spellKind === 'buff_strength') {
+    return t('combat.spellHoverBuffStrength');
+  }
+  if (sp.spellKind === 'buff_mind') {
+    return t('combat.spellHoverBuffMind');
+  }
+  if (sp.spellKind === 'buff_crit_ratio') {
+    return t('combat.spellHoverBuffCritRatio');
+  }
   return t('combat.spellHoverBuffArmor');
+}
+
+export function activeCombatBuffTexts(
+  combat: Pick<CombatState, 'buffAttackRoll' | 'buffArmorClass' | 'buffStrength' | 'buffMind' | 'buffCritRatio'>
+): string[] {
+  const buffParts: string[] = [];
+  if ((combat.buffAttackRoll ?? 0) > 0) {
+    buffParts.push(t('combat.buffAttackShort', { n: combat.buffAttackRoll! }));
+  }
+  if ((combat.buffArmorClass ?? 0) > 0) {
+    buffParts.push(t('combat.buffArmorShort', { n: combat.buffArmorClass! }));
+  }
+  if ((combat.buffStrength ?? 0) > 0) {
+    buffParts.push(t('combat.buffStrengthShort', { n: combat.buffStrength! }));
+  }
+  if ((combat.buffMind ?? 0) > 0) {
+    buffParts.push(t('combat.buffMindShort', { n: combat.buffMind! }));
+  }
+  if ((combat.buffCritRatio ?? 0) > 0) {
+    buffParts.push(t('combat.buffCritRatioShort', { n: Math.round(combat.buffCritRatio! * 100) }));
+  }
+  return buffParts;
 }
 
 function consumableCombatHover(def: ItemDef): string {
@@ -1139,13 +1170,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
   actionsHdr.className = 'combat-actions-panel-hdr';
   actionsHdr.textContent = t('combat.actions');
   actionsPanel.appendChild(actionsHdr);
-  const buffParts: string[] = [];
-  if ((c.buffAttackRoll ?? 0) > 0) {
-    buffParts.push(t('combat.buffAttackShort', { n: c.buffAttackRoll! }));
-  }
-  if ((c.buffArmorClass ?? 0) > 0) {
-    buffParts.push(t('combat.buffArmorShort', { n: c.buffArmorClass! }));
-  }
+  const buffParts = activeCombatBuffTexts(c);
   if (buffParts.length > 0) {
     const buffHint = document.createElement('div');
     buffHint.className = 'combat-active-buffs-hint';

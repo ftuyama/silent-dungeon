@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { createPlayerCharacter } from '../../src/engine/core/index.ts';
 import { combatPartyCardsMarkup } from '../../src/ui/gameAppCombat.ts';
 
@@ -33,5 +33,50 @@ describe('combatPartyCardsMarkup', () => {
     expect(markup).toContain('width:50%');
     expect(markup).toContain('<span>Mana</span><strong>0/0</strong>');
     expect(markup).toContain('mana-bar-track empty');
+  });
+});
+
+import { describe, expect, it } from 'vitest';
+import { spells as calvarioSpells } from '../../src/campaigns/calvario/data/spells.ts';
+import { initI18n, translateKey } from '../../src/i18n/index.ts';
+import { activeCombatBuffTexts } from '../../src/ui/gameAppCombat.ts';
+import { spellSidebarMechanicsLine } from '../../src/ui/gameAppUtils.ts';
+
+beforeEach(() => {
+  initI18n('pt-BR');
+});
+
+describe('activeCombatBuffTexts', () => {
+  it('lists each Contravento buff while it remains active', () => {
+    expect(
+      activeCombatBuffTexts({
+        buffAttackRoll: 0,
+        buffArmorClass: 0,
+        buffStrength: 2,
+        buffMind: 2,
+        buffCritRatio: 0.1,
+      })
+    ).toEqual(['+2 FOR', '+2 MEN', '+10% crítico']);
+  });
+});
+
+describe('Contravento spell descriptions', () => {
+  it('renders the non-stacking rule in sidebar mechanics and combat hover text', () => {
+    const cases = [
+      ['colossus_pulse', 'combat.spellHoverBuffStrength'],
+      ['inner_lumen', 'combat.spellHoverBuffMind'],
+      ['apex_eye', 'combat.spellHoverBuffCritRatio'],
+    ] as const;
+
+    for (const [locale, nonStackingText] of [
+      ['pt-BR', 'não acumula'],
+      ['en-US', 'does not stack'],
+    ] as const) {
+      initI18n(locale);
+      for (const [spellId, hoverKey] of cases) {
+        expect(spellSidebarMechanicsLine(calvarioSpells[spellId]!)).toContain(nonStackingText);
+        expect(translateKey(hoverKey, locale)).toContain(nonStackingText);
+      }
+    }
   });
 });

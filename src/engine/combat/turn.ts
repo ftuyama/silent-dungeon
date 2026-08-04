@@ -238,6 +238,10 @@ function physicalAttackForCharacter(
       mind += it.bonusMind;
     }
   }
+  if (attackerIndex === 0) {
+    str += c.buffStrength ?? 0;
+    mind += c.buffMind ?? 0;
+  }
 
   let atkMod = statMod(str);
   if (stance === 'aggressive') {
@@ -342,7 +346,11 @@ function physicalAttackForCharacter(
     const baseFlat = wd + (stance === 'aggressive' ? 1 : 0) + sacrificeBonus;
     const holyBonus = def.type === 'undead' && attacker.class === 'cleric' ? 1 : 0;
     let isPlayerCrit = special === 'crit';
-    if (!isPlayerCrit && hit && attacker.critRatio > 0 && rng() < attacker.critRatio) {
+    const critRatio = Math.min(
+      1,
+      attacker.critRatio + (attackerIndex === 0 ? c.buffCritRatio ?? 0 : 0)
+    );
+    if (!isPlayerCrit && hit && critRatio > 0 && rng() < critRatio) {
       isPlayerCrit = true;
       logOut.push({
         kind: 'info',

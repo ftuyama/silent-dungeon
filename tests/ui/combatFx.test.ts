@@ -145,12 +145,21 @@ const combatStub = (overrides?: Partial<CombatState>): CombatState => ({
   pendingSacrificeCost: 0,
   buffAttackRoll: 0,
   buffArmorClass: 0,
+  buffStrength: 0,
+  buffMind: 0,
+  buffCritRatio: 0,
   enemyBuffArmorClass: 0,
   enemyBuffAttackRoll: 0,
   bossTwistAppliedIds: [],
   log: [],
   returnScene: 'x',
   ...overrides,
+});
+
+const buffLogFor = (spellId: string): CombatLogEntry => ({
+  kind: 'info',
+  message: 'Buff.',
+  spellId,
 });
 
 describe('resolveCombatLogFx', () => {
@@ -416,6 +425,21 @@ describe('logSliceHasBuffCast', () => {
     expect(entries.some((e) => isBuffInfoEntry(e, data) && e.spellId === 'warriors_focus')).toBe(
       true
     );
+  });
+
+  it('recognizes inner lumen as a buff for the shared visual layer', () => {
+    data.spells.inner_lumen = {
+      id: 'inner_lumen',
+      name: 'Lúmen Interior',
+      manaCost: 8,
+      minLevel: 18,
+      classId: 'any',
+      learnOnly: true,
+      spellKind: 'buff_mind',
+      dice: 1,
+      base: 0,
+    };
+    expect(isBuffInfoEntry(buffLogFor('inner_lumen'), data)).toBe(true);
   });
 });
 

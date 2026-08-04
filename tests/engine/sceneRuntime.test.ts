@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
   buildStoryChoiceRows,
+  evaluateCondition,
   filterChoices,
 } from '../../src/engine/core/index.ts';
-import { ChoiceSchema } from '../../src/engine/schema/index.ts';
+import { ChoiceSchema, ConditionSchema } from '../../src/engine/schema/index.ts';
 import type { Choice, GameState } from '../../src/engine/schema/index.ts';
 import { createStateWithHero } from '../helpers/engineTestData.ts';
 
@@ -135,6 +136,17 @@ describe('buildStoryChoiceRows', () => {
     const rows = buildStoryChoiceRows(choices, baseState(3));
     expect(rows).toHaveLength(1);
     expect(rows[0]?.kind).toBe('locked');
+  });
+});
+
+describe('known spell conditions', () => {
+  it('accepts noKnownSpell and hides content after the spell is learned', () => {
+    const condition = ConditionSchema.parse({ noKnownSpell: 'colossus_pulse' });
+    const unknown = baseState(18);
+    const known = { ...unknown, knownSpells: ['colossus_pulse'] };
+
+    expect(evaluateCondition(condition, unknown)).toBe(true);
+    expect(evaluateCondition(condition, known)).toBe(false);
   });
 });
 
