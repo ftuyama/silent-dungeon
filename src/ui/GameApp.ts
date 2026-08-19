@@ -99,7 +99,7 @@ import {
 import { formatCampaignHeaderTitle } from './campaignHeaderTitle.ts';
 import { showAppToast } from './appToast.ts';
 import { attachFocusTrap, focusableElementsIn } from './focusTrap.ts';
-import { mountAppChrome, syncAppChrome, fullscreenEdgeBtnGlyph, syncLanguageEdgeButton, syncVolumeEdgeButton, type AppChromeRefs } from './gameAppShell.ts';
+import { mountAppChrome, syncAppChrome, fullscreenEdgeBtnGlyph, syncLanguageEdgeButton, syncSidebarEdgeButton, syncVolumeEdgeButton, type AppChromeRefs } from './gameAppShell.ts';
 import { openCreditsModal, openDailyHubModal, openLegacyModal as openLegacyModalUi } from './gameAppSidebar.ts';
 import { openSupporterModal } from './gameAppSupporter.ts';
 import {
@@ -476,6 +476,16 @@ export class GameApp {
     }
     if (t.closest('.app-edge-rail-volume')) {
       this.toggleMute();
+      return;
+    }
+    if (t.closest('[data-app-edge-sidebar]')) {
+      const btn = this.chromeRefs?.sidebarEdgeBtn ?? this.root.querySelector<HTMLButtonElement>('[data-app-edge-sidebar]');
+      const sidebar = this.chromeRefs?.sidebarEl ?? this.root.querySelector<HTMLElement>('.player-sidebar');
+      if (!btn || !sidebar) return;
+      const open = !sidebar.classList.contains('player-sidebar--mobile-open');
+      sidebar.classList.toggle('player-sidebar--mobile-open', open);
+      syncSidebarEdgeButton(btn, open);
+      return;
     }
   };
 

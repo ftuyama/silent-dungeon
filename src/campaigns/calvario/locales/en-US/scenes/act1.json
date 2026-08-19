@@ -342,6 +342,11 @@
     "body": "The **green pulse** climbs the city's throat. Below, the **dungeon** opens a mute mouth: damp stone, old iron, **silence** that pushes you in. Above they pretend routine.",
     "choices": [
       {
+        "text": "Descend the steps toward the text carved in stone",
+        "uiSection": "Descend",
+        "preview": "The first firm step — or hesitate and look first."
+      },
+      {
         "text": "Examine the symbols at the entrance (before descending)",
         "uiSection": "Entrance",
         "preview": "Lore and a surface rumor (luck)."
@@ -350,11 +355,6 @@
         "text": "Breathe deep and adjust your equipment",
         "uiSection": "Entrance",
         "preview": "A moment of calm; diary."
-      },
-      {
-        "text": "Descend the steps toward the text carved in stone",
-        "uiSection": "Descend",
-        "preview": "The first firm step — or hesitate and look first."
       }
     ]
   },

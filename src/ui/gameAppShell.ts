@@ -85,6 +85,7 @@ export type AppChromeRefs = {
   frame: HTMLElement;
   edgeRail: HTMLElement;
   fullscreenEdgeBtn: HTMLButtonElement;
+  sidebarEdgeBtn: HTMLButtonElement;
   languageEdgeBtn: HTMLButtonElement;
   volumeEdgeBtn: HTMLButtonElement;
   sidebarEl: HTMLElement;
@@ -163,6 +164,14 @@ export function volumeEdgeBtnGlyph(muted: boolean): string {
   return muted ? '\u00D7' : '\u266A';
 }
 
+/** Botão do trilho lateral que mostra/esconde a sidebar do jogador (só visível no mobile). */
+export function syncSidebarEdgeButton(btn: HTMLButtonElement, open: boolean): void {
+  btn.setAttribute('aria-pressed', open ? 'true' : 'false');
+  const label = t('menu.sidebarToggle');
+  btn.setAttribute('aria-label', label);
+  btn.title = label;
+}
+
 export function syncLanguageEdgeButton(btn: HTMLButtonElement): void {
   const locale = getLocale();
   btn.textContent = languageEdgeBtnLabel(locale);
@@ -232,6 +241,14 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
   volumeEdgeBtn.className = 'app-edge-rail-btn app-edge-rail-volume';
   syncVolumeEdgeButton(volumeEdgeBtn, opts.getVolume());
 
+  const sidebarEdgeBtn = document.createElement('button');
+  sidebarEdgeBtn.type = 'button';
+  sidebarEdgeBtn.className = 'app-edge-rail-btn app-edge-rail-sidebar';
+  sidebarEdgeBtn.setAttribute('data-app-edge-sidebar', '');
+  sidebarEdgeBtn.innerHTML = '\u2694';
+  syncSidebarEdgeButton(sidebarEdgeBtn, false);
+
+  edgeRail.appendChild(sidebarEdgeBtn);
   edgeRail.appendChild(hBtn);
   edgeRail.appendChild(fullscreenEdgeBtn);
   edgeRail.appendChild(languageEdgeBtn);
@@ -535,6 +552,7 @@ function buildChromeDom(opts: MountAppChromeOptions): AppChromeRefs {
     frame,
     edgeRail,
     fullscreenEdgeBtn,
+    sidebarEdgeBtn,
     languageEdgeBtn,
     volumeEdgeBtn,
     sidebarEl,
@@ -598,6 +616,8 @@ export function syncAppChrome(refs: AppChromeRefs, opts: MountAppChromeOptions):
   }
   syncLanguageEdgeButton(refs.languageEdgeBtn);
   syncVolumeEdgeButton(refs.volumeEdgeBtn, opts.getVolume());
+  syncSidebarEdgeButton(refs.sidebarEdgeBtn, refs.sidebarEl.classList.contains('player-sidebar--mobile-open'));
+  syncSidebarEdgeButton(refs.sidebarEdgeBtn, refs.sidebarEl.classList.contains('player-sidebar--mobile-open'));
 
   while (refs.sidebarEl.firstChild) {
     refs.sidebarEl.removeChild(refs.sidebarEl.firstChild);

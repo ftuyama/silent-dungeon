@@ -8,6 +8,7 @@ import {
 import type { Choice, GameState } from '../engine/schema/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
 import { formatLevelUpDeltaLine, randomCampCombatHint } from './gameAppUtils.ts';
+import { fitAsciiArtToWidth } from './fitAsciiArt.ts';
 import { pickExplorationEdgeText } from '../campaigns/calvario/overlayPick.ts';
 import { isExplorationGoalReached } from '../engine/world/index.ts';
 import { appendStoryMapPanel } from './storyMapPanel.ts';
@@ -654,6 +655,7 @@ export function renderStoryInto(shell: HTMLElement, ctx: StoryRenderContext): vo
     pre.className = 'scene-art';
     pre.textContent = artText;
     inner.appendChild(pre);
+    fitAsciiArtToWidth(pre);
   }
 
   if (ctx.scene.frontmatter.campCombatHint === true) {

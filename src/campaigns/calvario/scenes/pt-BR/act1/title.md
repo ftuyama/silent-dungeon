@@ -9,6 +9,11 @@ artHighlightFrames: [title_hl0, title_hl1, title_hl2, title_hl3, title_hl4, titl
 artHighlightSfx: mysterious
 highlightHoldMs: 3200
 choices:
+  - text: "Descer os degraus rumo ao texto gravado na pedra"
+    uiSection: "Descer"
+    uiSectionIcon: descend
+    next: act1/crawl_entrada
+    preview: "O primeiro passo firme — ou hesitar e olhar antes."
   - text: "Examinar os símbolos na entrada (antes de descer)"
     uiSection: "Entrada"
     next: act1/title_examine
@@ -22,11 +27,6 @@ choices:
     next: act1/title_breath
     condition: { noFlag: act1_title_breath_done }
     preview: "Um instante de calma; diário."
-  - text: "Descer os degraus rumo ao texto gravado na pedra"
-    uiSection: "Descer"
-    uiSectionIcon: descend
-    next: act1/crawl_entrada
-    preview: "O primeiro passo firme — ou hesitar e olhar antes."
 onEnter: []
 ---
 O **pulso verde** sobe pela garganta da cidade. Por baixo, a **masmorra** abre uma boca muda: pedra úmida, ferro velho, **silêncio** que empurra para dentro. Em cima fingem rotina.

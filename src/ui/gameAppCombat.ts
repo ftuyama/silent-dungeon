@@ -26,6 +26,7 @@ import type { GameData } from '../engine/data/index.ts';
 import type { ContentRegistry } from '../content/registry.ts';
 import type { EventBus } from '../engine/core/index.ts';
 import { formatDiceAscii } from './diceAscii.ts';
+import { fitAsciiArtToWidth } from './fitAsciiArt.ts';
 import {
   buildCombatLogDisplayItems,
   escHtml,
@@ -1050,6 +1051,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     pre.className = 'enemy-sprite';
     if (fx?.spriteCritShake) pre.classList.add('crit-flash');
     pre.textContent = sprite;
+    fitAsciiArtToWidth(pre);
     const fxLayer = document.createElement('div');
     fxLayer.className = 'enemy-fx-layer';
     fxLayer.setAttribute('aria-hidden', 'true');
@@ -1112,6 +1114,7 @@ export function renderCombatInto(shell: HTMLElement, ctx: CombatRenderContext): 
     const pre = document.createElement('pre');
     pre.className = 'enemy-sprite enemy-sprite--defeated';
     pre.textContent = ghost.sprite;
+    fitAsciiArtToWidth(pre);
     const fxLayer = document.createElement('div');
     fxLayer.className = 'enemy-fx-layer';
     fxLayer.setAttribute('aria-hidden', 'true');

@@ -611,6 +611,22 @@ a.menu-item {
   -webkit-overflow-scrolling: touch;
 }
 
+.app-edge-rail-sidebar {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .app-edge-rail-sidebar {
+    display: inline-flex;
+  }
+}
+
+.app-edge-rail-sidebar[aria-pressed='true'] {
+  color: var(--text-strong);
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+
 @media (max-width: 720px) {
   .app-body {
     grid-template-columns: 1fr;
@@ -622,6 +638,17 @@ a.menu-item {
     overflow-y: visible;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    display: none;
+  }
+  .player-sidebar.player-sidebar--mobile-open {
+    position: fixed;
+    inset: 0;
+    z-index: 44;
+    display: block;
+    max-height: 100dvh;
+    overflow-y: auto;
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+    background: var(--sidebar-gradient);
   }
   .story-shell {
     order: 1;

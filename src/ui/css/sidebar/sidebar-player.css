@@ -623,10 +623,8 @@
 
   .sidebar-mobile-details[open] .sidebar-mobile-body {
     margin-top: 0.45rem;
-    max-height: min(42vh, 17rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 
